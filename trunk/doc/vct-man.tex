@@ -1,0 +1,1939 @@
+\documentclass[12pt,fleqn]{article}
+%\usepackage[leftbars,dvips]{changebar}
+%\usepackage[leftbars,pdflatex]{changebar}
+
+\title{Victor: a SPARK VC Translator and Prover Driver \\[4ex]
+  \Large
+  User Manual for release 0.9.0 \\[1ex]
+% \normalsize
+% \cbstart
+%   \emph{Changebars indicate changes from User Manual for release 0.6 }\\[1ex]
+% \cbend
+%   \hbox{ }
+} 
+
+\author{Paul Jackson \\
+        \texttt{pbj@inf.ed.ac.uk}}
+
+\date{5th November 2010}
+
+%\usepackage{vpage}
+%\usepackage{vmargin}
+%\setpapersize{Afour}
+
+% margins l t r b, headheight, headsep, footheight, footskip
+%\setmarginsrb{1.2in}{1.2in}{1.2in}{0.6in}{0.3in}{0.2inm}{0.3in}{0.3in}
+
+\usepackage[a4paper,DIV14]{typearea} % LaTeX Companion, 2nd Ed, pp203-6
+\usepackage{url}
+
+
+\setlength{\parindent}{0pt}
+
+%My macros
+%----------------------------------------------------------------------------
+% Abbreviations
+%----------------------------------------------------------------------------
+\usepackage{amssymb}
+
+\newcommand{\integer}{\ensuremath{\mathbf{Z}}}
+\newcommand{\subrange}[2]{\{{#1}\:..\:{#2}\}}
+
+\newcommand{\fixme}[1]{\textbf{FIXME: {#1}}}
+
+\newcommand{\spark}{\textsc{Spark}}
+\newcommand{\sparkb}{S{\footnotesize{}PARK}}  % for use in bold environments.
+\newcommand{\ada}{Ada}
+\newcommand{\sparkada}{SPARK-Ada}
+
+\newcommand{\cvcthree}{\textsc{Cvc}3}
+\newcommand{\zthree}{\textsc{Z}3}
+\newcommand{\yices}{Yices}
+\newcommand{\altergo}{Alt-Ergo}
+
+\newcommand{\blast}{\textsc{Blast}}
+\newcommand{\slam}{\textsc{Slam}}
+
+\newcommand{\sat}{\textsc{Sat}}
+\newcommand{\smt}{\textsc{Smt}}
+\newcommand{\smtb}{S{\footnotesize{}MT}}
+\newcommand{\sal}{\textsc{Sal}}
+\newcommand{\etb}{\textsc{Etb}}
+
+\newcommand{\sri}{\textsc{Sri}}
+\newcommand{\smtlib}{\textsc{smt-lib}}
+
+\newcommand{\fdl}{\textsc{fdl}}
+\newcommand{\rls}{\textsc{rls}}
+\newcommand{\vcg}{\textsc{vcg}}
+\newcommand{\siv}{\textsc{siv}}
+
+%NB the extensions here changed in V0.9, for SPARK tool compatibility
+\newcommand{\logfile}{\textsc{vlg}}
+\newcommand{\csv}{\textsc{vct}}
+\newcommand{\sumfile}{\textsc{vsm}}
+
+
+%\renewcommand{\And}{\ensuremath{\wedge}}
+\newcommand{\And}{\ensuremath{\wedge}}
+\newcommand{\Not}{\ensuremath{\neg}}
+\newcommand{\Or}{\ensuremath{\vee}}
+\newcommand{\Iff}{\ensuremath{\Leftrightarrow}}
+\newcommand{\Implies}{\ensuremath{\Rightarrow}}
+
+\newcommand{\tttilde}{{\tt \char`\~}}
+
+
+% Boolean option with short one-line description
+\newcommand{\optionbs}[1]{\item[\texttt{-{#1}}]}
+% Boolean option with long description
+\newcommand{\optionb}[1]{\item[\texttt{-{#1}}]\ \\}
+% Value option
+\newcommand{\optionv}[2]{\item[\texttt{-{#1}=}\mdseries\textit{#2}]\ \\}
+
+
+%----------------------------------------------------------------------------
+% Draft support
+%----------------------------------------------------------------------------
+\usepackage{comment}
+
+\specialcomment{outline}%
+  {\begingroup\bfseries\slshape\begin{itemize}}%
+  {\end{itemize}\endgroup}
+
+
+\specialcomment{question}%
+  {\begin{itemize}\item[\Huge \textbf{?}]\itshape}%
+  {\end{itemize}}
+
+\specialcomment{remark}%
+  {\begin{itemize}\item[\Huge \textbf{!}]\itshape}%
+  {\end{itemize}}
+
+% \excludecomment{outline}
+% \excludecomment{question}
+% \excludecomment{remark}
+
+\newcommand{\todo}[1]{\textbf{ToDo:} \emph{#1}}
+%\newcommand{\todo}[1]{\emph{\bfseries{#1}}}
+
+\newenvironment{todoenv}{\begingroup\itshape}{\endgroup}
+
+
+
+\usepackage[colorlinks=true]{hyperref}
+
+\begin{document}
+
+\maketitle
+
+%\begin{abstract}
+%This is a user guide for V0.8.
+%\end{abstract}
+
+\tableofcontents
+
+
+\setlength{\parskip}{0.8\baselineskip}
+
+%============================================================================
+%\section{Introduction}
+%============================================================================
+
+%============================================================================
+\section{Supported provers and prover languages}
+%============================================================================
+
+Victor has API interfaces to the \cvcthree{} and \yices{} provers, and can
+drive any prover that accepts Simplify or \smtlib{} format input files.
+
+%----------------------------------------------------------------------------
+\subsection{Simplify language}
+%----------------------------------------------------------------------------
+
+The Simplify language is supported by the Simplify and \zthree{} provers.
+
+%----------------------------------------------------------------------------
+\subsection{SMT-LIB language}
+%----------------------------------------------------------------------------
+
+The \smtlib{} initiative (\url{http://www.smtlib.org}) defines a
+standard language for formatting input to \smt{} solvers and collects
+benchmarks in this format.  
+
+Provers taking \smtlib{} input must support at least one of 
+the \smtlib{} sub-logics
+\begin{itemize}
+\item \textsc{auflia}: quantifier formulas involving arrays, uninterpreted functions, linear integer arithmetic.
+\item \textsc{auflira}: quantifier formulas involving arrays, uninterpreted functions, linear integer and linear real arithmetic.
+\item \textsc{aufnira}: quantifier formulas involving arrays,
+  uninterpreted functions, non-linear integer and non-linear real
+  arithmetic.
+\item 
+\textsc{ufnia}: Non-linear integer arithmetic with uninterpreted
+  sort, function, and predicate symbols.
+\end{itemize}
+
+Such provers include Alt-Ergo, \cvcthree, \yices{} and \zthree.
+Victor currently makes no use of the support for arrays or the reals.
+  
+
+%----------------------------------------------------------------------------
+\subsection{Alt-Ergo}
+%----------------------------------------------------------------------------
+
+Alt-Ergo is an open-source \smt{} solver from LRI (Laboratoire de
+Recherche en Informatique) at Universit\'e Paris-Sud.  It is available
+from \url{http://alt-ergo.lri.fr/}.
+
+Victor has been tested most recently with the V0.92.2 release using
+Alt-Ergo's \smtlib{} file-level interface.
+
+If the standalone Alt-Ergo executable is downloaded rather than built
+from the Alt-Ergo source distribution, it is also necessary to copy
+the file \texttt{smt\_prelude.mlw} from the source distribution to the
+\texttt{run/} directory.
+
+
+%----------------------------------------------------------------------------
+\subsection{CVC3}
+%----------------------------------------------------------------------------
+
+\cvcthree{} is an open-source \smt{} solver jointly developed at New
+York University and the University of Iowa.  It is available from
+\url{http://www.cs.nyu.edu/acsys/cvc3/}.
+
+Victor can link to a \cvcthree{} library and can then drive
+\cvcthree{} via its API.  Alternatively Victor can invoke a
+\cvcthree{} stand-alone executable on \smtlib{} format files.
+
+Victor has been tested with the latest release, V2.2, dating from
+November 2009.  
+%
+% The \cvcthree{} developers also make available daily
+% development releases.  Victor has not yet been tested with these.
+%
+\cvcthree{} is significantly slower than \yices{} or \zthree{} (maybe
+5-10$\times$), especially when VCs are unprovable. 
+%
+It has some basic support for non-linear arithmetic.
+
+When driven via its API, this version of \cvcthree{} throws exceptions
+and has some segmentation faults on a few of the \spark{} VCs from the
+tokeneer set,
+%
+The exceptions are caught and reported by Victor, but 
+%
+the segmentation faults cause Victor to halt.  To enable Victor runs
+in the presence of these faulting problems, it is possible to tell
+Victor to ignore trying to run \cvcthree{} on certain VCs.  
+
+
+%----------------------------------------------------------------------------
+\subsection{Simplify}
+%----------------------------------------------------------------------------
+
+Simplify is a legacy prover, used most notably in the ESC/Java tool. 
+
+The Modula-3 sources and some documentation are available from HP labs.
+Visit \url{http://www.hpl.hp.com/downloads/crl/jtk/index.html} and follow
+the ``Download Simplify here'' link.
+
+Executables for Linux and other platforms can be pulled out of the
+ESC/Java2 distribution: visit
+\url{http://secure.ucd.ie/products/opensource/ESCJava2/}.
+In October 2007, the executables for V1.5.4 were found in a file 
+\texttt{Simplify-1.5.5-13-06-07-binary.zip}.
+
+Simplify has good performance, but is unsound and sometimes crashes
+because it uses fixed-precision integer arithmetic.
+
+Victor interfaces to Simplify using temporary files and by invoking
+the Simplify executable in a sub-process.  Unlike the case with
+\cvcthree{}, Victor can tolerate Simplify crashing.  Victor provides
+notifications of Simplify crashes in its output files.
+
+
+%----------------------------------------------------------------------------
+\subsection{Yices}
+%----------------------------------------------------------------------------
+
+\yices{} is a state-of-the-art \smt{} solver available from \sri{} at
+\url{http://yices.csl.sri.com/}.
+
+Victor links with a \yices{} library provided with the \yices{}
+distribution.  Victor has been tested with the latest public release,
+V1.0.24.  This version, bug fixes apart, dates from summer 2007 and
+essentially is the version that lead the field in the 2007 \smt{}
+competition. 
+
+% \yices{} 1 is no longer under development: \sri{} is
+% currently working on a re-implementation, \yices{} 2, which had a
+% preliminary showing at the 2008 \smt{} competition.  \yices{} 2 is not
+% currently available, and 
+
+\yices{} is fussy about VCs containing non-linear arithmetic
+expressions.  Victor currently just has \yices{} ignore any hypotheses
+or conclusions containing such expressions, and, not infrequently, VCs
+are provable despite these ignored VC clauses.  
+%
+
+\yices{} will accept universally-quantified hypotheses with non-linear
+arithmetic expressions, and sometimes can make use of linear
+instantiations of these.
+%
+Unfortunately, the current behaviour on finding a non-linear
+instantiation is abandon the proof attempt rather than simply ignore
+the instantiation.  
+
+No crashes have been observed with recent versions of \yices.
+However, on a few VCs (not in the test sets provided with the
+distribution), \yices{} just keeps going on and on.  No mechanism for
+timing out on such cases has yet been implemented, the only way to
+deal with them is to request that Victor ignore them.
+
+Victor can also drive Yices using \smtlib{} format files. 
+
+%----------------------------------------------------------------------------
+\subsection{Z3}
+%----------------------------------------------------------------------------
+
+\zthree{} is a state-of-the-art \smt{} solver developed at Microsoft. See
+\url{http://research.microsoft.com/en-us/um/redmond/projects/z3/}.
+
+Victor has been tested most recently with the Linux version of release
+2.13.  No problems have been observed with this version.
+
+% This website only provides a Windows version of a Z3 executable.
+% Microsoft research staff have verbally advertised the existence of a
+% Linux version.  Victor has been tested with such a version (V1.3),
+% obtained from Leonardo de Moura, \texttt{leonardo@microsoft.com}, one
+% of \zthree's developers.
+
+\zthree{} has good performance and better VC coverage than other
+solvers tried.  In particular, it has the best support for non-linear
+arithmetic.
+
+Victor interfaces to \zthree{} using temporary files and by invoking
+the \zthree{} executable in a sub-process.
+The temporary files can be in either \smtlib{} or Simplify format.
+% Despite the similarity of the format, \zthree's performance can be radically
+% different, depending on the format: it seems that \zthree{} has a soft
+% timeout of under 0.1s when taking Simplify format input, but no such timeout
+% on \smtlib{} format input.
+
+%============================================================================
+\section{Installation and Testing}
+%============================================================================
+
+Victor is written in C++ and currently only runs on Linux.  The
+current distribution includes some preliminary code to allow it to
+compile and run on Windows.  However, this code has not yet been fully
+tested.
+
+At Edinburgh, Victor is curently compiled and run on a Red Hat Fedora
+13 machine.  It makes use the following tools:
+\begin{itemize}
+\item \texttt{make} V3.81
+\item \texttt{gcc/g++} V4.4.4
+\item \texttt{bison}  V2.4.1
+\item \texttt{flex} V2.5.35
+\end{itemize}
+% For SL5:
+% \begin{itemize}
+% \item \texttt{make} V3.81
+% \item \texttt{gcc/g++} V4.1.2
+% \item \texttt{bison}  V2.3
+% \item \texttt{flex} V2.5.4
+% \end{itemize}
+The main external library it uses is
+\begin{itemize}
+\item \texttt{gmp} V4.3.1
+%\item \texttt{gmp} V4.1.4
+\end{itemize}
+Its precise dependencies on these versions are largely unknown. 
+%
+One observation is that some tweaks to the \texttt{bison code} in
+\texttt{parser.yy} were necessary when shifting from \texttt{bison}
+V2.3 to \texttt{bison} V2.4.  Comments in \texttt{parser.yy} indicate
+what needs to be changed for compilation with V2.3
+
+By default, the \texttt{gmp} library is dynamically linked in.  If
+running a single executable on several different Linux platforms, this
+can cause problems and it might be desirable to use static linking
+instead.  To achieve this, use \texttt{STATIC\_GMP=true} on the
+\texttt{make} command line when building Victor.
+
+To install:
+\begin{enumerate}
+\item Untar the distribution.  E.g. 
+\begin{verbatim}
+  tar xzf vct-0.9.0.tgz
+\end{verbatim}
+  This should generate a top level directory
+  \texttt{vct-0.9.0} including subdirectories 
+    \texttt{src},
+    \texttt{bin},
+    \texttt{run},
+    \texttt{vc}
+   and \texttt{doc}.
+   The \texttt{doc} directory includes a copy of this manual.
+   Other directories are described below.
+\item 
+  Configure Victor for each of the provers you wish to use it with.
+  \begin{description}
+
+  \item[\cvcthree:] To enable the API driver, uncomment the definition
+    of variable \texttt{CVC3DIR} in file \texttt{src/Makefile} and edit
+    its value to be that of your \cvcthree{} installation.  
+    
+    To use the \smtlib{} format file interface, ensure that an
+    executable \texttt{cvc3} is on your current path.
+
+  \item[Simplify:] Ensure an executable called \texttt{simplify} is on your
+    current path. 
+
+  \item[\yices:] 
+    To enable the API driver, uncomment the definition of variable
+    \texttt{YICESDIR} in file \texttt{src/Makefile}, and edit its
+    value to be that of your \yices{} installation.
+
+    To use the \smtlib{} format file interface, ensure that an
+    executable \texttt{yices} is on your current path.
+
+  \item[\zthree:]  Ensure an executable called \texttt{z3} is on your
+    current path.
+
+  \item[\altergo:]  Ensure an executable called \texttt{alt-ergo} is on your
+    current path.
+  \end{description}
+  Alternate names, and optional paths can be specified for each executable
+  at the top of the \texttt{Makefile} in the \texttt{run} directory.
+
+  Victor can be run without driving any prover.  This is useful for
+  testing if Victor's parser can handle certain VCs and for gathering
+  information on VCs.  This mode can be used for compiling reports on
+  the coverage obtained with the Simplifier prover provided with
+  Praxis's \spark{} toolkit.
+
+\item Build a Victor executable by \texttt{cd}ing to the \texttt{src}
+  directory and typing \texttt{make}.  This does a variety of things, including
+  \begin{enumerate}
+  \item Creating \texttt{.d} files recording \texttt{make} rules that
+     capture dependencies between source files.
+   \item Running the \texttt{bison} parser generator and the \texttt{flex}
+     lexer generator.
+   \item Compiling various \texttt{.o} files.
+   \item Linking the \texttt{.o} files together, along with prover
+     libraries and the \texttt{gmp} library, and installing the
+     resulting executable named \texttt{vct} in the \texttt{bin}
+     directory.
+  \end{enumerate}
+  For convenience, a sub-directory \texttt{build} contains copies
+  of files created during a build of Victor where it was configured
+  for running with the Simplify and \zthree{} provers.  For example, if you
+  do not have the correct version of \texttt{bison}, you could copy over
+  the \texttt{bison} output files to the \texttt{src} directory.
+
+
+\item Add the \texttt{vct/bin} directory to your \texttt{PATH}.
+%  if you
+%   wish to run Victor without specifying the path to this \texttt{bin}
+%   directory.
+
+
+\item Build utility tools for analysing the \csv{} and \logfile{}
+  comma-separated-value
+  output files created by Victor.  Enter \texttt{make csvutils}.  
+  This causes the executables 
+  \texttt{csvproj}, 
+  \texttt{csvfilt},
+  \texttt{csvmerge} and
+  \texttt{csvisect} to be added to the \texttt{bin} directory.
+
+\item Try running Victor on the example VCs provided with the distribution.
+  Check the output files match the provided output files.  See Section
+  \ref{sec:examples}
+  for details.
+\end{enumerate}
+
+%============================================================================
+\section{Operation}
+%============================================================================
+%----------------------------------------------------------------------------
+\subsection{Terminology}
+%----------------------------------------------------------------------------
+We refer to \spark{} VCs as \emph{goals} and use the term \emph{goal
+  slice} to refer to a proof obligation build from a VC by considering
+just one of the goal's conclusions and ignoring the others.  
+
+A \emph{unit name} is the hierarchical name of a program unit.  The unit
+name with a \texttt{.fdl}, 
+\texttt{.rls}, 
+\texttt{.vcg} or 
+\texttt{.siv} suffix gives a pathname for the corresponding
+VC file relative to the root directory of all the VC files for a \spark{}
+program.
+
+%----------------------------------------------------------------------------
+\subsection{Basic operation}
+%----------------------------------------------------------------------------
+
+
+The basic operation of Victor is to 
+\begin{enumerate}
+\item Read in a list of names of \spark{} program units.
+\item Read in the VCs described in the \texttt{.fdl}, \texttt{.rls},
+  \texttt{.vcg} file triples output by the \spark{} Examiner for the
+  named program units.\footnote{
+  Optionally it can read in the simplified
+  \texttt{.siv} files output by the \spark{} Simplifier instead of the 
+  \texttt{.vcg} files.}
+\item Invoke a prover on each goal or goal slice. 
+\item 
+Output \texttt{.vct}, \texttt{.vsm} and \texttt{.vlg} report files.
+\end{enumerate}
+
+%----------------------------------------------------------------------------
+\subsection{Input and output files}
+%----------------------------------------------------------------------------
+The Victor-specific input and output files are as follows.
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsubsection{Unit listing input file}
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\label{sec:unit-listing-file}
+
+Typically Victor is run on many program units at once.  An input
+\emph{unit listing} \texttt{.lis} file is used to indicate the units
+it should consider.  
+%
+The grammar for each line in a unit listing file is given by
+
+\noindent
+\begin{tabular}{lll}
+\textit{line}  & ::= & \textit{unitname} \{\textit{option}\}  \\[2ex]
+%
+\textit{option} & ::= & [\textit{tag}\texttt{?}]\textit{val} \\[2ex]
+%
+\textit{val} & ::= &  \textit{goal} \\
+    & $|$  &  \textit{goal}\texttt{.}\textit{concl} \\
+    & $|$  &  \textit{filename}\texttt{.fdl} \\
+    & $|$  &  \textit{filename}\texttt{.rul} \\
+    & $|$  &  \textit{filename}\texttt{.rlu} 
+\end{tabular}
+
+\noindent
+where square braces ([]) enclose optional non-terminals,
+curly braces (\{\}) enclose non-terminals repeated 0 or more times,
+%
+the terminals \textit{unitname}, \textit{tag} and \textit{filename} are
+alphanumeric strings, 
+and the terminals \textit{goal} and \textit{concl} are natural numbers.
+%
+The meaning of the components of a line are as follows.
+\begin{itemize}
+\item \textit{unitname} is the hierarchical name of a unit (\spark{}
+  subprogram).
+
+\item \textit{tag} tags an option.  A tagged option is only active if
+  the tag is also supplied as one of the values of the 
+  \texttt{-active-unit-tags} Victor command-line option.
+  Untagged options are always active.
+
+\item \textit{goal} and \textit{goal}\texttt{.}\textit{concl} 
+  select particular goals and goal slices in the unit. 
+  The Victor command-line options 
+  \texttt{-include-selected-goals} and
+  \texttt{-exclude-selected-goals}
+  control how Victor treats these selected goals and goal slices.
+
+\item \textit{filename}\texttt{.rul} and
+      \textit{filename}\texttt{.rlu} are auxiliary rules files to load
+
+\item \textit{filename}\texttt{.fdl} is an auxiliary declarations file.
+  For example, this can declare constants and functions introduced in 
+  an auxiliary rules file.
+\end{itemize}
+Comment lines are allowed: these are indicated by a \texttt{\#}
+character in the first column.  Also blank lines are allowed.  
+
+One way to prepare a unit listing file is to run the command
+\begin{verbatim}
+  find . -name '*.fdl' | sed -r 's/\.\/|\.fdl//g' > units.lis
+\end{verbatim}
+in the root directory of a set of VC files.
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsubsection{VCT output file}
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+The \csv{} file includes one line for each goal or goal slice. The fields
+of each line are:
+\begin{enumerate}
+\item Path to unit. This describes the containing packages
+\item Unit name, without a prefix for the containing packages.
+\item Unit kind.  One of \texttt{procedure}, 
+  \texttt{function} or \texttt{task\_type}.
+\item Source of path in subprogram for VC 
+\item Destination of path for VC, or VC kind if not path related
+\item VC goal number
+\item Conclusion (goal slice) number 
+\item Status (one of true, unproven, error)
+\item Proof time (in sec)
+\item Brief remarks about goal and solver interactions
+\item Operator kinds occurring in hypotheses
+\item Operator kinds occurring in conclusion
+\end{enumerate}
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsubsection{VSM output file}
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+The run summary file has extension \texttt{.vsm}.  It is a 1 line
+comma-separated-value file with the fields
+\begin{enumerate}
+\item Report file name.
+\item Number of \texttt{ERROR} messages in log file
+\item Number of \texttt{WARNING} messages in log file
+\item Total number of goal/goal slices processed.
+\item Number of goal/goal slices with \emph{true} status
+\item Number of goal/goal slices with \emph{unproven} status
+\item Number of unproven goal/goal slices that involved a timeout.
+\item Number of goal/goal slices with \emph{error} status
+\item Percent of goal/goal slices with \emph{true} status
+\item Percent of goal/goal slices with \emph{unproven} status
+\item Percent of unproven goal/goal slices that involved a timeout.
+\item Percent of goal/goal slices with \emph{error} status
+\item Total execution time
+\end{enumerate}
+A file \texttt{vsm-file-header.txt} provides a 1 line comma-separated list
+of headings for these summary files.
+
+Summary files can be concatenated together with a header file and then 
+viewed in any spreadsheet program.
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsubsection{VLG output file}
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+The \logfile{} log file includes
+\begin{enumerate}
+\item a record of the command line options passed to Victor,
+\item various information, warning and error messages,
+\item statistics on the run, including numbers of VCs proven and unproven,
+  and time taken.
+\end{enumerate}
+
+%----------------------------------------------------------------------------
+\subsection{Invocation of Victor}
+%----------------------------------------------------------------------------
+The command line syntax for invoking Victor is
+\begin{quote}
+  \texttt{vct} [\textit{options}] [\textit{unitname}] 
+\end{quote}
+The \textit{unitname} argument is used to identify a single unit on which 
+to run Victor.
+
+To run Victor on multiple units, omit the \texttt{unitname} argument
+and use instead the \texttt{units} option to specify a unit listing
+input file.
+
+If both a \textit{unitname} and a \texttt{units} option are provided,
+the \texttt{units} option is ignored.
+
+Victor takes numerous options, many of which are currently necessary.
+See the next section for a description of a \texttt{Makefile} that
+provides standard option sets.
+
+
+%----------------------------------------------------------------------------
+\subsection{Examples}
+%----------------------------------------------------------------------------
+\label{sec:examples}
+
+The \texttt{vc} directory has subdirectories for some example 
+sets of VCs.
+%  that
+% Victor has so far been tested on.
+% \begingroup
+% \renewcommand{\descriptionlabel}[1]{\texttt{#1}}
+% \begin{description}
+% \item[autop] The autopilot example distributed with the 
+%   \spark{} book: ``High Integrity Software: The \spark{} Approach to 
+%    Safety and Security'' by John Barnes.
+
+% \item[hilton] Adrian Hilton's SPARK Missile Guidance Simulator.
+% \item[tokeneer] The Tokeneer ID station case study prepared by Praxis
+%   for the NSA.
+% \end{description}
+% \endgroup
+See the file \texttt{vc/README.txt} for further information on these sets.
+% sources of these VC sets.
+
+The \texttt{run} directory provides a Makefile with rules for
+running Victor on the VC sets in the \texttt{vc} directory.
+%
+These rules use Make patterns in their targets, and can easily also be
+used for running Victor on users' own VC sets.
+%
+The rules set appropriate Victor command-line options and so allow
+starting Victor users to ignore having to figure these out for
+themselves.
+%
+See \texttt{run/Makefile} for details.
+
+Reference report files obtained from running \texttt{make} on some of
+these targets are included in directory \texttt{run/out-ref}.
+%
+Unix \texttt{diff} can be used to check that newly-generated
+report files are the same as the reference files.
+%
+If the command line option \texttt{-gstime} is used to include times
+of prover runs in report files, it will be necessary to use
+the \texttt{csvproj} utility to remove the field for these times
+in order to get files that are expected to be identical.
+
+%----------------------------------------------------------------------------
+\subsection{Performance tips}
+%----------------------------------------------------------------------------
+
+\begin{enumerate}
+
+\item When \smt{} solvers cannot prove a goal, they often keep trying
+  almost indefinitely rather than halting, so it is good to run them
+  with some kind of time-out.  
+  %
+  When several VCs cannot be proven, Victor's total run-time can be
+  dominated by the runs that go to time-out.  Setting a shorter
+  time-out can therefore sometimes radically reduce Victor's run-time,
+  often with little or no drop in number of goals proven.
+
+\item \smt{} solver performance on goals they can prove is often
+  dependent on the number of quantified axioms. 
+  By default, Victor uses a number of quantified axioms from the 
+  rules files \texttt{divmod.rul} and \texttt{prelude.rul} in the \texttt{run/}
+  directory. 
+  %
+  In some cases, not all these axioms are necessary, and faster
+  run-times are achievable with alternate rules files that prune down
+  these axiom sets.
+
+\end{enumerate}
+
+
+%============================================================================
+\section{Command line options}
+%============================================================================
+Options are specified with syntax 
+\texttt{-\emph{name}} or
+\texttt{-\emph{name}=\emph{value}}.
+%
+Option values can be boolean (\texttt{true} or \texttt{false}),
+natural numbers (e.g. \texttt{42}) or strings.
+%
+An option \texttt{-\emph{name}} is interpreted the same as 
+An option \texttt{-\emph{name}=true}.  An unset boolean option is interpreted
+as \texttt{-\emph{name}=false}.
+
+If the same option is given multiple times with different values, the
+usual behaviour is that the last value is taken.  Occasionally all multiple 
+values are used.  These cases are always explicitly pointed out below.
+
+A later option 
+\texttt{-name=},
+\texttt{-name=false},
+\texttt{-name=none} or 
+\texttt{-name=default}
+Clears all earlier values given for the option and makes it unset.
+
+%----------------------------------------------------------------------------
+\subsection{Input options}
+%----------------------------------------------------------------------------
+
+These options control where VCs are read from, provision of auxiliary
+declarations and rules, and filtering of VCs before invoking the selected
+prover.
+
+\begin{description}
+
+  \optionv{units}{unit-listing}  Run on units named in \textit{unit-listing}
+   file.
+
+  \optionv{prefix}{prefix} 
+    Use \textit{prefix} as a common prefix for all unit names.  
+    \textit{prefix}\texttt{/}\textit{unitname} should give an absolute or
+    relative pathname for the VC file set of a program unit.  Default is
+    that no prefix is used.
+   
+  \optionv{decls}{declfile}
+    For every program unit, read auxiliary \texttt{.fdl} 
+    declarations file named in \textit{declfile}.  
+    Multiple files can be specified using multiple 
+    \optionb{decls} options.
+%     For example, the Examiner does not provide declarations for built-in
+%     bit operations such as \texttt{bit\_\_or} and \texttt{bit\_\_not}.
+
+    \optionv{rules}{rulesfile} For every program unit, read in
+    auxiliary rules file named in \textit{rulesfile}.  Multiple files
+    can be specified using multiple \optionb{rules} options.
+
+  \optionb{siv} Read in \texttt{.siv} simplified VC files output by the
+     Simplifier rather than \texttt{.vcg} Examiner VC files.
+
+% See smt-driver.cc
+\optionv{goal}{g} Only consider goal number $g$.
+  %  Skipped over goals are not reported in \csv{} output file.  
+  %
+  This option is intended for use when Victor is run on a single unit,
+  when a \textit{unit-name} argument and no \texttt{units} option is
+  given.
+
+\optionv{concl}{c} Only consider conclusions (goal slices) numbered $c$.  
+  This option is intended for use when Victor is run on a single unit.
+
+\optionb{skip-concls}
+  Do not pass conclusion formulae to the selected prover.  This option is
+  good for helping to identify goals or goal slices true because of an
+  inconsistency in the hypotheses or rules.
+
+\optionb{skip-hyps}
+  Do not pass hypothesis formulae to the selected prover.  This option is
+  good for helping to identify goals or goal slices true because of an
+  inconsistency in the rules.
+
+% See utility.cc
+\optionv{from-unit}{unit-name}
+  Only drive to selected prover the units listed in the \texttt{-units} option
+  starting with \textit{unit-name}.  Default is to start with first. 
+
+\optionv{from-goal}{g}
+  In first unit to be passed to prover, start driving goals / goal
+  slices to prover at goal $g$.
+
+\optionv{to-unit}{unit-name}
+  Stop driving units to the selected prover after \textit{unit-name} is 
+  encountered. Default is to continue until the last listed unit.
+
+\optionv{active-unit-tags}{tags}
+  Identify which tagged options (if any) in the unit listing file to make
+  active.  See Section \ref{sec:unit-listing-file} for more on this.
+  %
+  Multiple tags should be separated by colons (\texttt{:}).
+
+\optionb{include-selected-goals}
+  When particular goals or goal slices are selected for a unit in the
+  unit listing file, run Victor on just those goals or goal slices.
+
+\optionb{exclude-selected-goals}
+  When particular goals or goal slices are selected for a unit in the
+  unit listing file, do not run Victor on those goals or goal slices.
+
+\end{description}
+%----------------------------------------------------------------------------
+\subsection{Translation options}
+%----------------------------------------------------------------------------
+
+See Section \ref{sec:translation} for a presentation of these options,
+since they make best sense in a discussion of the overall translation
+process.
+
+%----------------------------------------------------------------------------
+\subsection{Prover and prover interface selection}
+%----------------------------------------------------------------------------
+
+\begin{description}
+\optionv{prover}{prover}
+  Select the prover to drive.  Valid values of \emph{prover} are:
+  \begin{itemize}
+  \item \texttt{cvc3}
+  \item \texttt{simplify}
+  \item \texttt{yices}
+  \item \texttt{z3}
+  \end{itemize}
+  A value of \texttt{none} can also be specified.  This is useful if
+  one just wants to generate prover input files.
+
+\optionv{prover-command}{prover-command}
+  Use instead of the \texttt{prover} option to specify explicitly a
+  shell-level command for invoking the prover.  This allows alternate
+  provers or custom prover options to be specified.
+
+  Selecting neither this option or the \texttt{prover} option is
+  equivalent to setting the value of \texttt{prover} to \texttt{none}.
+  
+\optionv{interface-mode}{mode}
+  Select the prover interface mode.  Valid values of \emph{mode} are:
+  \begin{itemize}
+  \item \texttt{api}: Use prover API.  
+    Acceptable with \texttt{cvc3} or \texttt{yices}
+    value for \texttt{prover}.
+
+  \item \texttt{smtlib}: Use \smtlib{}-format files and
+     stand-alone prover executable.
+    Acceptable with \texttt{cvc3}, \texttt{yices} or \texttt{z3}
+    value for \texttt{prover},
+    and with \texttt{prover-command} option.
+
+  \item \texttt{simplify}: Use Simplify-format files and
+     stand-alone prover executable. 
+    Acceptable with \texttt{simplify} or \texttt{z3} value for
+    \texttt{prover}, 
+    and with \texttt{prover-command} option.
+
+%   \item \texttt{alt-simplify}: Use alternate Simplify-format files and
+%      stand-alone prover executable. 
+%     Acceptable with \texttt{simplify} or \texttt{z3} value for
+%     \texttt{prover}, 
+%     and with \texttt{prover-command} option.
+%     These alternate Simplify-format files are generated by a customisation
+%     of the code generating \smtlib{} interface.
+  \item \texttt{dummy}: 
+    Use some default code that mostly does nothing.  In this case,
+    Victor still parses the VC files, does a prover independent
+    translation of the goals, and generates \csv{} and log output
+    files.  This is the default option. 
+  \end{itemize}
+
+\end{description}
+
+% \begingroup
+% \newcommand{\tick}{$\bullet$}
+% \begin{tabular}{l|ccccc}
+%   Mode     &   \multicolumn{5}{c}{Prover}   \\
+%            &  cvc3    & simplify   & yices & z3   & \textit{\rmfamily custom}\\
+%   \hline
+
+%   api      &  \tick   &            & \tick &      &          \\
+
+%   simplify &          & \tick      &       &\tick & \tick         \\
+%   smtlib   &  \tick   &            & \tick &\tick & \tick
+
+  
+% \end{tabular}
+% \endgroup
+
+
+%----------------------------------------------------------------------------
+\subsection{Prover driving options}
+%----------------------------------------------------------------------------
+
+\begin{description}
+\optionb{fuse-concls} 
+  Pass one goal at a time to the selected prover.  By default Victor
+  passes one goal slice at a time.
+
+\optionv{working-dir}{working-dir} 
+  Use \textit{working-dir} as root of directory tree of files used for prover
+  input and output.   An argument of  `\texttt{.}' is acceptable to indicate
+  the current directory.  Defaults to \texttt{/tmp}.  
+%  Option is currently only relevant for Simplify and \zthree.
+
+  Unless one of the next three options is used, the same file
+  names are used for every every prover run and every Victor run.
+
+\optionb{hier-working-files}
+   Use distinct files for each prover invocation and arrange in a
+   hierarchical tree under \emph{working-dir}.
+
+\optionb{flat-working-files}
+   Use distinct files for each prover invocation and arrange all as 
+   members of \emph{working-dir}.
+
+
+\optionb{unique-working-files}
+  Within a given Victor run, use the same file names for each prover
+  invocation, but, by including hostname and process
+  number in file names, make the names unique to the Victor run.
+  %
+  This option is useful if one wants to have simultaneous Victor runs.
+
+  
+
+\optionv{ulimit-timeout}{time}
+  If using either of the file-level interface modes, 
+   use the Linux 
+  \emph{ulimit} process limit facility to time out
+  prover invocations after \emph{time} seconds.  The \texttt{time} value 
+  should be a natural number.
+  The default is not to time out prover invocations.
+
+\optionv{shell-timeout}{time}
+  If using either of the file-level interface modes, 
+   use the provided shell script 
+   \texttt{timeout.sh} to time out prover invocations after \emph{time} 
+  seconds.  The \texttt{time} value can
+  be an integer or a fixed-point number (e.g. 0.1).
+  The default is not to time out prover invocations.
+
+  Currently this option is not that robust and use of \texttt{-ulimit-timeout}
+  is recommended instead.
+
+\optionv{logic}{logic}
+  If using the \smtlib{} interface mode, set the value of the 
+  \texttt{:logic} attribute in the \smtlib{}-format files to \emph{logic}.
+  The default is \texttt{AUFLIA}.
+
+\optionb{smtlib-hyps-as-assums}
+  If using the \smtlib{} interface mode, insert each hypothesis into
+  the \smtlib{}-format file as the value of a distinct 
+  \texttt{:assumption} attribute.
+
+% smt-driver.cc
+\optionv{drive-goal-repeats}{count}
+   Repeat each prover invocation \textit{count} times.
+   This is used to increase precision of prover runtime measurements when
+   using an API interface.
+
+\optionv{check-goal-repeats}{count}
+   Repeat each prover invocation \textit{count} times.
+   This is used to increase precision of prover runtime measurements when
+   using a file-level interface.  
+
+\end{description}
+
+%----------------------------------------------------------------------------
+\subsection{Output options}
+%----------------------------------------------------------------------------
+
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+\subsubsection{Screen output options}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+\begin{description}
+\optionb{utick} Print to standard output a \texttt{*} character at the 
+  start of processing each unit.
+  If \texttt{-longtick} also selected, print instead 
+  the unit name.
+\optionb{gtick} Print to standard output a \texttt{;} character at the 
+  start of processing each goal.  
+  If \texttt{-longtick} also selected, print instead 
+  the goal number.
+\optionb{ctick} Print to standard output a \texttt{.} character at the 
+  start of processing each conclusion of a goal.
+  If \texttt{-longtick} also selected, print also
+  the conclusion number.
+\optionb{longtick} See above.
+
+\optionb{echo-final-stats}
+  Print to standard output the final statistics that are included at the
+  end of the report file.
+\end{description}
+
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+\subsubsection{General report file options}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+\begin{description}
+\optionv{report}{report-file}
+   Use \textit{report-file} as body of filenames for \csv{}, \sumfile{} and
+   \logfile{} report files.  Default is to use \texttt{report}.
+
+\optionv{report-dir}{dir}
+   Put report files in directory \textit{dir}.  If directory does not exist,
+   it is created.  Default is to use current directory.
+\end{description}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+\subsubsection{VCT file options}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+\begin{description}
+
+\optionb{count-trivial-goals}
+   Write an entry to the \csv{} file for each input goal of form 
+   \texttt{*** true}.
+   In VCG files, these are the goals proven by the Examiner.
+   In SIV files, these are the goals proven by the Examiner or the 
+   Simplifier.
+   These entries have status \texttt{true} in field 8 and
+   the comment \texttt{trivial goal} in field 10.
+
+   Use this option along with option \texttt{-fuse-concls} to have the
+   goal counts match those from the POGS (Proof Obligation Summariser)
+   tool.
+
+\optionb{hkinds} Report list of hypothesis kinds in field 11 of \csv{} file
+\optionb{ckinds} Report list of concl kinds in field 12 of \csv{} file
+\optionb{gstime} 
+  Report time taken by prover to process a goal slice or goal
+       in field 9 of \csv{} file.
+\optionb{gstime-inc-setup}
+  Include setup time in gstime.  This setup time is time to 
+  send declarations, rules, hypotheses and conclusions to the prover before
+  invoking prover itself.  
+
+  It is appropriate to include this time when calling the prover via 
+  an API (\yices and \cvcthree{} cases) since
+  the provers do incremental processing on receiving this information.
+  When the prover interface is via files, this setup time is the time to 
+  write an input file for the prover, so it is not as appropriate to include
+  it.
+
+\optionb{csv-reports-include-goal-origins}
+  Include information on goal origins in fields 4 and 5 of \csv{} file.
+  Default is not to include this information.
+
+\optionb{csv-reports-include-unit-kind}
+  Include information on unit kind in fields 3 of \csv{} file.
+  Default is not to include this information.
+\end{description}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+\subsubsection{Log file options}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+\begin{description}
+  \optionv{level}{level}  Report all messages at or above 
+     priority \textit{level}.  The levels and associated names are
+     \begin{enumerate}
+     \item [6] \texttt{error}
+     \item [5] \texttt{warning}
+     \item [4] \texttt{info}
+     \item [3] \texttt{fine}
+     \item [2] \texttt{finer}
+     \item [1] \texttt{finest}
+     \end{enumerate}
+     The \textit{level} value can either be a number or the associated name.
+     The default level is \emph{warning}.
+
+\end{description}
+
+%----------------------------------------------------------------------------
+\subsection{Debugging options}
+%----------------------------------------------------------------------------
+\begin{description}
+\optionb{scantrace} Write lexer debugging information to standard output 
+\optionb{parsertrace} 
+  Write parser debugging information to standard output 
+\end{description}
+
+%----------------------------------------------------------------------------
+\subsection{CVC3 options}
+%----------------------------------------------------------------------------
+
+Unless otherwise specified, these options are only relevant when invoking
+\cvcthree{} via its API.
+%
+The main options are as follows.
+\begin{description}
+\optionb{counterex}
+   Report counterexamples for false and unknown queries. 
+
+\begin{remark}
+I have not figured out yet how to direct \cvcthree{} to write counter-examples
+to files.   A work-around to view counter-examples is to run with 
+this option and the \texttt{-cvc-inputlog} option, and then run the
+standalone \cvcthree{} executable on the generated \cvcthree{} input file.
+\end{remark}
+
+% \optionv{resourcelimit}{limit}
+%   Set resource limit for \cvcthree{} runs.  This provides a soft timeout
+%   option.
+%   A value of 25,000 gives run time limits of 7-10sec on a 1.86GHz Intel
+%   Core 2 processor.  Default is 0, no limit.
+
+%   This option also works when invoking \cvcthree{} on \smtlib{}-format input
+%   files.
+
+\optionv{timeout}{time}
+  Set a timeout period in units of 0.1 seconds for runs of \cvcthree{}, both
+  via API and via executable.  Uses \cvcthree{}'s internal support for
+  timing out.
+  
+\optionb{cvc-loginput}
+  Enable echoing of API calls for each \cvcthree{} run to a file. 
+  Use the \texttt{-working-dir} option to set where the file is stored
+  and the 
+  \texttt{-hier-working-files} and \texttt{-flat-working-files} options
+  to control whether and how distinct files are used for each run. 
+  %
+  Files have suffix \texttt{.cvc}.
+  %
+  If distinct files are not requested,
+  all runs will be echoed to a file named \texttt{cvc3.cvc},
+  each run overwriting the previous one.
+  %
+  These files are saved in \cvcthree{}'s standard input language and can be 
+  used as input to a \cvcthree{} stand-alone executable.
+
+% \optionv{cvc-echo-suffix}{suffix}
+%   Set suffix to use for file logging \cvcthree{} calls.  Defaults to 
+%   \texttt{.clog}.
+\end{description}
+See the file \texttt{cvc-driver.cc} for further available options.  Not
+all of these have been tried out yet.
+
+
+%----------------------------------------------------------------------------
+\subsection{Simplify options}
+%----------------------------------------------------------------------------
+
+No options are currently available.
+
+%----------------------------------------------------------------------------
+\subsection{Yices options}
+%----------------------------------------------------------------------------
+
+Unless otherwise specified, these options are only relevant when invoking
+\yices{} via its API.
+
+\begin{description}
+\optionb{yices-loginput}
+  Enable echoing of API calls for each \yices{} run to a file. 
+  Use the \texttt{-working-dir} option to set where the file is stored
+  and the 
+  \texttt{-hier-working-files} and \texttt{-flat-working-files} options
+  to control whether and how distinct files are used for each run. 
+  %
+  Files always have suffix \texttt{.yices}.  If distinct files are not
+  requested, all runs will be echoed to the file 
+  \texttt{yices.yices}, each run overwriting the previous one.
+  %
+  These files are saved in \yices{}'s standard input language and can be 
+  used as input to a \yices{} stand-alone executable.
+\begin{remark}
+%   The \yices{} executable preloads declarations of functions \texttt{div}
+%   and \texttt{mod}.  The \yices{} input files output by Victor might
+%   need editing to remove declarations of these functions before the input
+%   files will execute properly. 
+  %
+  Victor lets \yices{} reject non-linear parts of formulae - see the
+  warnings in Victor's log file.  These formulae might have to be removed by 
+  hand for \yices{} to load these input files properly.
+\end{remark}
+
+
+\optionb{yices-logoutput}
+  Set file for output of each run of \yices{}. 
+  Location of file and whether distinct files generated for each run
+  are specified in same way as with \texttt{-yices-loginput}.
+  Suffix of files is \texttt{.ylog}.  If distinct files not requested,
+  all runs written to \texttt{yices.ylog}.
+
+% \optionv{yverb}{n} 
+%   Set verbosity of \yices's output to \textit{n}.
+
+\optionb{counterex} 
+   Enable reporting of counter-example models to output log file.
+
+% -ynotc          Disable Yices type checking (enabled by default).
+
+% -abstract-nonlin-divmod
+%                 Abstract nonlinear divmod exps to uninterpreted functions.
+%                 Default is to abstract all divmod exps.
+% -abstract-nonlin-times
+%                 Abstract nonlinear times exps to uninterpreted functions.
+%                 Default is to abstract no times exps.
+
+\optionv{timeout}{time}
+  Set a timeout period in seconds for runs of the \yices{} executable 
+  on \smtlib{}-format input files.   Uses \yices{}'s \texttt{--timeout}
+  option.
+
+\end{description}
+%\fixme{Do anything about non-linear arithmetic options?}
+
+
+%----------------------------------------------------------------------------
+\subsection{Z3 options}
+%----------------------------------------------------------------------------
+
+No \zthree{} options are specifically supported by Victor.  \zthree{} options
+can be specified by giving a custom prover command with the \texttt{prover-command} option.
+
+% \begin{description}
+% \optionb{z3-fourier-motzkin}
+%   Use Fourier-Motzkin elimination to eliminate all quantifiers over linear
+%   arithmetic expressions.
+% \end{description}
+
+
+
+%============================================================================
+\section{Translation}
+%============================================================================
+\label{sec:translation}
+
+% As defined in (p:) processor.cc and (t:) translation.cc
+
+The description of the translation
+process here is rather brief and not self-contained.
+%
+The process is best understood by first having a read of the
+draft paper \emph{Proving SPARK Verification Conditions with SMT solvers},
+available from the author's website.
+
+Unless otherwise stated, translation steps are carried out in order
+they are described in below.
+
+%----------------------------------------------------------------------------
+\subsection{Standard Form translation}
+%----------------------------------------------------------------------------
+
+Most translation steps in Victor are carried out on units in a standard form.
+In this standard form all functions and relations have a unique type, 
+there is no overloading.
+
+The first translation step is to put units into this standard form.
+
+% p;putUnitInStandardForm
+
+\begin{itemize}
+% p:augmentConstDecls
+
+\item Some constants with names of form 
+   $\mathit{c}\mathtt{\_base\_first}$
+   or $\mathit{c}\mathtt{\_base\_last}$
+   are used but not declared.  Victor adds declarations for such constants
+   when they appear to be missing, when e.g. the constant
+   $\mathit{c}\mathtt{\_first}$ is declared ($c$ not with suffix $\mathtt{\_base}$) and the constant 
+   $\mathit{c}\mathtt{\_base\_first}$ is not declared.
+
+\item The \fdl{} files output by the Examiner are missing declarations
+  of the $\mathit{E}\_\_\mathtt{pos}$
+  and $\mathit{E}\_\_\mathtt{val}$ functions used by each enumeration type
+  $E$, including the implicitly declared \texttt{character} type.  These
+  declarations are added in.
+
+\item \fdl{} variables are considered as semantically the same as
+  \fdl{} constants.  Each declaration of an \fdl{} variable $x$, is
+  changed to a constant declaration, and new declarations are added
+  for names \textit{x}\tttilde{} and \textit{x}\texttt{\%}.  \fdl{}
+  units use the names \textit{x}\tttilde{} and \textit{x}\texttt{\%}
+  to refer to the value of $x$ at procedure and loop starts
+  respectively.
+
+
+\item Occurrences of the \fdl{} operator \texttt{sqr(x)} are replaced by 
+  \texttt{x ** 2}.
+
+\item Distinct operators are introduced for the standard arithmetic operations
+  $+$, $\times$, $-$(unary), $-$(binary) over the integers and reals,
+  and an explicit coercion operator is introduced for converting integers
+  to reals.
+
+\item Distinct relations are introduced for the inequality relations 
+  over integers, reals, and enumeration types. 
+
+\item Distinct versions of the \fdl{} operator \texttt{abs(x)} are introduced
+  for the real and integer types.   Defining axioms are added to the set
+  of rules for each unit.
+
+\item A defining axiom is added for the \fdl{} predicate \texttt{odd(x)}.
+
+\item Some characterising axioms are added for the \fdl{} operator
+   \texttt{bit\_\_or(x)}.  No axioms are added yet for other bit-wise
+   arithmetic operators.
+
+\item The \fdl{} language overloads the functions \texttt{succ} and
+  \texttt{pred} and inequality relations such as $<$ and $\leq$.
+  %
+  Distinct versions are introduced for the \fdl{} \texttt{integer} type
+  and each enumeration type and declarations are added for each of
+  these versions.
+
+\item The Examiner outputs rules with implicitly quantified variables.
+  Victor infers the types of these variables and makes the
+  quantifications explicit.  The explicit quantification is needed by
+  all the provers to which Victor interfaces.
+
+\end{itemize}
+
+
+%----------------------------------------------------------------------------
+\subsection{Type checking}
+%----------------------------------------------------------------------------
+
+Victor type checks units after translation into standard form
+and after all translation steps have been applied.
+
+
+%----------------------------------------------------------------------------
+\subsection{Enumerated type abstraction}
+%----------------------------------------------------------------------------
+
+\begin{description}
+\optionb{abstract-enums} 
+  Replace enumerated types with abstract types, 
+  introduce all enumeration constants as normal constants, and
+  keep all enumerated type axioms. 
+
+\optionb{elim-enums}      
+  Replace each enumeration type $E$ with an integer subrange type $\{0
+  \ldots k - 1 \}$ where $k$ is the number of enumeration constants in
+  $E$.
+  % 
+  Declare each enumeration constant as a normal constant, and add an axiom
+  giving its integer value.
+  %
+  Delete all existing enumerated type axioms and add in new axioms
+  characterising enumerated-type-related functions such as 
+  $\mathit{E}\mathtt{\_\_val}$ and  $\mathit{E}\mathtt{\_\_pos}$.
+\end{description}
+
+%----------------------------------------------------------------------------
+\subsection{Early array and record abstraction}
+%----------------------------------------------------------------------------
+
+\begin{description}
+\optionb{abstract-arrays-records-early} Enable abstraction at this point
+\end{description}
+See Section~\ref{sec:late-arr-rec-abs} below for rest of options
+
+%----------------------------------------------------------------------------
+\subsection{Separation of formulas and terms}
+%----------------------------------------------------------------------------
+
+In \fdl{} formulas are just terms of type Boolean.   Many provers require
+the traditional first-order logic distinction between formulas and terms.
+%
+The options here control the introduction of this distinction.
+
+Victor calls the term-level Booleans \emph{bits}.
+
+
+\begin{description}
+\optionb{bit-type} Enable separation.  
+\optionb{bit-type-bool-eq-to-iff}
+  Initially convert any equalities at Boolean type to `if and only if's.
+
+\optionb{bit-type-with-ite} Whenever possible, introduce instances
+  of the `if-then-else' operator rather than term-level versions of
+  propositional logic operators and atomic relations.
+  
+\optionb{bit-type-prefer-bit-vals}
+  A heuristic for controlling whether atomic relations are translated
+  to term-level (bit-valued) functions or first-order-logic formula-valued
+  relations.
+  %
+  With this heuristic, bit-valued functions are preferred.
+
+\optionb{bit-type-prefer-props}
+  Another heuristic for controlling whether atomic relations are translated
+  to term-level (bit-valued) functions or first-order-logic formula-valued
+  relations.
+  With this heuristic, formula (propositional) relations are preferred.
+
+  If neither this option or \texttt{-bit-type-prefer-bit-vals} is selected,
+  the default behaviour is to use a bit-valued function just when 
+  there is one or more occurrences at the term level.
+
+\optionb{trace-prop-to-bit-insertion}
+  Report in log file when a proposition-to-bit coercion (encoded using the
+  `if then else' operator) is added.
+ 
+\optionb{trace-intro-bit-ops-and-rels}
+  Report in log file when term-level function is introduced for a function
+  (either user-defined or built-in) that initially had Boolean value type.
+
+\end{description}
+
+NB: the \spark{} \fdl{} language has `bit' operators 
+\texttt{bit\_\_or},
+\texttt{bit\_\_and} and 
+\texttt{bit\_\_xor}.
+%
+These \fdl{} operators take integers as arguments and return integers
+as results.  Their result values correspond to the correct unsigned
+binary result for the respective operations on unsigned binary
+versions of the arguments.  Axioms on these operators capture the
+arithmetic properties of Boolean operations on finite-length binary
+words.
+%
+If the Victor option \texttt{-abstract-bit-ops} is used, Victor introduces 
+operators
+\texttt{bit\_\_\_or},
+\texttt{bit\_\_\_and} and 
+\texttt{bit\_\_\_xor}.
+%
+These operators work on the term-level Booleans introduced by Victor and
+are distinct from the \spark{} \fdl{} bit operators.
+
+%----------------------------------------------------------------------------
+\subsection{Type refinement}
+%----------------------------------------------------------------------------
+
+\begin{description}
+\optionb{refine-types} Master control
+
+\optionb{refine-bit-eq-equiv} 
+  Add in definition for bit-valued non-trivial equivalence relations.
+  Needed when \texttt{-bit-type-with-ite} option not previously selected.
+
+\optionb{refine-int-subrange-type}       
+\optionb{refine-bit-type-as-int-subtype}
+\optionb{refine-bit-type-as-int-quotient}
+\optionb{refine-array-types-with-quotient}
+
+\optionb{refine-array-types-with-weak-extension-constraint}
+  Constrain values of element and extended indices using possibly non-trivial
+  equivalence relation on element type.  Default is to use equality to
+  constrain these values.
+
+  Only applies if option \texttt{-refine-array-types-with-quotient} is not
+  selected.
+
+\optionb{refine-uninterpreted-types}
+  Refine every uninterpreted type to be predicate subtype of a new 
+  uninterpreted type.  Use this to ensure that exists model in which 
+  every uninterpreted type can be interpreted by some infinite set.
+
+\optionb{no-subtyping-axioms}
+  Suppress generation of axioms for sub-typing properties of functions and
+  constants.
+
+\optionb{no-functionality-axioms}
+  Suppress generation of axioms for functionality properties of functions and
+  relations.
+
+\optionb{strong-subtyping-axioms}
+  Use subtyping axioms without constraints on values of arguments.
+
+\optionb{trace-refine-types-quant-relativisation}
+  Report in log file whenever a quantifier is relativised.
+
+\optionb{trace-refine-types-eq-refinement}
+  Report in log file whenever an equality relation is refined to a non-trivial
+  equivalence relation.
+
+\optionb{trace-refine-types-bit-eq-refinement}
+  Report in log file whenever an term-level equality relation is refined to 
+  a non-trivial term-level equivalence relation.
+\end{description}
+
+%----------------------------------------------------------------------------
+\subsection{Late array and record abstraction}
+%----------------------------------------------------------------------------
+\label{sec:late-arr-rec-abs}
+
+\begin{description}
+\optionb{abstract-arrays-records-late}  Enable abstraction at this point
+  in translation.  
+
+% Eliminate redundant operators
+%------------------------------
+\optionb{elim-array-constructors}
+  Eliminate all occurrences of array constructors
+\optionb{elim-record-constructors}
+  Eliminate all occurrences of record constructors
+\optionb{abstract-record-updates}
+  Introduce axiomatic characterisations for record update operators in 
+  terms of record constructors and record field selectors.
+
+% Add axioms defining types axiomatically
+%-----------------------------------------
+
+\optionb{add-array-select-update-axioms}
+  Assumes that array constructors have first been eliminated.
+
+\optionb{add-array-extensionality-axioms}
+
+\optionb{add-record-select-constructor-axioms}
+  Assumes that record update operators have first been eliminated.
+
+\optionb{add-record-constructor-extensionality-axioms}
+  Add extensionality axioms involving record constructors and field select
+  operators.
+
+\optionb{add-record-select-update-axioms}
+  Assumes that record constructors have first been eliminated.
+
+\optionb{add-record-eq-elements-extensionality-axioms}
+  Add extensionality axioms stating that records are equal just when
+  all fields are equal.
+  
+\optionb{use-array-eq-aliases}
+  Introduce aliases for equalities at array types in order
+  to help with matching extensionality  axioms.
+
+\optionb{use-record-eq-aliases}
+  Introduce aliases for equalities at record types in order
+  to help with matching extensionality  axioms.
+
+% Abstract operators and types
+%------------------------------
+\optionb{abstract-array-select-updates}
+  Change primitive array element select and update operators into 
+  uninterpreted functions.
+\optionb{abstract-array-types}
+  Replace array types with uninterpreted types.
+
+
+\optionb{abstract-record-selects-constructors}
+  Change primitive record field selectors and constructors 
+  into uninterpreted functions.
+\optionb{abstract-record-selects-updates}
+  Change primitive record field selectors and field update operators
+  into uninterpreted functions.
+
+\optionb{abstract-record-types}
+  Replace record types with uninterpreted types.
+\end{description}
+
+
+
+%----------------------------------------------------------------------------
+\subsection{Bit abstraction}
+%----------------------------------------------------------------------------
+
+\begin{description}
+\optionb{abstract-bit-ops}
+  Replace primitive bit-type operators with uninterpreted functions 
+  and add characterising axioms
+
+\optionb{abstract-bit-valued-eqs}
+  Replace primitive bit-valued equality operators with uninterpreted functions 
+  and add characterising axioms
+
+\optionb{abstract-bit-valued-int-le}
+  Replace primitive bit-valued integer inequality operators with
+  uninterpreted functions and add characterising axioms
+
+\optionb{elim-bit-type-and-consts}
+  Replace primitive bit type with either integer type or $\subrange{0}{1}$ 
+  subrange type, depending on whether type has been refined earlier or not.
+  Replace primitive bit-type constants for true and false with $0$ and $1$.
+
+%\optionb{abstract-bit-type-and-consts}
+% Not implemented
+\end{description}
+
+
+%----------------------------------------------------------------------------
+\subsection{Arithmetic simplification}
+%----------------------------------------------------------------------------
+
+\begin{description}
+\optionb{elim-consts}
+  %
+  Eliminate integer constants. Rewrite all formulae using hypotheses of
+  form $x = k$ or $x = -k$ where $x$ is an \fdl{} constant or variable,
+  and $k$ is a natural number literal.  This eliminates the apparent
+  syntactic non-linearity of some hypotheses and conclusions.  It is
+  particularly useful for Yices which rejects formulae that appear
+  non-linear.
+
+
+\optionb{ground-eval-exp}
+  Evaluate occurrences of exponent function with natural number arguments.
+
+\optionb{ground-eval}
+  Evaluate ground integer arithmetic expressions involving $+$, $-$
+  (unary and binary), $\times$, integer division, integer modulus, and
+  the exponent function.
+
+\optionb{expand-exp-const}
+  Expand natural-number powers of integer and real expressions into products,
+  with special-case treatment for exponents 0 and 1.
+
+\optionb{arith-eval}
+  Apply the rewrite rules
+  \begin{eqnarray*}
+   k \times (k' \times e)   & =  &  kk' \times e \\
+   (k \times e) \times k'   & =  &  kk' \times e \\
+   e \times k               & =  &  k \times e \\
+   (k \times e) \times (k' \times e') &  =  &  kk' \times (e \times e') \\
+   e \times (k \times e')   &  = &  k \times (e \times e')  \\
+   (k \times e) \times e'   & =  &  k \times (e \times e')  \\
+  (k \times e) \div k'      & =  &   (k \div k') \times e  
+      \quad\mbox{if $k'$ divides $k$}.
+  \end{eqnarray*}
+  The main aim of these rules is to eliminate instances of the $\div$
+  operator.
+
+\optionb{sym-consts}
+  Replace each distinct natural number literal greater than 
+  threshold \textit{t} with a new constant and assert axioms concerning
+  how these new constants are ordered: if the new constants in increasing
+  order are $c_1 \ldots c_n$, the axioms are 
+  $t < c_1, c_1 < c_2, \ldots, c_{n-1} < c_n$.
+
+  This option is used to try to reduce the frequency of machine
+  arithmetic overflow with Simplify.  Other users of Simplify try
+  thresholds of 100,000, though we've observed overflows with
+  thresholds as low as 1000.
+
+\optionv{sym-prefix}{prefix}
+  Set prefix for new symbolic number constants.  Default prefix is
+  \texttt{k\_\_\_}.
+
+
+\end{description}
+
+
+
+%----------------------------------------------------------------------------
+\subsection{Arithmetic abstraction}
+%----------------------------------------------------------------------------
+The different interfaces and provers vary in the classes of arithmetic
+operations they can handle.  These options allow one to abstract to
+uninterpreted functions, possibly adding some characterising axioms,
+when operations cannot be handled.
+
+\begin{description}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+\optionb{abstract-nonlin-times}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  Abstract each integer and real multiplication unless at least
+  one of the arguments is a fixed integer or real constant.
+
+  An \emph{integer constant} is a natural number $n$ or the expression $-n$.
+  
+  A \emph{real constant} is built from an integer constant using the
+  \texttt{to-real} coercion, unary minus on the reals, and, optionally
+  real division.  Real division is allowed just when the option 
+  \texttt{-abstract-real-div} is not chosen.
+
+  The \yices{} API usually rejects individual hypothesis or conclusion
+  formulas if they have non-linear multiplications.  However, it does
+  accept non-linear multiplications in quantified formulas, and
+  will use linear instantiations of these formulas. 
+  %
+  Unfortunately, it currently aborts on finding a non-linear
+  instantiation rather than simply rejecting the instantiation.
+
+  The \smtlib{} sub-logics \textsc{auflia} and \textsc{auflira} both 
+  require all multiplications to be linear.
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+\optionb{abstract-exp}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  Replace occurrences of integer and real exponent operators by new 
+  uninterpreted functions.  Currently no defining axioms are supplied, though
+  it would be easy to do so. 
+
+  This abstraction only happens after possibly evaluating ground 
+  and constant exponent instances.
+
+  Only the \cvcthree{}-via-API prover alternative can handle these
+  operators directly.
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+\optionb{abstract-divmod}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  Replace occurrences of integer division and modulus operators by new 
+  uninterpreted functions.  
+
+%   There are two alternative rule sets provided
+%   that can be loaded using the \texttt{-rules} option.
+%   \begin{itemize}
+%   \item \texttt{divmod.rul}: Exactly characterises \texttt{div} and gives
+%     bounds on \texttt{mod} values.
+%   \item \texttt{divmod-full.rul}
+%     Exactly characterises both \texttt{div} and \texttt{mod}. 
+%     These rules are probably more than is necessary in most cases. 
+%     %
+%     They have not been tried recently.  
+%   \end{itemize}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+\optionb{abstract-real-div}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  Abstract occurrences of real division to a new uninterpreted function.
+  No characterising axioms are currently provided.
+
+  \yices-API, \cvcthree-API and \zthree-\smtlib{} all allow input 
+  with the real division operator, though it is not known what kinds of
+  occurrences are accepted in each case.
+
+  The official \smtlib{} logics involving reals do not allow real division.
+  The assumption is that pre-processing has eliminated all occurrences of
+  real division.  Victor doesn't yet carry out such pre-processing.
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+\optionb{abstract-reals}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  Abstract occurrences of real arithmetic operations 
+  ($+$, unary $-$, binary $-$, $*$, $/$), integer to real coercions, and
+  real inequalities to new uninterpreted functions.
+
+  Currently this is needed by the \smtlib{} and Simplify translations.
+  The \smtlib{} driver does not attempt to make use of the limited
+  support in some of the \smtlib{} sub-logics for reals.
+
+  This option is not necessary when \cvcthree{} and \yices{} are
+  invoked via their APIs, as both APIs support real arithmetic.
+
+\end{description}
+
+
+
+
+%----------------------------------------------------------------------------
+\subsection{Final translation steps}
+%----------------------------------------------------------------------------
+
+\begin{description}
+\optionb{elim-type-aliases}
+  Normalise all occurrences of type identifiers in type,
+  constant, function and relation declarations and in all formulas.
+  %
+  Normalisation eliminates all occurrences of type ids $T$ that have a
+  definition $T \doteq T'$ where $T'$ is either a primitive atomic
+  type (Boolean, integer, integer subrange, real or bit type) or is
+  itself a type id.
+
+  This is needed for the \smtlib{} and Simplify translations.
+
+\optionb{switch-types-to-int}
+  Replace all occurrences of type identifiers in 
+  constant, function and relation declarations and in all formulas with
+  the integer type. 
+  % 
+  Checks that every defined type is either an alias for another defined
+  type or an alias for the integer type. 
+  %
+  This translation step assumes that a countably infinite model exists
+  for every uninterpreted type. 
+
+  This option is is needed for the Simplify translation.
+
+  
+\optionb{lift-quants}
+  Apply the rewrite rule
+  \[
+      P \Implies \forall x:T.\ Q \quad\Iff\quad  \forall x:T.\ P \Implies Q
+  \]
+  ($x$ not free in $P$) 
+  to all formulae.  The quantifier instantiation heuristics in both 
+  \zthree{} and Simplify work better when universal quantifiers in 
+  hypotheses are all outermost.
+
+\optionb{strip-quantifier-patterns}
+
+Some of the universally-quantified axioms introduced by translation
+have trigger patterns giving hints on how instantiations can be guessed.
+%
+This option strips out these patterns.
+
+\end{description}
+
+
+
+%============================================================================
+\section{CSV utilities}
+%============================================================================
+These utilities are very useful for analysing and comparing results of Victor
+runs.
+
+%----------------------------------------------------------------------------
+\subsection{Filter CSV records}
+%----------------------------------------------------------------------------
+Usage:
+\begin{quote}
+   \texttt{csvfilt} [\texttt{-v}] \textit{n str} [\textit{file}]
+\end{quote}
+Filter \csv{} records, returning on standard output just those with
+\textit{str} a substring of field \textit{n} (1-based).
+%
+If \texttt{-v} provided, then return those records without
+\textit{str} a substring of field \textit{n}.
+Records are drawn from file \textit{file} if it is supplied. If not, they
+are taken from standard input.
+
+%----------------------------------------------------------------------------
+\subsection{Merge two CSV files}
+%----------------------------------------------------------------------------
+Usage:
+\begin{quote}
+   \texttt{csvmerge} \textit{file1 m1 \ldots{} mj file2 n1 \ldots{} nk}
+\end{quote}
+The files \textit{file1} and \textit{file2} must have the same number
+of records.
+This command merges corresponding records from the two files and outputs
+them on standard output.
+The merged records are composed from 
+fields \textit{m1 \ldots{} mj} in the records in \textit{file1} and 
+fields \textit{n1 \ldots{} nk} in the records in \textit{file2}.
+If \textit{j} = 0, all fields of  \textit{file1} records are used.
+If \textit{k} = 0, all fields of  \textit{file2} records are used.
+
+
+%----------------------------------------------------------------------------
+\subsection{Project out fields of CSV records}
+%----------------------------------------------------------------------------
+Usage:
+\begin{quote}
+  \texttt{csvproj} \textit{n1 \ldots{} nk} [\textit{file}]
+\end{quote}
+Build new records from fields \textit{n1 \ldots{} nk} of the input
+records and output to standard output.  Input records are drawn from
+file \textit{file} if it is supplied. If not, they are taken from
+standard input.
+
+%----------------------------------------------------------------------------
+%\subsection{Intersecting CSV files}
+%----------------------------------------------------------------------------
+Usage:
+\begin{quote}
+  \texttt{csvisect} \textit{file1} \textit{file2}
+\end{quote}
+Print on standard output those records that occur in both
+\textit{file1} and \textit{file2}.  Comparison of records currently
+just uses string equality, so it is sensitive to whitespace between
+record fields. 
+
+
+%============================================================================
+%\section{Known limitations}
+%============================================================================
+% \begin{enumerate}
+% \item 
+% \end{enumerate}
+
+%============================================================================
+%\section{Known problems}
+%============================================================================
+
+% \begin{enumerate}
+% \item 
+% \end{enumerate}
+
+%============================================================================
+\section{Future developments}
+%============================================================================
+
+Anticipated by end of 2010 are
+\begin{itemize}
+\item Support for V2 of the \smtlib{} standard. 
+
+  One major benefit of this will be better support for VCs involving
+  mixed real and integer arithmetic.  Currently Victor does translate
+  real arithmetic to V1.2 of the \smtlib{} format. However, V1.2 does not
+  support well goals in which integers and reals are mixed. (For example, 
+  it does not define a function injecting the integers into the reals.)
+
+\item Support for outputing VCs for proof using the Isabelle/HOL
+  theorem prover.
+
+  The current release includes some preliminary code for this.
+  Improved code has been developed and is waiting to be merged in.
+
+\item A fully-working Windows port.
+
+  The current release has some code for this, but it is not yet fully tested.
+\end{itemize}
+
+
+% Items in the pipeline include
+% \begin{enumerate}
+% \cbstart
+% \item Improving support in \smtlib{} translation for reals.
+% \item API interface for \zthree.
+% \cbend
+% \item Output of VCs in format for reading into interactive 
+%   theorem provers such as  PVS and HOL Light.
+% \item Exploiting bit-vector handling capabilities of \smt{} solvers.
+% \end{enumerate}
+
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
