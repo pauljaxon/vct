@@ -1,0 +1,116 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:39  SIMPLIFIED 25-NOV-2009, 14:18:47
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure airspeed.Set_Airspeed_Profile
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_set_airspeed_profile_1.  @@@@@@@@@@
+***  Proved C1:  speed >= meter_per_sec__first
+     using hypothesis H2.
+***  Proved C2:  speed <= meter_per_sec__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_airspeed_profile_2.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+***  Proved C1:  accel >= cm_per_sec_2__first
+     using hypothesis H4.
+***  Proved C2:  accel <= cm_per_sec_2__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_airspeed_profile_3.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+***  Proved C1:  last_time__1 >= clock__millisecond__first
+     using hypothesis H10.
+***  Proved C2:  last_time__1 <= clock__millisecond__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_airspeed_profile_4.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+-S-  Applied substitution rule set_airspeed_rules(17).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H2:  speed >= - 5000
+<S>  New C1:  true
+-S-  Applied substitution rule set_airspeed_rules(18).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H3:  speed <= 5000
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_airspeed_profile_5.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+-S-  Applied substitution rule set_airspeed_rules(22).
+     This was achieved by replacing all occurrences of cm_per_sec_2__first by:
+          - 30000.
+<S>  New H4:  accel >= - 30000
+<S>  New C1:  true
+-S-  Applied substitution rule set_airspeed_rules(23).
+     This was achieved by replacing all occurrences of cm_per_sec_2__last by:
+          30000.
+<S>  New H5:  accel <= 30000
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_airspeed_profile_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_airspeed_profile_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_airspeed_profile_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_airspeed_profile_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

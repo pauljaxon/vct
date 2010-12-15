@@ -1,0 +1,56 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.25
+
+Line
+   1  -- Cartesian types and operations
+   2  --
+   3  -- $Log: cartesian.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/08/10 18:07:46  adi
+   9  -- Added constants
+  10  --
+  11  -- Revision 1.1  2003/08/10 17:13:09  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with Measuretypes;
+  16  --# inherit measuretypes;
+  17  package Cartesian
+  18  is
+  19  
+  20     type Position is record
+  21        X, Y, Z : Measuretypes.Meter;
+  22     end record;
+  23  
+  24     type Velocity is record
+  25        Vx, Vy, Vz : Measuretypes.Meter_Per_Sec;
+  26     end record;
+  27  
+  28     type Accel is record
+  29        Ax, Ay, Az : Measuretypes.Cm_Per_Sec_2;
+  30     end record;
+  31  
+  32     Zero_Position : constant Position :=
+  33       Position'(X => 0, Y => 0, Z => 0);
+  34  
+  35     Zero_velocity: constant velocity :=
+  36       Velocity'(vX => 0, vY => 0, vZ => 0);
+  37  
+  38     Zero_accel : constant accel :=
+  39       accel'(aX => 0, aY => 0, aZ => 0);
+  40  
+  41  end Cartesian;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

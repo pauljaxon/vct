@@ -1,0 +1,98 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 26-NOV-2009 09:54:53.90*/
+
+                            /*procedure ap.Control*/
+
+
+rule_family control_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+control_rules(1): instruments__feet__size >= 0 may_be_deduced.
+control_rules(2): instruments__feet__first may_be_replaced_by 0.
+control_rules(3): instruments__feet__last may_be_replaced_by 50000.
+control_rules(4): instruments__feet__base__first may_be_replaced_by -2147483648.
+control_rules(5): instruments__feet__base__last may_be_replaced_by 2147483647.
+control_rules(6): instruments__bankangle__size >= 0 may_be_deduced.
+control_rules(7): instruments__bankangle__first may_be_replaced_by -45.
+control_rules(8): instruments__bankangle__last may_be_replaced_by 45.
+control_rules(9): instruments__bankangle__base__first may_be_replaced_by -128.
+control_rules(10): instruments__bankangle__base__last may_be_replaced_by 127.
+control_rules(11): instruments__headdegree__size >= 0 may_be_deduced.
+control_rules(12): instruments__headdegree__first may_be_replaced_by 0.
+control_rules(13): instruments__headdegree__last may_be_replaced_by 359.
+control_rules(14): instruments__headdegree__base__first may_be_replaced_by -32768.
+control_rules(15): instruments__headdegree__base__last may_be_replaced_by 32767.
+control_rules(16): instruments__machnumber__size >= 0 may_be_deduced.
+control_rules(17): instruments__machnumber__first may_be_replaced_by 0.
+control_rules(18): instruments__machnumber__last may_be_replaced_by 100.
+control_rules(19): instruments__machnumber__base__first may_be_replaced_by -128.
+control_rules(20): instruments__machnumber__base__last may_be_replaced_by 127.
+control_rules(21): instruments__pitchangle__size >= 0 may_be_deduced.
+control_rules(22): instruments__pitchangle__first may_be_replaced_by -10.
+control_rules(23): instruments__pitchangle__last may_be_replaced_by 20.
+control_rules(24): instruments__pitchangle__base__first may_be_replaced_by -128.
+control_rules(25): instruments__pitchangle__base__last may_be_replaced_by 127.
+control_rules(26): instruments__feetpermin__size >= 0 may_be_deduced.
+control_rules(27): instruments__feetpermin__first may_be_replaced_by -6000.
+control_rules(28): instruments__feetpermin__last may_be_replaced_by 6000.
+control_rules(29): instruments__feetpermin__base__first may_be_replaced_by -32768.
+control_rules(30): instruments__feetpermin__base__last may_be_replaced_by 32767.
+control_rules(31): instruments__slipangle__size >= 0 may_be_deduced.
+control_rules(32): instruments__slipangle__first may_be_replaced_by -25.
+control_rules(33): instruments__slipangle__last may_be_replaced_by 25.
+control_rules(34): instruments__slipangle__base__first may_be_replaced_by -128.
+control_rules(35): instruments__slipangle__base__last may_be_replaced_by 127.
+control_rules(36): ap__controls__switch__size >= 0 may_be_deduced.
+control_rules(37): ap__controls__switch__first may_be_replaced_by ap__controls__on.
+control_rules(38): ap__controls__switch__last may_be_replaced_by ap__controls__off.
+control_rules(39): ap__controls__switch__base__first may_be_replaced_by ap__controls__on.
+control_rules(40): ap__controls__switch__base__last may_be_replaced_by ap__controls__off.
+control_rules(41): ap__controls__switch__pos(ap__controls__switch__first) may_be_replaced_by 0.
+control_rules(42): ap__controls__switch__pos(ap__controls__on) may_be_replaced_by 0.
+control_rules(43): ap__controls__switch__val(0) may_be_replaced_by 
+     ap__controls__on.
+control_rules(44): ap__controls__switch__pos(ap__controls__off) may_be_replaced_by 1.
+control_rules(45): ap__controls__switch__val(1) may_be_replaced_by 
+     ap__controls__off.
+control_rules(46): ap__controls__switch__pos(ap__controls__switch__last) may_be_replaced_by 1.
+control_rules(47): ap__controls__switch__pos(succ(X)) may_be_replaced_by 
+     ap__controls__switch__pos(X) + 1
+     if [X <=ap__controls__off, X <> ap__controls__off].
+control_rules(48): ap__controls__switch__pos(pred(X)) may_be_replaced_by 
+     ap__controls__switch__pos(X) - 1
+     if [X >=ap__controls__on, X <> ap__controls__on].
+control_rules(49): ap__controls__switch__pos(X) >= 0 may_be_deduced_from
+     [ap__controls__on <= X, X <= ap__controls__off].
+control_rules(50): ap__controls__switch__pos(X) <= 1 may_be_deduced_from
+     [ap__controls__on <= X, X <= ap__controls__off].
+control_rules(51): ap__controls__switch__val(X) >= 
+     ap__controls__on may_be_deduced_from
+     [0 <= X, X <= 1].
+control_rules(52): ap__controls__switch__val(X) <= 
+     ap__controls__off may_be_deduced_from
+     [0 <= X, X <= 1].
+control_rules(53): succ(ap__controls__switch__val(X)) may_be_replaced_by 
+     ap__controls__switch__val(X+1)
+     if [0 <= X, X < 1].
+control_rules(54): pred(ap__controls__switch__val(X)) may_be_replaced_by 
+     ap__controls__switch__val(X-1)
+     if [0 < X, X <= 1].
+control_rules(55): ap__controls__switch__pos(ap__controls__switch__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 1].
+control_rules(56): ap__controls__switch__val(ap__controls__switch__pos(X)) may_be_replaced_by X
+     if [ap__controls__on <= X, X <= ap__controls__off].
+control_rules(57): ap__controls__switch__pos(X) <= 
+     ap__controls__switch__pos(Y) & X <= Y are_interchangeable 
+     if [ap__controls__on <= X, X <= ap__controls__off, 
+     ap__controls__on <= Y, Y <= ap__controls__off].
+control_rules(58): ap__controls__switch__val(X) <= 
+     ap__controls__switch__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 1, 0 <= Y, Y <= 1].

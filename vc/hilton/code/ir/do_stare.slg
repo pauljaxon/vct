@@ -1,0 +1,758 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:41  SIMPLIFIED 25-NOV-2009, 14:19:04
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure ir.Do_Stare
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_do_stare_1.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+***  Proved C1:  v__1 >= random__value__first
+     using hypothesis H7.
+***  Proved C2:  v__1 <= random__value__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_do_stare_2.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  rt1553__lru_name__first <= bus_id
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  state_types__infrared__first <= state_types__ir_stare
+-S-  Applied substitution rule do_stare_rules(72).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New C1:  rt1553__barometer <= bus_id
+-S-  Applied substitution rule do_stare_rules(3).
+     This was achieved by replacing all occurrences of bus_id by:
+          rt1553__infrared.
+<S>  New C2:  rt1553__infrared <= rt1553__lru_name__last
+<S>  New C1:  true
+-S-  Applied substitution rule do_stare_rules(73).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New C2:  true
+-S-  Applied substitution rule do_stare_rules(67).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New C3:  true
+-S-  Applied substitution rule do_stare_rules(68).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New C4:  true
+-S-  Applied substitution rule do_stare_rules(51).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New C5:  true
+-S-  Applied substitution rule do_stare_rules(52).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New C6:  true
+-S-  Applied substitution rule do_stare_rules(57).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C7:  element(state_types__ir_values, [state_types__ir_stare]) >= 0
+-S-  Applied substitution rule do_stare_rules(58).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C8:  element(state_types__ir_values, [state_types__ir_stare]) <= 65535
+-S-  Applied substitution rule do_stare_rules(15).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__first by:
+          state_types__ir_inactive.
+<S>  New C9:  true
+-S-  Applied substitution rule do_stare_rules(16).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__last by:
+          state_types__ir_sweep.
+<S>  New C10:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  Proved C5:  true
+***  Proved C6:  true
+***  Proved C9:  true
+***  Proved C10:  true
+-S-  Applied substitution rule do_stare_rules(45).
+     This was achieved by replacing all occurrences of random__value__first by:
+          0.
+<S>  New H7:  v__1 >= 0
+-S-  Applied substitution rule do_stare_rules(46).
+     This was achieved by replacing all occurrences of random__value__last by:
+          63001.
+<S>  New H8:  v__1 <= 63001
+-S-  Applied substitution rule do_stare_rules(121).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule do_stare_rules(122).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule do_stare_rules(126).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H2:  sx >= - 12
+<S>  New H4:  sy >= - 12
+<S>  New H6:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule do_stare_rules(127).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H3:  sx <= 12
+<S>  New H5:  sy <= 12
+<S>  New H6:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+***  Proved C7:  element(state_types__ir_values, [state_types__ir_stare]) >= 0
+***  Proved C8:  element(state_types__ir_values, [state_types__ir_stare]) <= 
+          65535
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_do_stare_3.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  state_types__infrared__first <= state_types__ir_stare
+***  Proved C3:  sy >= sector__first
+     using hypothesis H4.
+***  Proved C4:  sy <= sector__last
+     using hypothesis H5.
+***  Proved C5:  sx >= sector__first
+     using hypothesis H2.
+***  Proved C6:  sx <= sector__last
+     using hypothesis H3.
+-S-  Applied substitution rule do_stare_rules(121).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+<S>  New C1:  fld_temp(element(element(detect_points, [sx]), [sy])) >= 0
+-S-  Applied substitution rule do_stare_rules(122).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+<S>  New C2:  fld_temp(element(element(detect_points, [sx]), [sy])) <= 6000
+-S-  Applied substitution rule do_stare_rules(3).
+     This was achieved by replacing all occurrences of bus_id by:
+          rt1553__infrared.
+<S>  New H11:  rt1553__lru_name__first <= rt1553__infrared
+<S>  New H12:  rt1553__infrared <= rt1553__lru_name__last
+-S-  Applied substitution rule do_stare_rules(15).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__first by:
+          state_types__ir_inactive.
+<S>  New H19:  true
+-S-  Applied substitution rule do_stare_rules(16).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__last by:
+          state_types__ir_sweep.
+<S>  New H20:  true
+-S-  Applied substitution rule do_stare_rules(45).
+     This was achieved by replacing all occurrences of random__value__first by:
+          0.
+<S>  New H7:  v__1 >= 0
+-S-  Applied substitution rule do_stare_rules(46).
+     This was achieved by replacing all occurrences of random__value__last by:
+          63001.
+<S>  New H8:  v__1 <= 63001
+-S-  Applied substitution rule do_stare_rules(51).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H15:  true
+-S-  Applied substitution rule do_stare_rules(52).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H16:  true
+-S-  Applied substitution rule do_stare_rules(57).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H17:  element(state_types__ir_values, [state_types__ir_stare]) >= 0
+-S-  Applied substitution rule do_stare_rules(58).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H18:  element(state_types__ir_values, [state_types__ir_stare]) <= 65535
+-S-  Applied substitution rule do_stare_rules(67).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H13:  true
+-S-  Applied substitution rule do_stare_rules(68).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H14:  true
+-S-  Applied substitution rule do_stare_rules(72).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New H11:  true
+-S-  Applied substitution rule do_stare_rules(73).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New H12:  true
+-S-  Applied substitution rule do_stare_rules(126).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H2:  sx >= - 12
+<S>  New H4:  sy >= - 12
+<S>  New H6:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule do_stare_rules(127).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H3:  sx <= 12
+<S>  New H5:  sy <= 12
+<S>  New H6:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+***  Proved C1:  fld_temp(element(element(detect_points, [sx]), [sy])) >= 0
+     using hypotheses H2, H3, H4, H5 & H6.
+***  Proved C2:  fld_temp(element(element(detect_points, [sx]), [sy])) <= 6000
+     using hypotheses H2, H3, H4, H5 & H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_do_stare_4.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  state_types__infrared__first <= state_types__ir_stare
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C7:  true
+-S-  Applied substitution rule do_stare_rules(121).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+<S>  New H21:  fld_temp(element(element(detect_points, [sx]), [sy])) >= 0
+<S>  New C1:  fld_temp(element(element(detect_points, [sx]), [sy])) + v__1 mod 
+          10 >= 0
+<S>  New C3:  v__1 mod 10 >= 0
+-S-  Applied substitution rule do_stare_rules(122).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H22:  fld_temp(element(element(detect_points, [sx]), [sy])) <= 6000
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+<S>  New C2:  fld_temp(element(element(detect_points, [sx]), [sy])) + v__1 mod 
+          10 <= 6000
+<S>  New C4:  v__1 mod 10 <= 6000
+***  Proved C1:  fld_temp(element(element(detect_points, [sx]), [sy])) + v__1 
+          mod 10 >= 0
+     using hypothesis H21.
+***  Proved C3:  v__1 mod 10 >= 0
+***  Proved C4:  v__1 mod 10 <= 6000
+-S-  Applied substitution rule do_stare_rules(3).
+     This was achieved by replacing all occurrences of bus_id by:
+          rt1553__infrared.
+<S>  New H11:  rt1553__lru_name__first <= rt1553__infrared
+<S>  New H12:  rt1553__infrared <= rt1553__lru_name__last
+-S-  Applied substitution rule do_stare_rules(15).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__first by:
+          state_types__ir_inactive.
+<S>  New H19:  true
+-S-  Applied substitution rule do_stare_rules(16).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__last by:
+          state_types__ir_sweep.
+<S>  New H20:  true
+-S-  Applied substitution rule do_stare_rules(45).
+     This was achieved by replacing all occurrences of random__value__first by:
+          0.
+<S>  New H7:  v__1 >= 0
+-S-  Applied substitution rule do_stare_rules(46).
+     This was achieved by replacing all occurrences of random__value__last by:
+          63001.
+<S>  New H8:  v__1 <= 63001
+-S-  Applied substitution rule do_stare_rules(51).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H15:  true
+-S-  Applied substitution rule do_stare_rules(52).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H16:  true
+-S-  Applied substitution rule do_stare_rules(57).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H17:  element(state_types__ir_values, [state_types__ir_stare]) >= 0
+-S-  Applied substitution rule do_stare_rules(58).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H18:  element(state_types__ir_values, [state_types__ir_stare]) <= 65535
+-S-  Applied substitution rule do_stare_rules(67).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H13:  true
+-S-  Applied substitution rule do_stare_rules(68).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H14:  true
+-S-  Applied substitution rule do_stare_rules(72).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New H11:  true
+-S-  Applied substitution rule do_stare_rules(73).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New H12:  true
+-S-  Applied substitution rule do_stare_rules(126).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H2:  sx >= - 12
+<S>  New H4:  sy >= - 12
+<S>  New H6:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule do_stare_rules(127).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H3:  sx <= 12
+<S>  New H5:  sy <= 12
+<S>  New H6:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H29 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+     +++  New H31:  integer__size >= 0
+     +++  New H32:  state_types__word__size >= 0
+     +++  New H33:  state_types__infrared__size >= 0
+     +++  New H34:  measuretypes__kelvin__size >= 0
+     +++  New H35:  random__value__size >= 0
+     +++  New H36:  random__value__base__first <= random__value__base__last
+     +++  New H37:  bus__word_index__size >= 0
+     +++  New H38:  bus__word_index__base__first <= bus__word_index__base__last
+     +++  New H39:  bus__word__size >= 0
+     +++  New H40:  bus__all_msg_index__size >= 0
+     +++  New H41:  bus__lru_subaddress_index__size >= 0
+     +++  New H42:  rt1553__lru_name__size >= 0
+     +++  New H43:  ir_cfg__sector_range__size >= 0
+     +++  New H44:  ir_cfg__sector_range__base__first <= 
+          ir_cfg__sector_range__base__last
+     +++  New H45:  kelvin__size >= 0
+     +++  New H46:  sector__size >= 0
+     +++  New H47:  sector__base__first <= sector__base__last
+     +++  New H48:  cell__size >= 0
+     +++  New H49:  random__value__base__first <= 0
+     +++  New H50:  random__value__base__last >= 63001
+     +++  New H51:  bus__word_index__base__first <= 1
+     +++  New H52:  bus__word_index__base__last >= 31
+     +++  New H53:  ir_cfg__sector_range__base__first <= - 12
+     +++  New H54:  ir_cfg__sector_range__base__last >= 12
+     +++  New H55:  sector__base__first <= - 12
+     +++  New H56:  sector__base__last >= 12
+***  Proved C5:  v__1 mod 10 >= random__value__base__first
+     using hypothesis H49.
+***  Proved C6:  v__1 mod 10 <= random__value__base__last
+     using hypothesis H50.
+
+
+@@@@@@@@@@  VC: procedure_do_stare_5.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  state_types__infrared__first <= state_types__ir_stare
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H37 on reading formula in, to give:
+     %%%  H37:  true
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H32).
+-S-  Applied substitution rule do_stare_rules(40).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kelvin__first by:
+          0.
+<S>  New C1:  fld_temp(element(element(detect_points, [sx]), [sy])) + v__1 mod 
+          10 >= 0
+-S-  Applied substitution rule do_stare_rules(41).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kelvin__last by:
+          6000.
+<S>  New C2:  fld_temp(element(element(detect_points, [sx]), [sy])) + v__1 mod 
+          10 <= 6000
+-S-  Applied substitution rule do_stare_rules(3).
+     This was achieved by replacing all occurrences of bus_id by:
+          rt1553__infrared.
+<S>  New H11:  rt1553__lru_name__first <= rt1553__infrared
+<S>  New H12:  rt1553__infrared <= rt1553__lru_name__last
+-S-  Applied substitution rule do_stare_rules(15).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__first by:
+          state_types__ir_inactive.
+<S>  New H19:  true
+-S-  Applied substitution rule do_stare_rules(16).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__last by:
+          state_types__ir_sweep.
+<S>  New H20:  true
+-S-  Applied substitution rule do_stare_rules(45).
+     This was achieved by replacing all occurrences of random__value__first by:
+          0.
+<S>  New H7:  v__1 >= 0
+-S-  Applied substitution rule do_stare_rules(46).
+     This was achieved by replacing all occurrences of random__value__last by:
+          63001.
+<S>  New H8:  v__1 <= 63001
+-S-  Applied substitution rule do_stare_rules(51).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H15:  true
+-S-  Applied substitution rule do_stare_rules(52).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H16:  true
+-S-  Applied substitution rule do_stare_rules(57).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H17:  element(state_types__ir_values, [state_types__ir_stare]) >= 0
+-S-  Applied substitution rule do_stare_rules(58).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H18:  element(state_types__ir_values, [state_types__ir_stare]) <= 65535
+-S-  Applied substitution rule do_stare_rules(67).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H13:  true
+-S-  Applied substitution rule do_stare_rules(68).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H14:  true
+-S-  Applied substitution rule do_stare_rules(72).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New H11:  true
+-S-  Applied substitution rule do_stare_rules(73).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New H12:  true
+-S-  Applied substitution rule do_stare_rules(121).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+<S>  New H21:  fld_temp(element(element(detect_points, [sx]), [sy])) >= 0
+<S>  New H31:  fld_temp(element(element(detect_points, [sx]), [sy])) + v__1 mod 
+          10 >= 0
+<S>  New H33:  v__1 mod 10 >= 0
+-S-  Applied substitution rule do_stare_rules(122).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H22:  fld_temp(element(element(detect_points, [sx]), [sy])) <= 6000
+<S>  New H32:  fld_temp(element(element(detect_points, [sx]), [sy])) + v__1 mod 
+          10 <= 6000
+<S>  New H34:  v__1 mod 10 <= 6000
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule do_stare_rules(126).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H2:  sx >= - 12
+<S>  New H4:  sy >= - 12
+<S>  New H6:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule do_stare_rules(127).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H3:  sx <= 12
+<S>  New H5:  sy <= 12
+<S>  New H6:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+***  Proved C1:  fld_temp(element(element(detect_points, [sx]), [sy])) + v__1 
+          mod 10 >= 0
+     using hypothesis H31.
+***  Proved C2:  fld_temp(element(element(detect_points, [sx]), [sy])) + v__1 
+          mod 10 <= 6000
+     using hypothesis H32.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_do_stare_6.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  state_types__infrared__first <= state_types__ir_stare
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H37 on reading formula in, to give:
+     %%%  H37:  true
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H32).
+***  Proved C1:  measuretypes__encode__kelvin(fld_temp(element(element(
+          detect_points, [sx]), [sy])) + v__1 mod 10) >= bus__word__first
+     using hypothesis H42.
+***  Proved C2:  measuretypes__encode__kelvin(fld_temp(element(element(
+          detect_points, [sx]), [sy])) + v__1 mod 10) <= bus__word__last
+     using hypothesis H43.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_do_stare_7.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  state_types__infrared__first <= state_types__ir_stare
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H37 on reading formula in, to give:
+     %%%  H37:  true
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H43).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H43).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  rt1553__lru_name__first <= bus_id
+***  Proved C1:  rt1553__lru_name__first <= bus_id
+     using hypothesis H11.
+***  Proved C2:  bus_id <= rt1553__lru_name__last
+     using hypothesis H12.
+***  Proved C3:  2 >= bus__lru_subaddress_index__first
+     using hypothesis H13.
+***  Proved C4:  2 <= bus__lru_subaddress_index__last
+     using hypothesis H14.
+***  Proved C5:  2 >= bus__word_index__first
+     using hypothesis H15.
+***  Proved C7:  measuretypes__encode__kelvin(fld_temp(element(element(
+          detect_points, [sx]), [sy])) + v__1 mod 10) >= bus__word__first
+     using hypothesis H42.
+***  Proved C8:  measuretypes__encode__kelvin(fld_temp(element(element(
+          detect_points, [sx]), [sy])) + v__1 mod 10) <= bus__word__last
+     using hypothesis H43.
+-S-  Applied substitution rule do_stare_rules(52).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H16:  true
+<S>  New C6:  true
+***  Proved C6:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_do_stare_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

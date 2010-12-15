@@ -1,0 +1,87 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:38.90*/
+
+                      /*procedure ibit.RT_State_Machine*/
+
+
+rule_family rt_state_mac_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+rt_state_mac_rules(1): systemtypes__byte__first <= element(phase_lookup, [I]) may_be_deduced_from [off <= I, I <= timeout].
+rt_state_mac_rules(2): element(phase_lookup, [I]) <= 
+     systemtypes__byte__last may_be_deduced_from [off <= I, I <= timeout].
+rt_state_mac_rules(3): integer__size >= 0 may_be_deduced.
+rt_state_mac_rules(4): integer__first may_be_replaced_by -2147483648.
+rt_state_mac_rules(5): integer__last may_be_replaced_by 2147483647.
+rt_state_mac_rules(6): integer__base__first may_be_replaced_by -2147483648.
+rt_state_mac_rules(7): integer__base__last may_be_replaced_by 2147483647.
+rt_state_mac_rules(8): systemtypes__unsigned16__size >= 0 may_be_deduced.
+rt_state_mac_rules(9): systemtypes__unsigned16__first may_be_replaced_by 0.
+rt_state_mac_rules(10): systemtypes__unsigned16__last may_be_replaced_by 65535.
+rt_state_mac_rules(11): systemtypes__unsigned16__base__first may_be_replaced_by -2147483648.
+rt_state_mac_rules(12): systemtypes__unsigned16__base__last may_be_replaced_by 2147483647.
+rt_state_mac_rules(13): systemtypes__byte__size >= 0 may_be_deduced.
+rt_state_mac_rules(14): systemtypes__byte__first may_be_replaced_by 0.
+rt_state_mac_rules(15): systemtypes__byte__last may_be_replaced_by 255.
+rt_state_mac_rules(16): systemtypes__byte__base__first may_be_replaced_by -2147483648.
+rt_state_mac_rules(17): systemtypes__byte__base__last may_be_replaced_by 2147483647.
+rt_state_mac_rules(18): phase__size >= 0 may_be_deduced.
+rt_state_mac_rules(19): phase__first may_be_replaced_by off.
+rt_state_mac_rules(20): phase__last may_be_replaced_by timeout.
+rt_state_mac_rules(21): phase__base__first may_be_replaced_by off.
+rt_state_mac_rules(22): phase__base__last may_be_replaced_by timeout.
+rt_state_mac_rules(23): phase__pos(phase__first) may_be_replaced_by 0.
+rt_state_mac_rules(24): phase__pos(off) may_be_replaced_by 0.
+rt_state_mac_rules(25): phase__val(0) may_be_replaced_by off.
+rt_state_mac_rules(26): phase__pos(request_start) may_be_replaced_by 1.
+rt_state_mac_rules(27): phase__val(1) may_be_replaced_by 
+     request_start.
+rt_state_mac_rules(28): phase__pos(in_progress) may_be_replaced_by 2.
+rt_state_mac_rules(29): phase__val(2) may_be_replaced_by 
+     in_progress.
+rt_state_mac_rules(30): phase__pos(request_stop) may_be_replaced_by 3.
+rt_state_mac_rules(31): phase__val(3) may_be_replaced_by 
+     request_stop.
+rt_state_mac_rules(32): phase__pos(pass) may_be_replaced_by 4.
+rt_state_mac_rules(33): phase__val(4) may_be_replaced_by pass.
+rt_state_mac_rules(34): phase__pos(fail) may_be_replaced_by 5.
+rt_state_mac_rules(35): phase__val(5) may_be_replaced_by fail.
+rt_state_mac_rules(36): phase__pos(timeout) may_be_replaced_by 6.
+rt_state_mac_rules(37): phase__val(6) may_be_replaced_by timeout.
+rt_state_mac_rules(38): phase__pos(phase__last) may_be_replaced_by 6.
+rt_state_mac_rules(39): phase__pos(succ(X)) may_be_replaced_by 
+     phase__pos(X) + 1
+     if [X <=timeout, X <> timeout].
+rt_state_mac_rules(40): phase__pos(pred(X)) may_be_replaced_by 
+     phase__pos(X) - 1
+     if [X >=off, X <> off].
+rt_state_mac_rules(41): phase__pos(X) >= 0 may_be_deduced_from
+     [off <= X, X <= timeout].
+rt_state_mac_rules(42): phase__pos(X) <= 6 may_be_deduced_from
+     [off <= X, X <= timeout].
+rt_state_mac_rules(43): phase__val(X) >= off may_be_deduced_from
+     [0 <= X, X <= 6].
+rt_state_mac_rules(44): phase__val(X) <= timeout may_be_deduced_from
+     [0 <= X, X <= 6].
+rt_state_mac_rules(45): succ(phase__val(X)) may_be_replaced_by 
+     phase__val(X+1)
+     if [0 <= X, X < 6].
+rt_state_mac_rules(46): pred(phase__val(X)) may_be_replaced_by 
+     phase__val(X-1)
+     if [0 < X, X <= 6].
+rt_state_mac_rules(47): phase__pos(phase__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 6].
+rt_state_mac_rules(48): phase__val(phase__pos(X)) may_be_replaced_by X
+     if [off <= X, X <= timeout].
+rt_state_mac_rules(49): phase__pos(X) <= phase__pos(Y) & X <= Y are_interchangeable 
+     if [off <= X, X <= timeout, off <= Y, Y <= timeout].
+rt_state_mac_rules(50): phase__val(X) <= phase__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 6, 0 <= Y, Y <= 6].

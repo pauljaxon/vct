@@ -1,0 +1,60 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 26-NOV-2009 09:54:53.80}
+
+                           {procedure roll.Roll_AP}
+
+
+title procedure roll_ap;
+
+  function round__(real) : integer;
+  type degrees__degreespersec = integer;
+  type instruments__bankangle = integer;
+  type instruments__headdegree = integer;
+  type instruments__machnumber = integer;
+  type surfaces__controlangle = integer;
+  const degreespersec__base__last : integer = pending; 
+  const degreespersec__base__first : integer = pending; 
+  const surfaces__controlangle__base__last : integer = pending; 
+  const surfaces__controlangle__base__first : integer = pending; 
+  const instruments__machnumber__base__last : integer = pending; 
+  const instruments__machnumber__base__first : integer = pending; 
+  const instruments__headdegree__base__last : integer = pending; 
+  const instruments__headdegree__base__first : integer = pending; 
+  const instruments__bankangle__base__last : integer = pending; 
+  const instruments__bankangle__base__first : integer = pending; 
+  const degrees__degreespersec__base__last : integer = pending; 
+  const degrees__degreespersec__base__first : integer = pending; 
+  const degreespersec__size : integer = pending; 
+  const degreespersec__last : integer = pending; 
+  const degreespersec__first : integer = pending; 
+  const surfaces__controlangle__size : integer = pending; 
+  const surfaces__controlangle__last : integer = pending; 
+  const surfaces__controlangle__first : integer = pending; 
+  const instruments__machnumber__size : integer = pending; 
+  const instruments__machnumber__last : integer = pending; 
+  const instruments__machnumber__first : integer = pending; 
+  const instruments__headdegree__size : integer = pending; 
+  const instruments__headdegree__last : integer = pending; 
+  const instruments__headdegree__first : integer = pending; 
+  const instruments__bankangle__size : integer = pending; 
+  const instruments__bankangle__last : integer = pending; 
+  const instruments__bankangle__first : integer = pending; 
+  const degrees__degreespersec__size : integer = pending; 
+  const degrees__degreespersec__last : integer = pending; 
+  const degrees__degreespersec__first : integer = pending; 
+  var mach : integer;
+  var present_heading : integer;
+  var target_heading : integer;
+  var bank : integer;
+  var present_rollrate : integer;
+  function target_rate(integer, integer, integer) : integer;
+  function calc_aileron_move(integer, integer, integer) : integer;
+  var present_rollrate__1 : integer;
+
+end;

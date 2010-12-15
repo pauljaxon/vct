@@ -1,0 +1,143 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:19
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function angle_ops.Mul
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_mul_1.  @@@@@@@@@@
+-S-  Applied substitution rule mul_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+<S>  New C1:  orig_angle * mult >= - 7000
+<S>  New C3:  mult >= - 7000
+-S-  Applied substitution rule mul_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+<S>  New C2:  orig_angle * mult <= 7000
+<S>  New C4:  mult <= 7000
+-S-  Applied substitution rule mul_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H4:  mult >= - 2147483648
+-S-  Applied substitution rule mul_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H5:  mult <= 2147483647
+---  Eliminated hypothesis H1 (true-hypothesis).
+     +++  New H6:  integer__size >= 0
+     +++  New H7:  measuretypes__millirad__size >= 0
+     +++  New H8:  millirad__size >= 0
+     +++  New H9:  canon_millirad__size >= 0
+
+
+@@@@@@@@@@  VC: function_mul_2.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H7)
+          .
+-S-  Applied substitution rule mul_rules(12).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New C1:  orig_angle * mult >= - 7000
+-S-  Applied substitution rule mul_rules(13).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New C2:  orig_angle * mult <= 7000
+-S-  Applied substitution rule mul_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H4:  mult >= - 2147483648
+-S-  Applied substitution rule mul_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H5:  mult <= 2147483647
+-S-  Applied substitution rule mul_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+<S>  New H6:  orig_angle * mult >= - 7000
+<S>  New H8:  mult >= - 7000
+-S-  Applied substitution rule mul_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+<S>  New H7:  orig_angle * mult <= 7000
+<S>  New H9:  mult <= 7000
+***  Proved C1:  orig_angle * mult >= - 7000
+     using hypothesis H6.
+***  Proved C2:  orig_angle * mult <= 7000
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_mul_3.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H7)
+          .
+***  Proved C1:  true
+-S-  Applied substitution rule mul_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+<S>  New H6:  orig_angle * mult >= - 7000
+<S>  New H8:  mult >= - 7000
+<S>  New C2:  canon(orig_angle * mult) >= - 7000
+-S-  Applied substitution rule mul_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+<S>  New H7:  orig_angle * mult <= 7000
+<S>  New H9:  mult <= 7000
+<S>  New C3:  canon(orig_angle * mult) <= 7000
+-S-  Applied substitution rule mul_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H4:  mult >= - 2147483648
+-S-  Applied substitution rule mul_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H5:  mult <= 2147483647
+-S-  Applied substitution rule mul_rules(12).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H12:  orig_angle * mult >= - 7000
+-S-  Applied substitution rule mul_rules(13).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H13:  orig_angle * mult <= 7000
+-S-  Applied substitution rule mul_rules(17).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H14:  canon(orig_angle * mult) >= - 3141
+-S-  Applied substitution rule mul_rules(18).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H15:  canon(orig_angle * mult) <= 3142
+***  Proved C2:  canon(orig_angle * mult) >= - 7000
+     using hypothesis H14.
+***  Proved C3:  canon(orig_angle * mult) <= 7000
+     using hypothesis H15.
+***  PROVED VC.
+

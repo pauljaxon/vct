@@ -1,0 +1,64 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:44.26*/
+
+                           /*procedure missile.Init*/
+
+
+rule_family init_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+init_rules(1): phase_stage__size >= 0 may_be_deduced.
+init_rules(2): phase_stage__first may_be_replaced_by off.
+init_rules(3): phase_stage__last may_be_replaced_by shutdown.
+init_rules(4): phase_stage__base__first may_be_replaced_by off.
+init_rules(5): phase_stage__base__last may_be_replaced_by shutdown.
+init_rules(6): phase_stage__pos(phase_stage__first) may_be_replaced_by 0.
+init_rules(7): phase_stage__pos(off) may_be_replaced_by 0.
+init_rules(8): phase_stage__val(0) may_be_replaced_by off.
+init_rules(9): phase_stage__pos(bit) may_be_replaced_by 1.
+init_rules(10): phase_stage__val(1) may_be_replaced_by bit.
+init_rules(11): phase_stage__pos(boost) may_be_replaced_by 2.
+init_rules(12): phase_stage__val(2) may_be_replaced_by boost.
+init_rules(13): phase_stage__pos(locating) may_be_replaced_by 3.
+init_rules(14): phase_stage__val(3) may_be_replaced_by locating.
+init_rules(15): phase_stage__pos(homing) may_be_replaced_by 4.
+init_rules(16): phase_stage__val(4) may_be_replaced_by homing.
+init_rules(17): phase_stage__pos(shutdown) may_be_replaced_by 5.
+init_rules(18): phase_stage__val(5) may_be_replaced_by shutdown.
+init_rules(19): phase_stage__pos(phase_stage__last) may_be_replaced_by 5.
+init_rules(20): phase_stage__pos(succ(X)) may_be_replaced_by 
+     phase_stage__pos(X) + 1
+     if [X <=shutdown, X <> shutdown].
+init_rules(21): phase_stage__pos(pred(X)) may_be_replaced_by 
+     phase_stage__pos(X) - 1
+     if [X >=off, X <> off].
+init_rules(22): phase_stage__pos(X) >= 0 may_be_deduced_from
+     [off <= X, X <= shutdown].
+init_rules(23): phase_stage__pos(X) <= 5 may_be_deduced_from
+     [off <= X, X <= shutdown].
+init_rules(24): phase_stage__val(X) >= off may_be_deduced_from
+     [0 <= X, X <= 5].
+init_rules(25): phase_stage__val(X) <= shutdown may_be_deduced_from
+     [0 <= X, X <= 5].
+init_rules(26): succ(phase_stage__val(X)) may_be_replaced_by 
+     phase_stage__val(X+1)
+     if [0 <= X, X < 5].
+init_rules(27): pred(phase_stage__val(X)) may_be_replaced_by 
+     phase_stage__val(X-1)
+     if [0 < X, X <= 5].
+init_rules(28): phase_stage__pos(phase_stage__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 5].
+init_rules(29): phase_stage__val(phase_stage__pos(X)) may_be_replaced_by X
+     if [off <= X, X <= shutdown].
+init_rules(30): phase_stage__pos(X) <= phase_stage__pos(Y) & X <= Y are_interchangeable 
+     if [off <= X, X <= shutdown, off <= Y, Y <= shutdown].
+init_rules(31): phase_stage__val(X) <= phase_stage__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 5, 0 <= Y, Y <= 5].

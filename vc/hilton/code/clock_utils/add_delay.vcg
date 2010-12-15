@@ -1,0 +1,119 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.42
+
+                       function clock_utils.Add_Delay
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 35:
+
+function_add_delay_1.
+H1:    true .
+H2:    orig >= clock__millisecond__first .
+H3:    orig <= clock__millisecond__last .
+H4:    plusdelta >= clock__millisecond__first .
+H5:    plusdelta <= clock__millisecond__last .
+        ->
+C1:    clock__millisecond__last - orig >= clock__millisecond__first .
+C2:    clock__millisecond__last - orig <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 37:
+
+function_add_delay_2.
+H1:    true .
+H2:    orig >= clock__millisecond__first .
+H3:    orig <= clock__millisecond__last .
+H4:    plusdelta >= clock__millisecond__first .
+H5:    plusdelta <= clock__millisecond__last .
+H6:    clock__millisecond__last - orig >= clock__millisecond__first .
+H7:    clock__millisecond__last - orig <= clock__millisecond__last .
+H8:    clock__millisecond__last - orig >= clock__millisecond__first .
+H9:    clock__millisecond__last - orig <= clock__millisecond__last .
+H10:   clock__millisecond__last - orig >= plusdelta .
+        ->
+C1:    orig + plusdelta >= clock__millisecond__first .
+C2:    orig + plusdelta <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 39:
+
+function_add_delay_3.
+H1:    true .
+H2:    orig >= clock__millisecond__first .
+H3:    orig <= clock__millisecond__last .
+H4:    plusdelta >= clock__millisecond__first .
+H5:    plusdelta <= clock__millisecond__last .
+H6:    clock__millisecond__last - orig >= clock__millisecond__first .
+H7:    clock__millisecond__last - orig <= clock__millisecond__last .
+H8:    clock__millisecond__last - orig >= clock__millisecond__first .
+H9:    clock__millisecond__last - orig <= clock__millisecond__last .
+H10:   not (clock__millisecond__last - orig >= plusdelta) .
+H11:   clock__millisecond__last - orig >= clock__millisecond__first .
+H12:   clock__millisecond__last - orig <= clock__millisecond__last .
+        ->
+C1:    plusdelta - (clock__millisecond__last - orig) >= 
+           clock__millisecond__first .
+C2:    plusdelta - (clock__millisecond__last - orig) <= 
+           clock__millisecond__last .
+ 
+
+For path(s) from start to finish:
+
+function_add_delay_4.
+H1:    true .
+H2:    orig >= clock__millisecond__first .
+H3:    orig <= clock__millisecond__last .
+H4:    plusdelta >= clock__millisecond__first .
+H5:    plusdelta <= clock__millisecond__last .
+H6:    clock__millisecond__last - orig >= clock__millisecond__first .
+H7:    clock__millisecond__last - orig <= clock__millisecond__last .
+H8:    clock__millisecond__last - orig >= clock__millisecond__first .
+H9:    clock__millisecond__last - orig <= clock__millisecond__last .
+H10:   clock__millisecond__last - orig >= plusdelta .
+H11:   orig + plusdelta >= clock__millisecond__first .
+H12:   orig + plusdelta <= clock__millisecond__last .
+H13:   orig + plusdelta >= clock__millisecond__first .
+H14:   orig + plusdelta <= clock__millisecond__last .
+        ->
+C1:    true .
+C2:    orig + plusdelta >= clock__millisecond__first .
+C3:    orig + plusdelta <= clock__millisecond__last .
+ 
+
+function_add_delay_5.
+H1:    true .
+H2:    orig >= clock__millisecond__first .
+H3:    orig <= clock__millisecond__last .
+H4:    plusdelta >= clock__millisecond__first .
+H5:    plusdelta <= clock__millisecond__last .
+H6:    clock__millisecond__last - orig >= clock__millisecond__first .
+H7:    clock__millisecond__last - orig <= clock__millisecond__last .
+H8:    clock__millisecond__last - orig >= clock__millisecond__first .
+H9:    clock__millisecond__last - orig <= clock__millisecond__last .
+H10:   not (clock__millisecond__last - orig >= plusdelta) .
+H11:   clock__millisecond__last - orig >= clock__millisecond__first .
+H12:   clock__millisecond__last - orig <= clock__millisecond__last .
+H13:   plusdelta - (clock__millisecond__last - orig) >= 
+           clock__millisecond__first .
+H14:   plusdelta - (clock__millisecond__last - orig) <= 
+           clock__millisecond__last .
+H15:   plusdelta - (clock__millisecond__last - orig) >= 
+           clock__millisecond__first .
+H16:   plusdelta - (clock__millisecond__last - orig) <= 
+           clock__millisecond__last .
+        ->
+C1:    true .
+C2:    plusdelta - (clock__millisecond__last - orig) >= 
+           clock__millisecond__first .
+C3:    plusdelta - (clock__millisecond__last - orig) <= 
+           clock__millisecond__last .
+ 
+

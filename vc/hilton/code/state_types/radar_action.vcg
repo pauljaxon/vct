@@ -1,0 +1,212 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.00
+
+                     function State_Types.Radar_Action
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 44:
+
+function_radar_action_1.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+        ->
+C1:    rad_inactive >= radar__first .
+C2:    rad_inactive <= radar__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 45:
+
+function_radar_action_2.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    rad_inactive >= radar__first .
+H5:    rad_inactive <= radar__last .
+H6:    val = element(radar_values, [rad_inactive]) .
+        ->
+C1:    rad_inactive >= radar__first .
+C2:    rad_inactive <= radar__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 46:
+
+function_radar_action_3.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    rad_inactive >= radar__first .
+H5:    rad_inactive <= radar__last .
+H6:    not (val = element(radar_values, [rad_inactive])) .
+        ->
+C1:    ping >= radar__first .
+C2:    ping <= radar__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 47:
+
+function_radar_action_4.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    rad_inactive >= radar__first .
+H5:    rad_inactive <= radar__last .
+H6:    not (val = element(radar_values, [rad_inactive])) .
+H7:    ping >= radar__first .
+H8:    ping <= radar__last .
+H9:    val = element(radar_values, [ping]) .
+        ->
+C1:    ping >= radar__first .
+C2:    ping <= radar__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 48:
+
+function_radar_action_5.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    rad_inactive >= radar__first .
+H5:    rad_inactive <= radar__last .
+H6:    not (val = element(radar_values, [rad_inactive])) .
+H7:    ping >= radar__first .
+H8:    ping <= radar__last .
+H9:    not (val = element(radar_values, [ping])) .
+        ->
+C1:    sweep >= radar__first .
+C2:    sweep <= radar__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 49:
+
+function_radar_action_6.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    rad_inactive >= radar__first .
+H5:    rad_inactive <= radar__last .
+H6:    not (val = element(radar_values, [rad_inactive])) .
+H7:    ping >= radar__first .
+H8:    ping <= radar__last .
+H9:    not (val = element(radar_values, [ping])) .
+H10:   sweep >= radar__first .
+H11:   sweep <= radar__last .
+H12:   val = element(radar_values, [sweep]) .
+        ->
+C1:    sweep >= radar__first .
+C2:    sweep <= radar__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 52:
+
+function_radar_action_7.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    rad_inactive >= radar__first .
+H5:    rad_inactive <= radar__last .
+H6:    not (val = element(radar_values, [rad_inactive])) .
+H7:    ping >= radar__first .
+H8:    ping <= radar__last .
+H9:    not (val = element(radar_values, [ping])) .
+H10:   sweep >= radar__first .
+H11:   sweep <= radar__last .
+H12:   not (val = element(radar_values, [sweep])) .
+        ->
+C1:    rad_inactive >= radar__first .
+C2:    rad_inactive <= radar__last .
+ 
+
+For path(s) from start to finish:
+
+function_radar_action_8.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    rad_inactive >= radar__first .
+H5:    rad_inactive <= radar__last .
+H6:    val = element(radar_values, [rad_inactive]) .
+H7:    rad_inactive >= radar__first .
+H8:    rad_inactive <= radar__last .
+H9:    rad_inactive >= radar__first .
+H10:   rad_inactive <= radar__last .
+        ->
+C1:    true .
+C2:    rad_inactive >= radar__first .
+C3:    rad_inactive <= radar__last .
+ 
+
+function_radar_action_9.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    rad_inactive >= radar__first .
+H5:    rad_inactive <= radar__last .
+H6:    not (val = element(radar_values, [rad_inactive])) .
+H7:    ping >= radar__first .
+H8:    ping <= radar__last .
+H9:    val = element(radar_values, [ping]) .
+H10:   ping >= radar__first .
+H11:   ping <= radar__last .
+H12:   ping >= radar__first .
+H13:   ping <= radar__last .
+        ->
+C1:    true .
+C2:    ping >= radar__first .
+C3:    ping <= radar__last .
+ 
+
+function_radar_action_10.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    rad_inactive >= radar__first .
+H5:    rad_inactive <= radar__last .
+H6:    not (val = element(radar_values, [rad_inactive])) .
+H7:    ping >= radar__first .
+H8:    ping <= radar__last .
+H9:    not (val = element(radar_values, [ping])) .
+H10:   sweep >= radar__first .
+H11:   sweep <= radar__last .
+H12:   val = element(radar_values, [sweep]) .
+H13:   sweep >= radar__first .
+H14:   sweep <= radar__last .
+H15:   sweep >= radar__first .
+H16:   sweep <= radar__last .
+        ->
+C1:    true .
+C2:    sweep >= radar__first .
+C3:    sweep <= radar__last .
+ 
+
+function_radar_action_11.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    rad_inactive >= radar__first .
+H5:    rad_inactive <= radar__last .
+H6:    not (val = element(radar_values, [rad_inactive])) .
+H7:    ping >= radar__first .
+H8:    ping <= radar__last .
+H9:    not (val = element(radar_values, [ping])) .
+H10:   sweep >= radar__first .
+H11:   sweep <= radar__last .
+H12:   not (val = element(radar_values, [sweep])) .
+H13:   rad_inactive >= radar__first .
+H14:   rad_inactive <= radar__last .
+H15:   rad_inactive >= radar__first .
+H16:   rad_inactive <= radar__last .
+        ->
+C1:    true .
+C2:    rad_inactive >= radar__first .
+C3:    rad_inactive <= radar__last .
+ 
+

@@ -1,0 +1,106 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.63
+
+Line
+   1  -- Provide an interface to creating flying objects in the simulator
+   2  -- $Log: environment.ads,v $
+   3  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   4  -- Added from tarfile
+   5  --
+   6  --
+   7  -- Revision 1.4  2003/08/11 19:36:24  adi
+   8  -- Added Command testpoint
+   9  --
+  10  -- Revision 1.3  2003/08/11 19:29:32  adi
+  11  -- Corrected annos for implementation
+  12  --
+  13  -- Revision 1.2  2003/08/11 19:04:16  adi
+  14  -- Adjusted for body annos
+  15  --
+  16  -- Revision 1.1  2003/08/11 18:30:43  adi
+  17  -- Initial revision
+  18  --
+  19  --
+  20  with Measuretypes,Cartesian;
+  21  --# inherit measuretypes,cartesian,systemtypes,
+  22  --#  flying_object,clock;
+  23  package Environment
+  24    --# own state;
+  25    --# initializes state;
+  26  is
+  27     type Handle is limited private;
+  28  
+  29     Null_Handle : constant Handle;
+  30  
+  31     type Kind is (Aircraft, Missile, cloud);
+  32  
+  33     -- Radar cross section
+  34     subtype Rcs is Measuretypes.Meter_2;
+  35  
+  36     procedure Add_Object(P : in Cartesian.Position;
+  37                          V : in Cartesian.Velocity;
+  38                          K : in Kind;
+  39                          R : in RCS;
+  40                          H : out Handle);
+  41     --# global in out state, clock.time;
+  42     --# derives state from P, V, State, K, R, clock.time &
+  43     --#           H from State &
+  44     --#   clock.time from *, state;
+  45  
+  46     procedure Set_Object_Position(H : in Handle;
+  47                                   P : in Cartesian.Position);
+  48     --# global in out state, clock.time;
+  49     --# derives state from *, H, P, clock.time &
+  50     --#         clock.time from *, H, state;
+  51  
+  52     procedure Get_Object_Position(H : in Handle;
+  53                                   P : out Cartesian.Position);
+  54     --# global in state; in out clock.time;
+  55     --# derives P from H, state, clock.time &
+  56     --#         clock.time from *, H, state;
+  57  
+  58     procedure Set_Object_Velocity(H : in Handle;
+  59                                   V : in Cartesian.Velocity);
+  60     --# global in out state, clock.time;
+  61     --# derives state from *, H, V, clock.time &
+  62     --#         clock.time from *, H, state;
+  63  
+  64     procedure Get_Object_Velocity(H : in Handle;
+  65                                   V : out Cartesian.Velocity);
+  66     --# global in state;
+  67     --#        in out clock.time;
+  68     --# derives v from state, H, clock.time &
+  69     --#         clock.time from *, H, state;
+  70  
+  71     procedure Set_Object_accel(H : in Handle;
+  72                                A : in Cartesian.Accel);
+  73     --# global in out state, clock.time;
+  74     --# derives state from *, H, A, clock.time &
+  75     --#        clock.time from *, H, state;
+  76  
+  77     procedure Delete_Object(H : in Handle);
+  78     --# global in out state;
+  79     --# derives state from *, H;
+  80  
+  81     -- Testpoint
+  82     procedure Command;
+  83     --# derives;
+  84  private
+  85  
+  86     Max_Objects : constant := 20;
+  87  
+  88     type Handle is range 0..20;
+  89     Null_Handle : constant Handle := 0;
+  90  
+  91  end Environment;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

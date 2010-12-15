@@ -1,0 +1,442 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.21
+
+                        procedure nav.Estimate_Speed
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 422:
+
+procedure_estimate_speed_1.
+H1:    true .
+H2:    airspeed_ss >= sensor_status__first .
+H3:    airspeed_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    ins_ss >= sensor_status__first .
+H7:    ins_ss <= sensor_status__last .
+H8:    (airspeed_ss = unknown) or ((airspeed_ss = failed) or (
+           airspeed_ss = restarted)) .
+H9:    m__1 >= meter__first .
+H10:   m__1 <= meter__last .
+H11:   c_tmp__1 >= confidence__first .
+H12:   c_tmp__1 <= confidence__last .
+        ->
+C1:    c_tmp__1 >= confidence__first .
+C2:    c_tmp__1 <= confidence__last .
+C3:    m__1 >= meter__first .
+C4:    m__1 <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 424:
+
+procedure_estimate_speed_2.
+H1:    true .
+H2:    airspeed_ss >= sensor_status__first .
+H3:    airspeed_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    ins_ss >= sensor_status__first .
+H7:    ins_ss <= sensor_status__last .
+H8:    (airspeed_ss = unknown) or ((airspeed_ss = failed) or (
+           airspeed_ss = restarted)) .
+H9:    m__1 >= meter__first .
+H10:   m__1 <= meter__last .
+H11:   c_tmp__1 >= confidence__first .
+H12:   c_tmp__1 <= confidence__last .
+H13:   c_tmp__1 >= confidence__first .
+H14:   c_tmp__1 <= confidence__last .
+H15:   m__1 >= meter__first .
+H16:   m__1 <= meter__last .
+H17:   t1__2 >= clock__millisecond__first .
+H18:   t1__2 <= clock__millisecond__last .
+H19:   true .
+        ->
+C1:    t1__2 >= clock__millisecond__first .
+C2:    t1__2 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 427:
+
+procedure_estimate_speed_3.
+H1:    true .
+H2:    airspeed_ss >= sensor_status__first .
+H3:    airspeed_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    ins_ss >= sensor_status__first .
+H7:    ins_ss <= sensor_status__last .
+H8:    (airspeed_ss = unknown) or ((airspeed_ss = failed) or (
+           airspeed_ss = restarted)) .
+H9:    m__1 >= meter__first .
+H10:   m__1 <= meter__last .
+H11:   c_tmp__1 >= confidence__first .
+H12:   c_tmp__1 <= confidence__last .
+H13:   c_tmp__1 >= confidence__first .
+H14:   c_tmp__1 <= confidence__last .
+H15:   m__1 >= meter__first .
+H16:   m__1 <= meter__last .
+H17:   t1__2 >= clock__millisecond__first .
+H18:   t1__2 <= clock__millisecond__last .
+H19:   true .
+H20:   t1__2 >= clock__millisecond__first .
+H21:   t1__2 <= clock__millisecond__last .
+H22:   c_tmp__1 >= confidence__first .
+H23:   c_tmp__1 <= confidence__last .
+H24:   true .
+H25:   time_valid__2 .
+H26:   c_tmp__1 <> none .
+H27:   m__1 >= meter__first .
+H28:   m__1 <= meter__last .
+        ->
+C1:    m__1 >= integer32__first .
+C2:    m__1 <= integer32__last .
+C3:    m__1 >= integer32__first .
+C4:    m__1 <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 429:
+
+procedure_estimate_speed_4.
+H1:    true .
+H2:    airspeed_ss >= sensor_status__first .
+H3:    airspeed_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    ins_ss >= sensor_status__first .
+H7:    ins_ss <= sensor_status__last .
+H8:    (airspeed_ss = unknown) or ((airspeed_ss = failed) or (
+           airspeed_ss = restarted)) .
+H9:    m__1 >= meter__first .
+H10:   m__1 <= meter__last .
+H11:   c_tmp__1 >= confidence__first .
+H12:   c_tmp__1 <= confidence__last .
+H13:   c_tmp__1 >= confidence__first .
+H14:   c_tmp__1 <= confidence__last .
+H15:   m__1 >= meter__first .
+H16:   m__1 <= meter__last .
+H17:   t1__2 >= clock__millisecond__first .
+H18:   t1__2 <= clock__millisecond__last .
+H19:   true .
+H20:   t1__2 >= clock__millisecond__first .
+H21:   t1__2 <= clock__millisecond__last .
+H22:   c_tmp__1 >= confidence__first .
+H23:   c_tmp__1 <= confidence__last .
+H24:   true .
+H25:   time_valid__2 .
+H26:   c_tmp__1 <> none .
+H27:   m__1 >= meter__first .
+H28:   m__1 <= meter__last .
+H29:   m__1 >= integer32__first .
+H30:   m__1 <= integer32__last .
+H31:   m__1 >= integer32__first .
+H32:   m__1 <= integer32__last .
+H33:   t1__2 >= clock__millisecond__first .
+H34:   t1__2 <= clock__millisecond__last .
+H35:   m__1 >= integer32__first .
+H36:   m__1 <= integer32__last .
+        ->
+C1:    m__1 * 1000 div t1__2 >= integer32__first .
+C2:    m__1 * 1000 div t1__2 <= integer32__last .
+C3:    t1__2 <> 0 .
+C4:    t1__2 >= integer32__first .
+C5:    t1__2 <= integer32__last .
+C6:    m__1 * 1000 >= long_integer__base__first .
+C7:    m__1 * 1000 <= long_integer__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 430:
+
+procedure_estimate_speed_5.
+H1:    true .
+H2:    airspeed_ss >= sensor_status__first .
+H3:    airspeed_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    ins_ss >= sensor_status__first .
+H7:    ins_ss <= sensor_status__last .
+H8:    (airspeed_ss = unknown) or ((airspeed_ss = failed) or (
+           airspeed_ss = restarted)) .
+H9:    m__1 >= meter__first .
+H10:   m__1 <= meter__last .
+H11:   c_tmp__1 >= confidence__first .
+H12:   c_tmp__1 <= confidence__last .
+H13:   c_tmp__1 >= confidence__first .
+H14:   c_tmp__1 <= confidence__last .
+H15:   m__1 >= meter__first .
+H16:   m__1 <= meter__last .
+H17:   t1__2 >= clock__millisecond__first .
+H18:   t1__2 <= clock__millisecond__last .
+H19:   true .
+H20:   t1__2 >= clock__millisecond__first .
+H21:   t1__2 <= clock__millisecond__last .
+H22:   c_tmp__1 >= confidence__first .
+H23:   c_tmp__1 <= confidence__last .
+H24:   true .
+H25:   time_valid__2 .
+H26:   c_tmp__1 <> none .
+H27:   m__1 >= meter__first .
+H28:   m__1 <= meter__last .
+H29:   m__1 >= integer32__first .
+H30:   m__1 <= integer32__last .
+H31:   m__1 >= integer32__first .
+H32:   m__1 <= integer32__last .
+H33:   t1__2 >= clock__millisecond__first .
+H34:   t1__2 <= clock__millisecond__last .
+H35:   m__1 >= integer32__first .
+H36:   m__1 <= integer32__last .
+H37:   m__1 * 1000 div t1__2 >= integer32__first .
+H38:   m__1 * 1000 div t1__2 <= integer32__last .
+H39:   t1__2 <> 0 .
+H40:   t1__2 >= integer32__first .
+H41:   t1__2 <= integer32__last .
+H42:   m__1 * 1000 >= long_integer__base__first .
+H43:   m__1 * 1000 <= long_integer__base__last .
+H44:   m__1 * 1000 div t1__2 >= integer32__first .
+H45:   m__1 * 1000 div t1__2 <= integer32__last .
+        ->
+C1:    m__1 * 1000 div t1__2 >= meter_per_sec__first .
+C2:    m__1 * 1000 div t1__2 <= meter_per_sec__last .
+C3:    m__1 * 1000 div t1__2 >= meter_per_sec__first .
+C4:    m__1 * 1000 div t1__2 <= meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 431:
+
+procedure_estimate_speed_6.
+H1:    true .
+H2:    airspeed_ss >= sensor_status__first .
+H3:    airspeed_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    ins_ss >= sensor_status__first .
+H7:    ins_ss <= sensor_status__last .
+H8:    (airspeed_ss = unknown) or ((airspeed_ss = failed) or (
+           airspeed_ss = restarted)) .
+H9:    m__1 >= meter__first .
+H10:   m__1 <= meter__last .
+H11:   c_tmp__1 >= confidence__first .
+H12:   c_tmp__1 <= confidence__last .
+H13:   c_tmp__1 >= confidence__first .
+H14:   c_tmp__1 <= confidence__last .
+H15:   m__1 >= meter__first .
+H16:   m__1 <= meter__last .
+H17:   t1__2 >= clock__millisecond__first .
+H18:   t1__2 <= clock__millisecond__last .
+H19:   true .
+H20:   t1__2 >= clock__millisecond__first .
+H21:   t1__2 <= clock__millisecond__last .
+H22:   c_tmp__1 >= confidence__first .
+H23:   c_tmp__1 <= confidence__last .
+H24:   true .
+H25:   time_valid__2 .
+H26:   c_tmp__1 <> none .
+H27:   m__1 >= meter__first .
+H28:   m__1 <= meter__last .
+H29:   m__1 >= integer32__first .
+H30:   m__1 <= integer32__last .
+H31:   m__1 >= integer32__first .
+H32:   m__1 <= integer32__last .
+H33:   t1__2 >= clock__millisecond__first .
+H34:   t1__2 <= clock__millisecond__last .
+H35:   m__1 >= integer32__first .
+H36:   m__1 <= integer32__last .
+H37:   m__1 * 1000 div t1__2 >= integer32__first .
+H38:   m__1 * 1000 div t1__2 <= integer32__last .
+H39:   t1__2 <> 0 .
+H40:   t1__2 >= integer32__first .
+H41:   t1__2 <= integer32__last .
+H42:   m__1 * 1000 >= long_integer__base__first .
+H43:   m__1 * 1000 <= long_integer__base__last .
+H44:   m__1 * 1000 div t1__2 >= integer32__first .
+H45:   m__1 * 1000 div t1__2 <= integer32__last .
+H46:   m__1 * 1000 div t1__2 >= meter_per_sec__first .
+H47:   m__1 * 1000 div t1__2 <= meter_per_sec__last .
+H48:   m__1 * 1000 div t1__2 >= meter_per_sec__first .
+H49:   m__1 * 1000 div t1__2 <= meter_per_sec__last .
+        ->
+C1:    low >= confidence__first .
+C2:    low <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 433:
+
+procedure_estimate_speed_7.
+H1:    true .
+H2:    airspeed_ss >= sensor_status__first .
+H3:    airspeed_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    ins_ss >= sensor_status__first .
+H7:    ins_ss <= sensor_status__last .
+H8:    (airspeed_ss = unknown) or ((airspeed_ss = failed) or (
+           airspeed_ss = restarted)) .
+H9:    m__1 >= meter__first .
+H10:   m__1 <= meter__last .
+H11:   c_tmp__1 >= confidence__first .
+H12:   c_tmp__1 <= confidence__last .
+H13:   c_tmp__1 >= confidence__first .
+H14:   c_tmp__1 <= confidence__last .
+H15:   m__1 >= meter__first .
+H16:   m__1 <= meter__last .
+H17:   t1__2 >= clock__millisecond__first .
+H18:   t1__2 <= clock__millisecond__last .
+H19:   true .
+H20:   t1__2 >= clock__millisecond__first .
+H21:   t1__2 <= clock__millisecond__last .
+H22:   c_tmp__1 >= confidence__first .
+H23:   c_tmp__1 <= confidence__last .
+H24:   true .
+H25:   not (time_valid__2 and (c_tmp__1 <> none)) .
+        ->
+C1:    0 >= meter_per_sec__first .
+C2:    0 <= meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 434:
+
+procedure_estimate_speed_8.
+H1:    true .
+H2:    airspeed_ss >= sensor_status__first .
+H3:    airspeed_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    ins_ss >= sensor_status__first .
+H7:    ins_ss <= sensor_status__last .
+H8:    (airspeed_ss = unknown) or ((airspeed_ss = failed) or (
+           airspeed_ss = restarted)) .
+H9:    m__1 >= meter__first .
+H10:   m__1 <= meter__last .
+H11:   c_tmp__1 >= confidence__first .
+H12:   c_tmp__1 <= confidence__last .
+H13:   c_tmp__1 >= confidence__first .
+H14:   c_tmp__1 <= confidence__last .
+H15:   m__1 >= meter__first .
+H16:   m__1 <= meter__last .
+H17:   t1__2 >= clock__millisecond__first .
+H18:   t1__2 <= clock__millisecond__last .
+H19:   true .
+H20:   t1__2 >= clock__millisecond__first .
+H21:   t1__2 <= clock__millisecond__last .
+H22:   c_tmp__1 >= confidence__first .
+H23:   c_tmp__1 <= confidence__last .
+H24:   true .
+H25:   not (time_valid__2 and (c_tmp__1 <> none)) .
+H26:   0 >= meter_per_sec__first .
+H27:   0 <= meter_per_sec__last .
+        ->
+C1:    none >= confidence__first .
+C2:    none <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 437:
+
+procedure_estimate_speed_9.
+H1:    true .
+H2:    airspeed_ss >= sensor_status__first .
+H3:    airspeed_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    ins_ss >= sensor_status__first .
+H7:    ins_ss <= sensor_status__last .
+H8:    airspeed_ss = valid .
+H9:    s__3 >= sensor_history__meter_per_sec__first .
+H10:   s__3 <= sensor_history__meter_per_sec__last .
+H11:   t1__3 >= clock__millisecond__first .
+H12:   t1__3 <= clock__millisecond__last .
+        ->
+C1:    t1__3 >= clock__millisecond__first .
+C2:    t1__3 <= clock__millisecond__last .
+C3:    s__3 >= meter_per_sec__first .
+C4:    s__3 <= meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 441:
+
+procedure_estimate_speed_10.
+H1:    true .
+H2:    airspeed_ss >= sensor_status__first .
+H3:    airspeed_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    ins_ss >= sensor_status__first .
+H7:    ins_ss <= sensor_status__last .
+H8:    airspeed_ss = valid .
+H9:    s__3 >= sensor_history__meter_per_sec__first .
+H10:   s__3 <= sensor_history__meter_per_sec__last .
+H11:   t1__3 >= clock__millisecond__first .
+H12:   t1__3 <= clock__millisecond__last .
+H13:   t1__3 >= clock__millisecond__first .
+H14:   t1__3 <= clock__millisecond__last .
+H15:   s__3 >= meter_per_sec__first .
+H16:   s__3 <= meter_per_sec__last .
+H17:   t1__3 >= clock__millisecond__first .
+H18:   t1__3 <= clock__millisecond__last .
+H19:   t1__3 = 0 .
+        ->
+C1:    none >= confidence__first .
+C2:    none <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 443:
+
+procedure_estimate_speed_11.
+H1:    true .
+H2:    airspeed_ss >= sensor_status__first .
+H3:    airspeed_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    ins_ss >= sensor_status__first .
+H7:    ins_ss <= sensor_status__last .
+H8:    airspeed_ss = valid .
+H9:    s__3 >= sensor_history__meter_per_sec__first .
+H10:   s__3 <= sensor_history__meter_per_sec__last .
+H11:   t1__3 >= clock__millisecond__first .
+H12:   t1__3 <= clock__millisecond__last .
+H13:   t1__3 >= clock__millisecond__first .
+H14:   t1__3 <= clock__millisecond__last .
+H15:   s__3 >= meter_per_sec__first .
+H16:   s__3 <= meter_per_sec__last .
+H17:   t1__3 >= clock__millisecond__first .
+H18:   t1__3 <= clock__millisecond__last .
+H19:   not (t1__3 = 0) .
+        ->
+C1:    high >= confidence__first .
+C2:    high <= confidence__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_estimate_speed_12.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_speed_13.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_speed_14.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_speed_15.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_estimate_speed_16.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_speed_17.
+*** true .          /* trivially true VC removed by Examiner */
+
+

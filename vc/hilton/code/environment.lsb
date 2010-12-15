@@ -1,0 +1,288 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.76
+
+Line
+   1  -- Provide an interface to creating flying objects in the simulator
+   2  -- $Log: environment.adb,v $
+   3  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   4  -- Added from tarfile
+   5  --
+   6  --
+   7  -- Revision 1.2  2003/08/11 19:36:35  adi
+   8  -- Added Command testpoint
+   9  --
+  10  -- Revision 1.1  2003/08/11 19:29:37  adi
+  11  -- Initial revision
+  12  --
+  13  --
+  14  with Flying_Object;
+  15  package body Environment
+  16    --# own state is object_array, item_valid;
+  17  is
+  18     subtype Valid_Handle is Handle range 1..Handle'Last;
+  19     type Object is record
+  20        F : Flying_Object.Entity;
+  21        K : Kind;
+  22        R : RCS;
+  23        H : Valid_Handle;
+  24     end record;
+  25  
+  26     type Object_List is array(Valid_Handle) of Object;
+  27     type Valid_List is array(Valid_Handle) of Boolean;
+  28  
+  29     Null_Object : constant Object :=
+  30       Object'(F => Flying_Object.Null_Entity,
+  31               K => Cloud,
+  32               R => 1,
+  33               H => Valid_Handle'First);
+  34  
+  35     Object_Array : Object_List :=
+  36       Object_List'(others => Null_Object);
+  37     Item_Valid : Valid_List :=
+  38       Valid_List'(others => False);
+  39  
+  40     -- Auxiliary routines
+  41     procedure Find_Slot(H : out Handle)
+  42       --# global in out item_valid;
+  43       --# derives item_valid, H from item_valid;
+  44     is
+  45        Found : Boolean := False;
+  46     begin
+  47        H := 1;
+  48        loop
+  49           --# assert H >= 1 and H <= handle'last;
+  50           if not Item_Valid(H) then
+  51              -- Free slot
+  52              Found := True;
+  53              Item_Valid(H) := True;
+  54           else
+  55              if H = Handle'Last then
+  56                 H := Null_Handle;
+  57              else
+  58                 H := Handle'Succ(H);
+  59              end if;
+  60           end if;
+  61           exit when Found;
+  62           exit when H = Null_handle;
+  63        end loop;
+  64     end Find_Slot;
+
++++        Flow analysis of subprogram Find_Slot performed: 
+           no errors found.
+
+  65  
+  66     -- Public subroutines
+  67  
+  68     procedure Add_Object(P : in Cartesian.Position;
+  69                          V : in Cartesian.Velocity;
+  70                          K : in Kind;
+  71                          R : in RCS;
+  72                          H : out Handle)
+  73     --# global in out object_array, item_valid,
+  74     --#   clock.time;
+  75     --# derives
+  76     --#   item_valid from
+  77     --#         * &
+  78     --#   object_array from
+  79     --#         P, V, item_valid, object_array, K, R, clock.time &
+  80     --#   H from
+  81     --#         item_valid &
+  82     --#   clock.time from
+  83     --#         *, item_valid
+  84     --#          ;
+  85     is
+  86        Entity : Flying_Object.Entity;
+  87     begin
+  88        Find_Slot(H);
+  89        if H = Null_Handle then
+  90           -- Can't find a free slot
+  91           null;
+  92        else
+  93           Flying_Object.Create(P => P,
+  94                                V => V,
+  95                                A => Cartesian.Zero_accel,
+  96                                E => Entity);
+  97           Object_Array(H) :=
+  98             Object'(F => Entity,
+  99                     K => K,
+ 100                     R => R,
+ 101                     H => H);
+ 102        end if;
+ 103     end Add_Object;
+
++++        Flow analysis of subprogram Add_Object 
+           performed: no errors found.
+
+ 104  
+ 105  
+ 106     procedure Set_Object_Position(H : in Handle;
+ 107                                   P : in Cartesian.Position)
+ 108       --# global in out object_array, clock.time;
+ 109       --#        in item_valid;
+ 110     --# derives object_array from *, H, P, clock.time, item_valid &
+ 111     --#   clock.time from *, H, item_valid;
+ 112     is
+ 113        Obj : Flying_Object.Entity;
+ 114     begin
+ 115        if H not in Valid_Handle then
+ 116           -- Cannot do anything
+ 117           null;
+ 118        elsif Item_Valid(H) then
+ 119           -- Set position
+ 120           Obj := Object_Array(H).F;
+ 121           Flying_Object.Set_Position(P => P,
+ 122                                      E => Obj);
+ 123           Object_Array(H).F := Obj;
+ 124        else
+ 125           -- No object there
+ 126           null;
+ 127        end if;
+ 128     end Set_Object_Position;
+
++++        Flow analysis of subprogram Set_Object_Position 
+           performed: no errors found.
+
+ 129  
+ 130     procedure Get_Object_Position(H : in Handle;
+ 131                                   P : out Cartesian.Position)
+ 132       --# global in item_valid, object_array;
+ 133       --#        in out clock.time;
+ 134       --# derives P from H, object_array, item_valid, clock.time &
+ 135       --#        clock.time from *, H, item_valid;
+ 136     is
+ 137        Obj : Object;
+ 138     begin
+ 139        if H not in Valid_Handle then
+ 140           P := Cartesian.Zero_Position;
+ 141        elsif Item_Valid(H) then
+ 142           Obj := Object_Array(H);
+ 143           Flying_Object.Get_Position(E => Obj.F, P => P);
+ 144        else
+ 145           P := Cartesian.Zero_Position;
+ 146        end if;
+ 147     end Get_Object_Position;
+
++++        Flow analysis of subprogram Get_Object_Position 
+           performed: no errors found.
+
+ 148  
+ 149     procedure Set_Object_Velocity(H : in Handle;
+ 150                                   V : in Cartesian.Velocity)
+ 151       --# global in out clock.time, object_array;
+ 152       --#        in item_valid;
+ 153       --# derives object_array from *, H, V, clock.time, item_valid &
+ 154       --#        clock.time from *, H, item_valid;
+ 155     is
+ 156        Obj : Flying_Object.Entity;
+ 157     begin
+ 158        if H not in Valid_Handle then
+ 159           -- Cannot do anything
+ 160           null;
+ 161        elsif Item_Valid(H) then
+ 162           -- Set position
+ 163           Obj := Object_Array(H).F;
+ 164           Flying_Object.Set_Velocity(V => V,
+ 165                                      E => Obj);
+ 166           Object_Array(H).F := Obj;
+ 167        else
+ 168           -- No object there
+ 169           null;
+ 170        end if;
+ 171     end Set_Object_Velocity;
+
++++        Flow analysis of subprogram Set_Object_Velocity 
+           performed: no errors found.
+
+ 172  
+ 173  
+ 174     procedure Get_Object_Velocity(H : in Handle;
+ 175                                   V : out Cartesian.Velocity)
+ 176     --# global in item_valid, object_array;
+ 177     --#        in out clock.time;
+ 178     --# derives v from H, item_valid, object_array, clock.time &
+ 179     --#        clock.time from *, H, item_valid;
+ 180     is
+ 181        Obj : Object;
+ 182     begin
+ 183        if H not in Valid_Handle then
+ 184           V := Cartesian.Zero_Velocity;
+ 185        elsif Item_Valid(H) then
+ 186           Obj := Object_Array(H);
+ 187           Flying_Object.Get_Velocity(E => Obj.F, V => V);
+ 188        else
+ 189           V := Cartesian.Zero_velocity;
+ 190        end if;
+ 191     end Get_Object_Velocity;
+
++++        Flow analysis of subprogram Get_Object_Velocity 
+           performed: no errors found.
+
+ 192  
+ 193  
+ 194     procedure Set_Object_accel(H : in Handle;
+ 195                                A : in Cartesian.Accel)
+ 196       --# global in out object_array, clock.time;
+ 197       --#        in item_valid;
+ 198       --# derives object_array from *, H, A, item_valid, clock.time &
+ 199       --#         clock.time from *, H, item_valid;
+ 200     is
+ 201        Obj : Flying_Object.Entity;
+ 202     begin
+ 203        if H not in Valid_Handle then
+ 204           -- Cannot do anything
+ 205           null;
+ 206        elsif Item_Valid(H) then
+ 207           -- Set position
+ 208           Obj := Object_Array(H).F;
+ 209           Flying_Object.Set_accel(a => a,
+ 210                                   E => Obj);
+ 211           Object_Array(H).F := Obj;
+ 212        else
+ 213           -- No object there
+ 214           null;
+ 215        end if;
+ 216     end Set_Object_Accel;
+
++++        Flow analysis of subprogram Set_Object_accel 
+           performed: no errors found.
+
+ 217  
+ 218  
+ 219     procedure Delete_Object(H : in Handle)
+ 220     --# global in out item_valid;
+ 221     --# derives item_valid from
+ 222     --#        item_valid, H;
+ 223     is
+ 224  
+ 225     begin
+ 226        if H not in Valid_Handle then
+ 227           -- cannot do anything;
+ 228           null;
+ 229        elsif Item_Valid(H) then
+ 230           -- delete it
+ 231           Item_Valid(H) := False;
+ 232        else
+ 233           -- Already deleted
+ 234           null;
+ 235        end if;
+ 236     end Delete_Object;
+
++++        Flow analysis of subprogram Delete_Object 
+           performed: no errors found.
+
+ 237  
+ 238     -- testpoint
+ 239     procedure Command is separate;
+ 240  
+ 241  end Environment;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

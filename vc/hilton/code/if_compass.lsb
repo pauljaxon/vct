@@ -1,0 +1,211 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.80
+
+Line
+   1  -- MCU interface to the compass, implementation
+   2  --
+   3  -- $Log: if_compass.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.3  2003/09/10 20:18:12  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.2  2003/08/08 20:31:18  adi
+  12  -- Use of Angle_Ops public child
+  13  --
+  14  -- Revision 1.1  2003/08/02 19:49:32  adi
+  15  -- Initial revision
+  16  --
+  17  --
+  18  --
+  19  with Bc1553, Bus, Measuretypes.Angle_Ops;
+  20  package body If_Compass
+  21    --# own State is Last_XY, Last_YZ,
+  22    --#    Last_XY_Valid, Last_YZ_Valid, Ibit_Request;
+  23  is
+  24     Last_XY, Last_YZ : MeasureTypes.Millirad := MeasureTypes.Angle_zero;
+  25     Last_XY_Valid, Last_YZ_Valid  : Boolean := False;
+  26     Ibit_Request : IBIT.Phase := IBIT.Off;
+  27  
+  28     function Get_Ibit_State return Ibit.Phase
+  29       --# global ibit_request;
+  30     is begin
+  31        return Ibit_Request;
+  32     end Get_Ibit_State;
+
++++        Flow analysis of subprogram Get_IBIT_State 
+           performed: no errors found.
+
+  33  
+  34     -- Find out the current XY and its validity
+  35     procedure Get_XY(Angle : out MeasureTypes.Millirad;
+  36                      Valid  : out Boolean)
+  37     --# global in Last_XY, Last_XY_Valid;
+  38     --# derives Angle from Last_XY, Last_XY_Valid &
+  39     --#        Valid from Last_XY_Valid;
+  40     is
+  41     begin
+  42        Valid := Last_XY_Valid;
+  43        if Last_XY_Valid then
+  44           Angle := Last_XY;
+  45        else
+  46           Angle := Measuretypes.Angle_zero;
+  47        end if;
+  48     end Get_XY;
+
++++        Flow analysis of subprogram Get_XY performed: no 
+           errors found.
+
+  49  
+  50     -- Find out the current YZ and its validity
+  51     procedure Get_YZ(Angle : out MeasureTypes.Millirad;
+  52                      Valid  : out Boolean)
+  53     --# global in Last_YZ, Last_YZ_Valid;
+  54     --# derives Angle from Last_YZ, Last_YZ_Valid &
+  55     --#        Valid from Last_YZ_Valid;
+  56     is
+  57     begin
+  58        Valid := Last_YZ_Valid;
+  59        if Last_YZ_Valid then
+  60           Angle := Last_YZ;
+  61        else
+  62           Angle := Measuretypes.Angle_zero;
+  63        end if;
+  64     end Get_YZ;
+
++++        Flow analysis of subprogram Get_YZ performed: no 
+           errors found.
+
+  65  
+  66     -- Kick off a component IBIT
+  67     procedure Ibit_Start
+  68       --# global in out Bus.Outputs;
+  69       --#        out    Ibit_Request;
+  70     --# derives Bus.Outputs from * &
+  71     --#         Ibit_Request from ;
+  72     is
+  73        Code : SystemTypes.Byte;
+  74     begin
+  75        Ibit_Request := IBIT.Request_Start;
+  76        Code := IBIT.Phase_Lookup(Ibit_Request);
+  77        -- Send it out on 1R at word 1
+  78        BC1553.Write_Word(Data => Code,
+  79                          Idx =>  1,
+  80                          Subaddress_Idx => 1,
+  81                          Dest => BC1553.Compass);
+  82     end Ibit_Start;
+
++++        Flow analysis of subprogram Ibit_Start 
+           performed: no errors found.
+
+  83  
+  84     -- Stop a component IBIT
+  85     procedure Ibit_Stop
+  86     --# global in out Bus.Outputs;
+  87     --#    out Ibit_Request;
+  88     --# derives Bus.Outputs from * &
+  89     --#         Ibit_Request from ;
+  90     is
+  91        Code : SystemTypes.Byte;
+  92     begin
+  93        Ibit_Request := IBIT.Request_Stop;
+  94        Code := IBIT.Phase_Lookup(Ibit_Request);
+  95        -- Send it out on 1R at word 1
+  96        BC1553.Write_Word(Data => Code,
+  97                          Idx =>  1,
+  98                          Subaddress_Idx => 1,
+  99                          Dest => BC1553.Compass);
+ 100     end Ibit_Stop;
+
++++        Flow analysis of subprogram Ibit_Stop performed: 
+           no errors found.
+
+ 101  
+ 102     -- Poll the bus and update states
+ 103     procedure Poll
+ 104       --# global in out Last_XY, Last_YZ, Last_XY_Valid,
+ 105       --#        Last_YZ_Valid, Ibit_Request;
+ 106     --#        in Bus.Inputs;
+ 107     --# derives Last_XY, Last_YZ, Last_XY_Valid, Last_YZ_Valid,
+ 108     --#         Ibit_Request from *, Bus.Inputs;
+ 109     is
+ 110        Word : Bus.Word;
+ 111     begin
+ 112        -- Check 1T
+ 113        if BC1553.Is_Valid(Src => Bc1553.Compass,
+ 114                           Subaddress_Idx => 1) and then
+ 115          BC1553.Is_Fresh(Src => Bc1553.Compass,
+ 116                          Subaddress_Idx => 1) then
+ 117           -- 1T word 1 - XY angle
+ 118           BC1553.Read_Word(Src => BC1553.Compass,
+ 119                            Idx => 1,
+ 120                            Subaddress_Idx => 1,
+ 121                            Data => Word);
+ 122           Last_XY := Measuretypes.Angle_Ops.Create_Angle(Word);
+ 123           -- And now reading is valid
+ 124           Last_XY_Valid := True;
+ 125           -- 1T word 2 - YZ angle
+ 126           BC1553.Read_Word(Src => BC1553.Compass,
+ 127                            Idx => 2,
+ 128                            Subaddress_Idx => 1,
+ 129                            Data => Word);
+ 130           Last_YZ := Measuretypes.Angle_Ops.Create_Angle(Word);
+ 131           -- And now reading is valid
+ 132           Last_YZ_Valid := True;
+ 133           -- 1T word 3 - BIT
+ 134           BC1553.Read_Word(Src => BC1553.Compass,
+ 135                            Idx => 3,
+ 136                            Subaddress_Idx => 1,
+ 137                            Data => Word);
+ 138           -- Use the standard state machine to transform
+ 139           -- our IBIT phase
+ 140           IBIT.State_Machine(Bus_Data => Word,
+ 141                              Current_Phase => IBIT_Request);
+ 142        else
+ 143           -- Nothing to do
+ 144           null;
+ 145        end if;
+ 146     end Poll;
+
++++        Flow analysis of subprogram Poll performed: no 
+           errors found.
+
+ 147  
+ 148     -- Initialise
+ 149     procedure Init
+ 150       --# global out Last_XY, Last_YZ,
+ 151       --#    Last_XY_Valid, Last_YZ_Valid, Ibit_Request;
+ 152       --#        in out Bus.Outputs;
+ 153       --# derives Last_XY, Last_YZ, Last_XY_Valid,
+ 154       --#       Last_YZ_Valid, Ibit_Request from &
+ 155       --#         Bus.Outputs from *;
+ 156     is begin
+ 157        Last_XY := Measuretypes.Angle_zero;
+ 158        Last_XY_Valid := False;
+ 159        Last_YZ := Measuretypes.Angle_zero;
+ 160        Last_YZ_Valid := False;
+ 161        Ibit_Request := IBIT.Off;
+ 162        BC1553.Set_Message_Valid(Dest => BC1553.Compass,
+ 163                                 Subaddress_Idx => 1);
+ 164     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 165  
+ 166     -- Test point
+ 167     procedure Command is separate;
+ 168  end If_Compass;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

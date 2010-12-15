@@ -1,0 +1,69 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:43.51*/
+
+                      /*function destruct_cfg.Transition*/
+
+
+rule_family transition_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+transition_rules(1): integer__size >= 0 may_be_deduced.
+transition_rules(2): integer__first may_be_replaced_by -2147483648.
+transition_rules(3): integer__last may_be_replaced_by 2147483647.
+transition_rules(4): integer__base__first may_be_replaced_by -2147483648.
+transition_rules(5): integer__base__last may_be_replaced_by 2147483647.
+transition_rules(6): systemtypes__unsigned16__size >= 0 may_be_deduced.
+transition_rules(7): systemtypes__unsigned16__first may_be_replaced_by 0.
+transition_rules(8): systemtypes__unsigned16__last may_be_replaced_by 65535.
+transition_rules(9): systemtypes__unsigned16__base__first may_be_replaced_by -2147483648.
+transition_rules(10): systemtypes__unsigned16__base__last may_be_replaced_by 2147483647.
+transition_rules(11): state__size >= 0 may_be_deduced.
+transition_rules(12): state__first may_be_replaced_by inactive.
+transition_rules(13): state__last may_be_replaced_by detonated.
+transition_rules(14): state__base__first may_be_replaced_by inactive.
+transition_rules(15): state__base__last may_be_replaced_by detonated.
+transition_rules(16): state__pos(state__first) may_be_replaced_by 0.
+transition_rules(17): state__pos(inactive) may_be_replaced_by 0.
+transition_rules(18): state__val(0) may_be_replaced_by inactive.
+transition_rules(19): state__pos(armed) may_be_replaced_by 1.
+transition_rules(20): state__val(1) may_be_replaced_by armed.
+transition_rules(21): state__pos(detonated) may_be_replaced_by 2.
+transition_rules(22): state__val(2) may_be_replaced_by detonated.
+transition_rules(23): state__pos(state__last) may_be_replaced_by 2.
+transition_rules(24): state__pos(succ(X)) may_be_replaced_by 
+     state__pos(X) + 1
+     if [X <=detonated, X <> detonated].
+transition_rules(25): state__pos(pred(X)) may_be_replaced_by 
+     state__pos(X) - 1
+     if [X >=inactive, X <> inactive].
+transition_rules(26): state__pos(X) >= 0 may_be_deduced_from
+     [inactive <= X, X <= detonated].
+transition_rules(27): state__pos(X) <= 2 may_be_deduced_from
+     [inactive <= X, X <= detonated].
+transition_rules(28): state__val(X) >= inactive may_be_deduced_from
+     [0 <= X, X <= 2].
+transition_rules(29): state__val(X) <= detonated may_be_deduced_from
+     [0 <= X, X <= 2].
+transition_rules(30): succ(state__val(X)) may_be_replaced_by 
+     state__val(X+1)
+     if [0 <= X, X < 2].
+transition_rules(31): pred(state__val(X)) may_be_replaced_by 
+     state__val(X-1)
+     if [0 < X, X <= 2].
+transition_rules(32): state__pos(state__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 2].
+transition_rules(33): state__val(state__pos(X)) may_be_replaced_by X
+     if [inactive <= X, X <= detonated].
+transition_rules(34): state__pos(X) <= state__pos(Y) & X <= Y are_interchangeable 
+     if [inactive <= X, X <= detonated, inactive <= Y, Y <= 
+     detonated].
+transition_rules(35): state__val(X) <= state__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 2, 0 <= Y, Y <= 2].

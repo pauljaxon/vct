@@ -1,0 +1,47 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.14*/
+
+                      /*function angle_ops.Create_Angle*/
+
+
+rule_family create_angle_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+create_angle_rules(1): integer__size >= 0 may_be_deduced.
+create_angle_rules(2): integer__first may_be_replaced_by -2147483648.
+create_angle_rules(3): integer__last may_be_replaced_by 2147483647.
+create_angle_rules(4): integer__base__first may_be_replaced_by -2147483648.
+create_angle_rules(5): integer__base__last may_be_replaced_by 2147483647.
+create_angle_rules(6): long_integer__size >= 0 may_be_deduced.
+create_angle_rules(7): long_integer__first may_be_replaced_by -2147483648.
+create_angle_rules(8): long_integer__last may_be_replaced_by 2147483647.
+create_angle_rules(9): long_integer__base__first may_be_replaced_by -2147483648.
+create_angle_rules(10): long_integer__base__last may_be_replaced_by 2147483647.
+create_angle_rules(11): systemtypes__integer32__size >= 0 may_be_deduced.
+create_angle_rules(12): systemtypes__integer32__first may_be_replaced_by -2147483648.
+create_angle_rules(13): systemtypes__integer32__last may_be_replaced_by 2147483647.
+create_angle_rules(14): systemtypes__integer32__base__first may_be_replaced_by -2147483648.
+create_angle_rules(15): systemtypes__integer32__base__last may_be_replaced_by 2147483647.
+create_angle_rules(16): systemtypes__word__size >= 0 may_be_deduced.
+create_angle_rules(17): systemtypes__word__first may_be_replaced_by 0.
+create_angle_rules(18): systemtypes__word__last may_be_replaced_by 65535.
+create_angle_rules(19): systemtypes__word__base__first may_be_replaced_by -2147483648.
+create_angle_rules(20): systemtypes__word__base__last may_be_replaced_by 2147483647.
+create_angle_rules(21): measuretypes__millirad__size >= 0 may_be_deduced.
+create_angle_rules(22): measuretypes__millirad__first may_be_replaced_by -7000.
+create_angle_rules(23): measuretypes__millirad__last may_be_replaced_by 7000.
+create_angle_rules(24): measuretypes__millirad__base__first may_be_replaced_by -2147483648.
+create_angle_rules(25): measuretypes__millirad__base__last may_be_replaced_by 2147483647.
+create_angle_rules(26): millirad__size >= 0 may_be_deduced.
+create_angle_rules(27): millirad__first may_be_replaced_by -7000.
+create_angle_rules(28): millirad__last may_be_replaced_by 7000.
+create_angle_rules(29): millirad__base__first may_be_replaced_by -2147483648.
+create_angle_rules(30): millirad__base__last may_be_replaced_by 2147483647.

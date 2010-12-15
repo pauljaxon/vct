@@ -1,0 +1,94 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:43.12}
+
+                          {procedure if_motor.Poll}
+
+
+title procedure poll;
+
+  function round__(real) : integer;
+  type measuretypes__newton = integer;
+  type bus__inputs__type = pending;
+  type bus__word_index = integer;
+  type bus__all_msg_index = integer;
+  type bc1553__lru_name = (bc1553__barometer, bc1553__asi, 
+     bc1553__ins, bc1553__compass, bc1553__fuel, bc1553__fuze, 
+     bc1553__radar, bc1553__infrared, bc1553__fins, bc1553__motor, 
+     bc1553__destruct, bc1553__warhead);
+  type ibit__phase = (ibit__off, ibit__request_start, 
+     ibit__in_progress, ibit__request_stop, ibit__pass, 
+     ibit__fail, ibit__timeout);
+  const bus_id : bc1553__lru_name = pending;
+  const power__base__last : integer = pending; 
+  const power__base__first : integer = pending; 
+  const ibit__phase__base__last : ibit__phase = pending; 
+  const ibit__phase__base__first : ibit__phase = pending; 
+  const bc1553__lru_name__base__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__base__first : bc1553__lru_name = pending; 
+  const bus__lru_subaddress_index__base__last : integer = pending; 
+  const bus__lru_subaddress_index__base__first : integer = pending; 
+  const bus__all_msg_index__base__last : integer = pending; 
+  const bus__all_msg_index__base__first : integer = pending; 
+  const bus__word__base__last : integer = pending; 
+  const bus__word__base__first : integer = pending; 
+  const bus__word_index__base__last : integer = pending; 
+  const bus__word_index__base__first : integer = pending; 
+  const measuretypes__newton__base__last : integer = pending; 
+  const measuretypes__newton__base__first : integer = pending; 
+  const systemtypes__unsigned16__base__last : integer = pending; 
+  const systemtypes__unsigned16__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const power__size : integer = pending; 
+  const power__last : integer = pending; 
+  const power__first : integer = pending; 
+  const ibit__phase__size : integer = pending; 
+  const ibit__phase__last : ibit__phase = pending; 
+  const ibit__phase__first : ibit__phase = pending; 
+  const bc1553__lru_name__size : integer = pending; 
+  const bc1553__lru_name__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__first : bc1553__lru_name = pending; 
+  const bus__lru_subaddress_index__size : integer = pending; 
+  const bus__lru_subaddress_index__last : integer = pending; 
+  const bus__lru_subaddress_index__first : integer = pending; 
+  const bus__all_msg_index__size : integer = pending; 
+  const bus__all_msg_index__last : integer = pending; 
+  const bus__all_msg_index__first : integer = pending; 
+  const bus__word__size : integer = pending; 
+  const bus__word__last : integer = pending; 
+  const bus__word__first : integer = pending; 
+  const bus__word_index__size : integer = pending; 
+  const bus__word_index__last : integer = pending; 
+  const bus__word_index__first : integer = pending; 
+  const measuretypes__newton__size : integer = pending; 
+  const measuretypes__newton__last : integer = pending; 
+  const measuretypes__newton__first : integer = pending; 
+  const systemtypes__unsigned16__size : integer = pending; 
+  const systemtypes__unsigned16__last : integer = pending; 
+  const systemtypes__unsigned16__first : integer = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+  var bus__inputs : bus__inputs__type;
+  var last_thrust : integer;
+  var ibit_request : ibit__phase;
+  var datum : integer;
+  var dlo : integer;
+  var dhi : integer;
+  function bc1553__is_fresh(bc1553__lru_name, integer, 
+     bus__inputs__type) : boolean;
+  function bc1553__is_valid(bc1553__lru_name, integer, 
+     bus__inputs__type) : boolean;
+  function measuretypes__decode__newton(integer, integer) : integer;
+  var ibit_request__4 : ibit__phase;
+  var datum__3 : integer;
+  var dhi__2 : integer;
+  var dlo__1 : integer;
+
+end;

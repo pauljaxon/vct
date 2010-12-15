@@ -1,0 +1,206 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.16
+
+Line
+   1  -- MCU interface to the motor, implementation
+   2  --
+   3  -- $Log: if_motor.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/11 19:50:46  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.1  2003/09/01 18:28:45  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with
+  16    Systemtypes,
+  17    Bc1553,
+  18    Bus,
+  19    measuretypes.Encode,
+  20    measuretypes.decode;
+  21  package body If_Motor
+  22    --# own State is Last_thrust, last_valid, Ibit_Request;
+  23  is
+  24     Last_Thrust  : Power := Power'First;
+  25     Last_Valid   : Boolean    := False;
+  26     Ibit_Request : IBIT.Phase := IBIT.Off;
+  27  
+  28     Bus_Id : constant Bc1553.Lru_Name := Bc1553.Motor;
+  29  
+  30     function Get_Ibit_State return Ibit.Phase
+  31       --# global ibit_request;
+  32     is begin
+  33        return Ibit_Request;
+  34     end Get_Ibit_State;
+
++++        Flow analysis of subprogram Get_IBIT_State 
+           performed: no errors found.
+
+  35  
+  36     -- Find out a fin thrust
+  37     procedure Get_thrust(This_Level : out Power;
+  38                          Valid  : out Boolean)
+  39     --# global in last_thrust, Last_Valid;
+  40     --# derives this_level from last_thrust, Last_Valid &
+  41     --#        Valid from Last_Valid;
+  42     is
+  43     begin
+  44        Valid := Last_Valid;
+  45        if Last_Valid then
+  46           This_level := Last_Thrust;
+  47        else
+  48           This_level := Power'first;
+  49        end if;
+  50     end Get_thrust;
+
++++        Flow analysis of subprogram Get_Thrust 
+           performed: no errors found.
+
+  51  
+  52     -- Command a motoring thrust
+  53     procedure Set_Thrust(New_Level : in Power)
+  54     is
+  55        Dlo,dhi : Bus.Word;
+  56     begin
+  57        Measuretypes.Encode.Newton(N => New_Level,
+  58                                   Lo => Dlo,
+  59                                   Hi => Dhi);
+  60        BC1553.Write_Word(Data => Dlo,
+  61                          Idx =>  1,
+  62                          Subaddress_Idx => 1,
+  63                          Dest => Bus_id);
+  64        BC1553.Write_Word(Data => Dhi,
+  65                          Idx =>  2,
+  66                          Subaddress_Idx => 1,
+  67                          Dest => Bus_id);
+  68     end Set_Thrust;
+
++++        Flow analysis of subprogram Set_thrust 
+           performed: no errors found.
+
+  69  
+  70  
+  71     -- Kick off a motor IBIT
+  72     procedure Ibit_Start
+  73       --# global in out Bus.Outputs;
+  74       --#        out    Ibit_Request;
+  75     --# derives Bus.Outputs from * &
+  76     --#         Ibit_Request from ;
+  77     is
+  78        Code : SystemTypes.Byte;
+  79     begin
+  80        Ibit_Request := IBIT.Request_Start;
+  81        Code := IBIT.Phase_Lookup(Ibit_Request);
+  82        -- Send it out on 1R at word 3
+  83        BC1553.Write_Word(Data => Code,
+  84                          Idx =>  3,
+  85                          Subaddress_Idx => 1,
+  86                          Dest => Bus_id);
+  87     end Ibit_Start;
+
++++        Flow analysis of subprogram Ibit_Start 
+           performed: no errors found.
+
+  88  
+  89     -- Stop a motor IBIT
+  90     procedure Ibit_Stop
+  91     --# global in out Bus.Outputs;
+  92     --#    out Ibit_Request;
+  93     --# derives Bus.Outputs from * &
+  94     --#         Ibit_Request from ;
+  95     is
+  96        Code : SystemTypes.Byte;
+  97     begin
+  98        Ibit_Request := IBIT.Request_Stop;
+  99        Code := IBIT.Phase_Lookup(Ibit_Request);
+ 100        -- Send it out on 1R at word 3
+ 101        BC1553.Write_Word(Data => Code,
+ 102                          Idx =>  3,
+ 103                          Subaddress_Idx => 1,
+ 104                          Dest => Bus_id);
+ 105     end Ibit_Stop;
+
++++        Flow analysis of subprogram Ibit_Stop performed: 
+           no errors found.
+
+ 106  
+ 107     -- Poll the bus and update states
+ 108     procedure Poll
+ 109     --# global in out last_thrust, Last_Valid, Ibit_Request;
+ 110     --#        in Bus.Inputs;
+ 111     --# derives last_thrust, Last_Valid,
+ 112     --#         Ibit_Request from *, Bus.Inputs;
+ 113     is
+ 114        Datum, Dlo, dhi : Bus.Word;
+ 115     begin
+ 116        -- Check 1T
+ 117          if BC1553.Is_Valid(Src => Bus_id,
+ 118                             Subaddress_Idx => 1) and then
+ 119            BC1553.Is_Fresh(Src => Bus_id,
+ 120                            Subaddress_Idx => 1) then
+ 121             BC1553.Read_Word(Src => Bus_id,
+ 122                              Idx => 1,
+ 123                              Subaddress_Idx => 1,
+ 124                              Data => dlo);
+ 125             BC1553.Read_Word(Src => Bus_id,
+ 126                              Idx => 2,
+ 127                              Subaddress_Idx => 1,
+ 128                              Data => dhi);
+ 129             Last_Thrust := Measuretypes.Decode.Newton(Lo => Dlo, Hi => Dhi);
+ 130             Last_Valid := True;
+ 131             -- 1T word 3 - BIT
+ 132             BC1553.Read_Word(Src => Bus_id,
+ 133                              Idx => 3,
+ 134                              Subaddress_Idx => 1,
+ 135                              Data => datum);
+ 136             -- Use the standard state machine to transform
+ 137             -- our IBIT phase
+ 138             IBIT.State_Machine(Bus_Data => datum,
+ 139                                Current_Phase => IBIT_Request);
+ 140          else
+ 141             -- Nothing to do
+ 142             null;
+ 143          end if;
+ 144     end Poll;
+
++++        Flow analysis of subprogram Poll performed: no 
+           errors found.
+
+ 145  
+ 146     -- Initialise
+ 147     procedure Init
+ 148     --# global out last_thrust, Last_Valid, Ibit_Request;
+ 149     --#        in out Bus.Outputs;
+ 150     --# derives last_thrust, Last_Valid, Ibit_Request from &
+ 151     --#         Bus.Outputs from *;
+ 152     is begin
+ 153        Last_Thrust := Power'First;
+ 154        Last_Valid := False;
+ 155        Ibit_Request := IBIT.Off;
+ 156        BC1553.Set_Message_Valid(Dest => Bus_id,
+ 157                                 Subaddress_Idx => 1);
+ 158     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 159  
+ 160     -- Test point
+ 161     procedure Command is separate;
+ 162  
+ 163  end If_Motor;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

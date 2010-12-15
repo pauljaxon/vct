@@ -1,0 +1,47 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.16
+
+                     procedure barometer.Read_Altitude
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 159:
+
+procedure_read_altitude_1.
+H1:    true .
+H2:    last_altitude >= meter__first .
+H3:    last_altitude <= meter__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_velocity >= meter_per_sec__first .
+H7:    last_velocity <= meter_per_sec__last .
+H8:    height__1 >= pos_meter__first .
+H9:    height__1 <= pos_meter__last .
+        ->
+C1:    height__1 >= meter__first .
+C2:    height__1 <= meter__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_altitude_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_read_altitude_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_altitude_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+

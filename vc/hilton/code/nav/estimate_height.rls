@@ -1,0 +1,128 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:44.12*/
+
+                       /*procedure nav.Estimate_Height*/
+
+
+rule_family estimate_hei_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+estimate_hei_rules(1): measuretypes__meter__size >= 0 may_be_deduced.
+estimate_hei_rules(2): measuretypes__meter__first may_be_replaced_by -200000.
+estimate_hei_rules(3): measuretypes__meter__last may_be_replaced_by 200000.
+estimate_hei_rules(4): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+estimate_hei_rules(5): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+estimate_hei_rules(6): clock__millisecond__size >= 0 may_be_deduced.
+estimate_hei_rules(7): clock__millisecond__first may_be_replaced_by 0.
+estimate_hei_rules(8): clock__millisecond__last may_be_replaced_by 8640000.
+estimate_hei_rules(9): clock__millisecond__base__first may_be_replaced_by -2147483648.
+estimate_hei_rules(10): clock__millisecond__base__last may_be_replaced_by 2147483647.
+estimate_hei_rules(11): sensor_history__meter__size >= 0 may_be_deduced.
+estimate_hei_rules(12): sensor_history__meter__first may_be_replaced_by -200000.
+estimate_hei_rules(13): sensor_history__meter__last may_be_replaced_by 200000.
+estimate_hei_rules(14): sensor_history__meter__base__first may_be_replaced_by -2147483648.
+estimate_hei_rules(15): sensor_history__meter__base__last may_be_replaced_by 2147483647.
+estimate_hei_rules(16): confidence__size >= 0 may_be_deduced.
+estimate_hei_rules(17): confidence__first may_be_replaced_by none.
+estimate_hei_rules(18): confidence__last may_be_replaced_by high.
+estimate_hei_rules(19): confidence__base__first may_be_replaced_by none.
+estimate_hei_rules(20): confidence__base__last may_be_replaced_by high.
+estimate_hei_rules(21): confidence__pos(confidence__first) may_be_replaced_by 0.
+estimate_hei_rules(22): confidence__pos(none) may_be_replaced_by 0.
+estimate_hei_rules(23): confidence__val(0) may_be_replaced_by 
+     none.
+estimate_hei_rules(24): confidence__pos(low) may_be_replaced_by 1.
+estimate_hei_rules(25): confidence__val(1) may_be_replaced_by low.
+estimate_hei_rules(26): confidence__pos(high) may_be_replaced_by 2.
+estimate_hei_rules(27): confidence__val(2) may_be_replaced_by 
+     high.
+estimate_hei_rules(28): confidence__pos(confidence__last) may_be_replaced_by 2.
+estimate_hei_rules(29): confidence__pos(succ(X)) may_be_replaced_by 
+     confidence__pos(X) + 1
+     if [X <=high, X <> high].
+estimate_hei_rules(30): confidence__pos(pred(X)) may_be_replaced_by 
+     confidence__pos(X) - 1
+     if [X >=none, X <> none].
+estimate_hei_rules(31): confidence__pos(X) >= 0 may_be_deduced_from
+     [none <= X, X <= high].
+estimate_hei_rules(32): confidence__pos(X) <= 2 may_be_deduced_from
+     [none <= X, X <= high].
+estimate_hei_rules(33): confidence__val(X) >= none may_be_deduced_from
+     [0 <= X, X <= 2].
+estimate_hei_rules(34): confidence__val(X) <= high may_be_deduced_from
+     [0 <= X, X <= 2].
+estimate_hei_rules(35): succ(confidence__val(X)) may_be_replaced_by 
+     confidence__val(X+1)
+     if [0 <= X, X < 2].
+estimate_hei_rules(36): pred(confidence__val(X)) may_be_replaced_by 
+     confidence__val(X-1)
+     if [0 < X, X <= 2].
+estimate_hei_rules(37): confidence__pos(confidence__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 2].
+estimate_hei_rules(38): confidence__val(confidence__pos(X)) may_be_replaced_by X
+     if [none <= X, X <= high].
+estimate_hei_rules(39): confidence__pos(X) <= confidence__pos(Y) & X <= Y are_interchangeable 
+     if [none <= X, X <= high, none <= Y, Y <= high].
+estimate_hei_rules(40): confidence__val(X) <= confidence__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 2, 0 <= Y, Y <= 2].
+estimate_hei_rules(41): meter__size >= 0 may_be_deduced.
+estimate_hei_rules(42): meter__first may_be_replaced_by -200000.
+estimate_hei_rules(43): meter__last may_be_replaced_by 200000.
+estimate_hei_rules(44): meter__base__first may_be_replaced_by -2147483648.
+estimate_hei_rules(45): meter__base__last may_be_replaced_by 2147483647.
+estimate_hei_rules(46): sensor_status__size >= 0 may_be_deduced.
+estimate_hei_rules(47): sensor_status__first may_be_replaced_by unknown.
+estimate_hei_rules(48): sensor_status__last may_be_replaced_by restarted.
+estimate_hei_rules(49): sensor_status__base__first may_be_replaced_by unknown.
+estimate_hei_rules(50): sensor_status__base__last may_be_replaced_by restarted.
+estimate_hei_rules(51): sensor_status__pos(sensor_status__first) may_be_replaced_by 0.
+estimate_hei_rules(52): sensor_status__pos(unknown) may_be_replaced_by 0.
+estimate_hei_rules(53): sensor_status__val(0) may_be_replaced_by 
+     unknown.
+estimate_hei_rules(54): sensor_status__pos(valid) may_be_replaced_by 1.
+estimate_hei_rules(55): sensor_status__val(1) may_be_replaced_by 
+     valid.
+estimate_hei_rules(56): sensor_status__pos(failed) may_be_replaced_by 2.
+estimate_hei_rules(57): sensor_status__val(2) may_be_replaced_by 
+     failed.
+estimate_hei_rules(58): sensor_status__pos(restarted) may_be_replaced_by 3.
+estimate_hei_rules(59): sensor_status__val(3) may_be_replaced_by 
+     restarted.
+estimate_hei_rules(60): sensor_status__pos(sensor_status__last) may_be_replaced_by 3.
+estimate_hei_rules(61): sensor_status__pos(succ(X)) may_be_replaced_by 
+     sensor_status__pos(X) + 1
+     if [X <=restarted, X <> restarted].
+estimate_hei_rules(62): sensor_status__pos(pred(X)) may_be_replaced_by 
+     sensor_status__pos(X) - 1
+     if [X >=unknown, X <> unknown].
+estimate_hei_rules(63): sensor_status__pos(X) >= 0 may_be_deduced_from
+     [unknown <= X, X <= restarted].
+estimate_hei_rules(64): sensor_status__pos(X) <= 3 may_be_deduced_from
+     [unknown <= X, X <= restarted].
+estimate_hei_rules(65): sensor_status__val(X) >= unknown may_be_deduced_from
+     [0 <= X, X <= 3].
+estimate_hei_rules(66): sensor_status__val(X) <= restarted may_be_deduced_from
+     [0 <= X, X <= 3].
+estimate_hei_rules(67): succ(sensor_status__val(X)) may_be_replaced_by 
+     sensor_status__val(X+1)
+     if [0 <= X, X < 3].
+estimate_hei_rules(68): pred(sensor_status__val(X)) may_be_replaced_by 
+     sensor_status__val(X-1)
+     if [0 < X, X <= 3].
+estimate_hei_rules(69): sensor_status__pos(sensor_status__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 3].
+estimate_hei_rules(70): sensor_status__val(sensor_status__pos(X)) may_be_replaced_by X
+     if [unknown <= X, X <= restarted].
+estimate_hei_rules(71): sensor_status__pos(X) <= sensor_status__pos(Y) & X <= Y are_interchangeable 
+     if [unknown <= X, X <= restarted, unknown <= Y, Y <= 
+     restarted].
+estimate_hei_rules(72): sensor_status__val(X) <= sensor_status__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 3, 0 <= Y, Y <= 3].

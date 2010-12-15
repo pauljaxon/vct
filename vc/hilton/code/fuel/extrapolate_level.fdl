@@ -1,0 +1,55 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:40.46}
+
+                      {procedure fuel.Extrapolate_level}
+
+
+title procedure extrapolate_level;
+
+  function round__(real) : integer;
+  type measuretypes__kilo = integer;
+  type measuretypes__gram_per_sec = integer;
+  type clock__millisecond = integer;
+  const gram_per_sec__base__last : integer = pending; 
+  const gram_per_sec__base__first : integer = pending; 
+  const kilo__base__last : integer = pending; 
+  const kilo__base__first : integer = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const measuretypes__gram_per_sec__base__last : integer = pending; 
+  const measuretypes__gram_per_sec__base__first : integer = pending; 
+  const measuretypes__kilo__base__last : integer = pending; 
+  const measuretypes__kilo__base__first : integer = pending; 
+  const gram_per_sec__size : integer = pending; 
+  const gram_per_sec__last : integer = pending; 
+  const gram_per_sec__first : integer = pending; 
+  const kilo__size : integer = pending; 
+  const kilo__last : integer = pending; 
+  const kilo__first : integer = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  const measuretypes__gram_per_sec__size : integer = pending; 
+  const measuretypes__gram_per_sec__last : integer = pending; 
+  const measuretypes__gram_per_sec__first : integer = pending; 
+  const measuretypes__kilo__size : integer = pending; 
+  const measuretypes__kilo__last : integer = pending; 
+  const measuretypes__kilo__first : integer = pending; 
+  var last_level : integer;
+  var last_rate : integer;
+  var last_time : integer;
+  var level : integer;
+  var time_now : integer;
+  var time_valid : boolean;
+  function clock_utils__delta_time(integer, integer) : integer;
+  var level__2 : integer;
+  var time_valid__1 : boolean;
+  var time_now__1 : integer;
+
+end;

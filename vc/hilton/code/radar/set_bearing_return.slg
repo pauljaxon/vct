@@ -1,0 +1,65 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:41  SIMPLIFIED 25-NOV-2009, 14:18:54
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure Radar.Set_Bearing_Return
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_set_bearing_return_1.  @@@@@@@@@@
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+***  Proved C1:  v >= meter_per_sec__first
+     using hypothesis H8.
+***  Proved C2:  v <= meter_per_sec__last
+     using hypothesis H9.
+***  Proved C3:  d >= meter__first
+     using hypothesis H6.
+***  Proved C4:  d <= meter__last
+     using hypothesis H7.
+***  Proved C5:  sy >= sector__first
+     using hypothesis H4.
+***  Proved C6:  sy <= sector__last
+     using hypothesis H5.
+***  Proved C7:  sx >= sector__first
+     using hypothesis H2.
+***  Proved C8:  sx <= sector__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_bearing_return_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_bearing_return_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_bearing_return_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

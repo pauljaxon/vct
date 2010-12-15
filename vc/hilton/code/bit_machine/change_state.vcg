@@ -1,0 +1,73 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.94
+
+                     procedure bit_machine.Change_State
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 28:
+
+procedure_change_state_1.
+H1:    true .
+H2:    word >= bus__word__first .
+H3:    word <= bus__word__last .
+H4:    fld_ticks_to_complete(state) >= 
+           systemtypes__unsigned16__first .
+H5:    fld_ticks_to_complete(state) <= 
+           systemtypes__unsigned16__last .
+H6:    true .
+H7:    fld_ticks(state) >= systemtypes__unsigned16__first .
+H8:    fld_ticks(state) <= systemtypes__unsigned16__last .
+H9:    fld_current_phase(state) >= ibit__phase__first .
+H10:   fld_current_phase(state) <= ibit__phase__last .
+        ->
+C1:    fld_current_phase(state) >= ibit__phase__first .
+C2:    fld_current_phase(state) <= ibit__phase__last .
+C3:    word >= systemtypes__unsigned16__first .
+C4:    word <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 28:
+
+procedure_change_state_2.
+H1:    true .
+H2:    word >= bus__word__first .
+H3:    word <= bus__word__last .
+H4:    fld_ticks_to_complete(state) >= 
+           systemtypes__unsigned16__first .
+H5:    fld_ticks_to_complete(state) <= 
+           systemtypes__unsigned16__last .
+H6:    true .
+H7:    fld_ticks(state) >= systemtypes__unsigned16__first .
+H8:    fld_ticks(state) <= systemtypes__unsigned16__last .
+H9:    fld_current_phase(state) >= ibit__phase__first .
+H10:   fld_current_phase(state) <= ibit__phase__last .
+H11:   fld_current_phase(state) >= ibit__phase__first .
+H12:   fld_current_phase(state) <= ibit__phase__last .
+H13:   word >= systemtypes__unsigned16__first .
+H14:   word <= systemtypes__unsigned16__last .
+H15:   fld_current_phase(state__1) >= ibit__phase__first .
+H16:   fld_current_phase(state__1) <= ibit__phase__last .
+H17:   fld_ticks(state__1) = fld_ticks(state) .
+H18:   fld_fail_bit(state__1) = fld_fail_bit(state) .
+H19:   fld_ticks_to_complete(state__1) = fld_ticks_to_complete(
+           state) .
+H20:   state__1 = upf_current_phase(state, fld_current_phase(state__1)) .
+        ->
+C1:    fld_current_phase(state__1) >= ibit__phase__first .
+C2:    fld_current_phase(state__1) <= ibit__phase__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_change_state_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+

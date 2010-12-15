@@ -1,0 +1,29 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.30*/
+
+                            /*function random.Seed*/
+
+
+rule_family seed_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+seed_rules(1): max_seed may_be_replaced_by 971.
+seed_rules(2): value__size >= 0 may_be_deduced.
+seed_rules(3): value__first may_be_replaced_by 0.
+seed_rules(4): value__last may_be_replaced_by 63001.
+seed_rules(5): value__base__first <= value__base__last may_be_deduced.
+seed_rules(6): value__base__first <= value__first may_be_deduced.
+seed_rules(7): value__base__last >= value__last may_be_deduced.
+seed_rules(8): seed_range__size >= 0 may_be_deduced.
+seed_rules(9): seed_range__first may_be_replaced_by 0.
+seed_rules(10): seed_range__last may_be_replaced_by 971.
+seed_rules(11): seed_range__base__first may_be_replaced_by -2147483648.
+seed_rules(12): seed_range__base__last may_be_replaced_by 2147483647.

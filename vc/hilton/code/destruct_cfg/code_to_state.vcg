@@ -1,0 +1,212 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.49
+
+                    function destruct_cfg.Code_To_State
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 19:
+
+function_code_to_state_1.
+H1:    true .
+H2:    c >= systemtypes__unsigned16__first .
+H3:    c <= systemtypes__unsigned16__last .
+        ->
+C1:    inactive >= state__first .
+C2:    inactive <= state__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 20:
+
+function_code_to_state_2.
+H1:    true .
+H2:    c >= systemtypes__unsigned16__first .
+H3:    c <= systemtypes__unsigned16__last .
+H4:    inactive >= state__first .
+H5:    inactive <= state__last .
+H6:    c = element(state_to_code, [inactive]) .
+        ->
+C1:    inactive >= state__first .
+C2:    inactive <= state__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 21:
+
+function_code_to_state_3.
+H1:    true .
+H2:    c >= systemtypes__unsigned16__first .
+H3:    c <= systemtypes__unsigned16__last .
+H4:    inactive >= state__first .
+H5:    inactive <= state__last .
+H6:    not (c = element(state_to_code, [inactive])) .
+        ->
+C1:    armed >= state__first .
+C2:    armed <= state__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 22:
+
+function_code_to_state_4.
+H1:    true .
+H2:    c >= systemtypes__unsigned16__first .
+H3:    c <= systemtypes__unsigned16__last .
+H4:    inactive >= state__first .
+H5:    inactive <= state__last .
+H6:    not (c = element(state_to_code, [inactive])) .
+H7:    armed >= state__first .
+H8:    armed <= state__last .
+H9:    c = element(state_to_code, [armed]) .
+        ->
+C1:    armed >= state__first .
+C2:    armed <= state__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 23:
+
+function_code_to_state_5.
+H1:    true .
+H2:    c >= systemtypes__unsigned16__first .
+H3:    c <= systemtypes__unsigned16__last .
+H4:    inactive >= state__first .
+H5:    inactive <= state__last .
+H6:    not (c = element(state_to_code, [inactive])) .
+H7:    armed >= state__first .
+H8:    armed <= state__last .
+H9:    not (c = element(state_to_code, [armed])) .
+        ->
+C1:    detonated >= state__first .
+C2:    detonated <= state__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 24:
+
+function_code_to_state_6.
+H1:    true .
+H2:    c >= systemtypes__unsigned16__first .
+H3:    c <= systemtypes__unsigned16__last .
+H4:    inactive >= state__first .
+H5:    inactive <= state__last .
+H6:    not (c = element(state_to_code, [inactive])) .
+H7:    armed >= state__first .
+H8:    armed <= state__last .
+H9:    not (c = element(state_to_code, [armed])) .
+H10:   detonated >= state__first .
+H11:   detonated <= state__last .
+H12:   c = element(state_to_code, [detonated]) .
+        ->
+C1:    detonated >= state__first .
+C2:    detonated <= state__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 26:
+
+function_code_to_state_7.
+H1:    true .
+H2:    c >= systemtypes__unsigned16__first .
+H3:    c <= systemtypes__unsigned16__last .
+H4:    inactive >= state__first .
+H5:    inactive <= state__last .
+H6:    not (c = element(state_to_code, [inactive])) .
+H7:    armed >= state__first .
+H8:    armed <= state__last .
+H9:    not (c = element(state_to_code, [armed])) .
+H10:   detonated >= state__first .
+H11:   detonated <= state__last .
+H12:   not (c = element(state_to_code, [detonated])) .
+        ->
+C1:    inactive >= state__first .
+C2:    inactive <= state__last .
+ 
+
+For path(s) from start to finish:
+
+function_code_to_state_8.
+H1:    true .
+H2:    c >= systemtypes__unsigned16__first .
+H3:    c <= systemtypes__unsigned16__last .
+H4:    inactive >= state__first .
+H5:    inactive <= state__last .
+H6:    c = element(state_to_code, [inactive]) .
+H7:    inactive >= state__first .
+H8:    inactive <= state__last .
+H9:    inactive >= state__first .
+H10:   inactive <= state__last .
+        ->
+C1:    true .
+C2:    inactive >= state__first .
+C3:    inactive <= state__last .
+ 
+
+function_code_to_state_9.
+H1:    true .
+H2:    c >= systemtypes__unsigned16__first .
+H3:    c <= systemtypes__unsigned16__last .
+H4:    inactive >= state__first .
+H5:    inactive <= state__last .
+H6:    not (c = element(state_to_code, [inactive])) .
+H7:    armed >= state__first .
+H8:    armed <= state__last .
+H9:    c = element(state_to_code, [armed]) .
+H10:   armed >= state__first .
+H11:   armed <= state__last .
+H12:   armed >= state__first .
+H13:   armed <= state__last .
+        ->
+C1:    true .
+C2:    armed >= state__first .
+C3:    armed <= state__last .
+ 
+
+function_code_to_state_10.
+H1:    true .
+H2:    c >= systemtypes__unsigned16__first .
+H3:    c <= systemtypes__unsigned16__last .
+H4:    inactive >= state__first .
+H5:    inactive <= state__last .
+H6:    not (c = element(state_to_code, [inactive])) .
+H7:    armed >= state__first .
+H8:    armed <= state__last .
+H9:    not (c = element(state_to_code, [armed])) .
+H10:   detonated >= state__first .
+H11:   detonated <= state__last .
+H12:   c = element(state_to_code, [detonated]) .
+H13:   detonated >= state__first .
+H14:   detonated <= state__last .
+H15:   detonated >= state__first .
+H16:   detonated <= state__last .
+        ->
+C1:    true .
+C2:    detonated >= state__first .
+C3:    detonated <= state__last .
+ 
+
+function_code_to_state_11.
+H1:    true .
+H2:    c >= systemtypes__unsigned16__first .
+H3:    c <= systemtypes__unsigned16__last .
+H4:    inactive >= state__first .
+H5:    inactive <= state__last .
+H6:    not (c = element(state_to_code, [inactive])) .
+H7:    armed >= state__first .
+H8:    armed <= state__last .
+H9:    not (c = element(state_to_code, [armed])) .
+H10:   detonated >= state__first .
+H11:   detonated <= state__last .
+H12:   not (c = element(state_to_code, [detonated])) .
+H13:   inactive >= state__first .
+H14:   inactive <= state__last .
+H15:   inactive >= state__first .
+H16:   inactive <= state__last .
+        ->
+C1:    true .
+C2:    inactive >= state__first .
+C3:    inactive <= state__last .
+ 
+

@@ -1,0 +1,601 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:47
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure if_airspeed.Poll
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_poll_1.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  ibit__phase__first <= ibit_request
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  bc1553__lru_name__first <= bc1553__asi
+-S-  Applied substitution rule poll_rules(33).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New C1:  true
+-S-  Applied substitution rule poll_rules(34).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New C2:  true
+-S-  Applied substitution rule poll_rules(38).
+     This was achieved by replacing all occurrences of bc1553__lru_name__first 
+          by:
+          bc1553__barometer.
+<S>  New C3:  true
+-S-  Applied substitution rule poll_rules(39).
+     This was achieved by replacing all occurrences of bc1553__lru_name__last 
+          by:
+          bc1553__warhead.
+<S>  New C4:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_2.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  ibit__phase__first <= ibit_request
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  bc1553__lru_name__first <= bc1553__asi
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bc1553__asi and bc1553__asi <= 
+          bc1553__lru_name__last
+***  Proved C1:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> 1 >= 
+          bus__lru_subaddress_index__first and 1 <= 
+          bus__lru_subaddress_index__last
+     using hypotheses H7 & H8.
+***  Proved C2:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bc1553__asi and bc1553__asi <= 
+          bc1553__lru_name__last
+     using hypotheses H9 & H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_3.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  ibit__phase__first <= ibit_request
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  bc1553__lru_name__first <= bc1553__asi
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bc1553__asi and bc1553__asi <= 
+          bc1553__lru_name__last
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  true
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  bc1553__lru_name__first <= bc1553__asi
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H7.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H8.
+***  Proved C5:  bc1553__lru_name__first <= bc1553__asi
+     using hypothesis H9.
+***  Proved C6:  bc1553__asi <= bc1553__lru_name__last
+     using hypothesis H10.
+-S-  Applied substitution rule poll_rules(17).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New C3:  true
+-S-  Applied substitution rule poll_rules(18).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New C4:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_4.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  ibit__phase__first <= ibit_request
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  bc1553__lru_name__first <= bc1553__asi
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bc1553__asi and bc1553__asi <= 
+          bc1553__lru_name__last
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  true
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+***  Proved C1:  word__1 >= bus__word__first
+     using hypothesis H23.
+***  Proved C2:  word__1 <= bus__word__last
+     using hypothesis H24.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_5.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  ibit__phase__first <= ibit_request
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  bc1553__lru_name__first <= bc1553__asi
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bc1553__asi and bc1553__asi <= 
+          bc1553__lru_name__last
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  true
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H24).
+-S-  Applied substitution rule poll_rules(12).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H2:  last_speed >= - 5000
+<S>  New C1:  word__1 >= - 5000
+<S>  New C3:  word__1 >= - 5000
+-S-  Applied substitution rule poll_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H3:  last_speed <= 5000
+<S>  New C2:  word__1 <= 5000
+<S>  New C4:  word__1 <= 5000
++++  Using "A->B, A |- B" on hypotheses H12 & H15 yields a new hypothesis:
+     +++  H29:  1 >= bus__lru_subaddress_index__first and 1 <= 
+          bus__lru_subaddress_index__last
++++  Using "A->B, A |- B" on hypotheses H13 & H15 yields a new hypothesis:
+     +++  H30:  bc1553__lru_name__first <= bc1553__asi and bc1553__asi <= 
+          bc1553__lru_name__last
+-S-  Applied substitution rule poll_rules(17).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H19:  true
+-S-  Applied substitution rule poll_rules(18).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H20:  true
+-S-  Applied substitution rule poll_rules(23).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H23:  word__1 >= 0
+-S-  Applied substitution rule poll_rules(24).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H24:  word__1 <= 65535
+-S-  Applied substitution rule poll_rules(33).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H7:  true
+<S>  New H12:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> 1 <= 
+          bus__lru_subaddress_index__last
+<S>  New H29:  1 <= bus__lru_subaddress_index__last
+-S-  Applied substitution rule poll_rules(34).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H8:  true
+<S>  New H12:  true
+<S>  New H29:  true
+-S-  Applied substitution rule poll_rules(38).
+     This was achieved by replacing all occurrences of bc1553__lru_name__first 
+          by:
+          bc1553__barometer.
+<S>  New H9:  true
+<S>  New H13:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> bc1553__asi <= 
+          bc1553__lru_name__last
+<S>  New H30:  bc1553__asi <= bc1553__lru_name__last
+-S-  Applied substitution rule poll_rules(39).
+     This was achieved by replacing all occurrences of bc1553__lru_name__last 
+          by:
+          bc1553__warhead.
+<S>  New H10:  true
+<S>  New H13:  true
+<S>  New H30:  true
+-S-  Applied substitution rule poll_rules(81).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H5:  ibit__off <= ibit_request
+-S-  Applied substitution rule poll_rules(82).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H6:  ibit_request <= ibit__timeout
+***  Proved C1:  word__1 >= - 5000
+     using hypothesis H23.
+***  Proved C3:  word__1 >= - 5000
+     using hypothesis H23.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H4 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H29 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated conclusion C4, which is a duplicate of C2.
+     +++  New H31:  integer__size >= 0
+     +++  New H32:  systemtypes__unsigned16__size >= 0
+     +++  New H33:  measuretypes__meter_per_sec__size >= 0
+     +++  New H34:  bus__word_index__size >= 0
+     +++  New H35:  bus__word_index__base__first <= bus__word_index__base__last
+     +++  New H36:  bus__word__size >= 0
+     +++  New H37:  bus__all_msg_index__size >= 0
+     +++  New H38:  bus__lru_subaddress_index__size >= 0
+     +++  New H39:  bc1553__lru_name__size >= 0
+     +++  New H40:  ibit__phase__size >= 0
+     +++  New H41:  bus__word_index__base__first <= 1
+     +++  New H42:  bus__word_index__base__last >= 31
+
+
+@@@@@@@@@@  VC: procedure_poll_6.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  ibit__phase__first <= ibit_request
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  bc1553__lru_name__first <= bc1553__asi
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bc1553__asi and bc1553__asi <= 
+          bc1553__lru_name__last
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  true
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  bc1553__lru_name__first <= bc1553__asi
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H7.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H8.
+***  Proved C3:  3 >= bus__word_index__first
+     using hypothesis H19.
+***  Proved C5:  bc1553__lru_name__first <= bc1553__asi
+     using hypothesis H9.
+***  Proved C6:  bc1553__asi <= bc1553__lru_name__last
+     using hypothesis H10.
+-S-  Applied substitution rule poll_rules(18).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H20:  true
+<S>  New C4:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_7.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  ibit__phase__first <= ibit_request
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  bc1553__lru_name__first <= bc1553__asi
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bc1553__asi and bc1553__asi <= 
+          bc1553__lru_name__last
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  true
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H10).
+***  Proved C1:  word__2 >= bus__word__first
+     using hypothesis H39.
+***  Proved C2:  word__2 <= bus__word__last
+     using hypothesis H40.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_8.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  ibit__phase__first <= ibit_request
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  bc1553__lru_name__first <= bc1553__asi
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bc1553__asi and bc1553__asi <= 
+          bc1553__lru_name__last
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  true
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H40).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H40).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  ibit__phase__first <= ibit_request
+***  Proved C1:  ibit__phase__first <= ibit_request
+     using hypothesis H5.
+***  Proved C2:  ibit_request <= ibit__phase__last
+     using hypothesis H6.
+-S-  Applied substitution rule poll_rules(7).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__first by:
+          0.
+<S>  New C3:  word__2 >= 0
+-S-  Applied substitution rule poll_rules(8).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__last by:
+          65535.
+<S>  New C4:  word__2 <= 65535
++++  Using "A->B, A |- B" on hypotheses H12 & H15 yields a new hypothesis:
+     +++  H45:  1 >= bus__lru_subaddress_index__first and 1 <= 
+          bus__lru_subaddress_index__last
++++  Using "A->B, A |- B" on hypotheses H13 & H15 yields a new hypothesis:
+     +++  H46:  bc1553__lru_name__first <= bc1553__asi and bc1553__asi <= 
+          bc1553__lru_name__last
+-S-  Applied substitution rule poll_rules(12).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H2:  last_speed >= - 5000
+<S>  New H29:  word__1 >= - 5000
+-S-  Applied substitution rule poll_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H3:  last_speed <= 5000
+<S>  New H30:  word__1 <= 5000
+-S-  Applied substitution rule poll_rules(17).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H19:  true
+<S>  New H35:  true
+-S-  Applied substitution rule poll_rules(18).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H20:  true
+<S>  New H36:  true
+-S-  Applied substitution rule poll_rules(23).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H23:  word__1 >= 0
+<S>  New H39:  word__2 >= 0
+-S-  Applied substitution rule poll_rules(24).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H24:  word__1 <= 65535
+<S>  New H40:  word__2 <= 65535
+-S-  Applied substitution rule poll_rules(33).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H7:  true
+<S>  New H12:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> 1 <= 
+          bus__lru_subaddress_index__last
+<S>  New H45:  1 <= bus__lru_subaddress_index__last
+-S-  Applied substitution rule poll_rules(34).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H8:  true
+<S>  New H12:  true
+<S>  New H45:  true
+-S-  Applied substitution rule poll_rules(38).
+     This was achieved by replacing all occurrences of bc1553__lru_name__first 
+          by:
+          bc1553__barometer.
+<S>  New H9:  true
+<S>  New H13:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> bc1553__asi <= 
+          bc1553__lru_name__last
+<S>  New H46:  bc1553__asi <= bc1553__lru_name__last
+-S-  Applied substitution rule poll_rules(39).
+     This was achieved by replacing all occurrences of bc1553__lru_name__last 
+          by:
+          bc1553__warhead.
+<S>  New H10:  true
+<S>  New H13:  true
+<S>  New H46:  true
+-S-  Applied substitution rule poll_rules(81).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H5:  ibit__off <= ibit_request
+-S-  Applied substitution rule poll_rules(82).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H6:  ibit_request <= ibit__timeout
+***  Proved C3:  word__2 >= 0
+     using hypothesis H39.
+***  Proved C4:  word__2 <= 65535
+     using hypothesis H40.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_9.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  ibit__phase__first <= ibit_request
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  bc1553__lru_name__first <= bc1553__asi
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  bc1553__is_valid(bc1553__asi, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bc1553__asi and bc1553__asi <= 
+          bc1553__lru_name__last
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  true
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H40).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H40).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as H6)
+          .
+%%%  Simplified H49 on reading formula in, to give:
+     %%%  H49:  ibit__phase__first <= ibit_request__3
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  ibit__phase__first <= ibit_request__3
+***  Proved C1:  ibit__phase__first <= ibit_request__3
+     using hypothesis H49.
+***  Proved C2:  ibit_request__3 <= ibit__phase__last
+     using hypothesis H50.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_12.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_13.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

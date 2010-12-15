@@ -1,0 +1,108 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.39
+
+Line
+   1  -- Clock implementation for simulation
+   2  --
+   3  -- $Log: clock.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/02/13 00:17:55  adi
+   9  -- Added Command separate
+  10  --
+  11  -- Revision 1.1  2003/02/08 17:38:45  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  package body Clock
+  16    --# own Time is Valid_Time, Ticks;
+  17  is
+  18     Valid_Time : Boolean := False;
+  19     Ticks : Millisecond := 0;
+  20  
+  21     -- Read the current time
+  22     procedure Read(T : out Millisecond;
+  23                    Valid : out Boolean)
+  24       --# global in out Ticks;
+  25       --#        in Valid_Time;
+  26       --# derives
+  27       --#      Valid from Valid_Time &
+  28       --#      T, Ticks from Valid_Time, Ticks;
+  29     is
+  30     begin
+  31        if Valid_Time then
+  32           Valid := True;
+  33           T := Ticks;
+  34           -- Each read takes at least 1 millisecond
+  35           if Ticks < Millisecond'Last then
+  36              Ticks := Ticks + 1;
+  37           else
+  38              Ticks := 0;
+  39           end if;
+  40        else
+  41           T := 0;
+  42           Valid := False;
+  43        end if;
+  44     end Read;
+
++++        Flow analysis of subprogram Read performed: no 
+           errors found.
+
+  45  
+  46  
+  47     function Time_Valid return Boolean
+  48       --# global in Valid_Time;
+  49     is begin
+  50        return Valid_Time;
+  51     end Time_Valid;
+
++++        Flow analysis of subprogram Time_Valid 
+           performed: no errors found.
+
+  52  
+  53     -- Reset the clock, making it valid
+  54     procedure Reset
+  55     --# global out Valid_Time, Ticks;
+  56     --# derives Valid_Time, Ticks from;
+  57     is
+  58     begin
+  59        Valid_Time := True;
+  60        Ticks := 0;
+  61     end Reset;
+
++++        Flow analysis of subprogram Reset performed: no 
+           errors found.
+
+  62  
+  63     -- Interface for simulation
+  64     procedure Cycle(Plus : in Millisecond)
+  65     --# global in out Ticks;
+  66     --# derives Ticks from *, Plus;
+  67     is begin
+  68        if (Millisecond'Last - Plus) < Ticks then
+  69           -- Wrap around
+  70           Ticks := Plus - (Millisecond'Last - Ticks);
+  71        else
+  72           Ticks := Ticks + Plus;
+  73        end if;
+  74     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+  75  
+  76     procedure Command is separate;
+  77  end Clock;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

@@ -1,0 +1,44 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.44
+
+                       procedure rt1553.Write_Message
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 81:
+
+procedure_write_message_1.
+H1:    true .
+H2:    for_all(i___1: bus__word_index, ((i___1 >= 
+           bus__word_index__first) and (i___1 <= 
+           bus__word_index__last)) -> ((element(fld_data(
+           data), [i___1]) >= bus__word__first) and (element(fld_data(
+           data), [i___1]) <= bus__word__last))) .
+H3:    true .
+H4:    true .
+H5:    subaddress_idx >= bus__lru_subaddress_index__first .
+H6:    subaddress_idx <= bus__lru_subaddress_index__last .
+H7:    src >= lru_name__first .
+H8:    src <= lru_name__last .
+        ->
+C1:    element(lru_names, [src]) >= bus__lru_index__first .
+C2:    element(lru_names, [src]) <= bus__lru_index__last .
+C3:    subaddress_idx >= bus__lru_subaddress_index__first .
+C4:    subaddress_idx <= bus__lru_subaddress_index__last .
+C5:    src >= lru_name__first .
+C6:    src <= lru_name__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_write_message_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+

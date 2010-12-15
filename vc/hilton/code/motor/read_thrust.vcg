@@ -1,0 +1,47 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.93
+
+                        procedure motor.Read_thrust
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 155:
+
+procedure_read_thrust_1.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    this_level__1 >= power__first .
+H9:    this_level__1 <= power__last .
+        ->
+C1:    this_level__1 >= power__first .
+C2:    this_level__1 <= power__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_thrust_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_read_thrust_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_thrust_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+

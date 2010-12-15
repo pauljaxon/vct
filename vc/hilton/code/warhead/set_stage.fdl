@@ -1,0 +1,41 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:43.25}
+
+                        {procedure warhead.Set_Stage}
+
+
+title procedure set_stage;
+
+  function round__(real) : integer;
+  type clock__millisecond = integer;
+  type warhead_cfg__state = (warhead_cfg__inactive, 
+     warhead_cfg__awake, warhead_cfg__armed, warhead_cfg__final, 
+     warhead_cfg__detonated);
+  const stage__base__last : warhead_cfg__state = pending; 
+  const stage__base__first : warhead_cfg__state = pending; 
+  const warhead_cfg__state__base__last : warhead_cfg__state = pending; 
+  const warhead_cfg__state__base__first : warhead_cfg__state = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const stage__size : integer = pending; 
+  const stage__last : warhead_cfg__state = pending; 
+  const stage__first : warhead_cfg__state = pending; 
+  const warhead_cfg__state__size : integer = pending; 
+  const warhead_cfg__state__last : warhead_cfg__state = pending; 
+  const warhead_cfg__state__first : warhead_cfg__state = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  var new_stage : warhead_cfg__state;
+  var stage_timer : integer;
+  var time_valid : boolean;
+  var time_valid__1 : boolean;
+  var stage_timer__1 : integer;
+
+end;

@@ -1,0 +1,449 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.75
+
+                         function roll.Target_Rate
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 46:
+
+function_target_rate_1.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    bank >= instruments__bankangle__first .
+H7:    bank <= instruments__bankangle__last .
+        ->
+C1:    target_heading >= instruments__headdegree__first .
+C2:    target_heading <= instruments__headdegree__last .
+C3:    present_heading >= instruments__headdegree__first .
+C4:    present_heading <= instruments__headdegree__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 46:
+
+function_target_rate_2.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    bank >= instruments__bankangle__first .
+H7:    bank <= instruments__bankangle__last .
+H8:    target_heading >= instruments__headdegree__first .
+H9:    target_heading <= instruments__headdegree__last .
+H10:   present_heading >= instruments__headdegree__first .
+H11:   present_heading <= instruments__headdegree__last .
+H12:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H13:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+        ->
+C1:    target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+C2:    target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 47:
+
+function_target_rate_3.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    bank >= instruments__bankangle__first .
+H7:    bank <= instruments__bankangle__last .
+H8:    target_heading >= instruments__headdegree__first .
+H9:    target_heading <= instruments__headdegree__last .
+H10:   present_heading >= instruments__headdegree__first .
+H11:   present_heading <= instruments__headdegree__last .
+H12:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H13:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H14:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H15:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H16:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H17:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+        ->
+C1:    (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+C2:    (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+C3:    5 <> 0 .
+C4:    target_ror(present_heading, target_heading) - bank >= 
+           degrees__degreespersec__base__first .
+C5:    target_ror(present_heading, target_heading) - bank <= 
+           degrees__degreespersec__base__last .
+C6:    bank >= degreespersec__first .
+C7:    bank <= degreespersec__last .
+C8:    target_ror(present_heading, target_heading) >= 
+           degreespersec__first .
+C9:    target_ror(present_heading, target_heading) <= 
+           degreespersec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 49:
+
+function_target_rate_4.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    bank >= instruments__bankangle__first .
+H7:    bank <= instruments__bankangle__last .
+H8:    target_heading >= instruments__headdegree__first .
+H9:    target_heading <= instruments__headdegree__last .
+H10:   present_heading >= instruments__headdegree__first .
+H11:   present_heading <= instruments__headdegree__last .
+H12:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H13:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H14:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H15:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H16:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H17:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H18:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H19:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H20:   5 <> 0 .
+H21:   target_ror(present_heading, target_heading) - bank >= 
+           degrees__degreespersec__base__first .
+H22:   target_ror(present_heading, target_heading) - bank <= 
+           degrees__degreespersec__base__last .
+H23:   bank >= degreespersec__first .
+H24:   bank <= degreespersec__last .
+H25:   target_ror(present_heading, target_heading) >= 
+           degreespersec__first .
+H26:   target_ror(present_heading, target_heading) <= 
+           degreespersec__last .
+H27:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H28:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H29:   (target_ror(present_heading, target_heading) - bank) div 5 > 10 .
+        ->
+C1:    10 >= degreespersec__first .
+C2:    10 <= degreespersec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 50:
+
+function_target_rate_5.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    bank >= instruments__bankangle__first .
+H7:    bank <= instruments__bankangle__last .
+H8:    target_heading >= instruments__headdegree__first .
+H9:    target_heading <= instruments__headdegree__last .
+H10:   present_heading >= instruments__headdegree__first .
+H11:   present_heading <= instruments__headdegree__last .
+H12:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H13:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H14:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H15:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H16:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H17:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H18:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H19:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H20:   5 <> 0 .
+H21:   target_ror(present_heading, target_heading) - bank >= 
+           degrees__degreespersec__base__first .
+H22:   target_ror(present_heading, target_heading) - bank <= 
+           degrees__degreespersec__base__last .
+H23:   bank >= degreespersec__first .
+H24:   bank <= degreespersec__last .
+H25:   target_ror(present_heading, target_heading) >= 
+           degreespersec__first .
+H26:   target_ror(present_heading, target_heading) <= 
+           degreespersec__last .
+H27:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H28:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H29:   not ((target_ror(present_heading, target_heading) - 
+           bank) div 5 > 10) .
+H30:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H31:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+        ->
+C1:     -10 >= system__min_int .
+C2:     -10 <= system__max_int .
+ 
+
+For path(s) from start to run-time check associated with statement of line 51:
+
+function_target_rate_6.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    bank >= instruments__bankangle__first .
+H7:    bank <= instruments__bankangle__last .
+H8:    target_heading >= instruments__headdegree__first .
+H9:    target_heading <= instruments__headdegree__last .
+H10:   present_heading >= instruments__headdegree__first .
+H11:   present_heading <= instruments__headdegree__last .
+H12:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H13:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H14:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H15:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H16:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H17:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H18:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H19:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H20:   5 <> 0 .
+H21:   target_ror(present_heading, target_heading) - bank >= 
+           degrees__degreespersec__base__first .
+H22:   target_ror(present_heading, target_heading) - bank <= 
+           degrees__degreespersec__base__last .
+H23:   bank >= degreespersec__first .
+H24:   bank <= degreespersec__last .
+H25:   target_ror(present_heading, target_heading) >= 
+           degreespersec__first .
+H26:   target_ror(present_heading, target_heading) <= 
+           degreespersec__last .
+H27:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H28:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H29:   not ((target_ror(present_heading, target_heading) - 
+           bank) div 5 > 10) .
+H30:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H31:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H32:    -10 >= system__min_int .
+H33:    -10 <= system__max_int .
+H34:   (target_ror(present_heading, target_heading) - bank) div 5 <  -10 .
+        ->
+C1:     -10 >= degreespersec__first .
+C2:     -10 <= degreespersec__last .
+ 
+
+For path(s) from start to finish:
+
+function_target_rate_7.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    bank >= instruments__bankangle__first .
+H7:    bank <= instruments__bankangle__last .
+H8:    target_heading >= instruments__headdegree__first .
+H9:    target_heading <= instruments__headdegree__last .
+H10:   present_heading >= instruments__headdegree__first .
+H11:   present_heading <= instruments__headdegree__last .
+H12:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H13:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H14:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H15:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H16:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H17:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H18:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H19:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H20:   5 <> 0 .
+H21:   target_ror(present_heading, target_heading) - bank >= 
+           degrees__degreespersec__base__first .
+H22:   target_ror(present_heading, target_heading) - bank <= 
+           degrees__degreespersec__base__last .
+H23:   bank >= degreespersec__first .
+H24:   bank <= degreespersec__last .
+H25:   target_ror(present_heading, target_heading) >= 
+           degreespersec__first .
+H26:   target_ror(present_heading, target_heading) <= 
+           degreespersec__last .
+H27:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H28:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H29:   (target_ror(present_heading, target_heading) - bank) div 5 > 10 .
+H30:   10 >= degreespersec__first .
+H31:   10 <= degreespersec__last .
+H32:   10 >= degreespersec__first .
+H33:   10 <= degreespersec__last .
+        ->
+C1:    true .
+C2:    10 >= degreespersec__first .
+C3:    10 <= degreespersec__last .
+ 
+
+function_target_rate_8.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    bank >= instruments__bankangle__first .
+H7:    bank <= instruments__bankangle__last .
+H8:    target_heading >= instruments__headdegree__first .
+H9:    target_heading <= instruments__headdegree__last .
+H10:   present_heading >= instruments__headdegree__first .
+H11:   present_heading <= instruments__headdegree__last .
+H12:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H13:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H14:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H15:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H16:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H17:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H18:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H19:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H20:   5 <> 0 .
+H21:   target_ror(present_heading, target_heading) - bank >= 
+           degrees__degreespersec__base__first .
+H22:   target_ror(present_heading, target_heading) - bank <= 
+           degrees__degreespersec__base__last .
+H23:   bank >= degreespersec__first .
+H24:   bank <= degreespersec__last .
+H25:   target_ror(present_heading, target_heading) >= 
+           degreespersec__first .
+H26:   target_ror(present_heading, target_heading) <= 
+           degreespersec__last .
+H27:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H28:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H29:   not ((target_ror(present_heading, target_heading) - 
+           bank) div 5 > 10) .
+H30:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H31:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H32:    -10 >= system__min_int .
+H33:    -10 <= system__max_int .
+H34:   (target_ror(present_heading, target_heading) - bank) div 5 <  -10 .
+H35:    -10 >= degreespersec__first .
+H36:    -10 <= degreespersec__last .
+H37:    -10 >= degreespersec__first .
+H38:    -10 <= degreespersec__last .
+        ->
+C1:    true .
+C2:     -10 >= degreespersec__first .
+C3:     -10 <= degreespersec__last .
+ 
+
+function_target_rate_9.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    bank >= instruments__bankangle__first .
+H7:    bank <= instruments__bankangle__last .
+H8:    target_heading >= instruments__headdegree__first .
+H9:    target_heading <= instruments__headdegree__last .
+H10:   present_heading >= instruments__headdegree__first .
+H11:   present_heading <= instruments__headdegree__last .
+H12:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H13:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H14:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H15:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H16:   target_ror(present_heading, target_heading) >= 
+           instruments__bankangle__first .
+H17:   target_ror(present_heading, target_heading) <= 
+           instruments__bankangle__last .
+H18:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H19:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H20:   5 <> 0 .
+H21:   target_ror(present_heading, target_heading) - bank >= 
+           degrees__degreespersec__base__first .
+H22:   target_ror(present_heading, target_heading) - bank <= 
+           degrees__degreespersec__base__last .
+H23:   bank >= degreespersec__first .
+H24:   bank <= degreespersec__last .
+H25:   target_ror(present_heading, target_heading) >= 
+           degreespersec__first .
+H26:   target_ror(present_heading, target_heading) <= 
+           degreespersec__last .
+H27:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H28:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H29:   not ((target_ror(present_heading, target_heading) - 
+           bank) div 5 > 10) .
+H30:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H31:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+H32:    -10 >= system__min_int .
+H33:    -10 <= system__max_int .
+H34:   not ((target_ror(present_heading, target_heading) - 
+           bank) div 5 <  -10) .
+H35:   (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+H36:   (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+        ->
+C1:    true .
+C2:    (target_ror(present_heading, target_heading) - bank) div 5 >= 
+           degreespersec__first .
+C3:    (target_ror(present_heading, target_heading) - bank) div 5 <= 
+           degreespersec__last .
+ 
+

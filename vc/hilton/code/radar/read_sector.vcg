@@ -1,0 +1,114 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:41.29
+
+                        procedure Radar.Read_Sector
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 188:
+
+procedure_read_sector_1.
+H1:    true .
+H2:    idx >= bus__word_index__first .
+H3:    idx <= bus__word_index__last .
+H4:    subaddress_idx >= bus__lru_subaddress_index__first .
+H5:    subaddress_idx <= bus__lru_subaddress_index__last .
+        ->
+C1:    subaddress_idx >= bus__lru_subaddress_index__first .
+C2:    subaddress_idx <= bus__lru_subaddress_index__last .
+C3:    idx >= bus__word_index__first .
+C4:    idx <= bus__word_index__last .
+C5:    bus_id >= rt1553__lru_name__first .
+C6:    bus_id <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 188:
+
+procedure_read_sector_2.
+H1:    true .
+H2:    idx >= bus__word_index__first .
+H3:    idx <= bus__word_index__last .
+H4:    subaddress_idx >= bus__lru_subaddress_index__first .
+H5:    subaddress_idx <= bus__lru_subaddress_index__last .
+H6:    subaddress_idx >= bus__lru_subaddress_index__first .
+H7:    subaddress_idx <= bus__lru_subaddress_index__last .
+H8:    idx >= bus__word_index__first .
+H9:    idx <= bus__word_index__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   s_datum__1 >= bus__word__first .
+H13:   s_datum__1 <= bus__word__last .
+        ->
+C1:    s_datum__1 >= bus__word__first .
+C2:    s_datum__1 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 192:
+
+procedure_read_sector_3.
+H1:    true .
+H2:    idx >= bus__word_index__first .
+H3:    idx <= bus__word_index__last .
+H4:    subaddress_idx >= bus__lru_subaddress_index__first .
+H5:    subaddress_idx <= bus__lru_subaddress_index__last .
+H6:    subaddress_idx >= bus__lru_subaddress_index__first .
+H7:    subaddress_idx <= bus__lru_subaddress_index__last .
+H8:    idx >= bus__word_index__first .
+H9:    idx <= bus__word_index__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   s_datum__1 >= bus__word__first .
+H13:   s_datum__1 <= bus__word__last .
+H14:   s_datum__1 >= bus__word__first .
+H15:   s_datum__1 <= bus__word__last .
+H16:   s_datum__1 >= bus__word__first .
+H17:   s_datum__1 <= bus__word__last .
+        ->
+C1:    s_datum__1 >= systemtypes__unsigned16__first .
+C2:    s_datum__1 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 192:
+
+procedure_read_sector_4.
+H1:    true .
+H2:    idx >= bus__word_index__first .
+H3:    idx <= bus__word_index__last .
+H4:    subaddress_idx >= bus__lru_subaddress_index__first .
+H5:    subaddress_idx <= bus__lru_subaddress_index__last .
+H6:    subaddress_idx >= bus__lru_subaddress_index__first .
+H7:    subaddress_idx <= bus__lru_subaddress_index__last .
+H8:    idx >= bus__word_index__first .
+H9:    idx <= bus__word_index__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   s_datum__1 >= bus__word__first .
+H13:   s_datum__1 <= bus__word__last .
+H14:   s_datum__1 >= bus__word__first .
+H15:   s_datum__1 <= bus__word__last .
+H16:   s_datum__1 >= bus__word__first .
+H17:   s_datum__1 <= bus__word__last .
+H18:   s_datum__1 >= systemtypes__unsigned16__first .
+H19:   s_datum__1 <= systemtypes__unsigned16__last .
+H20:   radar_cfg__decode_sector(s_datum__1) >= 
+           radar_cfg__sector_range__first .
+H21:   radar_cfg__decode_sector(s_datum__1) <= 
+           radar_cfg__sector_range__last .
+        ->
+C1:    radar_cfg__decode_sector(s_datum__1) >= sector__first .
+C2:    radar_cfg__decode_sector(s_datum__1) <= sector__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_sector_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+

@@ -1,0 +1,157 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:44  SIMPLIFIED 25-NOV-2009, 14:19:24
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure missile.Poll.Manage_Boost_Process
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_manage_boost_process_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : bc1553__lru_name, bc1553__lru_name__first <= 
+          i___1 and i___1 <= bc1553__lru_name__last -> ibit__phase__first <= 
+          fld_bit_phase(element(fld_components(state), [i___1])) and 
+          fld_bit_phase(element(fld_components(state), [i___1])) <= 
+          ibit__phase__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  phase_stage__first <= fld_phase(state)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  nav__confidence__first <= est_confidence__2
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  nav__confidence__first <= est_confidence__2
+***  Proved C1:  nav__confidence__first <= est_confidence__2
+     using hypothesis H7.
+***  Proved C2:  est_confidence__2 <= nav__confidence__last
+     using hypothesis H8.
+-S-  Applied substitution rule manage_boost_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New C3:  est_height__2 >= - 200000
+-S-  Applied substitution rule manage_boost_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New C4:  est_height__2 <= 200000
+-S-  Applied substitution rule manage_boost_rules(7).
+     This was achieved by replacing all occurrences of bc1553__lru_name__first 
+          by:
+          bc1553__barometer.
+<S>  New H2:  for_all(i___1 : bc1553__lru_name, bc1553__barometer <= i___1 and 
+          i___1 <= bc1553__lru_name__last -> ibit__phase__first <= 
+          fld_bit_phase(element(fld_components(state), [i___1])) and 
+          fld_bit_phase(element(fld_components(state), [i___1])) <= 
+          ibit__phase__last)
+-S-  Applied substitution rule manage_boost_rules(8).
+     This was achieved by replacing all occurrences of bc1553__lru_name__last 
+          by:
+          bc1553__warhead.
+<S>  New H2:  for_all(i___1 : bc1553__lru_name, bc1553__barometer <= i___1 and 
+          i___1 <= bc1553__warhead -> ibit__phase__first <= fld_bit_phase(
+          element(fld_components(state), [i___1])) and fld_bit_phase(element(
+          fld_components(state), [i___1])) <= ibit__phase__last)
+-S-  Applied substitution rule manage_boost_rules(50).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H2:  for_all(i___1 : bc1553__lru_name, bc1553__barometer <= i___1 and 
+          i___1 <= bc1553__warhead -> ibit__off <= fld_bit_phase(element(
+          fld_components(state), [i___1])) and fld_bit_phase(element(
+          fld_components(state), [i___1])) <= ibit__phase__last)
+-S-  Applied substitution rule manage_boost_rules(51).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H2:  for_all(i___1 : bc1553__lru_name, bc1553__barometer <= i___1 and 
+          i___1 <= bc1553__warhead -> ibit__off <= fld_bit_phase(element(
+          fld_components(state), [i___1])) and fld_bit_phase(element(
+          fld_components(state), [i___1])) <= ibit__timeout)
+-S-  Applied substitution rule manage_boost_rules(83).
+     This was achieved by replacing all occurrences of nav__confidence__first 
+          by:
+          nav__none.
+<S>  New H7:  nav__none <= est_confidence__2
+-S-  Applied substitution rule manage_boost_rules(84).
+     This was achieved by replacing all occurrences of nav__confidence__last by:
+          nav__high.
+<S>  New H8:  est_confidence__2 <= nav__high
+-S-  Applied substitution rule manage_boost_rules(108).
+     This was achieved by replacing all occurrences of nav__meter__first by:
+          - 200000.
+<S>  New H5:  est_height__2 >= - 200000
+-S-  Applied substitution rule manage_boost_rules(109).
+     This was achieved by replacing all occurrences of nav__meter__last by:
+          200000.
+<S>  New H6:  est_height__2 <= 200000
+-S-  Applied substitution rule manage_boost_rules(113).
+     This was achieved by replacing all occurrences of phase_stage__first by:
+          off.
+<S>  New H3:  off <= fld_phase(state)
+-S-  Applied substitution rule manage_boost_rules(114).
+     This was achieved by replacing all occurrences of phase_stage__last by:
+          shutdown.
+<S>  New H4:  fld_phase(state) <= shutdown
+***  Proved C3:  est_height__2 >= - 200000
+     using hypothesis H5.
+***  Proved C4:  est_height__2 <= 200000
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_manage_boost_process_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : bc1553__lru_name, bc1553__lru_name__first <= 
+          i___1 and i___1 <= bc1553__lru_name__last -> ibit__phase__first <= 
+          fld_bit_phase(element(fld_components(state), [i___1])) and 
+          fld_bit_phase(element(fld_components(state), [i___1])) <= 
+          ibit__phase__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  phase_stage__first <= fld_phase(state)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  nav__confidence__first <= est_confidence__2
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  phase_stage__first <= locating
+-S-  Applied substitution rule manage_boost_rules(113).
+     This was achieved by replacing all occurrences of phase_stage__first by:
+          off.
+<S>  New H3:  off <= fld_phase(state)
+<S>  New C1:  true
+-S-  Applied substitution rule manage_boost_rules(114).
+     This was achieved by replacing all occurrences of phase_stage__last by:
+          shutdown.
+<S>  New H4:  fld_phase(state) <= shutdown
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_manage_boost_process_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_manage_boost_process_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

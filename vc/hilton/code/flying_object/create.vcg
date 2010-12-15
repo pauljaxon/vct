@@ -1,0 +1,124 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.52
+
+                       procedure flying_object.Create
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 80:
+
+procedure_create_1.
+H1:    true .
+H2:    fld_z(p) >= measuretypes__meter__first .
+H3:    fld_z(p) <= measuretypes__meter__last .
+H4:    fld_y(p) >= measuretypes__meter__first .
+H5:    fld_y(p) <= measuretypes__meter__last .
+H6:    fld_x(p) >= measuretypes__meter__first .
+H7:    fld_x(p) <= measuretypes__meter__last .
+H8:    fld_vz(v) >= measuretypes__meter_per_sec__first .
+H9:    fld_vz(v) <= measuretypes__meter_per_sec__last .
+H10:   fld_vy(v) >= measuretypes__meter_per_sec__first .
+H11:   fld_vy(v) <= measuretypes__meter_per_sec__last .
+H12:   fld_vx(v) >= measuretypes__meter_per_sec__first .
+H13:   fld_vx(v) <= measuretypes__meter_per_sec__last .
+H14:   fld_az(a) >= measuretypes__cm_per_sec_2__first .
+H15:   fld_az(a) <= measuretypes__cm_per_sec_2__last .
+H16:   fld_ay(a) >= measuretypes__cm_per_sec_2__first .
+H17:   fld_ay(a) <= measuretypes__cm_per_sec_2__last .
+H18:   fld_ax(a) >= measuretypes__cm_per_sec_2__first .
+H19:   fld_ax(a) <= measuretypes__cm_per_sec_2__last .
+H20:   t__1 >= clock__millisecond__first .
+H21:   t__1 <= clock__millisecond__last .
+H22:   true .
+        ->
+C1:    t__1 >= clock__millisecond__first .
+C2:    t__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 83:
+
+procedure_create_2.
+H1:    true .
+H2:    fld_z(p) >= measuretypes__meter__first .
+H3:    fld_z(p) <= measuretypes__meter__last .
+H4:    fld_y(p) >= measuretypes__meter__first .
+H5:    fld_y(p) <= measuretypes__meter__last .
+H6:    fld_x(p) >= measuretypes__meter__first .
+H7:    fld_x(p) <= measuretypes__meter__last .
+H8:    fld_vz(v) >= measuretypes__meter_per_sec__first .
+H9:    fld_vz(v) <= measuretypes__meter_per_sec__last .
+H10:   fld_vy(v) >= measuretypes__meter_per_sec__first .
+H11:   fld_vy(v) <= measuretypes__meter_per_sec__last .
+H12:   fld_vx(v) >= measuretypes__meter_per_sec__first .
+H13:   fld_vx(v) <= measuretypes__meter_per_sec__last .
+H14:   fld_az(a) >= measuretypes__cm_per_sec_2__first .
+H15:   fld_az(a) <= measuretypes__cm_per_sec_2__last .
+H16:   fld_ay(a) >= measuretypes__cm_per_sec_2__first .
+H17:   fld_ay(a) <= measuretypes__cm_per_sec_2__last .
+H18:   fld_ax(a) >= measuretypes__cm_per_sec_2__first .
+H19:   fld_ax(a) <= measuretypes__cm_per_sec_2__last .
+H20:   t__1 >= clock__millisecond__first .
+H21:   t__1 <= clock__millisecond__last .
+H22:   true .
+H23:   t__1 >= clock__millisecond__first .
+H24:   t__1 <= clock__millisecond__last .
+H25:   true .
+H26:   valid__1 .
+H27:   t__1 >= clock__millisecond__first .
+H28:   t__1 <= clock__millisecond__last .
+        ->
+C1:    t__1 >= clock__millisecond__first .
+C2:    t__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 88:
+
+procedure_create_3.
+H1:    true .
+H2:    fld_z(p) >= measuretypes__meter__first .
+H3:    fld_z(p) <= measuretypes__meter__last .
+H4:    fld_y(p) >= measuretypes__meter__first .
+H5:    fld_y(p) <= measuretypes__meter__last .
+H6:    fld_x(p) >= measuretypes__meter__first .
+H7:    fld_x(p) <= measuretypes__meter__last .
+H8:    fld_vz(v) >= measuretypes__meter_per_sec__first .
+H9:    fld_vz(v) <= measuretypes__meter_per_sec__last .
+H10:   fld_vy(v) >= measuretypes__meter_per_sec__first .
+H11:   fld_vy(v) <= measuretypes__meter_per_sec__last .
+H12:   fld_vx(v) >= measuretypes__meter_per_sec__first .
+H13:   fld_vx(v) <= measuretypes__meter_per_sec__last .
+H14:   fld_az(a) >= measuretypes__cm_per_sec_2__first .
+H15:   fld_az(a) <= measuretypes__cm_per_sec_2__last .
+H16:   fld_ay(a) >= measuretypes__cm_per_sec_2__first .
+H17:   fld_ay(a) <= measuretypes__cm_per_sec_2__last .
+H18:   fld_ax(a) >= measuretypes__cm_per_sec_2__first .
+H19:   fld_ax(a) <= measuretypes__cm_per_sec_2__last .
+H20:   t__1 >= clock__millisecond__first .
+H21:   t__1 <= clock__millisecond__last .
+H22:   true .
+H23:   t__1 >= clock__millisecond__first .
+H24:   t__1 <= clock__millisecond__last .
+H25:   true .
+H26:   not valid__1 .
+        ->
+C1:    0 >= clock__millisecond__first .
+C2:    0 <= clock__millisecond__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_create_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_create_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+

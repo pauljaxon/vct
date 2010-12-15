@@ -1,0 +1,188 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.06
+
+          procedure ins.Extrapolate_Position.Extrapolate_Dimension
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 51:
+
+procedure_extrapolate_dimension_1.
+H1:    true .
+H2:    o >= meter__first .
+H3:    o <= meter__last .
+H4:    v >= meter_per_sec__first .
+H5:    v <= meter_per_sec__last .
+H6:    t_delta >= clock__millisecond__first .
+H7:    t_delta <= clock__millisecond__last .
+H8:    v < 0 .
+        ->
+C1:     -v >= clock__millisecond__first .
+C2:     -v <= clock__millisecond__last .
+C3:     -v >= clock__millisecond__first .
+C4:     -v <= clock__millisecond__last .
+C5:     -v >= measuretypes__meter_per_sec__base__first .
+C6:     -v <= measuretypes__meter_per_sec__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 52:
+
+procedure_extrapolate_dimension_2.
+H1:    true .
+H2:    o >= meter__first .
+H3:    o <= meter__last .
+H4:    v >= meter_per_sec__first .
+H5:    v <= meter_per_sec__last .
+H6:    t_delta >= clock__millisecond__first .
+H7:    t_delta <= clock__millisecond__last .
+H8:    v < 0 .
+H9:     -v >= clock__millisecond__first .
+H10:    -v <= clock__millisecond__last .
+H11:    -v >= clock__millisecond__first .
+H12:    -v <= clock__millisecond__last .
+H13:    -v >= measuretypes__meter_per_sec__base__first .
+H14:    -v <= measuretypes__meter_per_sec__base__last .
+H15:    -v >= clock__millisecond__first .
+H16:    -v <= clock__millisecond__last .
+        ->
+C1:     -(( -v) * t_delta div 1000) >= meter__first .
+C2:     -(( -v) * t_delta div 1000) <= meter__last .
+C3:    ( -v) * t_delta div 1000 >= meter__first .
+C4:    ( -v) * t_delta div 1000 <= meter__last .
+C5:    ( -v) * t_delta div 1000 >= clock__millisecond__base__first .
+C6:    ( -v) * t_delta div 1000 <= clock__millisecond__base__last .
+C7:    1000 <> 0 .
+C8:    ( -v) * t_delta >= clock__millisecond__base__first .
+C9:    ( -v) * t_delta <= clock__millisecond__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 54:
+
+procedure_extrapolate_dimension_3.
+H1:    true .
+H2:    o >= meter__first .
+H3:    o <= meter__last .
+H4:    v >= meter_per_sec__first .
+H5:    v <= meter_per_sec__last .
+H6:    t_delta >= clock__millisecond__first .
+H7:    t_delta <= clock__millisecond__last .
+H8:    not (v < 0) .
+        ->
+C1:    v >= clock__millisecond__first .
+C2:    v <= clock__millisecond__last .
+C3:    v >= clock__millisecond__first .
+C4:    v <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 55:
+
+procedure_extrapolate_dimension_4.
+H1:    true .
+H2:    o >= meter__first .
+H3:    o <= meter__last .
+H4:    v >= meter_per_sec__first .
+H5:    v <= meter_per_sec__last .
+H6:    t_delta >= clock__millisecond__first .
+H7:    t_delta <= clock__millisecond__last .
+H8:    not (v < 0) .
+H9:    v >= clock__millisecond__first .
+H10:   v <= clock__millisecond__last .
+H11:   v >= clock__millisecond__first .
+H12:   v <= clock__millisecond__last .
+H13:   v >= clock__millisecond__first .
+H14:   v <= clock__millisecond__last .
+        ->
+C1:    v * t_delta div 1000 >= meter__first .
+C2:    v * t_delta div 1000 <= meter__last .
+C3:    v * t_delta div 1000 >= meter__first .
+C4:    v * t_delta div 1000 <= meter__last .
+C5:    v * t_delta div 1000 >= clock__millisecond__base__first .
+C6:    v * t_delta div 1000 <= clock__millisecond__base__last .
+C7:    1000 <> 0 .
+C8:    v * t_delta >= clock__millisecond__base__first .
+C9:    v * t_delta <= clock__millisecond__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 57:
+
+procedure_extrapolate_dimension_5.
+H1:    true .
+H2:    o >= meter__first .
+H3:    o <= meter__last .
+H4:    v >= meter_per_sec__first .
+H5:    v <= meter_per_sec__last .
+H6:    t_delta >= clock__millisecond__first .
+H7:    t_delta <= clock__millisecond__last .
+H8:    v < 0 .
+H9:     -v >= clock__millisecond__first .
+H10:    -v <= clock__millisecond__last .
+H11:    -v >= clock__millisecond__first .
+H12:    -v <= clock__millisecond__last .
+H13:    -v >= measuretypes__meter_per_sec__base__first .
+H14:    -v <= measuretypes__meter_per_sec__base__last .
+H15:    -v >= clock__millisecond__first .
+H16:    -v <= clock__millisecond__last .
+H17:    -(( -v) * t_delta div 1000) >= meter__first .
+H18:    -(( -v) * t_delta div 1000) <= meter__last .
+H19:   ( -v) * t_delta div 1000 >= meter__first .
+H20:   ( -v) * t_delta div 1000 <= meter__last .
+H21:   ( -v) * t_delta div 1000 >= clock__millisecond__base__first .
+H22:   ( -v) * t_delta div 1000 <= clock__millisecond__base__last .
+H23:   1000 <> 0 .
+H24:   ( -v) * t_delta >= clock__millisecond__base__first .
+H25:   ( -v) * t_delta <= clock__millisecond__base__last .
+H26:    -(( -v) * t_delta div 1000) >= meter__first .
+H27:    -(( -v) * t_delta div 1000) <= meter__last .
+        ->
+C1:    o + ( -(( -v) * t_delta div 1000)) >= meter__first .
+C2:    o + ( -(( -v) * t_delta div 1000)) <= meter__last .
+ 
+
+procedure_extrapolate_dimension_6.
+H1:    true .
+H2:    o >= meter__first .
+H3:    o <= meter__last .
+H4:    v >= meter_per_sec__first .
+H5:    v <= meter_per_sec__last .
+H6:    t_delta >= clock__millisecond__first .
+H7:    t_delta <= clock__millisecond__last .
+H8:    not (v < 0) .
+H9:    v >= clock__millisecond__first .
+H10:   v <= clock__millisecond__last .
+H11:   v >= clock__millisecond__first .
+H12:   v <= clock__millisecond__last .
+H13:   v >= clock__millisecond__first .
+H14:   v <= clock__millisecond__last .
+H15:   v * t_delta div 1000 >= meter__first .
+H16:   v * t_delta div 1000 <= meter__last .
+H17:   v * t_delta div 1000 >= meter__first .
+H18:   v * t_delta div 1000 <= meter__last .
+H19:   v * t_delta div 1000 >= clock__millisecond__base__first .
+H20:   v * t_delta div 1000 <= clock__millisecond__base__last .
+H21:   1000 <> 0 .
+H22:   v * t_delta >= clock__millisecond__base__first .
+H23:   v * t_delta <= clock__millisecond__base__last .
+H24:   v * t_delta div 1000 >= meter__first .
+H25:   v * t_delta div 1000 <= meter__last .
+        ->
+C1:    o + v * t_delta div 1000 >= meter__first .
+C2:    o + v * t_delta div 1000 <= meter__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_extrapolate_dimension_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_dimension_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+

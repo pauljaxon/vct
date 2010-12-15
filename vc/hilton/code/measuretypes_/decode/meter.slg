@@ -1,0 +1,83 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:22
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure decode.Meter
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_meter_1.  @@@@@@@@@@
+-S-  Applied substitution rule meter_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New C1:  lo + hi * word_max >= - 200000
+<S>  New C5:  hi >= - 200000
+<S>  New C7:  lo >= - 200000
+-S-  Applied substitution rule meter_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New C2:  lo + hi * word_max <= 200000
+<S>  New C6:  hi <= 200000
+<S>  New C8:  lo <= 200000
+-S-  Applied substitution rule meter_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__base__first by:
+          - 2147483648.
+<S>  New C3:  hi * word_max >= - 2147483648
+-S-  Applied substitution rule meter_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__base__last by:
+          2147483647.
+<S>  New C4:  hi * word_max <= 2147483647
+-S-  Applied substitution rule meter_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New C1:  lo + hi * 65536 >= - 200000
+<S>  New C2:  lo + hi * 65536 <= 200000
+<S>  New C3:  hi * 65536 >= - 2147483648
+<S>  New C4:  hi * 65536 <= 2147483647
+-S-  Applied substitution rule meter_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  lo >= 0
+<S>  New H4:  hi >= 0
+-S-  Applied substitution rule meter_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  lo <= 65535
+<S>  New H5:  hi <= 65535
+***  Proved C5:  hi >= - 200000
+     using hypothesis H4.
+***  Proved C7:  lo >= - 200000
+     using hypothesis H2.
+***  Proved C6:  hi <= 200000
+     using hypothesis H5.
+***  Proved C8:  lo <= 200000
+     using hypothesis H3.
+***  Proved C1:  lo + hi * 65536 >= - 200000
+     using hypotheses H2 & H4.
+***  Proved C3:  hi * 65536 >= - 2147483648
+     using hypothesis H4.
+---  Eliminated hypothesis H1 (true-hypothesis).
+     +++  New H6:  integer__size >= 0
+     +++  New H7:  measuretypes__meter__size >= 0
+     +++  New H8:  bus__word__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_meter_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

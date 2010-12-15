@@ -1,0 +1,49 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.58
+
+                      function bus_encode.Encode_Byte2
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 35:
+
+function_encode_byte2_1.
+H1:    true .
+H2:    lo >= systemtypes__byte__first .
+H3:    lo <= systemtypes__byte__last .
+H4:    hi >= systemtypes__byte__first .
+H5:    hi <= systemtypes__byte__last .
+        ->
+C1:    lo + 256 * hi >= bus__word__first .
+C2:    lo + 256 * hi <= bus__word__last .
+C3:    256 * hi >= integer__base__first .
+C4:    256 * hi <= integer__base__last .
+ 
+
+For path(s) from start to finish:
+
+function_encode_byte2_2.
+H1:    true .
+H2:    lo >= systemtypes__byte__first .
+H3:    lo <= systemtypes__byte__last .
+H4:    hi >= systemtypes__byte__first .
+H5:    hi <= systemtypes__byte__last .
+H6:    lo + 256 * hi >= bus__word__first .
+H7:    lo + 256 * hi <= bus__word__last .
+H8:    256 * hi >= integer__base__first .
+H9:    256 * hi <= integer__base__last .
+H10:   lo + 256 * hi >= bus__word__first .
+H11:   lo + 256 * hi <= bus__word__last .
+        ->
+C1:    true .
+C2:    lo + 256 * hi >= bus__word__first .
+C3:    lo + 256 * hi <= bus__word__last .
+ 
+

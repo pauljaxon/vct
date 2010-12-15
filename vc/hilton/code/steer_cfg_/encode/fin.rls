@@ -1,0 +1,75 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:38.83*/
+
+                            /*function encode.Fin*/
+
+
+rule_family fin_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+fin_rules(1): integer__size >= 0 may_be_deduced.
+fin_rules(2): integer__first may_be_replaced_by -2147483648.
+fin_rules(3): integer__last may_be_replaced_by 2147483647.
+fin_rules(4): integer__base__first may_be_replaced_by -2147483648.
+fin_rules(5): integer__base__last may_be_replaced_by 2147483647.
+fin_rules(6): bus__word__size >= 0 may_be_deduced.
+fin_rules(7): bus__word__first may_be_replaced_by 0.
+fin_rules(8): bus__word__last may_be_replaced_by 65535.
+fin_rules(9): bus__word__base__first may_be_replaced_by -2147483648.
+fin_rules(10): bus__word__base__last may_be_replaced_by 2147483647.
+fin_rules(11): steer_cfg__fin__size >= 0 may_be_deduced.
+fin_rules(12): steer_cfg__fin__first may_be_replaced_by steer_cfg__port.
+fin_rules(13): steer_cfg__fin__last may_be_replaced_by steer_cfg__bottom.
+fin_rules(14): steer_cfg__fin__base__first may_be_replaced_by steer_cfg__port.
+fin_rules(15): steer_cfg__fin__base__last may_be_replaced_by steer_cfg__bottom.
+fin_rules(16): steer_cfg__fin__pos(steer_cfg__fin__first) may_be_replaced_by 0.
+fin_rules(17): steer_cfg__fin__pos(steer_cfg__port) may_be_replaced_by 0.
+fin_rules(18): steer_cfg__fin__val(0) may_be_replaced_by 
+     steer_cfg__port.
+fin_rules(19): steer_cfg__fin__pos(steer_cfg__starboard) may_be_replaced_by 1.
+fin_rules(20): steer_cfg__fin__val(1) may_be_replaced_by 
+     steer_cfg__starboard.
+fin_rules(21): steer_cfg__fin__pos(steer_cfg__top) may_be_replaced_by 2.
+fin_rules(22): steer_cfg__fin__val(2) may_be_replaced_by 
+     steer_cfg__top.
+fin_rules(23): steer_cfg__fin__pos(steer_cfg__bottom) may_be_replaced_by 3.
+fin_rules(24): steer_cfg__fin__val(3) may_be_replaced_by 
+     steer_cfg__bottom.
+fin_rules(25): steer_cfg__fin__pos(steer_cfg__fin__last) may_be_replaced_by 3.
+fin_rules(26): steer_cfg__fin__pos(succ(X)) may_be_replaced_by 
+     steer_cfg__fin__pos(X) + 1
+     if [X <=steer_cfg__bottom, X <> steer_cfg__bottom].
+fin_rules(27): steer_cfg__fin__pos(pred(X)) may_be_replaced_by 
+     steer_cfg__fin__pos(X) - 1
+     if [X >=steer_cfg__port, X <> steer_cfg__port].
+fin_rules(28): steer_cfg__fin__pos(X) >= 0 may_be_deduced_from
+     [steer_cfg__port <= X, X <= steer_cfg__bottom].
+fin_rules(29): steer_cfg__fin__pos(X) <= 3 may_be_deduced_from
+     [steer_cfg__port <= X, X <= steer_cfg__bottom].
+fin_rules(30): steer_cfg__fin__val(X) >= steer_cfg__port may_be_deduced_from
+     [0 <= X, X <= 3].
+fin_rules(31): steer_cfg__fin__val(X) <= steer_cfg__bottom may_be_deduced_from
+     [0 <= X, X <= 3].
+fin_rules(32): succ(steer_cfg__fin__val(X)) may_be_replaced_by 
+     steer_cfg__fin__val(X+1)
+     if [0 <= X, X < 3].
+fin_rules(33): pred(steer_cfg__fin__val(X)) may_be_replaced_by 
+     steer_cfg__fin__val(X-1)
+     if [0 < X, X <= 3].
+fin_rules(34): steer_cfg__fin__pos(steer_cfg__fin__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 3].
+fin_rules(35): steer_cfg__fin__val(steer_cfg__fin__pos(X)) may_be_replaced_by X
+     if [steer_cfg__port <= X, X <= steer_cfg__bottom].
+fin_rules(36): steer_cfg__fin__pos(X) <= steer_cfg__fin__pos(Y) & X <= Y are_interchangeable 
+     if [steer_cfg__port <= X, X <= steer_cfg__bottom, 
+     steer_cfg__port <= Y, Y <= steer_cfg__bottom].
+fin_rules(37): steer_cfg__fin__val(X) <= steer_cfg__fin__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 3, 0 <= Y, Y <= 3].

@@ -1,0 +1,218 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:41.67
+
+                        procedure if_radar.Read_Ping
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 151:
+
+procedure_read_ping_1.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   fld_fresh_answer(last_ping) .
+        ->
+C1:    fld_sx(last_ping) >= radar_cfg__sector_range__first .
+C2:    fld_sx(last_ping) <= radar_cfg__sector_range__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 152:
+
+procedure_read_ping_2.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   fld_fresh_answer(last_ping) .
+H13:   fld_sx(last_ping) >= radar_cfg__sector_range__first .
+H14:   fld_sx(last_ping) <= radar_cfg__sector_range__last .
+        ->
+C1:    fld_sx(last_ping) >= radar_cfg__sector_range__first .
+C2:    fld_sx(last_ping) <= radar_cfg__sector_range__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 153:
+
+procedure_read_ping_3.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   fld_fresh_answer(last_ping) .
+H13:   fld_sx(last_ping) >= radar_cfg__sector_range__first .
+H14:   fld_sx(last_ping) <= radar_cfg__sector_range__last .
+H15:   fld_sx(last_ping) >= radar_cfg__sector_range__first .
+H16:   fld_sx(last_ping) <= radar_cfg__sector_range__last .
+        ->
+C1:    fld_distance(last_ping) >= measuretypes__meter__first .
+C2:    fld_distance(last_ping) <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 154:
+
+procedure_read_ping_4.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   fld_fresh_answer(last_ping) .
+H13:   fld_sx(last_ping) >= radar_cfg__sector_range__first .
+H14:   fld_sx(last_ping) <= radar_cfg__sector_range__last .
+H15:   fld_sx(last_ping) >= radar_cfg__sector_range__first .
+H16:   fld_sx(last_ping) <= radar_cfg__sector_range__last .
+H17:   fld_distance(last_ping) >= measuretypes__meter__first .
+H18:   fld_distance(last_ping) <= measuretypes__meter__last .
+        ->
+C1:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+C2:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 156:
+
+procedure_read_ping_5.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   not (fld_fresh_answer(last_ping)) .
+        ->
+C1:    0 >= radar_cfg__sector_range__first .
+C2:    0 <= radar_cfg__sector_range__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 157:
+
+procedure_read_ping_6.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   not (fld_fresh_answer(last_ping)) .
+H13:   0 >= radar_cfg__sector_range__first .
+H14:   0 <= radar_cfg__sector_range__last .
+        ->
+C1:    0 >= radar_cfg__sector_range__first .
+C2:    0 <= radar_cfg__sector_range__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 158:
+
+procedure_read_ping_7.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   not (fld_fresh_answer(last_ping)) .
+H13:   0 >= radar_cfg__sector_range__first .
+H14:   0 <= radar_cfg__sector_range__last .
+H15:   0 >= radar_cfg__sector_range__first .
+H16:   0 <= radar_cfg__sector_range__last .
+        ->
+C1:    0 >= measuretypes__meter__first .
+C2:    0 <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 159:
+
+procedure_read_ping_8.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   not (fld_fresh_answer(last_ping)) .
+H13:   0 >= radar_cfg__sector_range__first .
+H14:   0 <= radar_cfg__sector_range__last .
+H15:   0 >= radar_cfg__sector_range__first .
+H16:   0 <= radar_cfg__sector_range__last .
+H17:   0 >= measuretypes__meter__first .
+H18:   0 <= measuretypes__meter__last .
+        ->
+C1:    0 >= measuretypes__meter_per_sec__first .
+C2:    0 <= measuretypes__meter_per_sec__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_ping_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_ping_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_read_ping_11.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_ping_12.
+*** true .          /* trivially true VC removed by Examiner */
+
+

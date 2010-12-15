@@ -1,0 +1,107 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:24
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure flying_object.Extrapolate_Position.Extrapolate_Linear
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_linear_1.  @@@@@@@@@@
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  true
+***  Proved C9:  true
+-S-  Applied substitution rule extrapolate__rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New C1:  u * t_offset + a * t_o_squared div 2 >= - 200000
+<S>  New C3:  u * t_offset + a * t_o_squared div 2 >= - 200000
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New C2:  u * t_offset + a * t_o_squared div 2 <= 200000
+<S>  New C4:  u * t_offset + a * t_o_squared div 2 <= 200000
+-S-  Applied substitution rule extrapolate__rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C5:  u * t_offset + a * t_o_squared div 2 >= - 2147483648
+<S>  New C7:  a * t_o_squared div 2 >= - 2147483648
+<S>  New C10:  a * t_o_squared >= - 2147483648
+<S>  New C14:  u * t_offset >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C6:  u * t_offset + a * t_o_squared div 2 <= 2147483647
+<S>  New C8:  a * t_o_squared div 2 <= 2147483647
+<S>  New C11:  a * t_o_squared <= 2147483647
+<S>  New C15:  u * t_offset <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H6:  t_offset >= - 2147483648
+<S>  New H8:  t_o_squared >= - 2147483648
+<S>  New C12:  a >= - 2147483648
+<S>  New C16:  u >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H7:  t_offset <= 2147483647
+<S>  New H9:  t_o_squared <= 2147483647
+<S>  New C13:  a <= 2147483647
+<S>  New C17:  u <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H2:  u >= - 5000
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H3:  u <= 5000
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of 
+          measuretypes__cm_per_sec_2__first by:
+          - 30000.
+<S>  New H4:  a >= - 30000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__cm_per_sec_2__last by:
+          30000.
+<S>  New H5:  a <= 30000
+***  Proved C12:  a >= - 2147483648
+     using hypothesis H4.
+***  Proved C16:  u >= - 2147483648
+     using hypothesis H2.
+***  Proved C13:  a <= 2147483647
+     using hypothesis H5.
+***  Proved C17:  u <= 2147483647
+     using hypothesis H3.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+     +++  New H10:  long_integer__size >= 0
+     +++  New H11:  measuretypes__meter__size >= 0
+     +++  New H12:  measuretypes__meter_per_sec__size >= 0
+     +++  New H13:  measuretypes__cm_per_sec_2__size >= 0
+     +++  New H14:  integer32__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_linear_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

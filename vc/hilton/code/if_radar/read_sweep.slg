@@ -1,0 +1,230 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:41  SIMPLIFIED 25-NOV-2009, 14:19:03
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure if_radar.Read_sweep
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_read_sweep_1.  @@@@@@@@@@
+-S-  Applied substitution rule read_sweep_rules(14).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__first by:
+          - 20.
+<S>  New C1:  fld_sx_start(last_sweep) >= - 20
+-S-  Applied substitution rule read_sweep_rules(15).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__last by:
+          20.
+<S>  New C2:  fld_sx_start(last_sweep) <= 20
+-S-  Applied substitution rule read_sweep_rules(20).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H5:  fld_sy_end(last_sweep) >= - 20
+<S>  New H7:  fld_sy_start(last_sweep) >= - 20
+<S>  New H9:  fld_sx_end(last_sweep) >= - 20
+<S>  New H11:  fld_sx_start(last_sweep) >= - 20
+-S-  Applied substitution rule read_sweep_rules(21).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H6:  fld_sy_end(last_sweep) <= 20
+<S>  New H8:  fld_sy_start(last_sweep) <= 20
+<S>  New H10:  fld_sx_end(last_sweep) <= 20
+<S>  New H12:  fld_sx_start(last_sweep) <= 20
+***  Proved C1:  fld_sx_start(last_sweep) >= - 20
+     using hypothesis H11.
+***  Proved C2:  fld_sx_start(last_sweep) <= 20
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_sweep_2.  @@@@@@@@@@
+-S-  Applied substitution rule read_sweep_rules(14).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__first by:
+          - 20.
+<S>  New H14:  fld_sx_start(last_sweep) >= - 20
+<S>  New C1:  fld_sx_end(last_sweep) >= - 20
+-S-  Applied substitution rule read_sweep_rules(15).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__last by:
+          20.
+<S>  New H15:  fld_sx_start(last_sweep) <= 20
+<S>  New C2:  fld_sx_end(last_sweep) <= 20
+-S-  Applied substitution rule read_sweep_rules(20).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H5:  fld_sy_end(last_sweep) >= - 20
+<S>  New H7:  fld_sy_start(last_sweep) >= - 20
+<S>  New H9:  fld_sx_end(last_sweep) >= - 20
+<S>  New H11:  fld_sx_start(last_sweep) >= - 20
+-S-  Applied substitution rule read_sweep_rules(21).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H6:  fld_sy_end(last_sweep) <= 20
+<S>  New H8:  fld_sy_start(last_sweep) <= 20
+<S>  New H10:  fld_sx_end(last_sweep) <= 20
+<S>  New H12:  fld_sx_start(last_sweep) <= 20
+***  Proved C1:  fld_sx_end(last_sweep) >= - 20
+     using hypothesis H9.
+***  Proved C2:  fld_sx_end(last_sweep) <= 20
+     using hypothesis H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_sweep_3.  @@@@@@@@@@
+-S-  Applied substitution rule read_sweep_rules(14).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__first by:
+          - 20.
+<S>  New H14:  fld_sx_start(last_sweep) >= - 20
+<S>  New H16:  fld_sx_end(last_sweep) >= - 20
+<S>  New C1:  fld_sy_start(last_sweep) >= - 20
+-S-  Applied substitution rule read_sweep_rules(15).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__last by:
+          20.
+<S>  New H15:  fld_sx_start(last_sweep) <= 20
+<S>  New H17:  fld_sx_end(last_sweep) <= 20
+<S>  New C2:  fld_sy_start(last_sweep) <= 20
+-S-  Applied substitution rule read_sweep_rules(20).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H5:  fld_sy_end(last_sweep) >= - 20
+<S>  New H7:  fld_sy_start(last_sweep) >= - 20
+<S>  New H9:  fld_sx_end(last_sweep) >= - 20
+<S>  New H11:  fld_sx_start(last_sweep) >= - 20
+-S-  Applied substitution rule read_sweep_rules(21).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H6:  fld_sy_end(last_sweep) <= 20
+<S>  New H8:  fld_sy_start(last_sweep) <= 20
+<S>  New H10:  fld_sx_end(last_sweep) <= 20
+<S>  New H12:  fld_sx_start(last_sweep) <= 20
+***  Proved C1:  fld_sy_start(last_sweep) >= - 20
+     using hypothesis H7.
+***  Proved C2:  fld_sy_start(last_sweep) <= 20
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_sweep_4.  @@@@@@@@@@
+-S-  Applied substitution rule read_sweep_rules(14).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__first by:
+          - 20.
+<S>  New H14:  fld_sx_start(last_sweep) >= - 20
+<S>  New H16:  fld_sx_end(last_sweep) >= - 20
+<S>  New H18:  fld_sy_start(last_sweep) >= - 20
+<S>  New C1:  fld_sy_end(last_sweep) >= - 20
+-S-  Applied substitution rule read_sweep_rules(15).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__last by:
+          20.
+<S>  New H15:  fld_sx_start(last_sweep) <= 20
+<S>  New H17:  fld_sx_end(last_sweep) <= 20
+<S>  New H19:  fld_sy_start(last_sweep) <= 20
+<S>  New C2:  fld_sy_end(last_sweep) <= 20
+-S-  Applied substitution rule read_sweep_rules(20).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H5:  fld_sy_end(last_sweep) >= - 20
+<S>  New H7:  fld_sy_start(last_sweep) >= - 20
+<S>  New H9:  fld_sx_end(last_sweep) >= - 20
+<S>  New H11:  fld_sx_start(last_sweep) >= - 20
+-S-  Applied substitution rule read_sweep_rules(21).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H6:  fld_sy_end(last_sweep) <= 20
+<S>  New H8:  fld_sy_start(last_sweep) <= 20
+<S>  New H10:  fld_sx_end(last_sweep) <= 20
+<S>  New H12:  fld_sx_start(last_sweep) <= 20
+***  Proved C1:  fld_sy_end(last_sweep) >= - 20
+     using hypothesis H5.
+***  Proved C2:  fld_sy_end(last_sweep) <= 20
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_sweep_5.  @@@@@@@@@@
+-S-  Applied substitution rule read_sweep_rules(14).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__first by:
+          - 20.
+<S>  New C1:  true
+-S-  Applied substitution rule read_sweep_rules(15).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__last by:
+          20.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_sweep_6.  @@@@@@@@@@
+***  Proved C1:  0 >= radar_cfg__sector_range__first
+     using hypothesis H14.
+***  Proved C2:  0 <= radar_cfg__sector_range__last
+     using hypothesis H15.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_sweep_7.  @@@@@@@@@@
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+***  Proved C1:  0 >= radar_cfg__sector_range__first
+     using hypothesis H14.
+***  Proved C2:  0 <= radar_cfg__sector_range__last
+     using hypothesis H15.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_sweep_8.  @@@@@@@@@@
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H15).
+***  Proved C1:  0 >= radar_cfg__sector_range__first
+     using hypothesis H14.
+***  Proved C2:  0 <= radar_cfg__sector_range__last
+     using hypothesis H15.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_sweep_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_sweep_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_sweep_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_sweep_12.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

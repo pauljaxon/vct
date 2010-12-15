@@ -1,0 +1,689 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.22
+
+Line
+   1  --
+   2  -- $Id: bus.adb,v 1.1.1.1 2004/01/12 19:29:12 adi Exp $
+   3  --
+   4  -- $Log: bus.adb,v $
+   5  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   6  -- Added from tarfile
+   7  --
+   8  --
+   9  -- Revision 1.9  2003/06/25 20:26:51  adi
+  10  -- Added checks to improve VCs
+  11  --
+  12  -- Revision 1.8  2003/02/12 23:39:51  adi
+  13  -- Fixed preservation of valid input
+  14  --
+  15  -- Revision 1.7  2003/02/12 23:26:29  adi
+  16  -- Corrected to handle bus message becoming valid
+  17  --
+  18  -- Revision 1.6  2003/02/12 21:20:28  adi
+  19  -- Added Show_X and Set_X_Message_Valid subprograms
+  20  --
+  21  -- Revision 1.5  2003/02/11 20:12:56  adi
+  22  -- Added valid and fresh checking fns
+  23  --
+  24  -- Revision 1.4  2003/02/05 22:41:55  adi
+  25  -- Improved clarity and simplified proof of RTCs
+  26  --
+  27  -- Revision 1.3  2003/02/03 23:14:54  adi
+  28  -- Added Acknowledge function
+  29  --
+  30  -- Revision 1.2  2003/02/03 19:47:38  adi
+  31  -- Made the message distribution uniform over LRUs
+  32  --
+  33  -- Revision 1.1  2003/02/03 18:13:25  adi
+  34  -- Initial revision
+  35  --
+  36  --
+  37  package body Bus
+  38    --# own Inputs  is Shadow_Inputs,  Real_Inputs &
+  39    --#     Outputs is shadow_outputs, Real_Outputs;
+  40  is
+  41     type Raw_Messages is array(Valid_Msg_Index) of Message;
+  42     -- Messages from RTs to BC
+  43     Shadow_Inputs, Real_Inputs : Raw_Messages
+  44       := Raw_Messages'(others=>Null_Message);
+  45     -- Messages from BC to RTs
+  46     Shadow_Outputs, Real_Outputs : Raw_Messages
+  47       := Raw_Messages'(others=>Null_Message);
+  48  
+  49     -- Mapping each LRU to the right place in the message index
+  50  
+  51     -- Maximum number of subaddresses for a given LRU
+  52     subtype Lru_Start_Index is All_Msg_Index
+  53       range All_Msg_Index'First .. (All_Msg_Index'Last - Max_Lru_Subaddress);
+  54     type Lru_Message_Record is record
+  55        Initial   : Lru_Start_Index; -- 0 indicates invalid
+  56        Msg_Count : Lru_Subaddress_Index; -- number of messages
+  57     end record;
+  58     type Bc_RT_Table is array(Lru_Index) of Lru_Message_Record;
+  59     -- Temporary: 2 messages per LRU each way
+  60     BC_To_RT : constant BC_RT_Table :=
+  61       Bc_Rt_Table'(1 => Lru_Message_Record'(1,2),
+  62                    2 => Lru_Message_Record'(3,2),
+  63                    3 => Lru_Message_Record'(5,2),
+  64                    4 => Lru_Message_Record'(7,2),
+  65                    5 => Lru_Message_Record'(9,2),
+  66                    6 => Lru_Message_Record'(11,2),
+  67                    7 => Lru_Message_Record'(13,2),
+  68                    8 => Lru_Message_Record'(15,2),
+  69                    9 => Lru_Message_Record'(17,2),
+  70                    10 => Lru_Message_Record'(19,2),
+  71                    11 => Lru_Message_Record'(21,2),
+  72                    12 => Lru_Message_Record'(23,2));
+  73  
+  74     RT_To_BC : constant BC_RT_Table :=
+  75       Bc_Rt_Table'(1 => Lru_Message_Record'(1,2),
+  76                    2 => Lru_Message_Record'(3,2),
+  77                    3 => Lru_Message_Record'(5,2),
+  78                    4 => Lru_Message_Record'(7,2),
+  79                    5 => Lru_Message_Record'(9,2),
+  80                    6 => Lru_Message_Record'(11,2),
+  81                    7 => Lru_Message_Record'(13,2),
+  82                    8 => Lru_Message_Record'(15,2),
+  83                    9 => Lru_Message_Record'(17,2),
+  84                    10 => Lru_Message_Record'(19,2),
+  85                    11 => Lru_Message_Record'(21,2),
+  86                    12 => Lru_Message_Record'(23,2));
+  87  
+  88     -- Make an RT-dest message valid
+  89     procedure Set_RT_Message_Valid(Subaddress_Idx : in Lru_Subaddress_Index;
+  90                                    Dest : in LRU_Index)
+  91       --# global in out shadow_outputs;
+  92       --# derives shadow_outputs from *, Subaddress_Idx, dest;
+  93     is
+  94        Placing : Lru_Message_record;
+  95        Actual_Subaddress_Idx : Valid_Msg_Index;
+  96     begin
+  97        placing := Bc_To_Rt(Dest);
+  98        if Placing.initial not in Valid_Msg_Index then
+  99           -- Invalid write; no messages in this direction
+ 100           null;
+ 101        elsif Subaddress_Idx > Placing.Msg_Count then
+ 102           -- This message isn't valid
+ 103           null;
+ 104           else
+ 105              -- Work out which outputs message this is
+ 106              if Placing.Initial <= Lru_Start_Index'Last then
+ 107                 -- We won't overflow
+ 108                 Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 109                 -- Just write the data
+ 110                 Shadow_Outputs(Actual_Subaddress_Idx).Valid := True;
+ 111              else
+ 112                 -- Invalid write -- fell off the end
+ 113                 null;
+ 114              end if;
+ 115        end if;
+ 116     end Set_RT_Message_Valid;
+
++++        Flow analysis of subprogram Set_RT_Message_Valid 
+           performed: no errors found.
+
+ 117  
+ 118     -- Write out a word of data to the RT
+ 119  
+ 120     procedure Write_RT_Word(Data    : in Word;
+ 121                             Idx     : in Word_Index;
+ 122                             Subaddress_Idx : in Lru_Subaddress_Index;
+ 123                             Dest    : in LRU_Index)
+ 124       --# global in out shadow_outputs;
+ 125       --# derives shadow_outputs from *, data, idx, Subaddress_Idx, dest;
+ 126     is
+ 127        Placing : Lru_Message_record;
+ 128        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 129     begin
+ 130        placing := Bc_To_Rt(Dest);
+ 131        if Placing.initial not in Valid_Msg_Index then
+ 132           -- Invalid write; no messages in this direction
+ 133           null;
+ 134        elsif Subaddress_Idx > Placing.Msg_Count then
+ 135           -- This message isn't valid
+ 136           null;
+ 137        else
+ 138           if Placing.Initial <= Lru_Start_Index'Last then
+ 139              -- Work out which outputs message this is
+ 140              Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 141              -- Just write the data
+ 142              Shadow_Outputs(Actual_Subaddress_Idx).Data(Idx) := Data;
+ 143              Shadow_Outputs(Actual_Subaddress_Idx).Fresh := True;
+ 144           else
+ 145              -- Falls off the end
+ 146              null;
+ 147           end if;
+ 148        end if;
+ 149     end Write_RT_Word;
+
++++        Flow analysis of subprogram Write_RT_Word 
+           performed: no errors found.
+
+ 150  
+ 151  
+ 152     procedure Write_RT_Message(Data    : in Message;
+ 153                                Subaddress_Idx : in Lru_Subaddress_Index;
+ 154                                Dest    : in LRU_Index)
+ 155       --# global in out shadow_outputs;
+ 156       --# derives shadow_outputs from *, data, Subaddress_Idx,dest;
+ 157     is
+ 158        Placing : Lru_Message_record;
+ 159        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 160     begin
+ 161        Placing := Bc_To_Rt(Dest);
+ 162        if Placing.initial not in Valid_Msg_Index then
+ 163           -- Invalid write
+ 164           null;
+ 165        elsif Subaddress_Idx > Placing.Msg_Count then
+ 166           -- No such message number, too high
+ 167           null;
+ 168        else
+ 169           -- Work out which outputs message this is
+ 170           if Placing.Initial <= Lru_Start_Index'Last then
+ 171              Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 172              -- Just write the data
+ 173              Shadow_Outputs(Actual_Subaddress_Idx) := Data;
+ 174              Shadow_Outputs(Actual_Subaddress_Idx).Fresh := True;
+ 175           else
+ 176              -- Fell off the end
+ 177              null;
+ 178           end if;
+ 179        end if;
+ 180     end Write_Rt_Message;
+
++++        Flow analysis of subprogram Write_RT_Message 
+           performed: no errors found.
+
+ 181  
+ 182  
+ 183     procedure Set_BC_Message_Valid(Subaddress_Idx : in Lru_Subaddress_Index;
+ 184                                    Src     : in LRU_Index)
+ 185       --# global in out shadow_inputs;
+ 186       --# derives shadow_inputs from
+ 187       --#  *, Subaddress_Idx, src;
+ 188     is
+ 189        Placing : Lru_Message_record;
+ 190        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 191     begin
+ 192        placing := Rt_to_bc(src);
+ 193        if Placing.initial not in Valid_Msg_Index then
+ 194           -- Invalid write
+ 195           null;
+ 196        elsif Subaddress_Idx > Placing.Msg_Count then
+ 197           -- Invalid message number
+ 198           null;
+ 199        else
+ 200           if Placing.Initial <= Lru_Start_Index'Last then
+ 201              -- Work out which outputs message this is
+ 202              Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 203              -- Just write the data
+ 204              Shadow_Inputs(Actual_Subaddress_Idx).Valid := True;
+ 205           else
+ 206              -- Fell off the end
+ 207              null;
+ 208           end if;
+ 209        end if;
+ 210     end Set_BC_Message_Valid;
+
++++        Flow analysis of subprogram Set_BC_Message_Valid 
+           performed: no errors found.
+
+ 211  
+ 212     -- Write out data to send to the BC destination
+ 213  
+ 214     procedure Write_BC_Word(Data    : in Word;
+ 215                             Idx     : in Word_Index;
+ 216                             Subaddress_Idx : in Lru_Subaddress_Index;
+ 217                             Src     : in LRU_Index)
+ 218       --# global in out shadow_inputs;
+ 219       --# derives shadow_inputs from
+ 220       --#  *, data, idx, Subaddress_Idx, src;
+ 221        is
+ 222        Placing : Lru_Message_record;
+ 223        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 224     begin
+ 225        placing := Rt_to_bc(src);
+ 226        if Placing.initial not in Valid_Msg_Index then
+ 227           -- Invalid write
+ 228           null;
+ 229        elsif Subaddress_Idx > Placing.Msg_Count then
+ 230           -- Invalid message number
+ 231           null;
+ 232        elsif Placing.Initial > Lru_Start_Index'Last then
+ 233           -- Invalid write
+ 234           null;
+ 235        else
+ 236           -- Work out which outputs message this is
+ 237           Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 238           -- Just write the data
+ 239           Shadow_Inputs(Actual_Subaddress_Idx).Data(Idx) := Data;
+ 240           Shadow_Inputs(Actual_Subaddress_Idx).Fresh := True;
+ 241        end if;
+ 242     end Write_Bc_Word;
+
++++        Flow analysis of subprogram Write_BC_Word 
+           performed: no errors found.
+
+ 243  
+ 244  
+ 245     procedure Write_BC_Message(Data    : in Message;
+ 246                                Subaddress_Idx : in Lru_Subaddress_Index;
+ 247                                Src     : in LRU_Index)
+ 248       --# global in out shadow_inputs;
+ 249       --# derives shadow_inputs from
+ 250       --#  *, data, Subaddress_Idx, src;
+ 251     is
+ 252        Placing : Lru_Message_record;
+ 253        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 254     begin
+ 255        Placing := Rt_To_Bc(src);
+ 256        if Placing.initial not in Valid_Msg_Index then
+ 257           -- Invalid write
+ 258           null;
+ 259        elsif Subaddress_Idx > Placing.Msg_Count then
+ 260           -- Invalid message number
+ 261           null;
+ 262        elsif Placing.Initial > Lru_Start_Index'Last then
+ 263           -- fall off end
+ 264           null;
+ 265        else
+ 266           -- Work out which outputs message this is
+ 267           Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 268           -- Just write the data
+ 269           Shadow_Inputs(Actual_Subaddress_Idx) := Data;
+ 270           Shadow_Inputs(Actual_Subaddress_Idx).Fresh := True;
+ 271        end if;
+ 272     end Write_Bc_Message;
+
++++        Flow analysis of subprogram Write_BC_Message 
+           performed: no errors found.
+
+ 273  
+ 274  
+ 275     -- Read data sent to an RT
+ 276  
+ 277     function Is_RT_Fresh(Dest : LRU_Index;
+ 278                          Subaddress_Idx : Lru_Subaddress_Index)
+ 279                         return Boolean
+ 280       --# global real_Outputs;
+ 281     is
+ 282        Placing : Lru_Message_record;
+ 283        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 284        Result : Boolean;
+ 285     begin
+ 286        Placing := BC_To_RT(Dest);
+ 287        if Placing.Initial not in Valid_Msg_Index then
+ 288           Result := False;
+ 289        elsif Subaddress_Idx > Placing.Msg_Count then
+ 290           -- Invalid message
+ 291           Result := False;
+ 292        elsif Placing.Initial > Lru_Start_Index'Last then
+ 293           -- Fell off end
+ 294           Result := False;
+ 295        else
+ 296           Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 297           Result := Real_Outputs(Actual_Subaddress_Idx).Fresh;
+ 298        end if;
+ 299        return Result;
+ 300     end Is_RT_Fresh;
+
++++        Flow analysis of subprogram Is_RT_Fresh 
+           performed: no errors found.
+
+ 301  
+ 302     function Is_RT_Valid(Dest : LRU_Index;
+ 303                          Subaddress_Idx : Lru_Subaddress_Index)
+ 304                         return Boolean
+ 305       --# global real_outputs;
+ 306     is
+ 307        Placing : Lru_Message_record;
+ 308        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 309        Result : Boolean;
+ 310     begin
+ 311        Placing := BC_To_RT(Dest);
+ 312        if Placing.Initial not in Valid_Msg_Index then
+ 313           Result := False;
+ 314        elsif Subaddress_Idx > Placing.Msg_Count then
+ 315           -- Invalid message
+ 316           Result := False;
+ 317        elsif Placing.Initial > Lru_Start_Index'Last then
+ 318           -- Fell off end
+ 319           Result := False;
+ 320        else
+ 321           Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 322           Result := Real_Outputs(Actual_Subaddress_Idx).valid;
+ 323        end if;
+ 324        return Result;
+ 325     end Is_RT_valid;
+
++++        Flow analysis of subprogram Is_RT_Valid 
+           performed: no errors found.
+
+ 326  
+ 327     procedure Read_RT_Word(Dest    : in LRU_Index;
+ 328                            Idx     : in Word_Index;
+ 329                            Subaddress_Idx : in Lru_Subaddress_Index;
+ 330                            Data    : out Word)
+ 331       --# global in real_outputs;
+ 332       --# derives data from dest, idx, Subaddress_Idx, real_outputs;
+ 333     is
+ 334        Placing : Lru_Message_record;
+ 335        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 336     begin
+ 337        Placing := Bc_To_Rt(Dest);
+ 338        if Placing.Initial not in Valid_Msg_Index then
+ 339           Data := 0;
+ 340        elsif Subaddress_Idx > Placing.Msg_Count then
+ 341           -- Invalid message
+ 342           Data := 0;
+ 343        elsif Placing.Initial > Lru_Start_Index'Last then
+ 344           -- Fell off end
+ 345           Data := 0;
+ 346        else
+ 347           Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 348           Data := Real_Outputs(Actual_Subaddress_Idx).Data(Idx);
+ 349        end if;
+ 350     end Read_Rt_Word;
+
++++        Flow analysis of subprogram Read_RT_Word 
+           performed: no errors found.
+
+ 351  
+ 352     procedure Read_RT_Message(Dest    : in LRU_Index;
+ 353                               Subaddress_Idx : in Lru_Subaddress_Index;
+ 354                               Data    : out Message)
+ 355       --# global in real_outputs;
+ 356       --# derives data from dest, Subaddress_Idx, real_outputs;
+ 357     is
+ 358        Placing : Lru_Message_record;
+ 359        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 360     begin
+ 361        Placing := Bc_To_Rt(Dest);
+ 362        if Placing.Initial not in Valid_Msg_Index then
+ 363           Data := Null_Message;
+ 364        elsif Subaddress_Idx > Placing.Msg_Count then
+ 365           -- Invalid message
+ 366           Data := Null_Message;
+ 367        elsif Placing.Initial > Lru_Start_Index'Last then
+ 368           -- Fell off end
+ 369           Data := Null_Message;
+ 370        else
+ 371           Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 372           Data := Real_Outputs(Actual_Subaddress_Idx);
+ 373        end if;
+ 374     end Read_Rt_Message;
+
++++        Flow analysis of subprogram Read_RT_Message 
+           performed: no errors found.
+
+ 375  
+ 376     -- Acknowledge a message as fresh
+ 377     procedure Acknowledge_RT_Message(Dest    : in LRU_Index;
+ 378                                      Subaddress_Idx : in Lru_Subaddress_Index)
+ 379       --# global in out real_outputs;
+ 380       --# derives real_outputs from *, dest, Subaddress_Idx;
+ 381     is
+ 382        Placing : Lru_Message_record;
+ 383        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 384     begin
+ 385        Placing := Bc_To_Rt(Dest);
+ 386        if Placing.Initial in Valid_Msg_Index
+ 387          and then Placing.Initial in Lru_Start_Index
+ 388          and then Subaddress_Idx <= Placing.Msg_Count then
+ 389           --# assert Placing.Initial >= Valid_Msg_Index'First and
+ 390           --#        Placing.Initial <= Lru_Start_Index'Last;
+ 391           Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 392           Real_Outputs(Actual_Subaddress_Idx).Fresh := False;
+ 393        else
+ 394           -- Invalid message
+ 395           null;
+ 396        end if;
+ 397     end Acknowledge_Rt_Message;
+
++++        Flow analysis of subprogram 
+           Acknowledge_RT_Message performed: no errors found.
+
+ 398  
+ 399  
+ 400     -- Read data sent to the BC
+ 401  
+ 402     function Is_BC_Fresh(Src : LRU_Index;
+ 403                          Subaddress_Idx : Lru_Subaddress_Index)
+ 404                         return Boolean
+ 405       --# global real_inputs;
+ 406     is
+ 407        Placing : Lru_Message_record;
+ 408        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 409        Result : Boolean;
+ 410     begin
+ 411        Placing := Rt_To_Bc(Src);
+ 412        if Placing.Initial not in Valid_Msg_Index then
+ 413           Result := False;
+ 414        elsif Subaddress_Idx > Placing.Msg_Count then
+ 415           -- Invalid message
+ 416           Result := False;
+ 417        elsif Placing.Initial > Lru_Start_Index'Last then
+ 418           -- Fell off end
+ 419           Result := False;
+ 420        else
+ 421           Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 422           Result := Real_Inputs(Actual_Subaddress_Idx).fresh;
+ 423        end if;
+ 424        return Result;
+ 425     end Is_Bc_Fresh;
+
++++        Flow analysis of subprogram Is_BC_Fresh 
+           performed: no errors found.
+
+ 426  
+ 427     function Is_BC_valid(Src : LRU_Index;
+ 428                          Subaddress_Idx : Lru_Subaddress_Index)
+ 429                         return Boolean
+ 430       --# global real_inputs;
+ 431     is
+ 432        Placing : Lru_Message_record;
+ 433        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 434        Result : Boolean;
+ 435     begin
+ 436        Placing := Rt_To_Bc(Src);
+ 437        if Placing.Initial not in Valid_Msg_Index then
+ 438           Result := False;
+ 439        elsif Subaddress_Idx > Placing.Msg_Count then
+ 440           -- Invalid message
+ 441           Result := False;
+ 442        elsif Placing.Initial > Lru_Start_Index'Last then
+ 443           -- Fell off end
+ 444           Result := False;
+ 445        else
+ 446           Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 447           Result := Real_Inputs(Actual_Subaddress_Idx).valid;
+ 448        end if;
+ 449        return Result;
+ 450     end Is_Bc_valid;
+
++++        Flow analysis of subprogram Is_BC_Valid 
+           performed: no errors found.
+
+ 451  
+ 452  
+ 453     procedure Read_BC_Word(Src     : in LRU_Index;
+ 454                            Idx     : in Word_Index;
+ 455                            Subaddress_Idx : in Lru_Subaddress_Index;
+ 456                            Data    : out Word)
+ 457       --# global in real_inputs;
+ 458       --# derives data from real_inputs, src, idx, Subaddress_Idx;
+ 459     is
+ 460        Placing : Lru_Message_record;
+ 461        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 462     begin
+ 463        Placing := Rt_To_Bc(Src);
+ 464        if Placing.Initial not in Valid_Msg_Index then
+ 465           Data := 0;
+ 466        elsif Subaddress_Idx > Placing.Msg_Count then
+ 467           -- Invalid message
+ 468           Data := 0;
+ 469        elsif Placing.Initial > Lru_Start_Index'Last then
+ 470           -- Fell off end
+ 471           Data := 0;
+ 472        else
+ 473           Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 474           Data := Real_Inputs(Actual_Subaddress_Idx).Data(Idx);
+ 475        end if;
+ 476     end Read_Bc_Word;
+
++++        Flow analysis of subprogram Read_BC_Word 
+           performed: no errors found.
+
+ 477  
+ 478     procedure Read_BC_Message(Src     : in LRU_Index;
+ 479                               Subaddress_Idx : in Lru_Subaddress_Index;
+ 480                               Data    : out Message)
+ 481       --# global in real_inputs;
+ 482       --# derives data from real_inputs, src, Subaddress_Idx;
+ 483     is
+ 484        Placing : Lru_Message_record;
+ 485        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 486     begin
+ 487        Placing := Rt_To_Bc(Src);
+ 488        if Placing.Initial not in Valid_Msg_Index then
+ 489           Data := Null_Message;
+ 490        elsif Subaddress_Idx > Placing.Msg_Count then
+ 491           -- invalid message
+ 492           Data := Null_message;
+ 493        elsif Placing.Initial > Lru_Start_Index'last then
+ 494           -- fell off end
+ 495           Data := Null_Message;
+ 496        else
+ 497           Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 498           Data := Real_Inputs(Actual_Subaddress_Idx);
+ 499        end if;
+ 500     end Read_Bc_Message;
+
++++        Flow analysis of subprogram Read_BC_Message 
+           performed: no errors found.
+
+ 501  
+ 502     procedure Acknowledge_BC_Message(Src     : in LRU_Index;
+ 503                                      Subaddress_Idx : in Lru_Subaddress_Index)
+ 504       --# global in out real_inputs;
+ 505       --# derives real_inputs from *, src, Subaddress_Idx;
+ 506     is
+ 507        Placing : Lru_Message_record;
+ 508        Actual_Subaddress_Idx : Valid_Msg_Index;
+ 509     begin
+ 510        Placing := Rt_To_Bc(Src);
+ 511        if Placing.Initial in Valid_Msg_Index
+ 512          and then Placing.Initial in Lru_Start_Index
+ 513          and then Subaddress_Idx <= Placing.Msg_Count then
+ 514           --# assert Placing.Initial <= Lru_Start_Index'Last and
+ 515           --#        Placing.Initial >= Valid_Msg_Index'First;
+ 516           Actual_Subaddress_Idx := Placing.Initial + (Subaddress_Idx - 1);
+ 517           Real_Inputs(Actual_Subaddress_Idx).Fresh := False;
+ 518        else
+ 519           -- invalid message
+ 520           null;
+ 521        end if;
+ 522     end Acknowledge_Bc_Message;
+
++++        Flow analysis of subprogram 
+           Acknowledge_BC_Message performed: no errors found.
+
+ 523  
+ 524     -- Run a cycle of the bus
+ 525     procedure Cycle
+ 526       --# global in out real_inputs, shadow_inputs,
+ 527       --#               real_outputs, shadow_outputs;
+ 528       --# derives
+ 529       --#   real_inputs from *, shadow_inputs &
+ 530       --#   shadow_inputs from *, real_inputs &
+ 531       --#   real_outputs from *, shadow_outputs &
+ 532       --#   shadow_outputs from *, real_outputs
+ 533       --# ;
+ 534     is
+ 535     begin
+ 536        -- Go through the shadow inputs, updating real inputs
+ 537        -- where needed.
+ 538        for I in Valid_Msg_Index loop
+ 539           --# assert I >= valid_msg_index'first and
+ 540           --#        I <= valid_msg_index'last;
+ 541           if Shadow_Inputs(I).Fresh or else
+ 542             (Shadow_Inputs(I).Valid and not
+ 543              Real_Inputs(I).Valid) then
+ 544              -- Need to update this
+ 545              Real_Inputs(I) := Shadow_Inputs(I);
+ 546              -- Ensure that we reset our data
+ 547              Shadow_Inputs(I) := Null_Message;
+ 548              -- Data tends to remain valid
+ 549              Shadow_Inputs(I).Valid := Real_Inputs(I).Valid;
+ 550           end if;
+ 551           --# assert I >= valid_msg_index'first and
+ 552           --#        I <= valid_msg_index'last;
+ 553           if Shadow_Outputs(I).Fresh or else
+ 554             (Shadow_Outputs(I).Valid and not
+ 555              Real_Outputs(I).Valid) then
+ 556              -- Need to update this
+ 557              Real_Outputs(I) := Shadow_Outputs(I);
+ 558              -- Ensure that we reset our data
+ 559              Shadow_Outputs(I) := Null_Message;
+ 560              Shadow_Outputs(I).Valid := Real_Outputs(I).Valid;
+ 561           end if;
+ 562        end loop;
+ 563     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+ 564  
+ 565     procedure Dump(M : in out Message)
+ 566       --# derives M from *;
+ 567        is separate;
+ 568  
+ 569     -- Auxiliary debugging routines
+ 570     procedure Show_RT(Subaddress_Idx : in Lru_Subaddress_Index;
+ 571                       Dest : in LRU_Index)
+ 572     --# global in out real_Outputs;
+ 573     --# derives real_Outputs from *, Subaddress_Idx, Dest;
+ 574     is
+ 575        --# hide Show_RT;
+ 576        Msg : Message;
+ 577     begin
+ 578        Read_RT_Message(Dest => Dest,
+ 579                        Subaddress_Idx => Subaddress_Idx,
+ 580                        Data => Msg);
+ 581        Dump(Msg);
+ 582     end Show_RT; -- not SPARK, just sim aid
+
+--- (  1)  Warning           : 10: The body of subprogram Show_RT is hidden - 
+           hidden text is ignored by the SPARK Examiner.
+
+ 583  
+ 584     procedure Show_BC(Subaddress_Idx : in Lru_Subaddress_Index;
+ 585                       Src : in LRU_Index)
+ 586     --# global in out real_Inputs;
+ 587     --# derives Real_Inputs from *, Subaddress_Idx, Src;
+ 588     is
+ 589        --# hide Show_BC;
+ 590        Msg : Message;
+ 591     begin
+ 592        Read_BC_Message(Src => Src,
+ 593                        Subaddress_Idx => Subaddress_Idx,
+ 594                        Data => Msg);
+ 595        Dump(Msg);
+ 596     end Show_BC; -- not SPARK, just sim aid
+
+--- (  2)  Warning           : 10: The body of subprogram Show_BC is hidden - 
+           hidden text is ignored by the SPARK Examiner.
+
+ 597  
+ 598  end Bus;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

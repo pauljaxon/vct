@@ -1,0 +1,3125 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:41.75
+
+                          procedure if_radar.Poll
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 236:
+
+procedure_poll_1.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+        ->
+C1:    2 >= bus__lru_subaddress_index__first .
+C2:    2 <= bus__lru_subaddress_index__last .
+C3:    bus_id >= bc1553__lru_name__first .
+C4:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 236:
+
+procedure_poll_2.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+        ->
+C1:    bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+C2:    bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+ 
+
+For path(s) from start to run-time check associated with statement of line 241:
+
+procedure_poll_3.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+        ->
+C1:    2 >= bus__lru_subaddress_index__first .
+C2:    2 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 241:
+
+procedure_poll_4.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+        ->
+C1:    word__1 >= bus__word__first .
+C2:    word__1 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 245:
+
+procedure_poll_5.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+        ->
+C1:    word__1 >= state_types__word__first .
+C2:    word__1 <= state_types__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 245:
+
+procedure_poll_6.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+        ->
+C1:    state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+C2:    state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 251:
+
+procedure_poll_7.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+        ->
+C1:    2 >= bus__lru_subaddress_index__first .
+C2:    2 <= bus__lru_subaddress_index__last .
+C3:    2 >= bus__word_index__first .
+C4:    2 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 251:
+
+procedure_poll_8.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+        ->
+C1:    word__2 >= bus__word__first .
+C2:    word__2 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 255:
+
+procedure_poll_9.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+        ->
+C1:    word__2 >= bus__word__first .
+C2:    word__2 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 255:
+
+procedure_poll_10.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   word__2 >= bus__word__first .
+H69:   word__2 <= bus__word__last .
+H70:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H71:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+        ->
+C1:    measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+C2:    measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 256:
+
+procedure_poll_11.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   word__2 >= bus__word__first .
+H69:   word__2 <= bus__word__last .
+H70:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H71:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H72:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H73:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+        ->
+C1:    2 >= bus__lru_subaddress_index__first .
+C2:    2 <= bus__lru_subaddress_index__last .
+C3:    3 >= bus__word_index__first .
+C4:    3 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 256:
+
+procedure_poll_12.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   word__2 >= bus__word__first .
+H69:   word__2 <= bus__word__last .
+H70:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H71:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H72:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H73:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H74:   2 >= bus__lru_subaddress_index__first .
+H75:   2 <= bus__lru_subaddress_index__last .
+H76:   3 >= bus__word_index__first .
+H77:   3 <= bus__word_index__last .
+H78:   bus_id >= bc1553__lru_name__first .
+H79:   bus_id <= bc1553__lru_name__last .
+H80:   word__3 >= bus__word__first .
+H81:   word__3 <= bus__word__last .
+        ->
+C1:    word__3 >= bus__word__first .
+C2:    word__3 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 260:
+
+procedure_poll_13.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   word__2 >= bus__word__first .
+H69:   word__2 <= bus__word__last .
+H70:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H71:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H72:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H73:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H74:   2 >= bus__lru_subaddress_index__first .
+H75:   2 <= bus__lru_subaddress_index__last .
+H76:   3 >= bus__word_index__first .
+H77:   3 <= bus__word_index__last .
+H78:   bus_id >= bc1553__lru_name__first .
+H79:   bus_id <= bc1553__lru_name__last .
+H80:   word__3 >= bus__word__first .
+H81:   word__3 <= bus__word__last .
+H82:   word__3 >= bus__word__first .
+H83:   word__3 <= bus__word__last .
+H84:   word__3 >= bus__word__first .
+H85:   word__3 <= bus__word__last .
+        ->
+C1:    word__3 >= bus__word__first .
+C2:    word__3 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 260:
+
+procedure_poll_14.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   word__2 >= bus__word__first .
+H69:   word__2 <= bus__word__last .
+H70:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H71:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H72:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H73:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H74:   2 >= bus__lru_subaddress_index__first .
+H75:   2 <= bus__lru_subaddress_index__last .
+H76:   3 >= bus__word_index__first .
+H77:   3 <= bus__word_index__last .
+H78:   bus_id >= bc1553__lru_name__first .
+H79:   bus_id <= bc1553__lru_name__last .
+H80:   word__3 >= bus__word__first .
+H81:   word__3 <= bus__word__last .
+H82:   word__3 >= bus__word__first .
+H83:   word__3 <= bus__word__last .
+H84:   word__3 >= bus__word__first .
+H85:   word__3 <= bus__word__last .
+H86:   word__3 >= bus__word__first .
+H87:   word__3 <= bus__word__last .
+H88:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H89:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+        ->
+C1:    measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+C2:    measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 262:
+
+procedure_poll_15.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   word__2 >= bus__word__first .
+H69:   word__2 <= bus__word__last .
+H70:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H71:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H72:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H73:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H74:   2 >= bus__lru_subaddress_index__first .
+H75:   2 <= bus__lru_subaddress_index__last .
+H76:   3 >= bus__word_index__first .
+H77:   3 <= bus__word_index__last .
+H78:   bus_id >= bc1553__lru_name__first .
+H79:   bus_id <= bc1553__lru_name__last .
+H80:   word__3 >= bus__word__first .
+H81:   word__3 <= bus__word__last .
+H82:   word__3 >= bus__word__first .
+H83:   word__3 <= bus__word__last .
+H84:   word__3 >= bus__word__first .
+H85:   word__3 <= bus__word__last .
+H86:   word__3 >= bus__word__first .
+H87:   word__3 <= bus__word__last .
+H88:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H89:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H90:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H91:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H92:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H93:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+        ->
+C1:    measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+C2:    measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 263:
+
+procedure_poll_16.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   word__2 >= bus__word__first .
+H69:   word__2 <= bus__word__last .
+H70:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H71:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H72:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H73:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H74:   2 >= bus__lru_subaddress_index__first .
+H75:   2 <= bus__lru_subaddress_index__last .
+H76:   3 >= bus__word_index__first .
+H77:   3 <= bus__word_index__last .
+H78:   bus_id >= bc1553__lru_name__first .
+H79:   bus_id <= bc1553__lru_name__last .
+H80:   word__3 >= bus__word__first .
+H81:   word__3 <= bus__word__last .
+H82:   word__3 >= bus__word__first .
+H83:   word__3 <= bus__word__last .
+H84:   word__3 >= bus__word__first .
+H85:   word__3 <= bus__word__last .
+H86:   word__3 >= bus__word__first .
+H87:   word__3 <= bus__word__last .
+H88:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H89:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H90:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H91:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H92:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H93:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H94:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H95:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H96:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H97:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+        ->
+C1:    measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+C2:    measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 266:
+
+procedure_poll_17.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = 
+           state_types__sweep .
+        ->
+C1:    2 >= bus__lru_subaddress_index__first .
+C2:    2 <= bus__lru_subaddress_index__last .
+C3:    2 >= bus__word_index__first .
+C4:    2 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 266:
+
+procedure_poll_18.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = 
+           state_types__sweep .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__4 >= bus__word__first .
+H63:   word__4 <= bus__word__last .
+        ->
+C1:    word__4 >= bus__word__first .
+C2:    word__4 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 270:
+
+procedure_poll_19.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = 
+           state_types__sweep .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__4 >= bus__word__first .
+H63:   word__4 <= bus__word__last .
+H64:   word__4 >= bus__word__first .
+H65:   word__4 <= bus__word__last .
+H66:   word__4 >= bus__word__first .
+H67:   word__4 <= bus__word__last .
+        ->
+C1:    word__4 >= bus__word__first .
+C2:    word__4 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 279:
+
+procedure_poll_20.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = 
+           state_types__rad_inactive .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+procedure_poll_21.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   word__2 >= bus__word__first .
+H69:   word__2 <= bus__word__last .
+H70:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H71:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H72:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H73:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H74:   2 >= bus__lru_subaddress_index__first .
+H75:   2 <= bus__lru_subaddress_index__last .
+H76:   3 >= bus__word_index__first .
+H77:   3 <= bus__word_index__last .
+H78:   bus_id >= bc1553__lru_name__first .
+H79:   bus_id <= bc1553__lru_name__last .
+H80:   word__3 >= bus__word__first .
+H81:   word__3 <= bus__word__last .
+H82:   word__3 >= bus__word__first .
+H83:   word__3 <= bus__word__last .
+H84:   word__3 >= bus__word__first .
+H85:   word__3 <= bus__word__last .
+H86:   word__3 >= bus__word__first .
+H87:   word__3 <= bus__word__last .
+H88:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H89:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H90:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H91:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H92:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H93:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H94:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H95:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H96:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H97:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H98:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H99:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+procedure_poll_22.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = 
+           state_types__sweep .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__4 >= bus__word__first .
+H63:   word__4 <= bus__word__last .
+H64:   word__4 >= bus__word__first .
+H65:   word__4 <= bus__word__last .
+H66:   word__4 >= bus__word__first .
+H67:   word__4 <= bus__word__last .
+H68:   word__4 >= bus__word__first .
+H69:   word__4 <= bus__word__last .
+H70:   true .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+procedure_poll_23.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   not (bc1553__is_valid(bus_id, 2, bus__inputs) and 
+           bc1553__is_fresh(bus_id, 2, bus__inputs)) .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 279:
+
+procedure_poll_24.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = 
+           state_types__rad_inactive .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   1 >= bus__word_index__first .
+H59:   1 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__5 >= bus__word__first .
+H63:   word__5 <= bus__word__last .
+        ->
+C1:    word__5 >= bus__word__first .
+C2:    word__5 <= bus__word__last .
+ 
+
+procedure_poll_25.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   word__2 >= bus__word__first .
+H69:   word__2 <= bus__word__last .
+H70:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H71:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H72:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H73:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H74:   2 >= bus__lru_subaddress_index__first .
+H75:   2 <= bus__lru_subaddress_index__last .
+H76:   3 >= bus__word_index__first .
+H77:   3 <= bus__word_index__last .
+H78:   bus_id >= bc1553__lru_name__first .
+H79:   bus_id <= bc1553__lru_name__last .
+H80:   word__3 >= bus__word__first .
+H81:   word__3 <= bus__word__last .
+H82:   word__3 >= bus__word__first .
+H83:   word__3 <= bus__word__last .
+H84:   word__3 >= bus__word__first .
+H85:   word__3 <= bus__word__last .
+H86:   word__3 >= bus__word__first .
+H87:   word__3 <= bus__word__last .
+H88:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H89:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H90:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H91:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H92:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H93:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H94:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H95:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H96:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H97:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H98:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H99:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H100:  1 >= bus__lru_subaddress_index__first .
+H101:  1 <= bus__lru_subaddress_index__last .
+H102:  1 >= bus__word_index__first .
+H103:  1 <= bus__word_index__last .
+H104:  bus_id >= bc1553__lru_name__first .
+H105:  bus_id <= bc1553__lru_name__last .
+H106:  word__5 >= bus__word__first .
+H107:  word__5 <= bus__word__last .
+        ->
+C1:    word__5 >= bus__word__first .
+C2:    word__5 <= bus__word__last .
+ 
+
+procedure_poll_26.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = 
+           state_types__sweep .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__4 >= bus__word__first .
+H63:   word__4 <= bus__word__last .
+H64:   word__4 >= bus__word__first .
+H65:   word__4 <= bus__word__last .
+H66:   word__4 >= bus__word__first .
+H67:   word__4 <= bus__word__last .
+H68:   word__4 >= bus__word__first .
+H69:   word__4 <= bus__word__last .
+H70:   true .
+H71:   1 >= bus__lru_subaddress_index__first .
+H72:   1 <= bus__lru_subaddress_index__last .
+H73:   1 >= bus__word_index__first .
+H74:   1 <= bus__word_index__last .
+H75:   bus_id >= bc1553__lru_name__first .
+H76:   bus_id <= bc1553__lru_name__last .
+H77:   word__5 >= bus__word__first .
+H78:   word__5 <= bus__word__last .
+        ->
+C1:    word__5 >= bus__word__first .
+C2:    word__5 <= bus__word__last .
+ 
+
+procedure_poll_27.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   not (bc1553__is_valid(bus_id, 2, bus__inputs) and 
+           bc1553__is_fresh(bus_id, 2, bus__inputs)) .
+H34:   1 >= bus__lru_subaddress_index__first .
+H35:   1 <= bus__lru_subaddress_index__last .
+H36:   1 >= bus__word_index__first .
+H37:   1 <= bus__word_index__last .
+H38:   bus_id >= bc1553__lru_name__first .
+H39:   bus_id <= bc1553__lru_name__last .
+H40:   word__5 >= bus__word__first .
+H41:   word__5 <= bus__word__last .
+        ->
+C1:    word__5 >= bus__word__first .
+C2:    word__5 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 285:
+
+procedure_poll_28.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = 
+           state_types__rad_inactive .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   1 >= bus__word_index__first .
+H59:   1 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__5 >= bus__word__first .
+H63:   word__5 <= bus__word__last .
+H64:   word__5 >= bus__word__first .
+H65:   word__5 <= bus__word__last .
+H66:   word__5 >= bus__word__first .
+H67:   word__5 <= bus__word__last .
+        ->
+C1:    ibit_request >= ibit__phase__first .
+C2:    ibit_request <= ibit__phase__last .
+C3:    word__5 >= systemtypes__unsigned16__first .
+C4:    word__5 <= systemtypes__unsigned16__last .
+ 
+
+procedure_poll_29.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   word__2 >= bus__word__first .
+H69:   word__2 <= bus__word__last .
+H70:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H71:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H72:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H73:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H74:   2 >= bus__lru_subaddress_index__first .
+H75:   2 <= bus__lru_subaddress_index__last .
+H76:   3 >= bus__word_index__first .
+H77:   3 <= bus__word_index__last .
+H78:   bus_id >= bc1553__lru_name__first .
+H79:   bus_id <= bc1553__lru_name__last .
+H80:   word__3 >= bus__word__first .
+H81:   word__3 <= bus__word__last .
+H82:   word__3 >= bus__word__first .
+H83:   word__3 <= bus__word__last .
+H84:   word__3 >= bus__word__first .
+H85:   word__3 <= bus__word__last .
+H86:   word__3 >= bus__word__first .
+H87:   word__3 <= bus__word__last .
+H88:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H89:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H90:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H91:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H92:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H93:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H94:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H95:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H96:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H97:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H98:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H99:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H100:  1 >= bus__lru_subaddress_index__first .
+H101:  1 <= bus__lru_subaddress_index__last .
+H102:  1 >= bus__word_index__first .
+H103:  1 <= bus__word_index__last .
+H104:  bus_id >= bc1553__lru_name__first .
+H105:  bus_id <= bc1553__lru_name__last .
+H106:  word__5 >= bus__word__first .
+H107:  word__5 <= bus__word__last .
+H108:  word__5 >= bus__word__first .
+H109:  word__5 <= bus__word__last .
+H110:  word__5 >= bus__word__first .
+H111:  word__5 <= bus__word__last .
+        ->
+C1:    ibit_request >= ibit__phase__first .
+C2:    ibit_request <= ibit__phase__last .
+C3:    word__5 >= systemtypes__unsigned16__first .
+C4:    word__5 <= systemtypes__unsigned16__last .
+ 
+
+procedure_poll_30.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = 
+           state_types__sweep .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__4 >= bus__word__first .
+H63:   word__4 <= bus__word__last .
+H64:   word__4 >= bus__word__first .
+H65:   word__4 <= bus__word__last .
+H66:   word__4 >= bus__word__first .
+H67:   word__4 <= bus__word__last .
+H68:   word__4 >= bus__word__first .
+H69:   word__4 <= bus__word__last .
+H70:   true .
+H71:   1 >= bus__lru_subaddress_index__first .
+H72:   1 <= bus__lru_subaddress_index__last .
+H73:   1 >= bus__word_index__first .
+H74:   1 <= bus__word_index__last .
+H75:   bus_id >= bc1553__lru_name__first .
+H76:   bus_id <= bc1553__lru_name__last .
+H77:   word__5 >= bus__word__first .
+H78:   word__5 <= bus__word__last .
+H79:   word__5 >= bus__word__first .
+H80:   word__5 <= bus__word__last .
+H81:   word__5 >= bus__word__first .
+H82:   word__5 <= bus__word__last .
+        ->
+C1:    ibit_request >= ibit__phase__first .
+C2:    ibit_request <= ibit__phase__last .
+C3:    word__5 >= systemtypes__unsigned16__first .
+C4:    word__5 <= systemtypes__unsigned16__last .
+ 
+
+procedure_poll_31.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   not (bc1553__is_valid(bus_id, 2, bus__inputs) and 
+           bc1553__is_fresh(bus_id, 2, bus__inputs)) .
+H34:   1 >= bus__lru_subaddress_index__first .
+H35:   1 <= bus__lru_subaddress_index__last .
+H36:   1 >= bus__word_index__first .
+H37:   1 <= bus__word_index__last .
+H38:   bus_id >= bc1553__lru_name__first .
+H39:   bus_id <= bc1553__lru_name__last .
+H40:   word__5 >= bus__word__first .
+H41:   word__5 <= bus__word__last .
+H42:   word__5 >= bus__word__first .
+H43:   word__5 <= bus__word__last .
+H44:   word__5 >= bus__word__first .
+H45:   word__5 <= bus__word__last .
+        ->
+C1:    ibit_request >= ibit__phase__first .
+C2:    ibit_request <= ibit__phase__last .
+C3:    word__5 >= systemtypes__unsigned16__first .
+C4:    word__5 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 285:
+
+procedure_poll_32.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = 
+           state_types__rad_inactive .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   1 >= bus__word_index__first .
+H59:   1 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__5 >= bus__word__first .
+H63:   word__5 <= bus__word__last .
+H64:   word__5 >= bus__word__first .
+H65:   word__5 <= bus__word__last .
+H66:   word__5 >= bus__word__first .
+H67:   word__5 <= bus__word__last .
+H68:   ibit_request >= ibit__phase__first .
+H69:   ibit_request <= ibit__phase__last .
+H70:   word__5 >= systemtypes__unsigned16__first .
+H71:   word__5 <= systemtypes__unsigned16__last .
+H72:   ibit_request__6 >= ibit__phase__first .
+H73:   ibit_request__6 <= ibit__phase__last .
+        ->
+C1:    ibit_request__6 >= ibit__phase__first .
+C2:    ibit_request__6 <= ibit__phase__last .
+ 
+
+procedure_poll_33.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = state_types__ping .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   word__2 >= bus__word__first .
+H69:   word__2 <= bus__word__last .
+H70:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H71:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H72:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H73:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H74:   2 >= bus__lru_subaddress_index__first .
+H75:   2 <= bus__lru_subaddress_index__last .
+H76:   3 >= bus__word_index__first .
+H77:   3 <= bus__word_index__last .
+H78:   bus_id >= bc1553__lru_name__first .
+H79:   bus_id <= bc1553__lru_name__last .
+H80:   word__3 >= bus__word__first .
+H81:   word__3 <= bus__word__last .
+H82:   word__3 >= bus__word__first .
+H83:   word__3 <= bus__word__last .
+H84:   word__3 >= bus__word__first .
+H85:   word__3 <= bus__word__last .
+H86:   word__3 >= bus__word__first .
+H87:   word__3 <= bus__word__last .
+H88:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H89:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H90:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H91:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H92:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H93:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H94:   measuretypes__decode__meter_single(word__2) >= 
+           measuretypes__meter__first .
+H95:   measuretypes__decode__meter_single(word__2) <= 
+           measuretypes__meter__last .
+H96:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H97:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H98:   measuretypes__decode__meter_per_sec(word__3) >= 
+           measuretypes__meter_per_sec__first .
+H99:   measuretypes__decode__meter_per_sec(word__3) <= 
+           measuretypes__meter_per_sec__last .
+H100:  1 >= bus__lru_subaddress_index__first .
+H101:  1 <= bus__lru_subaddress_index__last .
+H102:  1 >= bus__word_index__first .
+H103:  1 <= bus__word_index__last .
+H104:  bus_id >= bc1553__lru_name__first .
+H105:  bus_id <= bc1553__lru_name__last .
+H106:  word__5 >= bus__word__first .
+H107:  word__5 <= bus__word__last .
+H108:  word__5 >= bus__word__first .
+H109:  word__5 <= bus__word__last .
+H110:  word__5 >= bus__word__first .
+H111:  word__5 <= bus__word__last .
+H112:  ibit_request >= ibit__phase__first .
+H113:  ibit_request <= ibit__phase__last .
+H114:  word__5 >= systemtypes__unsigned16__first .
+H115:  word__5 <= systemtypes__unsigned16__last .
+H116:  ibit_request__6 >= ibit__phase__first .
+H117:  ibit_request__6 <= ibit__phase__last .
+        ->
+C1:    ibit_request__6 >= ibit__phase__first .
+C2:    ibit_request__6 <= ibit__phase__last .
+ 
+
+procedure_poll_34.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H34:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H35:   2 >= bus__lru_subaddress_index__first .
+H36:   2 <= bus__lru_subaddress_index__last .
+H37:   1 >= bus__word_index__first .
+H38:   1 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= bus__word__first .
+H46:   word__1 <= bus__word__last .
+H47:   word__1 >= state_types__word__first .
+H48:   word__1 <= state_types__word__last .
+H49:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H50:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H51:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H52:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H53:   state_types__radar_action(word__1) >= 
+           state_types__radar__first .
+H54:   state_types__radar_action(word__1) <= 
+           state_types__radar__last .
+H55:   state_types__radar_action(word__1) = 
+           state_types__sweep .
+H56:   2 >= bus__lru_subaddress_index__first .
+H57:   2 <= bus__lru_subaddress_index__last .
+H58:   2 >= bus__word_index__first .
+H59:   2 <= bus__word_index__last .
+H60:   bus_id >= bc1553__lru_name__first .
+H61:   bus_id <= bc1553__lru_name__last .
+H62:   word__4 >= bus__word__first .
+H63:   word__4 <= bus__word__last .
+H64:   word__4 >= bus__word__first .
+H65:   word__4 <= bus__word__last .
+H66:   word__4 >= bus__word__first .
+H67:   word__4 <= bus__word__last .
+H68:   word__4 >= bus__word__first .
+H69:   word__4 <= bus__word__last .
+H70:   true .
+H71:   1 >= bus__lru_subaddress_index__first .
+H72:   1 <= bus__lru_subaddress_index__last .
+H73:   1 >= bus__word_index__first .
+H74:   1 <= bus__word_index__last .
+H75:   bus_id >= bc1553__lru_name__first .
+H76:   bus_id <= bc1553__lru_name__last .
+H77:   word__5 >= bus__word__first .
+H78:   word__5 <= bus__word__last .
+H79:   word__5 >= bus__word__first .
+H80:   word__5 <= bus__word__last .
+H81:   word__5 >= bus__word__first .
+H82:   word__5 <= bus__word__last .
+H83:   ibit_request >= ibit__phase__first .
+H84:   ibit_request <= ibit__phase__last .
+H85:   word__5 >= systemtypes__unsigned16__first .
+H86:   word__5 <= systemtypes__unsigned16__last .
+H87:   ibit_request__6 >= ibit__phase__first .
+H88:   ibit_request__6 <= ibit__phase__last .
+        ->
+C1:    ibit_request__6 >= ibit__phase__first .
+C2:    ibit_request__6 <= ibit__phase__last .
+ 
+
+procedure_poll_35.
+H1:    true .
+H2:    fld_velocity(last_ping) >= measuretypes__meter_per_sec__first .
+H3:    fld_velocity(last_ping) <= measuretypes__meter_per_sec__last .
+H4:    fld_distance(last_ping) >= measuretypes__meter__first .
+H5:    fld_distance(last_ping) <= measuretypes__meter__last .
+H6:    true .
+H7:    true .
+H8:    fld_sy(last_ping) >= sector__first .
+H9:    fld_sy(last_ping) <= sector__last .
+H10:   fld_sx(last_ping) >= sector__first .
+H11:   fld_sx(last_ping) <= sector__last .
+H12:   true .
+H13:   true .
+H14:   true .
+H15:   fld_sy_end(last_sweep) >= sector__first .
+H16:   fld_sy_end(last_sweep) <= sector__last .
+H17:   fld_sy_start(last_sweep) >= sector__first .
+H18:   fld_sy_start(last_sweep) <= sector__last .
+H19:   fld_sx_end(last_sweep) >= sector__first .
+H20:   fld_sx_end(last_sweep) <= sector__last .
+H21:   fld_sx_start(last_sweep) >= sector__first .
+H22:   fld_sx_start(last_sweep) <= sector__last .
+H23:   ibit_request >= ibit__phase__first .
+H24:   ibit_request <= ibit__phase__last .
+H25:   2 >= bus__lru_subaddress_index__first .
+H26:   2 <= bus__lru_subaddress_index__last .
+H27:   bus_id >= bc1553__lru_name__first .
+H28:   bus_id <= bc1553__lru_name__last .
+H29:   true .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H32:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H33:   not (bc1553__is_valid(bus_id, 2, bus__inputs) and 
+           bc1553__is_fresh(bus_id, 2, bus__inputs)) .
+H34:   1 >= bus__lru_subaddress_index__first .
+H35:   1 <= bus__lru_subaddress_index__last .
+H36:   1 >= bus__word_index__first .
+H37:   1 <= bus__word_index__last .
+H38:   bus_id >= bc1553__lru_name__first .
+H39:   bus_id <= bc1553__lru_name__last .
+H40:   word__5 >= bus__word__first .
+H41:   word__5 <= bus__word__last .
+H42:   word__5 >= bus__word__first .
+H43:   word__5 <= bus__word__last .
+H44:   word__5 >= bus__word__first .
+H45:   word__5 <= bus__word__last .
+H46:   ibit_request >= ibit__phase__first .
+H47:   ibit_request <= ibit__phase__last .
+H48:   word__5 >= systemtypes__unsigned16__first .
+H49:   word__5 <= systemtypes__unsigned16__last .
+H50:   ibit_request__6 >= ibit__phase__first .
+H51:   ibit_request__6 <= ibit__phase__last .
+        ->
+C1:    ibit_request__6 >= ibit__phase__first .
+C2:    ibit_request__6 <= ibit__phase__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_poll_36.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_poll_37.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_poll_38.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_poll_39.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_poll_40.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_poll_41.
+*** true .          /* trivially true VC removed by Examiner */
+
+

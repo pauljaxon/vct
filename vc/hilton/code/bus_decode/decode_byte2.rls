@@ -1,0 +1,32 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:38.54*/
+
+                     /*procedure bus_decode.Decode_Byte2*/
+
+
+rule_family decode_byte2_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+decode_byte2_rules(1): integer__size >= 0 may_be_deduced.
+decode_byte2_rules(2): integer__first may_be_replaced_by -2147483648.
+decode_byte2_rules(3): integer__last may_be_replaced_by 2147483647.
+decode_byte2_rules(4): integer__base__first may_be_replaced_by -2147483648.
+decode_byte2_rules(5): integer__base__last may_be_replaced_by 2147483647.
+decode_byte2_rules(6): systemtypes__byte__size >= 0 may_be_deduced.
+decode_byte2_rules(7): systemtypes__byte__first may_be_replaced_by 0.
+decode_byte2_rules(8): systemtypes__byte__last may_be_replaced_by 255.
+decode_byte2_rules(9): systemtypes__byte__base__first may_be_replaced_by -2147483648.
+decode_byte2_rules(10): systemtypes__byte__base__last may_be_replaced_by 2147483647.
+decode_byte2_rules(11): bus__word__size >= 0 may_be_deduced.
+decode_byte2_rules(12): bus__word__first may_be_replaced_by 0.
+decode_byte2_rules(13): bus__word__last may_be_replaced_by 65535.
+decode_byte2_rules(14): bus__word__base__first may_be_replaced_by -2147483648.
+decode_byte2_rules(15): bus__word__base__last may_be_replaced_by 2147483647.

@@ -1,0 +1,211 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.53
+
+                      function bus_decode.Decode_Bool8
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 19:
+
+function_decode_bool8_1.
+H1:    true .
+H2:    word >= bus__word__first .
+H3:    word <= bus__word__last .
+        ->
+C1:    word >= bus__word__first .
+C2:    word <= bus__word__last .
+ 
+
+For path(s) from start to assertion of line 21:
+
+function_decode_bool8_2.
+H1:    true .
+H2:    word >= bus__word__first .
+H3:    word <= bus__word__last .
+H4:    word >= bus__word__first .
+H5:    word <= bus__word__last .
+H6:    word >= bus__word__first .
+H7:    word <= bus__word__last .
+H8:    word > 0 .
+        ->
+C1:    word >= 0 .
+C2:    word <= bus__word__last .
+C3:    bit8__first >= 1 .
+C4:    bit8__first <= 8 .
+C5:    word >= bus__word__first .
+C6:    word <= bus__word__last .
+ 
+
+For path(s) from assertion of line 21 to assertion of line 21:
+
+function_decode_bool8_3.
+H1:    working >= 0 .
+H2:    working <= bus__word__last .
+H3:    idx >= 1 .
+H4:    idx <= 8 .
+H5:    word >= bus__word__first .
+H6:    word <= bus__word__last .
+H7:    working >= bus__word__first .
+H8:    working <= bus__word__last .
+H9:    working mod 2 >= integer__base__first .
+H10:   working mod 2 <= integer__base__last .
+H11:   2 <> 0 .
+H12:   idx >= bit8__first .
+H13:   idx <= bit8__last .
+H14:   working >= bus__word__first .
+H15:   working <= bus__word__last .
+H16:   working div 2 >= bus__word__first .
+H17:   working div 2 <= bus__word__last .
+H18:   2 <> 0 .
+H19:   idx >= bit8__first .
+H20:   idx <= bit8__last .
+H21:   idx < bit8__last .
+H22:   idx >= bit8__first .
+H23:   idx <= bit8__last .
+H24:   idx + 1 >= bit8__first .
+H25:   idx + 1 <= bit8__last .
+H26:   idx <> integer__last .
+H27:   working div 2 >= bus__word__first .
+H28:   working div 2 <= bus__word__last .
+H29:   working div 2 > 0 .
+        ->
+C1:    working div 2 >= 0 .
+C2:    working div 2 <= bus__word__last .
+C3:    idx + 1 >= 1 .
+C4:    idx + 1 <= 8 .
+C5:    word >= bus__word__first .
+C6:    word <= bus__word__last .
+ 
+
+function_decode_bool8_4.
+H1:    working >= 0 .
+H2:    working <= bus__word__last .
+H3:    idx >= 1 .
+H4:    idx <= 8 .
+H5:    word >= bus__word__first .
+H6:    word <= bus__word__last .
+H7:    working >= bus__word__first .
+H8:    working <= bus__word__last .
+H9:    working mod 2 >= integer__base__first .
+H10:   working mod 2 <= integer__base__last .
+H11:   2 <> 0 .
+H12:   idx >= bit8__first .
+H13:   idx <= bit8__last .
+H14:   working >= bus__word__first .
+H15:   working <= bus__word__last .
+H16:   working div 2 >= bus__word__first .
+H17:   working div 2 <= bus__word__last .
+H18:   2 <> 0 .
+H19:   idx >= bit8__first .
+H20:   idx <= bit8__last .
+H21:   not (idx < bit8__last) .
+H22:   working div 2 >= bus__word__first .
+H23:   working div 2 <= bus__word__last .
+H24:   working div 2 > 0 .
+        ->
+C1:    working div 2 >= 0 .
+C2:    working div 2 <= bus__word__last .
+C3:    idx >= 1 .
+C4:    idx <= 8 .
+C5:    word >= bus__word__first .
+C6:    word <= bus__word__last .
+ 
+
+For path(s) from assertion of line 21 to run-time check associated with statement of line 23:
+
+function_decode_bool8_5.
+H1:    working >= 0 .
+H2:    working <= bus__word__last .
+H3:    idx >= 1 .
+H4:    idx <= 8 .
+H5:    word >= bus__word__first .
+H6:    word <= bus__word__last .
+H7:    working >= bus__word__first .
+H8:    working <= bus__word__last .
+        ->
+C1:    working mod 2 >= integer__base__first .
+C2:    working mod 2 <= integer__base__last .
+C3:    2 <> 0 .
+C4:    idx >= bit8__first .
+C5:    idx <= bit8__last .
+ 
+
+For path(s) from assertion of line 21 to run-time check associated with statement of line 24:
+
+function_decode_bool8_6.
+H1:    working >= 0 .
+H2:    working <= bus__word__last .
+H3:    idx >= 1 .
+H4:    idx <= 8 .
+H5:    word >= bus__word__first .
+H6:    word <= bus__word__last .
+H7:    working >= bus__word__first .
+H8:    working <= bus__word__last .
+H9:    working mod 2 >= integer__base__first .
+H10:   working mod 2 <= integer__base__last .
+H11:   2 <> 0 .
+H12:   idx >= bit8__first .
+H13:   idx <= bit8__last .
+H14:   working >= bus__word__first .
+H15:   working <= bus__word__last .
+        ->
+C1:    working div 2 >= bus__word__first .
+C2:    working div 2 <= bus__word__last .
+C3:    2 <> 0 .
+ 
+
+For path(s) from assertion of line 21 to run-time check associated with statement of line 26:
+
+function_decode_bool8_7.
+H1:    working >= 0 .
+H2:    working <= bus__word__last .
+H3:    idx >= 1 .
+H4:    idx <= 8 .
+H5:    word >= bus__word__first .
+H6:    word <= bus__word__last .
+H7:    working >= bus__word__first .
+H8:    working <= bus__word__last .
+H9:    working mod 2 >= integer__base__first .
+H10:   working mod 2 <= integer__base__last .
+H11:   2 <> 0 .
+H12:   idx >= bit8__first .
+H13:   idx <= bit8__last .
+H14:   working >= bus__word__first .
+H15:   working <= bus__word__last .
+H16:   working div 2 >= bus__word__first .
+H17:   working div 2 <= bus__word__last .
+H18:   2 <> 0 .
+H19:   idx >= bit8__first .
+H20:   idx <= bit8__last .
+H21:   idx < bit8__last .
+H22:   idx >= bit8__first .
+H23:   idx <= bit8__last .
+        ->
+C1:    idx + 1 >= bit8__first .
+C2:    idx + 1 <= bit8__last .
+C3:    idx <> integer__last .
+ 
+
+For path(s) from start to finish:
+
+function_decode_bool8_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For path(s) from assertion of line 21 to finish:
+
+function_decode_bool8_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+function_decode_bool8_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+

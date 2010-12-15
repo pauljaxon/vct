@@ -1,0 +1,74 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:43.90*/
+
+               /*procedure sensor_history.Update_Meter_Reading*/
+
+
+rule_family update_meter_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+update_meter_rules(1): measuretypes__meter__size >= 0 may_be_deduced.
+update_meter_rules(2): measuretypes__meter__first may_be_replaced_by -200000.
+update_meter_rules(3): measuretypes__meter__last may_be_replaced_by 200000.
+update_meter_rules(4): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+update_meter_rules(5): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+update_meter_rules(6): measuretypes__meter_per_sec__size >= 0 may_be_deduced.
+update_meter_rules(7): measuretypes__meter_per_sec__first may_be_replaced_by -5000.
+update_meter_rules(8): measuretypes__meter_per_sec__last may_be_replaced_by 5000.
+update_meter_rules(9): measuretypes__meter_per_sec__base__first may_be_replaced_by -2147483648.
+update_meter_rules(10): measuretypes__meter_per_sec__base__last may_be_replaced_by 2147483647.
+update_meter_rules(11): measuretypes__angle_degrees__size >= 0 may_be_deduced.
+update_meter_rules(12): measuretypes__angle_degrees__first may_be_replaced_by 0.
+update_meter_rules(13): measuretypes__angle_degrees__last may_be_replaced_by 359.
+update_meter_rules(14): measuretypes__angle_degrees__base__first <= 
+     measuretypes__angle_degrees__base__last may_be_deduced.
+update_meter_rules(15): measuretypes__angle_degrees__base__first <= 
+     measuretypes__angle_degrees__first may_be_deduced.
+update_meter_rules(16): measuretypes__angle_degrees__base__last >= 
+     measuretypes__angle_degrees__last may_be_deduced.
+update_meter_rules(17): clock__millisecond__size >= 0 may_be_deduced.
+update_meter_rules(18): clock__millisecond__first may_be_replaced_by 0.
+update_meter_rules(19): clock__millisecond__last may_be_replaced_by 8640000.
+update_meter_rules(20): clock__millisecond__base__first may_be_replaced_by -2147483648.
+update_meter_rules(21): clock__millisecond__base__last may_be_replaced_by 2147483647.
+update_meter_rules(22): meter__size >= 0 may_be_deduced.
+update_meter_rules(23): meter__first may_be_replaced_by -200000.
+update_meter_rules(24): meter__last may_be_replaced_by 200000.
+update_meter_rules(25): meter__base__first may_be_replaced_by -2147483648.
+update_meter_rules(26): meter__base__last may_be_replaced_by 2147483647.
+update_meter_rules(27): angle_degrees__size >= 0 may_be_deduced.
+update_meter_rules(28): angle_degrees__first may_be_replaced_by 0.
+update_meter_rules(29): angle_degrees__last may_be_replaced_by 359.
+update_meter_rules(30): angle_degrees__base__first <= 
+     angle_degrees__base__last may_be_deduced.
+update_meter_rules(31): angle_degrees__base__first <= 
+     angle_degrees__first may_be_deduced.
+update_meter_rules(32): angle_degrees__base__last >= 
+     angle_degrees__last may_be_deduced.
+update_meter_rules(33): meter_per_sec__size >= 0 may_be_deduced.
+update_meter_rules(34): meter_per_sec__first may_be_replaced_by -5000.
+update_meter_rules(35): meter_per_sec__last may_be_replaced_by 5000.
+update_meter_rules(36): meter_per_sec__base__first may_be_replaced_by -2147483648.
+update_meter_rules(37): meter_per_sec__base__last may_be_replaced_by 2147483647.
+update_meter_rules(38): history_count__size >= 0 may_be_deduced.
+update_meter_rules(39): history_count__first may_be_replaced_by 1.
+update_meter_rules(40): history_count__last may_be_replaced_by 4.
+update_meter_rules(41): history_count__base__first may_be_replaced_by -2147483648.
+update_meter_rules(42): history_count__base__last may_be_replaced_by 2147483647.
+update_meter_rules(43): measure_history__size >= 0 may_be_deduced.
+update_meter_rules(44): A = B may_be_deduced_from
+     [goal(checktype(A,measure_history)),
+      goal(checktype(B,measure_history)),
+      fld_distance(A) = fld_distance(B),
+      fld_bearing(A) = fld_bearing(B),
+      fld_speed(A) = fld_speed(B),
+      fld_times(A) = fld_times(B),
+      fld_new_idx(A) = fld_new_idx(B)].

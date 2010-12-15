@@ -1,0 +1,67 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:41
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure bit_machine.Init
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_init_1.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  ibit__phase__first <= fld_current_phase(state)
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  ibit__phase__first <= ibit__in_progress
+-S-  Applied substitution rule init_rules(12).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H7:  ibit__off <= fld_current_phase(state)
+<S>  New C1:  true
+-S-  Applied substitution rule init_rules(13).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H8:  fld_current_phase(state) <= ibit__timeout
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_init_2.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  ibit__phase__first <= fld_current_phase(state)
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  ibit__phase__first <= ibit__in_progress
+-S-  Applied substitution rule init_rules(7).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__first by:
+          0.
+<S>  New H2:  fld_ticks_to_complete(state) >= 0
+<S>  New H5:  fld_ticks(state) >= 0
+<S>  New C1:  true
+-S-  Applied substitution rule init_rules(8).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__last by:
+          65535.
+<S>  New H3:  fld_ticks_to_complete(state) <= 65535
+<S>  New H6:  fld_ticks(state) <= 65535
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_init_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

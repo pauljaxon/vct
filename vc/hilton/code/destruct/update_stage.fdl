@@ -1,0 +1,43 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:43.54}
+
+                      {procedure destruct.Update_Stage}
+
+
+title procedure update_stage;
+
+  function round__(real) : integer;
+  type clock__millisecond = integer;
+  type destruct_cfg__state = (destruct_cfg__inactive, 
+     destruct_cfg__armed, destruct_cfg__detonated);
+  type time_array = array [destruct_cfg__state] of integer;
+  const max_stage_time : time_array = pending;
+  const stage__base__last : destruct_cfg__state = pending; 
+  const stage__base__first : destruct_cfg__state = pending; 
+  const destruct_cfg__state__base__last : destruct_cfg__state = pending; 
+  const destruct_cfg__state__base__first : destruct_cfg__state = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const stage__size : integer = pending; 
+  const stage__last : destruct_cfg__state = pending; 
+  const stage__first : destruct_cfg__state = pending; 
+  const destruct_cfg__state__size : integer = pending; 
+  const destruct_cfg__state__last : destruct_cfg__state = pending; 
+  const destruct_cfg__state__first : destruct_cfg__state = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  var current_stage : destruct_cfg__state;
+  var stage_timer : integer;
+  var t_now : integer;
+  var t_valid : boolean;
+  var t_valid__1 : boolean;
+  var t_now__1 : integer;
+
+end;

@@ -1,0 +1,142 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.79
+
+Line
+   1  -- Bus decoding for measuretypes
+   2  --
+   3  -- $Log: measuretypes-decode.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.3  2003/09/01 18:19:54  adi
+   9  -- Added Newton
+  10  --
+  11  -- Revision 1.2  2003/08/27 21:01:03  adi
+  12  -- Added Kelvin
+  13  --
+  14  -- Revision 1.1  2003/08/25 14:42:40  adi
+  15  -- Initial revision
+  16  --
+  17  --
+  18  with systemTypes;
+  19  package body Measuretypes.decode is
+  20     Word_Max : constant := (1 + Bus.Word'Last);
+  21  
+  22     function Kelvin(B : Bus.Word) return Measuretypes.Kelvin
+  23     is begin
+  24        return Measuretypes.Kelvin(B);
+  25     end Kelvin;
+
++++        Flow analysis of subprogram Kelvin performed: no 
+           errors found.
+
+  26  
+  27     function Newton(Lo, Hi : Bus.Word) return Measuretypes.Newton
+  28     is
+  29        Ans : Measuretypes.Newton;
+  30        Negative : Boolean;
+  31        Tmp_Hi : Bus.Word;
+  32     begin
+  33        Tmp_Hi := Hi;
+  34        if Tmp_Hi >= 16#8000# then
+  35           Tmp_Hi := Tmp_Hi - 16#8000#;
+  36           Negative := True;
+  37        else
+  38           Negative := False;
+  39        end if;
+  40        Ans := Measuretypes.Newton(Lo) +
+  41          Measuretypes.Newton(Tmp_Hi)*Word_Max;
+  42        if Negative then
+  43           Ans := -Ans;
+  44        end if;
+  45        return Ans;
+  46     end Newton;
+
++++        Flow analysis of subprogram Newton performed: no 
+           errors found.
+
+  47  
+  48  
+  49     procedure Meter(M : out Measuretypes.Meter;
+  50                     Lo, Hi : in bus.Word)
+  51     is
+  52     begin
+  53        M := Measuretypes.Meter(Lo) +
+  54          Measuretypes.Meter(Hi)*Word_Max;
+  55     end Meter;
+
++++        Flow analysis of subprogram Meter performed: no 
+           errors found.
+
+  56  
+  57     -- decode in a single word
+  58     function Meter_Single(B : Bus.Word)
+  59       return Measuretypes.meter
+  60     is
+  61     begin
+  62        return Measuretypes.Meter(B);
+  63     end Meter_Single;
+
++++        Flow analysis of subprogram Meter_Single 
+           performed: no errors found.
+
+  64  
+  65     function Meter_Per_Sec(B : Bus.Word)
+  66       return Measuretypes.Meter_Per_Sec
+  67     is
+  68        Vel : Measuretypes.Meter_Per_Sec;
+  69     begin
+  70        if b >= 16#8000# then
+  71           Vel := -(Measuretypes.Meter_Per_Sec(B - 16#8000#));
+  72        else
+  73           Vel := Measuretypes.Meter_Per_Sec(B);
+  74        end if;
+  75        return Vel;
+  76     end Meter_Per_Sec;
+
++++        Flow analysis of subprogram Meter_Per_Sec 
+           performed: no errors found.
+
+  77  
+  78     function Bit4_Array(B : Bus.Word)
+  79       return Measuretypes.Bit4_Array
+  80     is
+  81        Grid : Measuretypes.Bit4_Array := Measuretypes.Bit4_Array'
+  82          (others => Measuretypes.Bit4_Slice'(others => False));
+  83        Datum, Add_Bit : Bus.Word;
+  84     begin
+  85        Datum := b;
+  86        Add_Bit := 16#8000#;
+  87        for Actual_X in reverse Measuretypes.bit4_Range loop
+  88           --# assert actual_x in measuretypes.bit4_range;
+  89           for Actual_Y in reverse Measuretypes.bit4_Range loop
+  90           --# assert actual_x in measuretypes.bit4_range and
+  91           --#        actual_y in measuretypes.bit4_range;
+  92              if Datum >= Add_Bit then
+  93                 grid(Actual_X)(Actual_Y) := True;
+  94                 Datum := Datum - Add_Bit;
+  95              end if;
+  96              Add_Bit := Add_Bit / 2;
+  97           end loop;
+  98        end loop;
+  99        return grid;
+ 100     end Bit4_array;
+
++++        Flow analysis of subprogram Bit4_Array 
+           performed: no errors found.
+
+ 101  
+ 102  
+ 103  end Measuretypes.decode;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

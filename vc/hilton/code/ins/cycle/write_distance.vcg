@@ -1,0 +1,85 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.11
+
+                     procedure ins.Cycle.Write_Distance
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 109:
+
+procedure_write_distance_1.
+H1:    true .
+H2:    d >= meter__first .
+H3:    d <= meter__last .
+H4:    i1 >= bus__word_index__first .
+H5:    i1 <= bus__word_index__last .
+H6:    i2 >= bus__word_index__first .
+H7:    i2 <= bus__word_index__last .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    i1 >= bus__word_index__first .
+C6:    i1 <= bus__word_index__last .
+C7:    d div 65536 >= bus__word__first .
+C8:    d div 65536 <= bus__word__last .
+C9:    d div 65536 >= bus__word__first .
+C10:   d div 65536 <= bus__word__last .
+C11:   d div 65536 >= measuretypes__meter__base__first .
+C12:   d div 65536 <= measuretypes__meter__base__last .
+C13:   65536 <> 0 .
+ 
+
+For path(s) from start to run-time check associated with statement of line 113:
+
+procedure_write_distance_2.
+H1:    true .
+H2:    d >= meter__first .
+H3:    d <= meter__last .
+H4:    i1 >= bus__word_index__first .
+H5:    i1 <= bus__word_index__last .
+H6:    i2 >= bus__word_index__first .
+H7:    i2 <= bus__word_index__last .
+H8:    bus_id >= rt1553__lru_name__first .
+H9:    bus_id <= rt1553__lru_name__last .
+H10:   1 >= bus__lru_subaddress_index__first .
+H11:   1 <= bus__lru_subaddress_index__last .
+H12:   i1 >= bus__word_index__first .
+H13:   i1 <= bus__word_index__last .
+H14:   d div 65536 >= bus__word__first .
+H15:   d div 65536 <= bus__word__last .
+H16:   d div 65536 >= bus__word__first .
+H17:   d div 65536 <= bus__word__last .
+H18:   d div 65536 >= measuretypes__meter__base__first .
+H19:   d div 65536 <= measuretypes__meter__base__last .
+H20:   65536 <> 0 .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    i2 >= bus__word_index__first .
+C6:    i2 <= bus__word_index__last .
+C7:    d mod 65536 >= bus__word__first .
+C8:    d mod 65536 <= bus__word__last .
+C9:    d mod 65536 >= bus__word__first .
+C10:   d mod 65536 <= bus__word__last .
+C11:   d mod 65536 >= measuretypes__meter__base__first .
+C12:   d mod 65536 <= measuretypes__meter__base__last .
+C13:   65536 <> 0 .
+ 
+
+For path(s) from start to finish:
+
+procedure_write_distance_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+

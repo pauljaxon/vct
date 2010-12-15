@@ -1,0 +1,40 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:40.53}
+
+                         {procedure fuel.Read_Level}
+
+
+title procedure read_level;
+
+  function round__(real) : integer;
+  type measuretypes__kilo = integer;
+  type measuretypes__gram_per_sec = integer;
+  type clock__millisecond = integer;
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const measuretypes__gram_per_sec__base__last : integer = pending; 
+  const measuretypes__gram_per_sec__base__first : integer = pending; 
+  const measuretypes__kilo__base__last : integer = pending; 
+  const measuretypes__kilo__base__first : integer = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  const measuretypes__gram_per_sec__size : integer = pending; 
+  const measuretypes__gram_per_sec__last : integer = pending; 
+  const measuretypes__gram_per_sec__first : integer = pending; 
+  const measuretypes__kilo__size : integer = pending; 
+  const measuretypes__kilo__last : integer = pending; 
+  const measuretypes__kilo__first : integer = pending; 
+  var level : integer;
+  var last_level : integer;
+  var last_rate : integer;
+  var last_time : integer;
+  var level__1 : integer;
+
+end;

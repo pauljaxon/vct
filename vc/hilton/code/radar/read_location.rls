@@ -1,0 +1,58 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:41.03*/
+
+                       /*procedure Radar.Read_Location*/
+
+
+rule_family read_locatio_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+read_locatio_rules(1): measuretypes__meter__size >= 0 may_be_deduced.
+read_locatio_rules(2): measuretypes__meter__first may_be_replaced_by -200000.
+read_locatio_rules(3): measuretypes__meter__last may_be_replaced_by 200000.
+read_locatio_rules(4): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+read_locatio_rules(5): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+read_locatio_rules(6): measuretypes__meter_per_sec__size >= 0 may_be_deduced.
+read_locatio_rules(7): measuretypes__meter_per_sec__first may_be_replaced_by -5000.
+read_locatio_rules(8): measuretypes__meter_per_sec__last may_be_replaced_by 5000.
+read_locatio_rules(9): measuretypes__meter_per_sec__base__first may_be_replaced_by -2147483648.
+read_locatio_rules(10): measuretypes__meter_per_sec__base__last may_be_replaced_by 2147483647.
+read_locatio_rules(11): radar_cfg__sector_range__size >= 0 may_be_deduced.
+read_locatio_rules(12): radar_cfg__sector_range__first may_be_replaced_by -20.
+read_locatio_rules(13): radar_cfg__sector_range__last may_be_replaced_by 20.
+read_locatio_rules(14): radar_cfg__sector_range__base__first <= 
+     radar_cfg__sector_range__base__last may_be_deduced.
+read_locatio_rules(15): radar_cfg__sector_range__base__first <= 
+     radar_cfg__sector_range__first may_be_deduced.
+read_locatio_rules(16): radar_cfg__sector_range__base__last >= 
+     radar_cfg__sector_range__last may_be_deduced.
+read_locatio_rules(17): meter__size >= 0 may_be_deduced.
+read_locatio_rules(18): meter__first may_be_replaced_by -200000.
+read_locatio_rules(19): meter__last may_be_replaced_by 200000.
+read_locatio_rules(20): meter__base__first may_be_replaced_by -2147483648.
+read_locatio_rules(21): meter__base__last may_be_replaced_by 2147483647.
+read_locatio_rules(22): meter_per_sec__size >= 0 may_be_deduced.
+read_locatio_rules(23): meter_per_sec__first may_be_replaced_by -5000.
+read_locatio_rules(24): meter_per_sec__last may_be_replaced_by 5000.
+read_locatio_rules(25): meter_per_sec__base__first may_be_replaced_by -2147483648.
+read_locatio_rules(26): meter_per_sec__base__last may_be_replaced_by 2147483647.
+read_locatio_rules(27): sector__size >= 0 may_be_deduced.
+read_locatio_rules(28): sector__first may_be_replaced_by -20.
+read_locatio_rules(29): sector__last may_be_replaced_by 20.
+read_locatio_rules(30): sector__base__first <= sector__base__last may_be_deduced.
+read_locatio_rules(31): sector__base__first <= sector__first may_be_deduced.
+read_locatio_rules(32): sector__base__last >= sector__last may_be_deduced.
+read_locatio_rules(33): ping__size >= 0 may_be_deduced.
+read_locatio_rules(34): A = B may_be_deduced_from
+     [goal(checktype(A,ping)),
+      goal(checktype(B,ping)),
+      fld_distance(A) = fld_distance(B),
+      fld_rel_vel(A) = fld_rel_vel(B)].

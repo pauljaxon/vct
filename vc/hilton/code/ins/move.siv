@@ -1,0 +1,71 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:49
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure ins.Move
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 174:
+
+procedure_move_1.
+H1:    dx >= - 200000 .
+H2:    dx <= 200000 .
+H3:    dy >= - 200000 .
+H4:    dy <= 200000 .
+H5:    dz >= - 200000 .
+H6:    dz <= 200000 .
+H7:    fld_z(last_position) >= - 200000 .
+H8:    fld_z(last_position) <= 200000 .
+H9:    fld_y(last_position) >= - 200000 .
+H10:   fld_y(last_position) <= 200000 .
+H11:   fld_x(last_position) >= - 200000 .
+H12:   fld_x(last_position) <= 200000 .
+H13:   measuretypes__meter__size >= 0 .
+H14:   cartesian__position__size >= 0 .
+H15:   clock__millisecond__size >= 0 .
+H16:   meter__size >= 0 .
+       ->
+C1:    fld_z(last_position) + dz >= - 200000 .
+C2:    fld_z(last_position) + dz <= 200000 .
+C3:    fld_y(last_position) + dy >= - 200000 .
+C4:    fld_y(last_position) + dy <= 200000 .
+C5:    fld_x(last_position) + dx >= - 200000 .
+C6:    fld_x(last_position) + dx <= 200000 .
+
+
+For path(s) from start to run-time check associated with statement of line 177:
+
+procedure_move_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to finish:
+
+procedure_move_3.
+*** true .          /* all conclusions proved */
+
+
+procedure_move_4.
+*** true .          /* all conclusions proved */
+
+
+For checks of refinement integrity: 
+
+procedure_move_5.
+*** true .          /* all conclusions proved */
+
+
+procedure_move_6.
+*** true .          /* all conclusions proved */
+
+

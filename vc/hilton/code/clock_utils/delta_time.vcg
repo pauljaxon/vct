@@ -1,0 +1,108 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.41
+
+                      function clock_utils.Delta_Time
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 20:
+
+function_delta_time_1.
+H1:    true .
+H2:    orig >= clock__millisecond__first .
+H3:    orig <= clock__millisecond__last .
+H4:    now >= clock__millisecond__first .
+H5:    now <= clock__millisecond__last .
+H6:    now >= orig .
+        ->
+C1:    now - orig >= clock__millisecond__first .
+C2:    now - orig <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 23:
+
+function_delta_time_2.
+H1:    true .
+H2:    orig >= clock__millisecond__first .
+H3:    orig <= clock__millisecond__last .
+H4:    now >= clock__millisecond__first .
+H5:    now <= clock__millisecond__last .
+H6:    not (now >= orig) .
+        ->
+C1:    clock__millisecond__last - orig >= clock__millisecond__first .
+C2:    clock__millisecond__last - orig <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 24:
+
+function_delta_time_3.
+H1:    true .
+H2:    orig >= clock__millisecond__first .
+H3:    orig <= clock__millisecond__last .
+H4:    now >= clock__millisecond__first .
+H5:    now <= clock__millisecond__last .
+H6:    not (now >= orig) .
+H7:    clock__millisecond__last - orig >= clock__millisecond__first .
+H8:    clock__millisecond__last - orig <= clock__millisecond__last .
+H9:    clock__millisecond__last - orig >= clock__millisecond__first .
+H10:   clock__millisecond__last - orig <= clock__millisecond__last .
+        ->
+C1:    clock__millisecond__last - orig + now >= 
+           clock__millisecond__first .
+C2:    clock__millisecond__last - orig + now <= 
+           clock__millisecond__last .
+ 
+
+For path(s) from start to finish:
+
+function_delta_time_4.
+H1:    true .
+H2:    orig >= clock__millisecond__first .
+H3:    orig <= clock__millisecond__last .
+H4:    now >= clock__millisecond__first .
+H5:    now <= clock__millisecond__last .
+H6:    now >= orig .
+H7:    now - orig >= clock__millisecond__first .
+H8:    now - orig <= clock__millisecond__last .
+H9:    now - orig >= clock__millisecond__first .
+H10:   now - orig <= clock__millisecond__last .
+        ->
+C1:    true .
+C2:    now - orig >= clock__millisecond__first .
+C3:    now - orig <= clock__millisecond__last .
+ 
+
+function_delta_time_5.
+H1:    true .
+H2:    orig >= clock__millisecond__first .
+H3:    orig <= clock__millisecond__last .
+H4:    now >= clock__millisecond__first .
+H5:    now <= clock__millisecond__last .
+H6:    not (now >= orig) .
+H7:    clock__millisecond__last - orig >= clock__millisecond__first .
+H8:    clock__millisecond__last - orig <= clock__millisecond__last .
+H9:    clock__millisecond__last - orig >= clock__millisecond__first .
+H10:   clock__millisecond__last - orig <= clock__millisecond__last .
+H11:   clock__millisecond__last - orig + now >= 
+           clock__millisecond__first .
+H12:   clock__millisecond__last - orig + now <= 
+           clock__millisecond__last .
+H13:   clock__millisecond__last - orig + now >= 
+           clock__millisecond__first .
+H14:   clock__millisecond__last - orig + now <= 
+           clock__millisecond__last .
+        ->
+C1:    true .
+C2:    clock__millisecond__last - orig + now >= 
+           clock__millisecond__first .
+C3:    clock__millisecond__last - orig + now <= 
+           clock__millisecond__last .
+ 
+

@@ -1,0 +1,224 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.93
+
+Line
+   1  -- Airspeed simulator implementation
+   2  --
+   3  -- $Log: airspeed.adb,v $
+   4  -- Revision 1.2  2005/01/24 19:19:05  adi
+   5  -- Hacked to implement logging
+   6  --
+   7  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   8  -- Added from tarfile
+   9  --
+  10  --
+  11  -- Revision 1.1  2003/08/08 20:45:17  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  --
+  16  with Clock_Utils,SystemTypes;
+  17  with Bus,RT1553,IBIT,Bit_Machine;
+  18  package body Airspeed
+  19    --# own State is
+  20    --#     Last_Speed,
+  21    --#     Last_Accel,
+  22    --#     Last_Time,
+  23    --#     BIT_State;
+  24  is
+  25     Last_Speed : Meter_Per_Sec := 0;
+  26     Last_Accel : cm_Per_Sec_2 := 0;
+  27     Last_Time     : Clock.Millisecond := Clock.Millisecond'First;
+  28     Bit_State : Bit_Machine.Machine := Bit_Machine.Initial_Machine;
+  29  
+  30     -- Work out the current speed.
+  31     procedure Extrapolate_Speed(Speed : out Meter_Per_sec)
+  32       --# global in     Last_Speed, Last_Accel, Last_Time;
+  33       --#        in out Clock.Time;
+  34       --# derives Clock.Time from * &
+  35       --#         Speed from Clock.Time, Last_Speed,
+  36       --#         Last_Accel, Last_Time;
+  37     is
+  38        Time_Now,T_Delta : Clock.Millisecond;
+  39        Time_Valid : Boolean;
+  40        S_Delta : Meter_Per_Sec;
+  41        VMS : Clock.Millisecond;
+  42     begin
+  43        Clock.Read(T => Time_Now,
+  44                   Valid => Time_Valid);
+  45        if not Time_Valid then
+  46          -- Can't extrapolate
+  47          Speed := 0;
+  48        else
+  49           -- How many seconds change
+  50           T_Delta := Clock_Utils.Delta_Time(Last_Time,Time_Now);
+  51           if Last_accel < 0 then
+  52              VMS := Clock.Millisecond(-Last_accel);
+  53              S_Delta := -Meter_Per_Sec((VMS * T_Delta)/100_000);
+  54           else
+  55              VMS := Clock.Millisecond(Last_accel);
+  56              S_Delta := Meter_Per_Sec((VMS * T_Delta)/100_000);
+  57           end if;
+  58           Speed := Last_Speed + S_Delta;
+  59        end if;
+  60     end Extrapolate_Speed;
+
++++        Flow analysis of subprogram Extrapolate_Speed 
+           performed: no errors found.
+
+  61  
+  62     --------- Public subprograms
+  63  
+  64     -- Cycle the reading of data from the bus
+  65     -- and writing of data to the bus
+  66     procedure Cycle
+  67       --# global in Last_Speed, Last_Time, Last_Accel;
+  68       --#        in out BIT_State;
+  69       --#        in out Clock.Time;
+  70       --#        in Bus.Outputs;
+  71       --#        in out Bus.Inputs;
+  72       --# derives
+  73       --#        BIT_State
+  74       --#          from *, Bus.Outputs &
+  75       --#        Bus.Inputs from *, Clock.Time, Last_Speed, Last_Time,
+  76       --#        Last_Accel, BIT_State &
+  77       --#        Clock.Time from *;
+  78     is
+  79        Speed : Meter_Per_Sec;
+  80        Datum : Bus.Word;
+  81     begin
+  82        Extrapolate_Speed(speed);
+  83        -- Write the speed info to T1 word 1
+  84        Rt1553.Write_Word(Data => Bus.Word(Speed),
+  85                          Idx  => 1,
+  86                          Subaddress_Idx => 1,
+  87                          Src => RT1553.Asi);
+  88        -- Ignore T1 word 2 for now
+  89        -- Write the BIT phase to T1 word 3
+  90        Rt1553.Write_Word(Data => IBIT.Phase_Lookup(BIT_Machine.Phase(Bit_State)),
+  91                         Idx => 3,
+  92                         Subaddress_Idx => 1,
+  93                         Src => RT1553.Asi);
+  94        -- Read the BIT info off R1
+  95        Rt1553.Read_Word(Src => Rt1553.Asi,
+  96                         Idx => 1,
+  97                         Subaddress_Idx => 1,
+  98                         Data => Datum);
+  99        BIT_Machine.Change_State(Word => Datum,
+ 100                                 State => Bit_state);
+ 101        -- And cycle the BIT
+ 102        BIT_Machine.Step(Bit_State);
+ 103     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+ 104  
+ 105     -- Set the current speed profile and accel
+ 106     procedure Set_airSpeed_Profile(Speed : in Meter_Per_sec;
+ 107                                Accel : in cm_Per_Sec_2)
+ 108     --# global    out Last_Speed, Last_Time, Last_Accel;
+ 109     --#        in out Clock.Time;
+ 110     --# derives Clock.Time from * &
+ 111     --#         Last_Speed from Speed, Clock.Time &
+ 112     --#         Last_Time     from Clock.Time &
+ 113     --#         Last_Accel    from Accel, Clock.Time;
+ 114     is
+ 115        Time_Valid : Boolean;
+ 116     begin
+ 117        Last_Speed := speed;
+ 118        Last_Accel := Accel;
+ 119        Clock.Read(Last_Time,Time_Valid);
+ 120        if not Time_Valid then
+ 121           Last_Speed := 0;
+ 122           Last_Accel := 0;
+ 123        end if;
+ 124     end Set_airSpeed_Profile;
+
++++        Flow analysis of subprogram Set_Airspeed_Profile 
+           performed: no errors found.
+
+ 125  
+ 126     -- Read the current speed
+ 127     procedure Read_airSpeed(Speed : out Meter_Per_Sec)
+ 128       --# global in     Last_Speed, Last_Time, Last_Accel;
+ 129       --#        in out Clock.Time;
+ 130       --# derives Clock.Time from * &
+ 131       --#         Speed from Last_speed, Last_Time, Last_accel,
+ 132       --#         Clock.Time;
+ 133     is
+ 134     begin
+ 135        Extrapolate_Speed(Speed);
+ 136     end Read_airSpeed;
+
++++        Flow analysis of subprogram Read_Airspeed 
+           performed: no errors found.
+
+ 137  
+ 138     -- Read the last-set acceleration and BIT status
+ 139     function Read_Accel return Cm_Per_Sec_2
+ 140       --# global in Last_Accel;
+ 141     is begin
+ 142        return Last_Accel;
+ 143     end Read_Accel;
+
++++        Flow analysis of subprogram Read_Accel 
+           performed: no errors found.
+
+ 144  
+ 145     function Read_BIT_Status return Bit_Machine.Machine
+ 146       --# global in Bit_state;
+ 147     is begin
+ 148        return Bit_State;
+ 149     end Read_BIT_Status;
+
++++        Flow analysis of subprogram Read_BIT_Status 
+           performed: no errors found.
+
+ 150  
+ 151  
+ 152     procedure Fail_Next_Bit
+ 153       --# global in out BIT_State;
+ 154       --# derives BIT_State from *;
+ 155     is begin
+ 156        BIT_Machine.Fail_Next(Bit_State);
+ 157     end Fail_Next_Bit;
+
++++        Flow analysis of subprogram Fail_Next_Bit 
+           performed: no errors found.
+
+ 158  
+ 159     procedure Init
+ 160       --# global out Last_Speed, Last_Time, Last_Accel, BIT_State;
+ 161       --#        in out Bus.Inputs;
+ 162       --# derives Last_Speed, Last_Time, Last_accel, BIT_State from &
+ 163       --#        Bus.Inputs from *;
+ 164     is begin
+ 165        -- Initialise the bus message 1T
+ 166        RT1553.Set_Message_Valid(Subaddress_Idx => 1,
+ 167                                 Src => RT1553.Asi);
+ 168        -- Initialise the variables
+ 169        Last_Speed := 0;
+ 170        Last_Time     := Clock.Millisecond'First;
+ 171        Last_Accel := 0;
+ 172        BIT_Machine.Create(Ticks_To_Complete => 12,
+ 173                           State => Bit_State);
+ 174     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 175  
+ 176     procedure Command is separate;
+ 177  end Airspeed;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

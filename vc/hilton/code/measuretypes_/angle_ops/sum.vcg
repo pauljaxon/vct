@@ -1,0 +1,774 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.09
+
+                           function angle_ops.Sum
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 47:
+
+function_sum_1.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+        ->
+C1:    left >= millirad__first .
+C2:    left <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 47:
+
+function_sum_2.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+        ->
+C1:    canon(left) >= canon_millirad__first .
+C2:    canon(left) <= canon_millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 48:
+
+function_sum_3.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+        ->
+C1:    right >= millirad__first .
+C2:    right <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 48:
+
+function_sum_4.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+        ->
+C1:    canon(right) >= canon_millirad__first .
+C2:    canon(right) <= canon_millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 52:
+
+function_sum_5.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   canon(left) >= 0 .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   canon(right) >= 0 .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+        ->
+C1:    canon(left) - measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+C2:    canon(left) - measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+C3:    canon(left) - measuretypes__angle_half >= 
+           measuretypes__millirad__base__first .
+C4:    canon(left) - measuretypes__angle_half <= 
+           measuretypes__millirad__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 55:
+
+function_sum_6.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   canon(left) >= 0 .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   canon(right) >= 0 .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+H28:   canon(left) - measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H29:   canon(left) - measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H30:   canon(left) - measuretypes__angle_half >= 
+           measuretypes__millirad__base__first .
+H31:   canon(left) - measuretypes__angle_half <= 
+           measuretypes__millirad__base__last .
+H32:   canon(left) - measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H33:   canon(left) - measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H34:   canon(left) - measuretypes__angle_half + canon(right) > 0 .
+H35:   canon(left) - measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H36:   canon(left) - measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+        ->
+C1:    canon(left) - measuretypes__angle_half + canon(right) + 
+           measuretypes__angle_minushalf >= millirad__first .
+C2:    canon(left) - measuretypes__angle_half + canon(right) + 
+           measuretypes__angle_minushalf <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 58:
+
+function_sum_7.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   canon(left) >= 0 .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   canon(right) >= 0 .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+H28:   canon(left) - measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H29:   canon(left) - measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H30:   canon(left) - measuretypes__angle_half >= 
+           measuretypes__millirad__base__first .
+H31:   canon(left) - measuretypes__angle_half <= 
+           measuretypes__millirad__base__last .
+H32:   canon(left) - measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H33:   canon(left) - measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H34:   not (canon(left) - measuretypes__angle_half + canon(
+           right) > 0) .
+H35:   canon(left) >= canon_millirad__first .
+H36:   canon(left) <= canon_millirad__last .
+H37:   canon(right) >= canon_millirad__first .
+H38:   canon(right) <= canon_millirad__last .
+        ->
+C1:    canon(left) + canon(right) >= millirad__first .
+C2:    canon(left) + canon(right) <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 62:
+
+function_sum_8.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   canon(left) >= 0 .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   not (canon(right) >= 0) .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+        ->
+C1:    canon(left) + canon(right) >= millirad__first .
+C2:    canon(left) + canon(right) <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 67:
+
+function_sum_9.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   not (canon(left) >= 0) .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   canon(right) >= 0 .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+        ->
+C1:    canon(left) + canon(right) >= millirad__first .
+C2:    canon(left) + canon(right) <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 70:
+
+function_sum_10.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   not (canon(left) >= 0) .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   not (canon(right) >= 0) .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+        ->
+C1:    canon(left) + measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+C2:    canon(left) + measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+C3:    canon(left) + measuretypes__angle_half >= 
+           measuretypes__millirad__base__first .
+C4:    canon(left) + measuretypes__angle_half <= 
+           measuretypes__millirad__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 73:
+
+function_sum_11.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   not (canon(left) >= 0) .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   not (canon(right) >= 0) .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+H28:   canon(left) + measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H29:   canon(left) + measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H30:   canon(left) + measuretypes__angle_half >= 
+           measuretypes__millirad__base__first .
+H31:   canon(left) + measuretypes__angle_half <= 
+           measuretypes__millirad__base__last .
+H32:   canon(left) + measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H33:   canon(left) + measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H34:   canon(left) + measuretypes__angle_half + canon(right) >= 0 .
+H35:   canon(left) >= canon_millirad__first .
+H36:   canon(left) <= canon_millirad__last .
+H37:   canon(right) >= canon_millirad__first .
+H38:   canon(right) <= canon_millirad__last .
+        ->
+C1:    canon(left) + canon(right) >= millirad__first .
+C2:    canon(left) + canon(right) <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 76:
+
+function_sum_12.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   not (canon(left) >= 0) .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   not (canon(right) >= 0) .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+H28:   canon(left) + measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H29:   canon(left) + measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H30:   canon(left) + measuretypes__angle_half >= 
+           measuretypes__millirad__base__first .
+H31:   canon(left) + measuretypes__angle_half <= 
+           measuretypes__millirad__base__last .
+H32:   canon(left) + measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H33:   canon(left) + measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H34:   not (canon(left) + measuretypes__angle_half + canon(
+           right) >= 0) .
+H35:   canon(left) + measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H36:   canon(left) + measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+        ->
+C1:    measuretypes__angle_half + (canon(left) + 
+           measuretypes__angle_half + canon(right)) >= 
+           millirad__first .
+C2:    measuretypes__angle_half + (canon(left) + 
+           measuretypes__angle_half + canon(right)) <= 
+           millirad__last .
+ 
+
+For path(s) from start to finish:
+
+function_sum_13.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   canon(left) >= 0 .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   canon(right) >= 0 .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+H28:   canon(left) - measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H29:   canon(left) - measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H30:   canon(left) - measuretypes__angle_half >= 
+           measuretypes__millirad__base__first .
+H31:   canon(left) - measuretypes__angle_half <= 
+           measuretypes__millirad__base__last .
+H32:   canon(left) - measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H33:   canon(left) - measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H34:   canon(left) - measuretypes__angle_half + canon(right) > 0 .
+H35:   canon(left) - measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H36:   canon(left) - measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H37:   canon(left) - measuretypes__angle_half + canon(right) + 
+           measuretypes__angle_minushalf >= millirad__first .
+H38:   canon(left) - measuretypes__angle_half + canon(right) + 
+           measuretypes__angle_minushalf <= millirad__last .
+H39:   canon(left) - measuretypes__angle_half + canon(right) + 
+           measuretypes__angle_minushalf >= millirad__first .
+H40:   canon(left) - measuretypes__angle_half + canon(right) + 
+           measuretypes__angle_minushalf <= millirad__last .
+        ->
+C1:    true .
+C2:    canon(left) - measuretypes__angle_half + canon(right) + 
+           measuretypes__angle_minushalf >= 
+           measuretypes__millirad__first .
+C3:    canon(left) - measuretypes__angle_half + canon(right) + 
+           measuretypes__angle_minushalf <= 
+           measuretypes__millirad__last .
+ 
+
+function_sum_14.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   canon(left) >= 0 .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   canon(right) >= 0 .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+H28:   canon(left) - measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H29:   canon(left) - measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H30:   canon(left) - measuretypes__angle_half >= 
+           measuretypes__millirad__base__first .
+H31:   canon(left) - measuretypes__angle_half <= 
+           measuretypes__millirad__base__last .
+H32:   canon(left) - measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H33:   canon(left) - measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H34:   not (canon(left) - measuretypes__angle_half + canon(
+           right) > 0) .
+H35:   canon(left) >= canon_millirad__first .
+H36:   canon(left) <= canon_millirad__last .
+H37:   canon(right) >= canon_millirad__first .
+H38:   canon(right) <= canon_millirad__last .
+H39:   canon(left) + canon(right) >= millirad__first .
+H40:   canon(left) + canon(right) <= millirad__last .
+H41:   canon(left) + canon(right) >= millirad__first .
+H42:   canon(left) + canon(right) <= millirad__last .
+        ->
+C1:    true .
+C2:    canon(left) + canon(right) >= measuretypes__millirad__first .
+C3:    canon(left) + canon(right) <= measuretypes__millirad__last .
+ 
+
+function_sum_15.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   canon(left) >= 0 .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   not (canon(right) >= 0) .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+H28:   canon(left) + canon(right) >= millirad__first .
+H29:   canon(left) + canon(right) <= millirad__last .
+H30:   canon(left) + canon(right) >= millirad__first .
+H31:   canon(left) + canon(right) <= millirad__last .
+        ->
+C1:    true .
+C2:    canon(left) + canon(right) >= measuretypes__millirad__first .
+C3:    canon(left) + canon(right) <= measuretypes__millirad__last .
+ 
+
+function_sum_16.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   not (canon(left) >= 0) .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   canon(right) >= 0 .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+H28:   canon(left) + canon(right) >= millirad__first .
+H29:   canon(left) + canon(right) <= millirad__last .
+H30:   canon(left) + canon(right) >= millirad__first .
+H31:   canon(left) + canon(right) <= millirad__last .
+        ->
+C1:    true .
+C2:    canon(left) + canon(right) >= measuretypes__millirad__first .
+C3:    canon(left) + canon(right) <= measuretypes__millirad__last .
+ 
+
+function_sum_17.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   not (canon(left) >= 0) .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   not (canon(right) >= 0) .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+H28:   canon(left) + measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H29:   canon(left) + measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H30:   canon(left) + measuretypes__angle_half >= 
+           measuretypes__millirad__base__first .
+H31:   canon(left) + measuretypes__angle_half <= 
+           measuretypes__millirad__base__last .
+H32:   canon(left) + measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H33:   canon(left) + measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H34:   canon(left) + measuretypes__angle_half + canon(right) >= 0 .
+H35:   canon(left) >= canon_millirad__first .
+H36:   canon(left) <= canon_millirad__last .
+H37:   canon(right) >= canon_millirad__first .
+H38:   canon(right) <= canon_millirad__last .
+H39:   canon(left) + canon(right) >= millirad__first .
+H40:   canon(left) + canon(right) <= millirad__last .
+H41:   canon(left) + canon(right) >= millirad__first .
+H42:   canon(left) + canon(right) <= millirad__last .
+        ->
+C1:    true .
+C2:    canon(left) + canon(right) >= measuretypes__millirad__first .
+C3:    canon(left) + canon(right) <= measuretypes__millirad__last .
+ 
+
+function_sum_18.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    left >= millirad__first .
+H7:    left <= millirad__last .
+H8:    canon(left) >= canon_millirad__first .
+H9:    canon(left) <= canon_millirad__last .
+H10:   canon(left) >= canon_millirad__first .
+H11:   canon(left) <= canon_millirad__last .
+H12:   right >= millirad__first .
+H13:   right <= millirad__last .
+H14:   canon(right) >= canon_millirad__first .
+H15:   canon(right) <= canon_millirad__last .
+H16:   canon(right) >= canon_millirad__first .
+H17:   canon(right) <= canon_millirad__last .
+H18:   canon(left) >= canon_millirad__first .
+H19:   canon(left) <= canon_millirad__last .
+H20:   not (canon(left) >= 0) .
+H21:   canon(right) >= canon_millirad__first .
+H22:   canon(right) <= canon_millirad__last .
+H23:   not (canon(right) >= 0) .
+H24:   canon(left) >= canon_millirad__first .
+H25:   canon(left) <= canon_millirad__last .
+H26:   canon(right) >= canon_millirad__first .
+H27:   canon(right) <= canon_millirad__last .
+H28:   canon(left) + measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H29:   canon(left) + measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H30:   canon(left) + measuretypes__angle_half >= 
+           measuretypes__millirad__base__first .
+H31:   canon(left) + measuretypes__angle_half <= 
+           measuretypes__millirad__base__last .
+H32:   canon(left) + measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H33:   canon(left) + measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H34:   not (canon(left) + measuretypes__angle_half + canon(
+           right) >= 0) .
+H35:   canon(left) + measuretypes__angle_half + canon(right) >= 
+           millirad__first .
+H36:   canon(left) + measuretypes__angle_half + canon(right) <= 
+           millirad__last .
+H37:   measuretypes__angle_half + (canon(left) + 
+           measuretypes__angle_half + canon(right)) >= 
+           millirad__first .
+H38:   measuretypes__angle_half + (canon(left) + 
+           measuretypes__angle_half + canon(right)) <= 
+           millirad__last .
+H39:   measuretypes__angle_half + (canon(left) + 
+           measuretypes__angle_half + canon(right)) >= 
+           millirad__first .
+H40:   measuretypes__angle_half + (canon(left) + 
+           measuretypes__angle_half + canon(right)) <= 
+           millirad__last .
+        ->
+C1:    true .
+C2:    measuretypes__angle_half + (canon(left) + 
+           measuretypes__angle_half + canon(right)) >= 
+           measuretypes__millirad__first .
+C3:    measuretypes__angle_half + (canon(left) + 
+           measuretypes__angle_half + canon(right)) <= 
+           measuretypes__millirad__last .
+ 
+

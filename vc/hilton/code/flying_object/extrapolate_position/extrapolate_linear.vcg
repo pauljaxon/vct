@@ -1,0 +1,56 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.46
+
+      procedure flying_object.Extrapolate_Position.Extrapolate_Linear
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 32:
+
+procedure_extrapolate_linear_1.
+H1:    true .
+H2:    u >= measuretypes__meter_per_sec__first .
+H3:    u <= measuretypes__meter_per_sec__last .
+H4:    a >= measuretypes__cm_per_sec_2__first .
+H5:    a <= measuretypes__cm_per_sec_2__last .
+H6:    t_offset >= integer32__first .
+H7:    t_offset <= integer32__last .
+H8:    t_o_squared >= integer32__first .
+H9:    t_o_squared <= integer32__last .
+        ->
+C1:    u * t_offset + a * t_o_squared div 2 >= 
+           measuretypes__meter__first .
+C2:    u * t_offset + a * t_o_squared div 2 <= 
+           measuretypes__meter__last .
+C3:    u * t_offset + a * t_o_squared div 2 >= 
+           measuretypes__meter__first .
+C4:    u * t_offset + a * t_o_squared div 2 <= 
+           measuretypes__meter__last .
+C5:    u * t_offset + a * t_o_squared div 2 >= long_integer__base__first .
+C6:    u * t_offset + a * t_o_squared div 2 <= long_integer__base__last .
+C7:    a * t_o_squared div 2 >= long_integer__base__first .
+C8:    a * t_o_squared div 2 <= long_integer__base__last .
+C9:    2 <> 0 .
+C10:   a * t_o_squared >= long_integer__base__first .
+C11:   a * t_o_squared <= long_integer__base__last .
+C12:   a >= integer32__first .
+C13:   a <= integer32__last .
+C14:   u * t_offset >= long_integer__base__first .
+C15:   u * t_offset <= long_integer__base__last .
+C16:   u >= integer32__first .
+C17:   u <= integer32__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_extrapolate_linear_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+

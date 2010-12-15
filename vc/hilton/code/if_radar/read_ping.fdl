@@ -1,0 +1,50 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:41.68}
+
+                        {procedure if_radar.Read_Ping}
+
+
+title procedure read_ping;
+
+  function round__(real) : integer;
+  type measuretypes__meter = integer;
+  type measuretypes__meter_per_sec = integer;
+  type radar_cfg__sector_range = integer;
+  type ping_request = record
+        sx : integer;
+        sy : integer;
+        fresh_request : boolean;
+        fresh_answer : boolean;
+        distance : integer;
+        velocity : integer
+     end;
+  const sector__base__last : integer = pending; 
+  const sector__base__first : integer = pending; 
+  const radar_cfg__sector_range__base__last : integer = pending; 
+  const radar_cfg__sector_range__base__first : integer = pending; 
+  const measuretypes__meter_per_sec__base__last : integer = pending; 
+  const measuretypes__meter_per_sec__base__first : integer = pending; 
+  const measuretypes__meter__base__last : integer = pending; 
+  const measuretypes__meter__base__first : integer = pending; 
+  const ping_request__size : integer = pending; 
+  const sector__size : integer = pending; 
+  const sector__last : integer = pending; 
+  const sector__first : integer = pending; 
+  const radar_cfg__sector_range__size : integer = pending; 
+  const radar_cfg__sector_range__last : integer = pending; 
+  const radar_cfg__sector_range__first : integer = pending; 
+  const measuretypes__meter_per_sec__size : integer = pending; 
+  const measuretypes__meter_per_sec__last : integer = pending; 
+  const measuretypes__meter_per_sec__first : integer = pending; 
+  const measuretypes__meter__size : integer = pending; 
+  const measuretypes__meter__last : integer = pending; 
+  const measuretypes__meter__first : integer = pending; 
+  var last_ping : ping_request;
+
+end;

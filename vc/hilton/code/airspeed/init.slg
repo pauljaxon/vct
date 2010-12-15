@@ -1,0 +1,137 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:39  SIMPLIFIED 25-NOV-2009, 14:18:47
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure airspeed.Init
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_init_1.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  rt1553__lru_name__first <= rt1553__asi
+-S-  Applied substitution rule init_rules(37).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New C1:  true
+-S-  Applied substitution rule init_rules(38).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New C2:  true
+-S-  Applied substitution rule init_rules(32).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New C3:  true
+-S-  Applied substitution rule init_rules(33).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New C4:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_init_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  rt1553__lru_name__first <= rt1553__asi
+-S-  Applied substitution rule init_rules(80).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New C1:  true
+-S-  Applied substitution rule init_rules(81).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_init_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  rt1553__lru_name__first <= rt1553__asi
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+***  Proved C1:  true
+-S-  Applied substitution rule init_rules(22).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New C2:  0 <= clock__millisecond__last
+-S-  Applied substitution rule init_rules(23).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_init_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  rt1553__lru_name__first <= rt1553__asi
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  true
+-S-  Applied substitution rule init_rules(85).
+     This was achieved by replacing all occurrences of cm_per_sec_2__first by:
+          - 30000.
+<S>  New C1:  true
+-S-  Applied substitution rule init_rules(86).
+     This was achieved by replacing all occurrences of cm_per_sec_2__last by:
+          30000.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_init_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  rt1553__lru_name__first <= rt1553__asi
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  true
+-S-  Applied substitution rule init_rules(7).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__first by:
+          0.
+<S>  New C1:  true
+-S-  Applied substitution rule init_rules(8).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__last by:
+          65535.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_init_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_init_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_init_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

@@ -1,0 +1,119 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.94
+
+Line
+   1  with Instruments,
+   2       AP.Controls,
+   3       AP.Altitude,
+   4       AP.Heading;
+   5  
+   6  package body AP
+   7    --# own State is in AP.Controls.Master_Switch,
+   8    --#              in AP.Controls.Altitude_Switch,
+   9    --#              in AP.Controls.Heading_Switch,
+  10    --#              AP.Altitude.State,
+  11    --#              AP.Heading.State;
+  12  is
+  13     procedure Control
+  14       --# global in     Controls.Master_Switch,
+  15       --#               Controls.Altitude_Switch,
+  16       --#               Controls.Heading_Switch;
+  17       --#        in out Altitude.State,
+  18       --#               Heading.State;
+  19       --#           out Surfaces.Elevators,
+  20       --#               Surfaces.Ailerons,
+  21       --#               Surfaces.Rudder;
+  22       --#        in     Instruments.Altitude,
+  23       --#               Instruments.Bank,
+  24       --#               Instruments.Heading,
+  25       --#               Instruments.Heading_Bug,
+  26       --#               Instruments.Mach,
+  27       --#               Instruments.Pitch,
+  28       --#               Instruments.Rate_Of_Climb,
+  29       --#               Instruments.Slip;
+  30       --# derives Altitude.State
+  31       --#          from *,
+  32       --#               Controls.Master_Switch,
+  33       --#               Controls.Altitude_Switch,
+  34       --#               Instruments.Altitude,
+  35       --#               Instruments.Pitch &
+  36       --#         Heading.State
+  37       --#          from *,
+  38       --#               Controls.Master_Switch,
+  39       --#               Controls.Heading_Switch,
+  40       --#               Instruments.Bank,
+  41       --#               Instruments.Slip &
+  42       --#  Surfaces.Elevators
+  43       --#          from Controls.Master_Switch,
+  44       --#               Controls.Altitude_Switch,
+  45       --#               Altitude.State,
+  46       --#               Instruments.Altitude,
+  47       --#               Instruments.Mach,
+  48       --#               Instruments.Pitch,
+  49       --#               Instruments.Rate_Of_Climb &
+  50       --#  Surfaces.Ailerons
+  51       --#          from Controls.Master_Switch,
+  52       --#               Controls.Heading_Switch,
+  53       --#               Heading.State,
+  54       --#               Instruments.Bank,
+  55       --#               Instruments.Heading,
+  56       --#               Instruments.Heading_Bug,
+  57       --#               Instruments.Mach &
+  58       --#  Surfaces.Rudder
+  59       --#          from Controls.Master_Switch,
+  60       --#               Controls.Heading_Switch,
+  61       --#               Heading.State,
+  62       --#               Instruments.Mach,
+  63       --#               Instruments.Slip
+  64       --#  ;
+  65     is
+  66        Master_Switch, Altitude_Switch, Heading_Switch,
+  67          Altitude_Selected, Heading_Selected : Controls.Switch;
+  68        Present_Altitude : Instruments.Feet;
+  69        Bank             : Instruments.Bankangle;
+  70        Present_Heading  : Instruments.Headdegree;
+  71        Target_Heading   : Instruments.Headdegree;
+  72        Mach             : Instruments.Machnumber;
+  73        Pitch            : Instruments.Pitchangle;
+  74        Rate_Of_Climb    : Instruments.Feetpermin;
+  75        Slip             : Instruments.Slipangle;
+  76     begin
+  77        Controls.Read_Master_Switch(Master_Switch);
+  78        Controls.Read_Altitude_Switch(Altitude_Switch);
+  79        Controls.Read_Heading_Switch(Heading_Switch);
+  80        case Master_Switch is
+  81           when Controls.On =>
+  82              Altitude_Selected := Altitude_Switch;
+  83              Heading_Selected := Heading_Switch;
+  84           when Controls.Off =>
+  85              Altitude_Selected := Controls.Off;
+  86              Heading_Selected := Controls.Off;
+  87        end case;
+  88        Instruments.Read_Altimeter(Present_Altitude);
+  89        Instruments.Read_Bank_Indicator(Bank);
+  90        Instruments.Read_Compass(Present_Heading);
+  91        Instruments.Read_Heading_Bug(Target_Heading);
+  92        Instruments.Read_Mach_Indicator(Mach);
+  93        Instruments.Read_Pitch_Indicator(Pitch);
+  94        Instruments.Read_VSI(Rate_Of_Climb);
+  95        Instruments.Read_Slip_Indicator(Slip);
+  96        Altitude.Maintain(Altitude_Selected,Present_Altitude,Mach,Rate_Of_Climb,Pitch);
+  97        Heading.Maintain(Heading_Selected,Mach,Present_Heading,Target_Heading,Bank,Slip);
+  98     end Control;
+
++++        Flow analysis of subprogram Control performed: 
+           no errors found.
+
+  99  
+ 100  end AP;
+ 101  
+ 102  
+
+
+--End of file--------------------------------------------------

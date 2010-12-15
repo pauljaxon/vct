@@ -1,0 +1,72 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.81*/
+
+                          /*procedure drag.Calc_Drag*/
+
+
+rule_family calc_drag_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+calc_drag_rules(1): constants__mach1_sea may_be_replaced_by 307.
+calc_drag_rules(2): lin_quad_boundary may_be_replaced_by 100.
+calc_drag_rules(3): transonic_boundary may_be_replaced_by 400.
+calc_drag_rules(4): postsonic_boundary may_be_replaced_by 450.
+calc_drag_rules(5): drag_at_mach1 may_be_replaced_by 942.
+calc_drag_rules(6): drag_at_transonic may_be_replaced_by 1344.
+calc_drag_rules(7): long_integer__size >= 0 may_be_deduced.
+calc_drag_rules(8): long_integer__first may_be_replaced_by -2147483648.
+calc_drag_rules(9): long_integer__last may_be_replaced_by 2147483647.
+calc_drag_rules(10): long_integer__base__first may_be_replaced_by -2147483648.
+calc_drag_rules(11): long_integer__base__last may_be_replaced_by 2147483647.
+calc_drag_rules(12): measuretypes__meter__size >= 0 may_be_deduced.
+calc_drag_rules(13): measuretypes__meter__first may_be_replaced_by -200000.
+calc_drag_rules(14): measuretypes__meter__last may_be_replaced_by 200000.
+calc_drag_rules(15): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+calc_drag_rules(16): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+calc_drag_rules(17): measuretypes__meter_per_sec__size >= 0 may_be_deduced.
+calc_drag_rules(18): measuretypes__meter_per_sec__first may_be_replaced_by -5000.
+calc_drag_rules(19): measuretypes__meter_per_sec__last may_be_replaced_by 5000.
+calc_drag_rules(20): measuretypes__meter_per_sec__base__first may_be_replaced_by -2147483648.
+calc_drag_rules(21): measuretypes__meter_per_sec__base__last may_be_replaced_by 2147483647.
+calc_drag_rules(22): measuretypes__newton__size >= 0 may_be_deduced.
+calc_drag_rules(23): measuretypes__newton__first may_be_replaced_by -1000000.
+calc_drag_rules(24): measuretypes__newton__last may_be_replaced_by 1000000.
+calc_drag_rules(25): measuretypes__newton__base__first may_be_replaced_by -2147483648.
+calc_drag_rules(26): measuretypes__newton__base__last may_be_replaced_by 2147483647.
+calc_drag_rules(27): drag_coefficient__size >= 0 may_be_deduced.
+calc_drag_rules(28): drag_coefficient__first may_be_replaced_by 1.
+calc_drag_rules(29): drag_coefficient__last may_be_replaced_by 1000.
+calc_drag_rules(30): drag_coefficient__base__first <= 
+     drag_coefficient__base__last may_be_deduced.
+calc_drag_rules(31): drag_coefficient__base__first <= 
+     drag_coefficient__first may_be_deduced.
+calc_drag_rules(32): drag_coefficient__base__last >= 
+     drag_coefficient__last may_be_deduced.
+calc_drag_rules(33): pos_meter__size >= 0 may_be_deduced.
+calc_drag_rules(34): pos_meter__first may_be_replaced_by 0.
+calc_drag_rules(35): pos_meter__last may_be_replaced_by 200000.
+calc_drag_rules(36): pos_meter__base__first may_be_replaced_by -2147483648.
+calc_drag_rules(37): pos_meter__base__last may_be_replaced_by 2147483647.
+calc_drag_rules(38): pos_meter_per_sec__size >= 0 may_be_deduced.
+calc_drag_rules(39): pos_meter_per_sec__first may_be_replaced_by 0.
+calc_drag_rules(40): pos_meter_per_sec__last may_be_replaced_by 5000.
+calc_drag_rules(41): pos_meter_per_sec__base__first may_be_replaced_by -2147483648.
+calc_drag_rules(42): pos_meter_per_sec__base__last may_be_replaced_by 2147483647.
+calc_drag_rules(43): integer32__size >= 0 may_be_deduced.
+calc_drag_rules(44): integer32__first may_be_replaced_by -2147483648.
+calc_drag_rules(45): integer32__last may_be_replaced_by 2147483647.
+calc_drag_rules(46): integer32__base__first may_be_replaced_by -2147483648.
+calc_drag_rules(47): integer32__base__last may_be_replaced_by 2147483647.
+calc_drag_rules(48): percent__size >= 0 may_be_deduced.
+calc_drag_rules(49): percent__first may_be_replaced_by 0.
+calc_drag_rules(50): percent__last may_be_replaced_by 100.
+calc_drag_rules(51): percent__base__first may_be_replaced_by -2147483648.
+calc_drag_rules(52): percent__base__last may_be_replaced_by 2147483647.

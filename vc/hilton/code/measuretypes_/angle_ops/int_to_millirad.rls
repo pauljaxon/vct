@@ -1,0 +1,48 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.20*/
+
+                     /*function angle_ops.Int_To_Millirad*/
+
+
+rule_family int_to_milli_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+int_to_milli_rules(1): measuretypes__angle_full may_be_replaced_by 6283.
+int_to_milli_rules(2): integer__size >= 0 may_be_deduced.
+int_to_milli_rules(3): integer__first may_be_replaced_by -2147483648.
+int_to_milli_rules(4): integer__last may_be_replaced_by 2147483647.
+int_to_milli_rules(5): integer__base__first may_be_replaced_by -2147483648.
+int_to_milli_rules(6): integer__base__last may_be_replaced_by 2147483647.
+int_to_milli_rules(7): long_integer__size >= 0 may_be_deduced.
+int_to_milli_rules(8): long_integer__first may_be_replaced_by -2147483648.
+int_to_milli_rules(9): long_integer__last may_be_replaced_by 2147483647.
+int_to_milli_rules(10): long_integer__base__first may_be_replaced_by -2147483648.
+int_to_milli_rules(11): long_integer__base__last may_be_replaced_by 2147483647.
+int_to_milli_rules(12): systemtypes__integer32__size >= 0 may_be_deduced.
+int_to_milli_rules(13): systemtypes__integer32__first may_be_replaced_by -2147483648.
+int_to_milli_rules(14): systemtypes__integer32__last may_be_replaced_by 2147483647.
+int_to_milli_rules(15): systemtypes__integer32__base__first may_be_replaced_by -2147483648.
+int_to_milli_rules(16): systemtypes__integer32__base__last may_be_replaced_by 2147483647.
+int_to_milli_rules(17): systemtypes__unsigned32__size >= 0 may_be_deduced.
+int_to_milli_rules(18): systemtypes__unsigned32__first may_be_replaced_by 0.
+int_to_milli_rules(19): systemtypes__unsigned32__last may_be_replaced_by 2147483647.
+int_to_milli_rules(20): systemtypes__unsigned32__base__first may_be_replaced_by -2147483648.
+int_to_milli_rules(21): systemtypes__unsigned32__base__last may_be_replaced_by 2147483647.
+int_to_milli_rules(22): measuretypes__millirad__size >= 0 may_be_deduced.
+int_to_milli_rules(23): measuretypes__millirad__first may_be_replaced_by -7000.
+int_to_milli_rules(24): measuretypes__millirad__last may_be_replaced_by 7000.
+int_to_milli_rules(25): measuretypes__millirad__base__first may_be_replaced_by -2147483648.
+int_to_milli_rules(26): measuretypes__millirad__base__last may_be_replaced_by 2147483647.
+int_to_milli_rules(27): millirad__size >= 0 may_be_deduced.
+int_to_milli_rules(28): millirad__first may_be_replaced_by -7000.
+int_to_milli_rules(29): millirad__last may_be_replaced_by 7000.
+int_to_milli_rules(30): millirad__base__first may_be_replaced_by -2147483648.
+int_to_milli_rules(31): millirad__base__last may_be_replaced_by 2147483647.

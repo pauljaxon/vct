@@ -1,0 +1,40 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:54
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function radar_cfg.decode_Sector
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 41:
+
+function_decode_sector_1.
+H1:    b >= 0 .
+H2:    b <= 65535 .
+H3:    integer__size >= 0 .
+H4:    long_integer__size >= 0 .
+H5:    systemtypes__unsigned16__size >= 0 .
+H6:    sector_range__size >= 0 .
+H7:    sector_range__base__first <= sector_range__base__last .
+H8:    integer32__size >= 0 .
+H9:    sector_range__base__first <= - 20 .
+H10:   sector_range__base__last >= 20 .
+       ->
+C1:    b <= 40 .
+
+
+For path(s) from start to finish:
+
+function_decode_sector_2.
+*** true .          /* all conclusions proved */
+
+

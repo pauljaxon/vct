@@ -1,0 +1,104 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.91
+
+Line
+   1  -- IBIT state machine
+   2  --
+   3  -- $Log: ibit.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.3  2003/09/10 20:05:38  adi
+   9  -- Fixed state for BIT changes
+  10  --
+  11  -- Revision 1.2  2003/02/11 20:48:43  adi
+  12  -- Added the RT state machine
+  13  --
+  14  -- Revision 1.1  2003/02/11 20:35:15  adi
+  15  -- Initial revision
+  16  --
+  17  --
+  18  package body IBIT is
+  19     -- The standard IBIT state machine for the MCU,
+  20     -- reading Bus_Data off the bus from the relevant RT
+  21     -- and changing its internal Phase variable accordingly.
+  22  
+  23     procedure State_Machine(Bus_Data : in SystemTypes.Unsigned16;
+  24                             Current_Phase : in out Phase)
+  25     is
+  26     begin
+  27        case Current_Phase is
+  28           when Off =>
+  29              null;
+  30           when Request_Start =>
+  31              -- Expect to see In_Progress eventually
+  32              if Bus_Data = Phase_Lookup(In_Progress) then
+  33                 Current_Phase := In_Progress;
+  34              end if;
+  35           when In_Progress =>
+  36              -- Expect to see pass or fail
+  37              if Bus_Data = Phase_Lookup(Pass) then
+  38                 Current_Phase := Pass;
+  39              elsif Bus_Data = Phase_Lookup(Fail) then
+  40                 Current_Phase := Fail;
+  41              else
+  42                 null;
+  43              end if;
+  44           when Request_Stop =>
+  45              -- Expect to see Off eventually
+  46              if Bus_Data = Phase_Lookup(Off) then
+  47                 Current_Phase := Off;
+  48              end if;
+  49           when Pass | Fail | Timeout =>
+  50              -- skip
+  51              null;
+  52        end case;
+  53     end State_Machine;
+
++++        Flow analysis of subprogram State_Machine 
+           performed: no errors found.
+
+  54  
+  55  
+  56     -- The standard IBIT state machine for RTs,
+  57     -- reading Bus_Data off the bus from the MCU
+  58     -- and changing its internal Phase variable accordingly.
+  59  
+  60     procedure RT_State_Machine(Bus_Data : in SystemTypes.Unsigned16;
+  61                             Current_Phase : in out Phase)
+  62     is
+  63     begin
+  64        case Current_Phase is
+  65           when Off | Pass | Fail =>
+  66              -- Expect to see request_start eventually
+  67              if Bus_Data = Phase_Lookup(Request_Start) then
+  68                 Current_Phase := In_Progress;
+  69              end if;
+  70           when Request_Start | Request_Stop | Timeout =>
+  71              -- Shouldn't happen
+  72              null;
+  73           when In_Progress =>
+  74              -- Expect to see a request_stop
+  75              if Bus_Data = Phase_Lookup(Request_Stop) then
+  76                 Current_Phase := Off;
+  77              end if;
+  78        end case;
+  79     end RT_State_Machine;
+
++++        Flow analysis of subprogram RT_State_Machine 
+           performed: no errors found.
+
+  80  
+  81  end IBIT;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

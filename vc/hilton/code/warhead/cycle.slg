@@ -1,0 +1,1780 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:43  SIMPLIFIED 25-NOV-2009, 14:19:16
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure warhead.Cycle
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_cycle_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  rt1553__lru_name__first <= bus_id
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  warhead_cfg__state__first <= current_stage__1
+-S-  Applied substitution rule cycle_rules(48).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New C1:  rt1553__barometer <= bus_id
+-S-  Applied substitution rule cycle_rules(5).
+     This was achieved by replacing all occurrences of bus_id by:
+          rt1553__warhead.
+<S>  New C2:  rt1553__warhead <= rt1553__lru_name__last
+<S>  New C1:  true
+-S-  Applied substitution rule cycle_rules(49).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New C2:  true
+-S-  Applied substitution rule cycle_rules(43).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New C3:  true
+-S-  Applied substitution rule cycle_rules(44).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New C4:  true
+-S-  Applied substitution rule cycle_rules(27).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New C5:  true
+-S-  Applied substitution rule cycle_rules(28).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New C6:  true
+-S-  Applied substitution rule cycle_rules(33).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C7:  element(warhead_cfg__state_to_code, [current_stage__1]) >= 0
+-S-  Applied substitution rule cycle_rules(34).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C8:  element(warhead_cfg__state_to_code, [current_stage__1]) <= 65535
+-S-  Applied substitution rule cycle_rules(124).
+     This was achieved by replacing all occurrences of 
+          warhead_cfg__state__first by:
+          warhead_cfg__inactive.
+<S>  New C9:  warhead_cfg__inactive <= current_stage__1
+-S-  Applied substitution rule cycle_rules(125).
+     This was achieved by replacing all occurrences of warhead_cfg__state__last 
+          by:
+          warhead_cfg__detonated.
+<S>  New C10:  current_stage__1 <= warhead_cfg__detonated
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  Proved C5:  true
+***  Proved C6:  true
+-S-  Applied substitution rule cycle_rules(22).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  stage_timer >= 0
+<S>  New H8:  stage_timer__1 >= 0
+-S-  Applied substitution rule cycle_rules(23).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  stage_timer <= 8640000
+<S>  New H9:  stage_timer__1 <= 8640000
+-S-  Applied substitution rule cycle_rules(153).
+     This was achieved by replacing all occurrences of stage__first by:
+          warhead_cfg__inactive.
+<S>  New H2:  warhead_cfg__inactive <= current_stage
+<S>  New H6:  warhead_cfg__inactive <= current_stage__1
+-S-  Applied substitution rule cycle_rules(154).
+     This was achieved by replacing all occurrences of stage__last by:
+          warhead_cfg__detonated.
+<S>  New H3:  current_stage <= warhead_cfg__detonated
+<S>  New H7:  current_stage__1 <= warhead_cfg__detonated
+***  Proved C9:  warhead_cfg__inactive <= current_stage__1
+     using hypothesis H6.
+***  Proved C10:  current_stage__1 <= warhead_cfg__detonated
+     using hypothesis H7.
+---  Eliminated hypothesis H1 (true-hypothesis).
+***  Proved C7:  element(warhead_cfg__state_to_code, [current_stage__1]) >= 0
+     using hypotheses H6 & H7.
+***  Proved C8:  element(warhead_cfg__state_to_code, [current_stage__1]) <= 
+          65535
+     using hypotheses H6 & H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  rt1553__lru_name__first <= bus_id
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  ibit__phase__first <= bit_machine__phase(bit_state)
+***  Proved C1:  rt1553__lru_name__first <= bus_id
+     using hypothesis H10.
+***  Proved C2:  bus_id <= rt1553__lru_name__last
+     using hypothesis H11.
+***  Proved C3:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H12.
+***  Proved C4:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H13.
+***  Proved C5:  2 >= bus__word_index__first
+     using hypothesis H14.
+***  Proved C9:  ibit__phase__first <= bit_machine__phase(bit_state)
+     using hypothesis H20.
+***  Proved C10:  bit_machine__phase(bit_state) <= ibit__phase__last
+     using hypothesis H21.
+-S-  Applied substitution rule cycle_rules(28).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H15:  true
+<S>  New C6:  true
+-S-  Applied substitution rule cycle_rules(33).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H16:  element(warhead_cfg__state_to_code, [current_stage__1]) >= 0
+<S>  New C7:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) >= 0
+-S-  Applied substitution rule cycle_rules(34).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H17:  element(warhead_cfg__state_to_code, [current_stage__1]) <= 65535
+<S>  New C8:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) <= 
+          65535
+***  Proved C6:  true
+-S-  Applied substitution rule cycle_rules(5).
+     This was achieved by replacing all occurrences of bus_id by:
+          rt1553__warhead.
+<S>  New H10:  rt1553__lru_name__first <= rt1553__warhead
+<S>  New H11:  rt1553__warhead <= rt1553__lru_name__last
+-S-  Applied substitution rule cycle_rules(22).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  stage_timer >= 0
+<S>  New H8:  stage_timer__1 >= 0
+-S-  Applied substitution rule cycle_rules(23).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  stage_timer <= 8640000
+<S>  New H9:  stage_timer__1 <= 8640000
+-S-  Applied substitution rule cycle_rules(27).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H14:  true
+-S-  Applied substitution rule cycle_rules(43).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H12:  true
+-S-  Applied substitution rule cycle_rules(44).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H13:  true
+-S-  Applied substitution rule cycle_rules(48).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New H10:  true
+-S-  Applied substitution rule cycle_rules(49).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New H11:  true
+-S-  Applied substitution rule cycle_rules(91).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H20:  ibit__off <= bit_machine__phase(bit_state)
+-S-  Applied substitution rule cycle_rules(92).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H21:  bit_machine__phase(bit_state) <= ibit__timeout
+-S-  Applied substitution rule cycle_rules(124).
+     This was achieved by replacing all occurrences of 
+          warhead_cfg__state__first by:
+          warhead_cfg__inactive.
+<S>  New H18:  warhead_cfg__inactive <= current_stage__1
+-S-  Applied substitution rule cycle_rules(125).
+     This was achieved by replacing all occurrences of warhead_cfg__state__last 
+          by:
+          warhead_cfg__detonated.
+<S>  New H19:  current_stage__1 <= warhead_cfg__detonated
+-S-  Applied substitution rule cycle_rules(153).
+     This was achieved by replacing all occurrences of stage__first by:
+          warhead_cfg__inactive.
+<S>  New H2:  warhead_cfg__inactive <= current_stage
+<S>  New H6:  warhead_cfg__inactive <= current_stage__1
+-S-  Applied substitution rule cycle_rules(154).
+     This was achieved by replacing all occurrences of stage__last by:
+          warhead_cfg__detonated.
+<S>  New H3:  current_stage <= warhead_cfg__detonated
+<S>  New H7:  current_stage__1 <= warhead_cfg__detonated
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H18 (duplicate of H6).
+---  Eliminated hypothesis H19 (duplicate of H7).
+***  Proved C7:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) 
+          >= 0
+     using hypotheses H20 & H21.
+***  Proved C8:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) 
+          <= 65535
+     using hypotheses H20 & H21.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  rt1553__lru_name__first <= bus_id
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H12.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H13.
+***  Proved C3:  rt1553__lru_name__first <= bus_id
+     using hypothesis H10.
+***  Proved C4:  bus_id <= rt1553__lru_name__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+***  Proved C1:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 1 >= 
+          bus__lru_subaddress_index__first and 1 <= 
+          bus__lru_subaddress_index__last
+     using hypotheses H12 & H13.
+***  Proved C2:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+     using hypotheses H10 & H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  rt1553__lru_name__first <= bus_id
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H12.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H13.
+***  Proved C3:  1 >= bus__word_index__first
+     using hypothesis H14.
+***  Proved C4:  1 <= bus__word_index__last
+     using hypothesis H15.
+***  Proved C5:  rt1553__lru_name__first <= bus_id
+     using hypothesis H10.
+***  Proved C6:  bus_id <= rt1553__lru_name__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_6.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C1:  datum__4 >= bus__word__first
+     using hypothesis H48.
+***  Proved C2:  datum__4 <= bus__word__last
+     using hypothesis H49.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_7.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+-S-  Applied substitution rule cycle_rules(12).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__first by:
+          0.
+<S>  New C1:  datum__4 >= 0
+-S-  Applied substitution rule cycle_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__last by:
+          65535.
+<S>  New C2:  datum__4 <= 65535
++++  Using "A->B, A |- B" on hypotheses H37 & H40 yields a new hypothesis:
+     +++  H54:  1 >= bus__lru_subaddress_index__first and 1 <= 
+          bus__lru_subaddress_index__last
++++  Using "A->B, A |- B" on hypotheses H38 & H40 yields a new hypothesis:
+     +++  H55:  rt1553__lru_name__first <= bus_id and bus_id <= 
+          rt1553__lru_name__last
+-S-  Applied substitution rule cycle_rules(5).
+     This was achieved by replacing all occurrences of bus_id by:
+          rt1553__warhead.
+<S>  New H10:  rt1553__lru_name__first <= rt1553__warhead
+<S>  New H11:  rt1553__warhead <= rt1553__lru_name__last
+<S>  New H37:  rt1553__is_valid(rt1553__warhead, 1, bus__outputs) -> 1 >= 
+          bus__lru_subaddress_index__first and 1 <= 
+          bus__lru_subaddress_index__last
+<S>  New H38:  rt1553__is_valid(rt1553__warhead, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= rt1553__warhead and rt1553__warhead <= 
+          rt1553__lru_name__last
+<S>  New H40:  rt1553__is_valid(rt1553__warhead, 1, bus__outputs)
+<S>  New H41:  rt1553__is_fresh(rt1553__warhead, 1, bus__outputs)
+<S>  New H55:  rt1553__lru_name__first <= rt1553__warhead and rt1553__warhead 
+          <= rt1553__lru_name__last
+-S-  Applied substitution rule cycle_rules(22).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  stage_timer >= 0
+<S>  New H8:  stage_timer__1 >= 0
+-S-  Applied substitution rule cycle_rules(23).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  stage_timer <= 8640000
+<S>  New H9:  stage_timer__1 <= 8640000
+-S-  Applied substitution rule cycle_rules(27).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H14:  true
+<S>  New H26:  true
+-S-  Applied substitution rule cycle_rules(28).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H15:  true
+<S>  New H27:  true
+-S-  Applied substitution rule cycle_rules(33).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H16:  element(warhead_cfg__state_to_code, [current_stage__1]) >= 0
+<S>  New H28:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) >= 0
+<S>  New H48:  datum__4 >= 0
+-S-  Applied substitution rule cycle_rules(34).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H17:  element(warhead_cfg__state_to_code, [current_stage__1]) <= 65535
+<S>  New H29:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) <= 
+          65535
+<S>  New H49:  datum__4 <= 65535
+-S-  Applied substitution rule cycle_rules(43).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H12:  true
+<S>  New H54:  1 <= bus__lru_subaddress_index__last
+<S>  New H37:  rt1553__is_valid(rt1553__warhead, 1, bus__outputs) -> 1 <= 
+          bus__lru_subaddress_index__last
+-S-  Applied substitution rule cycle_rules(44).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H13:  true
+<S>  New H54:  true
+<S>  New H37:  true
+-S-  Applied substitution rule cycle_rules(48).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New H10:  true
+<S>  New H38:  rt1553__is_valid(rt1553__warhead, 1, bus__outputs) -> 
+          rt1553__warhead <= rt1553__lru_name__last
+<S>  New H55:  rt1553__warhead <= rt1553__lru_name__last
+-S-  Applied substitution rule cycle_rules(49).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New H11:  true
+<S>  New H38:  true
+<S>  New H55:  true
+-S-  Applied substitution rule cycle_rules(91).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H20:  ibit__off <= bit_machine__phase(bit_state)
+-S-  Applied substitution rule cycle_rules(92).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H21:  bit_machine__phase(bit_state) <= ibit__timeout
+-S-  Applied substitution rule cycle_rules(124).
+     This was achieved by replacing all occurrences of 
+          warhead_cfg__state__first by:
+          warhead_cfg__inactive.
+<S>  New H18:  warhead_cfg__inactive <= current_stage__1
+-S-  Applied substitution rule cycle_rules(125).
+     This was achieved by replacing all occurrences of warhead_cfg__state__last 
+          by:
+          warhead_cfg__detonated.
+<S>  New H19:  current_stage__1 <= warhead_cfg__detonated
+-S-  Applied substitution rule cycle_rules(153).
+     This was achieved by replacing all occurrences of stage__first by:
+          warhead_cfg__inactive.
+<S>  New H2:  warhead_cfg__inactive <= current_stage
+<S>  New H6:  warhead_cfg__inactive <= current_stage__1
+-S-  Applied substitution rule cycle_rules(154).
+     This was achieved by replacing all occurrences of stage__last by:
+          warhead_cfg__detonated.
+<S>  New H3:  current_stage <= warhead_cfg__detonated
+<S>  New H7:  current_stage__1 <= warhead_cfg__detonated
+***  Proved C1:  datum__4 >= 0
+     using hypothesis H48.
+***  Proved C2:  datum__4 <= 65535
+     using hypothesis H49.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_8.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  warhead_cfg__state__first <= warhead_cfg__code_to_state(
+          datum__4)
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H49).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  warhead_cfg__state__first <= current_stage__1
+***  Proved C1:  datum__4 >= systemtypes__unsigned16__first
+     using hypothesis H54.
+***  Proved C2:  datum__4 <= systemtypes__unsigned16__last
+     using hypothesis H55.
+***  Proved C3:  warhead_cfg__state__first <= current_stage__1
+     using hypothesis H18.
+***  Proved C4:  current_stage__1 <= warhead_cfg__state__last
+     using hypothesis H19.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_9.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  warhead_cfg__state__first <= warhead_cfg__code_to_state(
+          datum__4)
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H54).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H55).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H65 on reading formula in, to give:
+     %%%  H65:  warhead_cfg__state__first <= warhead_cfg__transition(
+          current_stage__1, datum__4)
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  stage__first <= warhead_cfg__transition(current_stage__1, 
+          datum__4)
+-S-  Applied substitution rule cycle_rules(153).
+     This was achieved by replacing all occurrences of stage__first by:
+          warhead_cfg__inactive.
+<S>  New H2:  warhead_cfg__inactive <= current_stage
+<S>  New H6:  warhead_cfg__inactive <= current_stage__1
+<S>  New C1:  warhead_cfg__inactive <= warhead_cfg__transition(
+          current_stage__1, datum__4)
+-S-  Applied substitution rule cycle_rules(154).
+     This was achieved by replacing all occurrences of stage__last by:
+          warhead_cfg__detonated.
+<S>  New H3:  current_stage <= warhead_cfg__detonated
+<S>  New H7:  current_stage__1 <= warhead_cfg__detonated
+<S>  New C2:  warhead_cfg__transition(current_stage__1, datum__4) <= 
+          warhead_cfg__detonated
++++  Using "A->B, A |- B" on hypotheses H37 & H40 yields a new hypothesis:
+     +++  H67:  1 >= bus__lru_subaddress_index__first and 1 <= 
+          bus__lru_subaddress_index__last
++++  Using "A->B, A |- B" on hypotheses H38 & H40 yields a new hypothesis:
+     +++  H68:  rt1553__lru_name__first <= bus_id and bus_id <= 
+          rt1553__lru_name__last
+-S-  Applied substitution rule cycle_rules(5).
+     This was achieved by replacing all occurrences of bus_id by:
+          rt1553__warhead.
+<S>  New H10:  rt1553__lru_name__first <= rt1553__warhead
+<S>  New H11:  rt1553__warhead <= rt1553__lru_name__last
+<S>  New H37:  rt1553__is_valid(rt1553__warhead, 1, bus__outputs) -> 1 >= 
+          bus__lru_subaddress_index__first and 1 <= 
+          bus__lru_subaddress_index__last
+<S>  New H38:  rt1553__is_valid(rt1553__warhead, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= rt1553__warhead and rt1553__warhead <= 
+          rt1553__lru_name__last
+<S>  New H40:  rt1553__is_valid(rt1553__warhead, 1, bus__outputs)
+<S>  New H41:  rt1553__is_fresh(rt1553__warhead, 1, bus__outputs)
+<S>  New H68:  rt1553__lru_name__first <= rt1553__warhead and rt1553__warhead 
+          <= rt1553__lru_name__last
+-S-  Applied substitution rule cycle_rules(12).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__first by:
+          0.
+<S>  New H54:  datum__4 >= 0
+-S-  Applied substitution rule cycle_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__last by:
+          65535.
+<S>  New H55:  datum__4 <= 65535
+-S-  Applied substitution rule cycle_rules(22).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  stage_timer >= 0
+<S>  New H8:  stage_timer__1 >= 0
+-S-  Applied substitution rule cycle_rules(23).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  stage_timer <= 8640000
+<S>  New H9:  stage_timer__1 <= 8640000
+-S-  Applied substitution rule cycle_rules(27).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H14:  true
+<S>  New H26:  true
+-S-  Applied substitution rule cycle_rules(28).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H15:  true
+<S>  New H27:  true
+-S-  Applied substitution rule cycle_rules(33).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H16:  element(warhead_cfg__state_to_code, [current_stage__1]) >= 0
+<S>  New H28:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) >= 0
+<S>  New H48:  datum__4 >= 0
+-S-  Applied substitution rule cycle_rules(34).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H17:  element(warhead_cfg__state_to_code, [current_stage__1]) <= 65535
+<S>  New H29:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) <= 
+          65535
+<S>  New H49:  datum__4 <= 65535
+-S-  Applied substitution rule cycle_rules(43).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H12:  true
+<S>  New H67:  1 <= bus__lru_subaddress_index__last
+<S>  New H37:  rt1553__is_valid(rt1553__warhead, 1, bus__outputs) -> 1 <= 
+          bus__lru_subaddress_index__last
+-S-  Applied substitution rule cycle_rules(44).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H13:  true
+<S>  New H67:  true
+<S>  New H37:  true
+-S-  Applied substitution rule cycle_rules(48).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New H10:  true
+<S>  New H38:  rt1553__is_valid(rt1553__warhead, 1, bus__outputs) -> 
+          rt1553__warhead <= rt1553__lru_name__last
+<S>  New H68:  rt1553__warhead <= rt1553__lru_name__last
+-S-  Applied substitution rule cycle_rules(49).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New H11:  true
+<S>  New H38:  true
+<S>  New H68:  true
+-S-  Applied substitution rule cycle_rules(91).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H20:  ibit__off <= bit_machine__phase(bit_state)
+-S-  Applied substitution rule cycle_rules(92).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H21:  bit_machine__phase(bit_state) <= ibit__timeout
+-S-  Applied substitution rule cycle_rules(124).
+     This was achieved by replacing all occurrences of 
+          warhead_cfg__state__first by:
+          warhead_cfg__inactive.
+<S>  New H18:  warhead_cfg__inactive <= current_stage__1
+<S>  New H56:  warhead_cfg__inactive <= warhead_cfg__code_to_state(datum__4)
+<S>  New H65:  warhead_cfg__inactive <= warhead_cfg__transition(
+          current_stage__1, datum__4)
+-S-  Applied substitution rule cycle_rules(125).
+     This was achieved by replacing all occurrences of warhead_cfg__state__last 
+          by:
+          warhead_cfg__detonated.
+<S>  New H19:  current_stage__1 <= warhead_cfg__detonated
+<S>  New H57:  warhead_cfg__code_to_state(datum__4) <= warhead_cfg__detonated
+<S>  New H66:  warhead_cfg__transition(current_stage__1, datum__4) <= 
+          warhead_cfg__detonated
+***  Proved C1:  warhead_cfg__inactive <= warhead_cfg__transition(
+          current_stage__1, datum__4)
+     using hypothesis H65.
+***  Proved C2:  warhead_cfg__transition(current_stage__1, datum__4) <= 
+          warhead_cfg__detonated
+     using hypothesis H66.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_10.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  warhead_cfg__state__first <= warhead_cfg__code_to_state(
+          datum__4)
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H54).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H55).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H65 on reading formula in, to give:
+     %%%  H65:  warhead_cfg__state__first <= warhead_cfg__transition(
+          current_stage__1, datum__4)
+%%%  Simplified H67 on reading formula in, to give:
+     %%%  H67:  stage__first <= warhead_cfg__transition(current_stage__1, 
+          datum__4)
+---  Hypothesis H69 has been replaced by "true".  (It is already present, as 
+          H67).
+---  Hypothesis H70 has been replaced by "true".  (It is already present, as 
+          H68).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  stage__first <= warhead_cfg__transition(current_stage__1, 
+          datum__4)
+***  Proved C1:  stage__first <= warhead_cfg__transition(current_stage__1, 
+          datum__4)
+     using hypothesis H67.
+***  Proved C2:  warhead_cfg__transition(current_stage__1, datum__4) <= 
+          stage__last
+     using hypothesis H68.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_11.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  warhead_cfg__state__first <= warhead_cfg__code_to_state(
+          datum__4)
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H54).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H55).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H65 on reading formula in, to give:
+     %%%  H65:  warhead_cfg__state__first <= warhead_cfg__transition(
+          current_stage__1, datum__4)
+%%%  Simplified H67 on reading formula in, to give:
+     %%%  H67:  stage__first <= warhead_cfg__transition(current_stage__1, 
+          datum__4)
+---  Hypothesis H69 has been replaced by "true".  (It is already present, as 
+          H67).
+---  Hypothesis H70 has been replaced by "true".  (It is already present, as 
+          H68).
+---  Hypothesis H71 has been replaced by "true".  (It is already present, as 
+          H67).
+---  Hypothesis H72 has been replaced by "true".  (It is already present, as 
+          H68).
+%%%  Simplified H73 on reading formula in, to give:
+     %%%  H73:  stage__first <= current_stage__5
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  rt1553__lru_name__first <= bus_id
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H12.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H13.
+***  Proved C3:  2 >= bus__word_index__first
+     using hypothesis H26.
+***  Proved C4:  2 <= bus__word_index__last
+     using hypothesis H27.
+***  Proved C5:  rt1553__lru_name__first <= bus_id
+     using hypothesis H10.
+***  Proved C6:  bus_id <= rt1553__lru_name__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_12.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  warhead_cfg__state__first <= warhead_cfg__code_to_state(
+          datum__4)
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  rt1553__lru_name__first <= bus_id
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H12.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H13.
+***  Proved C3:  2 >= bus__word_index__first
+     using hypothesis H26.
+***  Proved C4:  2 <= bus__word_index__last
+     using hypothesis H27.
+***  Proved C5:  rt1553__lru_name__first <= bus_id
+     using hypothesis H10.
+***  Proved C6:  bus_id <= rt1553__lru_name__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_13.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  rt1553__lru_name__first <= bus_id
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H12.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H13.
+***  Proved C3:  2 >= bus__word_index__first
+     using hypothesis H26.
+***  Proved C4:  2 <= bus__word_index__last
+     using hypothesis H27.
+***  Proved C5:  rt1553__lru_name__first <= bus_id
+     using hypothesis H10.
+***  Proved C6:  bus_id <= rt1553__lru_name__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_14.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  warhead_cfg__state__first <= warhead_cfg__code_to_state(
+          datum__4)
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H54).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H55).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H65 on reading formula in, to give:
+     %%%  H65:  warhead_cfg__state__first <= warhead_cfg__transition(
+          current_stage__1, datum__4)
+%%%  Simplified H67 on reading formula in, to give:
+     %%%  H67:  stage__first <= warhead_cfg__transition(current_stage__1, 
+          datum__4)
+---  Hypothesis H69 has been replaced by "true".  (It is already present, as 
+          H67).
+---  Hypothesis H70 has been replaced by "true".  (It is already present, as 
+          H68).
+---  Hypothesis H71 has been replaced by "true".  (It is already present, as 
+          H67).
+---  Hypothesis H72 has been replaced by "true".  (It is already present, as 
+          H68).
+%%%  Simplified H73 on reading formula in, to give:
+     %%%  H73:  stage__first <= current_stage__5
+---  Hypothesis H77 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H78 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H79 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H80 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H81 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H82 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C1:  datum__6 >= bus__word__first
+     using hypothesis H83.
+***  Proved C2:  datum__6 <= bus__word__last
+     using hypothesis H84.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_15.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  warhead_cfg__state__first <= warhead_cfg__code_to_state(
+          datum__4)
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C1:  datum__6 >= bus__word__first
+     using hypothesis H65.
+***  Proved C2:  datum__6 <= bus__word__last
+     using hypothesis H66.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_16.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C1:  datum__6 >= bus__word__first
+     using hypothesis H47.
+***  Proved C2:  datum__6 <= bus__word__last
+     using hypothesis H48.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_17.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  warhead_cfg__state__first <= warhead_cfg__code_to_state(
+          datum__4)
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H54).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H55).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H65 on reading formula in, to give:
+     %%%  H65:  warhead_cfg__state__first <= warhead_cfg__transition(
+          current_stage__1, datum__4)
+%%%  Simplified H67 on reading formula in, to give:
+     %%%  H67:  stage__first <= warhead_cfg__transition(current_stage__1, 
+          datum__4)
+---  Hypothesis H69 has been replaced by "true".  (It is already present, as 
+          H67).
+---  Hypothesis H70 has been replaced by "true".  (It is already present, as 
+          H68).
+---  Hypothesis H71 has been replaced by "true".  (It is already present, as 
+          H67).
+---  Hypothesis H72 has been replaced by "true".  (It is already present, as 
+          H68).
+%%%  Simplified H73 on reading formula in, to give:
+     %%%  H73:  stage__first <= current_stage__5
+---  Hypothesis H77 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H78 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H79 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H80 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H81 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H82 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H85 has been replaced by "true".  (It is already present, as 
+          H83).
+---  Hypothesis H86 has been replaced by "true".  (It is already present, as 
+          H84).
+---  Hypothesis H87 has been replaced by "true".  (It is already present, as 
+          H83).
+---  Hypothesis H88 has been replaced by "true".  (It is already present, as 
+          H84).
+***  Proved C1:  datum__6 >= bus__word__first
+     using hypothesis H83.
+***  Proved C2:  datum__6 <= bus__word__last
+     using hypothesis H84.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_18.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  warhead_cfg__state__first <= warhead_cfg__code_to_state(
+          datum__4)
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H67 has been replaced by "true".  (It is already present, as 
+          H65).
+---  Hypothesis H68 has been replaced by "true".  (It is already present, as 
+          H66).
+---  Hypothesis H69 has been replaced by "true".  (It is already present, as 
+          H65).
+---  Hypothesis H70 has been replaced by "true".  (It is already present, as 
+          H66).
+***  Proved C1:  datum__6 >= bus__word__first
+     using hypothesis H65.
+***  Proved C2:  datum__6 <= bus__word__last
+     using hypothesis H66.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_19.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  stage__first <= current_stage__1
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  rt1553__lru_name__first <= bus_id
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  warhead_cfg__state__first <= current_stage__1
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  true
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H47).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H47).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H48).
+***  Proved C1:  datum__6 >= bus__word__first
+     using hypothesis H47.
+***  Proved C2:  datum__6 <= bus__word__last
+     using hypothesis H48.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_20.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_21.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_22.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_23.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_24.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

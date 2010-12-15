@@ -1,0 +1,86 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:37.67}
+
+                      {procedure environment.Add_Object}
+
+
+title procedure add_object;
+
+  function round__(real) : integer;
+  type measuretypes__meter = integer;
+  type measuretypes__meter_2 = integer;
+  type measuretypes__meter_per_sec = integer;
+  type flying_object__entity = pending;
+  type handle = integer;
+  type kind = (aircraft, missile, cloud);
+  type cartesian__position = record
+        x : integer;
+        y : integer;
+        z : integer
+     end;
+  type cartesian__velocity = record
+        vx : integer;
+        vy : integer;
+        vz : integer
+     end;
+  type object = record
+        f : flying_object__entity;
+        k : kind;
+        r : integer;
+        h : integer
+     end;
+  type object_list = array [integer] of object;
+  const null_handle : integer = pending;
+  const valid_handle__base__last : integer = pending; 
+  const valid_handle__base__first : integer = pending; 
+  const rcs__base__last : integer = pending; 
+  const rcs__base__first : integer = pending; 
+  const kind__base__last : kind = pending; 
+  const kind__base__first : kind = pending; 
+  const handle__base__last : integer = pending; 
+  const handle__base__first : integer = pending; 
+  const measuretypes__meter_per_sec__base__last : integer = pending; 
+  const measuretypes__meter_per_sec__base__first : integer = pending; 
+  const measuretypes__meter_2__base__last : integer = pending; 
+  const measuretypes__meter_2__base__first : integer = pending; 
+  const measuretypes__meter__base__last : integer = pending; 
+  const measuretypes__meter__base__first : integer = pending; 
+  const object__size : integer = pending; 
+  const valid_handle__size : integer = pending; 
+  const valid_handle__last : integer = pending; 
+  const valid_handle__first : integer = pending; 
+  const rcs__size : integer = pending; 
+  const rcs__last : integer = pending; 
+  const rcs__first : integer = pending; 
+  const kind__size : integer = pending; 
+  const kind__last : kind = pending; 
+  const kind__first : kind = pending; 
+  const handle__size : integer = pending; 
+  const handle__last : integer = pending; 
+  const handle__first : integer = pending; 
+  const cartesian__velocity__size : integer = pending; 
+  const cartesian__position__size : integer = pending; 
+  const measuretypes__meter_per_sec__size : integer = pending; 
+  const measuretypes__meter_per_sec__last : integer = pending; 
+  const measuretypes__meter_per_sec__first : integer = pending; 
+  const measuretypes__meter_2__size : integer = pending; 
+  const measuretypes__meter_2__last : integer = pending; 
+  const measuretypes__meter_2__first : integer = pending; 
+  const measuretypes__meter__size : integer = pending; 
+  const measuretypes__meter__last : integer = pending; 
+  const measuretypes__meter__first : integer = pending; 
+  var p : cartesian__position;
+  var v : cartesian__velocity;
+  var k : kind;
+  var r : integer;
+  var h : integer;
+  var object_array : object_list;
+  var h__1 : integer;
+
+end;

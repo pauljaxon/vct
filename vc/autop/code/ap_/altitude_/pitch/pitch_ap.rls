@@ -1,0 +1,52 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 26-NOV-2009 09:54:53.66*/
+
+                          /*procedure Pitch.Pitch_AP*/
+
+
+rule_family pitch_ap_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+pitch_ap_rules(1): degrees__degreespersec__size >= 0 may_be_deduced.
+pitch_ap_rules(2): degrees__degreespersec__first may_be_replaced_by -180.
+pitch_ap_rules(3): degrees__degreespersec__last may_be_replaced_by 180.
+pitch_ap_rules(4): degrees__degreespersec__base__first may_be_replaced_by -32768.
+pitch_ap_rules(5): degrees__degreespersec__base__last may_be_replaced_by 32767.
+pitch_ap_rules(6): instruments__feet__size >= 0 may_be_deduced.
+pitch_ap_rules(7): instruments__feet__first may_be_replaced_by 0.
+pitch_ap_rules(8): instruments__feet__last may_be_replaced_by 50000.
+pitch_ap_rules(9): instruments__feet__base__first may_be_replaced_by -2147483648.
+pitch_ap_rules(10): instruments__feet__base__last may_be_replaced_by 2147483647.
+pitch_ap_rules(11): instruments__machnumber__size >= 0 may_be_deduced.
+pitch_ap_rules(12): instruments__machnumber__first may_be_replaced_by 0.
+pitch_ap_rules(13): instruments__machnumber__last may_be_replaced_by 100.
+pitch_ap_rules(14): instruments__machnumber__base__first may_be_replaced_by -128.
+pitch_ap_rules(15): instruments__machnumber__base__last may_be_replaced_by 127.
+pitch_ap_rules(16): instruments__pitchangle__size >= 0 may_be_deduced.
+pitch_ap_rules(17): instruments__pitchangle__first may_be_replaced_by -10.
+pitch_ap_rules(18): instruments__pitchangle__last may_be_replaced_by 20.
+pitch_ap_rules(19): instruments__pitchangle__base__first may_be_replaced_by -128.
+pitch_ap_rules(20): instruments__pitchangle__base__last may_be_replaced_by 127.
+pitch_ap_rules(21): instruments__feetpermin__size >= 0 may_be_deduced.
+pitch_ap_rules(22): instruments__feetpermin__first may_be_replaced_by -6000.
+pitch_ap_rules(23): instruments__feetpermin__last may_be_replaced_by 6000.
+pitch_ap_rules(24): instruments__feetpermin__base__first may_be_replaced_by -32768.
+pitch_ap_rules(25): instruments__feetpermin__base__last may_be_replaced_by 32767.
+pitch_ap_rules(26): surfaces__controlangle__size >= 0 may_be_deduced.
+pitch_ap_rules(27): surfaces__controlangle__first may_be_replaced_by -45.
+pitch_ap_rules(28): surfaces__controlangle__last may_be_replaced_by 45.
+pitch_ap_rules(29): surfaces__controlangle__base__first may_be_replaced_by -128.
+pitch_ap_rules(30): surfaces__controlangle__base__last may_be_replaced_by 127.
+pitch_ap_rules(31): degreespersec__size >= 0 may_be_deduced.
+pitch_ap_rules(32): degreespersec__first may_be_replaced_by -180.
+pitch_ap_rules(33): degreespersec__last may_be_replaced_by 180.
+pitch_ap_rules(34): degreespersec__base__first may_be_replaced_by -32768.
+pitch_ap_rules(35): degreespersec__base__last may_be_replaced_by 32767.

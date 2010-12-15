@@ -1,0 +1,65 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:41
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function encode.Fin_Angle
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_fin_angle_1.  @@@@@@@@@@
+-S-  Applied substitution rule fin_angle_rules(7).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C1:  f - steer_cfg__fin_angle__first >= 0
+-S-  Applied substitution rule fin_angle_rules(8).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C2:  f - steer_cfg__fin_angle__first <= 65535
+***  Proved C1:  f - steer_cfg__fin_angle__first >= 0
+     using hypothesis H2.
+-S-  Applied substitution rule fin_angle_rules(12).
+     This was achieved by replacing all occurrences of 
+          steer_cfg__fin_angle__first by:
+          - 57.
+<S>  New H2:  f >= - 57
+<S>  New C3:  f - - 57 >= steer_cfg__fin_angle__base__first
+<S>  New C4:  f - - 57 <= steer_cfg__fin_angle__base__last
+<S>  New C2:  f <= 65478
+-S-  Applied substitution rule fin_angle_rules(13).
+     This was achieved by replacing all occurrences of 
+          steer_cfg__fin_angle__last by:
+          57.
+<S>  New H3:  f <= 57
+***  Proved C2:  f <= 65478
+     using hypothesis H3.
+---  Eliminated hypothesis H1 (true-hypothesis).
+     +++  New H4:  integer__size >= 0
+     +++  New H5:  bus__word__size >= 0
+     +++  New H6:  steer_cfg__fin_angle__size >= 0
+     +++  New H7:  steer_cfg__fin_angle__base__first <= 
+          steer_cfg__fin_angle__base__last
+     +++  New H8:  steer_cfg__fin_angle__base__first <= - 57
+     +++  New H9:  steer_cfg__fin_angle__base__last >= 57
+***  Proved C3:  f - - 57 >= steer_cfg__fin_angle__base__first
+     using hypotheses H2 & H8.
+
+
+@@@@@@@@@@  VC: function_fin_angle_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  Proved C2:  f - steer_cfg__fin_angle__first >= bus__word__first
+     using hypothesis H4.
+***  Proved C3:  f - steer_cfg__fin_angle__first <= bus__word__last
+     using hypothesis H5.
+***  PROVED VC.
+

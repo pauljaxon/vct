@@ -1,0 +1,43 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.98
+
+                      function radar_cfg.Encode_Sector
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 35:
+
+function_encode_sector_1.
+H1:    true .
+H2:    s >= sector_range__first .
+H3:    s <= sector_range__last .
+        ->
+C1:    s - sector_range__first >= systemtypes__unsigned16__first .
+C2:    s - sector_range__first <= systemtypes__unsigned16__last .
+C3:    s - sector_range__first >= sector_range__base__first .
+C4:    s - sector_range__first <= sector_range__base__last .
+ 
+
+For path(s) from start to finish:
+
+function_encode_sector_2.
+H1:    true .
+H2:    s >= sector_range__first .
+H3:    s <= sector_range__last .
+H4:    s - sector_range__first >= systemtypes__unsigned16__first .
+H5:    s - sector_range__first <= systemtypes__unsigned16__last .
+H6:    s - sector_range__first >= sector_range__base__first .
+H7:    s - sector_range__first <= sector_range__base__last .
+        ->
+C1:    true .
+C2:    s - sector_range__first >= systemtypes__unsigned16__first .
+C3:    s - sector_range__first <= systemtypes__unsigned16__last .
+ 
+

@@ -1,0 +1,107 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:41  SIMPLIFIED 25-NOV-2009, 14:19:04
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure ir.Do_Stare
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 71:
+
+procedure_do_stare_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 75:
+
+procedure_do_stare_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 81:
+
+procedure_do_stare_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 83:
+
+procedure_do_stare_4.
+H1:    sx >= - 12 .
+H2:    sx <= 12 .
+H3:    sy >= - 12 .
+H4:    sy <= 12 .
+H5:    for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(i___1 
+          : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(element(
+          element(detect_points, [i___1]), [i___2])) and fld_temp(element(
+          element(detect_points, [i___1]), [i___2])) <= 6000)) .
+H6:    v__1 >= 0 .
+H7:    v__1 <= 63001 .
+H8:    element(state_types__ir_values, [state_types__ir_stare]) >= 0 .
+H9:    element(state_types__ir_values, [state_types__ir_stare]) <= 65535 .
+H10:   fld_temp(element(element(detect_points, [sx]), [sy])) >= 0 .
+H11:   fld_temp(element(element(detect_points, [sx]), [sy])) <= 6000 .
+H12:   integer__size >= 0 .
+H13:   state_types__word__size >= 0 .
+H14:   state_types__infrared__size >= 0 .
+H15:   measuretypes__kelvin__size >= 0 .
+H16:   random__value__size >= 0 .
+H17:   random__value__base__first <= random__value__base__last .
+H18:   bus__word_index__size >= 0 .
+H19:   bus__word_index__base__first <= bus__word_index__base__last .
+H20:   bus__word__size >= 0 .
+H21:   bus__all_msg_index__size >= 0 .
+H22:   bus__lru_subaddress_index__size >= 0 .
+H23:   rt1553__lru_name__size >= 0 .
+H24:   ir_cfg__sector_range__size >= 0 .
+H25:   ir_cfg__sector_range__base__first <= ir_cfg__sector_range__base__last .
+H26:   kelvin__size >= 0 .
+H27:   sector__size >= 0 .
+H28:   sector__base__first <= sector__base__last .
+H29:   cell__size >= 0 .
+H30:   random__value__base__first <= 0 .
+H31:   random__value__base__last >= 63001 .
+H32:   bus__word_index__base__first <= 1 .
+H33:   bus__word_index__base__last >= 31 .
+H34:   ir_cfg__sector_range__base__first <= - 12 .
+H35:   ir_cfg__sector_range__base__last >= 12 .
+H36:   sector__base__first <= - 12 .
+H37:   sector__base__last >= 12 .
+       ->
+C1:    fld_temp(element(element(detect_points, [sx]), [sy])) + v__1 mod 10 <= 
+          6000 .
+
+
+For path(s) from start to run-time check associated with statement of line 84:
+
+procedure_do_stare_5.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 84:
+
+procedure_do_stare_6.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 85:
+
+procedure_do_stare_7.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to finish:
+
+procedure_do_stare_8.
+*** true .          /* all conclusions proved */
+
+

@@ -1,0 +1,64 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:51
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure if_fuel.Get_Level
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_get_level_1.  @@@@@@@@@@
+***  Proved C1:  last_level >= measuretypes__kilo__first
+     using hypothesis H2.
+***  Proved C2:  last_level <= measuretypes__kilo__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_level_2.  @@@@@@@@@@
+-S-  Applied substitution rule get_level_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kilo__first by:
+          0.
+<S>  New H2:  last_level >= 0
+<S>  New C1:  true
+-S-  Applied substitution rule get_level_rules(3).
+     This was achieved by replacing all occurrences of measuretypes__kilo__last 
+          by:
+          20000.
+<S>  New H3:  last_level <= 20000
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_level_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_level_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_level_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_level_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

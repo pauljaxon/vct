@@ -1,0 +1,242 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.35
+
+Line
+   1  -- Warhead implementation
+   2  --
+   3  -- $Log: warhead.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/01 18:57:32  adi
+   9  -- Corrected bug with stage transition
+  10  --
+  11  -- Revision 1.1  2003/09/01 18:25:33  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with Clock_Utils,SystemTypes;
+  16  with Bus,RT1553,IBIT,Bit_Machine;
+  17  package body Warhead
+  18    --# own State is
+  19    --#     current_stage,
+  20    --#     stage_timer,
+  21    --#     BIT_State;
+  22  is
+  23     -- The current action state of the warhead
+  24     Current_Stage : Stage := Warhead_Cfg.inactive;
+  25     -- What time the warhead state last changed
+  26     stage_timer  : Clock.Millisecond := Clock.Millisecond'First;
+  27     -- The BIT state
+  28     Bit_State  : Bit_Machine.Machine := Bit_Machine.Initial_Machine;
+  29  
+  30     Bus_Id : constant Rt1553.Lru_Name := Rt1553.Warhead;
+  31  
+  32     -- maximum times to remain in states
+  33     type Time_Array is array(Stage) of Clock.Millisecond;
+  34     Max_Stage_Time : constant Time_Array
+  35       := Time_Array'(Warhead_Cfg.Inactive  => 0,
+  36                      Warhead_Cfg.Awake     => 3_000,
+  37                      Warhead_Cfg.Armed     => 2_000,
+  38                      Warhead_Cfg.Final     => 1_000,
+  39                      Warhead_Cfg.Detonated => 0);
+  40  
+  41     -- See whether the current stage needs updating automatically
+  42     procedure Update_Stage
+  43       --# global in out current_stage, stage_timer;
+  44       --#        in out clock.time;
+  45       --# derives clock.time from *, current_stage &
+  46       --#         current_stage, stage_timer from
+  47       --#         stage_timer, clock.time, current_stage;
+  48     is
+  49        T_Now,T_Delta : Clock.Millisecond;
+  50        T_Valid : Boolean;
+  51     begin
+  52        T_Delta := Max_Stage_Time(Current_Stage);
+  53        if T_Delta > 0 then
+  54           Clock.Read(T => T_Now,
+  55                      Valid => T_Valid);
+  56           if T_Valid and then
+  57             Stage_Timer < T_Now and then
+  58             (T_Now - Stage_Timer) >= T_Delta then
+  59              -- Time is valid and enough has passed
+  60              Stage_Timer := T_Now;
+  61              -- Always resets to Inactive for safety reasons
+  62              Current_Stage := Warhead_Cfg.inactive;
+  63           else
+  64              -- Can't change state as no time known
+  65              null;
+  66           end if;
+  67        else
+  68           -- No automatic change
+  69           null;
+  70        end if;
+  71     end Update_Stage;
+
++++        Flow analysis of subprogram Update_Stage 
+           performed: no errors found.
+
+  72  
+  73  
+  74     --------- Public subprograms
+  75  
+  76     procedure Set_stage(New_stage : in Stage)
+  77       --# global    out current_stage, stage_timer;
+  78       --#           in out clock.time;
+  79       --# derives current_stage from new_stage, clock.time &
+  80       --#         clock.time from * &
+  81       --#         stage_timer from clock.time;
+  82     is
+  83        Time_Valid : Boolean;
+  84     begin
+  85        Current_Stage := New_Stage;
+  86        Clock.Read(stage_timer,Time_Valid);
+  87        if not Time_Valid then
+  88           -- This is OK for now
+  89           Current_Stage := New_Stage;
+  90        end if;
+  91     end Set_stage;
+
++++        Flow analysis of subprogram Set_Stage performed: 
+           no errors found.
+
+  92  
+  93     -- Cycle the reading of data from the bus
+  94     -- and writing of data to the bus
+  95     procedure Cycle
+  96       --# global in out current_stage, stage_timer;
+  97       --#        in out BIT_State;
+  98       --#        in out Clock.Time;
+  99       --#        in Bus.Outputs;
+ 100       --#        in out Bus.Inputs;
+ 101       --# derives
+ 102       --#        BIT_State
+ 103       --#          from *, Bus.Outputs &
+ 104       --#        Bus.Inputs from *, Clock.Time,
+ 105       --#        current_stage, stage_timer,
+ 106       --#        BIT_State &
+ 107       --#        Clock.Time from *, current_stage, stage_timer, bus.outputs
+ 108       --#                    &
+ 109       --#        current_stage from *, clock.time, stage_timer,
+ 110       --#                bus.outputs &
+ 111       --#        stage_timer from *, clock.time, current_stage,
+ 112       --#                bus.outputs;
+ 113     is
+ 114        Datum : Bus.Word;
+ 115        New_Stage : stage;
+ 116     begin
+ 117        Update_Stage;
+ 118        -- Write the stage info to T1 word 1
+ 119        Rt1553.Write_Word(Data =>
+ 120                            Warhead_cfg.State_To_code(Current_Stage),
+ 121                          Idx => 1,
+ 122                          Subaddress_Idx => 1,
+ 123                          Src => Bus_Id);
+ 124        -- Write the BIT phase to T1 word 2
+ 125        Rt1553.Write_Word(Data =>
+ 126                            IBIT.Phase_Lookup(BIT_Machine.Phase(Bit_State)),
+ 127                         Idx => 2,
+ 128                         Subaddress_Idx => 1,
+ 129                          Src => Bus_id);
+ 130        if Rt1553.Is_Valid(Src => Bus_Id,
+ 131                           Subaddress_Idx => 1) and then
+ 132          Rt1553.Is_Fresh(Src => Bus_Id,
+ 133                          Subaddress_Idx => 1) then
+ 134           -- Read a new stage value off R1 word 1
+ 135           Rt1553.Read_Word(Src => Bus_id,
+ 136                            Idx => 1,
+ 137                            Subaddress_Idx => 1,
+ 138                            Data => Datum);
+ 139           if Warhead_Cfg.Code_To_State(Datum) /=
+ 140             Current_Stage then
+ 141              New_Stage := Warhead_Cfg.Transition(Old_State => Current_Stage,
+ 142                                                  New_Code  => Datum);
+ 143              Set_Stage(New_Stage);
+ 144           end if;
+ 145        end if;
+ 146        -- Read the BIT info off R1 word 2
+ 147        Rt1553.Read_Word(Src => Bus_id,
+ 148                         Idx => 2,
+ 149                         Subaddress_Idx => 1,
+ 150                         Data => Datum);
+ 151        BIT_Machine.Change_State(Word => Datum,
+ 152                                 State => Bit_state);
+ 153        -- And cycle the BIT
+ 154        BIT_Machine.Step(Bit_State);
+ 155     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+ 156  
+ 157  
+ 158     -- Set the current state timer
+ 159     procedure Set_timer(Ms : in Clock.Millisecond)
+ 160     --# global    out stage_timer;
+ 161     --# derives stage_timer from ms;
+ 162     is begin
+ 163        Stage_Timer := Ms;
+ 164     end Set_timer;
+
++++        Flow analysis of subprogram Set_Timer performed: 
+           no errors found.
+
+ 165  
+ 166     -- Read the current stage
+ 167     procedure Read_stage(This_Stage : out Stage)
+ 168       --# global in     current_stage;
+ 169       --# derives this_stage from current_stage;
+ 170     is
+ 171     begin
+ 172        This_Stage := Current_Stage;
+ 173     end Read_stage;
+
++++        Flow analysis of subprogram Read_Stage 
+           performed: no errors found.
+
+ 174  
+ 175     procedure Fail_Next_Bit
+ 176       --# global in out BIT_State;
+ 177       --# derives BIT_State from *;
+ 178     is begin
+ 179        BIT_Machine.Fail_Next(Bit_State);
+ 180     end Fail_Next_Bit;
+
++++        Flow analysis of subprogram Fail_Next_Bit 
+           performed: no errors found.
+
+ 181  
+ 182     procedure Init
+ 183       --# global out current_stage, stage_timer, BIT_State;
+ 184       --#        in out Bus.Inputs;
+ 185       --# derives current_stage, stage_timer, BIT_State from &
+ 186       --#        Bus.Inputs from *;
+ 187     is begin
+ 188        -- Initialise the bus message 1T
+ 189        RT1553.Set_Message_Valid(Subaddress_Idx => 1,
+ 190                                 Src => Bus_id);
+ 191        -- Initialise the variables
+ 192        Current_Stage := Warhead_Cfg.inactive;
+ 193        Stage_Timer   := Clock.Millisecond'First;
+ 194        BIT_Machine.Create(Ticks_To_Complete => 9,
+ 195                           State => Bit_State);
+ 196     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 197  
+ 198     procedure Command is separate;
+ 199  end Warhead;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

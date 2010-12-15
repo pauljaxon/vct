@@ -1,0 +1,151 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:20
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function angle_ops.Diff
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_diff_1.  @@@@@@@@@@
+***  Proved C1:  right >= measuretypes__millirad__first
+     using hypothesis H4.
+***  Proved C2:  right <= measuretypes__millirad__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_diff_2.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+-S-  Applied substitution rule diff_rules(7).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New C1:  negate(right) >= - 7000
+-S-  Applied substitution rule diff_rules(8).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New C2:  negate(right) <= 7000
+-S-  Applied substitution rule diff_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+<S>  New H8:  negate(right) >= - 7000
+-S-  Applied substitution rule diff_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+<S>  New H9:  negate(right) <= 7000
+***  Proved C1:  negate(right) >= - 7000
+     using hypothesis H8.
+***  Proved C2:  negate(right) <= 7000
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_diff_3.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C1:  negate(right) >= measuretypes__millirad__first
+     using hypothesis H8.
+***  Proved C2:  negate(right) <= measuretypes__millirad__last
+     using hypothesis H9.
+***  Proved C3:  left >= measuretypes__millirad__first
+     using hypothesis H2.
+***  Proved C4:  left <= measuretypes__millirad__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_diff_4.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H3)
+          .
+-S-  Applied substitution rule diff_rules(7).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H10:  negate(right) >= - 7000
+<S>  New C1:  sum(left, negate(right)) >= - 7000
+-S-  Applied substitution rule diff_rules(8).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H11:  negate(right) <= 7000
+<S>  New C2:  sum(left, negate(right)) <= 7000
+-S-  Applied substitution rule diff_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+<S>  New H8:  negate(right) >= - 7000
+<S>  New H18:  sum(left, negate(right)) >= - 7000
+-S-  Applied substitution rule diff_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+<S>  New H9:  negate(right) <= 7000
+<S>  New H19:  sum(left, negate(right)) <= 7000
+***  Proved C1:  sum(left, negate(right)) >= - 7000
+     using hypothesis H18.
+***  Proved C2:  sum(left, negate(right)) <= 7000
+     using hypothesis H19.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_diff_5.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H21).
+***  Proved C1:  true
+***  Proved C2:  sum(left, negate(right)) >= measuretypes__millirad__first
+     using hypothesis H18.
+***  Proved C3:  sum(left, negate(right)) <= measuretypes__millirad__last
+     using hypothesis H19.
+***  PROVED VC.
+

@@ -1,0 +1,294 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:52
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure Fuze.Update_State
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_update_state_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state_types__fuze__first <= current_state
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  state_types__fuze__first <= current_state
+***  Proved C3:  state_types__fuze__first <= current_state
+     using hypothesis H2.
+***  Proved C4:  current_state <= state_types__fuze__last
+     using hypothesis H3.
+-S-  Applied substitution rule update_state_rules(35).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  state_timer >= 0
+<S>  New C1:  element(max_state_time, [current_state]) >= 0
+-S-  Applied substitution rule update_state_rules(36).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  state_timer <= 8640000
+<S>  New C2:  element(max_state_time, [current_state]) <= 8640000
+-S-  Applied substitution rule update_state_rules(6).
+     This was achieved by replacing all occurrences of state_types__fuze__first 
+          by:
+          state_types__unarmed.
+<S>  New H2:  state_types__unarmed <= current_state
+-S-  Applied substitution rule update_state_rules(7).
+     This was achieved by replacing all occurrences of state_types__fuze__last 
+          by:
+          state_types__timed_out.
+<S>  New H3:  current_state <= state_types__timed_out
+---  Eliminated hypothesis H1 (true-hypothesis).
+***  Proved C1:  element(max_state_time, [current_state]) >= 0
+     using hypotheses H2 & H3.
+***  Proved C2:  element(max_state_time, [current_state]) <= 8640000
+     using hypotheses H2 & H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_state_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state_types__fuze__first <= current_state
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H7)
+          .
+***  Proved C1:  t_now__1 >= clock__millisecond__first
+     using hypothesis H13.
+***  Proved C2:  t_now__1 <= clock__millisecond__last
+     using hypothesis H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_state_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state_types__fuze__first <= current_state
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+-S-  Applied substitution rule update_state_rules(6).
+     This was achieved by replacing all occurrences of state_types__fuze__first 
+          by:
+          state_types__unarmed.
+<S>  New H2:  state_types__unarmed <= current_state
+-S-  Applied substitution rule update_state_rules(7).
+     This was achieved by replacing all occurrences of state_types__fuze__last 
+          by:
+          state_types__timed_out.
+<S>  New H3:  current_state <= state_types__timed_out
+-S-  Applied substitution rule update_state_rules(35).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  state_timer >= 0
+<S>  New H6:  element(max_state_time, [current_state]) >= 0
+<S>  New H13:  t_now__1 >= 0
+-S-  Applied substitution rule update_state_rules(36).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  state_timer <= 8640000
+<S>  New H7:  element(max_state_time, [current_state]) <= 8640000
+<S>  New H14:  t_now__1 <= 8640000
+-S-  Applied substitution rule update_state_rules(37).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__first by:
+          - 2147483648.
+<S>  New C1:  t_valid__1 and state_timer < t_now__1 -> t_now__1 - state_timer 
+          >= - 2147483648 and t_now__1 - state_timer <= 
+          clock__millisecond__base__last
+-S-  Applied substitution rule update_state_rules(38).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__last by:
+          2147483647.
+<S>  New C1:  t_valid__1 and state_timer < t_now__1 -> t_now__1 - state_timer 
+          >= - 2147483648 and t_now__1 - state_timer <= 2147483647
+***  Proved C1:  t_valid__1 and state_timer < t_now__1 -> t_now__1 - 
+          state_timer >= - 2147483648 and t_now__1 - state_timer <= 2147483647
+     using hypotheses H4, H5, H13 & H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_state_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state_types__fuze__first <= current_state
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H14).
+***  Proved C1:  t_now__1 >= clock__millisecond__first
+     using hypothesis H13.
+***  Proved C2:  t_now__1 <= clock__millisecond__last
+     using hypothesis H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_state_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state_types__fuze__first <= current_state
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  state_types__fuze__first <= element(state_change, [current_state]
+          )
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  state_types__fuze__first <= current_state
+***  Proved C3:  state_types__fuze__first <= current_state
+     using hypothesis H2.
+***  Proved C4:  current_state <= state_types__fuze__last
+     using hypothesis H3.
+-S-  Applied substitution rule update_state_rules(6).
+     This was achieved by replacing all occurrences of state_types__fuze__first 
+          by:
+          state_types__unarmed.
+<S>  New H2:  state_types__unarmed <= current_state
+<S>  New C1:  state_types__unarmed <= element(state_change, [current_state])
+-S-  Applied substitution rule update_state_rules(7).
+     This was achieved by replacing all occurrences of state_types__fuze__last 
+          by:
+          state_types__timed_out.
+<S>  New H3:  current_state <= state_types__timed_out
+<S>  New C2:  element(state_change, [current_state]) <= state_types__timed_out
+-S-  Applied substitution rule update_state_rules(35).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  state_timer >= 0
+<S>  New H6:  element(max_state_time, [current_state]) >= 0
+<S>  New H13:  t_now__1 >= 0
+-S-  Applied substitution rule update_state_rules(36).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  state_timer <= 8640000
+<S>  New H7:  element(max_state_time, [current_state]) <= 8640000
+<S>  New H14:  t_now__1 <= 8640000
+-S-  Applied substitution rule update_state_rules(37).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__first by:
+          - 2147483648.
+<S>  New H23:  t_valid__1 and state_timer < t_now__1 -> t_now__1 - state_timer 
+          >= - 2147483648 and t_now__1 - state_timer <= 
+          clock__millisecond__base__last
+-S-  Applied substitution rule update_state_rules(38).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__last by:
+          2147483647.
+<S>  New H23:  t_valid__1 and state_timer < t_now__1 -> t_now__1 - state_timer 
+          >= - 2147483648 and t_now__1 - state_timer <= 2147483647
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H29 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+>>>  Using "A->B, A |- B" on H23, given H24 & H25, we simplify the former to:
+     >>>  H23:  t_now__1 - state_timer >= - 2147483648 and t_now__1 - 
+          state_timer <= 2147483647
+---  Eliminated hypothesis H5 (redundant, given H14 & H25).
+---  Eliminated hypothesis H6 (redundant, given H12).
+---  Eliminated hypothesis H13 (redundant, given H4 & H25).
+---  Eliminated hypothesis H24, which only specifies a value for t_valid__1.
+     This is not referred to anywhere else in the VC.
+***  Proved C1:  state_types__unarmed <= element(state_change, [current_state])
+     using hypotheses H2 & H3.
+***  Proved C2:  element(state_change, [current_state]) <= 
+          state_types__timed_out
+     using hypotheses H2 & H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_state_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_state_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_state_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

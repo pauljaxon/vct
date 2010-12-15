@@ -1,0 +1,313 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.79
+
+                           procedure roll.Roll_AP
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 95:
+
+procedure_roll_ap_1.
+H1:    true .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present_heading >= instruments__headdegree__first .
+H5:    present_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    bank >= instruments__bankangle__first .
+H9:    bank <= instruments__bankangle__last .
+        ->
+C1:    bank >= instruments__bankangle__first .
+C2:    bank <= instruments__bankangle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 95:
+
+procedure_roll_ap_2.
+H1:    true .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present_heading >= instruments__headdegree__first .
+H5:    present_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    bank >= instruments__bankangle__first .
+H9:    bank <= instruments__bankangle__last .
+H10:   bank >= instruments__bankangle__first .
+H11:   bank <= instruments__bankangle__last .
+H12:   present_rollrate__1 >= degrees__degreespersec__first .
+H13:   present_rollrate__1 <= degrees__degreespersec__last .
+        ->
+C1:    present_rollrate__1 >= degreespersec__first .
+C2:    present_rollrate__1 <= degreespersec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 96:
+
+procedure_roll_ap_3.
+H1:    true .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present_heading >= instruments__headdegree__first .
+H5:    present_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    bank >= instruments__bankangle__first .
+H9:    bank <= instruments__bankangle__last .
+H10:   bank >= instruments__bankangle__first .
+H11:   bank <= instruments__bankangle__last .
+H12:   present_rollrate__1 >= degrees__degreespersec__first .
+H13:   present_rollrate__1 <= degrees__degreespersec__last .
+H14:   present_rollrate__1 >= degreespersec__first .
+H15:   present_rollrate__1 <= degreespersec__last .
+        ->
+C1:    bank >= instruments__bankangle__first .
+C2:    bank <= instruments__bankangle__last .
+C3:    target_heading >= instruments__headdegree__first .
+C4:    target_heading <= instruments__headdegree__last .
+C5:    present_heading >= instruments__headdegree__first .
+C6:    present_heading <= instruments__headdegree__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 96:
+
+procedure_roll_ap_4.
+H1:    true .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present_heading >= instruments__headdegree__first .
+H5:    present_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    bank >= instruments__bankangle__first .
+H9:    bank <= instruments__bankangle__last .
+H10:   bank >= instruments__bankangle__first .
+H11:   bank <= instruments__bankangle__last .
+H12:   present_rollrate__1 >= degrees__degreespersec__first .
+H13:   present_rollrate__1 <= degrees__degreespersec__last .
+H14:   present_rollrate__1 >= degreespersec__first .
+H15:   present_rollrate__1 <= degreespersec__last .
+H16:   bank >= instruments__bankangle__first .
+H17:   bank <= instruments__bankangle__last .
+H18:   target_heading >= instruments__headdegree__first .
+H19:   target_heading <= instruments__headdegree__last .
+H20:   present_heading >= instruments__headdegree__first .
+H21:   present_heading <= instruments__headdegree__last .
+H22:   target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+H23:   target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+        ->
+C1:    target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+C2:    target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 97:
+
+procedure_roll_ap_5.
+H1:    true .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present_heading >= instruments__headdegree__first .
+H5:    present_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    bank >= instruments__bankangle__first .
+H9:    bank <= instruments__bankangle__last .
+H10:   bank >= instruments__bankangle__first .
+H11:   bank <= instruments__bankangle__last .
+H12:   present_rollrate__1 >= degrees__degreespersec__first .
+H13:   present_rollrate__1 <= degrees__degreespersec__last .
+H14:   present_rollrate__1 >= degreespersec__first .
+H15:   present_rollrate__1 <= degreespersec__last .
+H16:   bank >= instruments__bankangle__first .
+H17:   bank <= instruments__bankangle__last .
+H18:   target_heading >= instruments__headdegree__first .
+H19:   target_heading <= instruments__headdegree__last .
+H20:   present_heading >= instruments__headdegree__first .
+H21:   present_heading <= instruments__headdegree__last .
+H22:   target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+H23:   target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+H24:   target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+H25:   target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+H26:   present_rollrate__1 >= degreespersec__first .
+H27:   present_rollrate__1 <= degreespersec__last .
+H28:   target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+H29:   target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+        ->
+C1:    mach >= instruments__machnumber__first .
+C2:    mach <= instruments__machnumber__last .
+C3:    target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+C4:    target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+C5:    present_rollrate__1 >= degreespersec__first .
+C6:    present_rollrate__1 <= degreespersec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 97:
+
+procedure_roll_ap_6.
+H1:    true .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present_heading >= instruments__headdegree__first .
+H5:    present_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    bank >= instruments__bankangle__first .
+H9:    bank <= instruments__bankangle__last .
+H10:   bank >= instruments__bankangle__first .
+H11:   bank <= instruments__bankangle__last .
+H12:   present_rollrate__1 >= degrees__degreespersec__first .
+H13:   present_rollrate__1 <= degrees__degreespersec__last .
+H14:   present_rollrate__1 >= degreespersec__first .
+H15:   present_rollrate__1 <= degreespersec__last .
+H16:   bank >= instruments__bankangle__first .
+H17:   bank <= instruments__bankangle__last .
+H18:   target_heading >= instruments__headdegree__first .
+H19:   target_heading <= instruments__headdegree__last .
+H20:   present_heading >= instruments__headdegree__first .
+H21:   present_heading <= instruments__headdegree__last .
+H22:   target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+H23:   target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+H24:   target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+H25:   target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+H26:   present_rollrate__1 >= degreespersec__first .
+H27:   present_rollrate__1 <= degreespersec__last .
+H28:   target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+H29:   target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+H30:   mach >= instruments__machnumber__first .
+H31:   mach <= instruments__machnumber__last .
+H32:   target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+H33:   target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+H34:   present_rollrate__1 >= degreespersec__first .
+H35:   present_rollrate__1 <= degreespersec__last .
+H36:   calc_aileron_move(present_rollrate__1, target_rate(
+           present_heading, target_heading, bank), mach) >= 
+           surfaces__controlangle__first .
+H37:   calc_aileron_move(present_rollrate__1, target_rate(
+           present_heading, target_heading, bank), mach) <= 
+           surfaces__controlangle__last .
+        ->
+C1:    calc_aileron_move(present_rollrate__1, target_rate(
+           present_heading, target_heading, bank), mach) >= 
+           surfaces__controlangle__first .
+C2:    calc_aileron_move(present_rollrate__1, target_rate(
+           present_heading, target_heading, bank), mach) <= 
+           surfaces__controlangle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 98:
+
+procedure_roll_ap_7.
+H1:    true .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present_heading >= instruments__headdegree__first .
+H5:    present_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    bank >= instruments__bankangle__first .
+H9:    bank <= instruments__bankangle__last .
+H10:   bank >= instruments__bankangle__first .
+H11:   bank <= instruments__bankangle__last .
+H12:   present_rollrate__1 >= degrees__degreespersec__first .
+H13:   present_rollrate__1 <= degrees__degreespersec__last .
+H14:   present_rollrate__1 >= degreespersec__first .
+H15:   present_rollrate__1 <= degreespersec__last .
+H16:   bank >= instruments__bankangle__first .
+H17:   bank <= instruments__bankangle__last .
+H18:   target_heading >= instruments__headdegree__first .
+H19:   target_heading <= instruments__headdegree__last .
+H20:   present_heading >= instruments__headdegree__first .
+H21:   present_heading <= instruments__headdegree__last .
+H22:   target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+H23:   target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+H24:   target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+H25:   target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+H26:   present_rollrate__1 >= degreespersec__first .
+H27:   present_rollrate__1 <= degreespersec__last .
+H28:   target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+H29:   target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+H30:   mach >= instruments__machnumber__first .
+H31:   mach <= instruments__machnumber__last .
+H32:   target_rate(present_heading, target_heading, bank) >= 
+           degreespersec__first .
+H33:   target_rate(present_heading, target_heading, bank) <= 
+           degreespersec__last .
+H34:   present_rollrate__1 >= degreespersec__first .
+H35:   present_rollrate__1 <= degreespersec__last .
+H36:   calc_aileron_move(present_rollrate__1, target_rate(
+           present_heading, target_heading, bank), mach) >= 
+           surfaces__controlangle__first .
+H37:   calc_aileron_move(present_rollrate__1, target_rate(
+           present_heading, target_heading, bank), mach) <= 
+           surfaces__controlangle__last .
+H38:   calc_aileron_move(present_rollrate__1, target_rate(
+           present_heading, target_heading, bank), mach) >= 
+           surfaces__controlangle__first .
+H39:   calc_aileron_move(present_rollrate__1, target_rate(
+           present_heading, target_heading, bank), mach) <= 
+           surfaces__controlangle__last .
+H40:   calc_aileron_move(present_rollrate__1, target_rate(
+           present_heading, target_heading, bank), mach) >= 
+           surfaces__controlangle__first .
+H41:   calc_aileron_move(present_rollrate__1, target_rate(
+           present_heading, target_heading, bank), mach) <= 
+           surfaces__controlangle__last .
+        ->
+C1:    calc_aileron_move(present_rollrate__1, target_rate(
+           present_heading, target_heading, bank), mach) >= 
+           surfaces__controlangle__first .
+C2:    calc_aileron_move(present_rollrate__1, target_rate(
+           present_heading, target_heading, bank), mach) <= 
+           surfaces__controlangle__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_roll_ap_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_roll_ap_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_roll_ap_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+

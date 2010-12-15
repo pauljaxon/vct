@@ -1,0 +1,367 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:40
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function bus_encode.Encode_Bool8
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_encode_bool8_1.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+%%%  Simplified C4 on reading formula in, to give:
+     %%%  C4:  true
+%%%  Simplified C6 on reading formula in, to give:
+     %%%  C6:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  Proved C6:  true
+-S-  Applied substitution rule encode_bool8_rules(12).
+     This was achieved by replacing all occurrences of bus_decode__bit8__first 
+          by:
+          1.
+<S>  New C5:  1 <= bus_decode__bit8__last
+<S>  New C7:  1 <= bus_decode__bit8__last
+-S-  Applied substitution rule encode_bool8_rules(13).
+     This was achieved by replacing all occurrences of bus_decode__bit8__last 
+          by:
+          8.
+<S>  New C5:  true
+<S>  New C7:  true
+***  Proved C5:  true
+***  Proved C7:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_encode_bool8_2.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+***  Proved C1:  word + value >= 0
+     using hypotheses H1 & H2.
+***  Proved C2:  value * 2 >= 1
+     using hypothesis H2.
+***  Proved C3:  true
+***  Proved C4:  loop__1__idx + 1 >= bus_decode__bit8__first
+     using hypothesis H4.
+***  Proved C6:  loop__1__idx + 1 >= bus_decode__bit8__first
+     using hypothesis H4.
+-S-  Applied substitution rule encode_bool8_rules(13).
+     This was achieved by replacing all occurrences of bus_decode__bit8__last 
+          by:
+          8.
+<S>  New H5:  loop__1__idx <= 8
+<S>  New H24:  not loop__1__idx = 8
+<S>  New C5:  loop__1__idx <= 7
+<S>  New C7:  loop__1__idx <= 7
+***  Proved C5:  loop__1__idx <= 7
+     using hypotheses H5 & H24.
+***  Proved C7:  loop__1__idx <= 7
+     using hypotheses H5 & H24.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_encode_bool8_3.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H12).
+***  Proved C1:  word >= 0
+     using hypothesis H1.
+***  Proved C2:  value * 2 >= 1
+     using hypothesis H2.
+***  Proved C3:  true
+***  Proved C4:  loop__1__idx + 1 >= bus_decode__bit8__first
+     using hypothesis H4.
+***  Proved C6:  loop__1__idx + 1 >= bus_decode__bit8__first
+     using hypothesis H4.
+-S-  Applied substitution rule encode_bool8_rules(13).
+     This was achieved by replacing all occurrences of bus_decode__bit8__last 
+          by:
+          8.
+<S>  New H5:  loop__1__idx <= 8
+<S>  New H18:  not loop__1__idx = 8
+<S>  New C5:  loop__1__idx <= 7
+<S>  New C7:  loop__1__idx <= 7
+***  Proved C5:  loop__1__idx <= 7
+     using hypotheses H5 & H18.
+***  Proved C7:  loop__1__idx <= 7
+     using hypotheses H5 & H18.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_encode_bool8_4.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H14).
+***  Proved C1:  word + value >= 0
+     using hypotheses H1 & H2.
+***  Proved C2:  value >= 1
+     using hypothesis H2.
+***  Proved C3:  true
+***  Proved C4:  loop__1__idx + 1 >= bus_decode__bit8__first
+     using hypothesis H4.
+***  Proved C6:  loop__1__idx + 1 >= bus_decode__bit8__first
+     using hypothesis H4.
+-S-  Applied substitution rule encode_bool8_rules(13).
+     This was achieved by replacing all occurrences of bus_decode__bit8__last 
+          by:
+          8.
+<S>  New H5:  loop__1__idx <= 8
+<S>  New H20:  not loop__1__idx = 8
+<S>  New C5:  loop__1__idx <= 7
+<S>  New C7:  loop__1__idx <= 7
+***  Proved C5:  loop__1__idx <= 7
+     using hypotheses H5 & H20.
+***  Proved C7:  loop__1__idx <= 7
+     using hypotheses H5 & H20.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_encode_bool8_5.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+***  Proved C1:  word >= 0
+     using hypothesis H1.
+***  Proved C2:  value >= 1
+     using hypothesis H2.
+***  Proved C3:  true
+***  Proved C4:  loop__1__idx + 1 >= bus_decode__bit8__first
+     using hypothesis H4.
+***  Proved C6:  loop__1__idx + 1 >= bus_decode__bit8__first
+     using hypothesis H4.
+-S-  Applied substitution rule encode_bool8_rules(13).
+     This was achieved by replacing all occurrences of bus_decode__bit8__last 
+          by:
+          8.
+<S>  New H5:  loop__1__idx <= 8
+<S>  New H14:  not loop__1__idx = 8
+<S>  New C5:  loop__1__idx <= 7
+<S>  New C7:  loop__1__idx <= 7
+***  Proved C5:  loop__1__idx <= 7
+     using hypotheses H5 & H14.
+***  Proved C7:  loop__1__idx <= 7
+     using hypotheses H5 & H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_encode_bool8_6.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+***  Proved C1:  loop__1__idx >= bus_decode__bit8__first
+     using hypothesis H4.
+***  Proved C2:  loop__1__idx <= bus_decode__bit8__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_encode_bool8_7.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+***  Proved C1:  word + value >= bus__word__first
+     using hypotheses H2 & H11.
+-S-  Applied substitution rule encode_bool8_rules(8).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H12:  word <= 65535
+<S>  New H14:  value <= 65535
+<S>  New C2:  word + value <= 65535
+-S-  Applied substitution rule encode_bool8_rules(7).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H11:  word >= 0
+<S>  New H13:  value >= 0
+-S-  Applied substitution rule encode_bool8_rules(12).
+     This was achieved by replacing all occurrences of bus_decode__bit8__first 
+          by:
+          1.
+<S>  New H4:  loop__1__idx >= 1
+-S-  Applied substitution rule encode_bool8_rules(13).
+     This was achieved by replacing all occurrences of bus_decode__bit8__last 
+          by:
+          8.
+<S>  New H5:  loop__1__idx <= 8
+---  Eliminated hypothesis H3 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H11 (duplicate of H1).
+---  Eliminated hypothesis H13 (redundant, given H2).
+     +++  New H15:  integer__size >= 0
+     +++  New H16:  bus__word__size >= 0
+     +++  New H17:  bus_decode__bit8__size >= 0
+
+
+@@@@@@@@@@  VC: function_encode_bool8_8.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+-S-  Applied substitution rule encode_bool8_rules(7).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H11:  word >= 0
+<S>  New H13:  value >= 0
+<S>  New H15:  word + value >= 0
+<S>  New C1:  value * 2 >= 0
+-S-  Applied substitution rule encode_bool8_rules(8).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H12:  word <= 65535
+<S>  New H14:  value <= 65535
+<S>  New H16:  word + value <= 65535
+<S>  New C2:  value * 2 <= 65535
+***  Proved C1:  value * 2 >= 0
+     using hypothesis H2.
+***  Proved C2:  value * 2 <= 65535
+     using hypothesis H19.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_encode_bool8_9.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H12).
+-S-  Applied substitution rule encode_bool8_rules(7).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H11:  value >= 0
+<S>  New C1:  value * 2 >= 0
+-S-  Applied substitution rule encode_bool8_rules(8).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H12:  value <= 65535
+<S>  New C2:  value * 2 <= 65535
+***  Proved C1:  value * 2 >= 0
+     using hypothesis H2.
+***  Proved C2:  value * 2 <= 65535
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_encode_bool8_10.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H16).
+***  Proved C1:  true
+***  Proved C2:  word + value >= bus__word__first
+     using hypothesis H15.
+***  Proved C3:  word + value <= bus__word__last
+     using hypothesis H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_encode_bool8_11.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H12).
+***  Proved C1:  true
+***  Proved C2:  word >= bus__word__first
+     using hypothesis H19.
+***  Proved C3:  word <= bus__word__last
+     using hypothesis H20.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_encode_bool8_12.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+***  Proved C1:  true
+***  Proved C2:  word + value >= bus__word__first
+     using hypothesis H15.
+***  Proved C3:  word + value <= bus__word__last
+     using hypothesis H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_encode_bool8_13.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+***  Proved C1:  true
+***  Proved C2:  word >= bus__word__first
+     using hypothesis H15.
+***  Proved C3:  word <= bus__word__last
+     using hypothesis H16.
+***  PROVED VC.
+

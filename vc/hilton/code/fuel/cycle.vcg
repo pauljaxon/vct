@@ -1,0 +1,248 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.49
+
+                            procedure fuel.Cycle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 112:
+
+procedure_cycle_1.
+H1:    true .
+H2:    last_level >= measuretypes__kilo__first .
+H3:    last_level <= measuretypes__kilo__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_rate >= measuretypes__gram_per_sec__first .
+H7:    last_rate <= measuretypes__gram_per_sec__last .
+H8:    level__1 >= measuretypes__kilo__first .
+H9:    level__1 <= measuretypes__kilo__last .
+        ->
+C1:    level__1 >= measuretypes__kilo__first .
+C2:    level__1 <= measuretypes__kilo__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 114:
+
+procedure_cycle_2.
+H1:    true .
+H2:    last_level >= measuretypes__kilo__first .
+H3:    last_level <= measuretypes__kilo__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_rate >= measuretypes__gram_per_sec__first .
+H7:    last_rate <= measuretypes__gram_per_sec__last .
+H8:    level__1 >= measuretypes__kilo__first .
+H9:    level__1 <= measuretypes__kilo__last .
+H10:   level__1 >= measuretypes__kilo__first .
+H11:   level__1 <= measuretypes__kilo__last .
+H12:   level__1 >= measuretypes__kilo__first .
+H13:   level__1 <= measuretypes__kilo__last .
+        ->
+C1:    1 >= bus__word_index__first .
+C2:    1 <= bus__word_index__last .
+C3:    level__1 >= kilo__first .
+C4:    level__1 <= kilo__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 117:
+
+procedure_cycle_3.
+H1:    true .
+H2:    last_level >= measuretypes__kilo__first .
+H3:    last_level <= measuretypes__kilo__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_rate >= measuretypes__gram_per_sec__first .
+H7:    last_rate <= measuretypes__gram_per_sec__last .
+H8:    level__1 >= measuretypes__kilo__first .
+H9:    level__1 <= measuretypes__kilo__last .
+H10:   level__1 >= measuretypes__kilo__first .
+H11:   level__1 <= measuretypes__kilo__last .
+H12:   level__1 >= measuretypes__kilo__first .
+H13:   level__1 <= measuretypes__kilo__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   level__1 >= kilo__first .
+H17:   level__1 <= kilo__last .
+H18:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H19:   bit_machine__phase(bit_state) <= ibit__phase__last .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    2 >= bus__word_index__first .
+C6:    2 <= bus__word_index__last .
+C7:    element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+C8:    element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+C9:    bit_machine__phase(bit_state) >= ibit__phase__first .
+C10:   bit_machine__phase(bit_state) <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 123:
+
+procedure_cycle_4.
+H1:    true .
+H2:    last_level >= measuretypes__kilo__first .
+H3:    last_level <= measuretypes__kilo__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_rate >= measuretypes__gram_per_sec__first .
+H7:    last_rate <= measuretypes__gram_per_sec__last .
+H8:    level__1 >= measuretypes__kilo__first .
+H9:    level__1 <= measuretypes__kilo__last .
+H10:   level__1 >= measuretypes__kilo__first .
+H11:   level__1 <= measuretypes__kilo__last .
+H12:   level__1 >= measuretypes__kilo__first .
+H13:   level__1 <= measuretypes__kilo__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   level__1 >= kilo__first .
+H17:   level__1 <= kilo__last .
+H18:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H19:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H20:   bus_id >= rt1553__lru_name__first .
+H21:   bus_id <= rt1553__lru_name__last .
+H22:   1 >= bus__lru_subaddress_index__first .
+H23:   1 <= bus__lru_subaddress_index__last .
+H24:   2 >= bus__word_index__first .
+H25:   2 <= bus__word_index__last .
+H26:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H27:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H28:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H29:   bit_machine__phase(bit_state) <= ibit__phase__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= rt1553__lru_name__first .
+C6:    bus_id <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 123:
+
+procedure_cycle_5.
+H1:    true .
+H2:    last_level >= measuretypes__kilo__first .
+H3:    last_level <= measuretypes__kilo__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_rate >= measuretypes__gram_per_sec__first .
+H7:    last_rate <= measuretypes__gram_per_sec__last .
+H8:    level__1 >= measuretypes__kilo__first .
+H9:    level__1 <= measuretypes__kilo__last .
+H10:   level__1 >= measuretypes__kilo__first .
+H11:   level__1 <= measuretypes__kilo__last .
+H12:   level__1 >= measuretypes__kilo__first .
+H13:   level__1 <= measuretypes__kilo__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   level__1 >= kilo__first .
+H17:   level__1 <= kilo__last .
+H18:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H19:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H20:   bus_id >= rt1553__lru_name__first .
+H21:   bus_id <= rt1553__lru_name__last .
+H22:   1 >= bus__lru_subaddress_index__first .
+H23:   1 <= bus__lru_subaddress_index__last .
+H24:   2 >= bus__word_index__first .
+H25:   2 <= bus__word_index__last .
+H26:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H27:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H28:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H29:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H30:   1 >= bus__lru_subaddress_index__first .
+H31:   1 <= bus__lru_subaddress_index__last .
+H32:   1 >= bus__word_index__first .
+H33:   1 <= bus__word_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   datum__4 >= bus__word__first .
+H37:   datum__4 <= bus__word__last .
+        ->
+C1:    datum__4 >= bus__word__first .
+C2:    datum__4 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 127:
+
+procedure_cycle_6.
+H1:    true .
+H2:    last_level >= measuretypes__kilo__first .
+H3:    last_level <= measuretypes__kilo__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_rate >= measuretypes__gram_per_sec__first .
+H7:    last_rate <= measuretypes__gram_per_sec__last .
+H8:    level__1 >= measuretypes__kilo__first .
+H9:    level__1 <= measuretypes__kilo__last .
+H10:   level__1 >= measuretypes__kilo__first .
+H11:   level__1 <= measuretypes__kilo__last .
+H12:   level__1 >= measuretypes__kilo__first .
+H13:   level__1 <= measuretypes__kilo__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   level__1 >= kilo__first .
+H17:   level__1 <= kilo__last .
+H18:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H19:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H20:   bus_id >= rt1553__lru_name__first .
+H21:   bus_id <= rt1553__lru_name__last .
+H22:   1 >= bus__lru_subaddress_index__first .
+H23:   1 <= bus__lru_subaddress_index__last .
+H24:   2 >= bus__word_index__first .
+H25:   2 <= bus__word_index__last .
+H26:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H27:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H28:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H29:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H30:   1 >= bus__lru_subaddress_index__first .
+H31:   1 <= bus__lru_subaddress_index__last .
+H32:   1 >= bus__word_index__first .
+H33:   1 <= bus__word_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   datum__4 >= bus__word__first .
+H37:   datum__4 <= bus__word__last .
+H38:   datum__4 >= bus__word__first .
+H39:   datum__4 <= bus__word__last .
+H40:   datum__4 >= bus__word__first .
+H41:   datum__4 <= bus__word__last .
+        ->
+C1:    datum__4 >= bus__word__first .
+C2:    datum__4 <= bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_cycle_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_cycle_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+

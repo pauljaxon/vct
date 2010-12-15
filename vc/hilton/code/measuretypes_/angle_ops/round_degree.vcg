@@ -1,0 +1,564 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.23
+
+                      function angle_ops.Round_Degree
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 188:
+
+function_round_degree_1.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+        ->
+C1:    orig_angle >= millirad__first .
+C2:    orig_angle <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 188:
+
+function_round_degree_2.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+        ->
+C1:    canon(orig_angle) >= millirad__first .
+C2:    canon(orig_angle) <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 191:
+
+function_round_degree_3.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= millirad__first .
+H9:    canon(orig_angle) <= millirad__last .
+H10:   canon(orig_angle) >= millirad__first .
+H11:   canon(orig_angle) <= millirad__last .
+H12:   canon(orig_angle) < 0 .
+H13:   canon(orig_angle) >= millirad__first .
+H14:   canon(orig_angle) <= millirad__last .
+        ->
+C1:    measuretypes__angle_full + canon(orig_angle) >= 
+           millirad__first .
+C2:    measuretypes__angle_full + canon(orig_angle) <= 
+           millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 193:
+
+function_round_degree_4.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= millirad__first .
+H9:    canon(orig_angle) <= millirad__last .
+H10:   canon(orig_angle) >= millirad__first .
+H11:   canon(orig_angle) <= millirad__last .
+H12:   canon(orig_angle) < 0 .
+H13:   canon(orig_angle) >= millirad__first .
+H14:   canon(orig_angle) <= millirad__last .
+H15:   measuretypes__angle_full + canon(orig_angle) >= 
+           millirad__first .
+H16:   measuretypes__angle_full + canon(orig_angle) <= 
+           millirad__last .
+H17:   measuretypes__angle_full + canon(orig_angle) >= 
+           millirad__first .
+H18:   measuretypes__angle_full + canon(orig_angle) <= 
+           millirad__last .
+        ->
+C1:    (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= systemtypes__integer32__first .
+C2:    (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= systemtypes__integer32__last .
+C3:    measuretypes__angle_full <> 0 .
+C4:    measuretypes__angle_full >= systemtypes__integer32__first .
+C5:    measuretypes__angle_full <= systemtypes__integer32__last .
+C6:    (measuretypes__angle_full + canon(orig_angle)) * 360 >= 
+           long_integer__base__first .
+C7:    (measuretypes__angle_full + canon(orig_angle)) * 360 <= 
+           long_integer__base__last .
+C8:    measuretypes__angle_full + canon(orig_angle) >= 
+           systemtypes__integer32__first .
+C9:    measuretypes__angle_full + canon(orig_angle) <= 
+           systemtypes__integer32__last .
+ 
+
+function_round_degree_5.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= millirad__first .
+H9:    canon(orig_angle) <= millirad__last .
+H10:   canon(orig_angle) >= millirad__first .
+H11:   canon(orig_angle) <= millirad__last .
+H12:   not (canon(orig_angle) < 0) .
+H13:   canon(orig_angle) >= millirad__first .
+H14:   canon(orig_angle) <= millirad__last .
+        ->
+C1:    canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           systemtypes__integer32__first .
+C2:    canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           systemtypes__integer32__last .
+C3:    measuretypes__angle_full <> 0 .
+C4:    measuretypes__angle_full >= systemtypes__integer32__first .
+C5:    measuretypes__angle_full <= systemtypes__integer32__last .
+C6:    canon(orig_angle) * 360 >= long_integer__base__first .
+C7:    canon(orig_angle) * 360 <= long_integer__base__last .
+C8:    canon(orig_angle) >= systemtypes__integer32__first .
+C9:    canon(orig_angle) <= systemtypes__integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 196:
+
+function_round_degree_6.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= millirad__first .
+H9:    canon(orig_angle) <= millirad__last .
+H10:   canon(orig_angle) >= millirad__first .
+H11:   canon(orig_angle) <= millirad__last .
+H12:   canon(orig_angle) < 0 .
+H13:   canon(orig_angle) >= millirad__first .
+H14:   canon(orig_angle) <= millirad__last .
+H15:   measuretypes__angle_full + canon(orig_angle) >= 
+           millirad__first .
+H16:   measuretypes__angle_full + canon(orig_angle) <= 
+           millirad__last .
+H17:   measuretypes__angle_full + canon(orig_angle) >= 
+           millirad__first .
+H18:   measuretypes__angle_full + canon(orig_angle) <= 
+           millirad__last .
+H19:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= systemtypes__integer32__first .
+H20:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= systemtypes__integer32__last .
+H21:   measuretypes__angle_full <> 0 .
+H22:   measuretypes__angle_full >= systemtypes__integer32__first .
+H23:   measuretypes__angle_full <= systemtypes__integer32__last .
+H24:   (measuretypes__angle_full + canon(orig_angle)) * 360 >= 
+           long_integer__base__first .
+H25:   (measuretypes__angle_full + canon(orig_angle)) * 360 <= 
+           long_integer__base__last .
+H26:   measuretypes__angle_full + canon(orig_angle) >= 
+           systemtypes__integer32__first .
+H27:   measuretypes__angle_full + canon(orig_angle) <= 
+           systemtypes__integer32__last .
+H28:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= systemtypes__integer32__first .
+H29:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= systemtypes__integer32__last .
+H30:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= 360 .
+        ->
+C1:    0 >= measuretypes__angle_degrees__first .
+C2:    0 <= measuretypes__angle_degrees__last .
+ 
+
+function_round_degree_7.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= millirad__first .
+H9:    canon(orig_angle) <= millirad__last .
+H10:   canon(orig_angle) >= millirad__first .
+H11:   canon(orig_angle) <= millirad__last .
+H12:   not (canon(orig_angle) < 0) .
+H13:   canon(orig_angle) >= millirad__first .
+H14:   canon(orig_angle) <= millirad__last .
+H15:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           systemtypes__integer32__first .
+H16:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           systemtypes__integer32__last .
+H17:   measuretypes__angle_full <> 0 .
+H18:   measuretypes__angle_full >= systemtypes__integer32__first .
+H19:   measuretypes__angle_full <= systemtypes__integer32__last .
+H20:   canon(orig_angle) * 360 >= long_integer__base__first .
+H21:   canon(orig_angle) * 360 <= long_integer__base__last .
+H22:   canon(orig_angle) >= systemtypes__integer32__first .
+H23:   canon(orig_angle) <= systemtypes__integer32__last .
+H24:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           systemtypes__integer32__first .
+H25:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           systemtypes__integer32__last .
+H26:   canon(orig_angle) * 360 div measuretypes__angle_full >= 360 .
+        ->
+C1:    0 >= measuretypes__angle_degrees__first .
+C2:    0 <= measuretypes__angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 198:
+
+function_round_degree_8.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= millirad__first .
+H9:    canon(orig_angle) <= millirad__last .
+H10:   canon(orig_angle) >= millirad__first .
+H11:   canon(orig_angle) <= millirad__last .
+H12:   canon(orig_angle) < 0 .
+H13:   canon(orig_angle) >= millirad__first .
+H14:   canon(orig_angle) <= millirad__last .
+H15:   measuretypes__angle_full + canon(orig_angle) >= 
+           millirad__first .
+H16:   measuretypes__angle_full + canon(orig_angle) <= 
+           millirad__last .
+H17:   measuretypes__angle_full + canon(orig_angle) >= 
+           millirad__first .
+H18:   measuretypes__angle_full + canon(orig_angle) <= 
+           millirad__last .
+H19:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= systemtypes__integer32__first .
+H20:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= systemtypes__integer32__last .
+H21:   measuretypes__angle_full <> 0 .
+H22:   measuretypes__angle_full >= systemtypes__integer32__first .
+H23:   measuretypes__angle_full <= systemtypes__integer32__last .
+H24:   (measuretypes__angle_full + canon(orig_angle)) * 360 >= 
+           long_integer__base__first .
+H25:   (measuretypes__angle_full + canon(orig_angle)) * 360 <= 
+           long_integer__base__last .
+H26:   measuretypes__angle_full + canon(orig_angle) >= 
+           systemtypes__integer32__first .
+H27:   measuretypes__angle_full + canon(orig_angle) <= 
+           systemtypes__integer32__last .
+H28:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= systemtypes__integer32__first .
+H29:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= systemtypes__integer32__last .
+H30:   not ((measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= 360) .
+H31:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= systemtypes__integer32__first .
+H32:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= systemtypes__integer32__last .
+        ->
+C1:    (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= 
+           measuretypes__angle_degrees__first .
+C2:    (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= 
+           measuretypes__angle_degrees__last .
+C3:    (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= 
+           measuretypes__angle_degrees__first .
+C4:    (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= 
+           measuretypes__angle_degrees__last .
+ 
+
+function_round_degree_9.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= millirad__first .
+H9:    canon(orig_angle) <= millirad__last .
+H10:   canon(orig_angle) >= millirad__first .
+H11:   canon(orig_angle) <= millirad__last .
+H12:   not (canon(orig_angle) < 0) .
+H13:   canon(orig_angle) >= millirad__first .
+H14:   canon(orig_angle) <= millirad__last .
+H15:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           systemtypes__integer32__first .
+H16:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           systemtypes__integer32__last .
+H17:   measuretypes__angle_full <> 0 .
+H18:   measuretypes__angle_full >= systemtypes__integer32__first .
+H19:   measuretypes__angle_full <= systemtypes__integer32__last .
+H20:   canon(orig_angle) * 360 >= long_integer__base__first .
+H21:   canon(orig_angle) * 360 <= long_integer__base__last .
+H22:   canon(orig_angle) >= systemtypes__integer32__first .
+H23:   canon(orig_angle) <= systemtypes__integer32__last .
+H24:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           systemtypes__integer32__first .
+H25:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           systemtypes__integer32__last .
+H26:   not (canon(orig_angle) * 360 div 
+           measuretypes__angle_full >= 360) .
+H27:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           systemtypes__integer32__first .
+H28:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           systemtypes__integer32__last .
+        ->
+C1:    canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           measuretypes__angle_degrees__first .
+C2:    canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           measuretypes__angle_degrees__last .
+C3:    canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           measuretypes__angle_degrees__first .
+C4:    canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           measuretypes__angle_degrees__last .
+ 
+
+For path(s) from start to finish:
+
+function_round_degree_10.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= millirad__first .
+H9:    canon(orig_angle) <= millirad__last .
+H10:   canon(orig_angle) >= millirad__first .
+H11:   canon(orig_angle) <= millirad__last .
+H12:   canon(orig_angle) < 0 .
+H13:   canon(orig_angle) >= millirad__first .
+H14:   canon(orig_angle) <= millirad__last .
+H15:   measuretypes__angle_full + canon(orig_angle) >= 
+           millirad__first .
+H16:   measuretypes__angle_full + canon(orig_angle) <= 
+           millirad__last .
+H17:   measuretypes__angle_full + canon(orig_angle) >= 
+           millirad__first .
+H18:   measuretypes__angle_full + canon(orig_angle) <= 
+           millirad__last .
+H19:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= systemtypes__integer32__first .
+H20:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= systemtypes__integer32__last .
+H21:   measuretypes__angle_full <> 0 .
+H22:   measuretypes__angle_full >= systemtypes__integer32__first .
+H23:   measuretypes__angle_full <= systemtypes__integer32__last .
+H24:   (measuretypes__angle_full + canon(orig_angle)) * 360 >= 
+           long_integer__base__first .
+H25:   (measuretypes__angle_full + canon(orig_angle)) * 360 <= 
+           long_integer__base__last .
+H26:   measuretypes__angle_full + canon(orig_angle) >= 
+           systemtypes__integer32__first .
+H27:   measuretypes__angle_full + canon(orig_angle) <= 
+           systemtypes__integer32__last .
+H28:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= systemtypes__integer32__first .
+H29:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= systemtypes__integer32__last .
+H30:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= 360 .
+H31:   0 >= measuretypes__angle_degrees__first .
+H32:   0 <= measuretypes__angle_degrees__last .
+H33:   0 >= measuretypes__angle_degrees__first .
+H34:   0 <= measuretypes__angle_degrees__last .
+        ->
+C1:    true .
+C2:    0 >= measuretypes__angle_degrees__first .
+C3:    0 <= measuretypes__angle_degrees__last .
+ 
+
+function_round_degree_11.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= millirad__first .
+H9:    canon(orig_angle) <= millirad__last .
+H10:   canon(orig_angle) >= millirad__first .
+H11:   canon(orig_angle) <= millirad__last .
+H12:   not (canon(orig_angle) < 0) .
+H13:   canon(orig_angle) >= millirad__first .
+H14:   canon(orig_angle) <= millirad__last .
+H15:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           systemtypes__integer32__first .
+H16:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           systemtypes__integer32__last .
+H17:   measuretypes__angle_full <> 0 .
+H18:   measuretypes__angle_full >= systemtypes__integer32__first .
+H19:   measuretypes__angle_full <= systemtypes__integer32__last .
+H20:   canon(orig_angle) * 360 >= long_integer__base__first .
+H21:   canon(orig_angle) * 360 <= long_integer__base__last .
+H22:   canon(orig_angle) >= systemtypes__integer32__first .
+H23:   canon(orig_angle) <= systemtypes__integer32__last .
+H24:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           systemtypes__integer32__first .
+H25:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           systemtypes__integer32__last .
+H26:   canon(orig_angle) * 360 div measuretypes__angle_full >= 360 .
+H27:   0 >= measuretypes__angle_degrees__first .
+H28:   0 <= measuretypes__angle_degrees__last .
+H29:   0 >= measuretypes__angle_degrees__first .
+H30:   0 <= measuretypes__angle_degrees__last .
+        ->
+C1:    true .
+C2:    0 >= measuretypes__angle_degrees__first .
+C3:    0 <= measuretypes__angle_degrees__last .
+ 
+
+function_round_degree_12.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= millirad__first .
+H9:    canon(orig_angle) <= millirad__last .
+H10:   canon(orig_angle) >= millirad__first .
+H11:   canon(orig_angle) <= millirad__last .
+H12:   canon(orig_angle) < 0 .
+H13:   canon(orig_angle) >= millirad__first .
+H14:   canon(orig_angle) <= millirad__last .
+H15:   measuretypes__angle_full + canon(orig_angle) >= 
+           millirad__first .
+H16:   measuretypes__angle_full + canon(orig_angle) <= 
+           millirad__last .
+H17:   measuretypes__angle_full + canon(orig_angle) >= 
+           millirad__first .
+H18:   measuretypes__angle_full + canon(orig_angle) <= 
+           millirad__last .
+H19:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= systemtypes__integer32__first .
+H20:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= systemtypes__integer32__last .
+H21:   measuretypes__angle_full <> 0 .
+H22:   measuretypes__angle_full >= systemtypes__integer32__first .
+H23:   measuretypes__angle_full <= systemtypes__integer32__last .
+H24:   (measuretypes__angle_full + canon(orig_angle)) * 360 >= 
+           long_integer__base__first .
+H25:   (measuretypes__angle_full + canon(orig_angle)) * 360 <= 
+           long_integer__base__last .
+H26:   measuretypes__angle_full + canon(orig_angle) >= 
+           systemtypes__integer32__first .
+H27:   measuretypes__angle_full + canon(orig_angle) <= 
+           systemtypes__integer32__last .
+H28:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= systemtypes__integer32__first .
+H29:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= systemtypes__integer32__last .
+H30:   not ((measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= 360) .
+H31:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= systemtypes__integer32__first .
+H32:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= systemtypes__integer32__last .
+H33:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= 
+           measuretypes__angle_degrees__first .
+H34:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= 
+           measuretypes__angle_degrees__last .
+H35:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= 
+           measuretypes__angle_degrees__first .
+H36:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= 
+           measuretypes__angle_degrees__last .
+H37:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= 
+           measuretypes__angle_degrees__first .
+H38:   (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= 
+           measuretypes__angle_degrees__last .
+        ->
+C1:    true .
+C2:    (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full >= 
+           measuretypes__angle_degrees__first .
+C3:    (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+           measuretypes__angle_full <= 
+           measuretypes__angle_degrees__last .
+ 
+
+function_round_degree_13.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= millirad__first .
+H9:    canon(orig_angle) <= millirad__last .
+H10:   canon(orig_angle) >= millirad__first .
+H11:   canon(orig_angle) <= millirad__last .
+H12:   not (canon(orig_angle) < 0) .
+H13:   canon(orig_angle) >= millirad__first .
+H14:   canon(orig_angle) <= millirad__last .
+H15:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           systemtypes__integer32__first .
+H16:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           systemtypes__integer32__last .
+H17:   measuretypes__angle_full <> 0 .
+H18:   measuretypes__angle_full >= systemtypes__integer32__first .
+H19:   measuretypes__angle_full <= systemtypes__integer32__last .
+H20:   canon(orig_angle) * 360 >= long_integer__base__first .
+H21:   canon(orig_angle) * 360 <= long_integer__base__last .
+H22:   canon(orig_angle) >= systemtypes__integer32__first .
+H23:   canon(orig_angle) <= systemtypes__integer32__last .
+H24:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           systemtypes__integer32__first .
+H25:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           systemtypes__integer32__last .
+H26:   not (canon(orig_angle) * 360 div 
+           measuretypes__angle_full >= 360) .
+H27:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           systemtypes__integer32__first .
+H28:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           systemtypes__integer32__last .
+H29:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           measuretypes__angle_degrees__first .
+H30:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           measuretypes__angle_degrees__last .
+H31:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           measuretypes__angle_degrees__first .
+H32:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           measuretypes__angle_degrees__last .
+H33:   canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           measuretypes__angle_degrees__first .
+H34:   canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           measuretypes__angle_degrees__last .
+        ->
+C1:    true .
+C2:    canon(orig_angle) * 360 div measuretypes__angle_full >= 
+           measuretypes__angle_degrees__first .
+C3:    canon(orig_angle) * 360 div measuretypes__angle_full <= 
+           measuretypes__angle_degrees__last .
+ 
+

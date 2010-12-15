@@ -1,0 +1,84 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:42  SIMPLIFIED 25-NOV-2009, 14:19:13
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure if_steer.Get_Deflection
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_get_deflection_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= for_fin
+***  Proved C1:  element(last_fins, [for_fin]) >= angle__first
+     using hypotheses H2, H3 & H4.
+***  Proved C2:  element(last_fins, [for_fin]) <= angle__last
+     using hypotheses H2, H3 & H4.
+***  Proved C3:  fin__first <= for_fin
+     using hypothesis H2.
+***  Proved C4:  for_fin <= fin__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_deflection_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+-S-  Applied substitution rule get_deflecti_rules(40).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+<S>  New C1:  true
+-S-  Applied substitution rule get_deflecti_rules(41).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= 57)
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_deflection_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_deflection_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_deflection_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_deflection_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

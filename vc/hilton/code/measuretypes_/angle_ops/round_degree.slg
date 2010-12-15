@@ -1,0 +1,822 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:21
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function angle_ops.Round_Degree
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_round_degree_1.  @@@@@@@@@@
+-S-  Applied substitution rule round_degree_rules(24).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New C1:  orig_angle >= - 7000
+-S-  Applied substitution rule round_degree_rules(25).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New C2:  orig_angle <= 7000
+-S-  Applied substitution rule round_degree_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule round_degree_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+***  Proved C1:  orig_angle >= - 7000
+     using hypothesis H2.
+***  Proved C2:  orig_angle <= 7000
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_round_degree_2.  @@@@@@@@@@
+-S-  Applied substitution rule round_degree_rules(24).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H4:  orig_angle >= - 7000
+<S>  New C1:  canon(orig_angle) >= - 7000
+-S-  Applied substitution rule round_degree_rules(25).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H5:  orig_angle <= 7000
+<S>  New C2:  canon(orig_angle) <= 7000
+-S-  Applied substitution rule round_degree_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule round_degree_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+-S-  Applied substitution rule round_degree_rules(29).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H6:  canon(orig_angle) >= - 3141
+-S-  Applied substitution rule round_degree_rules(30).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H7:  canon(orig_angle) <= 3142
+***  Proved C1:  canon(orig_angle) >= - 7000
+     using hypothesis H6.
+***  Proved C2:  canon(orig_angle) <= 7000
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_round_degree_3.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H9)
+          .
+-S-  Applied substitution rule round_degree_rules(24).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H4:  orig_angle >= - 7000
+<S>  New H8:  canon(orig_angle) >= - 7000
+<S>  New C1:  measuretypes__angle_full + canon(orig_angle) >= - 7000
+-S-  Applied substitution rule round_degree_rules(25).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H5:  orig_angle <= 7000
+<S>  New H9:  canon(orig_angle) <= 7000
+<S>  New C2:  measuretypes__angle_full + canon(orig_angle) <= 7000
+-S-  Applied substitution rule round_degree_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New C1:  canon(orig_angle) >= - 13283
+<S>  New C2:  canon(orig_angle) <= 717
+-S-  Applied substitution rule round_degree_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule round_degree_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+-S-  Applied substitution rule round_degree_rules(29).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H6:  canon(orig_angle) >= - 3141
+-S-  Applied substitution rule round_degree_rules(30).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H7:  canon(orig_angle) <= 3142
+***  Proved C1:  canon(orig_angle) >= - 13283
+     using hypothesis H8.
+***  Proved C2:  canon(orig_angle) <= 717
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_round_degree_4.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+-S-  Applied substitution rule round_degree_rules(8).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New C1:  (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+          measuretypes__angle_full >= - 2147483648
+<S>  New C4:  measuretypes__angle_full >= - 2147483648
+<S>  New C8:  measuretypes__angle_full + canon(orig_angle) >= - 2147483648
+-S-  Applied substitution rule round_degree_rules(9).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New C2:  (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+          measuretypes__angle_full <= 2147483647
+<S>  New C5:  measuretypes__angle_full <= 2147483647
+<S>  New C9:  measuretypes__angle_full + canon(orig_angle) <= 2147483647
+-S-  Applied substitution rule round_degree_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New H15:  6283 + canon(orig_angle) >= millirad__first
+<S>  New H16:  6283 + canon(orig_angle) <= millirad__last
+<S>  New C3:  true
+<S>  New C6:  (6283 + canon(orig_angle)) * 360 >= long_integer__base__first
+<S>  New C7:  (6283 + canon(orig_angle)) * 360 <= long_integer__base__last
+<S>  New C1:  (6283 + canon(orig_angle)) * 360 div 6283 >= - 2147483648
+<S>  New C4:  true
+<S>  New C8:  canon(orig_angle) >= - 2147489931
+<S>  New C2:  (6283 + canon(orig_angle)) * 360 div 6283 <= 2147483647
+<S>  New C5:  true
+<S>  New C9:  canon(orig_angle) <= 2147477364
+-S-  Applied substitution rule round_degree_rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C6:  (6283 + canon(orig_angle)) * 360 >= - 2147483648
+-S-  Applied substitution rule round_degree_rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C7:  (6283 + canon(orig_angle)) * 360 <= 2147483647
+***  Proved C3:  true
+***  Proved C4:  true
+***  Proved C5:  true
+***  Proved C9:  canon(orig_angle) <= 2147477364
+     using hypothesis H12.
+-S-  Applied substitution rule round_degree_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule round_degree_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+-S-  Applied substitution rule round_degree_rules(24).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H4:  orig_angle >= - 7000
+<S>  New H8:  canon(orig_angle) >= - 7000
+<S>  New H15:  canon(orig_angle) >= - 13283
+-S-  Applied substitution rule round_degree_rules(25).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H5:  orig_angle <= 7000
+<S>  New H9:  canon(orig_angle) <= 7000
+<S>  New H16:  canon(orig_angle) <= 717
+-S-  Applied substitution rule round_degree_rules(29).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H6:  canon(orig_angle) >= - 3141
+-S-  Applied substitution rule round_degree_rules(30).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H7:  canon(orig_angle) <= 3142
+***  Proved C8:  canon(orig_angle) >= - 2147489931
+     using hypothesis H8.
+***  Proved C6:  (6283 + canon(orig_angle)) * 360 >= - 2147483648
+     via its standard form, which is:
+     Std.Fm C6:  360 * canon(orig_angle) > - 2149745529
+     using hypothesis H8.
+***  Proved C7:  (6283 + canon(orig_angle)) * 360 <= 2147483647
+     via its standard form, which is:
+     Std.Fm C7:  2261880 + 360 * canon(orig_angle) <= 2147483647
+     using hypothesis H9.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H4 (duplicate of H2).
+---  Eliminated hypothesis H5 (duplicate of H3).
+---  Eliminated hypothesis H7 (redundant, given H12).
+---  Eliminated hypothesis H8 (redundant, given H6).
+---  Eliminated hypothesis H9 (redundant, given H12).
+---  Eliminated hypothesis H15 (redundant, given H6).
+---  Eliminated hypothesis H16 (redundant, given H12).
+***  Proved C1:  (6283 + canon(orig_angle)) * 360 div 6283 >= - 2147483648
+     using hypothesis H6.
+***  Proved C2:  (6283 + canon(orig_angle)) * 360 div 6283 <= 2147483647
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_round_degree_5.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H9)
+          .
+-S-  Applied substitution rule round_degree_rules(8).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New C1:  canon(orig_angle) * 360 div measuretypes__angle_full >= - 
+          2147483648
+<S>  New C4:  measuretypes__angle_full >= - 2147483648
+<S>  New C8:  canon(orig_angle) >= - 2147483648
+-S-  Applied substitution rule round_degree_rules(9).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New C2:  canon(orig_angle) * 360 div measuretypes__angle_full <= 2147483647
+<S>  New C5:  measuretypes__angle_full <= 2147483647
+<S>  New C9:  canon(orig_angle) <= 2147483647
+-S-  Applied substitution rule round_degree_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New C3:  true
+<S>  New C1:  canon(orig_angle) * 360 div 6283 >= - 2147483648
+<S>  New C4:  true
+<S>  New C2:  canon(orig_angle) * 360 div 6283 <= 2147483647
+<S>  New C5:  true
+-S-  Applied substitution rule round_degree_rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C6:  canon(orig_angle) * 360 >= - 2147483648
+-S-  Applied substitution rule round_degree_rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C7:  canon(orig_angle) * 360 <= 2147483647
+***  Proved C8:  canon(orig_angle) >= - 2147483648
+     using hypothesis H12.
+***  Proved C3:  true
+***  Proved C4:  true
+***  Proved C5:  true
+***  Proved C6:  canon(orig_angle) * 360 >= - 2147483648
+     using hypothesis H12.
+>>>  Restructured hypothesis H12 into:
+     >>>  H12:  0 <= canon(orig_angle)
+-S-  Applied substitution rule round_degree_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule round_degree_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+-S-  Applied substitution rule round_degree_rules(24).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H4:  orig_angle >= - 7000
+<S>  New H8:  canon(orig_angle) >= - 7000
+-S-  Applied substitution rule round_degree_rules(25).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H5:  orig_angle <= 7000
+<S>  New H9:  canon(orig_angle) <= 7000
+-S-  Applied substitution rule round_degree_rules(29).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H6:  canon(orig_angle) >= - 3141
+-S-  Applied substitution rule round_degree_rules(30).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H7:  canon(orig_angle) <= 3142
+***  Proved C9:  canon(orig_angle) <= 2147483647
+     using hypothesis H9.
+***  Proved C7:  canon(orig_angle) * 360 <= 2147483647
+     using hypothesis H9.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H4 (duplicate of H2).
+---  Eliminated hypothesis H5 (duplicate of H3).
+---  Eliminated hypothesis H6 (redundant, given H12).
+---  Eliminated hypothesis H8 (redundant, given H12).
+---  Eliminated hypothesis H9 (redundant, given H7).
+***  Proved C1:  canon(orig_angle) * 360 div 6283 >= - 2147483648
+     using hypothesis H12.
+***  Proved C2:  canon(orig_angle) * 360 div 6283 <= 2147483647
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_round_degree_6.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H20).
+-S-  Applied substitution rule round_degree_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__first by:
+          0.
+<S>  New C1:  true
+-S-  Applied substitution rule round_degree_rules(14).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__last by:
+          359.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_round_degree_7.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+-S-  Applied substitution rule round_degree_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__first by:
+          0.
+<S>  New C1:  true
+-S-  Applied substitution rule round_degree_rules(14).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__last by:
+          359.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_round_degree_8.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H20).
+-S-  Applied substitution rule round_degree_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__first by:
+          0.
+<S>  New C1:  (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+          measuretypes__angle_full >= 0
+<S>  New C3:  (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+          measuretypes__angle_full >= 0
+-S-  Applied substitution rule round_degree_rules(14).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__last by:
+          359.
+<S>  New C2:  (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+          measuretypes__angle_full <= 359
+<S>  New C4:  (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+          measuretypes__angle_full <= 359
+***  Proved C2:  (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+          measuretypes__angle_full <= 359
+     using hypothesis H30.
+***  Proved C4:  (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+          measuretypes__angle_full <= 359
+     using hypothesis H30.
+>>>  Restructured hypothesis H30 into:
+     >>>  H30:  (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+          measuretypes__angle_full < 360
+-S-  Applied substitution rule round_degree_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New H15:  6283 + canon(orig_angle) >= millirad__first
+<S>  New H16:  6283 + canon(orig_angle) <= millirad__last
+<S>  New H19:  (6283 + canon(orig_angle)) * 360 div 6283 >= 
+          systemtypes__integer32__first
+<S>  New H20:  (6283 + canon(orig_angle)) * 360 div 6283 <= 
+          systemtypes__integer32__last
+<S>  New H21:  true
+<S>  New H22:  6283 >= systemtypes__integer32__first
+<S>  New H23:  6283 <= systemtypes__integer32__last
+<S>  New H24:  (6283 + canon(orig_angle)) * 360 >= long_integer__base__first
+<S>  New H25:  (6283 + canon(orig_angle)) * 360 <= long_integer__base__last
+<S>  New H26:  6283 + canon(orig_angle) >= systemtypes__integer32__first
+<S>  New H27:  6283 + canon(orig_angle) <= systemtypes__integer32__last
+<S>  New H30:  (6283 + canon(orig_angle)) * 360 div 6283 < 360
+<S>  New C1:  (6283 + canon(orig_angle)) * 360 div 6283 >= 0
+<S>  New C3:  (6283 + canon(orig_angle)) * 360 div 6283 >= 0
+-S-  Applied substitution rule round_degree_rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H24:  (6283 + canon(orig_angle)) * 360 >= - 2147483648
+-S-  Applied substitution rule round_degree_rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H25:  (6283 + canon(orig_angle)) * 360 <= 2147483647
+-S-  Applied substitution rule round_degree_rules(8).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H19:  (6283 + canon(orig_angle)) * 360 div 6283 >= - 2147483648
+<S>  New H22:  true
+<S>  New H26:  canon(orig_angle) >= - 2147489931
+-S-  Applied substitution rule round_degree_rules(9).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H20:  (6283 + canon(orig_angle)) * 360 div 6283 <= 2147483647
+<S>  New H23:  true
+<S>  New H27:  canon(orig_angle) <= 2147477364
+-S-  Applied substitution rule round_degree_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule round_degree_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+-S-  Applied substitution rule round_degree_rules(24).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H4:  orig_angle >= - 7000
+<S>  New H8:  canon(orig_angle) >= - 7000
+<S>  New H15:  canon(orig_angle) >= - 13283
+-S-  Applied substitution rule round_degree_rules(25).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H5:  orig_angle <= 7000
+<S>  New H9:  canon(orig_angle) <= 7000
+<S>  New H16:  canon(orig_angle) <= 717
+-S-  Applied substitution rule round_degree_rules(29).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H6:  canon(orig_angle) >= - 3141
+-S-  Applied substitution rule round_degree_rules(30).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H7:  canon(orig_angle) <= 3142
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H29 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H4 (duplicate of H2).
+---  Eliminated hypothesis H5 (duplicate of H3).
+---  Eliminated hypothesis H7 (redundant, given H12).
+---  Eliminated hypothesis H8 (redundant, given H6).
+---  Eliminated hypothesis H9 (redundant, given H12).
+---  Eliminated hypothesis H15 (redundant, given H6).
+---  Eliminated hypothesis H16 (redundant, given H12).
+---  Eliminated hypothesis H20 (redundant, given H30).
+---  Eliminated hypothesis H24 (redundant, given H6).
+---  Eliminated hypothesis H25 (redundant, given H12).
+---  Eliminated hypothesis H26 (redundant, given H6).
+---  Eliminated hypothesis H27 (redundant, given H12).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+***  Proved C1:  (6283 + canon(orig_angle)) * 360 div 6283 >= 0
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_round_degree_9.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H16).
+-S-  Applied substitution rule round_degree_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__first by:
+          0.
+<S>  New C1:  canon(orig_angle) * 360 div measuretypes__angle_full >= 0
+<S>  New C3:  canon(orig_angle) * 360 div measuretypes__angle_full >= 0
+-S-  Applied substitution rule round_degree_rules(14).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__last by:
+          359.
+<S>  New C2:  canon(orig_angle) * 360 div measuretypes__angle_full <= 359
+<S>  New C4:  canon(orig_angle) * 360 div measuretypes__angle_full <= 359
+***  Proved C2:  canon(orig_angle) * 360 div measuretypes__angle_full <= 359
+     using hypothesis H26.
+***  Proved C4:  canon(orig_angle) * 360 div measuretypes__angle_full <= 359
+     using hypothesis H26.
+>>>  Restructured hypothesis H12 into:
+     >>>  H12:  0 <= canon(orig_angle)
+>>>  Restructured hypothesis H26 into:
+     >>>  H26:  canon(orig_angle) * 360 div measuretypes__angle_full < 360
+-S-  Applied substitution rule round_degree_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New H15:  canon(orig_angle) * 360 div 6283 >= systemtypes__integer32__first
+<S>  New H16:  canon(orig_angle) * 360 div 6283 <= systemtypes__integer32__last
+<S>  New H17:  true
+<S>  New H18:  6283 >= systemtypes__integer32__first
+<S>  New H19:  6283 <= systemtypes__integer32__last
+<S>  New H26:  canon(orig_angle) * 360 div 6283 < 360
+<S>  New C1:  canon(orig_angle) * 360 div 6283 >= 0
+<S>  New C3:  canon(orig_angle) * 360 div 6283 >= 0
+-S-  Applied substitution rule round_degree_rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H20:  canon(orig_angle) * 360 >= - 2147483648
+-S-  Applied substitution rule round_degree_rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H21:  canon(orig_angle) * 360 <= 2147483647
+-S-  Applied substitution rule round_degree_rules(8).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H22:  canon(orig_angle) >= - 2147483648
+<S>  New H15:  canon(orig_angle) * 360 div 6283 >= - 2147483648
+<S>  New H18:  true
+-S-  Applied substitution rule round_degree_rules(9).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H23:  canon(orig_angle) <= 2147483647
+<S>  New H16:  canon(orig_angle) * 360 div 6283 <= 2147483647
+<S>  New H19:  true
+-S-  Applied substitution rule round_degree_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule round_degree_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+-S-  Applied substitution rule round_degree_rules(24).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H4:  orig_angle >= - 7000
+<S>  New H8:  canon(orig_angle) >= - 7000
+-S-  Applied substitution rule round_degree_rules(25).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H5:  orig_angle <= 7000
+<S>  New H9:  canon(orig_angle) <= 7000
+-S-  Applied substitution rule round_degree_rules(29).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H6:  canon(orig_angle) >= - 3141
+-S-  Applied substitution rule round_degree_rules(30).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H7:  canon(orig_angle) <= 3142
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H4 (duplicate of H2).
+---  Eliminated hypothesis H5 (duplicate of H3).
+---  Eliminated hypothesis H6 (redundant, given H12).
+---  Eliminated hypothesis H8 (redundant, given H12).
+---  Eliminated hypothesis H9 (redundant, given H7).
+---  Eliminated hypothesis H16 (redundant, given H26).
+---  Eliminated hypothesis H20 (redundant, given H12).
+---  Eliminated hypothesis H21 (redundant, given H7).
+---  Eliminated hypothesis H22 (redundant, given H12).
+---  Eliminated hypothesis H23 (redundant, given H7).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+***  Proved C1:  canon(orig_angle) * 360 div 6283 >= 0
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_round_degree_10.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H32).
+***  Proved C1:  true
+***  Proved C2:  0 >= measuretypes__angle_degrees__first
+     using hypothesis H31.
+***  Proved C3:  0 <= measuretypes__angle_degrees__last
+     using hypothesis H32.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_round_degree_11.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H28).
+***  Proved C1:  true
+***  Proved C2:  0 >= measuretypes__angle_degrees__first
+     using hypothesis H27.
+***  Proved C3:  0 <= measuretypes__angle_degrees__last
+     using hypothesis H28.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_round_degree_12.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H34).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H34).
+***  Proved C1:  true
+***  Proved C2:  (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+          measuretypes__angle_full >= measuretypes__angle_degrees__first
+     using hypothesis H33.
+***  Proved C3:  (measuretypes__angle_full + canon(orig_angle)) * 360 div 
+          measuretypes__angle_full <= measuretypes__angle_degrees__last
+     using hypothesis H34.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_round_degree_13.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+***  Proved C1:  true
+***  Proved C2:  canon(orig_angle) * 360 div measuretypes__angle_full >= 
+          measuretypes__angle_degrees__first
+     using hypothesis H29.
+***  Proved C3:  canon(orig_angle) * 360 div measuretypes__angle_full <= 
+          measuretypes__angle_degrees__last
+     using hypothesis H30.
+***  PROVED VC.
+

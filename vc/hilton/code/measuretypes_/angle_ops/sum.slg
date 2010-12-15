@@ -1,0 +1,1440 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:20
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function angle_ops.Sum
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_sum_1.  @@@@@@@@@@
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New C1:  left >= - 7000
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New C2:  left <= 7000
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+***  Proved C1:  left >= - 7000
+     using hypothesis H2.
+***  Proved C2:  left <= 7000
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_2.  @@@@@@@@@@
+***  Proved C1:  canon(left) >= canon_millirad__first
+     using hypothesis H8.
+***  Proved C2:  canon(left) <= canon_millirad__last
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_3.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New C1:  right >= - 7000
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New C2:  right <= 7000
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+***  Proved C1:  right >= - 7000
+     using hypothesis H4.
+***  Proved C2:  right <= 7000
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_4.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+***  Proved C1:  canon(right) >= canon_millirad__first
+     using hypothesis H14.
+***  Proved C2:  canon(right) <= canon_millirad__last
+     using hypothesis H15.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_5.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New C1:  canon(left) - measuretypes__angle_half + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New C2:  canon(left) - measuretypes__angle_half + canon(right) <= 7000
+-S-  Applied substitution rule sum_rules(6).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New C3:  canon(left) - measuretypes__angle_half >= - 2147483648
+-S-  Applied substitution rule sum_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New C4:  canon(left) - measuretypes__angle_half <= 2147483647
+-S-  Applied substitution rule sum_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_half 
+          by:
+          3142.
+<S>  New C1:  canon(left) - 3142 + canon(right) >= - 7000
+<S>  New C2:  canon(left) - 3142 + canon(right) <= 7000
+<S>  New C3:  canon(left) >= - 2147480506
+<S>  New C4:  canon(left) <= 2147486789
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C1:  canon(left) - 3142 + canon(right) >= - 7000
+     using hypotheses H20 & H23.
+***  Proved C2:  canon(left) - 3142 + canon(right) <= 7000
+     using hypotheses H9 & H15.
+***  Proved C3:  canon(left) >= - 2147480506
+     using hypothesis H20.
+***  Proved C4:  canon(left) <= 2147486789
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_6.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New H28:  canon(left) - measuretypes__angle_half + canon(right) >= - 7000
+<S>  New C1:  canon(left) - measuretypes__angle_half + canon(right) + 
+          measuretypes__angle_minushalf >= - 7000
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New H29:  canon(left) - measuretypes__angle_half + canon(right) <= 7000
+<S>  New C2:  canon(left) - measuretypes__angle_half + canon(right) + 
+          measuretypes__angle_minushalf <= 7000
+-S-  Applied substitution rule sum_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_half 
+          by:
+          3142.
+<S>  New H28:  canon(left) - 3142 + canon(right) >= - 7000
+<S>  New H29:  canon(left) - 3142 + canon(right) <= 7000
+<S>  New H30:  canon(left) - 3142 >= measuretypes__millirad__base__first
+<S>  New H31:  canon(left) - 3142 <= measuretypes__millirad__base__last
+<S>  New H34:  canon(left) - 3142 + canon(right) > 0
+<S>  New C1:  canon(left) - 3142 + canon(right) + measuretypes__angle_minushalf 
+          >= - 7000
+<S>  New C2:  canon(left) - 3142 + canon(right) + measuretypes__angle_minushalf 
+          <= 7000
+-S-  Applied substitution rule sum_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_minushalf by:
+          - 3142.
+<S>  New C1:  canon(left) - 3142 + canon(right) >= - 3858
+<S>  New C2:  canon(left) - 3142 + canon(right) <= 10142
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+-S-  Applied substitution rule sum_rules(6).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New H30:  canon(left) >= - 2147480506
+-S-  Applied substitution rule sum_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New H31:  canon(left) <= 2147486789
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C1:  canon(left) - 3142 + canon(right) >= - 3858
+     using hypothesis H34.
+***  Proved C2:  canon(left) - 3142 + canon(right) <= 10142
+     using hypothesis H29.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_7.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H15).
+***  Proved C1:  canon(left) + canon(right) >= millirad__first
+     using hypotheses H20, H23, H28 & H34.
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New H29:  canon(left) - measuretypes__angle_half + canon(right) <= 7000
+<S>  New C2:  canon(left) + canon(right) <= 7000
+>>>  Restructured hypothesis H34 into:
+     >>>  H34:  canon(left) - measuretypes__angle_half + canon(right) <= 0
+-S-  Applied substitution rule sum_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_half 
+          by:
+          3142.
+<S>  New H28:  canon(left) - 3142 + canon(right) >= millirad__first
+<S>  New H29:  canon(left) - 3142 + canon(right) <= 7000
+<S>  New H30:  canon(left) - 3142 >= measuretypes__millirad__base__first
+<S>  New H31:  canon(left) - 3142 <= measuretypes__millirad__base__last
+<S>  New H34:  canon(left) - 3142 + canon(right) <= 0
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+-S-  Applied substitution rule sum_rules(6).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New H30:  canon(left) >= - 2147480506
+-S-  Applied substitution rule sum_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New H31:  canon(left) <= 2147486789
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New H28:  canon(left) - 3142 + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C2:  canon(left) + canon(right) <= 7000
+     using hypotheses H9 & H15.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_8.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New C1:  canon(left) + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New C2:  canon(left) + canon(right) <= 7000
+>>>  Restructured hypothesis H23 into:
+     >>>  H23:  canon(right) < 0
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C1:  canon(left) + canon(right) >= - 7000
+     using hypotheses H14 & H20.
+***  Proved C2:  canon(left) + canon(right) <= 7000
+     using hypotheses H9 & H23.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_9.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New C1:  canon(left) + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New C2:  canon(left) + canon(right) <= 7000
+>>>  Restructured hypothesis H20 into:
+     >>>  H20:  canon(left) < 0
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C1:  canon(left) + canon(right) >= - 7000
+     using hypotheses H8 & H23.
+***  Proved C2:  canon(left) + canon(right) <= 7000
+     using hypotheses H15 & H20.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_10.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New C1:  canon(left) + measuretypes__angle_half + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New C2:  canon(left) + measuretypes__angle_half + canon(right) <= 7000
+-S-  Applied substitution rule sum_rules(6).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New C3:  canon(left) + measuretypes__angle_half >= - 2147483648
+-S-  Applied substitution rule sum_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New C4:  canon(left) + measuretypes__angle_half <= 2147483647
+>>>  Restructured hypothesis H20 into:
+     >>>  H20:  canon(left) < 0
+>>>  Restructured hypothesis H23 into:
+     >>>  H23:  canon(right) < 0
+-S-  Applied substitution rule sum_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_half 
+          by:
+          3142.
+<S>  New C1:  canon(left) + 3142 + canon(right) >= - 7000
+<S>  New C2:  canon(left) + 3142 + canon(right) <= 7000
+<S>  New C3:  canon(left) >= - 2147486790
+<S>  New C4:  canon(left) <= 2147480505
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C1:  canon(left) + 3142 + canon(right) >= - 7000
+     using hypotheses H8 & H14.
+***  Proved C2:  canon(left) + 3142 + canon(right) <= 7000
+     using hypotheses H15 & H20.
+***  Proved C3:  canon(left) >= - 2147486790
+     using hypothesis H8.
+***  Proved C4:  canon(left) <= 2147480505
+     using hypothesis H20.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_11.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H15).
+***  Proved C2:  canon(left) + canon(right) <= millirad__last
+     using hypotheses H20, H23, H29 & H34.
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New H28:  canon(left) + measuretypes__angle_half + canon(right) >= - 7000
+<S>  New C1:  canon(left) + canon(right) >= - 7000
+>>>  Restructured hypothesis H20 into:
+     >>>  H20:  canon(left) < 0
+>>>  Restructured hypothesis H23 into:
+     >>>  H23:  canon(right) < 0
+-S-  Applied substitution rule sum_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_half 
+          by:
+          3142.
+<S>  New H28:  canon(left) + 3142 + canon(right) >= - 7000
+<S>  New H29:  canon(left) + 3142 + canon(right) <= millirad__last
+<S>  New H30:  canon(left) + 3142 >= measuretypes__millirad__base__first
+<S>  New H31:  canon(left) + 3142 <= measuretypes__millirad__base__last
+<S>  New H34:  canon(left) + 3142 + canon(right) >= 0
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+-S-  Applied substitution rule sum_rules(6).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New H30:  canon(left) >= - 2147486790
+-S-  Applied substitution rule sum_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New H31:  canon(left) <= 2147480505
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New H29:  canon(left) + 3142 + canon(right) <= 7000
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C1:  canon(left) + canon(right) >= - 7000
+     using hypotheses H8 & H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_12.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New H28:  canon(left) + measuretypes__angle_half + canon(right) >= - 7000
+<S>  New C1:  measuretypes__angle_half + (canon(left) + 
+          measuretypes__angle_half + canon(right)) >= - 7000
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New H29:  canon(left) + measuretypes__angle_half + canon(right) <= 7000
+<S>  New C2:  measuretypes__angle_half + (canon(left) + 
+          measuretypes__angle_half + canon(right)) <= 7000
+>>>  Restructured hypothesis H20 into:
+     >>>  H20:  canon(left) < 0
+>>>  Restructured hypothesis H23 into:
+     >>>  H23:  canon(right) < 0
+>>>  Restructured hypothesis H34 into:
+     >>>  H34:  canon(left) + measuretypes__angle_half + canon(right) < 0
+-S-  Applied substitution rule sum_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_half 
+          by:
+          3142.
+<S>  New H28:  canon(left) + 3142 + canon(right) >= - 7000
+<S>  New H29:  canon(left) + 3142 + canon(right) <= 7000
+<S>  New H30:  canon(left) + 3142 >= measuretypes__millirad__base__first
+<S>  New H31:  canon(left) + 3142 <= measuretypes__millirad__base__last
+<S>  New H34:  canon(left) + 3142 + canon(right) < 0
+<S>  New C1:  canon(left) + 3142 + canon(right) >= - 10142
+<S>  New C2:  canon(left) + 3142 + canon(right) <= 3858
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+-S-  Applied substitution rule sum_rules(6).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New H30:  canon(left) >= - 2147486790
+-S-  Applied substitution rule sum_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New H31:  canon(left) <= 2147480505
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C1:  canon(left) + 3142 + canon(right) >= - 10142
+     using hypothesis H28.
+***  Proved C2:  canon(left) + 3142 + canon(right) <= 3858
+     using hypothesis H34.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_13.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H37).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H38).
+***  Proved C1:  true
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+<S>  New C2:  canon(left) - measuretypes__angle_half + canon(right) + 
+          measuretypes__angle_minushalf >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+<S>  New C3:  canon(left) - measuretypes__angle_half + canon(right) + 
+          measuretypes__angle_minushalf <= 7000
+-S-  Applied substitution rule sum_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_half 
+          by:
+          3142.
+<S>  New H28:  canon(left) - 3142 + canon(right) >= millirad__first
+<S>  New H29:  canon(left) - 3142 + canon(right) <= millirad__last
+<S>  New H30:  canon(left) - 3142 >= measuretypes__millirad__base__first
+<S>  New H31:  canon(left) - 3142 <= measuretypes__millirad__base__last
+<S>  New H34:  canon(left) - 3142 + canon(right) > 0
+<S>  New H37:  canon(left) - 3142 + canon(right) + 
+          measuretypes__angle_minushalf >= millirad__first
+<S>  New H38:  canon(left) - 3142 + canon(right) + 
+          measuretypes__angle_minushalf <= millirad__last
+<S>  New C2:  canon(left) - 3142 + canon(right) + measuretypes__angle_minushalf 
+          >= - 7000
+<S>  New C3:  canon(left) - 3142 + canon(right) + measuretypes__angle_minushalf 
+          <= 7000
+-S-  Applied substitution rule sum_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_minushalf by:
+          - 3142.
+<S>  New H37:  canon(left) - 3142 + canon(right) + - 3142 >= millirad__first
+<S>  New H38:  canon(left) - 3142 + canon(right) + - 3142 <= millirad__last
+<S>  New C2:  canon(left) - 3142 + canon(right) >= - 3858
+<S>  New C3:  canon(left) - 3142 + canon(right) <= 10142
+-S-  Applied substitution rule sum_rules(6).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New H30:  canon(left) >= - 2147480506
+-S-  Applied substitution rule sum_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New H31:  canon(left) <= 2147486789
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New H28:  canon(left) - 3142 + canon(right) >= - 7000
+<S>  New H37:  canon(left) - 3142 + canon(right) >= - 3858
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New H29:  canon(left) - 3142 + canon(right) <= 7000
+<S>  New H38:  canon(left) - 3142 + canon(right) <= 10142
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C2:  canon(left) - 3142 + canon(right) >= - 3858
+     using hypothesis H37.
+***  Proved C3:  canon(left) - 3142 + canon(right) <= 10142
+     using hypothesis H38.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_14.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H40).
+***  Proved C1:  true
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+<S>  New C2:  canon(left) + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+<S>  New C3:  canon(left) + canon(right) <= 7000
+***  Proved C2:  canon(left) + canon(right) >= - 7000
+     using hypotheses H20 & H23.
+>>>  Restructured hypothesis H34 into:
+     >>>  H34:  canon(left) - measuretypes__angle_half + canon(right) <= 0
+-S-  Applied substitution rule sum_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_half 
+          by:
+          3142.
+<S>  New H28:  canon(left) - 3142 + canon(right) >= millirad__first
+<S>  New H29:  canon(left) - 3142 + canon(right) <= millirad__last
+<S>  New H30:  canon(left) - 3142 >= measuretypes__millirad__base__first
+<S>  New H31:  canon(left) - 3142 <= measuretypes__millirad__base__last
+<S>  New H34:  canon(left) - 3142 + canon(right) <= 0
+-S-  Applied substitution rule sum_rules(6).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New H30:  canon(left) >= - 2147480506
+-S-  Applied substitution rule sum_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New H31:  canon(left) <= 2147486789
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New H39:  canon(left) + canon(right) >= - 7000
+<S>  New H28:  canon(left) - 3142 + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New H40:  canon(left) + canon(right) <= 7000
+<S>  New H29:  canon(left) - 3142 + canon(right) <= 7000
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C3:  canon(left) + canon(right) <= 7000
+     using hypothesis H40.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_15.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+***  Proved C1:  true
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+<S>  New C2:  canon(left) + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+<S>  New C3:  canon(left) + canon(right) <= 7000
+>>>  Restructured hypothesis H23 into:
+     >>>  H23:  canon(right) < 0
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New H28:  canon(left) + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New H29:  canon(left) + canon(right) <= 7000
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C2:  canon(left) + canon(right) >= - 7000
+     using hypothesis H28.
+***  Proved C3:  canon(left) + canon(right) <= 7000
+     using hypothesis H29.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_16.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+***  Proved C1:  true
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+<S>  New C2:  canon(left) + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+<S>  New C3:  canon(left) + canon(right) <= 7000
+>>>  Restructured hypothesis H20 into:
+     >>>  H20:  canon(left) < 0
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New H28:  canon(left) + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New H29:  canon(left) + canon(right) <= 7000
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C2:  canon(left) + canon(right) >= - 7000
+     using hypothesis H28.
+***  Proved C3:  canon(left) + canon(right) <= 7000
+     using hypothesis H29.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_17.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H40).
+***  Proved C1:  true
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+<S>  New C2:  canon(left) + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+<S>  New C3:  canon(left) + canon(right) <= 7000
+***  Proved C3:  canon(left) + canon(right) <= 7000
+     using hypotheses H20 & H23.
+>>>  Restructured hypothesis H20 into:
+     >>>  H20:  canon(left) < 0
+>>>  Restructured hypothesis H23 into:
+     >>>  H23:  canon(right) < 0
+-S-  Applied substitution rule sum_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_half 
+          by:
+          3142.
+<S>  New H28:  canon(left) + 3142 + canon(right) >= millirad__first
+<S>  New H29:  canon(left) + 3142 + canon(right) <= millirad__last
+<S>  New H30:  canon(left) + 3142 >= measuretypes__millirad__base__first
+<S>  New H31:  canon(left) + 3142 <= measuretypes__millirad__base__last
+<S>  New H34:  canon(left) + 3142 + canon(right) >= 0
+-S-  Applied substitution rule sum_rules(6).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New H30:  canon(left) >= - 2147486790
+-S-  Applied substitution rule sum_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New H31:  canon(left) <= 2147480505
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New H39:  canon(left) + canon(right) >= - 7000
+<S>  New H28:  canon(left) + 3142 + canon(right) >= - 7000
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New H40:  canon(left) + canon(right) <= 7000
+<S>  New H29:  canon(left) + 3142 + canon(right) <= 7000
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C2:  canon(left) + canon(right) >= - 7000
+     using hypothesis H39.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sum_18.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H37).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H38).
+***  Proved C1:  true
+-S-  Applied substitution rule sum_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  left >= - 7000
+<S>  New H4:  right >= - 7000
+<S>  New C2:  measuretypes__angle_half + (canon(left) + 
+          measuretypes__angle_half + canon(right)) >= - 7000
+-S-  Applied substitution rule sum_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  left <= 7000
+<S>  New H5:  right <= 7000
+<S>  New C3:  measuretypes__angle_half + (canon(left) + 
+          measuretypes__angle_half + canon(right)) <= 7000
+>>>  Restructured hypothesis H20 into:
+     >>>  H20:  canon(left) < 0
+>>>  Restructured hypothesis H23 into:
+     >>>  H23:  canon(right) < 0
+>>>  Restructured hypothesis H34 into:
+     >>>  H34:  canon(left) + measuretypes__angle_half + canon(right) < 0
+-S-  Applied substitution rule sum_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_half 
+          by:
+          3142.
+<S>  New H28:  canon(left) + 3142 + canon(right) >= millirad__first
+<S>  New H29:  canon(left) + 3142 + canon(right) <= millirad__last
+<S>  New H30:  canon(left) + 3142 >= measuretypes__millirad__base__first
+<S>  New H31:  canon(left) + 3142 <= measuretypes__millirad__base__last
+<S>  New H34:  canon(left) + 3142 + canon(right) < 0
+<S>  New H37:  3142 + (canon(left) + 3142 + canon(right)) >= millirad__first
+<S>  New H38:  3142 + (canon(left) + 3142 + canon(right)) <= millirad__last
+<S>  New C2:  canon(left) + 3142 + canon(right) >= - 10142
+<S>  New C3:  canon(left) + 3142 + canon(right) <= 3858
+-S-  Applied substitution rule sum_rules(6).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New H30:  canon(left) >= - 2147486790
+-S-  Applied substitution rule sum_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New H31:  canon(left) <= 2147480505
+-S-  Applied substitution rule sum_rules(9).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H6:  left >= - 7000
+<S>  New H12:  right >= - 7000
+<S>  New H28:  canon(left) + 3142 + canon(right) >= - 7000
+<S>  New H37:  canon(left) + 3142 + canon(right) >= - 10142
+-S-  Applied substitution rule sum_rules(10).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H7:  left <= 7000
+<S>  New H13:  right <= 7000
+<S>  New H29:  canon(left) + 3142 + canon(right) <= 7000
+<S>  New H38:  canon(left) + 3142 + canon(right) <= 3858
+-S-  Applied substitution rule sum_rules(14).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H8:  canon(left) >= - 3141
+<S>  New H14:  canon(right) >= - 3141
+-S-  Applied substitution rule sum_rules(15).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H9:  canon(left) <= 3142
+<S>  New H15:  canon(right) <= 3142
+***  Proved C2:  canon(left) + 3142 + canon(right) >= - 10142
+     using hypothesis H37.
+***  Proved C3:  canon(left) + 3142 + canon(right) <= 3858
+     using hypothesis H38.
+***  PROVED VC.
+

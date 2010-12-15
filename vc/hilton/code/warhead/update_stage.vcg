@@ -1,0 +1,201 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.23
+
+                       procedure warhead.Update_Stage
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 52:
+
+procedure_update_stage_1.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+        ->
+C1:    element(max_stage_time, [current_stage]) >= 
+           clock__millisecond__first .
+C2:    element(max_stage_time, [current_stage]) <= 
+           clock__millisecond__last .
+C3:    current_stage >= stage__first .
+C4:    current_stage <= stage__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 54:
+
+procedure_update_stage_2.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    element(max_stage_time, [current_stage]) >= 
+           clock__millisecond__first .
+H7:    element(max_stage_time, [current_stage]) <= 
+           clock__millisecond__last .
+H8:    current_stage >= stage__first .
+H9:    current_stage <= stage__last .
+H10:   element(max_stage_time, [current_stage]) >= 
+           clock__millisecond__first .
+H11:   element(max_stage_time, [current_stage]) <= 
+           clock__millisecond__last .
+H12:   element(max_stage_time, [current_stage]) > 0 .
+H13:   t_now__1 >= clock__millisecond__first .
+H14:   t_now__1 <= clock__millisecond__last .
+H15:   true .
+        ->
+C1:    t_now__1 >= clock__millisecond__first .
+C2:    t_now__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 56:
+
+procedure_update_stage_3.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    element(max_stage_time, [current_stage]) >= 
+           clock__millisecond__first .
+H7:    element(max_stage_time, [current_stage]) <= 
+           clock__millisecond__last .
+H8:    current_stage >= stage__first .
+H9:    current_stage <= stage__last .
+H10:   element(max_stage_time, [current_stage]) >= 
+           clock__millisecond__first .
+H11:   element(max_stage_time, [current_stage]) <= 
+           clock__millisecond__last .
+H12:   element(max_stage_time, [current_stage]) > 0 .
+H13:   t_now__1 >= clock__millisecond__first .
+H14:   t_now__1 <= clock__millisecond__last .
+H15:   true .
+H16:   t_now__1 >= clock__millisecond__first .
+H17:   t_now__1 <= clock__millisecond__last .
+H18:   t_now__1 >= clock__millisecond__first .
+H19:   t_now__1 <= clock__millisecond__last .
+H20:   element(max_stage_time, [current_stage]) >= 
+           clock__millisecond__first .
+H21:   element(max_stage_time, [current_stage]) <= 
+           clock__millisecond__last .
+H22:   true .
+        ->
+C1:    (t_valid__1 and (stage_timer < t_now__1)) -> ((t_now__1 - 
+           stage_timer >= clock__millisecond__base__first) and (
+           t_now__1 - stage_timer <= clock__millisecond__base__last)) .
+ 
+
+For path(s) from start to run-time check associated with statement of line 60:
+
+procedure_update_stage_4.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    element(max_stage_time, [current_stage]) >= 
+           clock__millisecond__first .
+H7:    element(max_stage_time, [current_stage]) <= 
+           clock__millisecond__last .
+H8:    current_stage >= stage__first .
+H9:    current_stage <= stage__last .
+H10:   element(max_stage_time, [current_stage]) >= 
+           clock__millisecond__first .
+H11:   element(max_stage_time, [current_stage]) <= 
+           clock__millisecond__last .
+H12:   element(max_stage_time, [current_stage]) > 0 .
+H13:   t_now__1 >= clock__millisecond__first .
+H14:   t_now__1 <= clock__millisecond__last .
+H15:   true .
+H16:   t_now__1 >= clock__millisecond__first .
+H17:   t_now__1 <= clock__millisecond__last .
+H18:   t_now__1 >= clock__millisecond__first .
+H19:   t_now__1 <= clock__millisecond__last .
+H20:   element(max_stage_time, [current_stage]) >= 
+           clock__millisecond__first .
+H21:   element(max_stage_time, [current_stage]) <= 
+           clock__millisecond__last .
+H22:   true .
+H23:   (t_valid__1 and (stage_timer < t_now__1)) -> ((t_now__1 - 
+           stage_timer >= clock__millisecond__base__first) and (
+           t_now__1 - stage_timer <= clock__millisecond__base__last)) .
+H24:   t_valid__1 .
+H25:   stage_timer < t_now__1 .
+H26:   t_now__1 - stage_timer >= element(max_stage_time, [
+           current_stage]) .
+H27:   t_now__1 >= clock__millisecond__first .
+H28:   t_now__1 <= clock__millisecond__last .
+        ->
+C1:    t_now__1 >= clock__millisecond__first .
+C2:    t_now__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 62:
+
+procedure_update_stage_5.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    element(max_stage_time, [current_stage]) >= 
+           clock__millisecond__first .
+H7:    element(max_stage_time, [current_stage]) <= 
+           clock__millisecond__last .
+H8:    current_stage >= stage__first .
+H9:    current_stage <= stage__last .
+H10:   element(max_stage_time, [current_stage]) >= 
+           clock__millisecond__first .
+H11:   element(max_stage_time, [current_stage]) <= 
+           clock__millisecond__last .
+H12:   element(max_stage_time, [current_stage]) > 0 .
+H13:   t_now__1 >= clock__millisecond__first .
+H14:   t_now__1 <= clock__millisecond__last .
+H15:   true .
+H16:   t_now__1 >= clock__millisecond__first .
+H17:   t_now__1 <= clock__millisecond__last .
+H18:   t_now__1 >= clock__millisecond__first .
+H19:   t_now__1 <= clock__millisecond__last .
+H20:   element(max_stage_time, [current_stage]) >= 
+           clock__millisecond__first .
+H21:   element(max_stage_time, [current_stage]) <= 
+           clock__millisecond__last .
+H22:   true .
+H23:   (t_valid__1 and (stage_timer < t_now__1)) -> ((t_now__1 - 
+           stage_timer >= clock__millisecond__base__first) and (
+           t_now__1 - stage_timer <= clock__millisecond__base__last)) .
+H24:   t_valid__1 .
+H25:   stage_timer < t_now__1 .
+H26:   t_now__1 - stage_timer >= element(max_stage_time, [
+           current_stage]) .
+H27:   t_now__1 >= clock__millisecond__first .
+H28:   t_now__1 <= clock__millisecond__last .
+H29:   t_now__1 >= clock__millisecond__first .
+H30:   t_now__1 <= clock__millisecond__last .
+        ->
+C1:    warhead_cfg__inactive >= stage__first .
+C2:    warhead_cfg__inactive <= stage__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_update_stage_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_update_stage_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_update_stage_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+

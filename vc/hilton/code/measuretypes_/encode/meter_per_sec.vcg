@@ -1,0 +1,136 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.67
+
+                       procedure encode.Meter_Per_Sec
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 86:
+
+procedure_meter_per_sec_1.
+H1:    true .
+H2:    v >= measuretypes__meter_per_sec__first .
+H3:    v <= measuretypes__meter_per_sec__last .
+H4:    v < 0 .
+        ->
+C1:     -v >= measuretypes__meter_per_sec__first .
+C2:     -v <= measuretypes__meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 89:
+
+procedure_meter_per_sec_2.
+H1:    true .
+H2:    v >= measuretypes__meter_per_sec__first .
+H3:    v <= measuretypes__meter_per_sec__last .
+H4:    not (v < 0) .
+        ->
+C1:    v >= measuretypes__meter_per_sec__first .
+C2:    v <= measuretypes__meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 91:
+
+procedure_meter_per_sec_3.
+H1:    true .
+H2:    v >= measuretypes__meter_per_sec__first .
+H3:    v <= measuretypes__meter_per_sec__last .
+H4:    v < 0 .
+H5:     -v >= measuretypes__meter_per_sec__first .
+H6:     -v <= measuretypes__meter_per_sec__last .
+H7:     -v >= measuretypes__meter_per_sec__first .
+H8:     -v <= measuretypes__meter_per_sec__last .
+        ->
+C1:     -v >= bus__word__first .
+C2:     -v <= bus__word__last .
+C3:     -v >= bus__word__first .
+C4:     -v <= bus__word__last .
+ 
+
+procedure_meter_per_sec_4.
+H1:    true .
+H2:    v >= measuretypes__meter_per_sec__first .
+H3:    v <= measuretypes__meter_per_sec__last .
+H4:    not (v < 0) .
+H5:    v >= measuretypes__meter_per_sec__first .
+H6:    v <= measuretypes__meter_per_sec__last .
+H7:    v >= measuretypes__meter_per_sec__first .
+H8:    v <= measuretypes__meter_per_sec__last .
+        ->
+C1:    v >= bus__word__first .
+C2:    v <= bus__word__last .
+C3:    v >= bus__word__first .
+C4:    v <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 93:
+
+procedure_meter_per_sec_5.
+H1:    true .
+H2:    v >= measuretypes__meter_per_sec__first .
+H3:    v <= measuretypes__meter_per_sec__last .
+H4:    v < 0 .
+H5:     -v >= measuretypes__meter_per_sec__first .
+H6:     -v <= measuretypes__meter_per_sec__last .
+H7:     -v >= measuretypes__meter_per_sec__first .
+H8:     -v <= measuretypes__meter_per_sec__last .
+H9:     -v >= bus__word__first .
+H10:    -v <= bus__word__last .
+H11:    -v >= bus__word__first .
+H12:    -v <= bus__word__last .
+H13:   true .
+H14:   true .
+H15:    -v >= bus__word__first .
+H16:    -v <= bus__word__last .
+        ->
+C1:     -v + 32768 >= bus__word__first .
+C2:     -v + 32768 <= bus__word__last .
+ 
+
+procedure_meter_per_sec_6.
+H1:    true .
+H2:    v >= measuretypes__meter_per_sec__first .
+H3:    v <= measuretypes__meter_per_sec__last .
+H4:    not (v < 0) .
+H5:    v >= measuretypes__meter_per_sec__first .
+H6:    v <= measuretypes__meter_per_sec__last .
+H7:    v >= measuretypes__meter_per_sec__first .
+H8:    v <= measuretypes__meter_per_sec__last .
+H9:    v >= bus__word__first .
+H10:   v <= bus__word__last .
+H11:   v >= bus__word__first .
+H12:   v <= bus__word__last .
+H13:   true .
+H14:   false .
+H15:   v >= bus__word__first .
+H16:   v <= bus__word__last .
+        ->
+C1:    v + 32768 >= bus__word__first .
+C2:    v + 32768 <= bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_meter_per_sec_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_meter_per_sec_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_meter_per_sec_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_meter_per_sec_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+

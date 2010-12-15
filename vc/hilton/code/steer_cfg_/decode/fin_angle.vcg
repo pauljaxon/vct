@@ -1,0 +1,93 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.85
+
+                         function decode.Fin_Angle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 26:
+
+function_fin_angle_1.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+        ->
+C1:    b >= integer__first .
+C2:    b <= integer__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 27:
+
+function_fin_angle_2.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    b >= integer__first .
+H5:    b <= integer__last .
+H6:    b >= integer__first .
+H7:    b <= integer__last .
+        ->
+C1:    steer_cfg__fin_angle__first + b >= integer__first .
+C2:    steer_cfg__fin_angle__first + b <= integer__last .
+C3:    steer_cfg__fin_angle__first >= integer__first .
+C4:    steer_cfg__fin_angle__first <= integer__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 28:
+
+function_fin_angle_3.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    b >= integer__first .
+H5:    b <= integer__last .
+H6:    b >= integer__first .
+H7:    b <= integer__last .
+H8:    steer_cfg__fin_angle__first + b >= integer__first .
+H9:    steer_cfg__fin_angle__first + b <= integer__last .
+H10:   steer_cfg__fin_angle__first >= integer__first .
+H11:   steer_cfg__fin_angle__first <= integer__last .
+H12:   steer_cfg__fin_angle__first + b >= integer__first .
+H13:   steer_cfg__fin_angle__first + b <= integer__last .
+        ->
+C1:    steer_cfg__fin_angle__first + b >= 
+           steer_cfg__fin_angle__first .
+C2:    steer_cfg__fin_angle__first + b <= 
+           steer_cfg__fin_angle__last .
+ 
+
+For path(s) from start to finish:
+
+function_fin_angle_4.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    b >= integer__first .
+H5:    b <= integer__last .
+H6:    b >= integer__first .
+H7:    b <= integer__last .
+H8:    steer_cfg__fin_angle__first + b >= integer__first .
+H9:    steer_cfg__fin_angle__first + b <= integer__last .
+H10:   steer_cfg__fin_angle__first >= integer__first .
+H11:   steer_cfg__fin_angle__first <= integer__last .
+H12:   steer_cfg__fin_angle__first + b >= integer__first .
+H13:   steer_cfg__fin_angle__first + b <= integer__last .
+H14:   steer_cfg__fin_angle__first + b >= 
+           steer_cfg__fin_angle__first .
+H15:   steer_cfg__fin_angle__first + b <= 
+           steer_cfg__fin_angle__last .
+        ->
+C1:    true .
+C2:    steer_cfg__fin_angle__first + b >= 
+           steer_cfg__fin_angle__first .
+C3:    steer_cfg__fin_angle__first + b <= 
+           steer_cfg__fin_angle__last .
+ 
+

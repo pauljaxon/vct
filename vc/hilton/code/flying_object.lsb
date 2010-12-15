@@ -1,0 +1,277 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.62
+
+Line
+   1  -- Implement flying object tracking
+   2  -- $Log: flying_object.adb,v $
+   3  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   4  -- Added from tarfile
+   5  --
+   6  --
+   7  -- Revision 1.2  2003/08/11 19:24:52  adi
+   8  -- Time-extrapolate position and velocity on read
+   9  --
+  10  -- Revision 1.1  2003/08/11 18:02:27  adi
+  11  -- Initial revision
+  12  --
+  13  --
+  14  with Systemtypes;
+  15  package body Flying_Object is
+  16     subtype Integer32 is Systemtypes.Integer32;
+  17  
+  18     procedure Extrapolate_Position(T : in Clock.Millisecond;
+  19                                    E : in Entity;
+  20                                    P : out Cartesian.Position)
+  21       --# derives P from T,E;
+  22     is
+  23        T_Offset, T_O_squared : Integer32;
+  24        D_Distance : Measuretypes.Meter;
+  25  
+  26        procedure Extrapolate_Linear(U : in Measuretypes.Meter_Per_Sec;
+  27                                     A : in Measuretypes.Cm_Per_Sec_2;
+  28                                     S : out Measuretypes.Meter)
+  29          --# global in T_Offset, T_O_Squared;
+  30          --# derives S from U, A, T_Offset, T_O_Squared;
+  31        is begin
+  32           S := Measuretypes.Meter(Integer32(U) * T_Offset +
+  33                                  (Integer32(A)*T_O_Squared)/2);
+  34        end Extrapolate_Linear;
+
++++        Flow analysis of subprogram Extrapolate_Linear 
+           performed: no errors found.
+
+  35  
+  36     begin
+  37        -- Calculate the time offset
+  38        T_Offset := Integer32(T) - Integer32(E.T);
+  39        T_O_Squared := T_Offset * T_Offset;
+  40        -- Where A is constant, s = ut + at^2 / 2
+  41        Extrapolate_Linear(U => E.V.Vx,
+  42                           A => E.A.Ax,
+  43                           S => D_Distance);
+  44        P.X := D_Distance + E.P.X;
+  45        Extrapolate_Linear(U => E.V.Vy,
+  46                           A => E.A.Ay,
+  47                           S => D_Distance);
+  48        P.y := D_Distance + E.P.y;
+  49        Extrapolate_Linear(U => E.V.Vz,
+  50                           A => E.A.Az,
+  51                           S => D_Distance);
+  52        P.z := D_Distance + E.P.z;
+  53     end Extrapolate_Position;
+
++++        Flow analysis of subprogram Extrapolate_Position 
+           performed: no errors found.
+
+  54  
+  55     procedure Extrapolate_Velocity(T : in Clock.Millisecond;
+  56                                    E : in Entity;
+  57                                    V : out Cartesian.Velocity)
+  58     --# derives V from T, E;
+  59     is
+  60        T_Offset : Integer32;
+  61     begin
+  62        T_Offset := Integer32(T) - Integer32(E.T);
+  63        -- v = u + at
+  64        V.Vx := E.V.Vx + Measuretypes.Meter_Per_Sec
+  65          (Integer32(E.A.Ax) * T_Offset);
+  66        V.Vy := E.V.Vy + Measuretypes.Meter_Per_Sec
+  67          (Integer32(E.A.Ay) * T_Offset);
+  68        V.Vz := E.V.Vz + Measuretypes.Meter_Per_Sec
+  69          (Integer32(E.A.Az) * T_Offset);
+  70     end Extrapolate_Velocity;
+
++++        Flow analysis of subprogram Extrapolate_Velocity 
+           performed: no errors found.
+
+  71  
+  72     procedure Create(P : in Cartesian.Position;
+  73                      V : in Cartesian.Velocity;
+  74                      A : in Cartesian.Accel;
+  75                      E : out Entity)
+  76     is
+  77        T : Clock.Millisecond;
+  78        Valid : Boolean;
+  79     begin
+  80        Clock.Read(T => T,
+  81                   Valid => Valid);
+  82        if Valid then
+  83           E := Entity'(P => P,
+  84                        V => V,
+  85                        A => A,
+  86                        T => T);
+  87        else
+  88           E := Entity'(P => Cartesian.Zero_Position,
+  89                        V => Cartesian.Zero_Velocity,
+  90                        A => Cartesian.Zero_Accel,
+  91                        T => 0);
+  92        end if;
+  93     end Create;
+
++++        Flow analysis of subprogram Create performed: no 
+           errors found.
+
+  94  
+  95  
+  96     procedure Set_Position(P : in Cartesian.Position;
+  97                            E : in out Entity)
+  98     is
+  99        T : Clock.Millisecond;
+ 100        Valid : Boolean;
+ 101        New_V : Cartesian.Velocity;
+ 102     begin
+ 103        -- Set the position and extrapolate the velocity to the
+ 104        --  current time
+ 105        Clock.Read(T => T,
+ 106                   Valid => Valid);
+ 107        if Valid then
+ 108           Extrapolate_Velocity(T => T,
+ 109                                E => E,
+ 110                                V => New_V);
+ 111           E.V := New_V;
+ 112           -- Change the position to the p
+ 113           E.P := P;
+ 114           -- Leave accel alone;
+ 115           -- Update the last time marker
+ 116           E.T := T;
+ 117        else
+ 118           E.P := P;
+ 119           E.T := 0;
+ 120           -- Leave velocity and accel alone
+ 121        end if;
+ 122     end Set_Position;
+
++++        Flow analysis of subprogram Set_Position 
+           performed: no errors found.
+
+ 123  
+ 124     procedure Get_Position(E : in Entity;
+ 125                            P : out Cartesian.Position)
+ 126     is
+ 127        T : Clock.Millisecond;
+ 128        Valid : Boolean;
+ 129     begin
+ 130        Clock.read(T => T,
+ 131                   Valid => Valid);
+ 132        if Valid then
+ 133           Extrapolate_Position(T => T,
+ 134                                E => E,
+ 135                                P => P);
+ 136        else
+ 137           P := E.P;
+ 138        end if;
+ 139     end Get_Position;
+
++++        Flow analysis of subprogram Get_Position 
+           performed: no errors found.
+
+ 140  
+ 141     procedure Set_Velocity(V : in Cartesian.Velocity;
+ 142                            E : in out Entity)
+ 143     is
+ 144        T : Clock.Millisecond;
+ 145        Valid : Boolean;
+ 146        New_P : Cartesian.Position;
+ 147     begin
+ 148        Clock.Read(T => T,
+ 149                   Valid => Valid);
+ 150        if Valid then
+ 151           -- Extrapolate position to current point
+ 152           Extrapolate_Position(T => T,
+ 153                                E => E,
+ 154                                P => New_P);
+ 155           E.P := New_P;
+ 156           E.V := V;
+ 157           E.T := T;
+ 158           -- leave accel alone
+ 159        else
+ 160           -- Can't extrapolate position, just change velocity
+ 161           E.V := V;
+ 162           E.T := 0;
+ 163        end if;
+ 164     end Set_Velocity;
+
++++        Flow analysis of subprogram Set_Velocity 
+           performed: no errors found.
+
+ 165  
+ 166     procedure Get_Velocity(E : in Entity;
+ 167                            V  : out Cartesian.Velocity)
+ 168     is
+ 169        T : Clock.Millisecond;
+ 170        Valid : Boolean;
+ 171     begin
+ 172        Clock.read(T => T,
+ 173                   Valid => Valid);
+ 174        if Valid then
+ 175           Extrapolate_velocity(T => T,
+ 176                                E => E,
+ 177                                V => V);
+ 178        else
+ 179           V := E.V;
+ 180        end if;
+ 181     end Get_Velocity;
+
++++        Flow analysis of subprogram Get_Velocity 
+           performed: no errors found.
+
+ 182  
+ 183  
+ 184     procedure Set_accel(A : in Cartesian.Accel;
+ 185                         E : in out Entity)
+ 186     is
+ 187        T : Clock.Millisecond;
+ 188        Valid : Boolean;
+ 189        New_P : Cartesian.Position;
+ 190        New_V : Cartesian.Velocity;
+ 191     begin
+ 192        Clock.Read(T => T,
+ 193                   Valid => Valid);
+ 194        if Valid then
+ 195           -- Extrapolate position and velocity to date
+ 196           Extrapolate_Position(T => T,
+ 197                                E => E,
+ 198                                P => New_P);
+ 199           Extrapolate_velocity(T => T,
+ 200                                E => E,
+ 201                                V => New_v);
+ 202           E := Entity'(P => New_P,
+ 203                        V => New_V,
+ 204                        A => A,
+ 205                        T => T);
+ 206        else
+ 207           E.A := A;
+ 208           E.T := 0;
+ 209           -- Leave position and velocity alone
+ 210        end if;
+ 211     end Set_Accel;
+
++++        Flow analysis of subprogram Set_accel performed: 
+           no errors found.
+
+ 212  
+ 213     procedure Get_accel(E : in Entity;
+ 214                         A  : out Cartesian.accel)
+ 215     is
+ 216     begin
+ 217        A := E.A;
+ 218     end Get_Accel;
+
++++        Flow analysis of subprogram Get_accel performed: 
+           no errors found.
+
+ 219  
+ 220  end Flying_Object;
+ 221  
+ 222  
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

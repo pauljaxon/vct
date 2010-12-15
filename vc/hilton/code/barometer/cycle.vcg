@@ -1,0 +1,400 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.12
+
+                         procedure barometer.Cycle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 102:
+
+procedure_cycle_1.
+H1:    true .
+H2:    last_altitude >= meter__first .
+H3:    last_altitude <= meter__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_velocity >= meter_per_sec__first .
+H7:    last_velocity <= meter_per_sec__last .
+H8:    altitude__1 >= pos_meter__first .
+H9:    altitude__1 <= pos_meter__last .
+        ->
+C1:    altitude__1 >= pos_meter__first .
+C2:    altitude__1 <= pos_meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 104:
+
+procedure_cycle_2.
+H1:    true .
+H2:    last_altitude >= meter__first .
+H3:    last_altitude <= meter__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_velocity >= meter_per_sec__first .
+H7:    last_velocity <= meter_per_sec__last .
+H8:    altitude__1 >= pos_meter__first .
+H9:    altitude__1 <= pos_meter__last .
+H10:   altitude__1 >= pos_meter__first .
+H11:   altitude__1 <= pos_meter__last .
+H12:   altitude__1 >= pos_meter__first .
+H13:   altitude__1 <= pos_meter__last .
+        ->
+C1:    rt1553__barometer >= rt1553__lru_name__first .
+C2:    rt1553__barometer <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    1 >= bus__word_index__first .
+C6:    1 <= bus__word_index__last .
+C7:    altitude__1 div 256 >= bus__word__first .
+C8:    altitude__1 div 256 <= bus__word__last .
+C9:    altitude__1 div 256 >= bus__word__first .
+C10:   altitude__1 div 256 <= bus__word__last .
+C11:   altitude__1 div 256 >= measuretypes__meter__base__first .
+C12:   altitude__1 div 256 <= measuretypes__meter__base__last .
+C13:   256 <> 0 .
+ 
+
+For path(s) from start to run-time check associated with statement of line 109:
+
+procedure_cycle_3.
+H1:    true .
+H2:    last_altitude >= meter__first .
+H3:    last_altitude <= meter__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_velocity >= meter_per_sec__first .
+H7:    last_velocity <= meter_per_sec__last .
+H8:    altitude__1 >= pos_meter__first .
+H9:    altitude__1 <= pos_meter__last .
+H10:   altitude__1 >= pos_meter__first .
+H11:   altitude__1 <= pos_meter__last .
+H12:   altitude__1 >= pos_meter__first .
+H13:   altitude__1 <= pos_meter__last .
+H14:   rt1553__barometer >= rt1553__lru_name__first .
+H15:   rt1553__barometer <= rt1553__lru_name__last .
+H16:   1 >= bus__lru_subaddress_index__first .
+H17:   1 <= bus__lru_subaddress_index__last .
+H18:   1 >= bus__word_index__first .
+H19:   1 <= bus__word_index__last .
+H20:   altitude__1 div 256 >= bus__word__first .
+H21:   altitude__1 div 256 <= bus__word__last .
+H22:   altitude__1 div 256 >= bus__word__first .
+H23:   altitude__1 div 256 <= bus__word__last .
+H24:   altitude__1 div 256 >= measuretypes__meter__base__first .
+H25:   altitude__1 div 256 <= measuretypes__meter__base__last .
+H26:   256 <> 0 .
+H27:   altitude__1 >= pos_meter__first .
+H28:   altitude__1 <= pos_meter__last .
+        ->
+C1:    rt1553__barometer >= rt1553__lru_name__first .
+C2:    rt1553__barometer <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    2 >= bus__word_index__first .
+C6:    2 <= bus__word_index__last .
+C7:    altitude__1 mod 256 >= bus__word__first .
+C8:    altitude__1 mod 256 <= bus__word__last .
+C9:    altitude__1 mod 256 >= bus__word__first .
+C10:   altitude__1 mod 256 <= bus__word__last .
+C11:   altitude__1 mod 256 >= measuretypes__meter__base__first .
+C12:   altitude__1 mod 256 <= measuretypes__meter__base__last .
+C13:   256 <> 0 .
+ 
+
+For path(s) from start to run-time check associated with statement of line 114:
+
+procedure_cycle_4.
+H1:    true .
+H2:    last_altitude >= meter__first .
+H3:    last_altitude <= meter__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_velocity >= meter_per_sec__first .
+H7:    last_velocity <= meter_per_sec__last .
+H8:    altitude__1 >= pos_meter__first .
+H9:    altitude__1 <= pos_meter__last .
+H10:   altitude__1 >= pos_meter__first .
+H11:   altitude__1 <= pos_meter__last .
+H12:   altitude__1 >= pos_meter__first .
+H13:   altitude__1 <= pos_meter__last .
+H14:   rt1553__barometer >= rt1553__lru_name__first .
+H15:   rt1553__barometer <= rt1553__lru_name__last .
+H16:   1 >= bus__lru_subaddress_index__first .
+H17:   1 <= bus__lru_subaddress_index__last .
+H18:   1 >= bus__word_index__first .
+H19:   1 <= bus__word_index__last .
+H20:   altitude__1 div 256 >= bus__word__first .
+H21:   altitude__1 div 256 <= bus__word__last .
+H22:   altitude__1 div 256 >= bus__word__first .
+H23:   altitude__1 div 256 <= bus__word__last .
+H24:   altitude__1 div 256 >= measuretypes__meter__base__first .
+H25:   altitude__1 div 256 <= measuretypes__meter__base__last .
+H26:   256 <> 0 .
+H27:   altitude__1 >= pos_meter__first .
+H28:   altitude__1 <= pos_meter__last .
+H29:   rt1553__barometer >= rt1553__lru_name__first .
+H30:   rt1553__barometer <= rt1553__lru_name__last .
+H31:   1 >= bus__lru_subaddress_index__first .
+H32:   1 <= bus__lru_subaddress_index__last .
+H33:   2 >= bus__word_index__first .
+H34:   2 <= bus__word_index__last .
+H35:   altitude__1 mod 256 >= bus__word__first .
+H36:   altitude__1 mod 256 <= bus__word__last .
+H37:   altitude__1 mod 256 >= bus__word__first .
+H38:   altitude__1 mod 256 <= bus__word__last .
+H39:   altitude__1 mod 256 >= measuretypes__meter__base__first .
+H40:   altitude__1 mod 256 <= measuretypes__meter__base__last .
+H41:   256 <> 0 .
+H42:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H43:   bit_machine__phase(bit_state) <= ibit__phase__last .
+        ->
+C1:    rt1553__barometer >= rt1553__lru_name__first .
+C2:    rt1553__barometer <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    3 >= bus__word_index__first .
+C6:    3 <= bus__word_index__last .
+C7:    element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+C8:    element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+C9:    bit_machine__phase(bit_state) >= ibit__phase__first .
+C10:   bit_machine__phase(bit_state) <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 119:
+
+procedure_cycle_5.
+H1:    true .
+H2:    last_altitude >= meter__first .
+H3:    last_altitude <= meter__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_velocity >= meter_per_sec__first .
+H7:    last_velocity <= meter_per_sec__last .
+H8:    altitude__1 >= pos_meter__first .
+H9:    altitude__1 <= pos_meter__last .
+H10:   altitude__1 >= pos_meter__first .
+H11:   altitude__1 <= pos_meter__last .
+H12:   altitude__1 >= pos_meter__first .
+H13:   altitude__1 <= pos_meter__last .
+H14:   rt1553__barometer >= rt1553__lru_name__first .
+H15:   rt1553__barometer <= rt1553__lru_name__last .
+H16:   1 >= bus__lru_subaddress_index__first .
+H17:   1 <= bus__lru_subaddress_index__last .
+H18:   1 >= bus__word_index__first .
+H19:   1 <= bus__word_index__last .
+H20:   altitude__1 div 256 >= bus__word__first .
+H21:   altitude__1 div 256 <= bus__word__last .
+H22:   altitude__1 div 256 >= bus__word__first .
+H23:   altitude__1 div 256 <= bus__word__last .
+H24:   altitude__1 div 256 >= measuretypes__meter__base__first .
+H25:   altitude__1 div 256 <= measuretypes__meter__base__last .
+H26:   256 <> 0 .
+H27:   altitude__1 >= pos_meter__first .
+H28:   altitude__1 <= pos_meter__last .
+H29:   rt1553__barometer >= rt1553__lru_name__first .
+H30:   rt1553__barometer <= rt1553__lru_name__last .
+H31:   1 >= bus__lru_subaddress_index__first .
+H32:   1 <= bus__lru_subaddress_index__last .
+H33:   2 >= bus__word_index__first .
+H34:   2 <= bus__word_index__last .
+H35:   altitude__1 mod 256 >= bus__word__first .
+H36:   altitude__1 mod 256 <= bus__word__last .
+H37:   altitude__1 mod 256 >= bus__word__first .
+H38:   altitude__1 mod 256 <= bus__word__last .
+H39:   altitude__1 mod 256 >= measuretypes__meter__base__first .
+H40:   altitude__1 mod 256 <= measuretypes__meter__base__last .
+H41:   256 <> 0 .
+H42:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H43:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H44:   rt1553__barometer >= rt1553__lru_name__first .
+H45:   rt1553__barometer <= rt1553__lru_name__last .
+H46:   1 >= bus__lru_subaddress_index__first .
+H47:   1 <= bus__lru_subaddress_index__last .
+H48:   3 >= bus__word_index__first .
+H49:   3 <= bus__word_index__last .
+H50:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H51:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H52:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H53:   bit_machine__phase(bit_state) <= ibit__phase__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    rt1553__barometer >= rt1553__lru_name__first .
+C6:    rt1553__barometer <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 119:
+
+procedure_cycle_6.
+H1:    true .
+H2:    last_altitude >= meter__first .
+H3:    last_altitude <= meter__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_velocity >= meter_per_sec__first .
+H7:    last_velocity <= meter_per_sec__last .
+H8:    altitude__1 >= pos_meter__first .
+H9:    altitude__1 <= pos_meter__last .
+H10:   altitude__1 >= pos_meter__first .
+H11:   altitude__1 <= pos_meter__last .
+H12:   altitude__1 >= pos_meter__first .
+H13:   altitude__1 <= pos_meter__last .
+H14:   rt1553__barometer >= rt1553__lru_name__first .
+H15:   rt1553__barometer <= rt1553__lru_name__last .
+H16:   1 >= bus__lru_subaddress_index__first .
+H17:   1 <= bus__lru_subaddress_index__last .
+H18:   1 >= bus__word_index__first .
+H19:   1 <= bus__word_index__last .
+H20:   altitude__1 div 256 >= bus__word__first .
+H21:   altitude__1 div 256 <= bus__word__last .
+H22:   altitude__1 div 256 >= bus__word__first .
+H23:   altitude__1 div 256 <= bus__word__last .
+H24:   altitude__1 div 256 >= measuretypes__meter__base__first .
+H25:   altitude__1 div 256 <= measuretypes__meter__base__last .
+H26:   256 <> 0 .
+H27:   altitude__1 >= pos_meter__first .
+H28:   altitude__1 <= pos_meter__last .
+H29:   rt1553__barometer >= rt1553__lru_name__first .
+H30:   rt1553__barometer <= rt1553__lru_name__last .
+H31:   1 >= bus__lru_subaddress_index__first .
+H32:   1 <= bus__lru_subaddress_index__last .
+H33:   2 >= bus__word_index__first .
+H34:   2 <= bus__word_index__last .
+H35:   altitude__1 mod 256 >= bus__word__first .
+H36:   altitude__1 mod 256 <= bus__word__last .
+H37:   altitude__1 mod 256 >= bus__word__first .
+H38:   altitude__1 mod 256 <= bus__word__last .
+H39:   altitude__1 mod 256 >= measuretypes__meter__base__first .
+H40:   altitude__1 mod 256 <= measuretypes__meter__base__last .
+H41:   256 <> 0 .
+H42:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H43:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H44:   rt1553__barometer >= rt1553__lru_name__first .
+H45:   rt1553__barometer <= rt1553__lru_name__last .
+H46:   1 >= bus__lru_subaddress_index__first .
+H47:   1 <= bus__lru_subaddress_index__last .
+H48:   3 >= bus__word_index__first .
+H49:   3 <= bus__word_index__last .
+H50:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H51:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H52:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H53:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H54:   1 >= bus__lru_subaddress_index__first .
+H55:   1 <= bus__lru_subaddress_index__last .
+H56:   1 >= bus__word_index__first .
+H57:   1 <= bus__word_index__last .
+H58:   rt1553__barometer >= rt1553__lru_name__first .
+H59:   rt1553__barometer <= rt1553__lru_name__last .
+H60:   datum__5 >= bus__word__first .
+H61:   datum__5 <= bus__word__last .
+        ->
+C1:    datum__5 >= bus__word__first .
+C2:    datum__5 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 123:
+
+procedure_cycle_7.
+H1:    true .
+H2:    last_altitude >= meter__first .
+H3:    last_altitude <= meter__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_velocity >= meter_per_sec__first .
+H7:    last_velocity <= meter_per_sec__last .
+H8:    altitude__1 >= pos_meter__first .
+H9:    altitude__1 <= pos_meter__last .
+H10:   altitude__1 >= pos_meter__first .
+H11:   altitude__1 <= pos_meter__last .
+H12:   altitude__1 >= pos_meter__first .
+H13:   altitude__1 <= pos_meter__last .
+H14:   rt1553__barometer >= rt1553__lru_name__first .
+H15:   rt1553__barometer <= rt1553__lru_name__last .
+H16:   1 >= bus__lru_subaddress_index__first .
+H17:   1 <= bus__lru_subaddress_index__last .
+H18:   1 >= bus__word_index__first .
+H19:   1 <= bus__word_index__last .
+H20:   altitude__1 div 256 >= bus__word__first .
+H21:   altitude__1 div 256 <= bus__word__last .
+H22:   altitude__1 div 256 >= bus__word__first .
+H23:   altitude__1 div 256 <= bus__word__last .
+H24:   altitude__1 div 256 >= measuretypes__meter__base__first .
+H25:   altitude__1 div 256 <= measuretypes__meter__base__last .
+H26:   256 <> 0 .
+H27:   altitude__1 >= pos_meter__first .
+H28:   altitude__1 <= pos_meter__last .
+H29:   rt1553__barometer >= rt1553__lru_name__first .
+H30:   rt1553__barometer <= rt1553__lru_name__last .
+H31:   1 >= bus__lru_subaddress_index__first .
+H32:   1 <= bus__lru_subaddress_index__last .
+H33:   2 >= bus__word_index__first .
+H34:   2 <= bus__word_index__last .
+H35:   altitude__1 mod 256 >= bus__word__first .
+H36:   altitude__1 mod 256 <= bus__word__last .
+H37:   altitude__1 mod 256 >= bus__word__first .
+H38:   altitude__1 mod 256 <= bus__word__last .
+H39:   altitude__1 mod 256 >= measuretypes__meter__base__first .
+H40:   altitude__1 mod 256 <= measuretypes__meter__base__last .
+H41:   256 <> 0 .
+H42:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H43:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H44:   rt1553__barometer >= rt1553__lru_name__first .
+H45:   rt1553__barometer <= rt1553__lru_name__last .
+H46:   1 >= bus__lru_subaddress_index__first .
+H47:   1 <= bus__lru_subaddress_index__last .
+H48:   3 >= bus__word_index__first .
+H49:   3 <= bus__word_index__last .
+H50:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H51:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H52:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H53:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H54:   1 >= bus__lru_subaddress_index__first .
+H55:   1 <= bus__lru_subaddress_index__last .
+H56:   1 >= bus__word_index__first .
+H57:   1 <= bus__word_index__last .
+H58:   rt1553__barometer >= rt1553__lru_name__first .
+H59:   rt1553__barometer <= rt1553__lru_name__last .
+H60:   datum__5 >= bus__word__first .
+H61:   datum__5 <= bus__word__last .
+H62:   datum__5 >= bus__word__first .
+H63:   datum__5 <= bus__word__last .
+H64:   datum__5 >= bus__word__first .
+H65:   datum__5 <= bus__word__last .
+        ->
+C1:    datum__5 >= bus__word__first .
+C2:    datum__5 <= bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_cycle_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_cycle_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+

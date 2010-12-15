@@ -1,0 +1,81 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.70
+
+                          procedure Fuze.Set_state
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 95:
+
+procedure_set_state_1.
+H1:    true .
+H2:    new_state >= state_types__fuze__first .
+H3:    new_state <= state_types__fuze__last .
+        ->
+C1:    new_state >= state_types__fuze__first .
+C2:    new_state <= state_types__fuze__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 96:
+
+procedure_set_state_2.
+H1:    true .
+H2:    new_state >= state_types__fuze__first .
+H3:    new_state <= state_types__fuze__last .
+H4:    new_state >= state_types__fuze__first .
+H5:    new_state <= state_types__fuze__last .
+H6:    state_timer__1 >= clock__millisecond__first .
+H7:    state_timer__1 <= clock__millisecond__last .
+H8:    true .
+        ->
+C1:    state_timer__1 >= clock__millisecond__first .
+C2:    state_timer__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 99:
+
+procedure_set_state_3.
+H1:    true .
+H2:    new_state >= state_types__fuze__first .
+H3:    new_state <= state_types__fuze__last .
+H4:    new_state >= state_types__fuze__first .
+H5:    new_state <= state_types__fuze__last .
+H6:    state_timer__1 >= clock__millisecond__first .
+H7:    state_timer__1 <= clock__millisecond__last .
+H8:    true .
+H9:    state_timer__1 >= clock__millisecond__first .
+H10:   state_timer__1 <= clock__millisecond__last .
+H11:   true .
+H12:   not time_valid__1 .
+        ->
+C1:    new_state >= state_types__fuze__first .
+C2:    new_state <= state_types__fuze__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_set_state_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_state_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_set_state_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_state_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+

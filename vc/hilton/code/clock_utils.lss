@@ -1,0 +1,43 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.39
+
+Line
+   1  -- Time-related utilities
+   2  --
+   3  -- $Log: clock_utils.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/02/09 20:35:11  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with Clock;
+  13  use type Clock.Millisecond;
+  14  --# inherit Clock;
+  15  package Clock_Utils is
+  16     -- Wraparound time diff delta calculation
+  17     function Delta_Time (Orig, Now : Clock.Millisecond)
+  18                         return Clock.Millisecond;
+  19  
+  20     -- Add a delta to a time and deal with wraparound
+  21     function Add_Delay(Orig, PlusDelta : Clock.Millisecond)
+  22                       return Clock.Millisecond;
+  23  
+  24     -- Subtract a delta from a time and deal with wraparound
+  25     function Subtract_Delay(Orig, MinusDelta : Clock.Millisecond)
+  26                            return Clock.Millisecond;
+  27  
+  28  end Clock_Utils;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

@@ -1,0 +1,2860 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.29
+
+                        procedure missile.Check_Ibit
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 78:
+
+procedure_check_ibit_1.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__barometer .
+H3:    if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+H4:    if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+C2:    if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 78:
+
+procedure_check_ibit_2.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__barometer .
+H20:   if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+H21:   if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+C2:    if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_3.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__barometer .
+H19:   if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+H20:   if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+C2:    if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_4.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__barometer .
+H15:   if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+H16:   if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+C2:    if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 80:
+
+procedure_check_ibit_5.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__asi .
+H3:    if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+H4:    if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+C2:    if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 80:
+
+procedure_check_ibit_6.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__asi .
+H20:   if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+H21:   if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+C2:    if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_7.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__asi .
+H19:   if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+H20:   if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+C2:    if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_8.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__asi .
+H15:   if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+H16:   if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+C2:    if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 82:
+
+procedure_check_ibit_9.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__ins .
+H3:    if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+H4:    if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+        ->
+C1:    if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+C2:    if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 82:
+
+procedure_check_ibit_10.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__ins .
+H20:   if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+H21:   if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+        ->
+C1:    if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+C2:    if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+ 
+
+procedure_check_ibit_11.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__ins .
+H19:   if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+H20:   if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+        ->
+C1:    if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+C2:    if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+ 
+
+procedure_check_ibit_12.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__ins .
+H15:   if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+H16:   if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+        ->
+C1:    if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+C2:    if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 84:
+
+procedure_check_ibit_13.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__compass .
+H3:    if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+H4:    if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+C2:    if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 84:
+
+procedure_check_ibit_14.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__compass .
+H20:   if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+H21:   if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+C2:    if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_15.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__compass .
+H19:   if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+H20:   if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+C2:    if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_16.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__compass .
+H15:   if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+H16:   if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+C2:    if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 86:
+
+procedure_check_ibit_17.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__fuel .
+H3:    if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+H4:    if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+        ->
+C1:    if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+C2:    if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 86:
+
+procedure_check_ibit_18.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__fuel .
+H20:   if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+H21:   if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+        ->
+C1:    if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+C2:    if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+ 
+
+procedure_check_ibit_19.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__fuel .
+H19:   if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+H20:   if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+        ->
+C1:    if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+C2:    if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+ 
+
+procedure_check_ibit_20.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__fuel .
+H15:   if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+H16:   if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+        ->
+C1:    if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+C2:    if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 88:
+
+procedure_check_ibit_21.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__fuze .
+H3:    if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+H4:    if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+        ->
+C1:    if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+C2:    if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 88:
+
+procedure_check_ibit_22.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__fuze .
+H20:   if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+H21:   if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+        ->
+C1:    if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+C2:    if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+ 
+
+procedure_check_ibit_23.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__fuze .
+H19:   if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+H20:   if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+        ->
+C1:    if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+C2:    if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+ 
+
+procedure_check_ibit_24.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__fuze .
+H15:   if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+H16:   if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+        ->
+C1:    if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+C2:    if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 90:
+
+procedure_check_ibit_25.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__radar .
+H3:    if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+H4:    if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+C2:    if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 90:
+
+procedure_check_ibit_26.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__radar .
+H20:   if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+H21:   if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+C2:    if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_27.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__radar .
+H19:   if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+H20:   if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+C2:    if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_28.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__radar .
+H15:   if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+H16:   if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+C2:    if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 92:
+
+procedure_check_ibit_29.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__infrared .
+H3:    if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+H4:    if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+        ->
+C1:    if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+C2:    if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 92:
+
+procedure_check_ibit_30.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__infrared .
+H20:   if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+H21:   if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+        ->
+C1:    if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+C2:    if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+ 
+
+procedure_check_ibit_31.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__infrared .
+H19:   if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+H20:   if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+        ->
+C1:    if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+C2:    if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+ 
+
+procedure_check_ibit_32.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__infrared .
+H15:   if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+H16:   if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+        ->
+C1:    if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+C2:    if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 94:
+
+procedure_check_ibit_33.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__fins .
+H3:    if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+H4:    if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+C2:    if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 94:
+
+procedure_check_ibit_34.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__fins .
+H20:   if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+H21:   if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+C2:    if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_35.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__fins .
+H19:   if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+H20:   if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+C2:    if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_36.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__fins .
+H15:   if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+H16:   if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+C2:    if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 96:
+
+procedure_check_ibit_37.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__motor .
+H3:    if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+H4:    if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+C2:    if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 96:
+
+procedure_check_ibit_38.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__motor .
+H20:   if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+H21:   if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+C2:    if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_39.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__motor .
+H19:   if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+H20:   if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+C2:    if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_40.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__motor .
+H15:   if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+H16:   if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+C2:    if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 98:
+
+procedure_check_ibit_41.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__destruct .
+H3:    if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+H4:    if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+C2:    if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 98:
+
+procedure_check_ibit_42.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__destruct .
+H20:   if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+H21:   if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+C2:    if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_43.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__destruct .
+H19:   if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+H20:   if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+C2:    if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_44.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__destruct .
+H15:   if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+H16:   if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+C2:    if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 100:
+
+procedure_check_ibit_45.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__warhead .
+H3:    if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+H4:    if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+C2:    if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 100:
+
+procedure_check_ibit_46.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__warhead .
+H20:   if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+H21:   if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+C2:    if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_47.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__warhead .
+H19:   if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+H20:   if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+C2:    if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+ 
+
+procedure_check_ibit_48.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__warhead .
+H15:   if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+H16:   if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+C2:    if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+ 
+
+For path(s) from start to assertion of line 102:
+
+procedure_check_ibit_49.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__barometer .
+H3:    if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+H4:    if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+H5:    if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+H6:    if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+C2:    if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+C3:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C4:    bc1553__lru_name__first <= bc1553__lru_name__last .
+C5:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C6:    bc1553__lru_name__first <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_50.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__asi .
+H3:    if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+H4:    if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+H5:    if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+H6:    if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+C2:    if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+C3:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C4:    bc1553__lru_name__first <= bc1553__lru_name__last .
+C5:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C6:    bc1553__lru_name__first <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_51.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__ins .
+H3:    if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+H4:    if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+H5:    if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+H6:    if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+        ->
+C1:    if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+C2:    if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+C3:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C4:    bc1553__lru_name__first <= bc1553__lru_name__last .
+C5:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C6:    bc1553__lru_name__first <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_52.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__compass .
+H3:    if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+H4:    if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+H5:    if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+H6:    if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+C2:    if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+C3:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C4:    bc1553__lru_name__first <= bc1553__lru_name__last .
+C5:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C6:    bc1553__lru_name__first <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_53.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__fuel .
+H3:    if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+H4:    if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+H5:    if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+H6:    if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+        ->
+C1:    if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+C2:    if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+C3:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C4:    bc1553__lru_name__first <= bc1553__lru_name__last .
+C5:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C6:    bc1553__lru_name__first <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_54.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__fuze .
+H3:    if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+H4:    if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+H5:    if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+H6:    if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+        ->
+C1:    if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+C2:    if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+C3:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C4:    bc1553__lru_name__first <= bc1553__lru_name__last .
+C5:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C6:    bc1553__lru_name__first <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_55.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__radar .
+H3:    if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+H4:    if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+H5:    if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+H6:    if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+C2:    if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+C3:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C4:    bc1553__lru_name__first <= bc1553__lru_name__last .
+C5:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C6:    bc1553__lru_name__first <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_56.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__infrared .
+H3:    if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+H4:    if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+H5:    if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+H6:    if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+        ->
+C1:    if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+C2:    if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+C3:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C4:    bc1553__lru_name__first <= bc1553__lru_name__last .
+C5:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C6:    bc1553__lru_name__first <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_57.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__fins .
+H3:    if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+H4:    if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+H5:    if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+H6:    if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+C2:    if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+C3:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C4:    bc1553__lru_name__first <= bc1553__lru_name__last .
+C5:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C6:    bc1553__lru_name__first <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_58.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__motor .
+H3:    if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+H4:    if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+H5:    if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+H6:    if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+C2:    if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+C3:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C4:    bc1553__lru_name__first <= bc1553__lru_name__last .
+C5:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C6:    bc1553__lru_name__first <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_59.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__destruct .
+H3:    if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+H4:    if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+H5:    if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+H6:    if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+C2:    if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+C3:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C4:    bc1553__lru_name__first <= bc1553__lru_name__last .
+C5:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C6:    bc1553__lru_name__first <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_60.
+H1:    true .
+H2:    bc1553__lru_name__first = bc1553__warhead .
+H3:    if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+H4:    if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+H5:    if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+H6:    if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+C2:    if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+C3:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C4:    bc1553__lru_name__first <= bc1553__lru_name__last .
+C5:    bc1553__lru_name__first >= bc1553__lru_name__first .
+C6:    bc1553__lru_name__first <= bc1553__lru_name__last .
+ 
+
+For path(s) from assertion of line 102 to assertion of line 102:
+
+procedure_check_ibit_61.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__barometer .
+H20:   if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+H21:   if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+H22:   if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+H23:   if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+C2:    if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_62.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__barometer .
+H19:   if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+H20:   if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+H21:   if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+H22:   if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+C2:    if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_63.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__barometer .
+H15:   if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+H16:   if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+H17:   if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+H18:   if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_barometer__get_ibit_state(if_barometer__state) >= 
+           ibit__phase__first .
+C2:    if_barometer__get_ibit_state(if_barometer__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_64.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__asi .
+H20:   if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+H21:   if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+H22:   if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+H23:   if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+C2:    if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_65.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__asi .
+H19:   if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+H20:   if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+H21:   if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+H22:   if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+C2:    if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_66.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__asi .
+H15:   if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+H16:   if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+H17:   if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+H18:   if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_airspeed__get_ibit_state(if_airspeed__state) >= 
+           ibit__phase__first .
+C2:    if_airspeed__get_ibit_state(if_airspeed__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_67.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__ins .
+H20:   if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+H21:   if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+H22:   if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+H23:   if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+        ->
+C1:    if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+C2:    if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_68.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__ins .
+H19:   if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+H20:   if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+H21:   if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+H22:   if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+        ->
+C1:    if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+C2:    if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_69.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__ins .
+H15:   if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+H16:   if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+H17:   if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+H18:   if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+        ->
+C1:    if_ins__get_ibit_state(if_ins__state) >= ibit__phase__first .
+C2:    if_ins__get_ibit_state(if_ins__state) <= ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_70.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__compass .
+H20:   if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+H21:   if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+H22:   if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+H23:   if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+C2:    if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_71.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__compass .
+H19:   if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+H20:   if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+H21:   if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+H22:   if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+C2:    if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_72.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__compass .
+H15:   if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+H16:   if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+H17:   if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+H18:   if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_compass__get_ibit_state(if_compass__state) >= 
+           ibit__phase__first .
+C2:    if_compass__get_ibit_state(if_compass__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_73.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__fuel .
+H20:   if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+H21:   if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+H22:   if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+H23:   if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+        ->
+C1:    if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+C2:    if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_74.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__fuel .
+H19:   if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+H20:   if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+H21:   if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+H22:   if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+        ->
+C1:    if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+C2:    if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_75.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__fuel .
+H15:   if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+H16:   if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+H17:   if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+H18:   if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+        ->
+C1:    if_fuel__get_ibit_state(if_fuel__state) >= ibit__phase__first .
+C2:    if_fuel__get_ibit_state(if_fuel__state) <= ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_76.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__fuze .
+H20:   if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+H21:   if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+H22:   if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+H23:   if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+        ->
+C1:    if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+C2:    if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_77.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__fuze .
+H19:   if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+H20:   if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+H21:   if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+H22:   if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+        ->
+C1:    if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+C2:    if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_78.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__fuze .
+H15:   if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+H16:   if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+H17:   if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+H18:   if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+        ->
+C1:    if_fuze__get_ibit_state(if_fuze__state) >= ibit__phase__first .
+C2:    if_fuze__get_ibit_state(if_fuze__state) <= ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_79.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__radar .
+H20:   if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+H21:   if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+H22:   if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+H23:   if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+C2:    if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_80.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__radar .
+H19:   if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+H20:   if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+H21:   if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+H22:   if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+C2:    if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_81.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__radar .
+H15:   if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+H16:   if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+H17:   if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+H18:   if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_radar__get_ibit_state(if_radar__state) >= 
+           ibit__phase__first .
+C2:    if_radar__get_ibit_state(if_radar__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_82.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__infrared .
+H20:   if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+H21:   if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+H22:   if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+H23:   if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+        ->
+C1:    if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+C2:    if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_83.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__infrared .
+H19:   if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+H20:   if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+H21:   if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+H22:   if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+        ->
+C1:    if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+C2:    if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_84.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__infrared .
+H15:   if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+H16:   if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+H17:   if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+H18:   if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+        ->
+C1:    if_ir__get_ibit_state(if_ir__state) >= ibit__phase__first .
+C2:    if_ir__get_ibit_state(if_ir__state) <= ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_85.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__fins .
+H20:   if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+H21:   if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+H22:   if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+H23:   if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+C2:    if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_86.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__fins .
+H19:   if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+H20:   if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+H21:   if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+H22:   if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+C2:    if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_87.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__fins .
+H15:   if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+H16:   if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+H17:   if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+H18:   if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_steer__get_ibit_state(if_steer__state) >= 
+           ibit__phase__first .
+C2:    if_steer__get_ibit_state(if_steer__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_88.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__motor .
+H20:   if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+H21:   if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+H22:   if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+H23:   if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+C2:    if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_89.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__motor .
+H19:   if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+H20:   if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+H21:   if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+H22:   if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+C2:    if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_90.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__motor .
+H15:   if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+H16:   if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+H17:   if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+H18:   if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_motor__get_ibit_state(if_motor__state) >= 
+           ibit__phase__first .
+C2:    if_motor__get_ibit_state(if_motor__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_91.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__destruct .
+H20:   if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+H21:   if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+H22:   if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+H23:   if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+C2:    if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_92.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__destruct .
+H19:   if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+H20:   if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+H21:   if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+H22:   if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+C2:    if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_93.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__destruct .
+H15:   if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+H16:   if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+H17:   if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+H18:   if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_destruct__get_ibit_state(if_destruct__state) >= 
+           ibit__phase__first .
+C2:    if_destruct__get_ibit_state(if_destruct__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_94.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   not (loop__1__lru = bc1553__lru_name__last) .
+H19:   succ(loop__1__lru) = bc1553__warhead .
+H20:   if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+H21:   if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+H22:   if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+H23:   if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+C2:    if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_95.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   not (loop__1__lru = bc1553__lru_name__last) .
+H18:   succ(loop__1__lru) = bc1553__warhead .
+H19:   if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+H20:   if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+H21:   if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+H22:   if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+C2:    if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+procedure_check_ibit_96.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   not (loop__1__lru = bc1553__lru_name__last) .
+H14:   succ(loop__1__lru) = bc1553__warhead .
+H15:   if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+H16:   if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+H17:   if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+H18:   if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+        ->
+C1:    if_warhead__get_ibit_state(if_warhead__state) >= 
+           ibit__phase__first .
+C2:    if_warhead__get_ibit_state(if_warhead__state) <= 
+           ibit__phase__last .
+C3:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C4:    succ(loop__1__lru) <= bc1553__lru_name__last .
+C5:    succ(loop__1__lru) >= bc1553__lru_name__first .
+C6:    succ(loop__1__lru) <= bc1553__lru_name__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 104:
+
+procedure_check_ibit_97.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+        ->
+C1:    complete_count + 1 >= integer__first .
+C2:    complete_count + 1 <= integer__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 105:
+
+procedure_check_ibit_98.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+        ->
+C1:    passed_count + 1 >= integer__first .
+C2:    passed_count + 1 <= integer__last .
+ 
+
+For path(s) from assertion of line 102 to run-time check associated with statement of line 107:
+
+procedure_check_ibit_99.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+        ->
+C1:    complete_count + 1 >= integer__first .
+C2:    complete_count + 1 <= integer__last .
+ 
+
+For path(s) from assertion of line 102 to assertion of line 113:
+
+procedure_check_ibit_100.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    ibit_phase = ibit__pass .
+H10:   complete_count >= integer__first .
+H11:   complete_count <= integer__last .
+H12:   complete_count + 1 >= integer__first .
+H13:   complete_count + 1 <= integer__last .
+H14:   passed_count >= integer__first .
+H15:   passed_count <= integer__last .
+H16:   passed_count + 1 >= integer__first .
+H17:   passed_count + 1 <= integer__last .
+H18:   loop__1__lru = bc1553__lru_name__last .
+        ->
+C1:    complete_count + 1 >= 0 .
+C2:    passed_count + 1 >= 0 .
+ 
+
+procedure_check_ibit_101.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   ibit_phase = ibit__fail .
+H13:   complete_count >= integer__first .
+H14:   complete_count <= integer__last .
+H15:   complete_count + 1 >= integer__first .
+H16:   complete_count + 1 <= integer__last .
+H17:   loop__1__lru = bc1553__lru_name__last .
+        ->
+C1:    complete_count + 1 >= 0 .
+C2:    passed_count >= 0 .
+ 
+
+procedure_check_ibit_102.
+H1:    ibit_phase >= ibit__phase__first .
+H2:    ibit_phase <= ibit__phase__last .
+H3:    loop__1__lru >= bc1553__lru_name__first .
+H4:    loop__1__lru <= bc1553__lru_name__last .
+H5:    loop__1__lru >= bc1553__lru_name__first .
+H6:    loop__1__lru <= bc1553__lru_name__last .
+H7:    ibit_phase >= ibit__phase__first .
+H8:    ibit_phase <= ibit__phase__last .
+H9:    not (ibit_phase = ibit__pass) .
+H10:   ibit_phase >= ibit__phase__first .
+H11:   ibit_phase <= ibit__phase__last .
+H12:   not (ibit_phase = ibit__fail) .
+H13:   loop__1__lru = bc1553__lru_name__last .
+        ->
+C1:    complete_count >= 0 .
+C2:    passed_count >= 0 .
+ 
+
+For path(s) from assertion of line 113 to finish:
+
+procedure_check_ibit_103.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_check_ibit_104.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_check_ibit_105.
+*** true .          /* trivially true VC removed by Examiner */
+
+

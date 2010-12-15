@@ -1,0 +1,37 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.80
+
+Line
+   1  -- Steering fins encoding
+   2  --
+   3  -- $Log: steer_cfg-encode.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/08/31 19:13:28  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with Bus,Steer_cfg;
+  13  --# inherit systemtypes,bus,steer_cfg;
+  14  package Steer_Cfg.Encode
+  15  is
+  16     function Fin_Angle(F : Steer_Cfg.Fin_Angle)
+  17       return Bus.Word;
+  18  
+  19     function Fin(F : Steer_Cfg.Fin)
+  20       return Bus.Word;
+  21  
+  22  end Steer_Cfg.Encode;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

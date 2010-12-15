@@ -1,0 +1,53 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:22
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function decode.Meter_Single
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_meter_single_1.  @@@@@@@@@@
+-S-  Applied substitution rule meter_single_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New C1:  b >= - 200000
+-S-  Applied substitution rule meter_single_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New C2:  b <= 200000
+-S-  Applied substitution rule meter_single_rules(12).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  b >= 0
+-S-  Applied substitution rule meter_single_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  b <= 65535
+***  Proved C1:  b >= - 200000
+     using hypothesis H2.
+***  Proved C2:  b <= 200000
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  Proved C2:  b >= measuretypes__meter__first
+     using hypothesis H4.
+***  Proved C3:  b <= measuretypes__meter__last
+     using hypothesis H5.
+***  PROVED VC.
+

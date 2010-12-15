@@ -1,0 +1,483 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.64
+
+                        function encode.Meter_Single
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 66:
+
+function_meter_single_1.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    m < 0 .
+        ->
+C1:    0 >= measuretypes__meter__first .
+C2:    0 <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 68:
+
+function_meter_single_2.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    m > r .
+        ->
+C1:    r >= measuretypes__meter__first .
+C2:    r <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 70:
+
+function_meter_single_3.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    not (m > r) .
+        ->
+C1:    m >= measuretypes__meter__first .
+C2:    m <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 72:
+
+function_meter_single_4.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    m < 0 .
+H7:    0 >= measuretypes__meter__first .
+H8:    0 <= measuretypes__meter__last .
+H9:    0 >= measuretypes__meter__first .
+H10:   0 <= measuretypes__meter__last .
+        ->
+C1:    bus__word__last >= measuretypes__meter__first .
+C2:    bus__word__last <= measuretypes__meter__last .
+ 
+
+function_meter_single_5.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    m > r .
+H8:    r >= measuretypes__meter__first .
+H9:    r <= measuretypes__meter__last .
+H10:   r >= measuretypes__meter__first .
+H11:   r <= measuretypes__meter__last .
+        ->
+C1:    bus__word__last >= measuretypes__meter__first .
+C2:    bus__word__last <= measuretypes__meter__last .
+ 
+
+function_meter_single_6.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    not (m > r) .
+H8:    m >= measuretypes__meter__first .
+H9:    m <= measuretypes__meter__last .
+H10:   m >= measuretypes__meter__first .
+H11:   m <= measuretypes__meter__last .
+        ->
+C1:    bus__word__last >= measuretypes__meter__first .
+C2:    bus__word__last <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 73:
+
+function_meter_single_7.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    m < 0 .
+H7:    0 >= measuretypes__meter__first .
+H8:    0 <= measuretypes__meter__last .
+H9:    0 >= measuretypes__meter__first .
+H10:   0 <= measuretypes__meter__last .
+H11:   bus__word__last >= measuretypes__meter__first .
+H12:   bus__word__last <= measuretypes__meter__last .
+H13:   0 > bus__word__last .
+        ->
+C1:    bus__word__last >= measuretypes__meter__first .
+C2:    bus__word__last <= measuretypes__meter__last .
+C3:    bus__word__last >= measuretypes__meter__first .
+C4:    bus__word__last <= measuretypes__meter__last .
+ 
+
+function_meter_single_8.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    m > r .
+H8:    r >= measuretypes__meter__first .
+H9:    r <= measuretypes__meter__last .
+H10:   r >= measuretypes__meter__first .
+H11:   r <= measuretypes__meter__last .
+H12:   bus__word__last >= measuretypes__meter__first .
+H13:   bus__word__last <= measuretypes__meter__last .
+H14:   r > bus__word__last .
+        ->
+C1:    bus__word__last >= measuretypes__meter__first .
+C2:    bus__word__last <= measuretypes__meter__last .
+C3:    bus__word__last >= measuretypes__meter__first .
+C4:    bus__word__last <= measuretypes__meter__last .
+ 
+
+function_meter_single_9.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    not (m > r) .
+H8:    m >= measuretypes__meter__first .
+H9:    m <= measuretypes__meter__last .
+H10:   m >= measuretypes__meter__first .
+H11:   m <= measuretypes__meter__last .
+H12:   bus__word__last >= measuretypes__meter__first .
+H13:   bus__word__last <= measuretypes__meter__last .
+H14:   m > bus__word__last .
+        ->
+C1:    bus__word__last >= measuretypes__meter__first .
+C2:    bus__word__last <= measuretypes__meter__last .
+C3:    bus__word__last >= measuretypes__meter__first .
+C4:    bus__word__last <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 75:
+
+function_meter_single_10.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    m < 0 .
+H7:    0 >= measuretypes__meter__first .
+H8:    0 <= measuretypes__meter__last .
+H9:    0 >= measuretypes__meter__first .
+H10:   0 <= measuretypes__meter__last .
+H11:   bus__word__last >= measuretypes__meter__first .
+H12:   bus__word__last <= measuretypes__meter__last .
+H13:   0 > bus__word__last .
+H14:   bus__word__last >= measuretypes__meter__first .
+H15:   bus__word__last <= measuretypes__meter__last .
+H16:   bus__word__last >= measuretypes__meter__first .
+H17:   bus__word__last <= measuretypes__meter__last .
+H18:   bus__word__last >= measuretypes__meter__first .
+H19:   bus__word__last <= measuretypes__meter__last .
+        ->
+C1:    bus__word__last >= bus__word__first .
+C2:    bus__word__last <= bus__word__last .
+ 
+
+function_meter_single_11.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    m > r .
+H8:    r >= measuretypes__meter__first .
+H9:    r <= measuretypes__meter__last .
+H10:   r >= measuretypes__meter__first .
+H11:   r <= measuretypes__meter__last .
+H12:   bus__word__last >= measuretypes__meter__first .
+H13:   bus__word__last <= measuretypes__meter__last .
+H14:   r > bus__word__last .
+H15:   bus__word__last >= measuretypes__meter__first .
+H16:   bus__word__last <= measuretypes__meter__last .
+H17:   bus__word__last >= measuretypes__meter__first .
+H18:   bus__word__last <= measuretypes__meter__last .
+H19:   bus__word__last >= measuretypes__meter__first .
+H20:   bus__word__last <= measuretypes__meter__last .
+        ->
+C1:    bus__word__last >= bus__word__first .
+C2:    bus__word__last <= bus__word__last .
+ 
+
+function_meter_single_12.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    not (m > r) .
+H8:    m >= measuretypes__meter__first .
+H9:    m <= measuretypes__meter__last .
+H10:   m >= measuretypes__meter__first .
+H11:   m <= measuretypes__meter__last .
+H12:   bus__word__last >= measuretypes__meter__first .
+H13:   bus__word__last <= measuretypes__meter__last .
+H14:   m > bus__word__last .
+H15:   bus__word__last >= measuretypes__meter__first .
+H16:   bus__word__last <= measuretypes__meter__last .
+H17:   bus__word__last >= measuretypes__meter__first .
+H18:   bus__word__last <= measuretypes__meter__last .
+H19:   bus__word__last >= measuretypes__meter__first .
+H20:   bus__word__last <= measuretypes__meter__last .
+        ->
+C1:    bus__word__last >= bus__word__first .
+C2:    bus__word__last <= bus__word__last .
+ 
+
+function_meter_single_13.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    m < 0 .
+H7:    0 >= measuretypes__meter__first .
+H8:    0 <= measuretypes__meter__last .
+H9:    0 >= measuretypes__meter__first .
+H10:   0 <= measuretypes__meter__last .
+H11:   bus__word__last >= measuretypes__meter__first .
+H12:   bus__word__last <= measuretypes__meter__last .
+H13:   not (0 > bus__word__last) .
+H14:   0 >= measuretypes__meter__first .
+H15:   0 <= measuretypes__meter__last .
+        ->
+C1:    0 >= bus__word__first .
+C2:    0 <= bus__word__last .
+ 
+
+function_meter_single_14.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    m > r .
+H8:    r >= measuretypes__meter__first .
+H9:    r <= measuretypes__meter__last .
+H10:   r >= measuretypes__meter__first .
+H11:   r <= measuretypes__meter__last .
+H12:   bus__word__last >= measuretypes__meter__first .
+H13:   bus__word__last <= measuretypes__meter__last .
+H14:   not (r > bus__word__last) .
+H15:   r >= measuretypes__meter__first .
+H16:   r <= measuretypes__meter__last .
+        ->
+C1:    r >= bus__word__first .
+C2:    r <= bus__word__last .
+ 
+
+function_meter_single_15.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    not (m > r) .
+H8:    m >= measuretypes__meter__first .
+H9:    m <= measuretypes__meter__last .
+H10:   m >= measuretypes__meter__first .
+H11:   m <= measuretypes__meter__last .
+H12:   bus__word__last >= measuretypes__meter__first .
+H13:   bus__word__last <= measuretypes__meter__last .
+H14:   not (m > bus__word__last) .
+H15:   m >= measuretypes__meter__first .
+H16:   m <= measuretypes__meter__last .
+        ->
+C1:    m >= bus__word__first .
+C2:    m <= bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+function_meter_single_16.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    m < 0 .
+H7:    0 >= measuretypes__meter__first .
+H8:    0 <= measuretypes__meter__last .
+H9:    0 >= measuretypes__meter__first .
+H10:   0 <= measuretypes__meter__last .
+H11:   bus__word__last >= measuretypes__meter__first .
+H12:   bus__word__last <= measuretypes__meter__last .
+H13:   0 > bus__word__last .
+H14:   bus__word__last >= measuretypes__meter__first .
+H15:   bus__word__last <= measuretypes__meter__last .
+H16:   bus__word__last >= measuretypes__meter__first .
+H17:   bus__word__last <= measuretypes__meter__last .
+H18:   bus__word__last >= measuretypes__meter__first .
+H19:   bus__word__last <= measuretypes__meter__last .
+H20:   bus__word__last >= bus__word__first .
+H21:   bus__word__last <= bus__word__last .
+        ->
+C1:    true .
+C2:    bus__word__last >= bus__word__first .
+C3:    bus__word__last <= bus__word__last .
+ 
+
+function_meter_single_17.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    m > r .
+H8:    r >= measuretypes__meter__first .
+H9:    r <= measuretypes__meter__last .
+H10:   r >= measuretypes__meter__first .
+H11:   r <= measuretypes__meter__last .
+H12:   bus__word__last >= measuretypes__meter__first .
+H13:   bus__word__last <= measuretypes__meter__last .
+H14:   r > bus__word__last .
+H15:   bus__word__last >= measuretypes__meter__first .
+H16:   bus__word__last <= measuretypes__meter__last .
+H17:   bus__word__last >= measuretypes__meter__first .
+H18:   bus__word__last <= measuretypes__meter__last .
+H19:   bus__word__last >= measuretypes__meter__first .
+H20:   bus__word__last <= measuretypes__meter__last .
+H21:   bus__word__last >= bus__word__first .
+H22:   bus__word__last <= bus__word__last .
+        ->
+C1:    true .
+C2:    bus__word__last >= bus__word__first .
+C3:    bus__word__last <= bus__word__last .
+ 
+
+function_meter_single_18.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    not (m > r) .
+H8:    m >= measuretypes__meter__first .
+H9:    m <= measuretypes__meter__last .
+H10:   m >= measuretypes__meter__first .
+H11:   m <= measuretypes__meter__last .
+H12:   bus__word__last >= measuretypes__meter__first .
+H13:   bus__word__last <= measuretypes__meter__last .
+H14:   m > bus__word__last .
+H15:   bus__word__last >= measuretypes__meter__first .
+H16:   bus__word__last <= measuretypes__meter__last .
+H17:   bus__word__last >= measuretypes__meter__first .
+H18:   bus__word__last <= measuretypes__meter__last .
+H19:   bus__word__last >= measuretypes__meter__first .
+H20:   bus__word__last <= measuretypes__meter__last .
+H21:   bus__word__last >= bus__word__first .
+H22:   bus__word__last <= bus__word__last .
+        ->
+C1:    true .
+C2:    bus__word__last >= bus__word__first .
+C3:    bus__word__last <= bus__word__last .
+ 
+
+function_meter_single_19.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    m < 0 .
+H7:    0 >= measuretypes__meter__first .
+H8:    0 <= measuretypes__meter__last .
+H9:    0 >= measuretypes__meter__first .
+H10:   0 <= measuretypes__meter__last .
+H11:   bus__word__last >= measuretypes__meter__first .
+H12:   bus__word__last <= measuretypes__meter__last .
+H13:   not (0 > bus__word__last) .
+H14:   0 >= measuretypes__meter__first .
+H15:   0 <= measuretypes__meter__last .
+H16:   0 >= bus__word__first .
+H17:   0 <= bus__word__last .
+        ->
+C1:    true .
+C2:    0 >= bus__word__first .
+C3:    0 <= bus__word__last .
+ 
+
+function_meter_single_20.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    m > r .
+H8:    r >= measuretypes__meter__first .
+H9:    r <= measuretypes__meter__last .
+H10:   r >= measuretypes__meter__first .
+H11:   r <= measuretypes__meter__last .
+H12:   bus__word__last >= measuretypes__meter__first .
+H13:   bus__word__last <= measuretypes__meter__last .
+H14:   not (r > bus__word__last) .
+H15:   r >= measuretypes__meter__first .
+H16:   r <= measuretypes__meter__last .
+H17:   r >= bus__word__first .
+H18:   r <= bus__word__last .
+        ->
+C1:    true .
+C2:    r >= bus__word__first .
+C3:    r <= bus__word__last .
+ 
+
+function_meter_single_21.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    r >= measuretypes__meter__first .
+H5:    r <= measuretypes__meter__last .
+H6:    not (m < 0) .
+H7:    not (m > r) .
+H8:    m >= measuretypes__meter__first .
+H9:    m <= measuretypes__meter__last .
+H10:   m >= measuretypes__meter__first .
+H11:   m <= measuretypes__meter__last .
+H12:   bus__word__last >= measuretypes__meter__first .
+H13:   bus__word__last <= measuretypes__meter__last .
+H14:   not (m > bus__word__last) .
+H15:   m >= measuretypes__meter__first .
+H16:   m <= measuretypes__meter__last .
+H17:   m >= bus__word__first .
+H18:   m <= bus__word__last .
+        ->
+C1:    true .
+C2:    m >= bus__word__first .
+C3:    m <= bus__word__last .
+ 
+

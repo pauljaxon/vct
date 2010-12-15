@@ -1,0 +1,44 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:43.23}
+
+                       {procedure warhead.Update_Stage}
+
+
+title procedure update_stage;
+
+  function round__(real) : integer;
+  type clock__millisecond = integer;
+  type warhead_cfg__state = (warhead_cfg__inactive, 
+     warhead_cfg__awake, warhead_cfg__armed, warhead_cfg__final, 
+     warhead_cfg__detonated);
+  type time_array = array [warhead_cfg__state] of integer;
+  const max_stage_time : time_array = pending;
+  const stage__base__last : warhead_cfg__state = pending; 
+  const stage__base__first : warhead_cfg__state = pending; 
+  const warhead_cfg__state__base__last : warhead_cfg__state = pending; 
+  const warhead_cfg__state__base__first : warhead_cfg__state = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const stage__size : integer = pending; 
+  const stage__last : warhead_cfg__state = pending; 
+  const stage__first : warhead_cfg__state = pending; 
+  const warhead_cfg__state__size : integer = pending; 
+  const warhead_cfg__state__last : warhead_cfg__state = pending; 
+  const warhead_cfg__state__first : warhead_cfg__state = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  var current_stage : warhead_cfg__state;
+  var stage_timer : integer;
+  var t_now : integer;
+  var t_valid : boolean;
+  var t_valid__1 : boolean;
+  var t_now__1 : integer;
+
+end;

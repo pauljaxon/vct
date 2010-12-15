@@ -1,0 +1,386 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.19
+
+                     function angle_ops.Int_To_Millirad
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 150:
+
+function_int_to_millirad_1.
+H1:    true .
+H2:    count >= systemtypes__integer32__first .
+H3:    count <= systemtypes__integer32__last .
+H4:    count < 0 .
+        ->
+C1:     -count >= systemtypes__unsigned32__first .
+C2:     -count <= systemtypes__unsigned32__last .
+C3:     -count >= systemtypes__unsigned32__first .
+C4:     -count <= systemtypes__unsigned32__last .
+C5:     -count >= long_integer__base__first .
+C6:     -count <= long_integer__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 153:
+
+function_int_to_millirad_2.
+H1:    true .
+H2:    count >= systemtypes__integer32__first .
+H3:    count <= systemtypes__integer32__last .
+H4:    not (count < 0) .
+        ->
+C1:    count >= systemtypes__unsigned32__first .
+C2:    count <= systemtypes__unsigned32__last .
+C3:    count >= systemtypes__unsigned32__first .
+C4:    count <= systemtypes__unsigned32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 157:
+
+function_int_to_millirad_3.
+H1:    true .
+H2:    count >= systemtypes__integer32__first .
+H3:    count <= systemtypes__integer32__last .
+H4:    count < 0 .
+H5:     -count >= systemtypes__unsigned32__first .
+H6:     -count <= systemtypes__unsigned32__last .
+H7:     -count >= systemtypes__unsigned32__first .
+H8:     -count <= systemtypes__unsigned32__last .
+H9:     -count >= long_integer__base__first .
+H10:    -count <= long_integer__base__last .
+H11:    -count >= systemtypes__unsigned32__first .
+H12:    -count <= systemtypes__unsigned32__last .
+        ->
+C1:    ( -count) mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+C2:    ( -count) mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+C3:    measuretypes__angle_full <> 0 .
+C4:    measuretypes__angle_full >= systemtypes__unsigned32__first .
+C5:    measuretypes__angle_full <= systemtypes__unsigned32__last .
+ 
+
+function_int_to_millirad_4.
+H1:    true .
+H2:    count >= systemtypes__integer32__first .
+H3:    count <= systemtypes__integer32__last .
+H4:    not (count < 0) .
+H5:    count >= systemtypes__unsigned32__first .
+H6:    count <= systemtypes__unsigned32__last .
+H7:    count >= systemtypes__unsigned32__first .
+H8:    count <= systemtypes__unsigned32__last .
+H9:    count >= systemtypes__unsigned32__first .
+H10:   count <= systemtypes__unsigned32__last .
+        ->
+C1:    count mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+C2:    count mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+C3:    measuretypes__angle_full <> 0 .
+C4:    measuretypes__angle_full >= systemtypes__unsigned32__first .
+C5:    measuretypes__angle_full <= systemtypes__unsigned32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 160:
+
+function_int_to_millirad_5.
+H1:    true .
+H2:    count >= systemtypes__integer32__first .
+H3:    count <= systemtypes__integer32__last .
+H4:    count < 0 .
+H5:     -count >= systemtypes__unsigned32__first .
+H6:     -count <= systemtypes__unsigned32__last .
+H7:     -count >= systemtypes__unsigned32__first .
+H8:     -count <= systemtypes__unsigned32__last .
+H9:     -count >= long_integer__base__first .
+H10:    -count <= long_integer__base__last .
+H11:    -count >= systemtypes__unsigned32__first .
+H12:    -count <= systemtypes__unsigned32__last .
+H13:   ( -count) mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H14:   ( -count) mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+H15:   measuretypes__angle_full <> 0 .
+H16:   measuretypes__angle_full >= systemtypes__unsigned32__first .
+H17:   measuretypes__angle_full <= systemtypes__unsigned32__last .
+H18:   true .
+H19:   true .
+H20:   ( -count) mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H21:   ( -count) mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+        ->
+C1:     -(( -count) mod measuretypes__angle_full) >= 
+           millirad__first .
+C2:     -(( -count) mod measuretypes__angle_full) <= 
+           millirad__last .
+C3:    ( -count) mod measuretypes__angle_full >= millirad__first .
+C4:    ( -count) mod measuretypes__angle_full <= millirad__last .
+ 
+
+function_int_to_millirad_6.
+H1:    true .
+H2:    count >= systemtypes__integer32__first .
+H3:    count <= systemtypes__integer32__last .
+H4:    not (count < 0) .
+H5:    count >= systemtypes__unsigned32__first .
+H6:    count <= systemtypes__unsigned32__last .
+H7:    count >= systemtypes__unsigned32__first .
+H8:    count <= systemtypes__unsigned32__last .
+H9:    count >= systemtypes__unsigned32__first .
+H10:   count <= systemtypes__unsigned32__last .
+H11:   count mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H12:   count mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+H13:   measuretypes__angle_full <> 0 .
+H14:   measuretypes__angle_full >= systemtypes__unsigned32__first .
+H15:   measuretypes__angle_full <= systemtypes__unsigned32__last .
+H16:   true .
+H17:   false .
+H18:   count mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H19:   count mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+        ->
+C1:     -(count mod measuretypes__angle_full) >= millirad__first .
+C2:     -(count mod measuretypes__angle_full) <= millirad__last .
+C3:    count mod measuretypes__angle_full >= millirad__first .
+C4:    count mod measuretypes__angle_full <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 162:
+
+function_int_to_millirad_7.
+H1:    true .
+H2:    count >= systemtypes__integer32__first .
+H3:    count <= systemtypes__integer32__last .
+H4:    count < 0 .
+H5:     -count >= systemtypes__unsigned32__first .
+H6:     -count <= systemtypes__unsigned32__last .
+H7:     -count >= systemtypes__unsigned32__first .
+H8:     -count <= systemtypes__unsigned32__last .
+H9:     -count >= long_integer__base__first .
+H10:    -count <= long_integer__base__last .
+H11:    -count >= systemtypes__unsigned32__first .
+H12:    -count <= systemtypes__unsigned32__last .
+H13:   ( -count) mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H14:   ( -count) mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+H15:   measuretypes__angle_full <> 0 .
+H16:   measuretypes__angle_full >= systemtypes__unsigned32__first .
+H17:   measuretypes__angle_full <= systemtypes__unsigned32__last .
+H18:   true .
+H19:   not true .
+H20:   ( -count) mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H21:   ( -count) mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+        ->
+C1:    ( -count) mod measuretypes__angle_full >= millirad__first .
+C2:    ( -count) mod measuretypes__angle_full <= millirad__last .
+C3:    ( -count) mod measuretypes__angle_full >= millirad__first .
+C4:    ( -count) mod measuretypes__angle_full <= millirad__last .
+ 
+
+function_int_to_millirad_8.
+H1:    true .
+H2:    count >= systemtypes__integer32__first .
+H3:    count <= systemtypes__integer32__last .
+H4:    not (count < 0) .
+H5:    count >= systemtypes__unsigned32__first .
+H6:    count <= systemtypes__unsigned32__last .
+H7:    count >= systemtypes__unsigned32__first .
+H8:    count <= systemtypes__unsigned32__last .
+H9:    count >= systemtypes__unsigned32__first .
+H10:   count <= systemtypes__unsigned32__last .
+H11:   count mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H12:   count mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+H13:   measuretypes__angle_full <> 0 .
+H14:   measuretypes__angle_full >= systemtypes__unsigned32__first .
+H15:   measuretypes__angle_full <= systemtypes__unsigned32__last .
+H16:   true .
+H17:   not false .
+H18:   count mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H19:   count mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+        ->
+C1:    count mod measuretypes__angle_full >= millirad__first .
+C2:    count mod measuretypes__angle_full <= millirad__last .
+C3:    count mod measuretypes__angle_full >= millirad__first .
+C4:    count mod measuretypes__angle_full <= millirad__last .
+ 
+
+For path(s) from start to finish:
+
+function_int_to_millirad_9.
+H1:    true .
+H2:    count >= systemtypes__integer32__first .
+H3:    count <= systemtypes__integer32__last .
+H4:    count < 0 .
+H5:     -count >= systemtypes__unsigned32__first .
+H6:     -count <= systemtypes__unsigned32__last .
+H7:     -count >= systemtypes__unsigned32__first .
+H8:     -count <= systemtypes__unsigned32__last .
+H9:     -count >= long_integer__base__first .
+H10:    -count <= long_integer__base__last .
+H11:    -count >= systemtypes__unsigned32__first .
+H12:    -count <= systemtypes__unsigned32__last .
+H13:   ( -count) mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H14:   ( -count) mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+H15:   measuretypes__angle_full <> 0 .
+H16:   measuretypes__angle_full >= systemtypes__unsigned32__first .
+H17:   measuretypes__angle_full <= systemtypes__unsigned32__last .
+H18:   true .
+H19:   true .
+H20:   ( -count) mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H21:   ( -count) mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+H22:    -(( -count) mod measuretypes__angle_full) >= 
+           millirad__first .
+H23:    -(( -count) mod measuretypes__angle_full) <= 
+           millirad__last .
+H24:   ( -count) mod measuretypes__angle_full >= millirad__first .
+H25:   ( -count) mod measuretypes__angle_full <= millirad__last .
+H26:    -(( -count) mod measuretypes__angle_full) >= 
+           millirad__first .
+H27:    -(( -count) mod measuretypes__angle_full) <= 
+           millirad__last .
+        ->
+C1:    true .
+C2:     -(( -count) mod measuretypes__angle_full) >= 
+           measuretypes__millirad__first .
+C3:     -(( -count) mod measuretypes__angle_full) <= 
+           measuretypes__millirad__last .
+ 
+
+function_int_to_millirad_10.
+H1:    true .
+H2:    count >= systemtypes__integer32__first .
+H3:    count <= systemtypes__integer32__last .
+H4:    not (count < 0) .
+H5:    count >= systemtypes__unsigned32__first .
+H6:    count <= systemtypes__unsigned32__last .
+H7:    count >= systemtypes__unsigned32__first .
+H8:    count <= systemtypes__unsigned32__last .
+H9:    count >= systemtypes__unsigned32__first .
+H10:   count <= systemtypes__unsigned32__last .
+H11:   count mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H12:   count mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+H13:   measuretypes__angle_full <> 0 .
+H14:   measuretypes__angle_full >= systemtypes__unsigned32__first .
+H15:   measuretypes__angle_full <= systemtypes__unsigned32__last .
+H16:   true .
+H17:   false .
+H18:   count mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H19:   count mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+H20:    -(count mod measuretypes__angle_full) >= millirad__first .
+H21:    -(count mod measuretypes__angle_full) <= millirad__last .
+H22:   count mod measuretypes__angle_full >= millirad__first .
+H23:   count mod measuretypes__angle_full <= millirad__last .
+H24:    -(count mod measuretypes__angle_full) >= millirad__first .
+H25:    -(count mod measuretypes__angle_full) <= millirad__last .
+        ->
+C1:    true .
+C2:     -(count mod measuretypes__angle_full) >= 
+           measuretypes__millirad__first .
+C3:     -(count mod measuretypes__angle_full) <= 
+           measuretypes__millirad__last .
+ 
+
+function_int_to_millirad_11.
+H1:    true .
+H2:    count >= systemtypes__integer32__first .
+H3:    count <= systemtypes__integer32__last .
+H4:    count < 0 .
+H5:     -count >= systemtypes__unsigned32__first .
+H6:     -count <= systemtypes__unsigned32__last .
+H7:     -count >= systemtypes__unsigned32__first .
+H8:     -count <= systemtypes__unsigned32__last .
+H9:     -count >= long_integer__base__first .
+H10:    -count <= long_integer__base__last .
+H11:    -count >= systemtypes__unsigned32__first .
+H12:    -count <= systemtypes__unsigned32__last .
+H13:   ( -count) mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H14:   ( -count) mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+H15:   measuretypes__angle_full <> 0 .
+H16:   measuretypes__angle_full >= systemtypes__unsigned32__first .
+H17:   measuretypes__angle_full <= systemtypes__unsigned32__last .
+H18:   true .
+H19:   not true .
+H20:   ( -count) mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H21:   ( -count) mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+H22:   ( -count) mod measuretypes__angle_full >= millirad__first .
+H23:   ( -count) mod measuretypes__angle_full <= millirad__last .
+H24:   ( -count) mod measuretypes__angle_full >= millirad__first .
+H25:   ( -count) mod measuretypes__angle_full <= millirad__last .
+H26:   ( -count) mod measuretypes__angle_full >= millirad__first .
+H27:   ( -count) mod measuretypes__angle_full <= millirad__last .
+        ->
+C1:    true .
+C2:    ( -count) mod measuretypes__angle_full >= 
+           measuretypes__millirad__first .
+C3:    ( -count) mod measuretypes__angle_full <= 
+           measuretypes__millirad__last .
+ 
+
+function_int_to_millirad_12.
+H1:    true .
+H2:    count >= systemtypes__integer32__first .
+H3:    count <= systemtypes__integer32__last .
+H4:    not (count < 0) .
+H5:    count >= systemtypes__unsigned32__first .
+H6:    count <= systemtypes__unsigned32__last .
+H7:    count >= systemtypes__unsigned32__first .
+H8:    count <= systemtypes__unsigned32__last .
+H9:    count >= systemtypes__unsigned32__first .
+H10:   count <= systemtypes__unsigned32__last .
+H11:   count mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H12:   count mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+H13:   measuretypes__angle_full <> 0 .
+H14:   measuretypes__angle_full >= systemtypes__unsigned32__first .
+H15:   measuretypes__angle_full <= systemtypes__unsigned32__last .
+H16:   true .
+H17:   not false .
+H18:   count mod measuretypes__angle_full >= 
+           systemtypes__unsigned32__first .
+H19:   count mod measuretypes__angle_full <= 
+           systemtypes__unsigned32__last .
+H20:   count mod measuretypes__angle_full >= millirad__first .
+H21:   count mod measuretypes__angle_full <= millirad__last .
+H22:   count mod measuretypes__angle_full >= millirad__first .
+H23:   count mod measuretypes__angle_full <= millirad__last .
+H24:   count mod measuretypes__angle_full >= millirad__first .
+H25:   count mod measuretypes__angle_full <= millirad__last .
+        ->
+C1:    true .
+C2:    count mod measuretypes__angle_full >= 
+           measuretypes__millirad__first .
+C3:    count mod measuretypes__angle_full <= 
+           measuretypes__millirad__last .
+ 
+

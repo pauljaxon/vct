@@ -1,0 +1,42 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 26-NOV-2009 09:54:53.85*/
+
+                            /*procedure yaw.Yaw_AP*/
+
+
+rule_family yaw_ap_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+yaw_ap_rules(1): degrees__degreespersec__size >= 0 may_be_deduced.
+yaw_ap_rules(2): degrees__degreespersec__first may_be_replaced_by -180.
+yaw_ap_rules(3): degrees__degreespersec__last may_be_replaced_by 180.
+yaw_ap_rules(4): degrees__degreespersec__base__first may_be_replaced_by -32768.
+yaw_ap_rules(5): degrees__degreespersec__base__last may_be_replaced_by 32767.
+yaw_ap_rules(6): instruments__machnumber__size >= 0 may_be_deduced.
+yaw_ap_rules(7): instruments__machnumber__first may_be_replaced_by 0.
+yaw_ap_rules(8): instruments__machnumber__last may_be_replaced_by 100.
+yaw_ap_rules(9): instruments__machnumber__base__first may_be_replaced_by -128.
+yaw_ap_rules(10): instruments__machnumber__base__last may_be_replaced_by 127.
+yaw_ap_rules(11): instruments__slipangle__size >= 0 may_be_deduced.
+yaw_ap_rules(12): instruments__slipangle__first may_be_replaced_by -25.
+yaw_ap_rules(13): instruments__slipangle__last may_be_replaced_by 25.
+yaw_ap_rules(14): instruments__slipangle__base__first may_be_replaced_by -128.
+yaw_ap_rules(15): instruments__slipangle__base__last may_be_replaced_by 127.
+yaw_ap_rules(16): surfaces__controlangle__size >= 0 may_be_deduced.
+yaw_ap_rules(17): surfaces__controlangle__first may_be_replaced_by -45.
+yaw_ap_rules(18): surfaces__controlangle__last may_be_replaced_by 45.
+yaw_ap_rules(19): surfaces__controlangle__base__first may_be_replaced_by -128.
+yaw_ap_rules(20): surfaces__controlangle__base__last may_be_replaced_by 127.
+yaw_ap_rules(21): degreespersec__size >= 0 may_be_deduced.
+yaw_ap_rules(22): degreespersec__first may_be_replaced_by -180.
+yaw_ap_rules(23): degreespersec__last may_be_replaced_by 180.
+yaw_ap_rules(24): degreespersec__base__first may_be_replaced_by -32768.
+yaw_ap_rules(25): degreespersec__base__last may_be_replaced_by 32767.

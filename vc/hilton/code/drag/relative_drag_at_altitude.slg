@@ -1,0 +1,312 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:33
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function drag.Relative_Drag_At_Altitude
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_relative_drag_at_altitude_1.  @@@@@@@@@@
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule relative_dra_rules(17).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  (50000 - altitude) div 250 >= - 2147483648
+<S>  New C6:  altitude >= - 2147483648
+-S-  Applied substitution rule relative_dra_rules(18).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  (50000 - altitude) div 250 <= 2147483647
+<S>  New C7:  altitude <= 2147483647
+-S-  Applied substitution rule relative_dra_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C4:  altitude <= 2147533648
+-S-  Applied substitution rule relative_dra_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C5:  - 2147433647 <= altitude
+***  Proved C6:  altitude >= - 2147483648
+     using hypothesis H1.
+***  Proved C7:  altitude <= 2147483647
+     using hypothesis H2.
+***  Proved C4:  altitude <= 2147533648
+     using hypothesis H2.
+***  Proved C5:  - 2147433647 <= altitude
+     using hypothesis H1.
+-S-  Applied substitution rule relative_dra_rules(12).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H3:  altitude >= 0
+-S-  Applied substitution rule relative_dra_rules(13).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H4:  altitude <= 200000
+---  Eliminated hypothesis H3 (duplicate of H1).
+---  Eliminated hypothesis H4 (redundant, given H2).
+***  Proved C1:  (50000 - altitude) div 250 >= - 2147483648
+     using hypothesis H2.
+***  Proved C2:  (50000 - altitude) div 250 <= 2147483647
+     using hypothesis H1.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_relative_drag_at_altitude_2.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  true
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H6)
+          .
+***  Proved C1:  100 >= integer32__first
+     using hypotheses H5 & H14.
+-S-  Applied substitution rule relative_dra_rules(18).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H6:  (50000 - altitude) div 250 <= 2147483647
+<S>  New H11:  altitude <= 2147483647
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_relative_drag_at_altitude_3.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  true
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H6)
+          .
+***  Proved C2:  200 <= integer32__last
+     using hypotheses H6 & H17.
+-S-  Applied substitution rule relative_dra_rules(17).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H5:  (50000 - altitude) div 250 >= - 2147483648
+<S>  New H10:  altitude >= - 2147483648
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_relative_drag_at_altitude_4.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  true
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  0 >= long_integer__base__first
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  0 <= long_integer__base__last
+-S-  Applied substitution rule relative_dra_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H8:  altitude <= 2147533648
+<S>  New C1:  true
+-S-  Applied substitution rule relative_dra_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H9:  - 2147433647 <= altitude
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_relative_drag_at_altitude_5.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  true
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  100 >= long_integer__base__first
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  100 <= long_integer__base__last
+-S-  Applied substitution rule relative_dra_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H8:  altitude <= 2147533648
+<S>  New C1:  true
+-S-  Applied substitution rule relative_dra_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H9:  - 2147433647 <= altitude
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_relative_drag_at_altitude_6.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  true
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H6)
+          .
+-S-  Applied substitution rule relative_dra_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H8:  altitude <= 2147533648
+<S>  New C1:  (50000 - altitude) div 250 >= - 2147483548
+-S-  Applied substitution rule relative_dra_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H9:  - 2147433647 <= altitude
+<S>  New C2:  (50000 - altitude) div 250 <= 2147483747
+***  Proved C1:  (50000 - altitude) div 250 >= - 2147483548
+     using hypothesis H14.
+***  Proved C2:  (50000 - altitude) div 250 <= 2147483747
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_relative_drag_at_altitude_7.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  true
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  0 >= long_integer__base__first
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  0 <= long_integer__base__last
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  0 >= percent__first
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  0 <= percent__last
+***  Proved C1:  true
+-S-  Applied substitution rule relative_dra_rules(22).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New C2:  true
+-S-  Applied substitution rule relative_dra_rules(23).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New C3:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_relative_drag_at_altitude_8.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  true
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  100 >= long_integer__base__first
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  100 <= long_integer__base__last
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  100 >= percent__first
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  100 <= percent__last
+***  Proved C1:  true
+-S-  Applied substitution rule relative_dra_rules(22).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New C2:  true
+-S-  Applied substitution rule relative_dra_rules(23).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New C3:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_relative_drag_at_altitude_9.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  true
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H6)
+          .
+***  Proved C1:  true
+-S-  Applied substitution rule relative_dra_rules(22).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New C2:  (50000 - altitude) div 250 >= 100
+-S-  Applied substitution rule relative_dra_rules(23).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New C3:  (50000 - altitude) div 250 <= 200
+***  Proved C2:  (50000 - altitude) div 250 >= 100
+     using hypothesis H14.
+***  Proved C3:  (50000 - altitude) div 250 <= 200
+     using hypothesis H17.
+***  PROVED VC.
+

@@ -1,0 +1,22 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:40.77*/
+
+                          /*procedure Fuze.Set_Timer*/
+
+
+rule_family set_timer_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+set_timer_rules(1): clock__millisecond__size >= 0 may_be_deduced.
+set_timer_rules(2): clock__millisecond__first may_be_replaced_by 0.
+set_timer_rules(3): clock__millisecond__last may_be_replaced_by 8640000.
+set_timer_rules(4): clock__millisecond__base__first may_be_replaced_by -2147483648.
+set_timer_rules(5): clock__millisecond__base__last may_be_replaced_by 2147483647.

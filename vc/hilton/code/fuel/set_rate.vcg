@@ -1,0 +1,81 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.52
+
+                          procedure fuel.Set_Rate
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 160:
+
+procedure_set_rate_1.
+H1:    true .
+H2:    rate >= measuretypes__gram_per_sec__first .
+H3:    rate <= measuretypes__gram_per_sec__last .
+        ->
+C1:    rate >= measuretypes__gram_per_sec__first .
+C2:    rate <= measuretypes__gram_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 161:
+
+procedure_set_rate_2.
+H1:    true .
+H2:    rate >= measuretypes__gram_per_sec__first .
+H3:    rate <= measuretypes__gram_per_sec__last .
+H4:    rate >= measuretypes__gram_per_sec__first .
+H5:    rate <= measuretypes__gram_per_sec__last .
+H6:    last_time__1 >= clock__millisecond__first .
+H7:    last_time__1 <= clock__millisecond__last .
+H8:    true .
+        ->
+C1:    last_time__1 >= clock__millisecond__first .
+C2:    last_time__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 163:
+
+procedure_set_rate_3.
+H1:    true .
+H2:    rate >= measuretypes__gram_per_sec__first .
+H3:    rate <= measuretypes__gram_per_sec__last .
+H4:    rate >= measuretypes__gram_per_sec__first .
+H5:    rate <= measuretypes__gram_per_sec__last .
+H6:    last_time__1 >= clock__millisecond__first .
+H7:    last_time__1 <= clock__millisecond__last .
+H8:    true .
+H9:    last_time__1 >= clock__millisecond__first .
+H10:   last_time__1 <= clock__millisecond__last .
+H11:   true .
+H12:   not time_valid__1 .
+        ->
+C1:    0 >= measuretypes__gram_per_sec__first .
+C2:    0 <= measuretypes__gram_per_sec__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_set_rate_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_rate_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_set_rate_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_rate_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+

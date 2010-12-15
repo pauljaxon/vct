@@ -1,0 +1,70 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:40
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure rt1553.Set_Message_Valid
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_set_message_valid_1.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  lru_name__first <= src
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  lru_name__first <= src
+***  Proved C3:  subaddress_idx >= bus__lru_subaddress_index__first
+     using hypothesis H2.
+***  Proved C4:  subaddress_idx <= bus__lru_subaddress_index__last
+     using hypothesis H3.
+***  Proved C5:  lru_name__first <= src
+     using hypothesis H4.
+***  Proved C6:  src <= lru_name__last
+     using hypothesis H5.
+-S-  Applied substitution rule set_message__rules(14).
+     This was achieved by replacing all occurrences of bus__lru_index__first by:
+          1.
+<S>  New C1:  element(lru_names, [src]) >= 1
+-S-  Applied substitution rule set_message__rules(15).
+     This was achieved by replacing all occurrences of bus__lru_index__last by:
+          12.
+<S>  New C2:  element(lru_names, [src]) <= 12
+-S-  Applied substitution rule set_message__rules(9).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H2:  subaddress_idx >= 1
+-S-  Applied substitution rule set_message__rules(10).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H3:  subaddress_idx <= 8
+-S-  Applied substitution rule set_message__rules(20).
+     This was achieved by replacing all occurrences of lru_name__first by:
+          barometer.
+<S>  New H4:  barometer <= src
+-S-  Applied substitution rule set_message__rules(21).
+     This was achieved by replacing all occurrences of lru_name__last by:
+          warhead.
+<S>  New H5:  src <= warhead
+---  Eliminated hypothesis H1 (true-hypothesis).
+***  Proved C1:  element(lru_names, [src]) >= 1
+     using hypotheses H4 & H5.
+***  Proved C2:  element(lru_names, [src]) <= 12
+     using hypotheses H4 & H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_message_valid_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

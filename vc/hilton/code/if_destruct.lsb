@@ -1,0 +1,190 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.84
+
+Line
+   1  -- MCU interface to the self-destruct, implementation
+   2  --
+   3  -- $Log: if_destruct.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/10 20:52:43  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.1  2003/09/01 19:33:09  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with Bc1553, bus;
+  16  package body If_Destruct
+  17    --# own State is Last_state, Last_Valid, Ibit_Request;
+  18  is
+  19     Last_State   : Stage := Destruct_Cfg.Inactive;
+  20     Last_Valid   : Boolean := False;
+  21     Ibit_Request : IBIT.Phase := IBIT.Off;
+  22  
+  23     Bus_Id : constant Bc1553.Lru_Name := Bc1553.Destruct;
+  24  
+  25     function Get_Ibit_State return Ibit.Phase
+  26       --# global ibit_request;
+  27     is begin
+  28        return Ibit_Request;
+  29     end Get_Ibit_State;
+
++++        Flow analysis of subprogram Get_IBIT_State 
+           performed: no errors found.
+
+  30  
+  31     -- Find out the current state and its validity
+  32     procedure Get_stage(Action_stage : out Stage;
+  33                         Valid  : out Boolean)
+  34     --# global in Last_state, Last_Valid;
+  35     --# derives action_stage from Last_state, Last_Valid &
+  36     --#        Valid from Last_Valid;
+  37     is
+  38     begin
+  39        Valid := Last_Valid;
+  40        if Last_Valid then
+  41           Action_Stage := Last_State;
+  42        else
+  43           Action_Stage := Destruct_Cfg.inactive;
+  44        end if;
+  45     end Get_stage;
+
++++        Flow analysis of subprogram Get_Stage performed: 
+           no errors found.
+
+  46  
+  47     -- Command a new stage
+  48     procedure Set_Stage(New_Stage : in Stage)
+  49     is begin
+  50        -- Send it out on 1R at word 1
+  51        BC1553.Write_Word(Data => Destruct_Cfg.State_To_Code(New_Stage),
+  52                          Idx =>  1,
+  53                          Subaddress_Idx => 1,
+  54                          Dest => Bus_id);
+  55     end Set_stage;
+
++++        Flow analysis of subprogram Set_Stage performed: 
+           no errors found.
+
+  56  
+  57  
+  58     -- Kick off a destruct IBIT
+  59     procedure Ibit_Start
+  60       --# global in out Bus.Outputs;
+  61       --#        out    Ibit_Request;
+  62     --# derives Bus.Outputs from * &
+  63     --#         Ibit_Request from ;
+  64     is
+  65        Code : SystemTypes.Byte;
+  66     begin
+  67        Ibit_Request := IBIT.Request_Start;
+  68        Code := IBIT.Phase_Lookup(Ibit_Request);
+  69        -- Send it out on 1R at word 2
+  70        BC1553.Write_Word(Data => Code,
+  71                          Idx =>  2,
+  72                          Subaddress_Idx => 1,
+  73                          Dest => Bus_id);
+  74     end Ibit_Start;
+
++++        Flow analysis of subprogram Ibit_Start 
+           performed: no errors found.
+
+  75  
+  76     -- Stop a destruct IBIT
+  77     procedure Ibit_Stop
+  78     --# global in out Bus.Outputs;
+  79     --#    out Ibit_Request;
+  80     --# derives Bus.Outputs from * &
+  81     --#         Ibit_Request from ;
+  82     is
+  83        Code : SystemTypes.Byte;
+  84     begin
+  85        Ibit_Request := IBIT.Request_Stop;
+  86        Code := IBIT.Phase_Lookup(Ibit_Request);
+  87        -- Send it out on 1R at word 2
+  88        BC1553.Write_Word(Data => Code,
+  89                          Idx =>  2,
+  90                          Subaddress_Idx => 1,
+  91                          Dest => Bus_id);
+  92     end Ibit_Stop;
+
++++        Flow analysis of subprogram Ibit_Stop performed: 
+           no errors found.
+
+  93  
+  94     -- Poll the bus and update states
+  95     procedure Poll
+  96     --# global in out Last_state, Last_Valid, Ibit_Request;
+  97     --#        in Bus.Inputs;
+  98     --# derives Last_state, Last_Valid,
+  99     --#         Ibit_Request from *, Bus.Inputs;
+ 100     is
+ 101        Word : Bus.Word;
+ 102     begin
+ 103        -- Check 1T
+ 104        if BC1553.Is_Valid(Src => Bus_id,
+ 105                           Subaddress_Idx => 1) and then
+ 106          BC1553.Is_Fresh(Src => Bus_id,
+ 107                          Subaddress_Idx => 1) then
+ 108           -- Read the updated stage
+ 109           BC1553.Read_Word(Src => Bus_id,
+ 110                            Idx => 1,
+ 111                            Subaddress_Idx => 1,
+ 112                            Data => Word);
+ 113           last_State := Destruct_Cfg.Code_To_state(Word);
+ 114           Last_Valid := True;
+ 115           -- 1T word 2 - BIT
+ 116           BC1553.Read_Word(Src => Bus_id,
+ 117                            Idx => 2,
+ 118                            Subaddress_Idx => 1,
+ 119                            Data => Word);
+ 120           -- Use the standard state machine to transform
+ 121           -- our IBIT phase
+ 122           IBIT.State_Machine(Bus_Data => Word,
+ 123                              Current_Phase => IBIT_Request);
+ 124        else
+ 125           -- Nothing to do
+ 126           null;
+ 127        end if;
+ 128     end Poll;
+
++++        Flow analysis of subprogram Poll performed: no 
+           errors found.
+
+ 129  
+ 130     -- Initialise
+ 131     procedure Init
+ 132     --# global out Last_state, Last_Valid, Ibit_Request;
+ 133     --#        in out Bus.Outputs;
+ 134     --# derives Last_state, Last_Valid, Ibit_Request from &
+ 135     --#         Bus.Outputs from *;
+ 136     is begin
+ 137        Last_State := Destruct_Cfg.inactive;
+ 138        Last_Valid := False;
+ 139        Ibit_Request := IBIT.Off;
+ 140        BC1553.Set_Message_Valid(Dest => Bus_id,
+ 141                                 Subaddress_Idx => 1);
+ 142     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 143  
+ 144     -- Test point
+ 145     procedure Command is separate;
+ 146  
+ 147  end If_Destruct;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

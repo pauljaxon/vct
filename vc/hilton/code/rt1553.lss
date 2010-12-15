@@ -1,0 +1,120 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.40
+
+Line
+   1  -- The 1553 bus interface for Remote Terminals (RT)
+   2  --
+   3  -- $Id: rt1553.ads,v 1.1.1.1 2004/01/12 19:29:12 adi Exp $
+   4  --
+   5  -- $Log: rt1553.ads,v $
+   6  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   7  -- Added from tarfile
+   8  --
+   9  --
+  10  -- Revision 1.6  2003/08/17 22:04:48  adi
+  11  -- Added lru_number lookup
+  12  --
+  13  -- Revision 1.5  2003/08/17 15:06:04  adi
+  14  -- Added is_fresh, is_valid
+  15  --
+  16  -- Revision 1.4  2003/02/12 21:25:03  adi
+  17  -- Added Set_Message_Valid
+  18  --
+  19  -- Revision 1.3  2003/02/05 22:50:45  adi
+  20  -- Updated for renamed type
+  21  --
+  22  -- Revision 1.2  2003/02/03 23:19:28  adi
+  23  -- Added Acknowledge_Message
+  24  --
+  25  -- Revision 1.1  2003/02/03 18:35:24  adi
+  26  -- Initial revision
+  27  --
+  28  --
+  29  --
+  30  with Bus;
+  31  with SystemTypes;
+  32  --# inherit SystemTypes,Bus;
+  33  package RT1553
+  34  is
+  35     -- Symbolic names for the Lrus
+  36     type Lru_Name is
+  37       (Barometer,
+  38        Asi,
+  39        Ins,
+  40        Compass,
+  41        Fuel,
+  42        Fuze,
+  43        Radar,
+  44        Infrared,
+  45        Fins,
+  46        Motor,
+  47        Destruct,
+  48        Warhead
+  49        );
+  50  
+  51     function Lru_Number(L : Lru_Name) return Bus.Lru_Index;
+  52  
+  53     -- Write out data to the BC
+  54     procedure Set_Message_Valid(Subaddress_Idx : in Bus.Lru_Subaddress_Index;
+  55                                 Src     : in Lru_Name);
+  56     --# global in out Bus.Inputs;
+  57     --# derives Bus.Inputs from *, Subaddress_Idx, Src;
+  58  
+  59     procedure Write_Word(Data    : in Bus.Word;
+  60                          Idx     : in Bus.Word_Index;
+  61                          Subaddress_Idx : in Bus.Lru_Subaddress_Index;
+  62                          Src     : in Lru_Name);
+  63     --# global in out Bus.Inputs;
+  64     --# derives Bus.Inputs from *, Data, Idx, Subaddress_Idx, Src;
+  65  
+  66     procedure Write_Message(Data    : in Bus.Message;
+  67                             Subaddress_Idx : in Bus.Lru_Subaddress_Index;
+  68                             Src     : in Lru_Name);
+  69     --# global in out Bus.Inputs;
+  70     --# derives Bus.Inputs from *, Data, Subaddress_Idx, Src;
+  71  
+  72  
+  73     -- Read data sent to the RT
+  74  
+  75     procedure Read_Word(Src     : in  Lru_Name;
+  76                         Idx     : in  Bus.Word_Index;
+  77                         Subaddress_Idx : in  Bus.Lru_Subaddress_Index;
+  78                         Data    : out Bus.Word);
+  79     --# global in Bus.Outputs;
+  80     --# derives Data from Src, Idx, Subaddress_Idx, Bus.Outputs;
+  81  
+  82     procedure Read_Message(Src     : in  Lru_Name;
+  83                            Subaddress_Idx : in  Bus.Lru_Subaddress_Index;
+  84                            Data    : out Bus.Message);
+  85     --# global in Bus.Outputs;
+  86     --# derives Data from Src, Subaddress_Idx, Bus.Outputs;
+  87  
+  88     procedure Acknowledge_Message(Src     : in  Lru_Name;
+  89                                   Subaddress_Idx : in  Bus.Lru_Subaddress_Index);
+  90     --# global in out Bus.Outputs;
+  91     --# derives Bus.Outputs from *, Src, Subaddress_Idx;
+  92  
+  93       -- See if a message is fresh
+  94     function Is_Fresh(Src : Lru_Name;
+  95                       Subaddress_Idx : Bus.Lru_Subaddress_Index)
+  96                      return Boolean;
+  97     --# global in Bus.Outputs;
+  98  
+  99     -- See if a message is valid
+ 100     function Is_Valid(Src : Lru_Name;
+ 101                       Subaddress_Idx : Bus.Lru_Subaddress_Index)
+ 102                      return Boolean;
+ 103     --# global in Bus.Outputs;
+ 104  
+ 105  end RT1553;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

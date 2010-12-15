@@ -1,0 +1,38 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:22
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure decode.Meter
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 53:
+
+procedure_meter_1.
+H1:    lo >= 0 .
+H2:    lo <= 65535 .
+H3:    hi >= 0 .
+H4:    hi <= 65535 .
+H5:    integer__size >= 0 .
+H6:    measuretypes__meter__size >= 0 .
+H7:    bus__word__size >= 0 .
+       ->
+C1:    lo + hi * 65536 <= 200000 .
+C2:    hi * 65536 <= 2147483647 .
+
+
+For path(s) from start to finish:
+
+procedure_meter_2.
+*** true .          /* all conclusions proved */
+
+

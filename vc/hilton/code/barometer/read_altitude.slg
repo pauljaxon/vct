@@ -1,0 +1,77 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:39  SIMPLIFIED 25-NOV-2009, 14:18:43
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure barometer.Read_Altitude
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_read_altitude_1.  @@@@@@@@@@
+-S-  Applied substitution rule read_altitud_rules(17).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H2:  last_altitude >= - 200000
+<S>  New C1:  height__1 >= - 200000
+-S-  Applied substitution rule read_altitud_rules(18).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H3:  last_altitude <= 200000
+<S>  New C2:  height__1 <= 200000
+-S-  Applied substitution rule read_altitud_rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  last_time >= 0
+-S-  Applied substitution rule read_altitud_rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  last_time <= 8640000
+-S-  Applied substitution rule read_altitud_rules(22).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H6:  last_velocity >= - 5000
+-S-  Applied substitution rule read_altitud_rules(23).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H7:  last_velocity <= 5000
+-S-  Applied substitution rule read_altitud_rules(27).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H8:  height__1 >= 0
+-S-  Applied substitution rule read_altitud_rules(28).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H9:  height__1 <= 200000
+***  Proved C1:  height__1 >= - 200000
+     using hypothesis H8.
+***  Proved C2:  height__1 <= 200000
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_altitude_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_altitude_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_altitude_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

@@ -1,0 +1,47 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:41.91*/
+
+                        /*procedure ir.Set_cell_Return*/
+
+
+rule_family set_cell_ret_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+set_cell_ret_rules(1): measuretypes__kelvin__size >= 0 may_be_deduced.
+set_cell_ret_rules(2): measuretypes__kelvin__first may_be_replaced_by 0.
+set_cell_ret_rules(3): measuretypes__kelvin__last may_be_replaced_by 6000.
+set_cell_ret_rules(4): measuretypes__kelvin__base__first may_be_replaced_by -2147483648.
+set_cell_ret_rules(5): measuretypes__kelvin__base__last may_be_replaced_by 2147483647.
+set_cell_ret_rules(6): ir_cfg__sector_range__size >= 0 may_be_deduced.
+set_cell_ret_rules(7): ir_cfg__sector_range__first may_be_replaced_by -12.
+set_cell_ret_rules(8): ir_cfg__sector_range__last may_be_replaced_by 12.
+set_cell_ret_rules(9): ir_cfg__sector_range__base__first <= 
+     ir_cfg__sector_range__base__last may_be_deduced.
+set_cell_ret_rules(10): ir_cfg__sector_range__base__first <= 
+     ir_cfg__sector_range__first may_be_deduced.
+set_cell_ret_rules(11): ir_cfg__sector_range__base__last >= 
+     ir_cfg__sector_range__last may_be_deduced.
+set_cell_ret_rules(12): kelvin__size >= 0 may_be_deduced.
+set_cell_ret_rules(13): kelvin__first may_be_replaced_by 0.
+set_cell_ret_rules(14): kelvin__last may_be_replaced_by 6000.
+set_cell_ret_rules(15): kelvin__base__first may_be_replaced_by -2147483648.
+set_cell_ret_rules(16): kelvin__base__last may_be_replaced_by 2147483647.
+set_cell_ret_rules(17): sector__size >= 0 may_be_deduced.
+set_cell_ret_rules(18): sector__first may_be_replaced_by -12.
+set_cell_ret_rules(19): sector__last may_be_replaced_by 12.
+set_cell_ret_rules(20): sector__base__first <= sector__base__last may_be_deduced.
+set_cell_ret_rules(21): sector__base__first <= sector__first may_be_deduced.
+set_cell_ret_rules(22): sector__base__last >= sector__last may_be_deduced.
+set_cell_ret_rules(23): cell__size >= 0 may_be_deduced.
+set_cell_ret_rules(24): A = B may_be_deduced_from
+     [goal(checktype(A,cell)),
+      goal(checktype(B,cell)),
+      fld_temp(A) = fld_temp(B)].

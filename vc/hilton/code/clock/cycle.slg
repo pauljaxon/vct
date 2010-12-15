@@ -1,0 +1,127 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:24
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure clock.Cycle
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_cycle_1.  @@@@@@@@@@
+-S-  Applied substitution rule cycle_rules(4).
+     This was achieved by replacing all occurrences of millisecond__base__first 
+          by:
+          - 2147483648.
+<S>  New C1:  millisecond__last - plus >= - 2147483648
+-S-  Applied substitution rule cycle_rules(5).
+     This was achieved by replacing all occurrences of millisecond__base__last 
+          by:
+          2147483647.
+<S>  New C2:  millisecond__last - plus <= 2147483647
+***  Proved C1:  millisecond__last - plus >= - 2147483648
+     using hypothesis H3.
+-S-  Applied substitution rule cycle_rules(2).
+     This was achieved by replacing all occurrences of millisecond__first by:
+          0.
+<S>  New H2:  plus >= 0
+<S>  New H4:  ticks >= 0
+-S-  Applied substitution rule cycle_rules(3).
+     This was achieved by replacing all occurrences of millisecond__last by:
+          8640000.
+<S>  New H3:  plus <= 8640000
+<S>  New H5:  ticks <= 8640000
+<S>  New C2:  - 2138843647 <= plus
+***  Proved C2:  - 2138843647 <= plus
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_2.  @@@@@@@@@@
+-S-  Applied substitution rule cycle_rules(2).
+     This was achieved by replacing all occurrences of millisecond__first by:
+          0.
+<S>  New H2:  plus >= 0
+<S>  New H4:  ticks >= 0
+<S>  New C1:  plus - (millisecond__last - ticks) >= 0
+-S-  Applied substitution rule cycle_rules(3).
+     This was achieved by replacing all occurrences of millisecond__last by:
+          8640000.
+<S>  New H3:  plus <= 8640000
+<S>  New H5:  ticks <= 8640000
+<S>  New H6:  8640000 - plus >= millisecond__base__first
+<S>  New H7:  8640000 - plus <= millisecond__base__last
+<S>  New H8:  8640000 - plus < ticks
+<S>  New C2:  plus - (8640000 - ticks) <= 8640000
+<S>  New C3:  8640000 - ticks >= millisecond__base__first
+<S>  New C4:  8640000 - ticks <= millisecond__base__last
+<S>  New C1:  plus - (8640000 - ticks) >= 0
+-S-  Applied substitution rule cycle_rules(4).
+     This was achieved by replacing all occurrences of millisecond__base__first 
+          by:
+          - 2147483648.
+<S>  New H6:  plus <= 2156123648
+<S>  New C3:  ticks <= 2156123648
+-S-  Applied substitution rule cycle_rules(5).
+     This was achieved by replacing all occurrences of millisecond__base__last 
+          by:
+          2147483647.
+<S>  New H7:  - 2138843647 <= plus
+<S>  New C4:  - 2138843647 <= ticks
+***  Proved C3:  ticks <= 2156123648
+     using hypothesis H5.
+***  Proved C4:  - 2138843647 <= ticks
+     using hypothesis H4.
+***  Proved C2:  plus - (8640000 - ticks) <= 8640000
+     via its standard form, which is:
+     Std.Fm C2:  - 8640000 + (plus + ticks) <= 8640000
+     using hypotheses H3 & H5.
+***  Proved C1:  plus - (8640000 - ticks) >= 0
+     via its standard form, which is:
+     Std.Fm C1:  - 8640000 + (plus + ticks) >= 0
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_3.  @@@@@@@@@@
+***  Proved C2:  ticks + plus <= millisecond__last
+     using hypothesis H8.
+-S-  Applied substitution rule cycle_rules(2).
+     This was achieved by replacing all occurrences of millisecond__first by:
+          0.
+<S>  New H2:  plus >= 0
+<S>  New H4:  ticks >= 0
+<S>  New C1:  ticks + plus >= 0
+***  Proved C1:  ticks + plus >= 0
+     using hypotheses H2 & H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

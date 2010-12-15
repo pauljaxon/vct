@@ -1,0 +1,48 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:41.92}
+
+                         {procedure ir.Read_Location}
+
+
+title procedure read_location;
+
+  function round__(real) : integer;
+  type measuretypes__kelvin = integer;
+  type ir_cfg__sector_range = integer;
+  type cell = record
+        temp : integer
+     end;
+  type sector_slice = array [integer] of cell;
+  type sector_array = array [integer] of sector_slice;
+  const sector__base__last : integer = pending; 
+  const sector__base__first : integer = pending; 
+  const kelvin__base__last : integer = pending; 
+  const kelvin__base__first : integer = pending; 
+  const ir_cfg__sector_range__base__last : integer = pending; 
+  const ir_cfg__sector_range__base__first : integer = pending; 
+  const measuretypes__kelvin__base__last : integer = pending; 
+  const measuretypes__kelvin__base__first : integer = pending; 
+  const cell__size : integer = pending; 
+  const sector__size : integer = pending; 
+  const sector__last : integer = pending; 
+  const sector__first : integer = pending; 
+  const kelvin__size : integer = pending; 
+  const kelvin__last : integer = pending; 
+  const kelvin__first : integer = pending; 
+  const ir_cfg__sector_range__size : integer = pending; 
+  const ir_cfg__sector_range__last : integer = pending; 
+  const ir_cfg__sector_range__first : integer = pending; 
+  const measuretypes__kelvin__size : integer = pending; 
+  const measuretypes__kelvin__last : integer = pending; 
+  const measuretypes__kelvin__first : integer = pending; 
+  var sx : integer;
+  var sy : integer;
+  var detect_points : sector_array;
+
+end;

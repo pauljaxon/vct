@@ -1,0 +1,47 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:44.03}
+
+                       {procedure nav.Handle_Airspeed}
+
+
+title procedure handle_airspeed;
+
+  function round__(real) : integer;
+  type measuretypes__meter_per_sec = integer;
+  type sensor_status = (unknown, valid, failed, restarted);
+  const sensor_status__base__last : sensor_status = pending; 
+  const sensor_status__base__first : sensor_status = pending; 
+  const meter_per_sec__base__last : integer = pending; 
+  const meter_per_sec__base__first : integer = pending; 
+  const sensor_history__meter_per_sec__base__last : integer = pending; 
+  const sensor_history__meter_per_sec__base__first : integer = pending; 
+  const measuretypes__meter_per_sec__base__last : integer = pending; 
+  const measuretypes__meter_per_sec__base__first : integer = pending; 
+  const sensor_status__size : integer = pending; 
+  const sensor_status__last : sensor_status = pending; 
+  const sensor_status__first : sensor_status = pending; 
+  const meter_per_sec__size : integer = pending; 
+  const meter_per_sec__last : integer = pending; 
+  const meter_per_sec__first : integer = pending; 
+  const sensor_history__meter_per_sec__size : integer = pending; 
+  const sensor_history__meter_per_sec__last : integer = pending; 
+  const sensor_history__meter_per_sec__first : integer = pending; 
+  const measuretypes__meter_per_sec__size : integer = pending; 
+  const measuretypes__meter_per_sec__last : integer = pending; 
+  const measuretypes__meter_per_sec__first : integer = pending; 
+  var airspeed_ss : sensor_status;
+  var restart : boolean;
+  var speed_now : integer;
+  var sensor_valid : boolean;
+  var sensor_valid__3 : boolean;
+  var speed_now__3 : integer;
+  var sensor_valid__1 : boolean;
+  var speed_now__1 : integer;
+
+end;

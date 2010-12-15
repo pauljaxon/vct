@@ -1,0 +1,74 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:31
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure flying_object.Create
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_create_1.  @@@@@@@@@@
+***  Proved C1:  t__1 >= clock__millisecond__first
+     using hypothesis H20.
+***  Proved C2:  t__1 <= clock__millisecond__last
+     using hypothesis H21.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_create_2.  @@@@@@@@@@
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H21).
+***  Proved C1:  t__1 >= clock__millisecond__first
+     using hypothesis H20.
+***  Proved C2:  t__1 <= clock__millisecond__last
+     using hypothesis H21.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_create_3.  @@@@@@@@@@
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H21).
+-S-  Applied substitution rule create_rules(23).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H20:  t__1 >= 0
+<S>  New C1:  true
+-S-  Applied substitution rule create_rules(24).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H21:  t__1 <= 8640000
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_create_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_create_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

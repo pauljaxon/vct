@@ -1,0 +1,427 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.78
+
+                         function decode.Bit4_Array
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 85:
+
+function_bit4_array_1.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+        ->
+C1:    b >= bus__word__first .
+C2:    b <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 86:
+
+function_bit4_array_2.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    b >= bus__word__first .
+H5:    b <= bus__word__last .
+        ->
+C1:    32768 >= bus__word__first .
+C2:    32768 <= bus__word__last .
+ 
+
+For path(s) from start to assertion of line 88:
+
+function_bit4_array_3.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    b >= bus__word__first .
+H5:    b <= bus__word__last .
+H6:    32768 >= bus__word__first .
+H7:    32768 <= bus__word__last .
+        ->
+C1:    measuretypes__bit4_range__last >= 
+           measuretypes__bit4_range__first .
+C2:    measuretypes__bit4_range__last <= 
+           measuretypes__bit4_range__last .
+C3:    b >= bus__word__first .
+C4:    b <= bus__word__last .
+C5:    measuretypes__bit4_range__last >= 
+           measuretypes__bit4_range__first .
+C6:    measuretypes__bit4_range__last <= 
+           measuretypes__bit4_range__last .
+C7:    measuretypes__bit4_range__last <= 
+           measuretypes__bit4_range__last .
+C8:    measuretypes__bit4_range__last >= 
+           measuretypes__bit4_range__first .
+ 
+
+For path(s) from assertion of line 90 to assertion of line 88:
+
+function_bit4_array_4.
+H1:    loop__1__actual_x >= measuretypes__bit4_range__first .
+H2:    loop__1__actual_x <= measuretypes__bit4_range__last .
+H3:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H4:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H5:    b >= bus__word__first .
+H6:    b <= bus__word__last .
+H7:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H8:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H9:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H10:   loop__2__actual_y >= measuretypes__bit4_range__first .
+H11:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H12:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H13:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H14:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H15:   datum >= bus__word__first .
+H16:   datum <= bus__word__last .
+H17:   add_bit >= bus__word__first .
+H18:   add_bit <= bus__word__last .
+H19:   datum >= add_bit .
+H20:   loop__2__actual_y >= measuretypes__bit4_range__first .
+H21:   loop__2__actual_y <= measuretypes__bit4_range__last .
+H22:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H23:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H24:   datum >= bus__word__first .
+H25:   datum <= bus__word__last .
+H26:   add_bit >= bus__word__first .
+H27:   add_bit <= bus__word__last .
+H28:   datum - add_bit >= bus__word__first .
+H29:   datum - add_bit <= bus__word__last .
+H30:   add_bit >= bus__word__first .
+H31:   add_bit <= bus__word__last .
+H32:   add_bit div 2 >= bus__word__first .
+H33:   add_bit div 2 <= bus__word__last .
+H34:   2 <> 0 .
+H35:   loop__2__actual_y = measuretypes__bit4_range__first .
+H36:   not (loop__1__actual_x = measuretypes__bit4_range__first) .
+        ->
+C1:    loop__1__actual_x - 1 >= measuretypes__bit4_range__first .
+C2:    loop__1__actual_x - 1 <= measuretypes__bit4_range__last .
+C3:    b >= bus__word__first .
+C4:    b <= bus__word__last .
+C5:    loop__1__actual_x - 1 >= measuretypes__bit4_range__first .
+C6:    loop__1__actual_x - 1 <= measuretypes__bit4_range__last .
+C7:    loop__1__actual_x - 1 <= measuretypes__bit4_range__last .
+C8:    loop__1__actual_x - 1 >= measuretypes__bit4_range__first .
+ 
+
+function_bit4_array_5.
+H1:    loop__1__actual_x >= measuretypes__bit4_range__first .
+H2:    loop__1__actual_x <= measuretypes__bit4_range__last .
+H3:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H4:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H5:    b >= bus__word__first .
+H6:    b <= bus__word__last .
+H7:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H8:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H9:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H10:   loop__2__actual_y >= measuretypes__bit4_range__first .
+H11:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H12:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H13:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H14:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H15:   datum >= bus__word__first .
+H16:   datum <= bus__word__last .
+H17:   add_bit >= bus__word__first .
+H18:   add_bit <= bus__word__last .
+H19:   not (datum >= add_bit) .
+H20:   add_bit >= bus__word__first .
+H21:   add_bit <= bus__word__last .
+H22:   add_bit div 2 >= bus__word__first .
+H23:   add_bit div 2 <= bus__word__last .
+H24:   2 <> 0 .
+H25:   loop__2__actual_y = measuretypes__bit4_range__first .
+H26:   not (loop__1__actual_x = measuretypes__bit4_range__first) .
+        ->
+C1:    loop__1__actual_x - 1 >= measuretypes__bit4_range__first .
+C2:    loop__1__actual_x - 1 <= measuretypes__bit4_range__last .
+C3:    b >= bus__word__first .
+C4:    b <= bus__word__last .
+C5:    loop__1__actual_x - 1 >= measuretypes__bit4_range__first .
+C6:    loop__1__actual_x - 1 <= measuretypes__bit4_range__last .
+C7:    loop__1__actual_x - 1 <= measuretypes__bit4_range__last .
+C8:    loop__1__actual_x - 1 >= measuretypes__bit4_range__first .
+ 
+
+For path(s) from assertion of line 88 to assertion of line 90:
+
+function_bit4_array_6.
+H1:    loop__1__actual_x >= measuretypes__bit4_range__first .
+H2:    loop__1__actual_x <= measuretypes__bit4_range__last .
+H3:    b >= bus__word__first .
+H4:    b <= bus__word__last .
+H5:    loop__1__actual_x >= measuretypes__bit4_range__first .
+H6:    loop__1__actual_x <= measuretypes__bit4_range__last .
+H7:    loop__1__actual_x <= measuretypes__bit4_range__last .
+H8:    loop__1__actual_x >= measuretypes__bit4_range__first .
+        ->
+C1:    loop__1__actual_x >= measuretypes__bit4_range__first .
+C2:    loop__1__actual_x <= measuretypes__bit4_range__last .
+C3:    measuretypes__bit4_range__last >= 
+           measuretypes__bit4_range__first .
+C4:    measuretypes__bit4_range__last <= 
+           measuretypes__bit4_range__last .
+C5:    b >= bus__word__first .
+C6:    b <= bus__word__last .
+C7:    measuretypes__bit4_range__last >= 
+           measuretypes__bit4_range__first .
+C8:    measuretypes__bit4_range__last <= 
+           measuretypes__bit4_range__last .
+C9:    measuretypes__bit4_range__last <= 
+           measuretypes__bit4_range__last .
+C10:   measuretypes__bit4_range__last >= 
+           measuretypes__bit4_range__first .
+C11:   loop__1__actual_x >= measuretypes__bit4_range__first .
+C12:   loop__1__actual_x <= measuretypes__bit4_range__last .
+C13:   loop__1__actual_x <= measuretypes__bit4_range__last .
+C14:   loop__1__actual_x >= measuretypes__bit4_range__first .
+ 
+
+For path(s) from assertion of line 90 to assertion of line 90:
+
+function_bit4_array_7.
+H1:    loop__1__actual_x >= measuretypes__bit4_range__first .
+H2:    loop__1__actual_x <= measuretypes__bit4_range__last .
+H3:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H4:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H5:    b >= bus__word__first .
+H6:    b <= bus__word__last .
+H7:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H8:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H9:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H10:   loop__2__actual_y >= measuretypes__bit4_range__first .
+H11:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H12:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H13:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H14:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H15:   datum >= bus__word__first .
+H16:   datum <= bus__word__last .
+H17:   add_bit >= bus__word__first .
+H18:   add_bit <= bus__word__last .
+H19:   datum >= add_bit .
+H20:   loop__2__actual_y >= measuretypes__bit4_range__first .
+H21:   loop__2__actual_y <= measuretypes__bit4_range__last .
+H22:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H23:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H24:   datum >= bus__word__first .
+H25:   datum <= bus__word__last .
+H26:   add_bit >= bus__word__first .
+H27:   add_bit <= bus__word__last .
+H28:   datum - add_bit >= bus__word__first .
+H29:   datum - add_bit <= bus__word__last .
+H30:   add_bit >= bus__word__first .
+H31:   add_bit <= bus__word__last .
+H32:   add_bit div 2 >= bus__word__first .
+H33:   add_bit div 2 <= bus__word__last .
+H34:   2 <> 0 .
+H35:   not (loop__2__actual_y = measuretypes__bit4_range__first) .
+        ->
+C1:    loop__1__actual_x >= measuretypes__bit4_range__first .
+C2:    loop__1__actual_x <= measuretypes__bit4_range__last .
+C3:    loop__2__actual_y - 1 >= measuretypes__bit4_range__first .
+C4:    loop__2__actual_y - 1 <= measuretypes__bit4_range__last .
+C5:    b >= bus__word__first .
+C6:    b <= bus__word__last .
+C7:    loop__2__actual_y - 1 >= measuretypes__bit4_range__first .
+C8:    loop__2__actual_y - 1 <= measuretypes__bit4_range__last .
+C9:    loop__2__actual_y - 1 <= measuretypes__bit4_range__last .
+C10:   loop__2__actual_y - 1 >= measuretypes__bit4_range__first .
+C11:   loop__1__actual_x >= measuretypes__bit4_range__first .
+C12:   loop__1__actual_x <= measuretypes__bit4_range__last .
+C13:   loop__1__actual_x <= measuretypes__bit4_range__last .
+C14:   loop__1__actual_x >= measuretypes__bit4_range__first .
+ 
+
+function_bit4_array_8.
+H1:    loop__1__actual_x >= measuretypes__bit4_range__first .
+H2:    loop__1__actual_x <= measuretypes__bit4_range__last .
+H3:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H4:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H5:    b >= bus__word__first .
+H6:    b <= bus__word__last .
+H7:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H8:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H9:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H10:   loop__2__actual_y >= measuretypes__bit4_range__first .
+H11:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H12:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H13:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H14:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H15:   datum >= bus__word__first .
+H16:   datum <= bus__word__last .
+H17:   add_bit >= bus__word__first .
+H18:   add_bit <= bus__word__last .
+H19:   not (datum >= add_bit) .
+H20:   add_bit >= bus__word__first .
+H21:   add_bit <= bus__word__last .
+H22:   add_bit div 2 >= bus__word__first .
+H23:   add_bit div 2 <= bus__word__last .
+H24:   2 <> 0 .
+H25:   not (loop__2__actual_y = measuretypes__bit4_range__first) .
+        ->
+C1:    loop__1__actual_x >= measuretypes__bit4_range__first .
+C2:    loop__1__actual_x <= measuretypes__bit4_range__last .
+C3:    loop__2__actual_y - 1 >= measuretypes__bit4_range__first .
+C4:    loop__2__actual_y - 1 <= measuretypes__bit4_range__last .
+C5:    b >= bus__word__first .
+C6:    b <= bus__word__last .
+C7:    loop__2__actual_y - 1 >= measuretypes__bit4_range__first .
+C8:    loop__2__actual_y - 1 <= measuretypes__bit4_range__last .
+C9:    loop__2__actual_y - 1 <= measuretypes__bit4_range__last .
+C10:   loop__2__actual_y - 1 >= measuretypes__bit4_range__first .
+C11:   loop__1__actual_x >= measuretypes__bit4_range__first .
+C12:   loop__1__actual_x <= measuretypes__bit4_range__last .
+C13:   loop__1__actual_x <= measuretypes__bit4_range__last .
+C14:   loop__1__actual_x >= measuretypes__bit4_range__first .
+ 
+
+For path(s) from assertion of line 90 to run-time check associated with statement of line 93:
+
+function_bit4_array_9.
+H1:    loop__1__actual_x >= measuretypes__bit4_range__first .
+H2:    loop__1__actual_x <= measuretypes__bit4_range__last .
+H3:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H4:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H5:    b >= bus__word__first .
+H6:    b <= bus__word__last .
+H7:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H8:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H9:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H10:   loop__2__actual_y >= measuretypes__bit4_range__first .
+H11:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H12:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H13:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H14:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H15:   datum >= bus__word__first .
+H16:   datum <= bus__word__last .
+H17:   add_bit >= bus__word__first .
+H18:   add_bit <= bus__word__last .
+H19:   datum >= add_bit .
+        ->
+C1:    loop__2__actual_y >= measuretypes__bit4_range__first .
+C2:    loop__2__actual_y <= measuretypes__bit4_range__last .
+C3:    loop__1__actual_x >= measuretypes__bit4_range__first .
+C4:    loop__1__actual_x <= measuretypes__bit4_range__last .
+ 
+
+For path(s) from assertion of line 90 to run-time check associated with statement of line 94:
+
+function_bit4_array_10.
+H1:    loop__1__actual_x >= measuretypes__bit4_range__first .
+H2:    loop__1__actual_x <= measuretypes__bit4_range__last .
+H3:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H4:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H5:    b >= bus__word__first .
+H6:    b <= bus__word__last .
+H7:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H8:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H9:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H10:   loop__2__actual_y >= measuretypes__bit4_range__first .
+H11:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H12:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H13:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H14:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H15:   datum >= bus__word__first .
+H16:   datum <= bus__word__last .
+H17:   add_bit >= bus__word__first .
+H18:   add_bit <= bus__word__last .
+H19:   datum >= add_bit .
+H20:   loop__2__actual_y >= measuretypes__bit4_range__first .
+H21:   loop__2__actual_y <= measuretypes__bit4_range__last .
+H22:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H23:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H24:   datum >= bus__word__first .
+H25:   datum <= bus__word__last .
+H26:   add_bit >= bus__word__first .
+H27:   add_bit <= bus__word__last .
+        ->
+C1:    datum - add_bit >= bus__word__first .
+C2:    datum - add_bit <= bus__word__last .
+ 
+
+For path(s) from assertion of line 90 to run-time check associated with statement of line 96:
+
+function_bit4_array_11.
+H1:    loop__1__actual_x >= measuretypes__bit4_range__first .
+H2:    loop__1__actual_x <= measuretypes__bit4_range__last .
+H3:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H4:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H5:    b >= bus__word__first .
+H6:    b <= bus__word__last .
+H7:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H8:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H9:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H10:   loop__2__actual_y >= measuretypes__bit4_range__first .
+H11:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H12:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H13:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H14:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H15:   datum >= bus__word__first .
+H16:   datum <= bus__word__last .
+H17:   add_bit >= bus__word__first .
+H18:   add_bit <= bus__word__last .
+H19:   datum >= add_bit .
+H20:   loop__2__actual_y >= measuretypes__bit4_range__first .
+H21:   loop__2__actual_y <= measuretypes__bit4_range__last .
+H22:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H23:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H24:   datum >= bus__word__first .
+H25:   datum <= bus__word__last .
+H26:   add_bit >= bus__word__first .
+H27:   add_bit <= bus__word__last .
+H28:   datum - add_bit >= bus__word__first .
+H29:   datum - add_bit <= bus__word__last .
+H30:   add_bit >= bus__word__first .
+H31:   add_bit <= bus__word__last .
+        ->
+C1:    add_bit div 2 >= bus__word__first .
+C2:    add_bit div 2 <= bus__word__last .
+C3:    2 <> 0 .
+ 
+
+function_bit4_array_12.
+H1:    loop__1__actual_x >= measuretypes__bit4_range__first .
+H2:    loop__1__actual_x <= measuretypes__bit4_range__last .
+H3:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H4:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H5:    b >= bus__word__first .
+H6:    b <= bus__word__last .
+H7:    loop__2__actual_y >= measuretypes__bit4_range__first .
+H8:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H9:    loop__2__actual_y <= measuretypes__bit4_range__last .
+H10:   loop__2__actual_y >= measuretypes__bit4_range__first .
+H11:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H12:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H13:   loop__1__actual_x <= measuretypes__bit4_range__last .
+H14:   loop__1__actual_x >= measuretypes__bit4_range__first .
+H15:   datum >= bus__word__first .
+H16:   datum <= bus__word__last .
+H17:   add_bit >= bus__word__first .
+H18:   add_bit <= bus__word__last .
+H19:   not (datum >= add_bit) .
+H20:   add_bit >= bus__word__first .
+H21:   add_bit <= bus__word__last .
+        ->
+C1:    add_bit div 2 >= bus__word__first .
+C2:    add_bit div 2 <= bus__word__last .
+C3:    2 <> 0 .
+ 
+
+For path(s) from assertion of line 90 to finish:
+
+function_bit4_array_13.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+function_bit4_array_14.
+*** true .          /* trivially true VC removed by Examiner */
+
+

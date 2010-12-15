@@ -1,0 +1,82 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.04
+
+Line
+   1  -- MCU interface to the motor over the bus
+   2  --
+   3  -- $Log: if_motor.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/11 19:50:55  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.1  2003/09/01 18:26:22  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with motor_cfg, Ibit;
+  16  --# inherit SystemTypes, MeasureTypes, Bus, Ibit,
+  17  --# bc1553, motor_cfg, measuretypes.encode, measuretypes.decode;
+  18  package If_Motor
+  19    --# own State;
+  20    --# initializes State;
+  21  is
+  22     subtype Power is Motor_Cfg.Motor_Power;
+  23  
+  24     function Get_Ibit_State return Ibit.Phase;
+  25     --# global state;
+  26  
+  27     -- Find out the current thrust
+  28     procedure Get_Thrust(This_Level : out Power;
+  29                          Valid      : out Boolean);
+  30     --# global in State;
+  31     --# derives this_level from State &
+  32     --#   valid from State;
+  33  
+  34     -- Command a motor thrust level
+  35     procedure Set_Thrust(New_Level : in Power);
+  36     --# global in out Bus.Outputs;
+  37     --# derives Bus.Outputs from *, new_level;
+  38  
+  39     -- Kick off a motor IBIT
+  40     procedure Ibit_Start;
+  41     --# global in out Bus.Outputs, State;
+  42     --# derives Bus.Outputs from * &
+  43     --#         State from *;
+  44  
+  45     -- Stop a motor IBIT
+  46     procedure Ibit_Stop;
+  47     --# global in out Bus.Outputs, State;
+  48     --# derives Bus.Outputs from * &
+  49     --#         State from *;
+  50  
+  51     -- Poll the bus
+  52     procedure Poll;
+  53     --# global in out State;
+  54     --#        in Bus.Inputs;
+  55     --# derives State from *, Bus.Inputs;
+  56  
+  57     -- Initialise
+  58     procedure Init;
+  59     --# global out State;
+  60     --#        in out Bus.Outputs;
+  61     --# derives State from &
+  62     --#         Bus.Outputs from *;
+  63  
+  64     -- test point
+  65     procedure Command;
+  66     --# derives;
+  67  end If_Motor;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

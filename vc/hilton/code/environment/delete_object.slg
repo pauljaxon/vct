@@ -1,0 +1,82 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:33
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure environment.Delete_Object
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_delete_object_1.  @@@@@@@@@@
+-S-  Applied substitution rule delete_objec_rules(8).
+     This was achieved by replacing all occurrences of valid_handle__first by:
+          1.
+<S>  New H5:  not (h < 1 or h > valid_handle__last)
+<S>  New C1:  h >= 1
+-S-  Applied substitution rule delete_objec_rules(9).
+     This was achieved by replacing all occurrences of valid_handle__last by:
+          20.
+<S>  New H5:  not (h < 1 or h > 20)
+<S>  New C2:  h <= 20
+>>>  Restructured hypothesis H5 into:
+     >>>  H5:  1 <= h and h <= 20
+>>>  Hypothesis H5 has now been split into two, giving:
+     >>>  H5:  1 <= h
+     >>>  H6:  h <= 20
+-S-  Applied substitution rule delete_objec_rules(2).
+     This was achieved by replacing all occurrences of handle__first by:
+          0.
+<S>  New H2:  h >= 0
+-S-  Applied substitution rule delete_objec_rules(3).
+     This was achieved by replacing all occurrences of handle__last by:
+          20.
+<S>  New H3:  h <= 20
+***  Proved C1:  h >= 1
+     using hypothesis H5.
+***  Proved C2:  h <= 20
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_delete_object_2.  @@@@@@@@@@
+***  Proved C1:  h >= valid_handle__first
+     using hypothesis H6.
+***  Proved C2:  h <= valid_handle__last
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_delete_object_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_delete_object_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_delete_object_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_delete_object_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_delete_object_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

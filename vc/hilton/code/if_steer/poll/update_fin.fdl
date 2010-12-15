@@ -1,0 +1,84 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:42.79}
+
+                     {procedure if_steer.Poll.Update_Fin}
+
+
+title procedure update_fin;
+
+  function round__(real) : integer;
+  type bus__word_index = integer;
+  type bus__all_msg_index = integer;
+  type bc1553__lru_name = (bc1553__barometer, bc1553__asi, 
+     bc1553__ins, bc1553__compass, bc1553__fuel, bc1553__fuze, 
+     bc1553__radar, bc1553__infrared, bc1553__fins, bc1553__motor, 
+     bc1553__destruct, bc1553__warhead);
+  type steer_cfg__fin_angle = integer;
+  type steer_cfg__fin = (steer_cfg__port, steer_cfg__starboard, 
+     steer_cfg__top, steer_cfg__bottom);
+  type fin_angles = array [steer_cfg__fin] of integer;
+  const bus_id : bc1553__lru_name = pending;
+  const angle__base__last : integer = pending; 
+  const angle__base__first : integer = pending; 
+  const fin__base__last : steer_cfg__fin = pending; 
+  const fin__base__first : steer_cfg__fin = pending; 
+  const steer_cfg__fin__base__last : steer_cfg__fin = pending; 
+  const steer_cfg__fin__base__first : steer_cfg__fin = pending; 
+  const steer_cfg__fin_angle__base__last : integer = pending; 
+  const steer_cfg__fin_angle__base__first : integer = pending; 
+  const bc1553__lru_name__base__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__base__first : bc1553__lru_name = pending; 
+  const bus__lru_subaddress_index__base__last : integer = pending; 
+  const bus__lru_subaddress_index__base__first : integer = pending; 
+  const bus__all_msg_index__base__last : integer = pending; 
+  const bus__all_msg_index__base__first : integer = pending; 
+  const bus__word__base__last : integer = pending; 
+  const bus__word__base__first : integer = pending; 
+  const bus__word_index__base__last : integer = pending; 
+  const bus__word_index__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const angle__size : integer = pending; 
+  const angle__last : integer = pending; 
+  const angle__first : integer = pending; 
+  const fin__size : integer = pending; 
+  const fin__last : steer_cfg__fin = pending; 
+  const fin__first : steer_cfg__fin = pending; 
+  const steer_cfg__fin__size : integer = pending; 
+  const steer_cfg__fin__last : steer_cfg__fin = pending; 
+  const steer_cfg__fin__first : steer_cfg__fin = pending; 
+  const steer_cfg__fin_angle__size : integer = pending; 
+  const steer_cfg__fin_angle__last : integer = pending; 
+  const steer_cfg__fin_angle__first : integer = pending; 
+  const bc1553__lru_name__size : integer = pending; 
+  const bc1553__lru_name__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__first : bc1553__lru_name = pending; 
+  const bus__lru_subaddress_index__size : integer = pending; 
+  const bus__lru_subaddress_index__last : integer = pending; 
+  const bus__lru_subaddress_index__first : integer = pending; 
+  const bus__all_msg_index__size : integer = pending; 
+  const bus__all_msg_index__last : integer = pending; 
+  const bus__all_msg_index__first : integer = pending; 
+  const bus__word__size : integer = pending; 
+  const bus__word__last : integer = pending; 
+  const bus__word__first : integer = pending; 
+  const bus__word_index__size : integer = pending; 
+  const bus__word_index__last : integer = pending; 
+  const bus__word_index__first : integer = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+  var last_fins : fin_angles;
+  var for_fin : steer_cfg__fin;
+  var idx : integer;
+  var word : integer;
+  function steer_cfg__decode__fin_angle(integer) : integer;
+  var word__1 : integer;
+
+end;

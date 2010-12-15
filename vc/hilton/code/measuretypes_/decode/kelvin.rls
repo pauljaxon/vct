@@ -1,0 +1,32 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:38.71*/
+
+                           /*function decode.Kelvin*/
+
+
+rule_family kelvin_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+kelvin_rules(1): integer__size >= 0 may_be_deduced.
+kelvin_rules(2): integer__first may_be_replaced_by -2147483648.
+kelvin_rules(3): integer__last may_be_replaced_by 2147483647.
+kelvin_rules(4): integer__base__first may_be_replaced_by -2147483648.
+kelvin_rules(5): integer__base__last may_be_replaced_by 2147483647.
+kelvin_rules(6): measuretypes__kelvin__size >= 0 may_be_deduced.
+kelvin_rules(7): measuretypes__kelvin__first may_be_replaced_by 0.
+kelvin_rules(8): measuretypes__kelvin__last may_be_replaced_by 6000.
+kelvin_rules(9): measuretypes__kelvin__base__first may_be_replaced_by -2147483648.
+kelvin_rules(10): measuretypes__kelvin__base__last may_be_replaced_by 2147483647.
+kelvin_rules(11): bus__word__size >= 0 may_be_deduced.
+kelvin_rules(12): bus__word__first may_be_replaced_by 0.
+kelvin_rules(13): bus__word__last may_be_replaced_by 65535.
+kelvin_rules(14): bus__word__base__first may_be_replaced_by -2147483648.
+kelvin_rules(15): bus__word__base__last may_be_replaced_by 2147483647.

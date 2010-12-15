@@ -1,0 +1,2704 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:41  SIMPLIFIED 25-NOV-2009, 14:18:56
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure Radar.Sweep.Derive_Grid
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  x_end - x_start >= - 2147483648
+<S>  New C3:  x_start >= - 2147483648
+<S>  New C5:  x_end >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  x_end - x_start <= 2147483647
+<S>  New C4:  x_start <= 2147483647
+<S>  New C6:  x_end <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H4:  x_start >= - 20
+<S>  New H6:  x_end >= - 20
+<S>  New H8:  y_start >= - 20
+<S>  New H10:  y_end >= - 20
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+<S>  New H2:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) and fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H5:  x_start <= 20
+<S>  New H7:  x_end <= 20
+<S>  New H9:  y_start <= 20
+<S>  New H11:  y_end <= 20
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H2:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+***  Proved C1:  x_end - x_start >= - 2147483648
+     using hypotheses H5 & H6.
+***  Proved C3:  x_start >= - 2147483648
+     using hypothesis H4.
+***  Proved C5:  x_end >= - 2147483648
+     using hypothesis H6.
+***  Proved C2:  x_end - x_start <= 2147483647
+     using hypotheses H4 & H7.
+***  Proved C4:  x_start <= 2147483647
+     using hypothesis H5.
+***  Proved C6:  x_end <= 2147483647
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H12:  x_end - x_start >= - 2147483648
+<S>  New H14:  x_start >= - 2147483648
+<S>  New H16:  x_end >= - 2147483648
+<S>  New C1:  y_end - y_start >= - 2147483648
+<S>  New C3:  y_start >= - 2147483648
+<S>  New C5:  y_end >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H13:  x_end - x_start <= 2147483647
+<S>  New H15:  x_start <= 2147483647
+<S>  New H17:  x_end <= 2147483647
+<S>  New C2:  y_end - y_start <= 2147483647
+<S>  New C4:  y_start <= 2147483647
+<S>  New C6:  y_end <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H4:  x_start >= - 20
+<S>  New H6:  x_end >= - 20
+<S>  New H8:  y_start >= - 20
+<S>  New H10:  y_end >= - 20
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+<S>  New H2:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) and fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H5:  x_start <= 20
+<S>  New H7:  x_end <= 20
+<S>  New H9:  y_start <= 20
+<S>  New H11:  y_end <= 20
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H2:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+***  Proved C1:  y_end - y_start >= - 2147483648
+     using hypotheses H9 & H10.
+***  Proved C3:  y_start >= - 2147483648
+     using hypothesis H8.
+***  Proved C5:  y_end >= - 2147483648
+     using hypothesis H10.
+***  Proved C2:  y_end - y_start <= 2147483647
+     using hypotheses H8 & H11.
+***  Proved C4:  y_start <= 2147483647
+     using hypothesis H9.
+***  Proved C6:  y_end <= 2147483647
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(29).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__first by:
+          - 20.
+<S>  New C1:  x_end >= - 20
+<S>  New C3:  x_start >= - 20
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__last by:
+          20.
+<S>  New C2:  x_end <= 20
+<S>  New C4:  x_start <= 20
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H4:  x_start >= - 20
+<S>  New H6:  x_end >= - 20
+<S>  New H8:  y_start >= - 20
+<S>  New H10:  y_end >= - 20
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+<S>  New H2:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) and fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H5:  x_start <= 20
+<S>  New H7:  x_end <= 20
+<S>  New H9:  y_start <= 20
+<S>  New H11:  y_end <= 20
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H2:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H12:  x_end - x_start >= - 2147483648
+<S>  New H14:  x_start >= - 2147483648
+<S>  New H16:  x_end >= - 2147483648
+<S>  New H18:  y_end - y_start >= - 2147483648
+<S>  New H20:  y_start >= - 2147483648
+<S>  New H22:  y_end >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H13:  x_end - x_start <= 2147483647
+<S>  New H15:  x_start <= 2147483647
+<S>  New H17:  x_end <= 2147483647
+<S>  New H19:  y_end - y_start <= 2147483647
+<S>  New H21:  y_start <= 2147483647
+<S>  New H23:  y_end <= 2147483647
+***  Proved C1:  x_end >= - 20
+     using hypothesis H6.
+***  Proved C3:  x_start >= - 20
+     using hypothesis H4.
+***  Proved C2:  x_end <= 20
+     using hypothesis H7.
+***  Proved C4:  x_start <= 20
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+***  Proved C1:  x_start <= x_end -> x_end >= sector__first and x_end <= 
+          sector__last
+     using hypotheses H6 & H7.
+***  Proved C2:  x_start <= x_end -> x_start >= sector__first and x_start <= 
+          sector__last
+     using hypotheses H4 & H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified C4 on reading formula in, to give:
+     %%%  C4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+%%%  Simplified C15 on reading formula in, to give:
+     %%%  C15:  true
+***  Proved C1:  true
+***  Proved C2:  x_start <= x_end
+     using hypothesis H30.
+***  Proved C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+     using hypothesis H2.
+***  Proved C4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+     using hypothesis H3.
+***  Proved C5:  x_start >= sector__first
+     using hypothesis H4.
+***  Proved C6:  x_start <= sector__last
+     using hypothesis H5.
+***  Proved C7:  x_end >= sector__first
+     using hypothesis H6.
+***  Proved C8:  x_end <= sector__last
+     using hypothesis H7.
+***  Proved C9:  y_start >= sector__first
+     using hypothesis H8.
+***  Proved C10:  y_start <= sector__last
+     using hypothesis H9.
+***  Proved C11:  y_end >= sector__first
+     using hypothesis H10.
+***  Proved C12:  y_end <= sector__last
+     using hypothesis H11.
+***  Proved C13:  x_start >= sector__first
+     using hypothesis H4.
+***  Proved C14:  x_start <= sector__last
+     using hypothesis H5.
+***  Proved C15:  true
+***  Proved C16:  x_start <= x_end
+     using hypothesis H30.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_6.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H28).
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  dx <> - 1
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified C4 on reading formula in, to give:
+     %%%  C4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+***  Proved C1:  loop__1__x + 1 >= x_start
+     using hypothesis H1.
+***  Proved C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+     using hypothesis H3.
+***  Proved C4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+     using hypothesis H4.
+***  Proved C5:  x_start >= sector__first
+     using hypothesis H5.
+***  Proved C6:  x_start <= sector__last
+     using hypothesis H6.
+***  Proved C7:  x_end >= sector__first
+     using hypothesis H7.
+***  Proved C8:  x_end <= sector__last
+     using hypothesis H8.
+***  Proved C9:  y_start >= sector__first
+     using hypothesis H9.
+***  Proved C10:  y_start <= sector__last
+     using hypothesis H10.
+***  Proved C11:  y_end >= sector__first
+     using hypothesis H11.
+***  Proved C12:  y_end <= sector__last
+     using hypothesis H12.
+***  Proved C13:  loop__1__x + 1 >= sector__first
+     using hypothesis H13.
+***  Proved C15:  loop__1__x + 1 >= x_start
+     using hypothesis H1.
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          meter_per_sec__first <= fld_rel_vel(element(element(detect_points, [
+          i___1]), [i___2])) and fld_rel_vel(element(element(detect_points, [
+          i___1]), [i___2])) <= meter_per_sec__last))
+<S>  New H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          meter__first <= fld_distance(element(element(detect_points, [i___1]), 
+          [i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= meter__last))
+<S>  New H6:  x_start <= 20
+<S>  New H8:  x_end <= 20
+<S>  New H10:  y_start <= 20
+<S>  New H12:  y_end <= 20
+<S>  New H14:  loop__1__x <= 20
+<S>  New H42:  y_start <= y_end -> y_end >= sector__first and y_end <= 20
+<S>  New H43:  y_start <= y_end -> y_start >= sector__first and y_start <= 20
+<S>  New C14:  loop__1__x <= 19
+***  Proved C14:  loop__1__x <= 19
+     using hypotheses H2, H8 & H45.
+>>>  Restructured hypothesis H44 into:
+     >>>  H44:  y_end < y_start
+>>>  Restructured hypothesis H45 into:
+     >>>  H45:  loop__1__x <> x_end
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H31:  4 * (loop__1__x - x_start) div (dx + 1) >= - 2147483648
+<S>  New H34:  dx >= - 2147483649
+<S>  New H36:  4 * (loop__1__x - x_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H32:  4 * (loop__1__x - x_start) div (dx + 1) <= 2147483647
+<S>  New H35:  dx <= 2147483646
+<S>  New H37:  4 * (loop__1__x - x_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H27:  4 * (loop__1__x - x_start) div (dx + 1) >= 0
+-S-  Applied substitution rule derive_grid_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H28:  4 * (loop__1__x - x_start) div (dx + 1) <= 3
+-S-  Applied substitution rule derive_grid_rules(29).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__first by:
+          - 20.
+<S>  New H38:  y_end >= - 20
+<S>  New H40:  y_start >= - 20
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__last by:
+          20.
+<S>  New H39:  y_end <= 20
+<S>  New H41:  y_start <= 20
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [i___2]
+          )) and fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) 
+          <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [i___2]
+          )) and fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) 
+          <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H5:  x_start >= - 20
+<S>  New H7:  x_end >= - 20
+<S>  New H9:  y_start >= - 20
+<S>  New H11:  y_end >= - 20
+<S>  New H13:  loop__1__x >= - 20
+<S>  New H42:  y_start <= y_end -> y_end >= - 20 and y_end <= 20
+<S>  New H43:  y_start <= y_end -> y_start >= - 20 and y_start <= 20
+<S>  New H4:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H17:  loop__1__x - x_start >= - 2147483648
+<S>  New H19:  x_start >= - 2147483648
+<S>  New H21:  loop__1__x >= - 2147483648
+<S>  New H23:  dx >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H18:  loop__1__x - x_start <= 2147483647
+<S>  New H20:  x_start <= 2147483647
+<S>  New H22:  loop__1__x <= 2147483647
+<S>  New H24:  dx <= 2147483647
+%%%  Hypotheses H2 & H45 together imply that
+          loop__1__x < x_end.
+     H2 & H45 have therefore been deleted and a new H2 added to this effect.
+***  Proved C2:  loop__1__x + 1 <= x_end
+     via its standard form, which is:
+     Std.Fm C2:  - loop__1__x + x_end > 0
+     using hypothesis H2.
+***  Proved C16:  loop__1__x + 1 <= x_end
+     via its standard form, which is:
+     Std.Fm C16:  - loop__1__x + x_end > 0
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_7.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H34).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  dy <> - 1
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H34).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified C4 on reading formula in, to give:
+     %%%  C4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+***  Proved C1:  loop__1__x + 1 >= x_start
+     using hypothesis H1.
+***  Proved C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+     using hypothesis H5.
+***  Proved C4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+     using hypothesis H6.
+***  Proved C5:  x_start >= sector__first
+     using hypothesis H7.
+***  Proved C6:  x_start <= sector__last
+     using hypothesis H8.
+***  Proved C7:  x_end >= sector__first
+     using hypothesis H9.
+***  Proved C8:  x_end <= sector__last
+     using hypothesis H10.
+***  Proved C9:  y_start >= sector__first
+     using hypothesis H11.
+***  Proved C10:  y_start <= sector__last
+     using hypothesis H12.
+***  Proved C11:  y_end >= sector__first
+     using hypothesis H13.
+***  Proved C12:  y_end <= sector__last
+     using hypothesis H14.
+***  Proved C13:  loop__1__x + 1 >= sector__first
+     using hypothesis H19.
+***  Proved C15:  loop__1__x + 1 >= x_start
+     using hypothesis H1.
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          meter_per_sec__first <= fld_rel_vel(element(element(detect_points, [
+          i___1]), [i___2])) and fld_rel_vel(element(element(detect_points, [
+          i___1]), [i___2])) <= meter_per_sec__last))
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          meter__first <= fld_distance(element(element(detect_points, [i___1]), 
+          [i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= meter__last))
+<S>  New H8:  x_start <= 20
+<S>  New H10:  x_end <= 20
+<S>  New H12:  y_start <= 20
+<S>  New H14:  y_end <= 20
+<S>  New H16:  loop__2__y <= 20
+<S>  New H20:  loop__1__x <= 20
+<S>  New C14:  loop__1__x <= 19
+***  Proved C14:  loop__1__x <= 19
+     using hypotheses H2, H10 & H54.
+>>>  Restructured hypothesis H54 into:
+     >>>  H54:  loop__1__x <> x_end
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H37:  4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648
+<S>  New H40:  dy >= - 2147483649
+<S>  New H42:  4 * (loop__2__y - y_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H38:  4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647
+<S>  New H41:  dy <= 2147483646
+<S>  New H43:  4 * (loop__2__y - y_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H33:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+<S>  New H51:  actual_x >= 0
+-S-  Applied substitution rule derive_grid_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H34:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+<S>  New H52:  actual_x <= 3
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [i___2]
+          )) and fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) 
+          <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [i___2]
+          )) and fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) 
+          <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H7:  x_start >= - 20
+<S>  New H9:  x_end >= - 20
+<S>  New H11:  y_start >= - 20
+<S>  New H13:  y_end >= - 20
+<S>  New H15:  loop__2__y >= - 20
+<S>  New H19:  loop__1__x >= - 20
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H5:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H23:  loop__2__y - y_start >= - 2147483648
+<S>  New H25:  y_start >= - 2147483648
+<S>  New H27:  loop__2__y >= - 2147483648
+<S>  New H29:  dy >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H24:  loop__2__y - y_start <= 2147483647
+<S>  New H26:  y_start <= 2147483647
+<S>  New H28:  loop__2__y <= 2147483647
+<S>  New H30:  dy <= 2147483647
+%%%  Hypotheses H2 & H54 together imply that
+          loop__1__x < x_end.
+     H2 & H54 have therefore been deleted and a new H2 added to this effect.
+***  Proved C2:  loop__1__x + 1 <= x_end
+     via its standard form, which is:
+     Std.Fm C2:  - loop__1__x + x_end > 0
+     using hypothesis H2.
+***  Proved C16:  loop__1__x + 1 <= x_end
+     via its standard form, which is:
+     Std.Fm C16:  - loop__1__x + x_end > 0
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_8.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H34).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  dy <> - 1
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H20).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified C4 on reading formula in, to give:
+     %%%  C4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+***  Proved C1:  loop__1__x + 1 >= x_start
+     using hypothesis H1.
+***  Proved C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+     using hypothesis H5.
+***  Proved C4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+     using hypothesis H6.
+***  Proved C5:  x_start >= sector__first
+     using hypothesis H7.
+***  Proved C6:  x_start <= sector__last
+     using hypothesis H8.
+***  Proved C7:  x_end >= sector__first
+     using hypothesis H9.
+***  Proved C8:  x_end <= sector__last
+     using hypothesis H10.
+***  Proved C9:  y_start >= sector__first
+     using hypothesis H11.
+***  Proved C10:  y_start <= sector__last
+     using hypothesis H12.
+***  Proved C11:  y_end >= sector__first
+     using hypothesis H13.
+***  Proved C12:  y_end <= sector__last
+     using hypothesis H14.
+***  Proved C13:  loop__1__x + 1 >= sector__first
+     using hypothesis H19.
+***  Proved C15:  loop__1__x + 1 >= x_start
+     using hypothesis H1.
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          meter_per_sec__first <= fld_rel_vel(element(element(detect_points, [
+          i___1]), [i___2])) and fld_rel_vel(element(element(detect_points, [
+          i___1]), [i___2])) <= meter_per_sec__last))
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          meter__first <= fld_distance(element(element(detect_points, [i___1]), 
+          [i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= meter__last))
+<S>  New H8:  x_start <= 20
+<S>  New H10:  x_end <= 20
+<S>  New H12:  y_start <= 20
+<S>  New H14:  y_end <= 20
+<S>  New H16:  loop__2__y <= 20
+<S>  New H20:  loop__1__x <= 20
+<S>  New C14:  loop__1__x <= 19
+***  Proved C14:  loop__1__x <= 19
+     using hypotheses H2, H10 & H50.
+>>>  Restructured hypothesis H48 into:
+     >>>  H48:  fld_distance(element(element(detect_points, [loop__1__x]), [
+          loop__2__y])) <= 0
+>>>  Restructured hypothesis H50 into:
+     >>>  H50:  loop__1__x <> x_end
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H37:  4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648
+<S>  New H40:  dy >= - 2147483649
+<S>  New H42:  4 * (loop__2__y - y_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H38:  4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647
+<S>  New H41:  dy <= 2147483646
+<S>  New H43:  4 * (loop__2__y - y_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H33:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+-S-  Applied substitution rule derive_grid_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H34:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [i___2]
+          )) and fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) 
+          <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [i___2]
+          )) and fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) 
+          <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H7:  x_start >= - 20
+<S>  New H9:  x_end >= - 20
+<S>  New H11:  y_start >= - 20
+<S>  New H13:  y_end >= - 20
+<S>  New H15:  loop__2__y >= - 20
+<S>  New H19:  loop__1__x >= - 20
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H5:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H23:  loop__2__y - y_start >= - 2147483648
+<S>  New H25:  y_start >= - 2147483648
+<S>  New H27:  loop__2__y >= - 2147483648
+<S>  New H29:  dy >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H24:  loop__2__y - y_start <= 2147483647
+<S>  New H26:  y_start <= 2147483647
+<S>  New H28:  loop__2__y <= 2147483647
+<S>  New H30:  dy <= 2147483647
+%%%  Hypotheses H2 & H50 together imply that
+          loop__1__x < x_end.
+     H2 & H50 have therefore been deleted and a new H2 added to this effect.
+***  Proved C2:  loop__1__x + 1 <= x_end
+     via its standard form, which is:
+     Std.Fm C2:  - loop__1__x + x_end > 0
+     using hypothesis H2.
+***  Proved C16:  loop__1__x + 1 <= x_end
+     via its standard form, which is:
+     Std.Fm C16:  - loop__1__x + x_end > 0
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_9.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  loop__1__x - x_start >= - 2147483648
+<S>  New C3:  x_start >= - 2147483648
+<S>  New C5:  loop__1__x >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  loop__1__x - x_start <= 2147483647
+<S>  New C4:  x_start <= 2147483647
+<S>  New C6:  loop__1__x <= 2147483647
+***  Proved C1:  loop__1__x - x_start >= - 2147483648
+     using hypothesis H1.
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H5:  x_start >= - 20
+<S>  New H7:  x_end >= - 20
+<S>  New H9:  y_start >= - 20
+<S>  New H11:  y_end >= - 20
+<S>  New H13:  loop__1__x >= - 20
+<S>  New H4:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) and fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H6:  x_start <= 20
+<S>  New H8:  x_end <= 20
+<S>  New H10:  y_start <= 20
+<S>  New H12:  y_end <= 20
+<S>  New H14:  loop__1__x <= 20
+<S>  New H4:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+***  Proved C3:  x_start >= - 2147483648
+     using hypothesis H5.
+***  Proved C5:  loop__1__x >= - 2147483648
+     using hypothesis H13.
+***  Proved C2:  loop__1__x - x_start <= 2147483647
+     using hypotheses H5 & H14.
+***  Proved C4:  x_start <= 2147483647
+     using hypothesis H6.
+***  Proved C6:  loop__1__x <= 2147483647
+     using hypothesis H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_10.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H18).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  dx <> - 1
+-S-  Applied substitution rule derive_grid_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New C1:  4 * (loop__1__x - x_start) div (dx + 1) >= 0
+<S>  New C3:  4 * (loop__1__x - x_start) div (dx + 1) >= 0
+-S-  Applied substitution rule derive_grid_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New C2:  4 * (loop__1__x - x_start) div (dx + 1) <= 3
+<S>  New C4:  4 * (loop__1__x - x_start) div (dx + 1) <= 3
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C5:  4 * (loop__1__x - x_start) div (dx + 1) >= - 2147483648
+<S>  New C8:  dx >= - 2147483649
+<S>  New C10:  4 * (loop__1__x - x_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C6:  4 * (loop__1__x - x_start) div (dx + 1) <= 2147483647
+<S>  New C9:  dx <= 2147483646
+<S>  New C11:  4 * (loop__1__x - x_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H5:  x_start >= - 20
+<S>  New H7:  x_end >= - 20
+<S>  New H9:  y_start >= - 20
+<S>  New H11:  y_end >= - 20
+<S>  New H13:  loop__1__x >= - 20
+<S>  New H4:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) and fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H6:  x_start <= 20
+<S>  New H8:  x_end <= 20
+<S>  New H10:  y_start <= 20
+<S>  New H12:  y_end <= 20
+<S>  New H14:  loop__1__x <= 20
+<S>  New H4:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H17:  loop__1__x - x_start >= - 2147483648
+<S>  New H19:  x_start >= - 2147483648
+<S>  New H21:  loop__1__x >= - 2147483648
+<S>  New H23:  dx >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H18:  loop__1__x - x_start <= 2147483647
+<S>  New H20:  x_start <= 2147483647
+<S>  New H22:  loop__1__x <= 2147483647
+<S>  New H24:  dx <= 2147483647
+***  Proved C8:  dx >= - 2147483649
+     using hypothesis H23.
+***  Proved C10:  4 * (loop__1__x - x_start) >= - 2147483648
+     via its standard form, which is:
+     Std.Fm C10:  4 * loop__1__x - 4 * x_start > - 2147483649
+     using hypothesis H1.
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H17 (redundant, given H1).
+---  Eliminated hypothesis H19 (redundant, given H5).
+---  Eliminated hypothesis H20 (redundant, given H6).
+---  Eliminated hypothesis H21 (redundant, given H13).
+---  Eliminated hypothesis H22 (redundant, given H14).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C11:  4 * (loop__1__x - x_start) <= 2147483647
+     using hypotheses H5 & H14.
+     +++  New H27:  long_integer__size >= 0
+     +++  New H28:  measuretypes__meter__size >= 0
+     +++  New H29:  measuretypes__meter_per_sec__size >= 0
+     +++  New H30:  measuretypes__bit_range__size >= 0
+     +++  New H31:  measuretypes__bit_range__base__first <= 
+          measuretypes__bit_range__base__last
+     +++  New H32:  measuretypes__bit4_range__size >= 0
+     +++  New H33:  measuretypes__bit4_range__base__first <= 
+          measuretypes__bit4_range__base__last
+     +++  New H34:  radar_cfg__sector_range__size >= 0
+     +++  New H35:  radar_cfg__sector_range__base__first <= 
+          radar_cfg__sector_range__base__last
+     +++  New H36:  meter__size >= 0
+     +++  New H37:  meter_per_sec__size >= 0
+     +++  New H38:  sector__size >= 0
+     +++  New H39:  sector__base__first <= sector__base__last
+     +++  New H40:  integer32__size >= 0
+     +++  New H41:  ping__size >= 0
+     +++  New H42:  measuretypes__bit_range__base__first <= 0
+     +++  New H43:  measuretypes__bit_range__base__last >= 255
+     +++  New H44:  measuretypes__bit4_range__base__first <= 0
+     +++  New H45:  measuretypes__bit4_range__base__last >= 3
+     +++  New H46:  radar_cfg__sector_range__base__first <= - 20
+     +++  New H47:  radar_cfg__sector_range__base__last >= 20
+     +++  New H48:  sector__base__first <= - 20
+     +++  New H49:  sector__base__last >= 20
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_11.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H28).
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  dx <> - 1
+-S-  Applied substitution rule derive_grid_rules(29).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__first by:
+          - 20.
+<S>  New C1:  y_end >= - 20
+<S>  New C3:  y_start >= - 20
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of 
+          radar_cfg__sector_range__last by:
+          20.
+<S>  New C2:  y_end <= 20
+<S>  New C4:  y_start <= 20
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H31:  4 * (loop__1__x - x_start) div (dx + 1) >= - 2147483648
+<S>  New H34:  dx >= - 2147483649
+<S>  New H36:  4 * (loop__1__x - x_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H32:  4 * (loop__1__x - x_start) div (dx + 1) <= 2147483647
+<S>  New H35:  dx <= 2147483646
+<S>  New H37:  4 * (loop__1__x - x_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H27:  4 * (loop__1__x - x_start) div (dx + 1) >= 0
+-S-  Applied substitution rule derive_grid_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H28:  4 * (loop__1__x - x_start) div (dx + 1) <= 3
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H5:  x_start >= - 20
+<S>  New H7:  x_end >= - 20
+<S>  New H9:  y_start >= - 20
+<S>  New H11:  y_end >= - 20
+<S>  New H13:  loop__1__x >= - 20
+<S>  New H4:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) and fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H6:  x_start <= 20
+<S>  New H8:  x_end <= 20
+<S>  New H10:  y_start <= 20
+<S>  New H12:  y_end <= 20
+<S>  New H14:  loop__1__x <= 20
+<S>  New H4:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H3:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H17:  loop__1__x - x_start >= - 2147483648
+<S>  New H19:  x_start >= - 2147483648
+<S>  New H21:  loop__1__x >= - 2147483648
+<S>  New H23:  dx >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H18:  loop__1__x - x_start <= 2147483647
+<S>  New H20:  x_start <= 2147483647
+<S>  New H22:  loop__1__x <= 2147483647
+<S>  New H24:  dx <= 2147483647
+***  Proved C1:  y_end >= - 20
+     using hypothesis H11.
+***  Proved C3:  y_start >= - 20
+     using hypothesis H9.
+***  Proved C2:  y_end <= 20
+     using hypothesis H12.
+***  Proved C4:  y_start <= 20
+     using hypothesis H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_12.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H28).
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  dx <> - 1
+***  Proved C1:  y_start <= y_end -> y_end >= sector__first and y_end <= 
+          sector__last
+     using hypotheses H11 & H12.
+***  Proved C2:  y_start <= y_end -> y_start >= sector__first and y_start <= 
+          sector__last
+     using hypotheses H9 & H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_13.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H28).
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  dx <> - 1
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified C6 on reading formula in, to give:
+     %%%  C6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+%%%  Simplified C17 on reading formula in, to give:
+     %%%  C17:  true
+***  Proved C1:  loop__1__x >= x_start
+     using hypothesis H1.
+***  Proved C2:  loop__1__x <= x_end
+     using hypothesis H2.
+***  Proved C3:  true
+***  Proved C4:  y_start <= y_end
+     using hypothesis H44.
+***  Proved C5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+     using hypothesis H3.
+***  Proved C6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+     using hypothesis H4.
+***  Proved C7:  x_start >= sector__first
+     using hypothesis H5.
+***  Proved C8:  x_start <= sector__last
+     using hypothesis H6.
+***  Proved C9:  x_end >= sector__first
+     using hypothesis H7.
+***  Proved C10:  x_end <= sector__last
+     using hypothesis H8.
+***  Proved C11:  y_start >= sector__first
+     using hypothesis H9.
+***  Proved C12:  y_start <= sector__last
+     using hypothesis H10.
+***  Proved C13:  y_end >= sector__first
+     using hypothesis H11.
+***  Proved C14:  y_end <= sector__last
+     using hypothesis H12.
+***  Proved C15:  y_start >= sector__first
+     using hypothesis H9.
+***  Proved C16:  y_start <= sector__last
+     using hypothesis H10.
+***  Proved C17:  true
+***  Proved C18:  y_start <= y_end
+     using hypothesis H44.
+***  Proved C19:  loop__1__x >= sector__first
+     using hypothesis H13.
+***  Proved C20:  loop__1__x <= sector__last
+     using hypothesis H14.
+***  Proved C21:  loop__1__x >= x_start
+     using hypothesis H1.
+***  Proved C22:  loop__1__x <= x_end
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_14.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H34).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  dy <> - 1
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H34).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified C6 on reading formula in, to give:
+     %%%  C6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+***  Proved C1:  loop__1__x >= x_start
+     using hypothesis H1.
+***  Proved C2:  loop__1__x <= x_end
+     using hypothesis H2.
+***  Proved C3:  loop__2__y + 1 >= y_start
+     using hypothesis H3.
+***  Proved C5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+     using hypothesis H5.
+***  Proved C6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+     using hypothesis H6.
+***  Proved C7:  x_start >= sector__first
+     using hypothesis H7.
+***  Proved C8:  x_start <= sector__last
+     using hypothesis H8.
+***  Proved C9:  x_end >= sector__first
+     using hypothesis H9.
+***  Proved C10:  x_end <= sector__last
+     using hypothesis H10.
+***  Proved C11:  y_start >= sector__first
+     using hypothesis H11.
+***  Proved C12:  y_start <= sector__last
+     using hypothesis H12.
+***  Proved C13:  y_end >= sector__first
+     using hypothesis H13.
+***  Proved C14:  y_end <= sector__last
+     using hypothesis H14.
+***  Proved C15:  loop__2__y + 1 >= sector__first
+     using hypothesis H15.
+***  Proved C17:  loop__2__y + 1 >= y_start
+     using hypothesis H3.
+***  Proved C19:  loop__1__x >= sector__first
+     using hypothesis H19.
+***  Proved C20:  loop__1__x <= sector__last
+     using hypothesis H20.
+***  Proved C21:  loop__1__x >= x_start
+     using hypothesis H1.
+***  Proved C22:  loop__1__x <= x_end
+     using hypothesis H2.
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          meter_per_sec__first <= fld_rel_vel(element(element(detect_points, [
+          i___1]), [i___2])) and fld_rel_vel(element(element(detect_points, [
+          i___1]), [i___2])) <= meter_per_sec__last))
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          meter__first <= fld_distance(element(element(detect_points, [i___1]), 
+          [i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= meter__last))
+<S>  New H8:  x_start <= 20
+<S>  New H10:  x_end <= 20
+<S>  New H12:  y_start <= 20
+<S>  New H14:  y_end <= 20
+<S>  New H16:  loop__2__y <= 20
+<S>  New H20:  loop__1__x <= 20
+<S>  New C16:  loop__2__y <= 19
+***  Proved C16:  loop__2__y <= 19
+     using hypotheses H4, H14 & H53.
+>>>  Restructured hypothesis H53 into:
+     >>>  H53:  loop__2__y <> y_end
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H37:  4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648
+<S>  New H40:  dy >= - 2147483649
+<S>  New H42:  4 * (loop__2__y - y_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H38:  4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647
+<S>  New H41:  dy <= 2147483646
+<S>  New H43:  4 * (loop__2__y - y_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H33:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+<S>  New H51:  actual_x >= 0
+-S-  Applied substitution rule derive_grid_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H34:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+<S>  New H52:  actual_x <= 3
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [i___2]
+          )) and fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) 
+          <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [i___2]
+          )) and fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) 
+          <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H7:  x_start >= - 20
+<S>  New H9:  x_end >= - 20
+<S>  New H11:  y_start >= - 20
+<S>  New H13:  y_end >= - 20
+<S>  New H15:  loop__2__y >= - 20
+<S>  New H19:  loop__1__x >= - 20
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H5:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H23:  loop__2__y - y_start >= - 2147483648
+<S>  New H25:  y_start >= - 2147483648
+<S>  New H27:  loop__2__y >= - 2147483648
+<S>  New H29:  dy >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H24:  loop__2__y - y_start <= 2147483647
+<S>  New H26:  y_start <= 2147483647
+<S>  New H28:  loop__2__y <= 2147483647
+<S>  New H30:  dy <= 2147483647
+%%%  Hypotheses H4 & H53 together imply that
+          loop__2__y < y_end.
+     H4 & H53 have therefore been deleted and a new H4 added to this effect.
+***  Proved C4:  loop__2__y + 1 <= y_end
+     via its standard form, which is:
+     Std.Fm C4:  - loop__2__y + y_end > 0
+     using hypothesis H4.
+***  Proved C18:  loop__2__y + 1 <= y_end
+     via its standard form, which is:
+     Std.Fm C18:  - loop__2__y + y_end > 0
+     using hypothesis H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_15.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H34).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  dy <> - 1
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H20).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified C6 on reading formula in, to give:
+     %%%  C6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+***  Proved C1:  loop__1__x >= x_start
+     using hypothesis H1.
+***  Proved C2:  loop__1__x <= x_end
+     using hypothesis H2.
+***  Proved C3:  loop__2__y + 1 >= y_start
+     using hypothesis H3.
+***  Proved C5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+     using hypothesis H5.
+***  Proved C6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+     using hypothesis H6.
+***  Proved C7:  x_start >= sector__first
+     using hypothesis H7.
+***  Proved C8:  x_start <= sector__last
+     using hypothesis H8.
+***  Proved C9:  x_end >= sector__first
+     using hypothesis H9.
+***  Proved C10:  x_end <= sector__last
+     using hypothesis H10.
+***  Proved C11:  y_start >= sector__first
+     using hypothesis H11.
+***  Proved C12:  y_start <= sector__last
+     using hypothesis H12.
+***  Proved C13:  y_end >= sector__first
+     using hypothesis H13.
+***  Proved C14:  y_end <= sector__last
+     using hypothesis H14.
+***  Proved C15:  loop__2__y + 1 >= sector__first
+     using hypothesis H15.
+***  Proved C17:  loop__2__y + 1 >= y_start
+     using hypothesis H3.
+***  Proved C19:  loop__1__x >= sector__first
+     using hypothesis H19.
+***  Proved C20:  loop__1__x <= sector__last
+     using hypothesis H20.
+***  Proved C21:  loop__1__x >= x_start
+     using hypothesis H1.
+***  Proved C22:  loop__1__x <= x_end
+     using hypothesis H2.
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          meter_per_sec__first <= fld_rel_vel(element(element(detect_points, [
+          i___1]), [i___2])) and fld_rel_vel(element(element(detect_points, [
+          i___1]), [i___2])) <= meter_per_sec__last))
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          meter__first <= fld_distance(element(element(detect_points, [i___1]), 
+          [i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= meter__last))
+<S>  New H8:  x_start <= 20
+<S>  New H10:  x_end <= 20
+<S>  New H12:  y_start <= 20
+<S>  New H14:  y_end <= 20
+<S>  New H16:  loop__2__y <= 20
+<S>  New H20:  loop__1__x <= 20
+<S>  New C16:  loop__2__y <= 19
+***  Proved C16:  loop__2__y <= 19
+     using hypotheses H4, H14 & H49.
+>>>  Restructured hypothesis H48 into:
+     >>>  H48:  fld_distance(element(element(detect_points, [loop__1__x]), [
+          loop__2__y])) <= 0
+>>>  Restructured hypothesis H49 into:
+     >>>  H49:  loop__2__y <> y_end
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H37:  4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648
+<S>  New H40:  dy >= - 2147483649
+<S>  New H42:  4 * (loop__2__y - y_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H38:  4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647
+<S>  New H41:  dy <= 2147483646
+<S>  New H43:  4 * (loop__2__y - y_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H33:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+-S-  Applied substitution rule derive_grid_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H34:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [i___2]
+          )) and fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) 
+          <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 20 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 20 -> 
+          - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [i___2]
+          )) and fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) 
+          <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H7:  x_start >= - 20
+<S>  New H9:  x_end >= - 20
+<S>  New H11:  y_start >= - 20
+<S>  New H13:  y_end >= - 20
+<S>  New H15:  loop__2__y >= - 20
+<S>  New H19:  loop__1__x >= - 20
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H5:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H23:  loop__2__y - y_start >= - 2147483648
+<S>  New H25:  y_start >= - 2147483648
+<S>  New H27:  loop__2__y >= - 2147483648
+<S>  New H29:  dy >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H24:  loop__2__y - y_start <= 2147483647
+<S>  New H26:  y_start <= 2147483647
+<S>  New H28:  loop__2__y <= 2147483647
+<S>  New H30:  dy <= 2147483647
+%%%  Hypotheses H4 & H49 together imply that
+          loop__2__y < y_end.
+     H4 & H49 have therefore been deleted and a new H4 added to this effect.
+***  Proved C4:  loop__2__y + 1 <= y_end
+     via its standard form, which is:
+     Std.Fm C4:  - loop__2__y + y_end > 0
+     using hypothesis H4.
+***  Proved C18:  loop__2__y + 1 <= y_end
+     via its standard form, which is:
+     Std.Fm C18:  - loop__2__y + y_end > 0
+     using hypothesis H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_16.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  loop__2__y - y_start >= - 2147483648
+<S>  New C3:  y_start >= - 2147483648
+<S>  New C5:  loop__2__y >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  loop__2__y - y_start <= 2147483647
+<S>  New C4:  y_start <= 2147483647
+<S>  New C6:  loop__2__y <= 2147483647
+***  Proved C1:  loop__2__y - y_start >= - 2147483648
+     using hypothesis H3.
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H7:  x_start >= - 20
+<S>  New H9:  x_end >= - 20
+<S>  New H11:  y_start >= - 20
+<S>  New H13:  y_end >= - 20
+<S>  New H15:  loop__2__y >= - 20
+<S>  New H19:  loop__1__x >= - 20
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+<S>  New H5:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) and fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H8:  x_start <= 20
+<S>  New H10:  x_end <= 20
+<S>  New H12:  y_start <= 20
+<S>  New H14:  y_end <= 20
+<S>  New H16:  loop__2__y <= 20
+<S>  New H20:  loop__1__x <= 20
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H5:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+***  Proved C3:  y_start >= - 2147483648
+     using hypothesis H11.
+***  Proved C5:  loop__2__y >= - 2147483648
+     using hypothesis H15.
+***  Proved C2:  loop__2__y - y_start <= 2147483647
+     using hypotheses H11 & H16.
+***  Proved C4:  y_start <= 2147483647
+     using hypothesis H12.
+***  Proved C6:  loop__2__y <= 2147483647
+     using hypothesis H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_17.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  dy <> - 1
+-S-  Applied substitution rule derive_grid_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New C1:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+<S>  New C3:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+-S-  Applied substitution rule derive_grid_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New C2:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+<S>  New C4:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C5:  4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648
+<S>  New C8:  dy >= - 2147483649
+<S>  New C10:  4 * (loop__2__y - y_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C6:  4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647
+<S>  New C9:  dy <= 2147483646
+<S>  New C11:  4 * (loop__2__y - y_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H7:  x_start >= - 20
+<S>  New H9:  x_end >= - 20
+<S>  New H11:  y_start >= - 20
+<S>  New H13:  y_end >= - 20
+<S>  New H15:  loop__2__y >= - 20
+<S>  New H19:  loop__1__x >= - 20
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+<S>  New H5:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) and fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H8:  x_start <= 20
+<S>  New H10:  x_end <= 20
+<S>  New H12:  y_start <= 20
+<S>  New H14:  y_end <= 20
+<S>  New H16:  loop__2__y <= 20
+<S>  New H20:  loop__1__x <= 20
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H5:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H23:  loop__2__y - y_start >= - 2147483648
+<S>  New H25:  y_start >= - 2147483648
+<S>  New H27:  loop__2__y >= - 2147483648
+<S>  New H29:  dy >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H24:  loop__2__y - y_start <= 2147483647
+<S>  New H26:  y_start <= 2147483647
+<S>  New H28:  loop__2__y <= 2147483647
+<S>  New H30:  dy <= 2147483647
+***  Proved C8:  dy >= - 2147483649
+     using hypothesis H29.
+***  Proved C10:  4 * (loop__2__y - y_start) >= - 2147483648
+     via its standard form, which is:
+     Std.Fm C10:  4 * loop__2__y - 4 * y_start > - 2147483649
+     using hypothesis H3.
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H23 (redundant, given H3).
+---  Eliminated hypothesis H25 (redundant, given H11).
+---  Eliminated hypothesis H26 (redundant, given H12).
+---  Eliminated hypothesis H27 (redundant, given H15).
+---  Eliminated hypothesis H28 (redundant, given H16).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C11:  4 * (loop__2__y - y_start) <= 2147483647
+     using hypotheses H11 & H16.
+     +++  New H33:  long_integer__size >= 0
+     +++  New H34:  measuretypes__meter__size >= 0
+     +++  New H35:  measuretypes__meter_per_sec__size >= 0
+     +++  New H36:  measuretypes__bit_range__size >= 0
+     +++  New H37:  measuretypes__bit_range__base__first <= 
+          measuretypes__bit_range__base__last
+     +++  New H38:  measuretypes__bit4_range__size >= 0
+     +++  New H39:  measuretypes__bit4_range__base__first <= 
+          measuretypes__bit4_range__base__last
+     +++  New H40:  radar_cfg__sector_range__size >= 0
+     +++  New H41:  radar_cfg__sector_range__base__first <= 
+          radar_cfg__sector_range__base__last
+     +++  New H42:  meter__size >= 0
+     +++  New H43:  meter_per_sec__size >= 0
+     +++  New H44:  sector__size >= 0
+     +++  New H45:  sector__base__first <= sector__base__last
+     +++  New H46:  integer32__size >= 0
+     +++  New H47:  ping__size >= 0
+     +++  New H48:  measuretypes__bit_range__base__first <= 0
+     +++  New H49:  measuretypes__bit_range__base__last >= 255
+     +++  New H50:  measuretypes__bit4_range__base__first <= 0
+     +++  New H51:  measuretypes__bit4_range__base__last >= 3
+     +++  New H52:  radar_cfg__sector_range__base__first <= - 20
+     +++  New H53:  radar_cfg__sector_range__base__last >= 20
+     +++  New H54:  sector__base__first <= - 20
+     +++  New H55:  sector__base__last >= 20
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_18.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H34).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  dy <> - 1
+***  Proved C1:  loop__2__y >= sector__first
+     using hypothesis H15.
+***  Proved C2:  loop__2__y <= sector__last
+     using hypothesis H16.
+***  Proved C3:  loop__1__x >= sector__first
+     using hypothesis H19.
+***  Proved C4:  loop__1__x <= sector__last
+     using hypothesis H20.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_19.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H34).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  dy <> - 1
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H20).
+***  Proved C1:  4 * (loop__2__y - y_start) div (dy + 1) >= 
+          measuretypes__bit4_range__first
+     using hypothesis H33.
+***  Proved C2:  4 * (loop__2__y - y_start) div (dy + 1) <= 
+          measuretypes__bit4_range__last
+     using hypothesis H34.
+-S-  Applied substitution rule derive_grid_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H33:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+<S>  New C3:  actual_x >= 0
+-S-  Applied substitution rule derive_grid_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H34:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+<S>  New C4:  actual_x <= 3
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H37:  4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648
+<S>  New H40:  dy >= - 2147483649
+<S>  New H42:  4 * (loop__2__y - y_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H38:  4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647
+<S>  New H41:  dy <= 2147483646
+<S>  New H43:  4 * (loop__2__y - y_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= 200000))
+-S-  Applied substitution rule derive_grid_rules(40).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(45).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H7:  x_start >= - 20
+<S>  New H9:  x_end >= - 20
+<S>  New H11:  y_start >= - 20
+<S>  New H13:  y_end >= - 20
+<S>  New H15:  loop__2__y >= - 20
+<S>  New H19:  loop__1__x >= - 20
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+<S>  New H5:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) and fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) <= 5000))
+-S-  Applied substitution rule derive_grid_rules(46).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H8:  x_start <= 20
+<S>  New H10:  x_end <= 20
+<S>  New H12:  y_start <= 20
+<S>  New H14:  y_end <= 20
+<S>  New H16:  loop__2__y <= 20
+<S>  New H20:  loop__1__x <= 20
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H5:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+-S-  Applied substitution rule derive_grid_rules(51).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H23:  loop__2__y - y_start >= - 2147483648
+<S>  New H25:  y_start >= - 2147483648
+<S>  New H27:  loop__2__y >= - 2147483648
+<S>  New H29:  dy >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(52).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H24:  loop__2__y - y_start <= 2147483647
+<S>  New H26:  y_start <= 2147483647
+<S>  New H28:  loop__2__y <= 2147483647
+<S>  New H30:  dy <= 2147483647
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H36 (true-hypothesis).
+---  Eliminated hypothesis H44 (true-hypothesis).
+---  Eliminated hypothesis H45 (true-hypothesis).
+---  Eliminated hypothesis H46 (true-hypothesis).
+---  Eliminated hypothesis H47 (true-hypothesis).
+---  Eliminated hypothesis H23 (redundant, given H3).
+---  Eliminated hypothesis H24 (redundant, given H43).
+---  Eliminated hypothesis H25 (redundant, given H11).
+---  Eliminated hypothesis H26 (redundant, given H12).
+---  Eliminated hypothesis H27 (redundant, given H15).
+---  Eliminated hypothesis H28 (redundant, given H16).
+---  Eliminated hypothesis H30 (redundant, given H41).
+---  Eliminated hypothesis H37 (redundant, given H33).
+---  Eliminated hypothesis H38 (redundant, given H34).
+---  Eliminated hypothesis H40 (redundant, given H29).
+---  Eliminated hypothesis H42 (redundant, given H3).
+     +++  New H49:  long_integer__size >= 0
+     +++  New H50:  measuretypes__meter__size >= 0
+     +++  New H51:  measuretypes__meter_per_sec__size >= 0
+     +++  New H52:  measuretypes__bit_range__size >= 0
+     +++  New H53:  measuretypes__bit_range__base__first <= 
+          measuretypes__bit_range__base__last
+     +++  New H54:  measuretypes__bit4_range__size >= 0
+     +++  New H55:  measuretypes__bit4_range__base__first <= 
+          measuretypes__bit4_range__base__last
+     +++  New H56:  radar_cfg__sector_range__size >= 0
+     +++  New H57:  radar_cfg__sector_range__base__first <= 
+          radar_cfg__sector_range__base__last
+     +++  New H58:  meter__size >= 0
+     +++  New H59:  meter_per_sec__size >= 0
+     +++  New H60:  sector__size >= 0
+     +++  New H61:  sector__base__first <= sector__base__last
+     +++  New H62:  integer32__size >= 0
+     +++  New H63:  ping__size >= 0
+     +++  New H64:  measuretypes__bit_range__base__first <= 0
+     +++  New H65:  measuretypes__bit_range__base__last >= 255
+     +++  New H66:  measuretypes__bit4_range__base__first <= 0
+     +++  New H67:  measuretypes__bit4_range__base__last >= 3
+     +++  New H68:  radar_cfg__sector_range__base__first <= - 20
+     +++  New H69:  radar_cfg__sector_range__base__last >= 20
+     +++  New H70:  sector__base__first <= - 20
+     +++  New H71:  sector__base__last >= 20
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_20.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_21.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_22.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_23.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

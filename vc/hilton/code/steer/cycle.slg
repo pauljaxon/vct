@@ -1,0 +1,1519 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:42  SIMPLIFIED 25-NOV-2009, 14:19:13
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure steer.Cycle
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_cycle_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= steer_cfg__port
+-S-  Applied substitution rule cycle_rules(20).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New C1:  true
+-S-  Applied substitution rule cycle_rules(21).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New C2:  true
+-S-  Applied substitution rule cycle_rules(156).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> angle__first <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= angle__last)
+<S>  New H3:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> angle__first <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= angle__last)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> clock__millisecond__first <= element(
+          command_times, [i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+<S>  New C3:  true
+-S-  Applied substitution rule cycle_rules(157).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> angle__first <= element(current_angles, 
+          [i___1]) and element(current_angles, [i___1]) <= angle__last)
+<S>  New H3:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> angle__first <= element(
+          commanded_angles, [i___1]) and element(commanded_angles, [i___1]) <= 
+          angle__last)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> clock__millisecond__first <= element(
+          command_times, [i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+<S>  New C4:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= steer_cfg__starboard
+***  Proved C1:  2 >= bus__word_index__first
+     using hypothesis H5.
+***  Proved C3:  fin__first <= steer_cfg__starboard
+     using hypothesis H7.
+-S-  Applied substitution rule cycle_rules(21).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H6:  true
+<S>  New C2:  true
+-S-  Applied substitution rule cycle_rules(157).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(current_angles, [i___1]) 
+          and element(current_angles, [i___1]) <= angle__last)
+<S>  New H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(commanded_angles, [i___1]
+          ) and element(commanded_angles, [i___1]) <= angle__last)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> clock__millisecond__first <= element(
+          command_times, [i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+<S>  New H8:  true
+<S>  New C4:  true
+***  Proved C2:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= steer_cfg__top
+***  Proved C1:  3 >= bus__word_index__first
+     using hypothesis H5.
+***  Proved C3:  fin__first <= steer_cfg__top
+     using hypothesis H7.
+-S-  Applied substitution rule cycle_rules(21).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H6:  true
+<S>  New H10:  true
+<S>  New C2:  true
+-S-  Applied substitution rule cycle_rules(157).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(current_angles, [i___1]) 
+          and element(current_angles, [i___1]) <= angle__last)
+<S>  New H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(commanded_angles, [i___1]
+          ) and element(commanded_angles, [i___1]) <= angle__last)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> clock__millisecond__first <= element(
+          command_times, [i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+<S>  New H8:  true
+<S>  New H12:  true
+<S>  New C4:  true
+***  Proved C2:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= steer_cfg__bottom
+***  Proved C1:  4 >= bus__word_index__first
+     using hypothesis H5.
+***  Proved C3:  fin__first <= steer_cfg__bottom
+     using hypothesis H7.
+-S-  Applied substitution rule cycle_rules(21).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H6:  true
+<S>  New H10:  true
+<S>  New H14:  true
+<S>  New C2:  true
+-S-  Applied substitution rule cycle_rules(157).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(current_angles, [i___1]) 
+          and element(current_angles, [i___1]) <= angle__last)
+<S>  New H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(commanded_angles, [i___1]
+          ) and element(commanded_angles, [i___1]) <= angle__last)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> clock__millisecond__first <= element(
+          command_times, [i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+<S>  New H8:  true
+<S>  New H12:  true
+<S>  New H16:  true
+<S>  New C4:  true
+***  Proved C2:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  rt1553__lru_name__first <= bus_id
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  ibit__phase__first <= bit_machine__phase(bit_state)
+***  Proved C5:  5 >= bus__word_index__first
+     using hypothesis H5.
+***  Proved C9:  ibit__phase__first <= bit_machine__phase(bit_state)
+     using hypothesis H21.
+***  Proved C10:  bit_machine__phase(bit_state) <= ibit__phase__last
+     using hypothesis H22.
+-S-  Applied substitution rule cycle_rules(41).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New C1:  rt1553__barometer <= bus_id
+-S-  Applied substitution rule cycle_rules(3).
+     This was achieved by replacing all occurrences of bus_id by:
+          rt1553__fins.
+<S>  New C2:  rt1553__fins <= rt1553__lru_name__last
+<S>  New C1:  true
+-S-  Applied substitution rule cycle_rules(42).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New C2:  true
+-S-  Applied substitution rule cycle_rules(36).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New C3:  true
+-S-  Applied substitution rule cycle_rules(37).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New C4:  true
+-S-  Applied substitution rule cycle_rules(21).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H6:  true
+<S>  New H10:  true
+<S>  New H14:  true
+<S>  New H18:  true
+<S>  New C6:  true
+-S-  Applied substitution rule cycle_rules(26).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C7:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) >= 0
+-S-  Applied substitution rule cycle_rules(27).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C8:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) <= 
+          65535
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  Proved C6:  true
+-S-  Applied substitution rule cycle_rules(15).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+-S-  Applied substitution rule cycle_rules(16).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule cycle_rules(20).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H5:  true
+<S>  New H9:  true
+<S>  New H13:  true
+<S>  New H17:  true
+-S-  Applied substitution rule cycle_rules(117).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H21:  ibit__off <= bit_machine__phase(bit_state)
+-S-  Applied substitution rule cycle_rules(118).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H22:  bit_machine__phase(bit_state) <= ibit__timeout
+-S-  Applied substitution rule cycle_rules(150).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= angle__last)
+<S>  New H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= angle__last)
+-S-  Applied substitution rule cycle_rules(151).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule cycle_rules(156).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H7:  true
+<S>  New H11:  true
+<S>  New H15:  true
+<S>  New H19:  true
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H3:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule cycle_rules(157).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H8:  true
+<S>  New H12:  true
+<S>  New H16:  true
+<S>  New H20:  true
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H3:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H5 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+***  Proved C7:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) 
+          >= 0
+     using hypotheses H21 & H22.
+***  Proved C8:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) 
+          <= 65535
+     using hypotheses H21 & H22.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_6.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  rt1553__lru_name__first <= bus_id
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H25.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H26.
+***  Proved C3:  rt1553__lru_name__first <= bus_id
+     using hypothesis H23.
+***  Proved C4:  bus_id <= rt1553__lru_name__last
+     using hypothesis H24.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_7.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+***  Proved C1:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 1 >= 
+          bus__lru_subaddress_index__first and 1 <= 
+          bus__lru_subaddress_index__last
+     using hypotheses H25 & H26.
+***  Proved C2:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+     using hypotheses H23 & H24.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_8.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H40 on reading formula in, to give:
+     %%%  H40:  true
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= steer_cfg__port
+***  Proved C1:  1 >= bus__word_index__first
+     using hypothesis H5.
+***  Proved C2:  1 <= bus__word_index__last
+     using hypothesis H6.
+***  Proved C3:  fin__first <= steer_cfg__port
+     using hypothesis H7.
+***  Proved C4:  steer_cfg__port <= fin__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_9.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H40 on reading formula in, to give:
+     %%%  H40:  true
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H47 on reading formula in, to give:
+     %%%  H47:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__6, [i___1]) 
+          and element(current_angles__6, [i___1]) <= angle__last)
+%%%  Simplified H48 on reading formula in, to give:
+     %%%  H48:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__6, [i___1]) 
+          and element(commanded_angles__6, [i___1]) <= angle__last)
+%%%  Simplified H49 on reading formula in, to give:
+     %%%  H49:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__6, [i___1]) and element(command_times__6, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= steer_cfg__starboard
+***  Proved C1:  2 >= bus__word_index__first
+     using hypothesis H9.
+***  Proved C2:  2 <= bus__word_index__last
+     using hypothesis H10.
+***  Proved C3:  fin__first <= steer_cfg__starboard
+     using hypothesis H11.
+***  Proved C4:  steer_cfg__starboard <= fin__last
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_10.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H40 on reading formula in, to give:
+     %%%  H40:  true
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H47 on reading formula in, to give:
+     %%%  H47:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__6, [i___1]) 
+          and element(current_angles__6, [i___1]) <= angle__last)
+%%%  Simplified H48 on reading formula in, to give:
+     %%%  H48:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__6, [i___1]) 
+          and element(commanded_angles__6, [i___1]) <= angle__last)
+%%%  Simplified H49 on reading formula in, to give:
+     %%%  H49:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__6, [i___1]) and element(command_times__6, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H12).
+%%%  Simplified H54 on reading formula in, to give:
+     %%%  H54:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__7, [i___1]) 
+          and element(current_angles__7, [i___1]) <= angle__last)
+%%%  Simplified H55 on reading formula in, to give:
+     %%%  H55:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__7, [i___1]) 
+          and element(commanded_angles__7, [i___1]) <= angle__last)
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__7, [i___1]) and element(command_times__7, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= steer_cfg__top
+***  Proved C1:  3 >= bus__word_index__first
+     using hypothesis H13.
+***  Proved C2:  3 <= bus__word_index__last
+     using hypothesis H14.
+***  Proved C3:  fin__first <= steer_cfg__top
+     using hypothesis H15.
+***  Proved C4:  steer_cfg__top <= fin__last
+     using hypothesis H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_11.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H40 on reading formula in, to give:
+     %%%  H40:  true
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H47 on reading formula in, to give:
+     %%%  H47:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__6, [i___1]) 
+          and element(current_angles__6, [i___1]) <= angle__last)
+%%%  Simplified H48 on reading formula in, to give:
+     %%%  H48:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__6, [i___1]) 
+          and element(commanded_angles__6, [i___1]) <= angle__last)
+%%%  Simplified H49 on reading formula in, to give:
+     %%%  H49:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__6, [i___1]) and element(command_times__6, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H12).
+%%%  Simplified H54 on reading formula in, to give:
+     %%%  H54:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__7, [i___1]) 
+          and element(current_angles__7, [i___1]) <= angle__last)
+%%%  Simplified H55 on reading formula in, to give:
+     %%%  H55:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__7, [i___1]) 
+          and element(commanded_angles__7, [i___1]) <= angle__last)
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__7, [i___1]) and element(command_times__7, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H57 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H58 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H61 on reading formula in, to give:
+     %%%  H61:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__8, [i___1]) 
+          and element(current_angles__8, [i___1]) <= angle__last)
+%%%  Simplified H62 on reading formula in, to give:
+     %%%  H62:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__8, [i___1]) 
+          and element(commanded_angles__8, [i___1]) <= angle__last)
+%%%  Simplified H63 on reading formula in, to give:
+     %%%  H63:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__8, [i___1]) and element(command_times__8, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= steer_cfg__bottom
+***  Proved C1:  4 >= bus__word_index__first
+     using hypothesis H17.
+***  Proved C2:  4 <= bus__word_index__last
+     using hypothesis H18.
+***  Proved C3:  fin__first <= steer_cfg__bottom
+     using hypothesis H19.
+***  Proved C4:  steer_cfg__bottom <= fin__last
+     using hypothesis H20.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_12.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H40 on reading formula in, to give:
+     %%%  H40:  true
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H47 on reading formula in, to give:
+     %%%  H47:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__6, [i___1]) 
+          and element(current_angles__6, [i___1]) <= angle__last)
+%%%  Simplified H48 on reading formula in, to give:
+     %%%  H48:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__6, [i___1]) 
+          and element(commanded_angles__6, [i___1]) <= angle__last)
+%%%  Simplified H49 on reading formula in, to give:
+     %%%  H49:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__6, [i___1]) and element(command_times__6, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H12).
+%%%  Simplified H54 on reading formula in, to give:
+     %%%  H54:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__7, [i___1]) 
+          and element(current_angles__7, [i___1]) <= angle__last)
+%%%  Simplified H55 on reading formula in, to give:
+     %%%  H55:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__7, [i___1]) 
+          and element(commanded_angles__7, [i___1]) <= angle__last)
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__7, [i___1]) and element(command_times__7, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H57 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H58 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H61 on reading formula in, to give:
+     %%%  H61:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__8, [i___1]) 
+          and element(current_angles__8, [i___1]) <= angle__last)
+%%%  Simplified H62 on reading formula in, to give:
+     %%%  H62:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__8, [i___1]) 
+          and element(commanded_angles__8, [i___1]) <= angle__last)
+%%%  Simplified H63 on reading formula in, to give:
+     %%%  H63:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__8, [i___1]) and element(command_times__8, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H65 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H66 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H67 has been replaced by "true".  (It is already present, as 
+          H20).
+%%%  Simplified H68 on reading formula in, to give:
+     %%%  H68:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__9, [i___1]) 
+          and element(current_angles__9, [i___1]) <= angle__last)
+%%%  Simplified H69 on reading formula in, to give:
+     %%%  H69:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__9, [i___1]) 
+          and element(commanded_angles__9, [i___1]) <= angle__last)
+%%%  Simplified H70 on reading formula in, to give:
+     %%%  H70:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__9, [i___1]) and element(command_times__9, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  rt1553__lru_name__first <= bus_id
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H25.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H26.
+***  Proved C3:  5 >= bus__word_index__first
+     using hypothesis H27.
+***  Proved C4:  5 <= bus__word_index__last
+     using hypothesis H28.
+***  Proved C5:  rt1553__lru_name__first <= bus_id
+     using hypothesis H23.
+***  Proved C6:  bus_id <= rt1553__lru_name__last
+     using hypothesis H24.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_13.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H40 on reading formula in, to give:
+     %%%  H40:  true
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  rt1553__lru_name__first <= bus_id
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H25.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H26.
+***  Proved C3:  5 >= bus__word_index__first
+     using hypothesis H27.
+***  Proved C4:  5 <= bus__word_index__last
+     using hypothesis H28.
+***  Proved C5:  rt1553__lru_name__first <= bus_id
+     using hypothesis H23.
+***  Proved C6:  bus_id <= rt1553__lru_name__last
+     using hypothesis H24.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_14.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H40 on reading formula in, to give:
+     %%%  H40:  true
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H47 on reading formula in, to give:
+     %%%  H47:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__6, [i___1]) 
+          and element(current_angles__6, [i___1]) <= angle__last)
+%%%  Simplified H48 on reading formula in, to give:
+     %%%  H48:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__6, [i___1]) 
+          and element(commanded_angles__6, [i___1]) <= angle__last)
+%%%  Simplified H49 on reading formula in, to give:
+     %%%  H49:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__6, [i___1]) and element(command_times__6, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H12).
+%%%  Simplified H54 on reading formula in, to give:
+     %%%  H54:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__7, [i___1]) 
+          and element(current_angles__7, [i___1]) <= angle__last)
+%%%  Simplified H55 on reading formula in, to give:
+     %%%  H55:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__7, [i___1]) 
+          and element(commanded_angles__7, [i___1]) <= angle__last)
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__7, [i___1]) and element(command_times__7, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H57 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H58 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H61 on reading formula in, to give:
+     %%%  H61:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__8, [i___1]) 
+          and element(current_angles__8, [i___1]) <= angle__last)
+%%%  Simplified H62 on reading formula in, to give:
+     %%%  H62:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__8, [i___1]) 
+          and element(commanded_angles__8, [i___1]) <= angle__last)
+%%%  Simplified H63 on reading formula in, to give:
+     %%%  H63:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__8, [i___1]) and element(command_times__8, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H65 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H66 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H67 has been replaced by "true".  (It is already present, as 
+          H20).
+%%%  Simplified H68 on reading formula in, to give:
+     %%%  H68:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__9, [i___1]) 
+          and element(current_angles__9, [i___1]) <= angle__last)
+%%%  Simplified H69 on reading formula in, to give:
+     %%%  H69:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__9, [i___1]) 
+          and element(commanded_angles__9, [i___1]) <= angle__last)
+%%%  Simplified H70 on reading formula in, to give:
+     %%%  H70:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__9, [i___1]) and element(command_times__9, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H71 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H72 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H73 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H74 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H75 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H76 has been replaced by "true".  (It is already present, as 
+          H24).
+***  Proved C1:  datum__10 >= bus__word__first
+     using hypothesis H77.
+***  Proved C2:  datum__10 <= bus__word__last
+     using hypothesis H78.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_15.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H40 on reading formula in, to give:
+     %%%  H40:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H24).
+***  Proved C1:  datum__10 >= bus__word__first
+     using hypothesis H48.
+***  Proved C2:  datum__10 <= bus__word__last
+     using hypothesis H49.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_16.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H40 on reading formula in, to give:
+     %%%  H40:  true
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified H47 on reading formula in, to give:
+     %%%  H47:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__6, [i___1]) 
+          and element(current_angles__6, [i___1]) <= angle__last)
+%%%  Simplified H48 on reading formula in, to give:
+     %%%  H48:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__6, [i___1]) 
+          and element(commanded_angles__6, [i___1]) <= angle__last)
+%%%  Simplified H49 on reading formula in, to give:
+     %%%  H49:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__6, [i___1]) and element(command_times__6, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H12).
+%%%  Simplified H54 on reading formula in, to give:
+     %%%  H54:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__7, [i___1]) 
+          and element(current_angles__7, [i___1]) <= angle__last)
+%%%  Simplified H55 on reading formula in, to give:
+     %%%  H55:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__7, [i___1]) 
+          and element(commanded_angles__7, [i___1]) <= angle__last)
+%%%  Simplified H56 on reading formula in, to give:
+     %%%  H56:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__7, [i___1]) and element(command_times__7, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H57 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H58 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H61 on reading formula in, to give:
+     %%%  H61:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__8, [i___1]) 
+          and element(current_angles__8, [i___1]) <= angle__last)
+%%%  Simplified H62 on reading formula in, to give:
+     %%%  H62:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__8, [i___1]) 
+          and element(commanded_angles__8, [i___1]) <= angle__last)
+%%%  Simplified H63 on reading formula in, to give:
+     %%%  H63:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__8, [i___1]) and element(command_times__8, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H65 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H66 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H67 has been replaced by "true".  (It is already present, as 
+          H20).
+%%%  Simplified H68 on reading formula in, to give:
+     %%%  H68:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(current_angles__9, [i___1]) 
+          and element(current_angles__9, [i___1]) <= angle__last)
+%%%  Simplified H69 on reading formula in, to give:
+     %%%  H69:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(commanded_angles__9, [i___1]) 
+          and element(commanded_angles__9, [i___1]) <= angle__last)
+%%%  Simplified H70 on reading formula in, to give:
+     %%%  H70:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> clock__millisecond__first <= element(
+          command_times__9, [i___1]) and element(command_times__9, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H71 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H72 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H73 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H74 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H75 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H76 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H79 has been replaced by "true".  (It is already present, as 
+          H77).
+---  Hypothesis H80 has been replaced by "true".  (It is already present, as 
+          H78).
+---  Hypothesis H81 has been replaced by "true".  (It is already present, as 
+          H77).
+---  Hypothesis H82 has been replaced by "true".  (It is already present, as 
+          H78).
+***  Proved C1:  datum__10 >= bus__word__first
+     using hypothesis H77.
+***  Proved C2:  datum__10 <= bus__word__last
+     using hypothesis H78.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_17.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fin__first <= steer_cfg__port
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  fin__first <= steer_cfg__starboard
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  fin__first <= steer_cfg__top
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  fin__first <= steer_cfg__bottom
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified H39 on reading formula in, to give:
+     %%%  H39:  rt1553__is_valid(bus_id, 1, bus__outputs) -> 
+          rt1553__lru_name__first <= bus_id and bus_id <= rt1553__lru_name__last
+%%%  Simplified H40 on reading formula in, to give:
+     %%%  H40:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H28).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+***  Proved C1:  datum__10 >= bus__word__first
+     using hypothesis H48.
+***  Proved C2:  datum__10 <= bus__word__last
+     using hypothesis H49.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_18.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_19.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_20.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_21.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

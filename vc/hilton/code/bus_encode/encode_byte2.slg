@@ -1,0 +1,71 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:40
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function bus_encode.Encode_Byte2
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_encode_byte2_1.  @@@@@@@@@@
+-S-  Applied substitution rule encode_byte2_rules(12).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C1:  lo + 256 * hi >= 0
+-S-  Applied substitution rule encode_byte2_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C2:  lo + 256 * hi <= 65535
+-S-  Applied substitution rule encode_byte2_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C3:  256 * hi >= - 2147483648
+-S-  Applied substitution rule encode_byte2_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C4:  256 * hi <= 2147483647
+-S-  Applied substitution rule encode_byte2_rules(7).
+     This was achieved by replacing all occurrences of systemtypes__byte__first 
+          by:
+          0.
+<S>  New H2:  lo >= 0
+<S>  New H4:  hi >= 0
+-S-  Applied substitution rule encode_byte2_rules(8).
+     This was achieved by replacing all occurrences of systemtypes__byte__last 
+          by:
+          255.
+<S>  New H3:  lo <= 255
+<S>  New H5:  hi <= 255
+***  Proved C1:  lo + 256 * hi >= 0
+     using hypotheses H2 & H4.
+***  Proved C2:  lo + 256 * hi <= 65535
+     using hypotheses H3 & H5.
+***  Proved C3:  256 * hi >= - 2147483648
+     using hypothesis H4.
+***  Proved C4:  256 * hi <= 2147483647
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_encode_byte2_2.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H7)
+          .
+***  Proved C1:  true
+***  Proved C2:  lo + 256 * hi >= bus__word__first
+     using hypothesis H6.
+***  Proved C3:  lo + 256 * hi <= bus__word__last
+     using hypothesis H7.
+***  PROVED VC.
+

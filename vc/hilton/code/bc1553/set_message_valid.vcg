@@ -1,0 +1,37 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.25
+
+                     procedure bc1553.Set_Message_Valid
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 59:
+
+procedure_set_message_valid_1.
+H1:    true .
+H2:    subaddress_idx >= bus__lru_subaddress_index__first .
+H3:    subaddress_idx <= bus__lru_subaddress_index__last .
+H4:    dest >= lru_name__first .
+H5:    dest <= lru_name__last .
+        ->
+C1:    element(lru_names, [dest]) >= bus__lru_index__first .
+C2:    element(lru_names, [dest]) <= bus__lru_index__last .
+C3:    subaddress_idx >= bus__lru_subaddress_index__first .
+C4:    subaddress_idx <= bus__lru_subaddress_index__last .
+C5:    dest >= lru_name__first .
+C6:    dest <= lru_name__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_set_message_valid_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+

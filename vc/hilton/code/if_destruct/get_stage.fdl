@@ -1,0 +1,31 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:43.75}
+
+                      {procedure if_destruct.Get_Stage}
+
+
+title procedure get_stage;
+
+  function round__(real) : integer;
+  type destruct_cfg__state = (destruct_cfg__inactive, 
+     destruct_cfg__armed, destruct_cfg__detonated);
+  const stage__base__last : destruct_cfg__state = pending; 
+  const stage__base__first : destruct_cfg__state = pending; 
+  const destruct_cfg__state__base__last : destruct_cfg__state = pending; 
+  const destruct_cfg__state__base__first : destruct_cfg__state = pending; 
+  const stage__size : integer = pending; 
+  const stage__last : destruct_cfg__state = pending; 
+  const stage__first : destruct_cfg__state = pending; 
+  const destruct_cfg__state__size : integer = pending; 
+  const destruct_cfg__state__last : destruct_cfg__state = pending; 
+  const destruct_cfg__state__first : destruct_cfg__state = pending; 
+  var last_state : destruct_cfg__state;
+  var last_valid : boolean;
+
+end;

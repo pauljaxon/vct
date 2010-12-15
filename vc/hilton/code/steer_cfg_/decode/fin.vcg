@@ -1,0 +1,169 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.86
+
+                            function decode.Fin
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 37:
+
+function_fin_1.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    b = 1 .
+        ->
+C1:    steer_cfg__port >= steer_cfg__fin__first .
+C2:    steer_cfg__port <= steer_cfg__fin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 39:
+
+function_fin_2.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    not (b = 1) .
+H5:    b = 2 .
+        ->
+C1:    steer_cfg__starboard >= steer_cfg__fin__first .
+C2:    steer_cfg__starboard <= steer_cfg__fin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 41:
+
+function_fin_3.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    not (b = 1) .
+H5:    not (b = 2) .
+H6:    b = 4 .
+        ->
+C1:    steer_cfg__top >= steer_cfg__fin__first .
+C2:    steer_cfg__top <= steer_cfg__fin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 43:
+
+function_fin_4.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    not (b = 1) .
+H5:    not (b = 2) .
+H6:    not (b = 4) .
+H7:    b = 8 .
+        ->
+C1:    steer_cfg__bottom >= steer_cfg__fin__first .
+C2:    steer_cfg__bottom <= steer_cfg__fin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 45:
+
+function_fin_5.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    not (b = 1) .
+H5:    not (b = 2) .
+H6:    not (b = 4) .
+H7:    not (b = 8) .
+        ->
+C1:    steer_cfg__port >= steer_cfg__fin__first .
+C2:    steer_cfg__port <= steer_cfg__fin__last .
+ 
+
+For path(s) from start to finish:
+
+function_fin_6.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    b = 1 .
+H5:    steer_cfg__port >= steer_cfg__fin__first .
+H6:    steer_cfg__port <= steer_cfg__fin__last .
+H7:    steer_cfg__port >= steer_cfg__fin__first .
+H8:    steer_cfg__port <= steer_cfg__fin__last .
+        ->
+C1:    true .
+C2:    steer_cfg__port >= steer_cfg__fin__first .
+C3:    steer_cfg__port <= steer_cfg__fin__last .
+ 
+
+function_fin_7.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    not (b = 1) .
+H5:    b = 2 .
+H6:    steer_cfg__starboard >= steer_cfg__fin__first .
+H7:    steer_cfg__starboard <= steer_cfg__fin__last .
+H8:    steer_cfg__starboard >= steer_cfg__fin__first .
+H9:    steer_cfg__starboard <= steer_cfg__fin__last .
+        ->
+C1:    true .
+C2:    steer_cfg__starboard >= steer_cfg__fin__first .
+C3:    steer_cfg__starboard <= steer_cfg__fin__last .
+ 
+
+function_fin_8.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    not (b = 1) .
+H5:    not (b = 2) .
+H6:    b = 4 .
+H7:    steer_cfg__top >= steer_cfg__fin__first .
+H8:    steer_cfg__top <= steer_cfg__fin__last .
+H9:    steer_cfg__top >= steer_cfg__fin__first .
+H10:   steer_cfg__top <= steer_cfg__fin__last .
+        ->
+C1:    true .
+C2:    steer_cfg__top >= steer_cfg__fin__first .
+C3:    steer_cfg__top <= steer_cfg__fin__last .
+ 
+
+function_fin_9.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    not (b = 1) .
+H5:    not (b = 2) .
+H6:    not (b = 4) .
+H7:    b = 8 .
+H8:    steer_cfg__bottom >= steer_cfg__fin__first .
+H9:    steer_cfg__bottom <= steer_cfg__fin__last .
+H10:   steer_cfg__bottom >= steer_cfg__fin__first .
+H11:   steer_cfg__bottom <= steer_cfg__fin__last .
+        ->
+C1:    true .
+C2:    steer_cfg__bottom >= steer_cfg__fin__first .
+C3:    steer_cfg__bottom <= steer_cfg__fin__last .
+ 
+
+function_fin_10.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    not (b = 1) .
+H5:    not (b = 2) .
+H6:    not (b = 4) .
+H7:    not (b = 8) .
+H8:    steer_cfg__port >= steer_cfg__fin__first .
+H9:    steer_cfg__port <= steer_cfg__fin__last .
+H10:   steer_cfg__port >= steer_cfg__fin__first .
+H11:   steer_cfg__port <= steer_cfg__fin__last .
+        ->
+C1:    true .
+C2:    steer_cfg__port >= steer_cfg__fin__first .
+C3:    steer_cfg__port <= steer_cfg__fin__last .
+ 
+

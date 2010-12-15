@@ -1,0 +1,51 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 26-NOV-2009 09:54:53.85}
+
+                            {procedure yaw.Yaw_AP}
+
+
+title procedure yaw_ap;
+
+  function round__(real) : integer;
+  type degrees__degreespersec = integer;
+  type instruments__machnumber = integer;
+  type instruments__slipangle = integer;
+  type surfaces__controlangle = integer;
+  const degreespersec__base__last : integer = pending; 
+  const degreespersec__base__first : integer = pending; 
+  const surfaces__controlangle__base__last : integer = pending; 
+  const surfaces__controlangle__base__first : integer = pending; 
+  const instruments__slipangle__base__last : integer = pending; 
+  const instruments__slipangle__base__first : integer = pending; 
+  const instruments__machnumber__base__last : integer = pending; 
+  const instruments__machnumber__base__first : integer = pending; 
+  const degrees__degreespersec__base__last : integer = pending; 
+  const degrees__degreespersec__base__first : integer = pending; 
+  const degreespersec__size : integer = pending; 
+  const degreespersec__last : integer = pending; 
+  const degreespersec__first : integer = pending; 
+  const surfaces__controlangle__size : integer = pending; 
+  const surfaces__controlangle__last : integer = pending; 
+  const surfaces__controlangle__first : integer = pending; 
+  const instruments__slipangle__size : integer = pending; 
+  const instruments__slipangle__last : integer = pending; 
+  const instruments__slipangle__first : integer = pending; 
+  const instruments__machnumber__size : integer = pending; 
+  const instruments__machnumber__last : integer = pending; 
+  const instruments__machnumber__first : integer = pending; 
+  const degrees__degreespersec__size : integer = pending; 
+  const degrees__degreespersec__last : integer = pending; 
+  const degrees__degreespersec__first : integer = pending; 
+  var mach : integer;
+  var slip : integer;
+  var present_sliprate : integer;
+  function calc_rudder_move(integer, integer) : integer;
+  var present_sliprate__1 : integer;
+
+end;

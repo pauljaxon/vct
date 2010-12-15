@@ -1,0 +1,58 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.04
+
+Line
+   1  -- Options for measuring physical phenomena
+   2  --
+   3  -- $Log: measuretypes-angle_ops.ads,v $
+   4  -- Revision 1.2  2004/12/17 16:08:53  adi
+   5  -- Fixing errors in compass; renamed Angle to Angle_Degrees for clarity
+   6  --
+   7  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   8  -- Added from tarfile
+   9  --
+  10  --
+  11  -- Revision 1.2  2003/08/25 14:05:36  adi
+  12  -- Added Mul operation
+  13  --
+  14  -- Revision 1.1  2003/08/08 19:14:58  adi
+  15  -- Initial revision
+  16  --
+  17  --
+  18  
+  19  with Systemtypes;
+  20  --# inherit Measuretypes,systemtypes;
+  21  package Measuretypes.Angle_Ops is
+  22  
+  23     function Sum(Left, Right : Measuretypes.Millirad)
+  24                 return Measuretypes.Millirad;
+  25     function Mul(Orig_Angle : Measuretypes.Millirad;
+  26                  Mult       : Integer)
+  27       return Measuretypes.Millirad;
+  28     function Diff(Left, Right : Measuretypes.Millirad)
+  29                  return Measuretypes.Millirad;
+  30     function Negate(Orig_Angle : Measuretypes.Millirad)
+  31                    return Measuretypes.Millirad;
+  32     function Create_Angle(Word : Systemtypes.Word)
+  33                          return Measuretypes.Millirad;
+  34     function Millirad_To_Word(Orig_Angle : Measuretypes.Millirad)
+  35                              return Systemtypes.Word;
+  36     function Int_To_Millirad(Count : in Systemtypes.Integer32)
+  37                             return Measuretypes.Millirad;
+  38     function Round_Degree(Orig_Angle : Measuretypes.Millirad)
+  39                          return Measuretypes.Angle_Degrees;
+  40     function Degree_To_Millirad(Orig_Degree : Measuretypes.Angle_Degrees)
+  41                                return Measuretypes.Millirad;
+  42  
+  43  end Measuretypes.Angle_Ops;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

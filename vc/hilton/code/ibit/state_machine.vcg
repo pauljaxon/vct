@@ -1,0 +1,182 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.89
+
+                        procedure ibit.State_Machine
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 32:
+
+procedure_state_machine_1.
+H1:    true .
+H2:    bus_data >= systemtypes__unsigned16__first .
+H3:    bus_data <= systemtypes__unsigned16__last .
+H4:    current_phase >= phase__first .
+H5:    current_phase <= phase__last .
+H6:    current_phase = request_start .
+        ->
+C1:    in_progress >= phase__first .
+C2:    in_progress <= phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 33:
+
+procedure_state_machine_2.
+H1:    true .
+H2:    bus_data >= systemtypes__unsigned16__first .
+H3:    bus_data <= systemtypes__unsigned16__last .
+H4:    current_phase >= phase__first .
+H5:    current_phase <= phase__last .
+H6:    current_phase = request_start .
+H7:    in_progress >= phase__first .
+H8:    in_progress <= phase__last .
+H9:    bus_data = element(phase_lookup, [in_progress]) .
+        ->
+C1:    in_progress >= phase__first .
+C2:    in_progress <= phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 37:
+
+procedure_state_machine_3.
+H1:    true .
+H2:    bus_data >= systemtypes__unsigned16__first .
+H3:    bus_data <= systemtypes__unsigned16__last .
+H4:    current_phase >= phase__first .
+H5:    current_phase <= phase__last .
+H6:    current_phase = in_progress .
+        ->
+C1:    pass >= phase__first .
+C2:    pass <= phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 38:
+
+procedure_state_machine_4.
+H1:    true .
+H2:    bus_data >= systemtypes__unsigned16__first .
+H3:    bus_data <= systemtypes__unsigned16__last .
+H4:    current_phase >= phase__first .
+H5:    current_phase <= phase__last .
+H6:    current_phase = in_progress .
+H7:    pass >= phase__first .
+H8:    pass <= phase__last .
+H9:    bus_data = element(phase_lookup, [pass]) .
+        ->
+C1:    pass >= phase__first .
+C2:    pass <= phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 39:
+
+procedure_state_machine_5.
+H1:    true .
+H2:    bus_data >= systemtypes__unsigned16__first .
+H3:    bus_data <= systemtypes__unsigned16__last .
+H4:    current_phase >= phase__first .
+H5:    current_phase <= phase__last .
+H6:    current_phase = in_progress .
+H7:    pass >= phase__first .
+H8:    pass <= phase__last .
+H9:    not (bus_data = element(phase_lookup, [pass])) .
+        ->
+C1:    fail >= phase__first .
+C2:    fail <= phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 40:
+
+procedure_state_machine_6.
+H1:    true .
+H2:    bus_data >= systemtypes__unsigned16__first .
+H3:    bus_data <= systemtypes__unsigned16__last .
+H4:    current_phase >= phase__first .
+H5:    current_phase <= phase__last .
+H6:    current_phase = in_progress .
+H7:    pass >= phase__first .
+H8:    pass <= phase__last .
+H9:    not (bus_data = element(phase_lookup, [pass])) .
+H10:   fail >= phase__first .
+H11:   fail <= phase__last .
+H12:   bus_data = element(phase_lookup, [fail]) .
+        ->
+C1:    fail >= phase__first .
+C2:    fail <= phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 46:
+
+procedure_state_machine_7.
+H1:    true .
+H2:    bus_data >= systemtypes__unsigned16__first .
+H3:    bus_data <= systemtypes__unsigned16__last .
+H4:    current_phase >= phase__first .
+H5:    current_phase <= phase__last .
+H6:    current_phase = request_stop .
+        ->
+C1:    off >= phase__first .
+C2:    off <= phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 47:
+
+procedure_state_machine_8.
+H1:    true .
+H2:    bus_data >= systemtypes__unsigned16__first .
+H3:    bus_data <= systemtypes__unsigned16__last .
+H4:    current_phase >= phase__first .
+H5:    current_phase <= phase__last .
+H6:    current_phase = request_stop .
+H7:    off >= phase__first .
+H8:    off <= phase__last .
+H9:    bus_data = element(phase_lookup, [off]) .
+        ->
+C1:    off >= phase__first .
+C2:    off <= phase__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_state_machine_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_state_machine_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_state_machine_11.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_state_machine_12.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_state_machine_13.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_state_machine_14.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_state_machine_15.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_state_machine_16.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_state_machine_17.
+*** true .          /* trivially true VC removed by Examiner */
+
+

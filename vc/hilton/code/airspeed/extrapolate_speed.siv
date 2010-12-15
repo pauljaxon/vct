@@ -1,0 +1,177 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:39  SIMPLIFIED 25-NOV-2009, 14:18:46
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure airspeed.Extrapolate_Speed
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 43:
+
+procedure_extrapolate_speed_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 47:
+
+procedure_extrapolate_speed_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 50:
+
+procedure_extrapolate_speed_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 50:
+
+procedure_extrapolate_speed_4.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 52:
+
+procedure_extrapolate_speed_5.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 53:
+
+procedure_extrapolate_speed_6.
+H1:    last_speed >= - 5000 .
+H2:    last_speed <= 5000 .
+H3:    last_accel >= - 30000 .
+H4:    last_time >= 0 .
+H5:    last_time <= 8640000 .
+H6:    time_now__1 >= 0 .
+H7:    time_now__1 <= 8640000 .
+H8:    clock_utils__delta_time(last_time, time_now__1) >= 0 .
+H9:    clock_utils__delta_time(last_time, time_now__1) <= 8640000 .
+H10:   last_accel < 0 .
+H11:   measuretypes__meter_per_sec__size >= 0 .
+H12:   measuretypes__cm_per_sec_2__size >= 0 .
+H13:   clock__millisecond__size >= 0 .
+H14:   meter_per_sec__size >= 0 .
+H15:   cm_per_sec_2__size >= 0 .
+       ->
+C1:    last_accel * clock_utils__delta_time(last_time, time_now__1) div 100000 
+          >= - 5000 .
+C2:    - last_accel * clock_utils__delta_time(last_time, time_now__1) <= 
+          2147483647 .
+
+
+For path(s) from start to run-time check associated with statement of line 55:
+
+procedure_extrapolate_speed_7.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 56:
+
+procedure_extrapolate_speed_8.
+H1:    last_speed >= - 5000 .
+H2:    last_speed <= 5000 .
+H3:    last_accel <= 30000 .
+H4:    last_time >= 0 .
+H5:    last_time <= 8640000 .
+H6:    time_now__1 >= 0 .
+H7:    time_now__1 <= 8640000 .
+H8:    clock_utils__delta_time(last_time, time_now__1) >= 0 .
+H9:    clock_utils__delta_time(last_time, time_now__1) <= 8640000 .
+H10:   0 <= last_accel .
+H11:   measuretypes__meter_per_sec__size >= 0 .
+H12:   measuretypes__cm_per_sec_2__size >= 0 .
+H13:   clock__millisecond__size >= 0 .
+H14:   meter_per_sec__size >= 0 .
+H15:   cm_per_sec_2__size >= 0 .
+       ->
+C1:    last_accel * clock_utils__delta_time(last_time, time_now__1) div 100000 
+          <= 5000 .
+C2:    last_accel * clock_utils__delta_time(last_time, time_now__1) <= 
+          2147483647 .
+
+
+For path(s) from start to run-time check associated with statement of line 58:
+
+procedure_extrapolate_speed_9.
+H1:    last_speed >= - 5000 .
+H2:    last_speed <= 5000 .
+H3:    last_accel >= - 30000 .
+H4:    last_time >= 0 .
+H5:    last_time <= 8640000 .
+H6:    time_now__1 >= 0 .
+H7:    time_now__1 <= 8640000 .
+H8:    clock_utils__delta_time(last_time, time_now__1) >= 0 .
+H9:    clock_utils__delta_time(last_time, time_now__1) <= 8640000 .
+H10:   last_accel < 0 .
+H11:   last_accel * clock_utils__delta_time(last_time, time_now__1) div 100000 
+          >= - 5000 .
+H12:   last_accel * clock_utils__delta_time(last_time, time_now__1) div 100000 
+          <= 5000 .
+H13:   - last_accel * clock_utils__delta_time(last_time, time_now__1) >= - 
+          2147483648 .
+H14:   - last_accel * clock_utils__delta_time(last_time, time_now__1) <= 
+          2147483647 .
+H15:   measuretypes__meter_per_sec__size >= 0 .
+H16:   measuretypes__cm_per_sec_2__size >= 0 .
+H17:   clock__millisecond__size >= 0 .
+H18:   meter_per_sec__size >= 0 .
+H19:   cm_per_sec_2__size >= 0 .
+       ->
+C1:    last_speed + last_accel * clock_utils__delta_time(last_time, time_now__1)
+           div 100000 >= - 5000 .
+
+
+procedure_extrapolate_speed_10.
+H1:    last_speed >= - 5000 .
+H2:    last_speed <= 5000 .
+H3:    last_accel <= 30000 .
+H4:    last_time >= 0 .
+H5:    last_time <= 8640000 .
+H6:    time_now__1 >= 0 .
+H7:    time_now__1 <= 8640000 .
+H8:    clock_utils__delta_time(last_time, time_now__1) >= 0 .
+H9:    clock_utils__delta_time(last_time, time_now__1) <= 8640000 .
+H10:   0 <= last_accel .
+H11:   last_accel * clock_utils__delta_time(last_time, time_now__1) div 100000 
+          >= - 5000 .
+H12:   last_accel * clock_utils__delta_time(last_time, time_now__1) div 100000 
+          <= 5000 .
+H13:   last_accel * clock_utils__delta_time(last_time, time_now__1) >= - 
+          2147483648 .
+H14:   last_accel * clock_utils__delta_time(last_time, time_now__1) <= 
+          2147483647 .
+H15:   measuretypes__meter_per_sec__size >= 0 .
+H16:   measuretypes__cm_per_sec_2__size >= 0 .
+H17:   clock__millisecond__size >= 0 .
+H18:   meter_per_sec__size >= 0 .
+H19:   cm_per_sec_2__size >= 0 .
+       ->
+C1:    last_speed + last_accel * clock_utils__delta_time(last_time, time_now__1)
+           div 100000 <= 5000 .
+
+
+For path(s) from start to finish:
+
+procedure_extrapolate_speed_11.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_speed_12.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_speed_13.
+*** true .          /* all conclusions proved */
+
+

@@ -1,0 +1,46 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.31*/
+
+                            /*procedure random.Get*/
+
+
+rule_family get_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+get_rules(1): max_val may_be_replaced_by 63001.
+get_rules(2): max_seed may_be_replaced_by 971.
+get_rules(3): long_integer__size >= 0 may_be_deduced.
+get_rules(4): long_integer__first may_be_replaced_by -2147483648.
+get_rules(5): long_integer__last may_be_replaced_by 2147483647.
+get_rules(6): long_integer__base__first may_be_replaced_by -2147483648.
+get_rules(7): long_integer__base__last may_be_replaced_by 2147483647.
+get_rules(8): value__size >= 0 may_be_deduced.
+get_rules(9): value__first may_be_replaced_by 0.
+get_rules(10): value__last may_be_replaced_by 63001.
+get_rules(11): value__base__first <= value__base__last may_be_deduced.
+get_rules(12): value__base__first <= value__first may_be_deduced.
+get_rules(13): value__base__last >= value__last may_be_deduced.
+get_rules(14): number__size >= 0 may_be_deduced.
+get_rules(15): A = B may_be_deduced_from
+     [goal(checktype(A,number)),
+      goal(checktype(B,number)),
+      fld_s(A) = fld_s(B),
+      fld_last_v(A) = fld_last_v(B)].
+get_rules(16): seed_range__size >= 0 may_be_deduced.
+get_rules(17): seed_range__first may_be_replaced_by 0.
+get_rules(18): seed_range__last may_be_replaced_by 971.
+get_rules(19): seed_range__base__first may_be_replaced_by -2147483648.
+get_rules(20): seed_range__base__last may_be_replaced_by 2147483647.
+get_rules(21): uint32__size >= 0 may_be_deduced.
+get_rules(22): uint32__first may_be_replaced_by 0.
+get_rules(23): uint32__last may_be_replaced_by 2147483647.
+get_rules(24): uint32__base__first may_be_replaced_by -2147483648.
+get_rules(25): uint32__base__last may_be_replaced_by 2147483647.

@@ -1,0 +1,47 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:19
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function angle_ops.Mul
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 36:
+
+function_mul_1.
+H1:    orig_angle >= - 7000 .
+H2:    orig_angle <= 7000 .
+H3:    mult >= - 2147483648 .
+H4:    mult <= 2147483647 .
+H5:    integer__size >= 0 .
+H6:    measuretypes__millirad__size >= 0 .
+H7:    millirad__size >= 0 .
+H8:    canon_millirad__size >= 0 .
+       ->
+C1:    orig_angle * mult >= - 7000 .
+C2:    orig_angle * mult <= 7000 .
+C3:    mult >= - 7000 .
+C4:    mult <= 7000 .
+
+
+For path(s) from start to run-time check associated with statement of line 37:
+
+function_mul_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to finish:
+
+function_mul_3.
+*** true .          /* all conclusions proved */
+
+

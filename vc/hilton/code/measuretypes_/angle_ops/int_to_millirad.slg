@@ -1,0 +1,848 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:20
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function angle_ops.Int_To_Millirad
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_int_to_millirad_1.  @@@@@@@@@@
+-S-  Applied substitution rule int_to_milli_rules(18).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__first by:
+          0.
+<S>  New C1:  - count >= 0
+<S>  New C3:  - count >= 0
+-S-  Applied substitution rule int_to_milli_rules(19).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__last by:
+          2147483647.
+<S>  New C2:  - count <= 2147483647
+<S>  New C4:  - count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C5:  - count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C6:  - count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H2:  count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(14).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H3:  count <= 2147483647
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H3 (redundant, given H4).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+---  Eliminated conclusion C6, which is a duplicate of C2.
+***  Proved C1:  - count >= 0
+     using hypothesis H4.
+***  Proved C5:  - count >= - 2147483648
+     using hypothesis H4.
+     +++  New H5:  integer__size >= 0
+     +++  New H6:  long_integer__size >= 0
+     +++  New H7:  systemtypes__integer32__size >= 0
+     +++  New H8:  systemtypes__unsigned32__size >= 0
+     +++  New H9:  measuretypes__millirad__size >= 0
+     +++  New H10:  millirad__size >= 0
+
+
+@@@@@@@@@@  VC: function_int_to_millirad_2.  @@@@@@@@@@
+-S-  Applied substitution rule int_to_milli_rules(18).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__first by:
+          0.
+<S>  New C1:  count >= 0
+<S>  New C3:  count >= 0
+-S-  Applied substitution rule int_to_milli_rules(19).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__last by:
+          2147483647.
+<S>  New C2:  count <= 2147483647
+<S>  New C4:  count <= 2147483647
+***  Proved C1:  count >= 0
+     using hypothesis H4.
+***  Proved C3:  count >= 0
+     using hypothesis H4.
+>>>  Restructured hypothesis H4 into:
+     >>>  H4:  0 <= count
+-S-  Applied substitution rule int_to_milli_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H2:  count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(14).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H3:  count <= 2147483647
+***  Proved C2:  count <= 2147483647
+     using hypothesis H3.
+***  Proved C4:  count <= 2147483647
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_int_to_millirad_3.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H6)
+          .
+-S-  Applied substitution rule int_to_milli_rules(18).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__first by:
+          0.
+<S>  New H5:  - count >= 0
+<S>  New C1:  - count mod measuretypes__angle_full >= 0
+<S>  New C4:  measuretypes__angle_full >= 0
+-S-  Applied substitution rule int_to_milli_rules(19).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__last by:
+          2147483647.
+<S>  New H6:  - count <= 2147483647
+<S>  New C2:  - count mod measuretypes__angle_full <= 2147483647
+<S>  New C5:  measuretypes__angle_full <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New C3:  true
+<S>  New C1:  - count mod 6283 >= 0
+<S>  New C4:  true
+<S>  New C2:  - count mod 6283 <= 2147483647
+<S>  New C5:  true
+***  Proved C3:  true
+***  Proved C1:  - count mod 6283 >= 0
+***  Proved C4:  true
+***  Proved C2:  - count mod 6283 <= 2147483647
+***  Proved C5:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_int_to_millirad_4.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+-S-  Applied substitution rule int_to_milli_rules(18).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__first by:
+          0.
+<S>  New H5:  count >= 0
+<S>  New C1:  count mod measuretypes__angle_full >= 0
+<S>  New C4:  measuretypes__angle_full >= 0
+-S-  Applied substitution rule int_to_milli_rules(19).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__last by:
+          2147483647.
+<S>  New H6:  count <= 2147483647
+<S>  New C2:  count mod measuretypes__angle_full <= 2147483647
+<S>  New C5:  measuretypes__angle_full <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New C3:  true
+<S>  New C1:  count mod 6283 >= 0
+<S>  New C4:  true
+<S>  New C2:  count mod 6283 <= 2147483647
+<S>  New C5:  true
+***  Proved C3:  true
+***  Proved C1:  count mod 6283 >= 0
+***  Proved C4:  true
+***  Proved C2:  count mod 6283 <= 2147483647
+***  Proved C5:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_int_to_millirad_5.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+-S-  Applied substitution rule int_to_milli_rules(28).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New C1:  - (- count mod measuretypes__angle_full) >= - 7000
+<S>  New C3:  - count mod measuretypes__angle_full >= - 7000
+-S-  Applied substitution rule int_to_milli_rules(29).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New C2:  - (- count mod measuretypes__angle_full) <= 7000
+<S>  New C4:  - count mod measuretypes__angle_full <= 7000
+-S-  Applied substitution rule int_to_milli_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New H13:  - count mod 6283 >= systemtypes__unsigned32__first
+<S>  New H14:  - count mod 6283 <= systemtypes__unsigned32__last
+<S>  New H15:  true
+<S>  New H16:  6283 >= systemtypes__unsigned32__first
+<S>  New H17:  6283 <= systemtypes__unsigned32__last
+<S>  New C1:  - (- count mod 6283) >= - 7000
+<S>  New C3:  - count mod 6283 >= - 7000
+<S>  New C2:  - (- count mod 6283) <= 7000
+<S>  New C4:  - count mod 6283 <= 7000
+-S-  Applied substitution rule int_to_milli_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H9:  - count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H10:  - count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H2:  count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(14).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H3:  count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(18).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__first by:
+          0.
+<S>  New H5:  - count >= 0
+<S>  New H13:  - count mod 6283 >= 0
+<S>  New H16:  true
+-S-  Applied substitution rule int_to_milli_rules(19).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__last by:
+          2147483647.
+<S>  New H6:  - count <= 2147483647
+<S>  New H14:  - count mod 6283 <= 2147483647
+<S>  New H17:  true
+***  Proved C3:  - count mod 6283 >= - 7000
+     using hypothesis H13.
+***  Proved C2:  - (- count mod 6283) <= 7000
+     via its standard form, which is:
+     Std.Fm C2:  - count mod 6283 > - 7001
+     using hypothesis H13.
+***  Proved C4:  - count mod 6283 <= 7000
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H10 (duplicate of H6).
+---  Eliminated hypothesis H2 (redundant, given H6).
+---  Eliminated hypothesis H3 (redundant, given H4).
+---  Eliminated hypothesis H5 (redundant, given H4).
+---  Eliminated hypothesis H9 (redundant, given H4).
+***  Proved C1:  - (- count mod 6283) >= - 7000
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_int_to_millirad_6.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+-S-  Applied substitution rule int_to_milli_rules(28).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New C1:  - (count mod measuretypes__angle_full) >= - 7000
+<S>  New C3:  count mod measuretypes__angle_full >= - 7000
+-S-  Applied substitution rule int_to_milli_rules(29).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New C2:  - (count mod measuretypes__angle_full) <= 7000
+<S>  New C4:  count mod measuretypes__angle_full <= 7000
+>>>  Restructured hypothesis H4 into:
+     >>>  H4:  0 <= count
+-S-  Applied substitution rule int_to_milli_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New H11:  count mod 6283 >= systemtypes__unsigned32__first
+<S>  New H12:  count mod 6283 <= systemtypes__unsigned32__last
+<S>  New H13:  true
+<S>  New H14:  6283 >= systemtypes__unsigned32__first
+<S>  New H15:  6283 <= systemtypes__unsigned32__last
+<S>  New C1:  - (count mod 6283) >= - 7000
+<S>  New C3:  count mod 6283 >= - 7000
+<S>  New C2:  - (count mod 6283) <= 7000
+<S>  New C4:  count mod 6283 <= 7000
+-S-  Applied substitution rule int_to_milli_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H2:  count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(14).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H3:  count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(18).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__first by:
+          0.
+<S>  New H5:  count >= 0
+<S>  New H11:  count mod 6283 >= 0
+<S>  New H14:  true
+-S-  Applied substitution rule int_to_milli_rules(19).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__last by:
+          2147483647.
+<S>  New H6:  count <= 2147483647
+<S>  New H12:  count mod 6283 <= 2147483647
+<S>  New H15:  true
+***  Proved C3:  count mod 6283 >= - 7000
+     using hypothesis H11.
+***  Proved C2:  - (count mod 6283) <= 7000
+     via its standard form, which is:
+     Std.Fm C2:  count mod 6283 > - 7001
+     using hypothesis H11.
+***  Proved C4:  count mod 6283 <= 7000
+###  Established a contradiction [false-hypothesis] using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_int_to_millirad_7.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H6)
+          .
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  false
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+-S-  Applied substitution rule int_to_milli_rules(28).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New C1:  - count mod measuretypes__angle_full >= - 7000
+<S>  New C3:  - count mod measuretypes__angle_full >= - 7000
+-S-  Applied substitution rule int_to_milli_rules(29).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New C2:  - count mod measuretypes__angle_full <= 7000
+<S>  New C4:  - count mod measuretypes__angle_full <= 7000
+-S-  Applied substitution rule int_to_milli_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New H13:  - count mod 6283 >= systemtypes__unsigned32__first
+<S>  New H14:  - count mod 6283 <= systemtypes__unsigned32__last
+<S>  New H15:  true
+<S>  New H16:  6283 >= systemtypes__unsigned32__first
+<S>  New H17:  6283 <= systemtypes__unsigned32__last
+<S>  New C1:  - count mod 6283 >= - 7000
+<S>  New C3:  - count mod 6283 >= - 7000
+<S>  New C2:  - count mod 6283 <= 7000
+<S>  New C4:  - count mod 6283 <= 7000
+-S-  Applied substitution rule int_to_milli_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H9:  - count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H10:  - count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H2:  count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(14).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H3:  count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(18).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__first by:
+          0.
+<S>  New H5:  - count >= 0
+<S>  New H13:  - count mod 6283 >= 0
+<S>  New H16:  true
+-S-  Applied substitution rule int_to_milli_rules(19).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__last by:
+          2147483647.
+<S>  New H6:  - count <= 2147483647
+<S>  New H14:  - count mod 6283 <= 2147483647
+<S>  New H17:  true
+***  Proved C1:  - count mod 6283 >= - 7000
+     using hypothesis H13.
+***  Proved C3:  - count mod 6283 >= - 7000
+     using hypothesis H13.
+***  Proved C2:  - count mod 6283 <= 7000
+***  Proved C4:  - count mod 6283 <= 7000
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_int_to_millirad_8.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+%%%  Simplified H17 on reading formula in, to give:
+     %%%  H17:  true
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+-S-  Applied substitution rule int_to_milli_rules(28).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New C1:  count mod measuretypes__angle_full >= - 7000
+<S>  New C3:  count mod measuretypes__angle_full >= - 7000
+-S-  Applied substitution rule int_to_milli_rules(29).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New C2:  count mod measuretypes__angle_full <= 7000
+<S>  New C4:  count mod measuretypes__angle_full <= 7000
+>>>  Restructured hypothesis H4 into:
+     >>>  H4:  0 <= count
+-S-  Applied substitution rule int_to_milli_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New H11:  count mod 6283 >= systemtypes__unsigned32__first
+<S>  New H12:  count mod 6283 <= systemtypes__unsigned32__last
+<S>  New H13:  true
+<S>  New H14:  6283 >= systemtypes__unsigned32__first
+<S>  New H15:  6283 <= systemtypes__unsigned32__last
+<S>  New C1:  count mod 6283 >= - 7000
+<S>  New C3:  count mod 6283 >= - 7000
+<S>  New C2:  count mod 6283 <= 7000
+<S>  New C4:  count mod 6283 <= 7000
+-S-  Applied substitution rule int_to_milli_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H2:  count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(14).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H3:  count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(18).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__first by:
+          0.
+<S>  New H5:  count >= 0
+<S>  New H11:  count mod 6283 >= 0
+<S>  New H14:  true
+-S-  Applied substitution rule int_to_milli_rules(19).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__last by:
+          2147483647.
+<S>  New H6:  count <= 2147483647
+<S>  New H12:  count mod 6283 <= 2147483647
+<S>  New H15:  true
+***  Proved C1:  count mod 6283 >= - 7000
+     using hypothesis H11.
+***  Proved C3:  count mod 6283 >= - 7000
+     using hypothesis H11.
+***  Proved C2:  count mod 6283 <= 7000
+***  Proved C4:  count mod 6283 <= 7000
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_int_to_millirad_9.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H23).
+***  Proved C1:  true
+-S-  Applied substitution rule int_to_milli_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New C2:  - (- count mod measuretypes__angle_full) >= - 7000
+-S-  Applied substitution rule int_to_milli_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New C3:  - (- count mod measuretypes__angle_full) <= 7000
+-S-  Applied substitution rule int_to_milli_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New H13:  - count mod 6283 >= systemtypes__unsigned32__first
+<S>  New H14:  - count mod 6283 <= systemtypes__unsigned32__last
+<S>  New H15:  true
+<S>  New H16:  6283 >= systemtypes__unsigned32__first
+<S>  New H17:  6283 <= systemtypes__unsigned32__last
+<S>  New H22:  - (- count mod 6283) >= millirad__first
+<S>  New H23:  - (- count mod 6283) <= millirad__last
+<S>  New H24:  - count mod 6283 >= millirad__first
+<S>  New H25:  - count mod 6283 <= millirad__last
+<S>  New C2:  - (- count mod 6283) >= - 7000
+<S>  New C3:  - (- count mod 6283) <= 7000
+-S-  Applied substitution rule int_to_milli_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H9:  - count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H10:  - count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H2:  count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(14).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H3:  count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(18).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__first by:
+          0.
+<S>  New H5:  - count >= 0
+<S>  New H13:  - count mod 6283 >= 0
+<S>  New H16:  true
+-S-  Applied substitution rule int_to_milli_rules(19).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__last by:
+          2147483647.
+<S>  New H6:  - count <= 2147483647
+<S>  New H14:  - count mod 6283 <= 2147483647
+<S>  New H17:  true
+-S-  Applied substitution rule int_to_milli_rules(28).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H22:  - (- count mod 6283) >= - 7000
+<S>  New H24:  - count mod 6283 >= - 7000
+-S-  Applied substitution rule int_to_milli_rules(29).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H23:  - (- count mod 6283) <= 7000
+<S>  New H25:  - count mod 6283 <= 7000
+***  Proved C2:  - (- count mod 6283) >= - 7000
+     using hypothesis H22.
+***  Proved C3:  - (- count mod 6283) <= 7000
+     using hypothesis H23.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_int_to_millirad_10.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H21).
+***  Proved C1:  true
+-S-  Applied substitution rule int_to_milli_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New C2:  - (count mod measuretypes__angle_full) >= - 7000
+-S-  Applied substitution rule int_to_milli_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New C3:  - (count mod measuretypes__angle_full) <= 7000
+>>>  Restructured hypothesis H4 into:
+     >>>  H4:  0 <= count
+-S-  Applied substitution rule int_to_milli_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New H11:  count mod 6283 >= systemtypes__unsigned32__first
+<S>  New H12:  count mod 6283 <= systemtypes__unsigned32__last
+<S>  New H13:  true
+<S>  New H14:  6283 >= systemtypes__unsigned32__first
+<S>  New H15:  6283 <= systemtypes__unsigned32__last
+<S>  New H20:  - (count mod 6283) >= millirad__first
+<S>  New H21:  - (count mod 6283) <= millirad__last
+<S>  New H22:  count mod 6283 >= millirad__first
+<S>  New H23:  count mod 6283 <= millirad__last
+<S>  New C2:  - (count mod 6283) >= - 7000
+<S>  New C3:  - (count mod 6283) <= 7000
+-S-  Applied substitution rule int_to_milli_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H2:  count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(14).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H3:  count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(18).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__first by:
+          0.
+<S>  New H5:  count >= 0
+<S>  New H11:  count mod 6283 >= 0
+<S>  New H14:  true
+-S-  Applied substitution rule int_to_milli_rules(19).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__last by:
+          2147483647.
+<S>  New H6:  count <= 2147483647
+<S>  New H12:  count mod 6283 <= 2147483647
+<S>  New H15:  true
+-S-  Applied substitution rule int_to_milli_rules(28).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H20:  - (count mod 6283) >= - 7000
+<S>  New H22:  count mod 6283 >= - 7000
+-S-  Applied substitution rule int_to_milli_rules(29).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H21:  - (count mod 6283) <= 7000
+<S>  New H23:  count mod 6283 <= 7000
+***  Proved C2:  - (count mod 6283) >= - 7000
+     using hypothesis H20.
+***  Proved C3:  - (count mod 6283) <= 7000
+     using hypothesis H21.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_int_to_millirad_11.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H6)
+          .
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  false
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H23).
+***  Proved C1:  true
+-S-  Applied substitution rule int_to_milli_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New C2:  - count mod measuretypes__angle_full >= - 7000
+-S-  Applied substitution rule int_to_milli_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New C3:  - count mod measuretypes__angle_full <= 7000
+-S-  Applied substitution rule int_to_milli_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New H13:  - count mod 6283 >= systemtypes__unsigned32__first
+<S>  New H14:  - count mod 6283 <= systemtypes__unsigned32__last
+<S>  New H15:  true
+<S>  New H16:  6283 >= systemtypes__unsigned32__first
+<S>  New H17:  6283 <= systemtypes__unsigned32__last
+<S>  New H22:  - count mod 6283 >= millirad__first
+<S>  New H23:  - count mod 6283 <= millirad__last
+<S>  New C2:  - count mod 6283 >= - 7000
+<S>  New C3:  - count mod 6283 <= 7000
+-S-  Applied substitution rule int_to_milli_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H9:  - count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H10:  - count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H2:  count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(14).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H3:  count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(18).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__first by:
+          0.
+<S>  New H5:  - count >= 0
+<S>  New H13:  - count mod 6283 >= 0
+<S>  New H16:  true
+-S-  Applied substitution rule int_to_milli_rules(19).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__last by:
+          2147483647.
+<S>  New H6:  - count <= 2147483647
+<S>  New H14:  - count mod 6283 <= 2147483647
+<S>  New H17:  true
+-S-  Applied substitution rule int_to_milli_rules(28).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H22:  - count mod 6283 >= - 7000
+-S-  Applied substitution rule int_to_milli_rules(29).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H23:  - count mod 6283 <= 7000
+***  Proved C2:  - count mod 6283 >= - 7000
+     using hypothesis H22.
+***  Proved C3:  - count mod 6283 <= 7000
+     using hypothesis H23.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_int_to_millirad_12.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+%%%  Simplified H17 on reading formula in, to give:
+     %%%  H17:  true
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H21).
+***  Proved C1:  true
+-S-  Applied substitution rule int_to_milli_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New C2:  count mod measuretypes__angle_full >= - 7000
+-S-  Applied substitution rule int_to_milli_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New C3:  count mod measuretypes__angle_full <= 7000
+>>>  Restructured hypothesis H4 into:
+     >>>  H4:  0 <= count
+-S-  Applied substitution rule int_to_milli_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New H11:  count mod 6283 >= systemtypes__unsigned32__first
+<S>  New H12:  count mod 6283 <= systemtypes__unsigned32__last
+<S>  New H13:  true
+<S>  New H14:  6283 >= systemtypes__unsigned32__first
+<S>  New H15:  6283 <= systemtypes__unsigned32__last
+<S>  New H20:  count mod 6283 >= millirad__first
+<S>  New H21:  count mod 6283 <= millirad__last
+<S>  New C2:  count mod 6283 >= - 7000
+<S>  New C3:  count mod 6283 <= 7000
+-S-  Applied substitution rule int_to_milli_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H2:  count >= - 2147483648
+-S-  Applied substitution rule int_to_milli_rules(14).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H3:  count <= 2147483647
+-S-  Applied substitution rule int_to_milli_rules(18).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__first by:
+          0.
+<S>  New H5:  count >= 0
+<S>  New H11:  count mod 6283 >= 0
+<S>  New H14:  true
+-S-  Applied substitution rule int_to_milli_rules(19).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned32__last by:
+          2147483647.
+<S>  New H6:  count <= 2147483647
+<S>  New H12:  count mod 6283 <= 2147483647
+<S>  New H15:  true
+-S-  Applied substitution rule int_to_milli_rules(28).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H20:  count mod 6283 >= - 7000
+-S-  Applied substitution rule int_to_milli_rules(29).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H21:  count mod 6283 <= 7000
+***  Proved C2:  count mod 6283 >= - 7000
+     using hypothesis H20.
+***  Proved C3:  count mod 6283 <= 7000
+     using hypothesis H21.
+***  PROVED VC.
+

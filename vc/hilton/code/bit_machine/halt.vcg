@@ -1,0 +1,38 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.98
+
+                         procedure bit_machine.Halt
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 52:
+
+procedure_halt_1.
+H1:    true .
+H2:    fld_ticks_to_complete(state) >= 
+           systemtypes__unsigned16__first .
+H3:    fld_ticks_to_complete(state) <= 
+           systemtypes__unsigned16__last .
+H4:    true .
+H5:    fld_ticks(state) >= systemtypes__unsigned16__first .
+H6:    fld_ticks(state) <= systemtypes__unsigned16__last .
+H7:    fld_current_phase(state) >= ibit__phase__first .
+H8:    fld_current_phase(state) <= ibit__phase__last .
+        ->
+C1:    ibit__off >= ibit__phase__first .
+C2:    ibit__off <= ibit__phase__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_halt_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+

@@ -1,0 +1,42 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:39.33*/
+
+                    /*procedure compass.Extrapolate_Angle*/
+
+
+rule_family extrapolate__rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+extrapolate__rules(1): max_extrapolate_time may_be_replaced_by 600000.
+extrapolate__rules(2): long_integer__size >= 0 may_be_deduced.
+extrapolate__rules(3): long_integer__first may_be_replaced_by -2147483648.
+extrapolate__rules(4): long_integer__last may_be_replaced_by 2147483647.
+extrapolate__rules(5): long_integer__base__first may_be_replaced_by -2147483648.
+extrapolate__rules(6): long_integer__base__last may_be_replaced_by 2147483647.
+extrapolate__rules(7): systemtypes__integer32__size >= 0 may_be_deduced.
+extrapolate__rules(8): systemtypes__integer32__first may_be_replaced_by -2147483648.
+extrapolate__rules(9): systemtypes__integer32__last may_be_replaced_by 2147483647.
+extrapolate__rules(10): systemtypes__integer32__base__first may_be_replaced_by -2147483648.
+extrapolate__rules(11): systemtypes__integer32__base__last may_be_replaced_by 2147483647.
+extrapolate__rules(12): measuretypes__millirad_per_sec__size >= 0 may_be_deduced.
+extrapolate__rules(13): measuretypes__millirad_per_sec__first may_be_replaced_by -2000.
+extrapolate__rules(14): measuretypes__millirad_per_sec__last may_be_replaced_by 2000.
+extrapolate__rules(15): measuretypes__millirad_per_sec__base__first <= 
+     measuretypes__millirad_per_sec__base__last may_be_deduced.
+extrapolate__rules(16): measuretypes__millirad_per_sec__base__first <= 
+     measuretypes__millirad_per_sec__first may_be_deduced.
+extrapolate__rules(17): measuretypes__millirad_per_sec__base__last >= 
+     measuretypes__millirad_per_sec__last may_be_deduced.
+extrapolate__rules(18): clock__millisecond__size >= 0 may_be_deduced.
+extrapolate__rules(19): clock__millisecond__first may_be_replaced_by 0.
+extrapolate__rules(20): clock__millisecond__last may_be_replaced_by 8640000.
+extrapolate__rules(21): clock__millisecond__base__first may_be_replaced_by -2147483648.
+extrapolate__rules(22): clock__millisecond__base__last may_be_replaced_by 2147483647.

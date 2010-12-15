@@ -1,0 +1,144 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.25
+
+Line
+   1  with BC1553,Ibit,Measuretypes,nav;
+   2  use type Ibit.Phase;
+   3  use type Measuretypes.Meter, Measuretypes.Meter_Per_Sec;
+   4  use type Nav.Confidence;
+   5  --# inherit
+   6  --#  SystemTypes, measuretypes, ibit,
+   7  --#  BC1553, clock, bus,
+   8  --#  if_airspeed, if_compass, if_ins, if_barometer,
+   9  --#  if_fuel, if_fuze, if_radar, if_ir,
+  10  --#  if_steer, if_motor, if_destruct, if_warhead,
+  11  --#  Nav;
+  12  package Missile
+  13    --# own state;
+  14  is
+  15     procedure Init;
+  16     --# global out state;
+  17     --# derives state from;
+  18  
+  19     procedure Poll;
+  20     --# global in out state;
+  21     --#  in out
+  22     --#    clock.time,
+  23     --#    bus.outputs,
+  24     --#    if_airspeed.state,
+  25     --#    if_barometer.state,
+  26     --#    if_compass.state,
+  27     --#    if_destruct.state,
+  28     --#    if_fuel.state,
+  29     --#    if_fuze.state,
+  30     --#    if_ins.state,
+  31     --#    if_ir.state,
+  32     --#    if_motor.state,
+  33     --#    if_radar.state,
+  34     --#    if_steer.state,
+  35     --#    if_warhead.state,
+  36     --#    nav.sensor_state,
+  37     --#    nav.location_state;
+  38     --# derives
+  39     --#   state
+  40     --#   from
+  41     --#     *,
+  42     --#     clock.time,
+  43     --#     if_airspeed.state,
+  44     --#     if_barometer.state,
+  45     --#     if_compass.state,
+  46     --#     if_destruct.state,
+  47     --#     if_fuel.state,
+  48     --#     if_fuze.state,
+  49     --#     if_ins.state,
+  50     --#     if_ir.state,
+  51     --#     if_motor.state,
+  52     --#     if_radar.state,
+  53     --#     if_steer.state,
+  54     --#     if_warhead.state,
+  55     --#     nav.sensor_state,
+  56     --#     nav.location_state &
+  57     --#   clock.time
+  58     --#   from
+  59     --#     *,
+  60     --#     state,
+  61     --#     if_airspeed.state,
+  62     --#     if_compass.state,
+  63     --#     if_ins.state,
+  64     --#     if_barometer.state,
+  65     --#     if_destruct.state,
+  66     --#     if_fuel.state,
+  67     --#     if_fuze.state,
+  68     --#     if_radar.state,
+  69     --#     if_ir.state,
+  70     --#     if_steer.state,
+  71     --#     if_motor.state,
+  72     --#     if_warhead.state,
+  73     --#     nav.sensor_state &
+  74     --#   bus.outputs,
+  75     --#   if_airspeed.state,
+  76     --#   if_barometer.state,
+  77     --#   if_compass.state,
+  78     --#   if_destruct.state,
+  79     --#   if_fuel.state,
+  80     --#   if_fuze.state,
+  81     --#   if_ins.state,
+  82     --#   if_ir.state,
+  83     --#   if_motor.state,
+  84     --#   if_radar.state,
+  85     --#   if_steer.state,
+  86     --#   if_warhead.state
+  87     --#   from
+  88     --#     *,
+  89     --#     state &
+  90     --#   nav.location_state
+  91     --#   from
+  92     --#     *,
+  93     --#     state,
+  94     --#     clock.time,
+  95     --#     if_airspeed.state,
+  96     --#     if_barometer.state,
+  97     --#     if_compass.state,
+  98     --#     if_destruct.state,
+  99     --#     if_fuel.state,
+ 100     --#     if_fuze.state,
+ 101     --#     if_ins.state,
+ 102     --#     if_ir.state,
+ 103     --#     if_motor.state,
+ 104     --#     if_radar.state,
+ 105     --#     if_steer.state,
+ 106     --#     if_warhead.state,
+ 107     --#     nav.sensor_state &
+ 108     --#   nav.sensor_state
+ 109     --#   from
+ 110     --#     *,
+ 111     --#     state,
+ 112     --#     if_airspeed.state,
+ 113     --#     if_barometer.state,
+ 114     --#     if_compass.state,
+ 115     --#     if_destruct.state,
+ 116     --#     if_fuel.state,
+ 117     --#     if_fuze.state,
+ 118     --#     if_ins.state,
+ 119     --#     if_ir.state,
+ 120     --#     if_motor.state,
+ 121     --#     if_radar.state,
+ 122     --#     if_steer.state,
+ 123     --#     if_warhead.state
+ 124     --#   ;
+ 125     --#
+ 126  
+ 127     procedure Command;
+ 128     --# derives ;
+ 129  end Missile;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

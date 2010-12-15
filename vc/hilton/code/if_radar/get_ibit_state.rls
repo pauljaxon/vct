@@ -1,0 +1,74 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:41.49*/
+
+                      /*function if_radar.Get_IBIT_State*/
+
+
+rule_family get_ibit_sta_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+get_ibit_sta_rules(1): ibit__phase__size >= 0 may_be_deduced.
+get_ibit_sta_rules(2): ibit__phase__first may_be_replaced_by ibit__off.
+get_ibit_sta_rules(3): ibit__phase__last may_be_replaced_by ibit__timeout.
+get_ibit_sta_rules(4): ibit__phase__base__first may_be_replaced_by ibit__off.
+get_ibit_sta_rules(5): ibit__phase__base__last may_be_replaced_by ibit__timeout.
+get_ibit_sta_rules(6): ibit__phase__pos(ibit__phase__first) may_be_replaced_by 0.
+get_ibit_sta_rules(7): ibit__phase__pos(ibit__off) may_be_replaced_by 0.
+get_ibit_sta_rules(8): ibit__phase__val(0) may_be_replaced_by 
+     ibit__off.
+get_ibit_sta_rules(9): ibit__phase__pos(ibit__request_start) may_be_replaced_by 1.
+get_ibit_sta_rules(10): ibit__phase__val(1) may_be_replaced_by 
+     ibit__request_start.
+get_ibit_sta_rules(11): ibit__phase__pos(ibit__in_progress) may_be_replaced_by 2.
+get_ibit_sta_rules(12): ibit__phase__val(2) may_be_replaced_by 
+     ibit__in_progress.
+get_ibit_sta_rules(13): ibit__phase__pos(ibit__request_stop) may_be_replaced_by 3.
+get_ibit_sta_rules(14): ibit__phase__val(3) may_be_replaced_by 
+     ibit__request_stop.
+get_ibit_sta_rules(15): ibit__phase__pos(ibit__pass) may_be_replaced_by 4.
+get_ibit_sta_rules(16): ibit__phase__val(4) may_be_replaced_by 
+     ibit__pass.
+get_ibit_sta_rules(17): ibit__phase__pos(ibit__fail) may_be_replaced_by 5.
+get_ibit_sta_rules(18): ibit__phase__val(5) may_be_replaced_by 
+     ibit__fail.
+get_ibit_sta_rules(19): ibit__phase__pos(ibit__timeout) may_be_replaced_by 6.
+get_ibit_sta_rules(20): ibit__phase__val(6) may_be_replaced_by 
+     ibit__timeout.
+get_ibit_sta_rules(21): ibit__phase__pos(ibit__phase__last) may_be_replaced_by 6.
+get_ibit_sta_rules(22): ibit__phase__pos(succ(X)) may_be_replaced_by 
+     ibit__phase__pos(X) + 1
+     if [X <=ibit__timeout, X <> ibit__timeout].
+get_ibit_sta_rules(23): ibit__phase__pos(pred(X)) may_be_replaced_by 
+     ibit__phase__pos(X) - 1
+     if [X >=ibit__off, X <> ibit__off].
+get_ibit_sta_rules(24): ibit__phase__pos(X) >= 0 may_be_deduced_from
+     [ibit__off <= X, X <= ibit__timeout].
+get_ibit_sta_rules(25): ibit__phase__pos(X) <= 6 may_be_deduced_from
+     [ibit__off <= X, X <= ibit__timeout].
+get_ibit_sta_rules(26): ibit__phase__val(X) >= ibit__off may_be_deduced_from
+     [0 <= X, X <= 6].
+get_ibit_sta_rules(27): ibit__phase__val(X) <= ibit__timeout may_be_deduced_from
+     [0 <= X, X <= 6].
+get_ibit_sta_rules(28): succ(ibit__phase__val(X)) may_be_replaced_by 
+     ibit__phase__val(X+1)
+     if [0 <= X, X < 6].
+get_ibit_sta_rules(29): pred(ibit__phase__val(X)) may_be_replaced_by 
+     ibit__phase__val(X-1)
+     if [0 < X, X <= 6].
+get_ibit_sta_rules(30): ibit__phase__pos(ibit__phase__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 6].
+get_ibit_sta_rules(31): ibit__phase__val(ibit__phase__pos(X)) may_be_replaced_by X
+     if [ibit__off <= X, X <= ibit__timeout].
+get_ibit_sta_rules(32): ibit__phase__pos(X) <= ibit__phase__pos(Y) & X <= Y are_interchangeable 
+     if [ibit__off <= X, X <= ibit__timeout, ibit__off <= Y, Y <= 
+     ibit__timeout].
+get_ibit_sta_rules(33): ibit__phase__val(X) <= ibit__phase__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 6, 0 <= Y, Y <= 6].

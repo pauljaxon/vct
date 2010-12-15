@@ -1,0 +1,161 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:39  SIMPLIFIED 25-NOV-2009, 14:18:43
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure if_barometer.Ibit_Start
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_ibit_start_1.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  ibit__phase__first <= ibit__request_start
+-S-  Applied substitution rule ibit_start_rules(78).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New C1:  true
+-S-  Applied substitution rule ibit_start_rules(79).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_ibit_start_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  ibit__phase__first <= ibit__request_start
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  ibit__phase__first <= ibit__request_start
+***  Proved C3:  ibit__phase__first <= ibit__request_start
+     using hypothesis H2.
+***  Proved C4:  ibit__request_start <= ibit__phase__last
+     using hypothesis H3.
+-S-  Applied substitution rule ibit_start_rules(9).
+     This was achieved by replacing all occurrences of systemtypes__byte__first 
+          by:
+          0.
+<S>  New C1:  element(ibit__phase_lookup, [ibit__request_start]) >= 0
+-S-  Applied substitution rule ibit_start_rules(10).
+     This was achieved by replacing all occurrences of systemtypes__byte__last 
+          by:
+          255.
+<S>  New C2:  element(ibit__phase_lookup, [ibit__request_start]) <= 255
+-S-  Applied substitution rule ibit_start_rules(78).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H2:  true
+-S-  Applied substitution rule ibit_start_rules(79).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H3:  true
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H2 (true-hypothesis).
+---  Eliminated hypothesis H3 (true-hypothesis).
+***  Proved C1:  element(ibit__phase_lookup, [ibit__request_start]) >= 0
+***  Proved C2:  element(ibit__phase_lookup, [ibit__request_start]) <= 255
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_ibit_start_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  ibit__phase__first <= ibit__request_start
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  bc1553__lru_name__first <= bc1553__barometer
+-S-  Applied substitution rule ibit_start_rules(35).
+     This was achieved by replacing all occurrences of bc1553__lru_name__first 
+          by:
+          bc1553__barometer.
+<S>  New C1:  true
+-S-  Applied substitution rule ibit_start_rules(36).
+     This was achieved by replacing all occurrences of bc1553__lru_name__last 
+          by:
+          bc1553__warhead.
+<S>  New C2:  true
+-S-  Applied substitution rule ibit_start_rules(30).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New C3:  true
+-S-  Applied substitution rule ibit_start_rules(31).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New C4:  true
+-S-  Applied substitution rule ibit_start_rules(14).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New C5:  true
+-S-  Applied substitution rule ibit_start_rules(15).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New C6:  true
+-S-  Applied substitution rule ibit_start_rules(20).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C7:  element(ibit__phase_lookup, [ibit__request_start]) >= 0
+-S-  Applied substitution rule ibit_start_rules(21).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C8:  element(ibit__phase_lookup, [ibit__request_start]) <= 65535
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  Proved C5:  true
+***  Proved C6:  true
+-S-  Applied substitution rule ibit_start_rules(9).
+     This was achieved by replacing all occurrences of systemtypes__byte__first 
+          by:
+          0.
+<S>  New H4:  element(ibit__phase_lookup, [ibit__request_start]) >= 0
+-S-  Applied substitution rule ibit_start_rules(10).
+     This was achieved by replacing all occurrences of systemtypes__byte__last 
+          by:
+          255.
+<S>  New H5:  element(ibit__phase_lookup, [ibit__request_start]) <= 255
+-S-  Applied substitution rule ibit_start_rules(78).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H2:  true
+-S-  Applied substitution rule ibit_start_rules(79).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H3:  true
+***  Proved C7:  element(ibit__phase_lookup, [ibit__request_start]) >= 0
+     using hypothesis H4.
+***  Proved C8:  element(ibit__phase_lookup, [ibit__request_start]) <= 65535
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_ibit_start_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_ibit_start_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_ibit_start_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

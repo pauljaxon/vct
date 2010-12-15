@@ -1,0 +1,322 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.03
+
+Line
+   1  -- Motor implementation
+   2  --
+   3  -- $Log: motor.adb,v $
+   4  -- Revision 1.2  2005/01/24 19:19:05  adi
+   5  -- Hacked to implement logging
+   6  --
+   7  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   8  -- Added from tarfile
+   9  --
+  10  --
+  11  -- Revision 1.1  2003/09/01 18:19:00  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with
+  16    Clock_Utils,
+  17    Systemtypes,
+  18    Bus,
+  19    RT1553,
+  20    IBIT,
+  21    Measuretypes.Encode,
+  22    Measuretypes.Decode,
+  23    Bit_Machine;
+  24  package body Motor
+  25    --# own State is
+  26    --#     current_thrust,
+  27    --#     commanded_thrust,
+  28    --#     command_time,
+  29    --#     BIT_State;
+  30  is
+  31     subtype Integer32 is Systemtypes.Integer32;
+  32  
+  33     -- The current and commanded thrust
+  34     Current_thrust : Power := Power'first;
+  35     Commanded_Thrust : Power := Power'first;
+  36  
+  37     -- What time the angle was last requested for each fin
+  38     Command_Time : Clock.millisecond := 0;
+  39  
+  40     -- The BIT state
+  41     Bit_State  : Bit_Machine.Machine := Bit_Machine.Initial_Machine;
+  42  
+  43     Bus_Id : constant Rt1553.Lru_Name := Rt1553.motor;
+  44  
+  45     -- Extrapolate the actual thrust
+  46     procedure Extrapolate_thrust(New_Thrust : out Power)
+  47       --# global in out clock.time;
+  48       --#        in current_thrust, commanded_thrust, command_time;
+  49       --# derives
+  50       --#     clock.time from * &
+  51       --#     new_thrust from
+  52       --#        clock.time,
+  53       --#        current_thrust,
+  54       --#        commanded_thrust,
+  55       --#        command_time;
+  56     is
+  57        Now : Clock.Millisecond;
+  58        Time_Valid : Boolean;
+  59        Diff_Time : Clock.Millisecond;
+  60        Tmp : Integer32;
+  61        begin
+  62        Clock.Read(T => Now,Valid => Time_Valid);
+  63        if Current_thrust = Commanded_thrust then
+  64           New_thrust := Current_thrust;
+  65        elsif Time_Valid then
+  66           Diff_Time := Now - Command_Time;
+  67           if Diff_Time < 0 then
+  68              -- No movement
+  69              New_Thrust := Current_Thrust;
+  70           else
+  71              if Diff_Time > 30_000 then
+  72                 -- Max response is under 30 seconds anyway
+  73                 Diff_Time := 30_000;
+  74              end if;
+  75              -- Work out the thrust extrapolated
+  76              if Commanded_thrust >= Current_thrust then
+  77                 Tmp := Integer32(Current_thrust) +
+  78                   (Integer32(Diff_Time) * Motor_Cfg.burn_Rate) / 1000;
+  79                 if Tmp > Integer32(Commanded_thrust) then
+  80                    New_thrust := Commanded_Thrust;
+  81                 else
+  82                    New_thrust := power(Tmp);
+  83                 end if;
+  84              else
+  85                 -- target < current
+  86                 Tmp := Integer32(Current_thrust) -
+  87                   (Integer32(Diff_Time) * Motor_Cfg.burn_Rate) / 1000;
+  88                 if Tmp < Integer32(Commanded_thrust) then
+  89                    New_Thrust := Commanded_thrust;
+  90                 else
+  91                    New_thrust := power(Tmp);
+  92                 end if;
+  93              end if;
+  94           end if;
+  95        else
+  96           -- Can't estimate, return the current value
+  97           New_thrust := Current_thrust;
+  98        end if;
+  99     end Extrapolate_thrust;
+
++++        Flow analysis of subprogram Extrapolate_thrust 
+           performed: no errors found.
+
+ 100  
+ 101  
+ 102     --------- Public subprograms
+ 103  
+ 104     procedure Set_thrust(New_Level : in Power)
+ 105       --# global in out
+ 106       --#     current_thrust,
+ 107       --#     commanded_thrust,
+ 108       --#     command_time,
+ 109       --#     clock.time;
+ 110       --# derives
+ 111       --#     current_thrust from
+ 112       --#         *,
+ 113       --#         commanded_thrust,
+ 114       --#         command_time,
+ 115       --#         clock.time &
+ 116       --#     commanded_thrust from
+ 117       --#         new_level &
+ 118       --#     command_time from
+ 119       --#         clock.time &
+ 120       --#     clock.time from
+ 121       --#         *;
+ 122     is
+ 123        Time_Valid : Boolean;
+ 124        T : Clock.Millisecond;
+ 125        p : power;
+ 126     begin
+ 127        -- Update the fin's current angle
+ 128        Extrapolate_thrust(New_Thrust => p);
+ 129        Current_Thrust := p;
+ 130        Commanded_Thrust := New_level;
+ 131        Clock.Read(T => T,Valid => Time_Valid);
+ 132        if Time_Valid then
+ 133           Command_Time := T;
+ 134        else
+ 135           Command_Time := 0;
+ 136        end if;
+ 137     end Set_thrust;
+
++++        Flow analysis of subprogram Set_thrust 
+           performed: no errors found.
+
+ 138  
+ 139  
+ 140     procedure Read_thrust(This_Level : out Power)
+ 141       --# global in out clock.time;
+ 142       --#     in current_thrust,
+ 143       --#     commanded_thrust,
+ 144       --#     command_time;
+ 145       --# derives
+ 146       --#     this_level from
+ 147       --#         current_thrust,
+ 148       --#         commanded_thrust,
+ 149       --#         command_time,
+ 150       --#         clock.time &
+ 151       --#     clock.time from
+ 152       --#         *;
+ 153     is
+ 154     begin
+ 155        Extrapolate_thrust(New_thrust => This_level);
+ 156     end Read_thrust;
+
++++        Flow analysis of subprogram Read_thrust 
+           performed: no errors found.
+
+ 157  
+ 158  
+ 159     -- Cycle the reading of data from the bus
+ 160     -- and writing of data to the bus
+ 161     procedure Cycle
+ 162       --# global in out current_thrust, commanded_thrust, command_time;
+ 163       --#        in out BIT_State;
+ 164       --#        in out Clock.Time;
+ 165       --#        in Bus.Outputs;
+ 166       --#        in out Bus.Inputs;
+ 167       --# derives
+ 168       --#     BIT_State from
+ 169       --#        *, Bus.Outputs &
+ 170       --#     Bus.Inputs from
+ 171       --#        *, Clock.Time,
+ 172       --#        current_thrust,
+ 173       --#        commanded_thrust,
+ 174       --#        command_time,
+ 175       --#        BIT_State &
+ 176       --#     Clock.Time from
+ 177       --#        current_thrust,
+ 178       --#        clock.time,
+ 179       --#        bus.outputs &
+ 180       --#     current_thrust from
+ 181       --#        clock.time,
+ 182       --#        command_time,
+ 183       --#        current_thrust,
+ 184       --#        commanded_thrust,
+ 185       --#        bus.outputs &
+ 186       --#     commanded_thrust from
+ 187       --#        current_thrust,
+ 188       --#        commanded_thrust,
+ 189       --#        bus.outputs &
+ 190       --#     command_time from
+ 191       --#        *,
+ 192       --#        clock.time,
+ 193       --#        current_thrust,
+ 194       --#        bus.outputs;
+ 195     is
+ 196        Datum, Dlo, Dhi : Bus.Word;
+ 197        P : Power;
+ 198     begin
+ 199        -- Write the thrust out to T1 word 1
+ 200        Extrapolate_thrust(New_Thrust => p);
+ 201        Measuretypes.Encode.Newton(N => P,
+ 202                                   Lo => Dlo,
+ 203                                   Hi => dhi);
+ 204        Rt1553.Write_Word(Data => Dlo,
+ 205                          Idx => 1,
+ 206                          Subaddress_Idx => 1,
+ 207                          Src => Bus_Id);
+ 208        Rt1553.Write_Word(Data => Dhi,
+ 209                          Idx => 2,
+ 210                          Subaddress_Idx => 1,
+ 211                          Src => Bus_Id);
+ 212  
+ 213        -- Write the BIT phase to T1 word 3
+ 214        Rt1553.Write_Word(Data =>
+ 215                            IBIT.Phase_Lookup(BIT_Machine.Phase(Bit_State)),
+ 216                          Idx => 3,
+ 217                          Subaddress_Idx => 1,
+ 218                          Src => Bus_id);
+ 219  
+ 220        -- Look for commands on R1
+ 221        if Rt1553.Is_Valid(Src => Bus_Id,
+ 222                           Subaddress_Idx => 1) and then
+ 223          Rt1553.Is_Fresh(Src => Bus_Id,
+ 224                          Subaddress_Idx => 1) then
+ 225           -- Read a new thrust off R1
+ 226           Rt1553.Read_Word(Src => Bus_id,
+ 227                            Idx => 1,
+ 228                            Subaddress_Idx => 1,
+ 229                            Data => dlo);
+ 230           Rt1553.Read_Word(Src => Bus_id,
+ 231                            Idx => 2,
+ 232                            Subaddress_Idx => 1,
+ 233                            Data => dhi);
+ 234           p := measuretypes.Decode.newton(Lo => Dlo, Hi => dhi);
+ 235           if p /= Current_Thrust Then
+ 236              Set_Thrust(P);
+ 237           end if;
+ 238        end if;
+ 239  
+ 240        -- Read the BIT info off R1 word 3
+ 241        Rt1553.Read_Word(Src => Bus_id,
+ 242                         Idx => 3,
+ 243                         Subaddress_Idx => 1,
+ 244                         Data => Datum);
+ 245        BIT_Machine.Change_State(Word => Datum,
+ 246                                 State => Bit_state);
+ 247        -- And cycle the BIT
+ 248        BIT_Machine.Step(Bit_State);
+ 249     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+ 250  
+ 251  
+ 252     procedure Fail_Next_Bit
+ 253       --# global in out BIT_State;
+ 254       --# derives BIT_State from *;
+ 255     is begin
+ 256        BIT_Machine.Fail_Next(Bit_State);
+ 257     end Fail_Next_Bit;
+
++++        Flow analysis of subprogram Fail_Next_Bit 
+           performed: no errors found.
+
+ 258  
+ 259     procedure Init
+ 260       --# global out current_thrust,
+ 261       --#            commanded_thrust,
+ 262       --#            command_time,
+ 263       --#            BIT_State;
+ 264       --#        in out Bus.Inputs;
+ 265       --# derives current_thrust,
+ 266       --#        commanded_thrust,
+ 267       --#        command_time,
+ 268       --#        BIT_State from &
+ 269       --#        Bus.Inputs from *;
+ 270     is begin
+ 271        -- Initialise the bus message 1T
+ 272        RT1553.Set_Message_Valid(Subaddress_Idx => 1,
+ 273                                 Src => Bus_id);
+ 274        -- Initialise the variables
+ 275        Current_thrust := Power'first;
+ 276        Commanded_Thrust := Power'first;
+ 277        Command_time := 0;
+ 278        BIT_Machine.Create(Ticks_To_Complete => 23,
+ 279                           State => Bit_State);
+ 280     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 281  
+ 282     procedure Command is separate;
+ 283  end Motor;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

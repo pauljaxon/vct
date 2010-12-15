@@ -1,0 +1,291 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:49
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure ins.Read_Location
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_read_location_1.  @@@@@@@@@@
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H21).
+-S-  Applied substitution rule read_locatio_rules(21).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New C1:  fld_x(position__1) >= - 200000
+-S-  Applied substitution rule read_locatio_rules(22).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New C2:  fld_x(position__1) <= 200000
+-S-  Applied substitution rule read_locatio_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  fld_z(last_position) >= - 200000
+<S>  New H4:  fld_y(last_position) >= - 200000
+<S>  New H6:  fld_x(last_position) >= - 200000
+<S>  New H16:  fld_z(position__1) >= - 200000
+<S>  New H18:  fld_y(position__1) >= - 200000
+<S>  New H20:  fld_x(position__1) >= - 200000
+-S-  Applied substitution rule read_locatio_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  fld_z(last_position) <= 200000
+<S>  New H5:  fld_y(last_position) <= 200000
+<S>  New H7:  fld_x(last_position) <= 200000
+<S>  New H17:  fld_z(position__1) <= 200000
+<S>  New H19:  fld_y(position__1) <= 200000
+<S>  New H21:  fld_x(position__1) <= 200000
+-S-  Applied substitution rule read_locatio_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H10:  fld_vz(last_velocity) >= - 5000
+<S>  New H12:  fld_vy(last_velocity) >= - 5000
+<S>  New H14:  fld_vx(last_velocity) >= - 5000
+-S-  Applied substitution rule read_locatio_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H11:  fld_vz(last_velocity) <= 5000
+<S>  New H13:  fld_vy(last_velocity) <= 5000
+<S>  New H15:  fld_vx(last_velocity) <= 5000
+-S-  Applied substitution rule read_locatio_rules(16).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H8:  last_time >= 0
+-S-  Applied substitution rule read_locatio_rules(17).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H9:  last_time <= 8640000
+***  Proved C1:  fld_x(position__1) >= - 200000
+     using hypothesis H20.
+***  Proved C2:  fld_x(position__1) <= 200000
+     using hypothesis H21.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_location_2.  @@@@@@@@@@
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H21).
+-S-  Applied substitution rule read_locatio_rules(21).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H28:  fld_x(position__1) >= - 200000
+<S>  New C1:  fld_y(position__1) >= - 200000
+-S-  Applied substitution rule read_locatio_rules(22).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H29:  fld_x(position__1) <= 200000
+<S>  New C2:  fld_y(position__1) <= 200000
+-S-  Applied substitution rule read_locatio_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  fld_z(last_position) >= - 200000
+<S>  New H4:  fld_y(last_position) >= - 200000
+<S>  New H6:  fld_x(last_position) >= - 200000
+<S>  New H16:  fld_z(position__1) >= - 200000
+<S>  New H18:  fld_y(position__1) >= - 200000
+<S>  New H20:  fld_x(position__1) >= - 200000
+-S-  Applied substitution rule read_locatio_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  fld_z(last_position) <= 200000
+<S>  New H5:  fld_y(last_position) <= 200000
+<S>  New H7:  fld_x(last_position) <= 200000
+<S>  New H17:  fld_z(position__1) <= 200000
+<S>  New H19:  fld_y(position__1) <= 200000
+<S>  New H21:  fld_x(position__1) <= 200000
+-S-  Applied substitution rule read_locatio_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H10:  fld_vz(last_velocity) >= - 5000
+<S>  New H12:  fld_vy(last_velocity) >= - 5000
+<S>  New H14:  fld_vx(last_velocity) >= - 5000
+-S-  Applied substitution rule read_locatio_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H11:  fld_vz(last_velocity) <= 5000
+<S>  New H13:  fld_vy(last_velocity) <= 5000
+<S>  New H15:  fld_vx(last_velocity) <= 5000
+-S-  Applied substitution rule read_locatio_rules(16).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H8:  last_time >= 0
+-S-  Applied substitution rule read_locatio_rules(17).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H9:  last_time <= 8640000
+***  Proved C1:  fld_y(position__1) >= - 200000
+     using hypothesis H18.
+***  Proved C2:  fld_y(position__1) <= 200000
+     using hypothesis H19.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_location_3.  @@@@@@@@@@
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H21).
+-S-  Applied substitution rule read_locatio_rules(21).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H28:  fld_x(position__1) >= - 200000
+<S>  New H36:  fld_y(position__1) >= - 200000
+<S>  New C1:  fld_z(position__1) >= - 200000
+-S-  Applied substitution rule read_locatio_rules(22).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H29:  fld_x(position__1) <= 200000
+<S>  New H37:  fld_y(position__1) <= 200000
+<S>  New C2:  fld_z(position__1) <= 200000
+-S-  Applied substitution rule read_locatio_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  fld_z(last_position) >= - 200000
+<S>  New H4:  fld_y(last_position) >= - 200000
+<S>  New H6:  fld_x(last_position) >= - 200000
+<S>  New H16:  fld_z(position__1) >= - 200000
+<S>  New H18:  fld_y(position__1) >= - 200000
+<S>  New H20:  fld_x(position__1) >= - 200000
+-S-  Applied substitution rule read_locatio_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  fld_z(last_position) <= 200000
+<S>  New H5:  fld_y(last_position) <= 200000
+<S>  New H7:  fld_x(last_position) <= 200000
+<S>  New H17:  fld_z(position__1) <= 200000
+<S>  New H19:  fld_y(position__1) <= 200000
+<S>  New H21:  fld_x(position__1) <= 200000
+-S-  Applied substitution rule read_locatio_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H10:  fld_vz(last_velocity) >= - 5000
+<S>  New H12:  fld_vy(last_velocity) >= - 5000
+<S>  New H14:  fld_vx(last_velocity) >= - 5000
+-S-  Applied substitution rule read_locatio_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H11:  fld_vz(last_velocity) <= 5000
+<S>  New H13:  fld_vy(last_velocity) <= 5000
+<S>  New H15:  fld_vx(last_velocity) <= 5000
+-S-  Applied substitution rule read_locatio_rules(16).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H8:  last_time >= 0
+-S-  Applied substitution rule read_locatio_rules(17).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H9:  last_time <= 8640000
+***  Proved C1:  fld_z(position__1) >= - 200000
+     using hypothesis H16.
+***  Proved C2:  fld_z(position__1) <= 200000
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_location_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_location_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_location_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

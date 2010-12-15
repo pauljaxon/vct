@@ -1,0 +1,36 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:38.85*/
+
+                         /*function decode.Fin_Angle*/
+
+
+rule_family fin_angle_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+fin_angle_rules(1): integer__size >= 0 may_be_deduced.
+fin_angle_rules(2): integer__first may_be_replaced_by -2147483648.
+fin_angle_rules(3): integer__last may_be_replaced_by 2147483647.
+fin_angle_rules(4): integer__base__first may_be_replaced_by -2147483648.
+fin_angle_rules(5): integer__base__last may_be_replaced_by 2147483647.
+fin_angle_rules(6): bus__word__size >= 0 may_be_deduced.
+fin_angle_rules(7): bus__word__first may_be_replaced_by 0.
+fin_angle_rules(8): bus__word__last may_be_replaced_by 65535.
+fin_angle_rules(9): bus__word__base__first may_be_replaced_by -2147483648.
+fin_angle_rules(10): bus__word__base__last may_be_replaced_by 2147483647.
+fin_angle_rules(11): steer_cfg__fin_angle__size >= 0 may_be_deduced.
+fin_angle_rules(12): steer_cfg__fin_angle__first may_be_replaced_by -57.
+fin_angle_rules(13): steer_cfg__fin_angle__last may_be_replaced_by 57.
+fin_angle_rules(14): steer_cfg__fin_angle__base__first <= 
+     steer_cfg__fin_angle__base__last may_be_deduced.
+fin_angle_rules(15): steer_cfg__fin_angle__base__first <= 
+     steer_cfg__fin_angle__first may_be_deduced.
+fin_angle_rules(16): steer_cfg__fin_angle__base__last >= 
+     steer_cfg__fin_angle__last may_be_deduced.

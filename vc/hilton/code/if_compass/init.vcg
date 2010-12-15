@@ -1,0 +1,52 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.80
+
+                         procedure if_compass.Init
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 161:
+
+procedure_init_1.
+H1:    true .
+        ->
+C1:    ibit__off >= ibit__phase__first .
+C2:    ibit__off <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 162:
+
+procedure_init_2.
+H1:    true .
+H2:    ibit__off >= ibit__phase__first .
+H3:    ibit__off <= ibit__phase__last .
+        ->
+C1:    bc1553__compass >= bc1553__lru_name__first .
+C2:    bc1553__compass <= bc1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_init_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_init_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_init_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+

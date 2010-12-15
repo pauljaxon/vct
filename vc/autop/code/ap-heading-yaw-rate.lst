@@ -1,0 +1,33 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.82
+
+Line
+   1  with Degrees;
+   2  --# inherit Instruments,Degrees;
+   3  private package AP.Heading.Yaw.Rate
+   4    --# own Yaw_History;
+   5    --# initializes Yaw_History;
+   6  is
+   7     procedure Calc_Yawrate(Yaw             : in  Instruments.Slipangle;
+   8     			  Present_Yawrate : out Degrees.Degreespersec);
+   9     --# global in out Yaw_History;
+  10     --# derives Present_Yawrate 
+  11     --#          from Yaw, 
+  12     --#               Yaw_History &
+  13     --#         Yaw_History
+  14     --#          from *,
+  15     --#               Yaw
+  16     --#   ;
+  17     
+  18  end AP.Heading.Yaw.Rate;
+  19  
+  20     
+
+
+--End of file--------------------------------------------------

@@ -1,0 +1,445 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:06
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function roll.Target_ROR
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_target_ror_1.  @@@@@@@@@@
+***  Proved C1:  target_heading >= instruments__headdegree__first
+     using hypothesis H4.
+***  Proved C2:  target_heading <= instruments__headdegree__last
+     using hypothesis H5.
+***  Proved C3:  present_heading >= instruments__headdegree__first
+     using hypothesis H2.
+***  Proved C4:  present_heading <= instruments__headdegree__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_ror_2.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+***  Proved C1:  scale__heading_offset(present_heading, target_heading) >= 
+          instruments__headdegree__first
+     using hypothesis H10.
+***  Proved C2:  scale__heading_offset(present_heading, target_heading) <= 
+          instruments__headdegree__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_ror_3.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+-S-  Applied substitution rule target_ror_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__bankangle__first by:
+          - 45.
+<S>  New C1:  true
+-S-  Applied substitution rule target_ror_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__bankangle__last by:
+          45.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_ror_4.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  - 40 >= instruments__bankangle__first
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  - 40 <= instruments__bankangle__last
+-S-  Applied substitution rule target_ror_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__bankangle__first by:
+          - 45.
+<S>  New C1:  true
+-S-  Applied substitution rule target_ror_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__bankangle__last by:
+          45.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_ror_5.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H11).
+-S-  Applied substitution rule target_ror_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__bankangle__first by:
+          - 45.
+<S>  New C1:  scale__heading_offset(present_heading, target_heading) >= - 45
+<S>  New C3:  scale__heading_offset(present_heading, target_heading) >= - 45
+-S-  Applied substitution rule target_ror_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__bankangle__last by:
+          45.
+<S>  New C2:  scale__heading_offset(present_heading, target_heading) <= 45
+<S>  New C4:  scale__heading_offset(present_heading, target_heading) <= 45
+***  Proved C2:  scale__heading_offset(present_heading, target_heading) <= 45
+     using hypothesis H22.
+***  Proved C4:  scale__heading_offset(present_heading, target_heading) <= 45
+     using hypothesis H22.
+>>>  Restructured hypothesis H16 into:
+     >>>  H16:  scale__heading_offset(present_heading, target_heading) <= 40 or 
+          180 < scale__heading_offset(present_heading, target_heading)
+>>>  Restructured hypothesis H19 into:
+     >>>  H19:  scale__heading_offset(present_heading, target_heading) <= 180 
+          or 319 <= scale__heading_offset(present_heading, target_heading)
+-S-  Applied substitution rule target_ror_rules(12).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__first by:
+          0.
+<S>  New H2:  present_heading >= 0
+<S>  New H4:  target_heading >= 0
+<S>  New H10:  scale__heading_offset(present_heading, target_heading) >= 0
+-S-  Applied substitution rule target_ror_rules(13).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__last by:
+          359.
+<S>  New H3:  present_heading <= 359
+<S>  New H5:  target_heading <= 359
+<S>  New H11:  scale__heading_offset(present_heading, target_heading) <= 359
+***  Proved C1:  scale__heading_offset(present_heading, target_heading) >= - 45
+     using hypothesis H10.
+***  Proved C3:  scale__heading_offset(present_heading, target_heading) >= - 45
+     using hypothesis H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_ror_6.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H11).
+-S-  Applied substitution rule target_ror_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__bankangle__first by:
+          - 45.
+<S>  New C1:  scale__heading_offset(present_heading, target_heading) <= 405
+<S>  New C3:  scale__heading_offset(present_heading, target_heading) <= 405
+-S-  Applied substitution rule target_ror_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__bankangle__last by:
+          45.
+<S>  New C2:  315 <= scale__heading_offset(present_heading, target_heading)
+<S>  New C4:  315 <= scale__heading_offset(present_heading, target_heading)
+-S-  Applied substitution rule target_ror_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C5:  scale__heading_offset(present_heading, target_heading) <= 
+          2147484008
+-S-  Applied substitution rule target_ror_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C6:  - 2147483287 <= scale__heading_offset(present_heading, 
+          target_heading)
+-S-  Applied substitution rule target_ror_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New C7:  scale__heading_offset(present_heading, target_heading) >= - 
+          2147483648
+-S-  Applied substitution rule target_ror_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New C8:  scale__heading_offset(present_heading, target_heading) <= 
+          2147483647
+***  Proved C6:  - 2147483287 <= scale__heading_offset(present_heading, 
+          target_heading)
+     using hypothesis H22.
+***  Proved C7:  scale__heading_offset(present_heading, target_heading) >= - 
+          2147483648
+     using hypothesis H22.
+>>>  Restructured hypothesis H16 into:
+     >>>  H16:  scale__heading_offset(present_heading, target_heading) <= 40 or 
+          180 < scale__heading_offset(present_heading, target_heading)
+>>>  Restructured hypothesis H19 into:
+     >>>  H19:  scale__heading_offset(present_heading, target_heading) <= 180 
+          or 319 <= scale__heading_offset(present_heading, target_heading)
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  40 < scale__heading_offset(present_heading, target_heading)
+-S-  Applied substitution rule target_ror_rules(12).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__first by:
+          0.
+<S>  New H2:  present_heading >= 0
+<S>  New H4:  target_heading >= 0
+<S>  New H10:  scale__heading_offset(present_heading, target_heading) >= 0
+-S-  Applied substitution rule target_ror_rules(13).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__last by:
+          359.
+<S>  New H3:  present_heading <= 359
+<S>  New H5:  target_heading <= 359
+<S>  New H11:  scale__heading_offset(present_heading, target_heading) <= 359
+***  Proved C1:  scale__heading_offset(present_heading, target_heading) <= 405
+     using hypothesis H11.
+***  Proved C3:  scale__heading_offset(present_heading, target_heading) <= 405
+     using hypothesis H11.
+***  Proved C5:  scale__heading_offset(present_heading, target_heading) <= 
+          2147484008
+     using hypothesis H11.
+***  Proved C8:  scale__heading_offset(present_heading, target_heading) <= 
+          2147483647
+     using hypothesis H11.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+%%%  Simplified H16 further (given H22), to give:
+     %%%  H16:  180 < scale__heading_offset(present_heading, target_heading)
+%%%  Simplified H19 further (given H16), to give:
+     %%%  H19:  319 <= scale__heading_offset(present_heading, target_heading)
+---  Eliminated hypothesis H10 (redundant, given H22).
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C2:  315 <= scale__heading_offset(present_heading, target_heading)
+     using hypothesis H19.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_ror_7.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+***  Proved C1:  true
+***  Proved C2:  40 >= instruments__bankangle__first
+     using hypothesis H18.
+***  Proved C3:  40 <= instruments__bankangle__last
+     using hypothesis H19.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_ror_8.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  - 40 >= instruments__bankangle__first
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  - 40 <= instruments__bankangle__last
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H22).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  - 40 >= instruments__bankangle__first
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  - 40 <= instruments__bankangle__last
+***  Proved C1:  true
+***  Proved C2:  - 40 >= instruments__bankangle__first
+     using hypothesis H21.
+***  Proved C3:  - 40 <= instruments__bankangle__last
+     using hypothesis H22.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_ror_9.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H26).
+***  Proved C1:  true
+***  Proved C2:  scale__heading_offset(present_heading, target_heading) >= 
+          instruments__bankangle__first
+     using hypothesis H25.
+***  Proved C3:  scale__heading_offset(present_heading, target_heading) <= 
+          instruments__bankangle__last
+     using hypothesis H26.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_ror_10.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H26).
+***  Proved C1:  true
+***  Proved C2:  360 - scale__heading_offset(present_heading, target_heading) 
+          >= instruments__bankangle__first
+     using hypothesis H25.
+***  Proved C3:  360 - scale__heading_offset(present_heading, target_heading) 
+          <= instruments__bankangle__last
+     using hypothesis H26.
+***  PROVED VC.
+

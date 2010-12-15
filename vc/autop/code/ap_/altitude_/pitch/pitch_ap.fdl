@@ -1,0 +1,67 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 26-NOV-2009 09:54:53.66}
+
+                          {procedure Pitch.Pitch_AP}
+
+
+title procedure pitch_ap;
+
+  function round__(real) : integer;
+  type degrees__degreespersec = integer;
+  type instruments__feet = integer;
+  type instruments__machnumber = integer;
+  type instruments__pitchangle = integer;
+  type instruments__feetpermin = integer;
+  type surfaces__controlangle = integer;
+  const degreespersec__base__last : integer = pending; 
+  const degreespersec__base__first : integer = pending; 
+  const surfaces__controlangle__base__last : integer = pending; 
+  const surfaces__controlangle__base__first : integer = pending; 
+  const instruments__feetpermin__base__last : integer = pending; 
+  const instruments__feetpermin__base__first : integer = pending; 
+  const instruments__pitchangle__base__last : integer = pending; 
+  const instruments__pitchangle__base__first : integer = pending; 
+  const instruments__machnumber__base__last : integer = pending; 
+  const instruments__machnumber__base__first : integer = pending; 
+  const instruments__feet__base__last : integer = pending; 
+  const instruments__feet__base__first : integer = pending; 
+  const degrees__degreespersec__base__last : integer = pending; 
+  const degrees__degreespersec__base__first : integer = pending; 
+  const degreespersec__size : integer = pending; 
+  const degreespersec__last : integer = pending; 
+  const degreespersec__first : integer = pending; 
+  const surfaces__controlangle__size : integer = pending; 
+  const surfaces__controlangle__last : integer = pending; 
+  const surfaces__controlangle__first : integer = pending; 
+  const instruments__feetpermin__size : integer = pending; 
+  const instruments__feetpermin__last : integer = pending; 
+  const instruments__feetpermin__first : integer = pending; 
+  const instruments__pitchangle__size : integer = pending; 
+  const instruments__pitchangle__last : integer = pending; 
+  const instruments__pitchangle__first : integer = pending; 
+  const instruments__machnumber__size : integer = pending; 
+  const instruments__machnumber__last : integer = pending; 
+  const instruments__machnumber__first : integer = pending; 
+  const instruments__feet__size : integer = pending; 
+  const instruments__feet__last : integer = pending; 
+  const instruments__feet__first : integer = pending; 
+  const degrees__degreespersec__size : integer = pending; 
+  const degrees__degreespersec__last : integer = pending; 
+  const degrees__degreespersec__first : integer = pending; 
+  var present_altitude : integer;
+  var target_altitude : integer;
+  var mach : integer;
+  var climb_rate : integer;
+  var the_pitch : integer;
+  var present_pitchrate : integer;
+  function target_rate(integer, integer, integer) : integer;
+  function calc_elevator_move(integer, integer, integer) : integer;
+  var present_pitchrate__1 : integer;
+
+end;

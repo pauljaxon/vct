@@ -1,0 +1,94 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.59
+
+                    procedure flying_object.Get_Velocity
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 172:
+
+procedure_get_velocity_1.
+H1:    true .
+H2:    fld_t(e) >= clock__millisecond__first .
+H3:    fld_t(e) <= clock__millisecond__last .
+H4:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H5:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H6:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H11:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H12:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H17:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H18:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+H22:   t__1 >= clock__millisecond__first .
+H23:   t__1 <= clock__millisecond__last .
+H24:   true .
+        ->
+C1:    t__1 >= clock__millisecond__first .
+C2:    t__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 175:
+
+procedure_get_velocity_2.
+H1:    true .
+H2:    fld_t(e) >= clock__millisecond__first .
+H3:    fld_t(e) <= clock__millisecond__last .
+H4:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H5:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H6:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H11:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H12:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H17:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H18:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+H22:   t__1 >= clock__millisecond__first .
+H23:   t__1 <= clock__millisecond__last .
+H24:   true .
+H25:   t__1 >= clock__millisecond__first .
+H26:   t__1 <= clock__millisecond__last .
+H27:   true .
+H28:   valid__1 .
+H29:   t__1 >= clock__millisecond__first .
+H30:   t__1 <= clock__millisecond__last .
+        ->
+C1:    t__1 >= clock__millisecond__first .
+C2:    t__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_get_velocity_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_get_velocity_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+

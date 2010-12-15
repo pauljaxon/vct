@@ -1,0 +1,279 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:44  SIMPLIFIED 25-NOV-2009, 14:19:20
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure nav.Handle_Airspeed
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_handle_airspeed_1.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= airspeed_ss
+-S-  Applied substitution rule handle_airsp_rules(12).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New C1:  speed_now__1 >= - 5000
+-S-  Applied substitution rule handle_airsp_rules(13).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New C2:  speed_now__1 <= 5000
+-S-  Applied substitution rule handle_airsp_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H6:  speed_now__1 >= - 5000
+-S-  Applied substitution rule handle_airsp_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H7:  speed_now__1 <= 5000
+-S-  Applied substitution rule handle_airsp_rules(17).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= airspeed_ss
+-S-  Applied substitution rule handle_airsp_rules(18).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  airspeed_ss <= restarted
+***  Proved C1:  speed_now__1 >= - 5000
+     using hypothesis H6.
+***  Proved C2:  speed_now__1 <= 5000
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_airspeed_2.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= airspeed_ss
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  sensor_status__first <= valid
+-S-  Applied substitution rule handle_airsp_rules(17).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= airspeed_ss
+<S>  New C1:  true
+-S-  Applied substitution rule handle_airsp_rules(18).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  airspeed_ss <= restarted
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_airspeed_3.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= airspeed_ss
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  sensor_status__first <= valid
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+-S-  Applied substitution rule handle_airsp_rules(7).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter_per_sec__first by:
+          - 5000.
+<S>  New C1:  speed_now__1 >= - 5000
+-S-  Applied substitution rule handle_airsp_rules(8).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter_per_sec__last by:
+          5000.
+<S>  New C2:  speed_now__1 <= 5000
+-S-  Applied substitution rule handle_airsp_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H6:  speed_now__1 >= - 5000
+-S-  Applied substitution rule handle_airsp_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H7:  speed_now__1 <= 5000
+-S-  Applied substitution rule handle_airsp_rules(12).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H9:  speed_now__1 >= - 5000
+-S-  Applied substitution rule handle_airsp_rules(13).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H10:  speed_now__1 <= 5000
+-S-  Applied substitution rule handle_airsp_rules(17).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= airspeed_ss
+<S>  New H13:  true
+-S-  Applied substitution rule handle_airsp_rules(18).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  airspeed_ss <= restarted
+<S>  New H14:  true
+***  Proved C1:  speed_now__1 >= - 5000
+     using hypothesis H6.
+***  Proved C2:  speed_now__1 <= 5000
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_airspeed_4.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= airspeed_ss
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  sensor_status__first <= restarted
+-S-  Applied substitution rule handle_airsp_rules(17).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= airspeed_ss
+<S>  New C1:  true
+-S-  Applied substitution rule handle_airsp_rules(18).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  airspeed_ss <= restarted
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_airspeed_5.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= airspeed_ss
+-S-  Applied substitution rule handle_airsp_rules(12).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New C1:  speed_now__3 >= - 5000
+-S-  Applied substitution rule handle_airsp_rules(13).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New C2:  speed_now__3 <= 5000
+-S-  Applied substitution rule handle_airsp_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H7:  speed_now__3 >= - 5000
+-S-  Applied substitution rule handle_airsp_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H8:  speed_now__3 <= 5000
+-S-  Applied substitution rule handle_airsp_rules(17).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= airspeed_ss
+-S-  Applied substitution rule handle_airsp_rules(18).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  airspeed_ss <= restarted
+***  Proved C1:  speed_now__3 >= - 5000
+     using hypothesis H7.
+***  Proved C2:  speed_now__3 <= 5000
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_airspeed_6.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= airspeed_ss
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+-S-  Applied substitution rule handle_airsp_rules(7).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter_per_sec__first by:
+          - 5000.
+<S>  New C1:  speed_now__3 >= - 5000
+-S-  Applied substitution rule handle_airsp_rules(8).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter_per_sec__last by:
+          5000.
+<S>  New C2:  speed_now__3 <= 5000
+-S-  Applied substitution rule handle_airsp_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H7:  speed_now__3 >= - 5000
+-S-  Applied substitution rule handle_airsp_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H8:  speed_now__3 <= 5000
+-S-  Applied substitution rule handle_airsp_rules(12).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H10:  speed_now__3 >= - 5000
+-S-  Applied substitution rule handle_airsp_rules(13).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H11:  speed_now__3 <= 5000
+-S-  Applied substitution rule handle_airsp_rules(17).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= airspeed_ss
+-S-  Applied substitution rule handle_airsp_rules(18).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  airspeed_ss <= restarted
+***  Proved C1:  speed_now__3 >= - 5000
+     using hypothesis H7.
+***  Proved C2:  speed_now__3 <= 5000
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_airspeed_7.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= airspeed_ss
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  sensor_status__first <= failed
+-S-  Applied substitution rule handle_airsp_rules(17).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= airspeed_ss
+<S>  New C1:  true
+-S-  Applied substitution rule handle_airsp_rules(18).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  airspeed_ss <= restarted
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_airspeed_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_airspeed_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_airspeed_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_airspeed_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_airspeed_12.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

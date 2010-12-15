@@ -1,0 +1,104 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.04
+
+Line
+   1  -- INS simulator
+   2  --
+   3  -- $Log: ins.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/08/10 17:13:53  adi
+   9  -- Added cartesian use
+  10  --
+  11  -- Revision 1.1  2003/08/10 17:06:23  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  --
+  16  with MeasureTypes,Clock,Cartesian;
+  17  use type MeasureTypes.Meter;
+  18  use type MeasureTypes.Meter_Per_Sec;
+  19  use type Clock.Millisecond;
+  20  --# inherit MeasureTypes, Bus, Rt1553,
+  21  --#         Clock, Clock_Utils, SystemTypes,
+  22  --#         IBIT, Bit_Machine, Cartesian;
+  23  package Ins
+  24    --# own State;
+  25    --# initializes State;
+  26  is
+  27     -- Type renamings for brevity
+  28     subtype Meter is Measuretypes.Meter;
+  29     subtype Meter_Per_Sec is MeasureTypes.Meter_Per_Sec;
+  30  
+  31     -- Cycle the reading of data from the bus
+  32     -- and writing of data to the bus
+  33     procedure Cycle;
+  34     --# global in out State;
+  35     --#        in out Clock.Time;
+  36     --#        in Bus.Outputs;
+  37     --#        in out Bus.Inputs;
+  38     --# derives State from *, Bus.Outputs &
+  39     --#        Bus.Inputs from *, Clock.Time, State &
+  40     --#        Clock.Time from *;
+  41  
+  42     -- Set the current x, y and Z differential
+  43     procedure Set_Location(x : in Meter;
+  44                            y : in Meter;
+  45                            Z : in Meter);
+  46     --# global in out State, Clock.Time;
+  47     --# derives Clock.Time from * &
+  48     --#         State from *, Clock.Time, x,y,z;
+  49  
+  50     -- Set the current motion
+  51     procedure Set_Velocity(vx : in Meter_Per_sec;
+  52                            vy : in Meter_Per_sec;
+  53                            vZ : in Meter_Per_Sec);
+  54     --# global in out State, Clock.Time;
+  55     --# derives Clock.Time from * &
+  56     --#         State from *, Clock.Time, vx,vy,vz;
+  57  
+  58     -- Change the current location by a certain amount
+  59     procedure Move(Dx : in Meter;
+  60                    Dy : in Meter;
+  61                    Dz : in Meter);
+  62     --# global in out State, Clock.Time;
+  63     --# derives Clock.Time from * &
+  64     --#         State from *, Clock.Time, dx,dy,dz;
+  65  
+  66     -- Read the current location
+  67     procedure Read_Location(X : out Meter;
+  68                             Y : out Meter;
+  69                             Z : out Meter);
+  70     --# global in     State;
+  71     --#        in out Clock.Time;
+  72     --# derives Clock.Time from * &
+  73     --#         X,Y,Z from State, Clock.Time;
+  74  
+  75     -- Cause the next BIT to fail
+  76     procedure Fail_Next_Bit;
+  77     --# global in out State;
+  78     --# derives State from *;
+  79  
+  80     procedure Init;
+  81     --# global out State;
+  82     --#        in out Bus.Inputs;
+  83     --# derives State from &
+  84     --#         Bus.Inputs from *;
+  85  
+  86     -- Test stub
+  87     procedure Command;
+  88     --# derives;
+  89  end Ins;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

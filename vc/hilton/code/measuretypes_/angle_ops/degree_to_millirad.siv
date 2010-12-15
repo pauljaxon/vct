@@ -1,0 +1,52 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:21
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function angle_ops.Degree_To_Millirad
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 173:
+
+function_degree_to_millirad_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 175:
+
+function_degree_to_millirad_2.
+H1:    orig_degree >= 0 .
+H2:    orig_degree <= 359 .
+H3:    long_integer__size >= 0 .
+H4:    systemtypes__integer32__size >= 0 .
+H5:    measuretypes__angle_degrees__size >= 0 .
+H6:    measuretypes__angle_degrees__base__first <= 
+          measuretypes__angle_degrees__base__last .
+H7:    measuretypes__millirad__size >= 0 .
+H8:    measuretypes__angle_degrees__base__first <= 0 .
+H9:    measuretypes__angle_degrees__base__last >= 359 .
+       ->
+C1:    360 <= measuretypes__angle_degrees__base__last .
+
+
+For path(s) from start to run-time check associated with statement of line 177:
+
+function_degree_to_millirad_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to finish:
+
+function_degree_to_millirad_4.
+*** true .          /* all conclusions proved */
+
+

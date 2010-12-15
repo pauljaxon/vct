@@ -1,0 +1,311 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:44  SIMPLIFIED 25-NOV-2009, 14:19:20
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure nav.Estimate_Height
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= barometer_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= ins_ss
+***  Proved C1:  t__1 >= clock__millisecond__first
+     using hypothesis H10.
+***  Proved C2:  t__1 <= clock__millisecond__last
+     using hypothesis H11.
+-S-  Applied substitution rule estimate_hei_rules(42).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New C3:  m__1 >= - 200000
+-S-  Applied substitution rule estimate_hei_rules(43).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New C4:  m__1 <= 200000
+-S-  Applied substitution rule estimate_hei_rules(7).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H10:  t__1 >= 0
+-S-  Applied substitution rule estimate_hei_rules(8).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H11:  t__1 <= 8640000
+-S-  Applied substitution rule estimate_hei_rules(12).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__first by:
+          - 200000.
+<S>  New H8:  m__1 >= - 200000
+-S-  Applied substitution rule estimate_hei_rules(13).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__last by:
+          200000.
+<S>  New H9:  m__1 <= 200000
+-S-  Applied substitution rule estimate_hei_rules(47).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H2:  unknown <= barometer_ss
+<S>  New H4:  unknown <= ins_ss
+-S-  Applied substitution rule estimate_hei_rules(48).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H3:  barometer_ss <= restarted
+<S>  New H5:  ins_ss <= restarted
+***  Proved C3:  m__1 >= - 200000
+     using hypothesis H8.
+***  Proved C4:  m__1 <= 200000
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= barometer_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= ins_ss
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  confidence__first <= none
+-S-  Applied substitution rule estimate_hei_rules(17).
+     This was achieved by replacing all occurrences of confidence__first by:
+          none.
+<S>  New C1:  true
+-S-  Applied substitution rule estimate_hei_rules(18).
+     This was achieved by replacing all occurrences of confidence__last by:
+          high.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= barometer_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= ins_ss
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  confidence__first <= low
+-S-  Applied substitution rule estimate_hei_rules(17).
+     This was achieved by replacing all occurrences of confidence__first by:
+          none.
+<S>  New C1:  true
+-S-  Applied substitution rule estimate_hei_rules(18).
+     This was achieved by replacing all occurrences of confidence__last by:
+          high.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= barometer_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= ins_ss
+-S-  Applied substitution rule estimate_hei_rules(42).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New C1:  true
+-S-  Applied substitution rule estimate_hei_rules(43).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= barometer_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= ins_ss
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  confidence__first <= none
+-S-  Applied substitution rule estimate_hei_rules(17).
+     This was achieved by replacing all occurrences of confidence__first by:
+          none.
+<S>  New C1:  true
+-S-  Applied substitution rule estimate_hei_rules(18).
+     This was achieved by replacing all occurrences of confidence__last by:
+          high.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_6.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= barometer_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= ins_ss
+***  Proved C1:  t__2 >= clock__millisecond__first
+     using hypothesis H9.
+***  Proved C2:  t__2 <= clock__millisecond__last
+     using hypothesis H10.
+-S-  Applied substitution rule estimate_hei_rules(42).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New C3:  m__2 >= - 200000
+-S-  Applied substitution rule estimate_hei_rules(43).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New C4:  m__2 <= 200000
+-S-  Applied substitution rule estimate_hei_rules(7).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H9:  t__2 >= 0
+-S-  Applied substitution rule estimate_hei_rules(8).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H10:  t__2 <= 8640000
+-S-  Applied substitution rule estimate_hei_rules(12).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__first by:
+          - 200000.
+<S>  New H7:  m__2 >= - 200000
+-S-  Applied substitution rule estimate_hei_rules(13).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__last by:
+          200000.
+<S>  New H8:  m__2 <= 200000
+-S-  Applied substitution rule estimate_hei_rules(47).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H2:  unknown <= barometer_ss
+<S>  New H4:  unknown <= ins_ss
+-S-  Applied substitution rule estimate_hei_rules(48).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H3:  barometer_ss <= restarted
+<S>  New H5:  ins_ss <= restarted
+***  Proved C3:  m__2 >= - 200000
+     using hypothesis H7.
+***  Proved C4:  m__2 <= 200000
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_7.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= barometer_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= ins_ss
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  confidence__first <= none
+-S-  Applied substitution rule estimate_hei_rules(17).
+     This was achieved by replacing all occurrences of confidence__first by:
+          none.
+<S>  New C1:  true
+-S-  Applied substitution rule estimate_hei_rules(18).
+     This was achieved by replacing all occurrences of confidence__last by:
+          high.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_8.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= barometer_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= ins_ss
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  confidence__first <= high
+-S-  Applied substitution rule estimate_hei_rules(17).
+     This was achieved by replacing all occurrences of confidence__first by:
+          none.
+<S>  New C1:  true
+-S-  Applied substitution rule estimate_hei_rules(18).
+     This was achieved by replacing all occurrences of confidence__last by:
+          high.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_12.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_13.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_14.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_height_15.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

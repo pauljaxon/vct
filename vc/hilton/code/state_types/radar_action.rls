@@ -1,0 +1,72 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.00*/
+
+                     /*function State_Types.Radar_Action*/
+
+
+rule_family radar_action_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+radar_action_rules(1): word__first <= element(radar_values, [I]) may_be_deduced_from [rad_inactive <= I, I <= sweep].
+radar_action_rules(2): element(radar_values, [I]) <= word__last may_be_deduced_from [rad_inactive <= I, I <= sweep].
+radar_action_rules(3): integer__size >= 0 may_be_deduced.
+radar_action_rules(4): integer__first may_be_replaced_by -2147483648.
+radar_action_rules(5): integer__last may_be_replaced_by 2147483647.
+radar_action_rules(6): integer__base__first may_be_replaced_by -2147483648.
+radar_action_rules(7): integer__base__last may_be_replaced_by 2147483647.
+radar_action_rules(8): word__size >= 0 may_be_deduced.
+radar_action_rules(9): word__first may_be_replaced_by 0.
+radar_action_rules(10): word__last may_be_replaced_by 65535.
+radar_action_rules(11): word__base__first may_be_replaced_by -2147483648.
+radar_action_rules(12): word__base__last may_be_replaced_by 2147483647.
+radar_action_rules(13): radar__size >= 0 may_be_deduced.
+radar_action_rules(14): radar__first may_be_replaced_by rad_inactive.
+radar_action_rules(15): radar__last may_be_replaced_by sweep.
+radar_action_rules(16): radar__base__first may_be_replaced_by rad_inactive.
+radar_action_rules(17): radar__base__last may_be_replaced_by sweep.
+radar_action_rules(18): radar__pos(radar__first) may_be_replaced_by 0.
+radar_action_rules(19): radar__pos(rad_inactive) may_be_replaced_by 0.
+radar_action_rules(20): radar__val(0) may_be_replaced_by 
+     rad_inactive.
+radar_action_rules(21): radar__pos(ping) may_be_replaced_by 1.
+radar_action_rules(22): radar__val(1) may_be_replaced_by ping.
+radar_action_rules(23): radar__pos(sweep) may_be_replaced_by 2.
+radar_action_rules(24): radar__val(2) may_be_replaced_by sweep.
+radar_action_rules(25): radar__pos(radar__last) may_be_replaced_by 2.
+radar_action_rules(26): radar__pos(succ(X)) may_be_replaced_by 
+     radar__pos(X) + 1
+     if [X <=sweep, X <> sweep].
+radar_action_rules(27): radar__pos(pred(X)) may_be_replaced_by 
+     radar__pos(X) - 1
+     if [X >=rad_inactive, X <> rad_inactive].
+radar_action_rules(28): radar__pos(X) >= 0 may_be_deduced_from
+     [rad_inactive <= X, X <= sweep].
+radar_action_rules(29): radar__pos(X) <= 2 may_be_deduced_from
+     [rad_inactive <= X, X <= sweep].
+radar_action_rules(30): radar__val(X) >= rad_inactive may_be_deduced_from
+     [0 <= X, X <= 2].
+radar_action_rules(31): radar__val(X) <= sweep may_be_deduced_from
+     [0 <= X, X <= 2].
+radar_action_rules(32): succ(radar__val(X)) may_be_replaced_by 
+     radar__val(X+1)
+     if [0 <= X, X < 2].
+radar_action_rules(33): pred(radar__val(X)) may_be_replaced_by 
+     radar__val(X-1)
+     if [0 < X, X <= 2].
+radar_action_rules(34): radar__pos(radar__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 2].
+radar_action_rules(35): radar__val(radar__pos(X)) may_be_replaced_by X
+     if [rad_inactive <= X, X <= sweep].
+radar_action_rules(36): radar__pos(X) <= radar__pos(Y) & X <= Y are_interchangeable 
+     if [rad_inactive <= X, X <= sweep, rad_inactive <= Y, Y <= 
+     sweep].
+radar_action_rules(37): radar__val(X) <= radar__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 2, 0 <= Y, Y <= 2].

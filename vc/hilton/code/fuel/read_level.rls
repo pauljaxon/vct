@@ -1,0 +1,32 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:40.53*/
+
+                         /*procedure fuel.Read_Level*/
+
+
+rule_family read_level_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+read_level_rules(1): measuretypes__kilo__size >= 0 may_be_deduced.
+read_level_rules(2): measuretypes__kilo__first may_be_replaced_by 0.
+read_level_rules(3): measuretypes__kilo__last may_be_replaced_by 20000.
+read_level_rules(4): measuretypes__kilo__base__first may_be_replaced_by -2147483648.
+read_level_rules(5): measuretypes__kilo__base__last may_be_replaced_by 2147483647.
+read_level_rules(6): measuretypes__gram_per_sec__size >= 0 may_be_deduced.
+read_level_rules(7): measuretypes__gram_per_sec__first may_be_replaced_by 0.
+read_level_rules(8): measuretypes__gram_per_sec__last may_be_replaced_by 30000.
+read_level_rules(9): measuretypes__gram_per_sec__base__first may_be_replaced_by -2147483648.
+read_level_rules(10): measuretypes__gram_per_sec__base__last may_be_replaced_by 2147483647.
+read_level_rules(11): clock__millisecond__size >= 0 may_be_deduced.
+read_level_rules(12): clock__millisecond__first may_be_replaced_by 0.
+read_level_rules(13): clock__millisecond__last may_be_replaced_by 8640000.
+read_level_rules(14): clock__millisecond__base__first may_be_replaced_by -2147483648.
+read_level_rules(15): clock__millisecond__base__last may_be_replaced_by 2147483647.

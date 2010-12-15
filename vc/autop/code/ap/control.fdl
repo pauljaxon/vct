@@ -1,0 +1,88 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 26-NOV-2009 09:54:53.90}
+
+                            {procedure ap.Control}
+
+
+title procedure control;
+
+  function round__(real) : integer;
+  type instruments__feet = integer;
+  type instruments__bankangle = integer;
+  type instruments__headdegree = integer;
+  type instruments__machnumber = integer;
+  type instruments__pitchangle = integer;
+  type instruments__feetpermin = integer;
+  type instruments__slipangle = integer;
+  type ap__controls__switch = (ap__controls__on, 
+     ap__controls__off);
+  const ap__controls__switch__base__last : ap__controls__switch = pending; 
+  const ap__controls__switch__base__first : ap__controls__switch = pending; 
+  const instruments__slipangle__base__last : integer = pending; 
+  const instruments__slipangle__base__first : integer = pending; 
+  const instruments__feetpermin__base__last : integer = pending; 
+  const instruments__feetpermin__base__first : integer = pending; 
+  const instruments__pitchangle__base__last : integer = pending; 
+  const instruments__pitchangle__base__first : integer = pending; 
+  const instruments__machnumber__base__last : integer = pending; 
+  const instruments__machnumber__base__first : integer = pending; 
+  const instruments__headdegree__base__last : integer = pending; 
+  const instruments__headdegree__base__first : integer = pending; 
+  const instruments__bankangle__base__last : integer = pending; 
+  const instruments__bankangle__base__first : integer = pending; 
+  const instruments__feet__base__last : integer = pending; 
+  const instruments__feet__base__first : integer = pending; 
+  const ap__controls__switch__size : integer = pending; 
+  const ap__controls__switch__last : ap__controls__switch = pending; 
+  const ap__controls__switch__first : ap__controls__switch = pending; 
+  const instruments__slipangle__size : integer = pending; 
+  const instruments__slipangle__last : integer = pending; 
+  const instruments__slipangle__first : integer = pending; 
+  const instruments__feetpermin__size : integer = pending; 
+  const instruments__feetpermin__last : integer = pending; 
+  const instruments__feetpermin__first : integer = pending; 
+  const instruments__pitchangle__size : integer = pending; 
+  const instruments__pitchangle__last : integer = pending; 
+  const instruments__pitchangle__first : integer = pending; 
+  const instruments__machnumber__size : integer = pending; 
+  const instruments__machnumber__last : integer = pending; 
+  const instruments__machnumber__first : integer = pending; 
+  const instruments__headdegree__size : integer = pending; 
+  const instruments__headdegree__last : integer = pending; 
+  const instruments__headdegree__first : integer = pending; 
+  const instruments__bankangle__size : integer = pending; 
+  const instruments__bankangle__last : integer = pending; 
+  const instruments__bankangle__first : integer = pending; 
+  const instruments__feet__size : integer = pending; 
+  const instruments__feet__last : integer = pending; 
+  const instruments__feet__first : integer = pending; 
+  var master_switch : ap__controls__switch;
+  var altitude_switch : ap__controls__switch;
+  var heading_switch : ap__controls__switch;
+  var present_altitude : integer;
+  var bank : integer;
+  var present_heading : integer;
+  var target_heading : integer;
+  var mach : integer;
+  var pitch : integer;
+  var rate_of_climb : integer;
+  var slip : integer;
+  var slip__11 : integer;
+  var rate_of_climb__10 : integer;
+  var pitch__9 : integer;
+  var mach__8 : integer;
+  var target_heading__7 : integer;
+  var present_heading__6 : integer;
+  var bank__5 : integer;
+  var present_altitude__4 : integer;
+  var heading_switch__3 : ap__controls__switch;
+  var altitude_switch__2 : ap__controls__switch;
+  var master_switch__1 : ap__controls__switch;
+
+end;

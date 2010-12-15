@@ -1,0 +1,380 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.44
+
+Line
+   1  with Nav,Measuretypes,Systemtypes,ibit;
+   2  -- Nav units
+   3  with If_Barometer, If_Airspeed, If_Compass, If_Ins;
+   4  -- Control units
+   5  with If_Fuel, If_Fuze, If_Radar, If_Ir, If_Steer,
+   6    If_Motor, If_Destruct, If_Warhead;
+   7  package body Missile
+   8  is
+   9     type Phase_Stage is (Off, Bit, Boost, Locating, Homing, Shutdown);
+  10  
+  11     -- States of communicating components
+  12     type Component_Status is record
+  13        Bit_Phase : Ibit.Phase;
+  14     end record;
+  15     Init_Component_Status : constant Component_Status
+  16       := Component_Status'(Bit_Phase => Ibit.off);
+  17     type Component_Array is array(Bc1553.Lru_Name) of
+  18       Component_Status;
+  19     Init_Component_Array : constant Component_Array
+  20       := Component_Array'(others => Init_Component_Status);
+  21  
+  22     type State_Record is record
+  23        Phase      : Phase_Stage;
+  24        Components : Component_Array;
+  25     end record;
+  26  
+  27     State : State_Record;
+  28  
+  29     procedure Init
+  30     is
+  31     begin
+  32        State := State_Record'
+  33          (Phase => Off,
+  34           Components => Init_Component_Array);
+  35     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+  36  
+  37     -- Only check barometer and airspeed for now;
+  38     --  add more components in when ibit check function
+  39     --  added to them.
+  40     procedure Check_Ibit(Complete : out Boolean;
+  41                          Passed   : out Boolean)
+  42       --# global in
+  43       --#   if_airspeed.state,
+  44       --#   if_barometer.state,
+  45       --#   if_compass.state,
+  46       --#   if_destruct.state,
+  47       --#   if_fuel.state,
+  48       --#   if_fuze.state,
+  49       --#   if_ins.state,
+  50       --#   if_ir.state,
+  51       --#   if_motor.state,
+  52       --#   if_radar.state,
+  53       --#   if_steer.state,
+  54       --#   if_warhead.state
+  55       --#   ;
+  56       --# derives complete, passed from
+  57       --#   if_airspeed.state,
+  58       --#   if_barometer.state,
+  59       --#   if_compass.state,
+  60       --#   if_destruct.state,
+  61       --#   if_fuel.state,
+  62       --#   if_fuze.state,
+  63       --#   if_ins.state,
+  64       --#   if_ir.state,
+  65       --#   if_motor.state,
+  66       --#   if_radar.state,
+  67       --#   if_steer.state,
+  68       --#   if_warhead.state
+  69       --#   ;
+  70     is
+  71        Lru_Elts : constant := Bc1553.Lru_Name'Pos(Bc1553.Lru_Name'Last);
+  72        Ibit_Phase : Ibit.Phase;
+  73        Complete_Count, Passed_Count : Integer := 0;
+  74     begin
+  75        for Lru in Bc1553.Lru_Name loop
+  76           case Lru is
+  77              when Bc1553.Barometer =>
+  78                 Ibit_Phase := If_Barometer.Get_Ibit_State;
+  79              when Bc1553.Asi =>
+  80                 Ibit_Phase := If_Airspeed.Get_Ibit_State;
+  81              when Bc1553.ins =>
+  82                 Ibit_Phase := If_ins.Get_Ibit_State;
+  83              when Bc1553.compass =>
+  84                 Ibit_Phase := If_compass.Get_Ibit_State;
+  85              when Bc1553.fuel =>
+  86                 Ibit_Phase := If_fuel.Get_Ibit_State;
+  87              when Bc1553.fuze =>
+  88                 Ibit_Phase := If_fuze.Get_Ibit_State;
+  89              when Bc1553.radar =>
+  90                 Ibit_Phase := If_radar.Get_Ibit_State;
+  91              when Bc1553.infrared =>
+  92                 Ibit_Phase := If_ir.Get_Ibit_State;
+  93              when Bc1553.fins =>
+  94                 Ibit_Phase := If_steer.Get_Ibit_State;
+  95              when Bc1553.motor =>
+  96                 Ibit_Phase := If_motor.Get_Ibit_State;
+  97              when Bc1553.destruct =>
+  98                 Ibit_Phase := If_destruct.Get_Ibit_State;
+  99              when Bc1553.warhead =>
+ 100                 Ibit_Phase := If_warhead.Get_Ibit_State;
+ 101           end case;
+ 102           --# assert ibit_phase in ibit.phase;
+ 103           if Ibit_Phase = Ibit.Pass then
+ 104             Complete_Count := Complete_Count + 1;
+ 105             passed_Count := passed_Count + 1;
+ 106           elsif Ibit_Phase = Ibit.Fail then
+ 107             Complete_Count := Complete_Count + 1;
+ 108           else
+ 109             -- Don't increment counts
+ 110             null;
+ 111           end if;
+ 112        end loop;
+ 113        --# assert complete_count >= 0 and
+ 114        --#        passed_count >= 0;
+ 115        if Complete_Count = Lru_elts then
+ 116           Complete := True;
+ 117           if Passed_Count = Lru_elts then
+ 118              Passed := True;
+ 119           else
+ 120              Passed := False;
+ 121           end if;
+ 122        else
+ 123           Complete := False;
+ 124           Passed := False;
+ 125        end if;
+ 126     end Check_Ibit;
+
++++        Flow analysis of subprogram Check_Ibit 
+           performed: no errors found.
+
+ 127  
+ 128     procedure Poll
+ 129     is
+ 130        procedure Init_Ibit
+ 131          --# global in out state;
+ 132          --#   in out
+ 133          --#    bus.outputs,
+ 134          --#    if_barometer.state,
+ 135          --#    if_airspeed.state,
+ 136          --#    if_ins.state,
+ 137          --#    if_compass.state,
+ 138          --#    if_fuel.state,
+ 139          --#    if_fuze.state,
+ 140          --#    if_radar.state,
+ 141          --#    if_ir.state,
+ 142          --#    if_steer.state,
+ 143          --#    if_motor.state,
+ 144          --#    if_destruct.state,
+ 145          --#    if_warhead.state;
+ 146          --# derives
+ 147          --#   state,
+ 148          --#    bus.outputs,
+ 149          --#    if_barometer.state,
+ 150          --#    if_airspeed.state,
+ 151          --#    if_ins.state,
+ 152          --#    if_compass.state,
+ 153          --#    if_fuel.state,
+ 154          --#    if_fuze.state,
+ 155          --#    if_radar.state,
+ 156          --#    if_ir.state,
+ 157          --#    if_steer.state,
+ 158          --#    if_motor.state,
+ 159          --#    if_destruct.state,
+ 160          --#    if_warhead.state
+ 161          --#  from *;
+ 162        is begin
+ 163           -- Kick off IBIT on all components
+ 164           State.Phase := Bit;
+ 165           If_Barometer.Ibit_Start;
+ 166           If_Airspeed.Ibit_Start;
+ 167           If_Ins.Ibit_Start;
+ 168           If_Compass.Ibit_Start;
+ 169           If_Fuel.Ibit_Start;
+ 170           If_Fuze.Ibit_Start;
+ 171           If_Radar.Ibit_Start;
+ 172           If_Ir.Ibit_Start;
+ 173           If_Steer.Ibit_Start;
+ 174           If_Motor.Ibit_Start;
+ 175           If_Destruct.Ibit_Start;
+ 176           If_Warhead.Ibit_Start;
+ 177        end Init_Ibit;
+
++++        Flow analysis of subprogram Init_Ibit performed: 
+           no errors found.
+
+ 178  
+ 179        procedure Manage_Bit_Process
+ 180          --# global in
+ 181          --#   if_airspeed.state,
+ 182          --#   if_barometer.state,
+ 183          --#   if_compass.state,
+ 184          --#   if_destruct.state,
+ 185          --#   if_fuel.state,
+ 186          --#   if_fuze.state,
+ 187          --#   if_ins.state,
+ 188          --#   if_ir.state,
+ 189          --#   if_motor.state,
+ 190          --#   if_radar.state,
+ 191          --#   if_steer.state,
+ 192          --#   if_warhead.state
+ 193          --#   ;
+ 194          --#  in out
+ 195          --#    clock.time,
+ 196          --#    nav.location_state,
+ 197          --#    nav.sensor_state,
+ 198          --#    state;
+ 199          --# derives
+ 200          --#  state from
+ 201          --#     *,
+ 202          --#     if_airspeed.state,
+ 203          --#     if_barometer.state,
+ 204          --#     if_compass.state,
+ 205          --#     if_destruct.state,
+ 206          --#     if_fuel.state,
+ 207          --#     if_fuze.state,
+ 208          --#     if_ins.state,
+ 209          --#     if_ir.state,
+ 210          --#     if_motor.state,
+ 211          --#     if_radar.state,
+ 212          --#     if_steer.state,
+ 213          --#     if_warhead.state &
+ 214          --#  clock.time, nav.sensor_state from
+ 215          --#     *,
+ 216          --#     nav.sensor_state,
+ 217          --#     if_airspeed.state,
+ 218          --#     if_barometer.state,
+ 219          --#     if_compass.state,
+ 220          --#     if_destruct.state,
+ 221          --#     if_fuel.state,
+ 222          --#     if_fuze.state,
+ 223          --#     if_ins.state,
+ 224          --#     if_ir.state,
+ 225          --#     if_motor.state,
+ 226          --#     if_radar.state,
+ 227          --#     if_steer.state,
+ 228          --#     if_warhead.state &
+ 229          --#   nav.location_state
+ 230          --#   from *,
+ 231          --#        if_fuel.state,
+ 232          --#        if_fuze.state,
+ 233          --#        if_radar.state,
+ 234          --#        if_ir.state,
+ 235          --#        if_steer.state,
+ 236          --#        if_motor.state,
+ 237          --#        if_destruct.state,
+ 238          --#        if_warhead.state,
+ 239          --#        if_compass.state,
+ 240          --#        if_ins.state,
+ 241          --#        if_barometer.state,
+ 242          --#        if_airspeed.state,
+ 243          --#        nav.sensor_state,
+ 244          --#        clock.time
+ 245          --#  ;
+ 246        is
+ 247           Ibit_Complete, Ibit_Passed : Boolean;
+ 248        begin
+ 249           Check_Ibit(Complete => Ibit_Complete,
+ 250                      Passed   => Ibit_Passed);
+ 251           if Ibit_Complete then
+ 252              if Ibit_Passed then
+ 253                 -- All (or enough) components are fine
+ 254                 State.Phase := Boost;
+ 255                 Nav.Maintain(Restart => True);
+ 256              else
+ 257                 -- Too many have failed; shut down
+ 258                 State.Phase := Shutdown;
+ 259              end if;
+ 260           end if;
+ 261        end Manage_Bit_Process;
+
++++        Flow analysis of subprogram Manage_Bit_Process 
+           performed: no errors found.
+
+ 262  
+ 263        procedure Manage_Boost_Process
+ 264          --# global in
+ 265          --#   if_barometer.state,
+ 266          --#   if_compass.state,
+ 267          --#   if_ins.state,
+ 268          --#   if_airspeed.state;
+ 269          --#  in out
+ 270          --#    clock.time,
+ 271          --#    nav.location_state,
+ 272          --#    nav.sensor_state,
+ 273          --#    state;
+ 274          --# derives
+ 275          --#  state from
+ 276          --#     *,
+ 277          --#     nav.location_state,
+ 278          --#     nav.sensor_state,
+ 279          --#     clock.time,
+ 280          --#     if_compass.state,
+ 281          --#     if_ins.state,
+ 282          --#     if_barometer.state,
+ 283          --#     if_airspeed.state &
+ 284          --#   clock.time
+ 285          --#   from *,
+ 286          --#        if_compass.state,
+ 287          --#        if_ins.state,
+ 288          --#        nav.sensor_state,
+ 289          --#        if_barometer.state,
+ 290          --#        if_airspeed.state,
+ 291          --#        clock.time &
+ 292          --#   nav.location_state
+ 293          --#   from *,
+ 294          --#        if_compass.state,
+ 295          --#        if_ins.state,
+ 296          --#        if_barometer.state,
+ 297          --#        if_airspeed.state,
+ 298          --#        nav.sensor_state,
+ 299          --#        clock.time &
+ 300          --#   nav.sensor_state
+ 301          --#   from *,
+ 302          --#        if_compass.state,
+ 303          --#        if_ins.state,
+ 304          --#        if_barometer.state,
+ 305          --#        if_airspeed.state,
+ 306          --#        nav.sensor_state
+ 307          --#  ;
+ 308        is
+ 309           Est_Height : Measuretypes.Meter;
+ 310           Est_Confidence : Nav.Confidence;
+ 311        begin
+ 312           Nav.Maintain(Restart => False);
+ 313           -- Ready to locate when we're reliably 2000m up
+ 314           Nav.Estimate_Height(M => Est_Height,
+ 315                               C => Est_Confidence);
+ 316           if Est_Confidence = Nav.High and then
+ 317             Est_Height >= 2_000 then
+ 318              State.phase := Locating;
+ 319           end if;
+ 320        end Manage_Boost_Process;
+
++++        Flow analysis of subprogram Manage_Boost_Process 
+           performed: no errors found.
+
+ 321  
+ 322     begin
+ 323        -- Find out where we are
+ 324        case State.Phase is
+ 325           when Shutdown =>
+ 326              -- Do nothing
+ 327              null;
+ 328           when Off =>
+ 329              Init_Ibit;
+ 330           when Bit =>
+ 331              Manage_Bit_Process;
+ 332           when Boost =>
+ 333              Manage_Boost_Process;
+ 334           when Locating | Homing =>
+ 335              Nav.Maintain(Restart => False);
+ 336        end case;
+ 337     end Poll;
+
++++        Flow analysis of subprogram Poll performed: no 
+           errors found.
+
+ 338  
+ 339     procedure Command is separate;
+ 340  
+ 341  end Missile;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

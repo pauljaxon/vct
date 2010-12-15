@@ -1,0 +1,56 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.26
+
+Line
+   1  -- Random number generator
+   2  --
+   3  -- $Log: random.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/08/20 21:06:56  adi
+   9  -- Added null seed for init purposes
+  10  --
+  11  -- Revision 1.1  2003/08/20 20:28:24  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  package Random is
+  16  
+  17     Max_Val : constant := 63001;
+  18     type Value is range 0..Max_val;
+  19     type Number is private;
+  20     Null_Seed : constant Number;
+  21  
+  22     function Seed(V : Value) return Number;
+  23  
+  24     procedure Get(N : in out Number;
+  25                   V : out Value);
+  26     --# derives V, N from N;
+  27  
+  28  private
+  29     Max_Seed : constant := 971;
+  30     type Seed_Range is range 0..Max_seed;
+  31     --# assert Seed_Range'base is Integer;
+  32  
+  33     type Number is record
+  34       S : Seed_Range;
+  35       Last_V : Value;
+  36     end record;
+  37  
+  38     Null_Seed : constant Number :=
+  39       Number'(S => 0, Last_V => 0);
+  40  
+  41  end Random;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

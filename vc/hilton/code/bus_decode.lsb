@@ -1,0 +1,64 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.54
+
+Line
+   1  -- Bus message decoder implementation
+   2  --
+   3  -- $Log: bus_decode.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/02/10 20:25:05  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  package body Bus_Decode is
+  13     function Decode_Bool8(Word : in Bus.Word) return Bool8
+  14     is
+  15        Answer : Bool8 := Bool8'(others => False);
+  16        Working : Bus.Word;
+  17        Idx : Bit8 := Bit8'first;
+  18     begin
+  19        Working := Word;
+  20        while Working > 0 loop
+  21           --# assert working >= 0 and working <= Bus.Word'Last and
+  22           --# idx >= 1 and idx <= 8;
+  23           Answer(Idx) := (Working mod 2) = 1;
+  24           Working := Working / 2;
+  25           if Idx < Bit8'Last then
+  26              Idx := Bit8'Succ(Idx);
+  27           end if;
+  28        end loop;
+  29        return Answer;
+  30     end Decode_Bool8;
+
++++        Flow analysis of subprogram Decode_Bool8 
+           performed: no errors found.
+
+  31  
+  32     procedure Decode_Byte2(Word : in Bus.Word;
+  33                            Lo,Hi : out SystemTypes.Byte)
+  34     is
+  35     begin
+  36        --# assert Word >= 0 and Word <= Bus.Word'last;
+  37        Lo := Word mod 256;
+  38        Hi := Word / 256;
+  39     end Decode_Byte2;
+
++++        Flow analysis of subprogram Decode_Byte2 
+           performed: no errors found.
+
+  40  
+  41  end Bus_Decode;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

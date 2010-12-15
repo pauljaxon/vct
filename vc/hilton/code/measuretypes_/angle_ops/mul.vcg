@@ -1,0 +1,72 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.07
+
+                           function angle_ops.Mul
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 36:
+
+function_mul_1.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    mult >= integer__first .
+H5:    mult <= integer__last .
+        ->
+C1:    orig_angle * mult >= measuretypes__millirad__first .
+C2:    orig_angle * mult <= measuretypes__millirad__last .
+C3:    mult >= measuretypes__millirad__first .
+C4:    mult <= measuretypes__millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 37:
+
+function_mul_2.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    mult >= integer__first .
+H5:    mult <= integer__last .
+H6:    orig_angle * mult >= measuretypes__millirad__first .
+H7:    orig_angle * mult <= measuretypes__millirad__last .
+H8:    mult >= measuretypes__millirad__first .
+H9:    mult <= measuretypes__millirad__last .
+H10:   orig_angle * mult >= measuretypes__millirad__first .
+H11:   orig_angle * mult <= measuretypes__millirad__last .
+        ->
+C1:    orig_angle * mult >= millirad__first .
+C2:    orig_angle * mult <= millirad__last .
+ 
+
+For path(s) from start to finish:
+
+function_mul_3.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    mult >= integer__first .
+H5:    mult <= integer__last .
+H6:    orig_angle * mult >= measuretypes__millirad__first .
+H7:    orig_angle * mult <= measuretypes__millirad__last .
+H8:    mult >= measuretypes__millirad__first .
+H9:    mult <= measuretypes__millirad__last .
+H10:   orig_angle * mult >= measuretypes__millirad__first .
+H11:   orig_angle * mult <= measuretypes__millirad__last .
+H12:   orig_angle * mult >= millirad__first .
+H13:   orig_angle * mult <= millirad__last .
+H14:   canon(orig_angle * mult) >= canon_millirad__first .
+H15:   canon(orig_angle * mult) <= canon_millirad__last .
+        ->
+C1:    true .
+C2:    canon(orig_angle * mult) >= measuretypes__millirad__first .
+C3:    canon(orig_angle * mult) <= measuretypes__millirad__last .
+ 
+

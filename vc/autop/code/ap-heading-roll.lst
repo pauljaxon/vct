@@ -1,0 +1,130 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.81
+
+Line
+   1  with Instruments,Degrees,Surfaces,Scale;
+   2  use type Instruments.Headdegree,
+   3    Instruments.Bankangle,
+   4    Instruments.Machnumber;
+   5  
+   6  with AP.Heading.Roll.Rate;
+   7  
+   8  use type Degrees.Degreespersec;
+   9  use type Surfaces.Controlangle;
+  10  
+  11  package body AP.Heading.Roll
+  12    --# own State is AP.Heading.Roll.Rate.Roll_History;
+  13  is
+  14     procedure Calc_Rollrate(Roll : in Instruments.Bankangle;
+  15  			   Present_Rollrate : out Degrees.Degreespersec)
+  16       renames Rate.Calc_Rollrate;
+  17     
+  18     subtype Degreespersec is Degrees.Degreespersec;
+  19     
+  20     function Target_ROR(Present_Heading : Instruments.Headdegree;
+  21  		       Target_Heading  : Instruments.Headdegree)
+  22  		      return Instruments.Bankangle is
+  23        Result : Instruments.Bankangle;
+  24        Offset : Instruments.Headdegree;
+  25     begin
+  26        Offset := Scale.Heading_Offset(Present_Heading,Target_Heading);
+  27         if (Offset > 40 and Offset <= 180) then
+  28  	 Result := 40;
+  29        elsif (Offset > 180 and Offset < 319) then
+  30  	 Result := -40;
+  31        elsif (Offset <= 40) then
+  32  	 Result := Instruments.BankAngle(Offset);
+  33         else
+  34  	 Result := Instruments.BankAngle(360 - Integer(Offset));
+  35        end if;
+  36        return Result;
+  37     end Target_ROR;
+
++++        Flow analysis of subprogram Target_ROR 
+           performed: no errors found.
+
+  38     
+  39     function Target_Rate(Present_Heading : Instruments.Headdegree;
+  40  			Target_Heading  : Instruments.Headdegree;
+  41  			Bank            : Instruments.Bankangle)
+  42  		       return Degreespersec is
+  43        Target_Bank : Instruments.Bankangle;
+  44        Result : Degreespersec;
+  45     begin
+  46        Target_Bank := Target_ROR(Present_Heading,Target_Heading);
+  47        Result := (Degreespersec(Target_Bank) - Degreespersec(Bank)) / 5;
+  48        if Result > 10 then
+  49  	 Result := 10;
+  50        elsif Result < -10 then
+  51  	 Result := -10;
+  52        end if;
+  53        return Result;
+  54     end Target_Rate;
+
++++        Flow analysis of subprogram Target_Rate 
+           performed: no errors found.
+
+  55     
+  56     
+  57     function Calc_Aileron_Move(Present_Bank : Degreespersec;
+  58  			      Target_Bank  : Degreespersec;
+  59  			      Mach : Instruments.Machnumber)
+  60  			     return Surfaces.Controlangle 
+  61     is
+  62        Target_Angle : Surfaces.ControlAngle;
+  63     begin
+  64        Target_Angle := Scale.Scale_Movement(
+  65  	Mach    => Mach,
+  66  	Present => Scale.Scaledata(Present_Bank / 2),
+  67  	Target  => Scale.Scaledata(Target_Bank / 2),
+  68  	Max     => Surfaces.ControlAngle(40)
+  69        );
+  70        return Target_Angle;
+  71     end Calc_Aileron_Move;
+
++++        Flow analysis of subprogram Calc_Aileron_Move 
+           performed: no errors found.
+
+  72     
+  73  			  
+  74     procedure Roll_AP(Mach            : in Instruments.Machnumber;
+  75  		     Present_Heading : in Instruments.Headdegree;
+  76  		     Target_Heading  : in Instruments.Headdegree;
+  77  		     Bank            : in Instruments.Bankangle)
+  78     --# global in out Rate.Roll_History;
+  79     --#           out Surfaces.Ailerons;
+  80     --# derives Rate.Roll_History 
+  81     --#         from *,
+  82     --#              Bank &
+  83     --#         Surfaces.Ailerons
+  84     --#         from Rate.Roll_History,
+  85     --#              Present_Heading,
+  86     --#              Target_Heading,
+  87     --#              Mach,
+  88     --#              Bank
+  89     --#  ;
+  90     is
+  91        Present_Rollrate : Degreespersec;
+  92        Target_Rollrate  : Degreespersec;
+  93        Aileron_Movement : Surfaces.Controlangle;
+  94     begin
+  95        Calc_Rollrate(Bank,Present_Rollrate);
+  96        Target_Rollrate := Target_Rate(Present_Heading,Target_Heading,Bank);
+  97        Aileron_Movement := Calc_Aileron_Move(Present_Rollrate,Target_Rollrate,Mach);
+  98        Surfaces.Move_Ailerons(Aileron_Movement);
+  99     end Roll_AP;
+
++++        Flow analysis of subprogram Roll_AP performed: 
+           no errors found.
+
+ 100     
+ 101  end AP.Heading.Roll;
+
+
+--End of file--------------------------------------------------

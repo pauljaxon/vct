@@ -1,0 +1,78 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.41
+
+                procedure missile.Poll.Manage_Boost_Process
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 314:
+
+procedure_manage_boost_process_1.
+H1:    true .
+H2:    for_all(i___1: bc1553__lru_name, ((i___1 >= 
+           bc1553__lru_name__first) and (i___1 <= 
+           bc1553__lru_name__last)) -> ((fld_bit_phase(element(
+           fld_components(state), [i___1])) >= ibit__phase__first) and (
+           fld_bit_phase(element(fld_components(state), [
+           i___1])) <= ibit__phase__last))) .
+H3:    fld_phase(state) >= phase_stage__first .
+H4:    fld_phase(state) <= phase_stage__last .
+H5:    est_height__2 >= nav__meter__first .
+H6:    est_height__2 <= nav__meter__last .
+H7:    est_confidence__2 >= nav__confidence__first .
+H8:    est_confidence__2 <= nav__confidence__last .
+        ->
+C1:    est_confidence__2 >= nav__confidence__first .
+C2:    est_confidence__2 <= nav__confidence__last .
+C3:    est_height__2 >= measuretypes__meter__first .
+C4:    est_height__2 <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 318:
+
+procedure_manage_boost_process_2.
+H1:    true .
+H2:    for_all(i___1: bc1553__lru_name, ((i___1 >= 
+           bc1553__lru_name__first) and (i___1 <= 
+           bc1553__lru_name__last)) -> ((fld_bit_phase(element(
+           fld_components(state), [i___1])) >= ibit__phase__first) and (
+           fld_bit_phase(element(fld_components(state), [
+           i___1])) <= ibit__phase__last))) .
+H3:    fld_phase(state) >= phase_stage__first .
+H4:    fld_phase(state) <= phase_stage__last .
+H5:    est_height__2 >= nav__meter__first .
+H6:    est_height__2 <= nav__meter__last .
+H7:    est_confidence__2 >= nav__confidence__first .
+H8:    est_confidence__2 <= nav__confidence__last .
+H9:    est_confidence__2 >= nav__confidence__first .
+H10:   est_confidence__2 <= nav__confidence__last .
+H11:   est_height__2 >= measuretypes__meter__first .
+H12:   est_height__2 <= measuretypes__meter__last .
+H13:   est_height__2 >= measuretypes__meter__first .
+H14:   est_height__2 <= measuretypes__meter__last .
+H15:   est_confidence__2 >= nav__confidence__first .
+H16:   est_confidence__2 <= nav__confidence__last .
+H17:   est_confidence__2 = nav__high .
+H18:   est_height__2 >= 2000 .
+        ->
+C1:    locating >= phase_stage__first .
+C2:    locating <= phase_stage__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_manage_boost_process_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_manage_boost_process_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+

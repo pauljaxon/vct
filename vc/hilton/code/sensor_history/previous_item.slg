@@ -1,0 +1,66 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:43  SIMPLIFIED 25-NOV-2009, 14:19:19
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function sensor_history.Previous_Item
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_previous_item_1.  @@@@@@@@@@
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+***  Proved C1:  history_count__last >= history_count__first
+     using hypotheses H2 & H3.
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_previous_item_2.  @@@@@@@@@@
+***  Proved C2:  h - 1 <= history_count__last
+     using hypothesis H3.
+-S-  Applied substitution rule previous_ite_rules(2).
+     This was achieved by replacing all occurrences of history_count__first by:
+          1.
+<S>  New H2:  h >= 1
+<S>  New H4:  not h = 1
+<S>  New C1:  h >= 2
+***  Proved C1:  h >= 2
+     using hypotheses H2 & H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_previous_item_3.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  true
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C1:  true
+***  Proved C2:  history_count__last >= history_count__first
+     using hypothesis H5.
+***  Proved C3:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_previous_item_4.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+***  Proved C1:  true
+***  Proved C2:  h - 1 >= history_count__first
+     using hypothesis H5.
+***  Proved C3:  h - 1 <= history_count__last
+     using hypothesis H6.
+***  PROVED VC.
+

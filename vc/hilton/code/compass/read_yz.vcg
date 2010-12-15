@@ -1,0 +1,65 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.45
+
+                         procedure compass.Read_YZ
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 260:
+
+procedure_read_yz_1.
+H1:    true .
+H2:    last_time >= clock__millisecond__first .
+H3:    last_time <= clock__millisecond__last .
+H4:    last_dyz >= measuretypes__millirad_per_sec__first .
+H5:    last_dyz <= measuretypes__millirad_per_sec__last .
+        ->
+C1:    last_dyz >= measuretypes__millirad_per_sec__first .
+C2:    last_dyz <= measuretypes__millirad_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 263:
+
+procedure_read_yz_2.
+H1:    true .
+H2:    last_time >= clock__millisecond__first .
+H3:    last_time <= clock__millisecond__last .
+H4:    last_dyz >= measuretypes__millirad_per_sec__first .
+H5:    last_dyz <= measuretypes__millirad_per_sec__last .
+H6:    last_dyz >= measuretypes__millirad_per_sec__first .
+H7:    last_dyz <= measuretypes__millirad_per_sec__last .
+H8:    true .
+H9:    measuretypes__angle_ops__round_degree(yz_millirad__1) >= 
+           measuretypes__angle_degrees__first .
+H10:   measuretypes__angle_ops__round_degree(yz_millirad__1) <= 
+           measuretypes__angle_degrees__last .
+        ->
+C1:    measuretypes__angle_ops__round_degree(yz_millirad__1) >= 
+           angle_degrees__first .
+C2:    measuretypes__angle_ops__round_degree(yz_millirad__1) <= 
+           angle_degrees__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_yz_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_read_yz_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_yz_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+

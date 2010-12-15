@@ -1,0 +1,344 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.44
+
+Line
+   1  -- MCU interface to the IR, implementation
+   2  --
+   3  -- $Log: if_ir.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/11 19:48:03  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.1  2003/08/27 21:01:32  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with Bc1553, Bus, State_Types, Measuretypes.decode;
+  16  package body If_Ir
+  17    --# own State is
+  18    --#     Last_stare, Last_sweep, Ibit_Request;
+  19  is
+  20     subtype Sector is Ir_Cfg.Sector_Range;
+  21     type Stare_Request is record
+  22        Sx, Sy : Sector;
+  23        Fresh_Request, Fresh_Answer : Boolean;
+  24        Temp : Measuretypes.Kelvin;
+  25     end record;
+  26  
+  27     type Sweep_Request is record
+  28        Sx_Start, Sx_End : Sector;
+  29        Sy_Start, Sy_End : Sector;
+  30        Fresh_Request, Fresh_Answer : Boolean;
+  31        Grid : Measuretypes.Bit4_Array;
+  32     end record;
+  33  
+  34     Null_Stare : constant Stare_Request
+  35       := Stare_Request'(Sx => 0,
+  36                        Sy => 0,
+  37                        Fresh_Request => False,
+  38                         Fresh_Answer => False,
+  39                         Temp => 0);
+  40  
+  41     Null_Sweep : constant Sweep_Request
+  42       := Sweep_Request'(Sx_Start => 0,
+  43                         Sx_End   => 0,
+  44                         Sy_Start => 0,
+  45                         Sy_End   => 0,
+  46                         Fresh_Request => False,
+  47                         Fresh_Answer => False,
+  48                         Grid => Measuretypes.Bit4_Array'
+  49                         (others => Measuretypes.Bit4_Slice'(others => False))
+  50                         );
+  51  
+  52     Last_Stare : Stare_Request := Null_stare;
+  53     Last_Sweep : Sweep_Request := Null_sweep;
+  54     Ibit_Request : IBIT.Phase := IBIT.Off;
+  55  
+  56     Bus_Id : constant Bc1553.Lru_Name := Bc1553.Infrared;
+  57  
+  58     -- Get the IBIT state
+  59     function Get_Ibit_State return Ibit.Phase
+  60       --# global ibit_request;
+  61     is begin
+  62        return Ibit_Request;
+  63        end Get_Ibit_State;
+
++++        Flow analysis of subprogram Get_IBIT_State 
+           performed: no errors found.
+
+  64  
+  65     -- Stare the ir
+  66     procedure Stare(Sx, Sy : in Ir_Cfg.Sector_Range)
+  67     --# global in out Bus.Outputs; out last_stare;
+  68     --# derives Bus.Outputs from *, sx, sy &
+  69     --#         last_stare from sx, sy;
+  70     is
+  71     begin
+  72        -- Mark the last requested stare accordingly
+  73        Last_Stare := Stare_Request'
+  74          (Sx => Sx,
+  75           Sy => Sy,
+  76           Fresh_Request => True,
+  77           Fresh_Answer => False,
+  78           Temp => 0);
+  79        -- Write on 2T
+  80        bc1553.Write_Word(Data => State_Types.Ir_values(State_Types.Ir_Stare),
+  81                          Idx => 1,
+  82                          Subaddress_Idx => 2,
+  83                          Dest => Bus_id);
+  84        Bc1553.Write_Word(Data => Ir_Cfg.Encode_Sector(Sx),
+  85                          Idx => 2,
+  86                          Subaddress_Idx => 2,
+  87                          Dest => Bus_Id);
+  88        Bc1553.Write_Word(Data => Ir_Cfg.Encode_Sector(Sy),
+  89                          Idx => 4,
+  90                          Subaddress_Idx => 2,
+  91                          Dest => Bus_Id);
+  92     end Stare;
+
++++        Flow analysis of subprogram stare performed: no 
+           errors found.
+
+  93  
+  94     -- Sweep the ir
+  95     procedure Sweep(Sx_Start, Sx_End : in Ir_Cfg.Sector_Range;
+  96                     Sy_Start, Sy_End : in Ir_Cfg.Sector_Range)
+  97     --# global in out bus.outputs; out last_sweep;
+  98     --# derives bus.outputs from *, sx_start, sx_end,
+  99     --#          sy_start, sy_end &
+ 100     --#    last_sweep from sx_start, sx_end,
+ 101     --#          sy_start, sy_end;
+ 102     is
+ 103     begin
+ 104       -- Mark the last requested stare accordingly
+ 105        Last_Sweep := Sweep_Request'
+ 106          (Sx_start => Sx_start,
+ 107           Sx_End   => Sx_End,
+ 108           Sy_Start => Sy_Start,
+ 109           Sy_End   => Sy_End,
+ 110           Fresh_Request => True,
+ 111           Fresh_Answer => False,
+ 112           Grid => Measuretypes.Bit4_Array'
+ 113           (others => Measuretypes.Bit4_Slice'(others => False))
+ 114           );
+ 115        -- Write on 2T
+ 116        bc1553.Write_Word(Data => State_Types.Ir_values(State_Types.Ir_Sweep),
+ 117                          Idx => 1,
+ 118                          Subaddress_Idx => 2,
+ 119                          Dest => Bus_id);
+ 120        Bc1553.Write_Word(Data => Ir_Cfg.Encode_Sector(Sx_start),
+ 121                          Idx => 2,
+ 122                          Subaddress_Idx => 2,
+ 123                          Dest => Bus_Id);
+ 124        Bc1553.Write_Word(Data => Ir_Cfg.Encode_Sector(Sx_end),
+ 125                          Idx => 3,
+ 126                          Subaddress_Idx => 2,
+ 127                          Dest => Bus_Id);
+ 128        Bc1553.Write_Word(Data => Ir_Cfg.Encode_Sector(Sy_start),
+ 129                          Idx => 4,
+ 130                          Subaddress_Idx => 2,
+ 131                          Dest => Bus_Id);
+ 132        Bc1553.Write_Word(Data => Ir_Cfg.Encode_Sector(Sy_end),
+ 133                          Idx => 5,
+ 134                          Subaddress_Idx => 2,
+ 135                          Dest => Bus_Id);
+ 136     end Sweep;
+
++++        Flow analysis of subprogram Sweep performed: no 
+           errors found.
+
+ 137  
+ 138     procedure Read_Stare(Sx,Sy : out Ir_Cfg.Sector_Range;
+ 139                          Temp : out Measuretypes.Kelvin)
+ 140     --# global in last_stare;
+ 141     --# derives sx, sy, temp from last_stare;
+ 142     is
+ 143     begin
+ 144        if Last_Stare.Fresh_Answer then
+ 145           Sx := Last_Stare.Sx;
+ 146           Sy := Last_Stare.Sx;
+ 147           Temp := Last_Stare.Temp;
+ 148        else
+ 149           Sx := 0;
+ 150           Sy := 0;
+ 151           Temp := 0;
+ 152        end if;
+ 153     end Read_Stare;
+
++++        Flow analysis of subprogram Read_stare 
+           performed: no errors found.
+
+ 154  
+ 155     procedure Read_sweep(Sx_start,Sx_end : out Ir_Cfg.Sector_Range;
+ 156                          Sy_Start,Sy_End : out Ir_Cfg.Sector_Range;
+ 157                          Grid : out Measuretypes.Bit4_Array)
+ 158     --# global in last_sweep;
+ 159     --# derives sx_start, sx_end, sy_start, sy_end,
+ 160     --#         grid from last_sweep;
+ 161     is
+ 162     begin
+ 163        if Last_Sweep.Fresh_Answer then
+ 164           Sx_Start := Last_Sweep.Sx_Start;
+ 165           Sx_End   := Last_Sweep.Sx_end;
+ 166           Sy_Start := Last_Sweep.Sy_Start;
+ 167           Sy_End   := Last_Sweep.Sy_end;
+ 168           Grid := Last_Sweep.Grid;
+ 169        else
+ 170           Sx_Start := 0;
+ 171           Sx_end := 0;
+ 172           Sy_Start := 0;
+ 173           Sy_end := 0;
+ 174           Grid := Measuretypes.Bit4_Array'
+ 175             (others => Measuretypes.Bit4_Slice'(others => False));
+ 176        end if;
+ 177     end Read_Sweep;
+
++++        Flow analysis of subprogram Read_sweep 
+           performed: no errors found.
+
+ 178  
+ 179     -- Kick off a ir IBIT
+ 180     procedure Ibit_Start
+ 181       --# global in out Bus.Outputs;
+ 182       --#        out    Ibit_Request;
+ 183     --# derives Bus.Outputs from * &
+ 184     --#         Ibit_Request from ;
+ 185     is
+ 186        Code : SystemTypes.Byte;
+ 187     begin
+ 188        Ibit_Request := IBIT.Request_Start;
+ 189        Code := IBIT.Phase_Lookup(Ibit_Request);
+ 190        -- Send it out on 1R at word 1
+ 191        BC1553.Write_Word(Data => Code,
+ 192                          Idx =>  1,
+ 193                          Subaddress_Idx => 1,
+ 194                          Dest => Bus_id);
+ 195     end Ibit_Start;
+
++++        Flow analysis of subprogram Ibit_Start 
+           performed: no errors found.
+
+ 196  
+ 197     -- Stop a ir IBIT
+ 198     procedure Ibit_Stop
+ 199     --# global in out Bus.Outputs;
+ 200     --#    out Ibit_Request;
+ 201     --# derives Bus.Outputs from * &
+ 202     --#         Ibit_Request from ;
+ 203     is
+ 204        Code : SystemTypes.Byte;
+ 205     begin
+ 206        Ibit_Request := IBIT.Request_Stop;
+ 207        Code := IBIT.Phase_Lookup(Ibit_Request);
+ 208        -- Send it out on 1R at word 1
+ 209        BC1553.Write_Word(Data => Code,
+ 210                          Idx =>  1,
+ 211                          Subaddress_Idx => 1,
+ 212                          Dest => Bus_id);
+ 213     end Ibit_Stop;
+
++++        Flow analysis of subprogram Ibit_Stop performed: 
+           no errors found.
+
+ 214  
+ 215     -- Poll the bus and update states
+ 216     procedure Poll
+ 217     --# global in out Last_stare, last_sweep, Ibit_Request;
+ 218     --#        in Bus.Inputs;
+ 219     --# derives Last_stare, last_sweep,
+ 220     --#         Ibit_Request from *, Bus.Inputs;
+ 221     is
+ 222        Word : Bus.Word;
+ 223        New_State : State_Types.Infrared;
+ 224        Temp : Measuretypes.Kelvin;
+ 225     begin
+ 226        -- Check 2T
+ 227        if BC1553.Is_Valid(Src => Bus_id,
+ 228                           Subaddress_Idx => 2) and then
+ 229          BC1553.Is_Fresh(Src => Bus_id,
+ 230                          Subaddress_Idx => 2) then
+ 231           -- Read the state
+ 232           BC1553.Read_Word(Src => Bus_id,
+ 233                            Idx => 1,
+ 234                            Subaddress_Idx => 2,
+ 235                            Data => Word);
+ 236           New_State := State_Types.Ir_Action(Word);
+ 237           case New_State is
+ 238              when State_Types.ir_Inactive =>
+ 239                 null;
+ 240              when State_Types.Ir_Stare =>
+ 241                 -- temp is in idx 2
+ 242                 BC1553.Read_Word(Src => Bus_id,
+ 243                                  Idx => 2,
+ 244                                  Subaddress_Idx => 2,
+ 245                                  Data => Word);
+ 246                 temp := Measuretypes.Decode.kelvin(Word);
+ 247                 Last_Stare.Fresh_Answer := True;
+ 248                 Last_Stare.Temp := Temp;
+ 249              when State_Types.Ir_Sweep =>
+ 250                 -- Grid is in idx 2
+ 251                 BC1553.Read_Word(Src => Bus_id,
+ 252                                  Idx => 2,
+ 253                                  Subaddress_Idx => 2,
+ 254                                  Data => Word);
+ 255                 Last_Sweep.Grid := Measuretypes.Decode.Bit4_Array(Word);
+ 256                 Last_Sweep.Fresh_Answer := True;
+ 257           end case;
+ 258        else
+ 259           -- Nothing to do
+ 260           null;
+ 261        end if;
+ 262  
+ 263        -- 1T word 1 - BIT
+ 264        BC1553.Read_Word(Src => Bus_id,
+ 265                         Idx => 1,
+ 266                         Subaddress_Idx => 1,
+ 267                         Data => Word);
+ 268        -- Use the standard state machine to transform
+ 269        -- our IBIT phase
+ 270        IBIT.State_Machine(Bus_Data => Word,
+ 271                           Current_Phase => IBIT_Request);
+ 272     end Poll;
+
++++        Flow analysis of subprogram Poll performed: no 
+           errors found.
+
+ 273  
+ 274     -- Initialise
+ 275     procedure Init
+ 276     --# global out Last_stare, last_sweep, Ibit_Request;
+ 277     --#        in out Bus.Outputs;
+ 278     --# derives Last_stare, last_sweep, Ibit_Request from &
+ 279     --#         Bus.Outputs from *;
+ 280     is begin
+ 281        Last_Stare := Null_Stare;
+ 282        Last_Sweep := Null_Sweep;
+ 283        Ibit_Request := IBIT.Off;
+ 284        BC1553.Set_Message_Valid(Dest => Bus_id,
+ 285                                 Subaddress_Idx => 1);
+ 286        Bc1553.Set_Message_Valid(Subaddress_Idx => 2,
+ 287                                 dest => Bus_Id);
+ 288     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 289  
+ 290     -- Test point
+ 291     procedure Command is separate;
+ 292  
+ 293  end If_Ir;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

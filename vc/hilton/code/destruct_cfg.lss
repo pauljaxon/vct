@@ -1,0 +1,50 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.48
+
+Line
+   1  -- Self-destruct configuration
+   2  --
+   3  -- $Log: destruct_cfg.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/09/01 19:13:07  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with Systemtypes;
+  13  --# inherit systemtypes;
+  14  package Destruct_Cfg
+  15  is
+  16  
+  17     type State is (Inactive,Armed,Detonated);
+  18  
+  19     type State_Code_Table is array (State) of
+  20       Systemtypes.Unsigned16;
+  21  
+  22     -- Codes to command a change of state
+  23     State_To_Code : constant State_Code_Table :=
+  24       State_Code_Table'(Inactive  => 0,
+  25                         Armed     => 16#39e0#,
+  26                         Detonated => 16#9ab2#);
+  27  
+  28     function Code_To_State(C : Systemtypes.Unsigned16)
+  29                           return State;
+  30  
+  31     function Transition(Old_state : State;
+  32                         New_Code  : Systemtypes.Unsigned16)
+  33       return State;
+  34  
+  35  end destruct_Cfg;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

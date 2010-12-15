@@ -1,0 +1,73 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.28
+
+                           function random.Poly2
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 28:
+
+function_poly2_1.
+H1:    true .
+H2:    s >= seed_range__first .
+H3:    s <= seed_range__last .
+        ->
+C1:    813 + s * (101 + s * (67 + 2 * s)) >= uint32__first .
+C2:    813 + s * (101 + s * (67 + 2 * s)) <= uint32__last .
+C3:    s * (101 + s * (67 + 2 * s)) >= long_integer__base__first .
+C4:    s * (101 + s * (67 + 2 * s)) <= long_integer__base__last .
+C5:    101 + s * (67 + 2 * s) >= long_integer__base__first .
+C6:    101 + s * (67 + 2 * s) <= long_integer__base__last .
+C7:    s * (67 + 2 * s) >= long_integer__base__first .
+C8:    s * (67 + 2 * s) <= long_integer__base__last .
+C9:    67 + 2 * s >= long_integer__base__first .
+C10:   67 + 2 * s <= long_integer__base__last .
+C11:   2 * s >= long_integer__base__first .
+C12:   2 * s <= long_integer__base__last .
+C13:   s >= uint32__first .
+C14:   s <= uint32__last .
+C15:   s >= uint32__first .
+C16:   s <= uint32__last .
+C17:   s >= uint32__first .
+C18:   s <= uint32__last .
+ 
+
+For path(s) from start to finish:
+
+function_poly2_2.
+H1:    true .
+H2:    s >= seed_range__first .
+H3:    s <= seed_range__last .
+H4:    813 + s * (101 + s * (67 + 2 * s)) >= uint32__first .
+H5:    813 + s * (101 + s * (67 + 2 * s)) <= uint32__last .
+H6:    s * (101 + s * (67 + 2 * s)) >= long_integer__base__first .
+H7:    s * (101 + s * (67 + 2 * s)) <= long_integer__base__last .
+H8:    101 + s * (67 + 2 * s) >= long_integer__base__first .
+H9:    101 + s * (67 + 2 * s) <= long_integer__base__last .
+H10:   s * (67 + 2 * s) >= long_integer__base__first .
+H11:   s * (67 + 2 * s) <= long_integer__base__last .
+H12:   67 + 2 * s >= long_integer__base__first .
+H13:   67 + 2 * s <= long_integer__base__last .
+H14:   2 * s >= long_integer__base__first .
+H15:   2 * s <= long_integer__base__last .
+H16:   s >= uint32__first .
+H17:   s <= uint32__last .
+H18:   s >= uint32__first .
+H19:   s <= uint32__last .
+H20:   s >= uint32__first .
+H21:   s <= uint32__last .
+H22:   813 + s * (101 + s * (67 + 2 * s)) >= uint32__first .
+H23:   813 + s * (101 + s * (67 + 2 * s)) <= uint32__last .
+        ->
+C1:    true .
+C2:    813 + s * (101 + s * (67 + 2 * s)) >= uint32__first .
+C3:    813 + s * (101 + s * (67 + 2 * s)) <= uint32__last .
+ 
+

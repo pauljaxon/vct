@@ -1,0 +1,60 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.83
+
+Line
+   1  -- Steering fins encoding
+   2  --
+   3  -- $Log: steer_cfg-encode.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/08/31 19:25:44  adi
+   9  -- Initial revision
+  10  --
+  11  package body Steer_Cfg.Encode
+  12  is
+  13     function Fin_Angle(F : Steer_Cfg.Fin_Angle)
+  14                       return Bus.Word
+  15     is begin
+  16        return Bus.Word(F - Steer_Cfg.Fin_Angle'First);
+  17     end Fin_Angle;
+
++++        Flow analysis of subprogram Fin_Angle performed: 
+           no errors found.
+
+  18  
+  19     function Fin(F : Steer_Cfg.Fin)
+  20                 return Bus.Word
+  21     is
+  22        Ans : Bus.Word;
+  23     begin
+  24        case F is
+  25           when Steer_Cfg.Port =>
+  26              Ans := 1;
+  27           when Steer_Cfg.Starboard =>
+  28              Ans := 2;
+  29           when Steer_Cfg.Top =>
+  30              Ans := 4;
+  31           when Steer_Cfg.Bottom =>
+  32              Ans := 8;
+  33        end case;
+  34        return Ans;
+  35     end fin;
+
++++        Flow analysis of subprogram Fin performed: no 
+           errors found.
+
+  36  
+  37  end Steer_Cfg.Encode;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

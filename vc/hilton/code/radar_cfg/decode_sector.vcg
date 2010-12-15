@@ -1,0 +1,51 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.99
+
+                      function radar_cfg.decode_Sector
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 41:
+
+function_decode_sector_1.
+H1:    true .
+H2:    b >= systemtypes__unsigned16__first .
+H3:    b <= systemtypes__unsigned16__last .
+        ->
+C1:    sector_range__first + b >= sector_range__first .
+C2:    sector_range__first + b <= sector_range__last .
+C3:    sector_range__first + b >= long_integer__base__first .
+C4:    sector_range__first + b <= long_integer__base__last .
+C5:    b >= integer32__first .
+C6:    b <= integer32__last .
+C7:    sector_range__first >= integer32__first .
+C8:    sector_range__first <= integer32__last .
+ 
+
+For path(s) from start to finish:
+
+function_decode_sector_2.
+H1:    true .
+H2:    b >= systemtypes__unsigned16__first .
+H3:    b <= systemtypes__unsigned16__last .
+H4:    sector_range__first + b >= sector_range__first .
+H5:    sector_range__first + b <= sector_range__last .
+H6:    sector_range__first + b >= long_integer__base__first .
+H7:    sector_range__first + b <= long_integer__base__last .
+H8:    b >= integer32__first .
+H9:    b <= integer32__last .
+H10:   sector_range__first >= integer32__first .
+H11:   sector_range__first <= integer32__last .
+        ->
+C1:    true .
+C2:    sector_range__first + b >= sector_range__first .
+C3:    sector_range__first + b <= sector_range__last .
+ 
+

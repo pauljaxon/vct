@@ -1,0 +1,157 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.01
+
+                           procedure ir.Do_Sweep
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 139:
+
+procedure_do_sweep_1.
+H1:    true .
+H2:    x_start >= sector__first .
+H3:    x_start <= sector__last .
+H4:    x_end >= sector__first .
+H5:    x_end <= sector__last .
+H6:    y_start >= sector__first .
+H7:    y_start <= sector__last .
+H8:    y_end >= sector__first .
+H9:    y_end <= sector__last .
+H10:   for_all(i___2: ir_cfg__sector_range, ((i___2 >= 
+           sector__first) and (i___2 <= sector__last)) -> (for_all(
+           i___1: ir_cfg__sector_range, ((i___1 >= sector__first) and (
+           i___1 <= sector__last)) -> ((fld_temp(element(element(
+           detect_points, [i___1]), [i___2])) >= kelvin__first) and (
+           fld_temp(element(element(detect_points, [i___1]), [
+           i___2])) <= kelvin__last))))) .
+H11:   true .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    2 >= bus__lru_subaddress_index__first .
+C4:    2 <= bus__lru_subaddress_index__last .
+C5:    1 >= bus__word_index__first .
+C6:    1 <= bus__word_index__last .
+C7:    element(state_types__ir_values, [state_types__ir_sweep]) >= 
+           bus__word__first .
+C8:    element(state_types__ir_values, [state_types__ir_sweep]) <= 
+           bus__word__last .
+C9:    state_types__ir_sweep >= state_types__infrared__first .
+C10:   state_types__ir_sweep <= state_types__infrared__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 144:
+
+procedure_do_sweep_2.
+H1:    true .
+H2:    x_start >= sector__first .
+H3:    x_start <= sector__last .
+H4:    x_end >= sector__first .
+H5:    x_end <= sector__last .
+H6:    y_start >= sector__first .
+H7:    y_start <= sector__last .
+H8:    y_end >= sector__first .
+H9:    y_end <= sector__last .
+H10:   for_all(i___2: ir_cfg__sector_range, ((i___2 >= 
+           sector__first) and (i___2 <= sector__last)) -> (for_all(
+           i___1: ir_cfg__sector_range, ((i___1 >= sector__first) and (
+           i___1 <= sector__last)) -> ((fld_temp(element(element(
+           detect_points, [i___1]), [i___2])) >= kelvin__first) and (
+           fld_temp(element(element(detect_points, [i___1]), [
+           i___2])) <= kelvin__last))))) .
+H11:   true .
+H12:   bus_id >= rt1553__lru_name__first .
+H13:   bus_id <= rt1553__lru_name__last .
+H14:   2 >= bus__lru_subaddress_index__first .
+H15:   2 <= bus__lru_subaddress_index__last .
+H16:   1 >= bus__word_index__first .
+H17:   1 <= bus__word_index__last .
+H18:   element(state_types__ir_values, [state_types__ir_sweep]) >= 
+           bus__word__first .
+H19:   element(state_types__ir_values, [state_types__ir_sweep]) <= 
+           bus__word__last .
+H20:   state_types__ir_sweep >= state_types__infrared__first .
+H21:   state_types__ir_sweep <= state_types__infrared__last .
+H22:   true .
+H23:   measuretypes__encode__bit4_array(detect__1) >= 
+           bus__word__first .
+H24:   measuretypes__encode__bit4_array(detect__1) <= 
+           bus__word__last .
+        ->
+C1:    measuretypes__encode__bit4_array(detect__1) >= 
+           bus__word__first .
+C2:    measuretypes__encode__bit4_array(detect__1) <= 
+           bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 145:
+
+procedure_do_sweep_3.
+H1:    true .
+H2:    x_start >= sector__first .
+H3:    x_start <= sector__last .
+H4:    x_end >= sector__first .
+H5:    x_end <= sector__last .
+H6:    y_start >= sector__first .
+H7:    y_start <= sector__last .
+H8:    y_end >= sector__first .
+H9:    y_end <= sector__last .
+H10:   for_all(i___2: ir_cfg__sector_range, ((i___2 >= 
+           sector__first) and (i___2 <= sector__last)) -> (for_all(
+           i___1: ir_cfg__sector_range, ((i___1 >= sector__first) and (
+           i___1 <= sector__last)) -> ((fld_temp(element(element(
+           detect_points, [i___1]), [i___2])) >= kelvin__first) and (
+           fld_temp(element(element(detect_points, [i___1]), [
+           i___2])) <= kelvin__last))))) .
+H11:   true .
+H12:   bus_id >= rt1553__lru_name__first .
+H13:   bus_id <= rt1553__lru_name__last .
+H14:   2 >= bus__lru_subaddress_index__first .
+H15:   2 <= bus__lru_subaddress_index__last .
+H16:   1 >= bus__word_index__first .
+H17:   1 <= bus__word_index__last .
+H18:   element(state_types__ir_values, [state_types__ir_sweep]) >= 
+           bus__word__first .
+H19:   element(state_types__ir_values, [state_types__ir_sweep]) <= 
+           bus__word__last .
+H20:   state_types__ir_sweep >= state_types__infrared__first .
+H21:   state_types__ir_sweep <= state_types__infrared__last .
+H22:   true .
+H23:   measuretypes__encode__bit4_array(detect__1) >= 
+           bus__word__first .
+H24:   measuretypes__encode__bit4_array(detect__1) <= 
+           bus__word__last .
+H25:   measuretypes__encode__bit4_array(detect__1) >= 
+           bus__word__first .
+H26:   measuretypes__encode__bit4_array(detect__1) <= 
+           bus__word__last .
+H27:   measuretypes__encode__bit4_array(detect__1) >= 
+           bus__word__first .
+H28:   measuretypes__encode__bit4_array(detect__1) <= 
+           bus__word__last .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    2 >= bus__lru_subaddress_index__first .
+C4:    2 <= bus__lru_subaddress_index__last .
+C5:    2 >= bus__word_index__first .
+C6:    2 <= bus__word_index__last .
+C7:    measuretypes__encode__bit4_array(detect__1) >= 
+           bus__word__first .
+C8:    measuretypes__encode__bit4_array(detect__1) <= 
+           bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_do_sweep_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+

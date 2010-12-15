@@ -1,0 +1,77 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.43
+
+Line
+   1  package Instruments
+   2    --# own in Altitude      : Feet;
+   3    --#     in Bank          : Bankangle;
+   4    --#     in Heading       : Headdegree;
+   5    --#     in Heading_Bug   : Headdegree;
+   6    --#     in Mach          : Machnumber;
+   7    --#     in Pitch         : Pitchangle;
+   8    --#     in Rate_Of_Climb : Feetpermin;
+   9    --#     in Slip          : Slipangle;
+  10  is
+  11     type Feet       is range     0 .. 50_000;
+  12     --# assert Feet'Base is Integer;
+  13  
+  14     type Bankangle  is range   -45 .. 45;
+  15     --# assert Bankangle'Base is Short_Short_Integer;
+  16  
+  17     type Headdegree is range     0 .. 359;
+  18     --# assert Headdegree'Base is Short_Integer;
+  19  
+  20     type Feetpermin is range -6000 .. 6000;
+  21     --# assert Feetpermin'Base is Short_Integer;
+  22  
+  23     type Machnumber is range     0 .. 100;
+  24     --# assert Machnumber'Base is Short_Short_Integer;
+  25  
+  26     type Pitchangle is range   -10 .. 20;
+  27     --# assert Pitchangle'Base is Short_Short_Integer;
+  28  
+  29     type Slipangle  is range   -25 .. 25;
+  30     --# assert Slipangle'Base is Short_Short_Integer;
+  31  
+  32     procedure Read_Altimeter(Present_Altitude : out Feet);
+  33     --# global in Altitude;
+  34     --# derives Present_Altitude from Altitude;
+  35  
+  36     procedure Read_Bank_Indicator(Present_Bank : out Bankangle);
+  37     --# global in Bank;
+  38     --# derives Present_Bank from Bank;
+  39  
+  40     procedure Read_Compass(Present_Heading : out Headdegree);
+  41     --# global in Heading;
+  42     --# derives Present_Heading from Heading;
+  43  
+  44     procedure Read_Heading_Bug(Target_Heading : out Headdegree);
+  45     --# global in Heading_Bug;
+  46     --# derives Target_Heading from Heading_Bug;
+  47  
+  48     procedure Read_Mach_Indicator(Present_Mach : out Machnumber);
+  49     --# global in Mach;
+  50     --# derives Present_Mach from Mach;
+  51  
+  52     procedure Read_Pitch_Indicator(Present_Pitch : out Pitchangle);
+  53     --# global in Pitch;
+  54     --# derives Present_Pitch from Pitch;
+  55  
+  56     procedure Read_VSI(Present_Rate_Of_Climb : out Feetpermin);
+  57     --# global in Rate_Of_Climb;
+  58     --# derives Present_Rate_Of_Climb from Rate_Of_Climb;
+  59  
+  60     procedure Read_Slip_Indicator(Present_Slip : out Slipangle);
+  61     --# global in Slip;
+  62     --# derives Present_Slip from Slip;
+  63  
+  64  end Instruments;
+
+
+--End of file--------------------------------------------------

@@ -1,0 +1,33 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.57
+
+Line
+   1  private package AP.Controls
+   2    --# own in Master_Switch, 
+   3    --#     in Altitude_Switch, 
+   4    --#     in Heading_Switch;
+   5  is
+   6     type Switch is (On, Off);
+   7     
+   8     procedure Read_Master_Switch(Position : out Switch);
+   9     --# global in Master_Switch;
+  10     --# derives Position from Master_Switch;
+  11     
+  12     procedure Read_Altitude_Switch(Position : out Switch);
+  13     --# global in Altitude_Switch;
+  14     --# derives Position from Altitude_Switch;
+  15     
+  16     procedure Read_Heading_Switch(Position : out Switch);
+  17     --# global in Heading_Switch;
+  18     --# derives Position from Heading_Switch;
+  19     
+  20  end AP.Controls;
+
+
+--End of file--------------------------------------------------

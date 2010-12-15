@@ -1,0 +1,91 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:42.54*/
+
+                       /*procedure steer.Set_Deflection*/
+
+
+rule_family set_deflecti_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+set_deflecti_rules(1): clock__millisecond__size >= 0 may_be_deduced.
+set_deflecti_rules(2): clock__millisecond__first may_be_replaced_by 0.
+set_deflecti_rules(3): clock__millisecond__last may_be_replaced_by 8640000.
+set_deflecti_rules(4): clock__millisecond__base__first may_be_replaced_by -2147483648.
+set_deflecti_rules(5): clock__millisecond__base__last may_be_replaced_by 2147483647.
+set_deflecti_rules(6): steer_cfg__fin_angle__size >= 0 may_be_deduced.
+set_deflecti_rules(7): steer_cfg__fin_angle__first may_be_replaced_by -57.
+set_deflecti_rules(8): steer_cfg__fin_angle__last may_be_replaced_by 57.
+set_deflecti_rules(9): steer_cfg__fin_angle__base__first <= 
+     steer_cfg__fin_angle__base__last may_be_deduced.
+set_deflecti_rules(10): steer_cfg__fin_angle__base__first <= 
+     steer_cfg__fin_angle__first may_be_deduced.
+set_deflecti_rules(11): steer_cfg__fin_angle__base__last >= 
+     steer_cfg__fin_angle__last may_be_deduced.
+set_deflecti_rules(12): steer_cfg__fin__size >= 0 may_be_deduced.
+set_deflecti_rules(13): steer_cfg__fin__first may_be_replaced_by steer_cfg__port.
+set_deflecti_rules(14): steer_cfg__fin__last may_be_replaced_by steer_cfg__bottom.
+set_deflecti_rules(15): steer_cfg__fin__base__first may_be_replaced_by steer_cfg__port.
+set_deflecti_rules(16): steer_cfg__fin__base__last may_be_replaced_by steer_cfg__bottom.
+set_deflecti_rules(17): steer_cfg__fin__pos(steer_cfg__fin__first) may_be_replaced_by 0.
+set_deflecti_rules(18): steer_cfg__fin__pos(steer_cfg__port) may_be_replaced_by 0.
+set_deflecti_rules(19): steer_cfg__fin__val(0) may_be_replaced_by 
+     steer_cfg__port.
+set_deflecti_rules(20): steer_cfg__fin__pos(steer_cfg__starboard) may_be_replaced_by 1.
+set_deflecti_rules(21): steer_cfg__fin__val(1) may_be_replaced_by 
+     steer_cfg__starboard.
+set_deflecti_rules(22): steer_cfg__fin__pos(steer_cfg__top) may_be_replaced_by 2.
+set_deflecti_rules(23): steer_cfg__fin__val(2) may_be_replaced_by 
+     steer_cfg__top.
+set_deflecti_rules(24): steer_cfg__fin__pos(steer_cfg__bottom) may_be_replaced_by 3.
+set_deflecti_rules(25): steer_cfg__fin__val(3) may_be_replaced_by 
+     steer_cfg__bottom.
+set_deflecti_rules(26): steer_cfg__fin__pos(steer_cfg__fin__last) may_be_replaced_by 3.
+set_deflecti_rules(27): steer_cfg__fin__pos(succ(X)) may_be_replaced_by 
+     steer_cfg__fin__pos(X) + 1
+     if [X <=steer_cfg__bottom, X <> steer_cfg__bottom].
+set_deflecti_rules(28): steer_cfg__fin__pos(pred(X)) may_be_replaced_by 
+     steer_cfg__fin__pos(X) - 1
+     if [X >=steer_cfg__port, X <> steer_cfg__port].
+set_deflecti_rules(29): steer_cfg__fin__pos(X) >= 0 may_be_deduced_from
+     [steer_cfg__port <= X, X <= steer_cfg__bottom].
+set_deflecti_rules(30): steer_cfg__fin__pos(X) <= 3 may_be_deduced_from
+     [steer_cfg__port <= X, X <= steer_cfg__bottom].
+set_deflecti_rules(31): steer_cfg__fin__val(X) >= steer_cfg__port may_be_deduced_from
+     [0 <= X, X <= 3].
+set_deflecti_rules(32): steer_cfg__fin__val(X) <= 
+     steer_cfg__bottom may_be_deduced_from
+     [0 <= X, X <= 3].
+set_deflecti_rules(33): succ(steer_cfg__fin__val(X)) may_be_replaced_by 
+     steer_cfg__fin__val(X+1)
+     if [0 <= X, X < 3].
+set_deflecti_rules(34): pred(steer_cfg__fin__val(X)) may_be_replaced_by 
+     steer_cfg__fin__val(X-1)
+     if [0 < X, X <= 3].
+set_deflecti_rules(35): steer_cfg__fin__pos(steer_cfg__fin__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 3].
+set_deflecti_rules(36): steer_cfg__fin__val(steer_cfg__fin__pos(X)) may_be_replaced_by X
+     if [steer_cfg__port <= X, X <= steer_cfg__bottom].
+set_deflecti_rules(37): steer_cfg__fin__pos(X) <= steer_cfg__fin__pos(Y) & X <= Y are_interchangeable 
+     if [steer_cfg__port <= X, X <= steer_cfg__bottom, 
+     steer_cfg__port <= Y, Y <= steer_cfg__bottom].
+set_deflecti_rules(38): steer_cfg__fin__val(X) <= steer_cfg__fin__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 3, 0 <= Y, Y <= 3].
+set_deflecti_rules(39): angle__size >= 0 may_be_deduced.
+set_deflecti_rules(40): angle__first may_be_replaced_by -57.
+set_deflecti_rules(41): angle__last may_be_replaced_by 57.
+set_deflecti_rules(42): angle__base__first <= angle__base__last may_be_deduced.
+set_deflecti_rules(43): angle__base__first <= angle__first may_be_deduced.
+set_deflecti_rules(44): angle__base__last >= angle__last may_be_deduced.
+set_deflecti_rules(45): fin__size >= 0 may_be_deduced.
+set_deflecti_rules(46): fin__first may_be_replaced_by steer_cfg__port.
+set_deflecti_rules(47): fin__last may_be_replaced_by steer_cfg__bottom.
+set_deflecti_rules(48): fin__base__first may_be_replaced_by steer_cfg__port.
+set_deflecti_rules(49): fin__base__last may_be_replaced_by steer_cfg__bottom.

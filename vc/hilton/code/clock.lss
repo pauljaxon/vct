@@ -1,0 +1,126 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.34
+
+Line
+   1  --=head1 NAME
+   2  --
+   3  --  Clock - interface to the system clock
+   4  --
+   5  --=head1 REVISION HISTORY
+   6  --
+   7  -- $Log: clock.ads,v $
+   8  -- Revision 1.2  2004/08/09 17:07:55  adi
+   9  -- Added POD commands to clock.ads
+  10  --
+  11  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+  12  -- Added from tarfile
+  13  --
+  14  -- Revision 1.3  2003/09/01 18:17:34  adi
+  15  -- Added base type assertion for clock
+  16  --
+  17  -- Revision 1.2  2003/02/13 00:10:25  adi
+  18  -- Added Command point
+  19  --
+  20  -- Revision 1.1  2003/02/08 17:38:40  adi
+  21  -- Initial revision
+  22  --
+  23  --=cut
+  24  package Clock
+  25    --# own Time;
+  26    --# initializes Time;
+  27  is
+  28     --=head1 TYPES
+  29     --
+  30     --=over 4
+  31     --
+  32     --=cut
+  33  
+  34     --=item *
+  35     --
+  36     type Millisecond is range 0..(100*(3600*24));
+  37     --
+  38     --Number of milliseconds, measured over 1 day
+  39     --
+  40     --=cut
+  41  
+  42     --# assert millisecond'base is long_integer;
+  43  
+  44     --
+  45     --=back
+  46     --
+  47     --=head1 SUBPROGRAMS
+  48     --
+  49     --=over 4
+  50  
+  51     --=item *
+  52     --
+  53     procedure Read(T : out Millisecond;
+  54                    Valid : out Boolean);
+  55     --# global in out Time;
+  56     --# derives T, Valid, Time from Time;
+  57     --
+  58     --Read the current time.  If the time is not valid,
+  59     --C<Valid> will be false and C<T> will be an arbitrary value.
+  60     --
+  61  
+  62     --=item *
+  63     --
+  64     function Time_Valid return Boolean;
+  65     --# global in Time;
+  66     --
+  67     --Check whether the current clock value is known to be valid
+  68     --
+  69  
+  70     --=item *
+  71     --
+  72     procedure Reset;
+  73     --# global out Time;
+  74     --# derives Time from;
+  75     --
+  76     --Reset the clock
+  77     --
+  78  
+  79     --=item *
+  80     --
+  81     procedure Cycle(Plus : in Millisecond);
+  82     --# global in out Time;
+  83     --# derives Time from *, Plus;
+  84     --
+  85     --Interface for simulation; allow control of the clock, cycling
+  86     --forward exactly C<Plus> milliseconds.
+  87     --
+  88  
+  89     --=item *
+  90     --
+  91     procedure Command;
+  92     --# derives;
+  93     --
+  94     --Test harness point.  Reads controlling keywords from
+  95     --standard input, and adjusts clock state accordingly.
+  96     --
+  97  
+  98     --=back
+  99     --
+ 100     --=cut
+ 101  end Clock;
+ 102  
+ 103  --=head1 NOTES
+ 104  --
+ 105  --This package pretends to be a system clock.  Regular code can
+ 106  --read and reset the clock time and validity.  The extra interfaces
+ 107  --permit precise simulator control over the clock's behaviour.  The
+ 108  --clock reading will wrap around to 0 milliseconds at the end of one
+ 109  --entire day.
+ 110  --
+ 111  --=cut
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

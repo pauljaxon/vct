@@ -1,0 +1,223 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:38
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure bus.Acknowledge_RT_Message
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_acknowledge_rt_message_1.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+***  Proved C1:  dest >= lru_index__first
+     using hypothesis H2.
+***  Proved C2:  dest <= lru_index__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_acknowledge_rt_message_2.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+***  Proved C1:  fld_initial(element(bc_to_rt, [dest])) >= 
+          valid_msg_index__first
+     using hypothesis H15.
+***  Proved C2:  fld_initial(element(bc_to_rt, [dest])) <= lru_start_index__last
+     using hypothesis H14.
+***  Proved C3:  dest >= lru_index__first
+     using hypothesis H2.
+***  Proved C4:  dest <= lru_index__last
+     using hypothesis H3.
+***  Proved C5:  subaddress_idx >= lru_subaddress_index__first
+     using hypothesis H4.
+***  Proved C6:  subaddress_idx <= lru_subaddress_index__last
+     using hypothesis H5.
+***  Proved C7:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(real_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(real_outputs, [i___1])), [i___2])
+           <= word__last))
+     using hypothesis H6.
+***  Proved C8:  true
+***  Proved C9:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_acknowledge_rt_message_3.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H2)
+          .
+-S-  Applied substitution rule acknowledge__rules(29).
+     This was achieved by replacing all occurrences of valid_msg_index__first 
+          by:
+          1.
+<S>  New H1:  fld_initial(placing) >= 1
+<S>  New H7:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          valid_msg_index__last -> word__first <= element(fld_data(element(
+          real_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New C1:  fld_initial(placing) + (subaddress_idx - 1) >= 1
+-S-  Applied substitution rule acknowledge__rules(30).
+     This was achieved by replacing all occurrences of valid_msg_index__last by:
+          63.
+<S>  New H7:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          63 -> word__first <= element(fld_data(element(real_outputs, [i___1]))
+          , [i___2]) and element(fld_data(element(real_outputs, [i___1])), [
+          i___2]) <= word__last))
+<S>  New C2:  fld_initial(placing) + (subaddress_idx - 1) <= 63
+-S-  Applied substitution rule acknowledge__rules(26).
+     This was achieved by replacing all occurrences of 
+          all_msg_index__base__first by:
+          - 32768.
+<S>  New C3:  subaddress_idx >= - 32767
+-S-  Applied substitution rule acknowledge__rules(27).
+     This was achieved by replacing all occurrences of 
+          all_msg_index__base__last by:
+          32767.
+<S>  New C4:  subaddress_idx <= 32768
+-S-  Applied substitution rule acknowledge__rules(11).
+     This was achieved by replacing all occurrences of word_index__first by:
+          1.
+<S>  New H7:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= word_index__last 
+          -> for_all(i___1 : integer, 1 <= i___1 and i___1 <= 63 -> word__first 
+          <= element(fld_data(element(real_outputs, [i___1])), [i___2]) and 
+          element(fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+          word__last))
+-S-  Applied substitution rule acknowledge__rules(12).
+     This was achieved by replacing all occurrences of word_index__last by:
+          31.
+<S>  New H7:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+-S-  Applied substitution rule acknowledge__rules(17).
+     This was achieved by replacing all occurrences of word__first by:
+          0.
+<S>  New H7:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(real_outputs, [i___1])), [i___2]) and element(fld_data(
+          element(real_outputs, [i___1])), [i___2]) <= word__last))
+-S-  Applied substitution rule acknowledge__rules(18).
+     This was achieved by replacing all occurrences of word__last by:
+          65535.
+<S>  New H7:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(real_outputs, [i___1])), [i___2]) and element(fld_data(
+          element(real_outputs, [i___1])), [i___2]) <= 65535))
+-S-  Applied substitution rule acknowledge__rules(34).
+     This was achieved by replacing all occurrences of 
+          lru_subaddress_index__first by:
+          1.
+<S>  New H5:  subaddress_idx >= 1
+<S>  New H10:  fld_msg_count(placing) >= 1
+-S-  Applied substitution rule acknowledge__rules(35).
+     This was achieved by replacing all occurrences of 
+          lru_subaddress_index__last by:
+          8.
+<S>  New H6:  subaddress_idx <= 8
+<S>  New H11:  fld_msg_count(placing) <= 8
+-S-  Applied substitution rule acknowledge__rules(39).
+     This was achieved by replacing all occurrences of lru_index__first by:
+          1.
+<S>  New H3:  dest >= 1
+-S-  Applied substitution rule acknowledge__rules(40).
+     This was achieved by replacing all occurrences of lru_index__last by:
+          12.
+<S>  New H4:  dest <= 12
+-S-  Applied substitution rule acknowledge__rules(45).
+     This was achieved by replacing all occurrences of lru_start_index__first 
+          by:
+          0.
+<S>  New H12:  fld_initial(placing) >= 0
+-S-  Applied substitution rule acknowledge__rules(46).
+     This was achieved by replacing all occurrences of lru_start_index__last by:
+          55.
+<S>  New H2:  fld_initial(placing) <= 55
+***  Proved C1:  fld_initial(placing) + (subaddress_idx - 1) >= 1
+     using hypotheses H1 & H5.
+***  Proved C2:  fld_initial(placing) + (subaddress_idx - 1) <= 63
+     using hypotheses H2 & H6.
+***  Proved C3:  subaddress_idx >= - 32767
+     using hypothesis H5.
+***  Proved C4:  subaddress_idx <= 32768
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_acknowledge_rt_message_4.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H2)
+          .
+***  Proved C1:  fld_initial(placing) + (subaddress_idx - 1) >= 
+          valid_msg_index__first
+     using hypothesis H14.
+***  Proved C2:  fld_initial(placing) + (subaddress_idx - 1) <= 
+          valid_msg_index__last
+     using hypothesis H15.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_acknowledge_rt_message_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_acknowledge_rt_message_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_acknowledge_rt_message_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_acknowledge_rt_message_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

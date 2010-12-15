@@ -1,0 +1,115 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.84
+
+Line
+   1  -- Dynamic drag computation
+   2  -- $Log: drag.adb,v $
+   3  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   4  -- Added from tarfile
+   5  --
+   6  --
+   7  -- Revision 1.1  2003/08/12 18:12:48  adi
+   8  -- Initial revision
+   9  --
+  10  --
+  11  with constants;
+  12  package body Drag
+  13  is
+  14     -- Type abbreviations
+  15     subtype integer32 is long_integer;  -- change to systemtypes.integer32
+  16  
+  17     -- Constants
+  18     lin_quad_boundary : constant pos_meter_per_sec := 100;
+  19     transonic_boundary : constant pos_meter_per_sec := 400;
+  20     postsonic_boundary : constant pos_meter_per_sec := 450;
+  21     drag_at_mach1 : constant integer32 :=
+  22       integer32(constants.mach1_sea * constants.mach1_sea) /
+  23       integer32(lin_quad_boundary);
+  24     transonic_mach1_diff : constant integer32 :=
+  25       integer32(transonic_boundary - constants.mach1_sea);
+  26     drag_at_transonic : constant integer32 :=
+  27       drag_at_mach1 +
+  28         (transonic_mach1_diff * (transonic_mach1_diff * transonic_mach1_diff))
+  29          / 2000;
+  30  
+  31     subtype percent is integer32 range 0..100;
+  32  
+  33     function Relative_Drag_At_Altitude(Altitude : in pos_meter) return percent
+  34     --# pre altitude >= 0 and altitude <= 25_000;
+  35     is
+  36        intermediate : integer32;
+  37     begin
+  38        intermediate := (50_000 - integer32(Altitude)) / 250;
+  39        -- intermediate is now between 100 and 200
+  40        if intermediate < 100 then
+  41           intermediate := 100;
+  42        elsif intermediate > 200 then
+  43           intermediate := 200;
+  44        else
+  45           null;
+  46        end if;
+  47        return (intermediate - 100);
+  48     end relative_drag_at_altitude;
+
++++        Flow analysis of subprogram 
+           Relative_Drag_At_Altitude performed: no errors found.
+
+  49  
+  50  
+  51     procedure Calc_Drag(Profile  : in Drag_Coefficient;
+  52                         Speed    : in Pos_Meter_Per_Sec;
+  53                         Altitude : in pos_Meter;
+  54                         Drag_force : out measuretypes.newton)
+  55     is
+  56        working : integer32;
+  57        sdiff,ddiff : integer32;
+  58     begin
+  59        if speed < constants.mach1_sea then
+  60           -- Sub-mach1
+  61           if speed < lin_quad_boundary then
+  62              -- linear: ranges from 1 to 100
+  63              working := integer32(speed);
+  64           else
+  65              -- quadratic, ranges from 100 to about 900
+  66              working := (integer32(speed)*integer32(speed)) /
+  67                integer32(lin_quad_boundary);
+  68           end if;
+  69        else
+  70          if speed < transonic_boundary then
+  71              -- Weird transonic drag going on, very steep
+  72              -- ranges from about 900 to about 1350
+  73              sdiff := integer32(speed - constants.mach1_sea);
+  74              working := drag_at_mach1 + (sdiff * (sdiff * sdiff))/2000;
+  75           elsif speed < postsonic_boundary then
+  76              -- Falls off linearly back to quadratic
+  77              sdiff := integer32(postsonic_boundary - transonic_boundary);
+  78              ddiff := drag_at_transonic - drag_at_mach1;
+  79              working := drag_at_mach1 +
+  80                (integer32(postsonic_boundary - speed)*ddiff)/sdiff;
+  81           else
+  82              -- linear again
+  83              sdiff := integer32(speed - postsonic_boundary);
+  84              working := drag_at_mach1 + sdiff;
+  85           end if;
+  86        end if;
+  87        working := (working * relative_drag_at_altitude(altitude)) / 100;
+  88        drag_force := measuretypes.newton((working * integer32(profile))/2);
+  89     end calc_drag;
+
++++        Flow analysis of subprogram Calc_Drag performed: 
+           no errors found.
+
+  90  
+  91     procedure Testpoint is separate;
+  92  end Drag;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

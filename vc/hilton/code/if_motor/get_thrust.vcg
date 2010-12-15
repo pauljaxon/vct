@@ -1,0 +1,60 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.06
+
+                       procedure if_motor.Get_Thrust
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 46:
+
+procedure_get_thrust_1.
+H1:    true .
+H2:    last_thrust >= power__first .
+H3:    last_thrust <= power__last .
+H4:    true .
+H5:    last_valid .
+        ->
+C1:    last_thrust >= power__first .
+C2:    last_thrust <= power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 48:
+
+procedure_get_thrust_2.
+H1:    true .
+H2:    last_thrust >= power__first .
+H3:    last_thrust <= power__last .
+H4:    true .
+H5:    not last_valid .
+        ->
+C1:    power__first >= power__first .
+C2:    power__first <= power__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_get_thrust_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_get_thrust_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_get_thrust_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_get_thrust_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+

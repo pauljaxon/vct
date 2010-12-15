@@ -1,0 +1,78 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.85
+
+Line
+   1  with Instruments,Surfaces,Degrees,Scale;
+   2  
+   3  use type Instruments.Slipangle;
+   4  
+   5  with AP.Heading.Yaw.Rate;
+   6  
+   7  use type Degrees.Degreespersec;
+   8  use type Surfaces.Controlangle;
+   9  
+  10  package body AP.Heading.Yaw
+  11    --# own State is AP.Heading.Yaw.Rate.Yaw_History;
+  12  is
+  13     procedure Calc_Yawrate(Yaw             : in Instruments.Slipangle;
+  14  			  Present_Yawrate : out Degrees.Degreespersec)
+  15       renames Rate.Calc_Yawrate;
+  16     
+  17     subtype Degreespersec is Degrees.Degreespersec;
+  18     
+  19     function Calc_Rudder_Move(Present_Sliprate : Degreespersec;
+  20  			     Mach             : Instruments.Machnumber)
+  21       return Surfaces.Controlangle
+  22     is
+  23        Target_Angle : Surfaces.ControlAngle;
+  24     begin
+  25        Target_Angle := Scale.Scale_Movement(
+  26  	Mach    => Mach,
+  27  	Present => Scale.Scaledata(Present_Sliprate / 2),
+  28  	Target  => 0,
+  29          Max     => Surfaces.ControlAngle(20)
+  30        );
+  31        return Target_Angle;
+  32     end Calc_Rudder_Move;
+
++++        Flow analysis of subprogram Calc_Rudder_Move 
+           performed: no errors found.
+
+  33     
+  34     procedure Yaw_AP(Mach     : in Instruments.Machnumber;
+  35  		    Slip     : in Instruments.Slipangle)
+  36     --# global in out Rate.Yaw_History;
+  37     --#           out Surfaces.Rudder;
+  38     --# derives Rate.Yaw_History
+  39     --#         from *,
+  40     --#              Slip &
+  41     --#         Surfaces.Rudder
+  42     --#         from Rate.Yaw_History,
+  43     --#              Mach,
+  44     --#              Slip
+  45     --#  ;
+  46     is
+  47        Present_Sliprate : Degreespersec;
+  48        Rudder_Movement  : Surfaces.Controlangle;
+  49     begin
+  50        Calc_Yawrate(Slip,Present_Sliprate);
+  51        Rudder_Movement := Calc_Rudder_Move(Present_Sliprate,Mach);
+  52        Surfaces.Move_Rudder(Rudder_Movement);
+  53     end Yaw_AP;
+
++++        Flow analysis of subprogram Yaw_AP performed: no 
+           errors found.
+
+  54     
+  55  end AP.Heading.Yaw;
+  56  
+  57     
+
+
+--End of file--------------------------------------------------

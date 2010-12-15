@@ -1,0 +1,76 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:43.75*/
+
+                      /*procedure if_destruct.Get_Stage*/
+
+
+rule_family get_stage_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+get_stage_rules(1): destruct_cfg__state__size >= 0 may_be_deduced.
+get_stage_rules(2): destruct_cfg__state__first may_be_replaced_by destruct_cfg__inactive.
+get_stage_rules(3): destruct_cfg__state__last may_be_replaced_by destruct_cfg__detonated.
+get_stage_rules(4): destruct_cfg__state__base__first may_be_replaced_by destruct_cfg__inactive.
+get_stage_rules(5): destruct_cfg__state__base__last may_be_replaced_by destruct_cfg__detonated.
+get_stage_rules(6): destruct_cfg__state__pos(destruct_cfg__state__first) may_be_replaced_by 0.
+get_stage_rules(7): destruct_cfg__state__pos(
+     destruct_cfg__inactive) may_be_replaced_by 0.
+get_stage_rules(8): destruct_cfg__state__val(0) may_be_replaced_by 
+     destruct_cfg__inactive.
+get_stage_rules(9): destruct_cfg__state__pos(destruct_cfg__armed) may_be_replaced_by 1.
+get_stage_rules(10): destruct_cfg__state__val(1) may_be_replaced_by 
+     destruct_cfg__armed.
+get_stage_rules(11): destruct_cfg__state__pos(
+     destruct_cfg__detonated) may_be_replaced_by 2.
+get_stage_rules(12): destruct_cfg__state__val(2) may_be_replaced_by 
+     destruct_cfg__detonated.
+get_stage_rules(13): destruct_cfg__state__pos(destruct_cfg__state__last) may_be_replaced_by 2.
+get_stage_rules(14): destruct_cfg__state__pos(succ(X)) may_be_replaced_by 
+     destruct_cfg__state__pos(X) + 1
+     if [X <=destruct_cfg__detonated, X <> 
+     destruct_cfg__detonated].
+get_stage_rules(15): destruct_cfg__state__pos(pred(X)) may_be_replaced_by 
+     destruct_cfg__state__pos(X) - 1
+     if [X >=destruct_cfg__inactive, X <> destruct_cfg__inactive].
+get_stage_rules(16): destruct_cfg__state__pos(X) >= 0 may_be_deduced_from
+     [destruct_cfg__inactive <= X, X <= destruct_cfg__detonated].
+get_stage_rules(17): destruct_cfg__state__pos(X) <= 2 may_be_deduced_from
+     [destruct_cfg__inactive <= X, X <= destruct_cfg__detonated].
+get_stage_rules(18): destruct_cfg__state__val(X) >= 
+     destruct_cfg__inactive may_be_deduced_from
+     [0 <= X, X <= 2].
+get_stage_rules(19): destruct_cfg__state__val(X) <= 
+     destruct_cfg__detonated may_be_deduced_from
+     [0 <= X, X <= 2].
+get_stage_rules(20): succ(destruct_cfg__state__val(X)) may_be_replaced_by 
+     destruct_cfg__state__val(X+1)
+     if [0 <= X, X < 2].
+get_stage_rules(21): pred(destruct_cfg__state__val(X)) may_be_replaced_by 
+     destruct_cfg__state__val(X-1)
+     if [0 < X, X <= 2].
+get_stage_rules(22): destruct_cfg__state__pos(destruct_cfg__state__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 2].
+get_stage_rules(23): destruct_cfg__state__val(destruct_cfg__state__pos(X)) may_be_replaced_by X
+     if [destruct_cfg__inactive <= X, X <= 
+     destruct_cfg__detonated].
+get_stage_rules(24): destruct_cfg__state__pos(X) <= 
+     destruct_cfg__state__pos(Y) & X <= Y are_interchangeable 
+     if [destruct_cfg__inactive <= X, X <= 
+     destruct_cfg__detonated, destruct_cfg__inactive <= Y, Y <= 
+     destruct_cfg__detonated].
+get_stage_rules(25): destruct_cfg__state__val(X) <= 
+     destruct_cfg__state__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 2, 0 <= Y, Y <= 2].
+get_stage_rules(26): stage__size >= 0 may_be_deduced.
+get_stage_rules(27): stage__first may_be_replaced_by destruct_cfg__inactive.
+get_stage_rules(28): stage__last may_be_replaced_by destruct_cfg__detonated.
+get_stage_rules(29): stage__base__first may_be_replaced_by destruct_cfg__inactive.
+get_stage_rules(30): stage__base__last may_be_replaced_by destruct_cfg__detonated.

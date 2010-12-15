@@ -1,0 +1,95 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:40
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function bus_encode.Encode_Bool8
+
+
+
+
+For path(s) from start to assertion of line 20:
+
+function_encode_bool8_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 20 to assertion of line 20:
+
+function_encode_bool8_2.
+*** true .          /* all conclusions proved */
+
+
+function_encode_bool8_3.
+*** true .          /* all conclusions proved */
+
+
+function_encode_bool8_4.
+*** true .          /* all conclusions proved */
+
+
+function_encode_bool8_5.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 20 to run-time check associated with 
+          statement of line 21:
+
+function_encode_bool8_6.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 20 to run-time check associated with 
+          statement of line 22:
+
+function_encode_bool8_7.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    loop__1__idx >= 1 .
+H4:    loop__1__idx <= 8 .
+H5:    element(data, [loop__1__idx]) .
+H6:    word <= 65535 .
+H7:    value <= 65535 .
+H8:    integer__size >= 0 .
+H9:    bus__word__size >= 0 .
+H10:   bus_decode__bit8__size >= 0 .
+       ->
+C1:    word + value <= 65535 .
+
+
+For path(s) from assertion of line 20 to run-time check associated with 
+          statement of line 25:
+
+function_encode_bool8_8.
+*** true .          /* all conclusions proved */
+
+
+function_encode_bool8_9.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 20 to finish:
+
+function_encode_bool8_10.
+*** true .          /* all conclusions proved */
+
+
+function_encode_bool8_11.
+*** true .          /* all conclusions proved */
+
+
+function_encode_bool8_12.
+*** true .          /* all conclusions proved */
+
+
+function_encode_bool8_13.
+*** true .          /* all conclusions proved */
+
+

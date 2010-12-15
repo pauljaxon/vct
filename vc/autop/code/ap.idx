@@ -1,0 +1,34 @@
+degrees     specification is in degrees.ads
+instruments specification is in instruments.ads
+surfaces    specification is in surfaces.ads
+scale       specification is in scale.ads
+scale       body is in scale.adb
+
+ap          specification is in ap.ads
+ap          body          is in ap.adb
+ap components are ap.controls, ap.altitude, ap.heading
+
+  ap.altitude specification is in ap-altitude.ads
+  ap.altitude body is in ap-altitude.adb
+  ap.altitude components are ap.altitude.pitch
+    ap.altitude.pitch specification is in ap-altitude-pitch.ads
+    ap.altitude.pitch body is in ap-altitude-pitch.adb
+    ap.altitude.pitch components are ap.altitude.pitch.rate
+      ap.altitude.pitch.rate specification is in ap-altitude-pitch-rate.ads
+      ap.altitude.pitch.rate body is in ap-altitude-pitch-rate.ads
+
+  ap.controls specification is in ap-controls.ads
+  -- No body used for controls -- just reads streams
+
+  ap.heading  specification is in ap-heading.ads
+  ap.heading  body is in ap-heading.adb
+  ap.heading  components are ap.heading.roll, ap.heading.yaw
+    ap.heading.roll specification is in ap-heading-roll.ads
+    ap.heading.roll body is in ap-heading-roll.adb
+    ap.heading.roll components are ap.heading.roll.rate
+      ap.heading.roll.rate specification is in ap-heading-roll-rate.ads
+    ap.heading.yaw specification is in ap-heading-yaw.ads
+    ap.heading.yaw body is in ap-heading-yaw.adb
+    ap.heading.yaw components are ap.heading.yaw.rate
+      ap.heading.yaw.rate specification is in ap-heading-yaw-rate.ads
+

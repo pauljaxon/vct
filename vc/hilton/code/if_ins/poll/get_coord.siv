@@ -1,0 +1,74 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:50
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure if_ins.Poll.Get_Coord
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 104:
+
+procedure_get_coord_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 104:
+
+procedure_get_coord_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 109:
+
+procedure_get_coord_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 109:
+
+procedure_get_coord_4.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 113:
+
+procedure_get_coord_5.
+H1:    i1 >= 1 .
+H2:    i1 <= 31 .
+H3:    i2 >= 1 .
+H4:    i2 <= 31 .
+H5:    w1__1 >= 0 .
+H6:    w1__1 <= 65535 .
+H7:    w2__2 >= 0 .
+H8:    w2__2 <= 65535 .
+H9:    integer__size >= 0 .
+H10:   measuretypes__meter__size >= 0 .
+H11:   bus__word_index__size >= 0 .
+H12:   bus__word_index__base__first <= bus__word_index__base__last .
+H13:   bus__word__size >= 0 .
+H14:   bus__all_msg_index__size >= 0 .
+H15:   bus__lru_subaddress_index__size >= 0 .
+H16:   bc1553__lru_name__size >= 0 .
+H17:   bus__word_index__base__first <= 1 .
+H18:   bus__word_index__base__last >= 31 .
+       ->
+C1:    w2__2 + w1__1 * 65536 <= 200000 .
+C2:    w1__1 * 65536 <= 200000 .
+C3:    w1__1 * 65536 <= 2147483647 .
+
+
+For path(s) from start to finish:
+
+procedure_get_coord_6.
+*** true .          /* all conclusions proved */
+
+

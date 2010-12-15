@@ -1,0 +1,174 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.03
+
+Line
+   1  -- MCU interface to the ASI, implementation
+   2  --
+   3  -- $Log: if_airspeed.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/10 20:06:56  adi
+   9  -- Added Ibit state detection
+  10  --
+  11  -- Revision 1.1  2003/08/10 16:49:35  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with Bc1553, bus;
+  16  package body If_Airspeed
+  17    --# own State is Last_Speed, Last_Valid, Ibit_Request;
+  18  is
+  19     Last_Speed : MeasureTypes.Meter_Per_Sec := 0;
+  20     Last_Valid  : Boolean := False;
+  21     Ibit_Request : IBIT.Phase := IBIT.Off;
+  22  
+  23     -- Find the current IBIT phase
+  24     function Get_Ibit_State return Ibit.Phase
+  25       --# global ibit_request;
+  26     is begin
+  27        return Ibit_Request;
+  28     end Get_Ibit_State;
+
++++        Flow analysis of subprogram Get_IBIT_State 
+           performed: no errors found.
+
+  29  
+  30     -- Find out the current speed and its validity
+  31     procedure Get_Speed(Speed : out MeasureTypes.Meter_Per_Sec;
+  32                          Valid  : out Boolean)
+  33     --# global in Last_Speed, Last_Valid;
+  34     --# derives Speed from Last_Speed, Last_Valid &
+  35     --#        Valid from Last_Valid;
+  36     is
+  37     begin
+  38        Valid := Last_Valid;
+  39        if Last_Valid then
+  40           Speed := Last_Speed;
+  41        else
+  42           Speed := 0;
+  43        end if;
+  44     end Get_Speed;
+
++++        Flow analysis of subprogram Get_Speed performed: 
+           no errors found.
+
+  45  
+  46     -- Kick off a airspeed IBIT
+  47     procedure Ibit_Start
+  48       --# global in out Bus.Outputs;
+  49       --#        out    Ibit_Request;
+  50     --# derives Bus.Outputs from * &
+  51     --#         Ibit_Request from ;
+  52     is
+  53        Code : SystemTypes.Byte;
+  54     begin
+  55        Ibit_Request := IBIT.Request_Start;
+  56        Code := IBIT.Phase_Lookup(Ibit_Request);
+  57        -- Send it out on 1R at word 1
+  58        BC1553.Write_Word(Data => Code,
+  59                          Idx =>  1,
+  60                          Subaddress_Idx => 1,
+  61                          Dest => BC1553.Asi);
+  62     end Ibit_Start;
+
++++        Flow analysis of subprogram Ibit_Start 
+           performed: no errors found.
+
+  63  
+  64     -- Stop a airspeed IBIT
+  65     procedure Ibit_Stop
+  66     --# global in out Bus.Outputs;
+  67     --#    out Ibit_Request;
+  68     --# derives Bus.Outputs from * &
+  69     --#         Ibit_Request from ;
+  70     is
+  71        Code : SystemTypes.Byte;
+  72     begin
+  73        Ibit_Request := IBIT.Request_Stop;
+  74        Code := IBIT.Phase_Lookup(Ibit_Request);
+  75        -- Send it out on 1R at word 1
+  76        BC1553.Write_Word(Data => Code,
+  77                          Idx =>  1,
+  78                          Subaddress_Idx => 1,
+  79                          Dest => BC1553.Asi);
+  80     end Ibit_Stop;
+
++++        Flow analysis of subprogram Ibit_Stop performed: 
+           no errors found.
+
+  81  
+  82     -- Poll the bus and update states
+  83     procedure Poll
+  84     --# global in out Last_Speed, Last_Valid, Ibit_Request;
+  85     --#        in Bus.Inputs;
+  86     --# derives Last_Speed, Last_Valid,
+  87     --#         Ibit_Request from *, Bus.Inputs;
+  88     is
+  89        Word : Bus.Word;
+  90     begin
+  91        -- Check 1T
+  92        if BC1553.Is_Valid(Src => Bc1553.Asi,
+  93                           Subaddress_Idx => 1) and then
+  94          BC1553.Is_Fresh(Src => Bc1553.Asi,
+  95                          Subaddress_Idx => 1) then
+  96           -- 1T word 1 - speed
+  97           BC1553.Read_Word(Src => BC1553.Asi,
+  98                            Idx => 1,
+  99                            Subaddress_Idx => 1,
+ 100                            Data => Word);
+ 101           Last_Speed := MeasureTypes.Meter_Per_Sec(Word);
+ 102           -- 1T word 2 - unused
+ 103           Last_Valid := True;
+ 104           -- 1T word 3 - BIT
+ 105           BC1553.Read_Word(Src => BC1553.Asi,
+ 106                            Idx => 3,
+ 107                            Subaddress_Idx => 1,
+ 108                            Data => Word);
+ 109           -- Use the standard state machine to transform
+ 110           -- our IBIT phase
+ 111           IBIT.State_Machine(Bus_Data => Word,
+ 112                              Current_Phase => IBIT_Request);
+ 113        else
+ 114           -- Nothing to do
+ 115           null;
+ 116        end if;
+ 117     end Poll;
+
++++        Flow analysis of subprogram Poll performed: no 
+           errors found.
+
+ 118  
+ 119     -- Initialise
+ 120     procedure Init
+ 121     --# global out Last_Speed, Last_Valid, Ibit_Request;
+ 122     --#        in out Bus.Outputs;
+ 123     --# derives Last_Speed, Last_Valid, Ibit_Request from &
+ 124     --#         Bus.Outputs from *;
+ 125     is begin
+ 126        Last_Speed := 0;
+ 127        Last_Valid := False;
+ 128        Ibit_Request := IBIT.Off;
+ 129        BC1553.Set_Message_Valid(Dest => BC1553.Asi,
+ 130                                 Subaddress_Idx => 1);
+ 131     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 132  
+ 133     -- Test point
+ 134     procedure Command is separate;
+ 135  end If_Airspeed;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

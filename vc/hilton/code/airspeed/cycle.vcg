@@ -1,0 +1,278 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.85
+
+                          procedure airspeed.Cycle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 82:
+
+procedure_cycle_1.
+H1:    true .
+H2:    last_speed >= meter_per_sec__first .
+H3:    last_speed <= meter_per_sec__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_accel >= cm_per_sec_2__first .
+H7:    last_accel <= cm_per_sec_2__last .
+H8:    speed__1 >= meter_per_sec__first .
+H9:    speed__1 <= meter_per_sec__last .
+        ->
+C1:    speed__1 >= meter_per_sec__first .
+C2:    speed__1 <= meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 84:
+
+procedure_cycle_2.
+H1:    true .
+H2:    last_speed >= meter_per_sec__first .
+H3:    last_speed <= meter_per_sec__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_accel >= cm_per_sec_2__first .
+H7:    last_accel <= cm_per_sec_2__last .
+H8:    speed__1 >= meter_per_sec__first .
+H9:    speed__1 <= meter_per_sec__last .
+H10:   speed__1 >= meter_per_sec__first .
+H11:   speed__1 <= meter_per_sec__last .
+H12:   speed__1 >= meter_per_sec__first .
+H13:   speed__1 <= meter_per_sec__last .
+        ->
+C1:    rt1553__asi >= rt1553__lru_name__first .
+C2:    rt1553__asi <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    1 >= bus__word_index__first .
+C6:    1 <= bus__word_index__last .
+C7:    speed__1 >= bus__word__first .
+C8:    speed__1 <= bus__word__last .
+C9:    speed__1 >= bus__word__first .
+C10:   speed__1 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 90:
+
+procedure_cycle_3.
+H1:    true .
+H2:    last_speed >= meter_per_sec__first .
+H3:    last_speed <= meter_per_sec__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_accel >= cm_per_sec_2__first .
+H7:    last_accel <= cm_per_sec_2__last .
+H8:    speed__1 >= meter_per_sec__first .
+H9:    speed__1 <= meter_per_sec__last .
+H10:   speed__1 >= meter_per_sec__first .
+H11:   speed__1 <= meter_per_sec__last .
+H12:   speed__1 >= meter_per_sec__first .
+H13:   speed__1 <= meter_per_sec__last .
+H14:   rt1553__asi >= rt1553__lru_name__first .
+H15:   rt1553__asi <= rt1553__lru_name__last .
+H16:   1 >= bus__lru_subaddress_index__first .
+H17:   1 <= bus__lru_subaddress_index__last .
+H18:   1 >= bus__word_index__first .
+H19:   1 <= bus__word_index__last .
+H20:   speed__1 >= bus__word__first .
+H21:   speed__1 <= bus__word__last .
+H22:   speed__1 >= bus__word__first .
+H23:   speed__1 <= bus__word__last .
+H24:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H25:   bit_machine__phase(bit_state) <= ibit__phase__last .
+        ->
+C1:    rt1553__asi >= rt1553__lru_name__first .
+C2:    rt1553__asi <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    3 >= bus__word_index__first .
+C6:    3 <= bus__word_index__last .
+C7:    element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+C8:    element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+C9:    bit_machine__phase(bit_state) >= ibit__phase__first .
+C10:   bit_machine__phase(bit_state) <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 95:
+
+procedure_cycle_4.
+H1:    true .
+H2:    last_speed >= meter_per_sec__first .
+H3:    last_speed <= meter_per_sec__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_accel >= cm_per_sec_2__first .
+H7:    last_accel <= cm_per_sec_2__last .
+H8:    speed__1 >= meter_per_sec__first .
+H9:    speed__1 <= meter_per_sec__last .
+H10:   speed__1 >= meter_per_sec__first .
+H11:   speed__1 <= meter_per_sec__last .
+H12:   speed__1 >= meter_per_sec__first .
+H13:   speed__1 <= meter_per_sec__last .
+H14:   rt1553__asi >= rt1553__lru_name__first .
+H15:   rt1553__asi <= rt1553__lru_name__last .
+H16:   1 >= bus__lru_subaddress_index__first .
+H17:   1 <= bus__lru_subaddress_index__last .
+H18:   1 >= bus__word_index__first .
+H19:   1 <= bus__word_index__last .
+H20:   speed__1 >= bus__word__first .
+H21:   speed__1 <= bus__word__last .
+H22:   speed__1 >= bus__word__first .
+H23:   speed__1 <= bus__word__last .
+H24:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H25:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H26:   rt1553__asi >= rt1553__lru_name__first .
+H27:   rt1553__asi <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   3 >= bus__word_index__first .
+H31:   3 <= bus__word_index__last .
+H32:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H33:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H34:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H35:   bit_machine__phase(bit_state) <= ibit__phase__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    rt1553__asi >= rt1553__lru_name__first .
+C6:    rt1553__asi <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 95:
+
+procedure_cycle_5.
+H1:    true .
+H2:    last_speed >= meter_per_sec__first .
+H3:    last_speed <= meter_per_sec__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_accel >= cm_per_sec_2__first .
+H7:    last_accel <= cm_per_sec_2__last .
+H8:    speed__1 >= meter_per_sec__first .
+H9:    speed__1 <= meter_per_sec__last .
+H10:   speed__1 >= meter_per_sec__first .
+H11:   speed__1 <= meter_per_sec__last .
+H12:   speed__1 >= meter_per_sec__first .
+H13:   speed__1 <= meter_per_sec__last .
+H14:   rt1553__asi >= rt1553__lru_name__first .
+H15:   rt1553__asi <= rt1553__lru_name__last .
+H16:   1 >= bus__lru_subaddress_index__first .
+H17:   1 <= bus__lru_subaddress_index__last .
+H18:   1 >= bus__word_index__first .
+H19:   1 <= bus__word_index__last .
+H20:   speed__1 >= bus__word__first .
+H21:   speed__1 <= bus__word__last .
+H22:   speed__1 >= bus__word__first .
+H23:   speed__1 <= bus__word__last .
+H24:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H25:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H26:   rt1553__asi >= rt1553__lru_name__first .
+H27:   rt1553__asi <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   3 >= bus__word_index__first .
+H31:   3 <= bus__word_index__last .
+H32:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H33:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H34:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H35:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H36:   1 >= bus__lru_subaddress_index__first .
+H37:   1 <= bus__lru_subaddress_index__last .
+H38:   1 >= bus__word_index__first .
+H39:   1 <= bus__word_index__last .
+H40:   rt1553__asi >= rt1553__lru_name__first .
+H41:   rt1553__asi <= rt1553__lru_name__last .
+H42:   datum__4 >= bus__word__first .
+H43:   datum__4 <= bus__word__last .
+        ->
+C1:    datum__4 >= bus__word__first .
+C2:    datum__4 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 99:
+
+procedure_cycle_6.
+H1:    true .
+H2:    last_speed >= meter_per_sec__first .
+H3:    last_speed <= meter_per_sec__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_accel >= cm_per_sec_2__first .
+H7:    last_accel <= cm_per_sec_2__last .
+H8:    speed__1 >= meter_per_sec__first .
+H9:    speed__1 <= meter_per_sec__last .
+H10:   speed__1 >= meter_per_sec__first .
+H11:   speed__1 <= meter_per_sec__last .
+H12:   speed__1 >= meter_per_sec__first .
+H13:   speed__1 <= meter_per_sec__last .
+H14:   rt1553__asi >= rt1553__lru_name__first .
+H15:   rt1553__asi <= rt1553__lru_name__last .
+H16:   1 >= bus__lru_subaddress_index__first .
+H17:   1 <= bus__lru_subaddress_index__last .
+H18:   1 >= bus__word_index__first .
+H19:   1 <= bus__word_index__last .
+H20:   speed__1 >= bus__word__first .
+H21:   speed__1 <= bus__word__last .
+H22:   speed__1 >= bus__word__first .
+H23:   speed__1 <= bus__word__last .
+H24:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H25:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H26:   rt1553__asi >= rt1553__lru_name__first .
+H27:   rt1553__asi <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   3 >= bus__word_index__first .
+H31:   3 <= bus__word_index__last .
+H32:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H33:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H34:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H35:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H36:   1 >= bus__lru_subaddress_index__first .
+H37:   1 <= bus__lru_subaddress_index__last .
+H38:   1 >= bus__word_index__first .
+H39:   1 <= bus__word_index__last .
+H40:   rt1553__asi >= rt1553__lru_name__first .
+H41:   rt1553__asi <= rt1553__lru_name__last .
+H42:   datum__4 >= bus__word__first .
+H43:   datum__4 <= bus__word__last .
+H44:   datum__4 >= bus__word__first .
+H45:   datum__4 <= bus__word__last .
+H46:   datum__4 >= bus__word__first .
+H47:   datum__4 <= bus__word__last .
+        ->
+C1:    datum__4 >= bus__word__first .
+C2:    datum__4 <= bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_cycle_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_cycle_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+

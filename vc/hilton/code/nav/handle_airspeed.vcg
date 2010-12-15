@@ -1,0 +1,177 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.03
+
+                       procedure nav.Handle_Airspeed
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 74:
+
+procedure_handle_airspeed_1.
+H1:    true .
+H2:    true .
+H3:    airspeed_ss >= sensor_status__first .
+H4:    airspeed_ss <= sensor_status__last .
+H5:    restart .
+H6:    speed_now__1 >= measuretypes__meter_per_sec__first .
+H7:    speed_now__1 <= measuretypes__meter_per_sec__last .
+H8:    true .
+        ->
+C1:    speed_now__1 >= meter_per_sec__first .
+C2:    speed_now__1 <= meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 77:
+
+procedure_handle_airspeed_2.
+H1:    true .
+H2:    true .
+H3:    airspeed_ss >= sensor_status__first .
+H4:    airspeed_ss <= sensor_status__last .
+H5:    restart .
+H6:    speed_now__1 >= measuretypes__meter_per_sec__first .
+H7:    speed_now__1 <= measuretypes__meter_per_sec__last .
+H8:    true .
+H9:    speed_now__1 >= meter_per_sec__first .
+H10:   speed_now__1 <= meter_per_sec__last .
+H11:   true .
+H12:   sensor_valid__1 .
+        ->
+C1:    valid >= sensor_status__first .
+C2:    valid <= sensor_status__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 78:
+
+procedure_handle_airspeed_3.
+H1:    true .
+H2:    true .
+H3:    airspeed_ss >= sensor_status__first .
+H4:    airspeed_ss <= sensor_status__last .
+H5:    restart .
+H6:    speed_now__1 >= measuretypes__meter_per_sec__first .
+H7:    speed_now__1 <= measuretypes__meter_per_sec__last .
+H8:    true .
+H9:    speed_now__1 >= meter_per_sec__first .
+H10:   speed_now__1 <= meter_per_sec__last .
+H11:   true .
+H12:   sensor_valid__1 .
+H13:   valid >= sensor_status__first .
+H14:   valid <= sensor_status__last .
+H15:   speed_now__1 >= meter_per_sec__first .
+H16:   speed_now__1 <= meter_per_sec__last .
+        ->
+C1:    speed_now__1 >= sensor_history__meter_per_sec__first .
+C2:    speed_now__1 <= sensor_history__meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 82:
+
+procedure_handle_airspeed_4.
+H1:    true .
+H2:    true .
+H3:    airspeed_ss >= sensor_status__first .
+H4:    airspeed_ss <= sensor_status__last .
+H5:    restart .
+H6:    speed_now__1 >= measuretypes__meter_per_sec__first .
+H7:    speed_now__1 <= measuretypes__meter_per_sec__last .
+H8:    true .
+H9:    speed_now__1 >= meter_per_sec__first .
+H10:   speed_now__1 <= meter_per_sec__last .
+H11:   true .
+H12:   not sensor_valid__1 .
+        ->
+C1:    restarted >= sensor_status__first .
+C2:    restarted <= sensor_status__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 85:
+
+procedure_handle_airspeed_5.
+H1:    true .
+H2:    true .
+H3:    airspeed_ss >= sensor_status__first .
+H4:    airspeed_ss <= sensor_status__last .
+H5:    not restart .
+H6:    (airspeed_ss = valid) or (airspeed_ss = restarted) .
+H7:    speed_now__3 >= measuretypes__meter_per_sec__first .
+H8:    speed_now__3 <= measuretypes__meter_per_sec__last .
+H9:    true .
+        ->
+C1:    speed_now__3 >= meter_per_sec__first .
+C2:    speed_now__3 <= meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 88:
+
+procedure_handle_airspeed_6.
+H1:    true .
+H2:    true .
+H3:    airspeed_ss >= sensor_status__first .
+H4:    airspeed_ss <= sensor_status__last .
+H5:    not restart .
+H6:    (airspeed_ss = valid) or (airspeed_ss = restarted) .
+H7:    speed_now__3 >= measuretypes__meter_per_sec__first .
+H8:    speed_now__3 <= measuretypes__meter_per_sec__last .
+H9:    true .
+H10:   speed_now__3 >= meter_per_sec__first .
+H11:   speed_now__3 <= meter_per_sec__last .
+H12:   true .
+H13:   sensor_valid__3 .
+H14:   speed_now__3 >= meter_per_sec__first .
+H15:   speed_now__3 <= meter_per_sec__last .
+        ->
+C1:    speed_now__3 >= sensor_history__meter_per_sec__first .
+C2:    speed_now__3 <= sensor_history__meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 92:
+
+procedure_handle_airspeed_7.
+H1:    true .
+H2:    true .
+H3:    airspeed_ss >= sensor_status__first .
+H4:    airspeed_ss <= sensor_status__last .
+H5:    not restart .
+H6:    (airspeed_ss = valid) or (airspeed_ss = restarted) .
+H7:    speed_now__3 >= measuretypes__meter_per_sec__first .
+H8:    speed_now__3 <= measuretypes__meter_per_sec__last .
+H9:    true .
+H10:   speed_now__3 >= meter_per_sec__first .
+H11:   speed_now__3 <= meter_per_sec__last .
+H12:   true .
+H13:   not sensor_valid__3 .
+        ->
+C1:    failed >= sensor_status__first .
+C2:    failed <= sensor_status__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_handle_airspeed_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_handle_airspeed_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_handle_airspeed_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_handle_airspeed_11.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_handle_airspeed_12.
+*** true .          /* trivially true VC removed by Examiner */
+
+

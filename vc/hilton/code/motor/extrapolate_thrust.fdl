@@ -1,0 +1,53 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:42.87}
+
+                     {procedure motor.Extrapolate_thrust}
+
+
+title procedure extrapolate_thrust;
+
+  function round__(real) : integer;
+  type long_integer = integer;
+  type measuretypes__newton = integer;
+  type clock__millisecond = integer;
+  const motor_cfg__burn_rate : integer = pending;
+  const integer32__base__last : integer = pending; 
+  const integer32__base__first : integer = pending; 
+  const power__base__last : integer = pending; 
+  const power__base__first : integer = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const measuretypes__newton__base__last : integer = pending; 
+  const measuretypes__newton__base__first : integer = pending; 
+  const long_integer__base__last : integer = pending; 
+  const long_integer__base__first : integer = pending; 
+  const integer32__size : integer = pending; 
+  const integer32__last : integer = pending; 
+  const integer32__first : integer = pending; 
+  const power__size : integer = pending; 
+  const power__last : integer = pending; 
+  const power__first : integer = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  const measuretypes__newton__size : integer = pending; 
+  const measuretypes__newton__last : integer = pending; 
+  const measuretypes__newton__first : integer = pending; 
+  const long_integer__size : integer = pending; 
+  const long_integer__last : integer = pending; 
+  const long_integer__first : integer = pending; 
+  var current_thrust : integer;
+  var commanded_thrust : integer;
+  var command_time : integer;
+  var now : integer;
+  var time_valid : boolean;
+  var time_valid__1 : boolean;
+  var now__1 : integer;
+
+end;

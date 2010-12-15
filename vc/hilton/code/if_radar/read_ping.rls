@@ -1,0 +1,52 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:41.68*/
+
+                        /*procedure if_radar.Read_Ping*/
+
+
+rule_family read_ping_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+read_ping_rules(1): measuretypes__meter__size >= 0 may_be_deduced.
+read_ping_rules(2): measuretypes__meter__first may_be_replaced_by -200000.
+read_ping_rules(3): measuretypes__meter__last may_be_replaced_by 200000.
+read_ping_rules(4): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+read_ping_rules(5): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+read_ping_rules(6): measuretypes__meter_per_sec__size >= 0 may_be_deduced.
+read_ping_rules(7): measuretypes__meter_per_sec__first may_be_replaced_by -5000.
+read_ping_rules(8): measuretypes__meter_per_sec__last may_be_replaced_by 5000.
+read_ping_rules(9): measuretypes__meter_per_sec__base__first may_be_replaced_by -2147483648.
+read_ping_rules(10): measuretypes__meter_per_sec__base__last may_be_replaced_by 2147483647.
+read_ping_rules(11): radar_cfg__sector_range__size >= 0 may_be_deduced.
+read_ping_rules(12): radar_cfg__sector_range__first may_be_replaced_by -20.
+read_ping_rules(13): radar_cfg__sector_range__last may_be_replaced_by 20.
+read_ping_rules(14): radar_cfg__sector_range__base__first <= 
+     radar_cfg__sector_range__base__last may_be_deduced.
+read_ping_rules(15): radar_cfg__sector_range__base__first <= 
+     radar_cfg__sector_range__first may_be_deduced.
+read_ping_rules(16): radar_cfg__sector_range__base__last >= 
+     radar_cfg__sector_range__last may_be_deduced.
+read_ping_rules(17): sector__size >= 0 may_be_deduced.
+read_ping_rules(18): sector__first may_be_replaced_by -20.
+read_ping_rules(19): sector__last may_be_replaced_by 20.
+read_ping_rules(20): sector__base__first <= sector__base__last may_be_deduced.
+read_ping_rules(21): sector__base__first <= sector__first may_be_deduced.
+read_ping_rules(22): sector__base__last >= sector__last may_be_deduced.
+read_ping_rules(23): ping_request__size >= 0 may_be_deduced.
+read_ping_rules(24): A = B may_be_deduced_from
+     [goal(checktype(A,ping_request)),
+      goal(checktype(B,ping_request)),
+      fld_sx(A) = fld_sx(B),
+      fld_sy(A) = fld_sy(B),
+      fld_fresh_request(A) = fld_fresh_request(B),
+      fld_fresh_answer(A) = fld_fresh_answer(B),
+      fld_distance(A) = fld_distance(B),
+      fld_velocity(A) = fld_velocity(B)].

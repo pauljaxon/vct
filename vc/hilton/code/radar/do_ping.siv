@@ -1,0 +1,215 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:41  SIMPLIFIED 25-NOV-2009, 14:18:54
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure Radar.Do_Ping
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 85:
+
+procedure_do_ping_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 89:
+
+procedure_do_ping_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 95:
+
+procedure_do_ping_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 97:
+
+procedure_do_ping_4.
+H1:    sx >= - 20 .
+H2:    sx <= 20 .
+H3:    sy >= - 20 .
+H4:    sy <= 20 .
+H5:    for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(i___1 
+          : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= fld_rel_vel(
+          element(element(detect_points, [i___1]), [i___2])) and fld_rel_vel(
+          element(element(detect_points, [i___1]), [i___2])) <= 5000)) .
+H6:    for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(i___1 
+          : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= fld_distance(
+          element(element(detect_points, [i___1]), [i___2])) and fld_distance(
+          element(element(detect_points, [i___1]), [i___2])) <= 200000)) .
+H7:    v__1 >= 0 .
+H8:    v__1 <= 63001 .
+H9:    element(state_types__radar_values, [state_types__ping]) >= 0 .
+H10:   element(state_types__radar_values, [state_types__ping]) <= 65535 .
+H11:   fld_distance(element(element(detect_points, [sx]), [sy])) >= - 200000 .
+H12:   fld_distance(element(element(detect_points, [sx]), [sy])) <= 200000 .
+H13:   integer__size >= 0 .
+H14:   state_types__word__size >= 0 .
+H15:   state_types__radar__size >= 0 .
+H16:   measuretypes__meter__size >= 0 .
+H17:   measuretypes__meter_per_sec__size >= 0 .
+H18:   random__value__size >= 0 .
+H19:   random__value__base__first <= random__value__base__last .
+H20:   bus__word_index__size >= 0 .
+H21:   bus__word_index__base__first <= bus__word_index__base__last .
+H22:   bus__word__size >= 0 .
+H23:   bus__all_msg_index__size >= 0 .
+H24:   bus__lru_subaddress_index__size >= 0 .
+H25:   rt1553__lru_name__size >= 0 .
+H26:   radar_cfg__sector_range__size >= 0 .
+H27:   radar_cfg__sector_range__base__first <= 
+          radar_cfg__sector_range__base__last .
+H28:   meter__size >= 0 .
+H29:   meter_per_sec__size >= 0 .
+H30:   sector__size >= 0 .
+H31:   sector__base__first <= sector__base__last .
+H32:   ping__size >= 0 .
+H33:   random__value__base__first <= 0 .
+H34:   random__value__base__last >= 63001 .
+H35:   bus__word_index__base__first <= 1 .
+H36:   bus__word_index__base__last >= 31 .
+H37:   radar_cfg__sector_range__base__first <= - 20 .
+H38:   radar_cfg__sector_range__base__last >= 20 .
+H39:   sector__base__first <= - 20 .
+H40:   sector__base__last >= 20 .
+       ->
+C1:    fld_distance(element(element(detect_points, [sx]), [sy])) + v__1 mod 200 
+          <= 200000 .
+
+
+For path(s) from start to run-time check associated with statement of line 98:
+
+procedure_do_ping_5.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 98:
+
+procedure_do_ping_6.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 101:
+
+procedure_do_ping_7.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 106:
+
+procedure_do_ping_8.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 108:
+
+procedure_do_ping_9.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 110:
+
+procedure_do_ping_10.
+H1:    sx >= - 20 .
+H2:    sx <= 20 .
+H3:    sy >= - 20 .
+H4:    sy <= 20 .
+H5:    for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(i___1 
+          : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= fld_rel_vel(
+          element(element(detect_points, [i___1]), [i___2])) and fld_rel_vel(
+          element(element(detect_points, [i___1]), [i___2])) <= 5000)) .
+H6:    for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(i___1 
+          : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= fld_distance(
+          element(element(detect_points, [i___1]), [i___2])) and fld_distance(
+          element(element(detect_points, [i___1]), [i___2])) <= 200000)) .
+H7:    v__1 >= 0 .
+H8:    v__1 <= 63001 .
+H9:    element(state_types__radar_values, [state_types__ping]) >= 0 .
+H10:   element(state_types__radar_values, [state_types__ping]) <= 65535 .
+H11:   fld_distance(element(element(detect_points, [sx]), [sy])) >= - 200000 .
+H12:   fld_distance(element(element(detect_points, [sx]), [sy])) <= 200000 .
+H13:   fld_distance(element(element(detect_points, [sx]), [sy])) + v__1 mod 200 
+          >= - 200000 .
+H14:   fld_distance(element(element(detect_points, [sx]), [sy])) + v__1 mod 200 
+          <= 200000 .
+H15:   v__1 mod 200 >= - 200000 .
+H16:   v__1 mod 200 <= 200000 .
+H17:   v__1 mod 200 >= random__value__base__first .
+H18:   v__1 mod 200 <= random__value__base__last .
+H19:   measuretypes__encode__meter_single(fld_distance(element(element(
+          detect_points, [sx]), [sy])) + v__1 mod 200, 50000) >= 0 .
+H20:   measuretypes__encode__meter_single(fld_distance(element(element(
+          detect_points, [sx]), [sy])) + v__1 mod 200, 50000) <= 65535 .
+H21:   v__4 >= 0 .
+H22:   v__4 <= 63001 .
+H23:   fld_rel_vel(element(element(detect_points, [sx]), [sy])) >= - 5000 .
+H24:   fld_rel_vel(element(element(detect_points, [sx]), [sy])) <= 5000 .
+H25:   integer__size >= 0 .
+H26:   state_types__word__size >= 0 .
+H27:   state_types__radar__size >= 0 .
+H28:   measuretypes__meter__size >= 0 .
+H29:   measuretypes__meter_per_sec__size >= 0 .
+H30:   random__value__size >= 0 .
+H31:   random__value__base__first <= random__value__base__last .
+H32:   bus__word_index__size >= 0 .
+H33:   bus__word_index__base__first <= bus__word_index__base__last .
+H34:   bus__word__size >= 0 .
+H35:   bus__all_msg_index__size >= 0 .
+H36:   bus__lru_subaddress_index__size >= 0 .
+H37:   rt1553__lru_name__size >= 0 .
+H38:   radar_cfg__sector_range__size >= 0 .
+H39:   radar_cfg__sector_range__base__first <= 
+          radar_cfg__sector_range__base__last .
+H40:   meter__size >= 0 .
+H41:   meter_per_sec__size >= 0 .
+H42:   sector__size >= 0 .
+H43:   sector__base__first <= sector__base__last .
+H44:   ping__size >= 0 .
+H45:   random__value__base__first <= 0 .
+H46:   random__value__base__last >= 63001 .
+H47:   bus__word_index__base__first <= 1 .
+H48:   bus__word_index__base__last >= 31 .
+H49:   radar_cfg__sector_range__base__first <= - 20 .
+H50:   radar_cfg__sector_range__base__last >= 20 .
+H51:   sector__base__first <= - 20 .
+H52:   sector__base__last >= 20 .
+       ->
+C1:    fld_rel_vel(element(element(detect_points, [sx]), [sy])) + v__4 mod 20 
+          <= 5000 .
+
+
+For path(s) from start to run-time check associated with statement of line 111:
+
+procedure_do_ping_11.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 111:
+
+procedure_do_ping_12.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 113:
+
+procedure_do_ping_13.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to finish:
+
+procedure_do_ping_14.
+*** true .          /* all conclusions proved */
+
+

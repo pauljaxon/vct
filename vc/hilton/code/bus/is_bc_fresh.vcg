@@ -1,0 +1,206 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.09
+
+                          function bus.Is_BC_Fresh
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 411:
+
+function_is_bc_fresh_1.
+H1:    true .
+H2:    src >= lru_index__first .
+H3:    src <= lru_index__last .
+H4:    subaddress_idx >= lru_subaddress_index__first .
+H5:    subaddress_idx <= lru_subaddress_index__last .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H7:    true .
+H8:    true .
+        ->
+C1:    src >= lru_index__first .
+C2:    src <= lru_index__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 421:
+
+function_is_bc_fresh_2.
+H1:    true .
+H2:    src >= lru_index__first .
+H3:    src <= lru_index__last .
+H4:    subaddress_idx >= lru_subaddress_index__first .
+H5:    subaddress_idx <= lru_subaddress_index__last .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H7:    true .
+H8:    true .
+H9:    src >= lru_index__first .
+H10:   src <= lru_index__last .
+H11:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H12:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H13:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H14:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H15:   not ((fld_initial(element(rt_to_bc, [src])) < 
+           valid_msg_index__first) or (fld_initial(element(
+           rt_to_bc, [src])) > valid_msg_index__last)) .
+H16:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H17:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H18:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H19:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H20:   not (subaddress_idx > fld_msg_count(element(rt_to_bc, [
+           src]))) .
+H21:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H22:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H23:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H24:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H25:   not (fld_initial(element(rt_to_bc, [src])) > 
+           lru_start_index__last) .
+H26:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H27:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H28:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H29:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+        ->
+C1:    fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) >= valid_msg_index__first .
+C2:    fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) <= valid_msg_index__last .
+C3:    subaddress_idx - 1 >= all_msg_index__base__first .
+C4:    subaddress_idx - 1 <= all_msg_index__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 422:
+
+function_is_bc_fresh_3.
+H1:    true .
+H2:    src >= lru_index__first .
+H3:    src <= lru_index__last .
+H4:    subaddress_idx >= lru_subaddress_index__first .
+H5:    subaddress_idx <= lru_subaddress_index__last .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H7:    true .
+H8:    true .
+H9:    src >= lru_index__first .
+H10:   src <= lru_index__last .
+H11:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H12:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H13:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H14:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H15:   not ((fld_initial(element(rt_to_bc, [src])) < 
+           valid_msg_index__first) or (fld_initial(element(
+           rt_to_bc, [src])) > valid_msg_index__last)) .
+H16:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H17:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H18:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H19:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H20:   not (subaddress_idx > fld_msg_count(element(rt_to_bc, [
+           src]))) .
+H21:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H22:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H23:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H24:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H25:   not (fld_initial(element(rt_to_bc, [src])) > 
+           lru_start_index__last) .
+H26:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H27:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H28:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H29:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H30:   fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) >= valid_msg_index__first .
+H31:   fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) <= valid_msg_index__last .
+H32:   subaddress_idx - 1 >= all_msg_index__base__first .
+H33:   subaddress_idx - 1 <= all_msg_index__base__last .
+H34:   fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) >= valid_msg_index__first .
+H35:   fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) <= valid_msg_index__last .
+        ->
+C1:    fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) >= valid_msg_index__first .
+C2:    fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) <= valid_msg_index__last .
+ 
+
+For path(s) from start to finish:
+
+function_is_bc_fresh_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+function_is_bc_fresh_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+function_is_bc_fresh_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+function_is_bc_fresh_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+function_is_bc_fresh_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+function_is_bc_fresh_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+

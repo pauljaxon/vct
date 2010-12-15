@@ -1,0 +1,1001 @@
+SPARKSimp Pro Edition, Version 8.1.4, Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+Simplifier binary located at: /home/pbj/praxis/rel8.1.4-64bit/bin/spadesimp
+
+Files to be simplified are:
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/state_types/fuze_action.vcg, 10816 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/state_types/radar_action.vcg, 6097 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/state_types/ir_action.vcg, 6382 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/canon.vcg, 5797 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/mul.vcg, 2601 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/sum.vcg, 31266 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/negate.vcg, 1235 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/diff.vcg, 4810 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/create_angle.vcg, 21835 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/millirad_to_word.vcg, 14928 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/int_to_millirad.vcg, 15661 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/degree_to_millirad.vcg, 7769 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/round_degree.vcg, 25622 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/encode/kelvin.vcg, 1022 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/encode/newton.vcg, 8931 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/encode/meter.vcg, 1934 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/encode/meter_single.vcg, 16274 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/encode/meter_per_sec.vcg, 4037 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/encode/bit4_array.vcg, 32599 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/decode/kelvin.vcg, 1044 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/decode/newton.vcg, 11123 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/decode/meter.vcg, 1221 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/decode/meter_single.vcg, 1053 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/decode/meter_per_sec.vcg, 2690 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/decode/bit4_array.vcg, 18216 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/random/poly1.vcg, 2410 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/random/poly2.vcg, 2704 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/random/seed.vcg, 1074 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/random/get.vcg, 38142 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock/read.vcg, 2384 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock/time_valid.vcg, 791 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock/reset.vcg, 969 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock/cycle.vcg, 2477 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock_utils/delta_time.vcg, 3758 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock_utils/add_delay.vcg, 4864 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock_utils/subtract_delay.vcg, 3873 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/extrapolate_position/extrapolate_linear.vcg, 2055 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/extrapolate_position.vcg, 31053 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/extrapolate_velocity.vcg, 11410 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/create.vcg, 4785 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/set_position.vcg, 9247 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/get_position.vcg, 3868 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/set_velocity.vcg, 9355 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/get_velocity.vcg, 3868 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/set_accel.vcg, 12767 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/get_accel.vcg, 579 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/find_slot.vcg, 5197 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/add_object.vcg, 4896 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/set_object_position.vcg, 5590 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/get_object_position.vcg, 3402 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/set_object_velocity.vcg, 5752 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/get_object_velocity.vcg, 3402 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/set_object_accel.vcg, 5709 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/delete_object.vcg, 1777 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/drag/relative_drag_at_altitude.vcg, 9095 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/drag/calc_drag.vcg, 58370 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/set_rt_message_valid.vcg, 8120 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/write_rt_word.vcg, 12184 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/write_rt_message.vcg, 12560 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/set_bc_message_valid.vcg, 8057 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/write_bc_word.vcg, 12103 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/write_bc_message.vcg, 12479 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/is_rt_fresh.vcg, 8241 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/is_rt_valid.vcg, 8241 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/read_rt_word.vcg, 14644 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/is_bc_fresh.vcg, 8175 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/read_rt_message.vcg, 8288 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/acknowledge_rt_message.vcg, 7317 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/is_bc_valid.vcg, 8175 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/read_bc_word.vcg, 14523 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/read_bc_message.vcg, 8222 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/acknowledge_bc_message.vcg, 7282 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/cycle.vcg, 52540 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/lru_number.vcg, 1034 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/set_message_valid.vcg, 1216 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/write_word.vcg, 1486 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/write_message.vcg, 1515 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/is_fresh.vcg, 1185 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/is_valid.vcg, 1185 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/read_word.vcg, 2260 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/read_message.vcg, 1198 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/acknowledge_message.vcg, 1960 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/lru_number.vcg, 1034 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/set_message_valid.vcg, 1210 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/write_word.vcg, 1480 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/write_message.vcg, 1509 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/read_word.vcg, 2258 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/read_message.vcg, 1198 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/acknowledge_message.vcg, 1216 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/is_fresh.vcg, 1186 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/is_valid.vcg, 1186 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus_decode/decode_bool8.vcg, 5926 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus_decode/decode_byte2.vcg, 1745 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus_encode/encode_bool8.vcg, 11559 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus_encode/encode_byte2.vcg, 1512 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer_cfg_/encode/fin_angle.vcg, 1567 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer_cfg_/encode/fin.vcg, 2999 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer_cfg_/decode/fin_angle.vcg, 2996 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer_cfg_/decode/fin.vcg, 4572 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ibit/state_machine.vcg, 5335 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ibit/rt_state_machine.vcg, 3060 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/create.vcg, 1114 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/change_state.vcg, 2713 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/phase.vcg, 1069 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/machine_ticks.vcg, 1089 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/init.vcg, 1928 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/halt.vcg, 1189 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/step.vcg, 6462 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/fail_next.vcg, 578 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/reset.vcg, 1899 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/watchdog/reset.vcg, 1126 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/watchdog/check_timeout.vcg, 10811 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/barometer/extrapolate_height.vcg, 37230 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/barometer/cycle.vcg, 16451 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/barometer/set_altitude_profile.vcg, 3047 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/barometer/read_altitude.vcg, 1354 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/barometer/fail_next_bit.vcg, 807 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/barometer/init.vcg, 3233 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_barometer/get_ibit_state.vcg, 959 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_barometer/get_height.vcg, 1608 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_barometer/ibit_start.vcg, 2752 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_barometer/ibit_stop.vcg, 2728 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_barometer/poll.vcg, 26050 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_barometer/init.vcg, 1763 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/extrapolate_angle.vcg, 9552 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/cycle.vcg, 26321 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/set_xy.vcg, 1696 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/set_yz.vcg, 1696 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/set_dxy.vcg, 2480 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/set_dyz.vcg, 2480 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/read_xy.vcg, 2139 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/read_dxy.vcg, 1154 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/read_yz.vcg, 2139 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/read_dyz.vcg, 1154 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/fail_next_bit.vcg, 806 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/init.vcg, 3504 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/get_ibit_state.vcg, 958 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/get_xy.vcg, 869 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/get_yz.vcg, 869 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/ibit_start.vcg, 2747 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/ibit_stop.vcg, 2723 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/poll.vcg, 23364 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/init.vcg, 1388 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/extrapolate_speed.vcg, 20480 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/cycle.vcg, 10666 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/set_airspeed_profile.vcg, 4026 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/read_airspeed.vcg, 1376 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/read_accel.vcg, 939 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/read_bit_status.vcg, 810 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/fail_next_bit.vcg, 807 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/init.vcg, 3232 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_airspeed/get_ibit_state.vcg, 958 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_airspeed/get_speed.vcg, 1659 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_airspeed/ibit_start.vcg, 2740 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_airspeed/ibit_stop.vcg, 2715 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_airspeed/poll.vcg, 16083 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_airspeed/init.vcg, 1799 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/extrapolate_position/extrapolate_dimension.vcg, 6763 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/extrapolate_position.vcg, 22709 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/cycle/write_distance.vcg, 2909 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/cycle.vcg, 24520 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/set_location.vcg, 2183 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/move.vcg, 3991 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/set_velocity.vcg, 2399 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/read_location.vcg, 7428 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/fail_next_bit.vcg, 804 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/init.vcg, 2033 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/get_ibit_state.vcg, 956 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/get_location.vcg, 894 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/ibit_start.vcg, 2727 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/ibit_stop.vcg, 2703 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/poll/get_coord.vcg, 5386 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/poll.vcg, 30293 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/init.vcg, 1368 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/extrapolate_level/extrapolate_mass.vcg, 6773 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/extrapolate_level.vcg, 7720 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/cycle/write_mass.vcg, 1209 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/cycle.vcg, 9621 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/set_level.vcg, 2350 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/set_rate.vcg, 2442 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/read_level.vcg, 1416 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/fail_next_bit.vcg, 805 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/init.vcg, 3276 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuel/get_ibit_state.vcg, 956 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuel/get_level.vcg, 1585 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuel/ibit_start.vcg, 2728 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuel/ibit_stop.vcg, 2703 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuel/poll.vcg, 15190 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuel/init.vcg, 1733 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/update_state.vcg, 7984 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/set_state.vcg, 2413 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/cycle.vcg, 68445 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/set_timer.vcg, 1085 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/read_state.vcg, 1129 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/fail_next_bit.vcg, 805 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/init.vcg, 2683 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/get_ibit_state.vcg, 956 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/get_state.vcg, 1615 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/arm.vcg, 1676 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/disarm.vcg, 1263 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/ibit_start.vcg, 2728 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/ibit_stop.vcg, 2706 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/poll.vcg, 39217 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/init.vcg, 1841 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar_cfg/sector_to_millirad.vcg, 909 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar_cfg/encode_sector.vcg, 1471 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar_cfg/decode_sector.vcg, 1765 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/set_bearing_return.vcg, 2361 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/read_location.vcg, 4078 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/do_ping.vcg, 60612 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/sweep/derive_grid.vcg, 62395 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/sweep.vcg, 7523 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/read_sector.vcg, 4176 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/cycle.vcg, 193590 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/fail_next_bit.vcg, 805 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/init.vcg, 2775 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/get_ibit_state.vcg, 957 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/ping.vcg, 9828 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/sweep.vcg, 24706 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/read_ping.vcg, 8125 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/read_sweep.vcg, 8009 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/ibit_start.vcg, 2731 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/ibit_stop.vcg, 2707 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/poll.vcg, 128097 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/init.vcg, 1933 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir_cfg/sector_to_millirad.vcg, 908 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir_cfg/encode_sector.vcg, 1469 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir_cfg/decode_sector.vcg, 1763 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/set_cell_return.vcg, 1724 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/read_location.vcg, 1788 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/do_stare.vcg, 17362 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/do_sweep/derive_grid.vcg, 49603 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/do_sweep.vcg, 6107 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/read_sector.vcg, 4157 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/cycle.vcg, 167423 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/fail_next_bit.vcg, 804 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/init.vcg, 2773 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/get_ibit_state.vcg, 955 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/stare.vcg, 9094 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/sweep.vcg, 24260 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/read_stare.vcg, 5096 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/read_sweep.vcg, 7888 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/ibit_start.vcg, 2730 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/ibit_stop.vcg, 2705 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/poll.vcg, 94219 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/init.vcg, 1932 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/extrapolate_angle.vcg, 97058 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/set_deflection.vcg, 11477 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/read_deflection.vcg, 2958 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/cycle/write_fin_angle.vcg, 7741 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/cycle/read_fin_angle.vcg, 10949 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/cycle.vcg, 60658 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/fail_next_bit.vcg, 805 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/init.vcg, 1475 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/get_ibit_state.vcg, 957 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/get_deflection.vcg, 2045 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/set_deflection.vcg, 10015 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/ibit_start.vcg, 2728 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/ibit_stop.vcg, 2707 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/poll/update_fin.vcg, 6282 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/poll.vcg, 22670 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/init.vcg, 1369 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/motor/extrapolate_thrust.vcg, 48118 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/motor/set_thrust.vcg, 6129 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/motor/read_thrust.vcg, 1349 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/motor/cycle.vcg, 85204 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/motor/fail_next_bit.vcg, 805 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/motor/init.vcg, 3073 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/get_ibit_state.vcg, 957 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/get_thrust.vcg, 1516 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/set_thrust.vcg, 3809 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/ibit_start.vcg, 2728 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/ibit_stop.vcg, 2705 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/poll.vcg, 24268 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/init.vcg, 1721 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead_cfg/code_to_state.vcg, 11489 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead_cfg/transition.vcg, 11016 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/update_stage.vcg, 7563 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/set_stage.vcg, 2246 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/cycle.vcg, 61474 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/set_timer.vcg, 870 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/read_stage.vcg, 1083 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/fail_next_bit.vcg, 806 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/init.vcg, 2617 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/get_ibit_state.vcg, 958 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/get_stage.vcg, 1523 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/set_stage.vcg, 1303 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/ibit_start.vcg, 2729 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/ibit_stop.vcg, 2705 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/poll.vcg, 17553 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/init.vcg, 1776 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct_cfg/code_to_state.vcg, 6389 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct_cfg/transition.vcg, 6213 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/update_stage.vcg, 7565 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/set_stage.vcg, 2247 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/cycle.vcg, 61654 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/set_timer.vcg, 871 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/read_stage.vcg, 1083 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/fail_next_bit.vcg, 807 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/init.vcg, 2623 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/get_ibit_state.vcg, 958 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/get_stage.vcg, 1525 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/set_stage.vcg, 1307 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/ibit_start.vcg, 2730 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/ibit_stop.vcg, 2705 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/poll.vcg, 17584 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/init.vcg, 1783 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/next_item.vcg, 2034 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/previous_item.vcg, 2048 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/get_recent_meter.vcg, 8881 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/update_meter_reading.vcg, 25502 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/get_recent_angle.vcg, 8909 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/update_angle_reading.vcg, 25544 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/get_recent_speed.vcg, 8905 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/update_speed_reading.vcg, 25484 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/handle_airspeed.vcg, 5474 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/handle_barometer.vcg, 5252 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/handle_ins.vcg, 12947 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/handle_compass.vcg, 16014 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/estimate_height.vcg, 7201 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/estimate_origin_offset.vcg, 22295 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/estimate_heading.vcg, 15137 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/estimate_speed.vcg, 15088 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/maintain.vcg, 787 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/missile/init.vcg, 764 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/missile/check_ibit.vcg, 116680 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/missile/poll/init_ibit.vcg, 1219 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/missile/poll/manage_bit_process.vcg, 2316 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/missile/poll/manage_boost_process.vcg, 3022 bytes
+/afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/missile/poll.vcg, 905 bytes
+
+ 330 VCG files require simplification
+
+Job-ID Status     Filename
+====== ======     ========
+     1 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/state_types/fuze_action.vcg
+     1 Finished    0: 0: 0.25
+     2 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/state_types/radar_action.vcg
+     2 Finished    0: 0: 0.09
+     3 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/state_types/ir_action.vcg
+     3 Finished    0: 0: 0.08
+     4 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/canon.vcg
+     4 Finished    0: 0: 0.09
+     5 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/mul.vcg
+     5 Finished    0: 0: 0.13
+     6 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/sum.vcg
+     6 Finished    0: 0: 0.27
+     7 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/negate.vcg
+     7 Finished    0: 0: 0.09
+     8 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/diff.vcg
+     8 Finished    0: 0: 0.07
+     9 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/create_angle.vcg
+     9 Finished    0: 0: 0.20
+    10 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/millirad_to_word.vcg
+    10 Finished    0: 0: 0.17
+    11 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/int_to_millirad.vcg
+    11 Finished    0: 0: 0.21
+    12 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/degree_to_millirad.vcg
+    12 Finished    0: 0: 0.10
+    13 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/angle_ops/round_degree.vcg
+    13 Finished    0: 0: 0.31
+    14 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/encode/kelvin.vcg
+    14 Finished    0: 0: 0.06
+    15 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/encode/newton.vcg
+    15 Finished    0: 0: 0.26
+    16 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/encode/meter.vcg
+    16 Finished    0: 0: 0.13
+    17 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/encode/meter_single.vcg
+    17 Finished    0: 0: 0.13
+    18 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/encode/meter_per_sec.vcg
+    18 Finished    0: 0: 0.09
+    19 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/encode/bit4_array.vcg
+    19 Finished    0: 0: 0.18
+    20 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/decode/kelvin.vcg
+    20 Finished    0: 0: 0.06
+    21 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/decode/newton.vcg
+    21 Finished    0: 0: 0.16
+    22 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/decode/meter.vcg
+    22 Finished    0: 0: 0.09
+    23 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/decode/meter_single.vcg
+    23 Finished    0: 0: 0.06
+    24 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/decode/meter_per_sec.vcg
+    24 Finished    0: 0: 0.09
+    25 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/measuretypes_/decode/bit4_array.vcg
+    25 Finished    0: 0: 0.18
+    26 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/random/poly1.vcg
+    26 Finished    0: 0: 0.08
+    27 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/random/poly2.vcg
+    27 Finished    0: 0: 0.09
+    28 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/random/seed.vcg
+    28 Finished    0: 0: 0.07
+    29 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/random/get.vcg
+    29 Finished    0: 0: 0.88
+    30 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock/read.vcg
+    30 Finished    0: 0: 0.07
+    31 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock/time_valid.vcg
+    31 Finished    0: 0: 0.05
+    32 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock/reset.vcg
+    32 Finished    0: 0: 0.06
+    33 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock/cycle.vcg
+    33 Finished    0: 0: 0.07
+    34 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock_utils/delta_time.vcg
+    34 Finished    0: 0: 0.07
+    35 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock_utils/add_delay.vcg
+    35 Finished    0: 0: 0.07
+    36 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/clock_utils/subtract_delay.vcg
+    36 Finished    0: 0: 0.06
+    37 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/extrapolate_position/extrapolate_linear.vcg
+    37 Finished    0: 0: 0.32
+    38 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/extrapolate_position.vcg
+    38 Finished    0: 0: 1.36
+    39 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/extrapolate_velocity.vcg
+    39 Finished    0: 0: 5.73
+    40 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/create.vcg
+    40 Finished    0: 0: 0.08
+    41 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/set_position.vcg
+    41 Finished    0: 0: 0.08
+    42 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/get_position.vcg
+    42 Finished    0: 0: 0.19
+    43 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/set_velocity.vcg
+    43 Finished    0: 0: 0.08
+    44 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/get_velocity.vcg
+    44 Finished    0: 0: 0.07
+    45 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/set_accel.vcg
+    45 Finished    0: 0: 0.09
+    46 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/flying_object/get_accel.vcg
+    46 Finished    0: 0: 0.05
+    47 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/find_slot.vcg
+    47 Finished    0: 0: 0.08
+    48 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/add_object.vcg
+    48 Finished    0: 0: 0.10
+    49 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/set_object_position.vcg
+    49 Finished    0: 0: 0.09
+    50 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/get_object_position.vcg
+    50 Finished    0: 0: 0.08
+    51 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/set_object_velocity.vcg
+    51 Finished    0: 0: 0.09
+    52 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/get_object_velocity.vcg
+    52 Finished    0: 0: 0.08
+    53 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/set_object_accel.vcg
+    53 Finished    0: 0: 0.09
+    54 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/environment/delete_object.vcg
+    54 Finished    0: 0: 0.06
+    55 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/drag/relative_drag_at_altitude.vcg
+    55 Finished    0: 0: 0.10
+    56 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/drag/calc_drag.vcg
+    56 Finished    0: 0: 3.55
+    57 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/set_rt_message_valid.vcg
+    57 Finished    0: 0: 0.11
+    58 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/write_rt_word.vcg
+    58 Finished    0: 0: 0.12
+    59 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/write_rt_message.vcg
+    59 Finished    0: 0: 0.12
+    60 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/set_bc_message_valid.vcg
+    60 Finished    0: 0: 0.11
+    61 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/write_bc_word.vcg
+    61 Finished    0: 0: 0.12
+    62 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/write_bc_message.vcg
+    62 Finished    0: 0: 0.12
+    63 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/is_rt_fresh.vcg
+    63 Finished    0: 0: 0.11
+    64 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/is_rt_valid.vcg
+    64 Finished    0: 0: 0.10
+    65 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/read_rt_word.vcg
+    65 Finished    0: 0: 0.17
+    66 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/is_bc_fresh.vcg
+    66 Finished    0: 0: 0.11
+    67 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/read_rt_message.vcg
+    67 Finished    0: 0: 0.10
+    68 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/acknowledge_rt_message.vcg
+    68 Finished    0: 0: 0.10
+    69 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/is_bc_valid.vcg
+    69 Finished    0: 0: 0.11
+    70 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/read_bc_word.vcg
+    70 Finished    0: 0: 0.15
+    71 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/read_bc_message.vcg
+    71 Finished    0: 0: 0.21
+    72 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/acknowledge_bc_message.vcg
+    72 Finished    0: 0: 0.10
+    73 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus/cycle.vcg
+    73 Finished    0: 0: 0.50
+    74 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/lru_number.vcg
+    74 Finished    0: 0: 0.07
+    75 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/set_message_valid.vcg
+    75 Finished    0: 0: 0.07
+    76 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/write_word.vcg
+    76 Finished    0: 0: 0.08
+    77 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/write_message.vcg
+    77 Finished    0: 0: 0.08
+    78 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/is_fresh.vcg
+    78 Finished    0: 0: 0.07
+    79 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/is_valid.vcg
+    79 Finished    0: 0: 0.07
+    80 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/read_word.vcg
+    80 Finished    0: 0: 0.08
+    81 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/read_message.vcg
+    81 Finished    0: 0: 0.07
+    82 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bc1553/acknowledge_message.vcg
+    82 Finished    0: 0: 0.07
+    83 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/lru_number.vcg
+    83 Finished    0: 0: 0.07
+    84 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/set_message_valid.vcg
+    84 Finished    0: 0: 0.07
+    85 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/write_word.vcg
+    85 Finished    0: 0: 0.07
+    86 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/write_message.vcg
+    86 Finished    0: 0: 0.08
+    87 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/read_word.vcg
+    87 Finished    0: 0: 0.08
+    88 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/read_message.vcg
+    88 Finished    0: 0: 0.09
+    89 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/acknowledge_message.vcg
+    89 Finished    0: 0: 0.07
+    90 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/is_fresh.vcg
+    90 Finished    0: 0: 0.07
+    91 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/rt1553/is_valid.vcg
+    91 Finished    0: 0: 0.08
+    92 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus_decode/decode_bool8.vcg
+    92 Finished    0: 0: 0.11
+    93 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus_decode/decode_byte2.vcg
+    93 Finished    0: 0: 0.08
+    94 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus_encode/encode_bool8.vcg
+    94 Finished    0: 0: 0.13
+    95 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bus_encode/encode_byte2.vcg
+    95 Finished    0: 0: 0.07
+    96 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer_cfg_/encode/fin_angle.vcg
+    96 Finished    0: 0: 0.09
+    97 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer_cfg_/encode/fin.vcg
+    97 Finished    0: 0: 0.07
+    98 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer_cfg_/decode/fin_angle.vcg
+    98 Finished    0: 0: 0.09
+    99 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer_cfg_/decode/fin.vcg
+    99 Finished    0: 0: 0.07
+   100 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ibit/state_machine.vcg
+   100 Finished    0: 0: 0.08
+   101 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ibit/rt_state_machine.vcg
+   101 Finished    0: 0: 0.07
+   102 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/create.vcg
+   102 Finished    0: 0: 0.06
+   103 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/change_state.vcg
+   103 Finished    0: 0: 0.07
+   104 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/phase.vcg
+   104 Finished    0: 0: 0.06
+   105 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/machine_ticks.vcg
+   105 Finished    0: 0: 0.06
+   106 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/init.vcg
+   106 Finished    0: 0: 0.06
+   107 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/halt.vcg
+   107 Finished    0: 0: 0.06
+   108 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/step.vcg
+   108 Finished    0: 0: 0.10
+   109 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/fail_next.vcg
+   109 Finished    0: 0: 0.05
+   110 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/bit_machine/reset.vcg
+   110 Finished    0: 0: 0.07
+   111 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/watchdog/reset.vcg
+   111 Finished    0: 0: 0.06
+   112 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/watchdog/check_timeout.vcg
+   112 Finished    0: 0: 0.10
+   113 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/barometer/extrapolate_height.vcg
+   113 Finished    0: 0: 0.77
+   114 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/barometer/cycle.vcg
+   114 Finished    0: 0: 0.28
+   115 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/barometer/set_altitude_profile.vcg
+   115 Finished    0: 0: 0.06
+   116 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/barometer/read_altitude.vcg
+   116 Finished    0: 0: 0.07
+   117 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/barometer/fail_next_bit.vcg
+   117 Finished    0: 0: 0.05
+   118 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/barometer/init.vcg
+   118 Finished    0: 0: 0.08
+   119 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_barometer/get_ibit_state.vcg
+   119 Finished    0: 0: 0.06
+   120 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_barometer/get_height.vcg
+   120 Finished    0: 0: 0.06
+   121 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_barometer/ibit_start.vcg
+   121 Finished    0: 0: 0.09
+   122 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_barometer/ibit_stop.vcg
+   122 Finished    0: 0: 0.08
+   123 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_barometer/poll.vcg
+   123 Finished    0: 0: 0.24
+   124 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_barometer/init.vcg
+   124 Finished    0: 0: 0.07
+   125 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/extrapolate_angle.vcg
+   125 Finished    0: 0: 0.23
+   126 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/cycle.vcg
+   126 Finished    0: 0: 0.21
+   127 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/set_xy.vcg
+   127 Finished    0: 0: 0.07
+   128 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/set_yz.vcg
+   128 Finished    0: 0: 0.06
+   129 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/set_dxy.vcg
+   129 Finished    0: 0: 0.06
+   130 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/set_dyz.vcg
+   130 Finished    0: 0: 0.06
+   131 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/read_xy.vcg
+   131 Finished    0: 0: 0.06
+   132 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/read_dxy.vcg
+   132 Finished    0: 0: 0.28
+   133 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/read_yz.vcg
+   133 Finished    0: 0: 0.06
+   134 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/read_dyz.vcg
+   134 Finished    0: 0: 0.05
+   135 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/fail_next_bit.vcg
+   135 Finished    0: 0: 0.05
+   136 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/compass/init.vcg
+   136 Finished    0: 0: 0.08
+   137 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/get_ibit_state.vcg
+   137 Finished    0: 0: 0.06
+   138 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/get_xy.vcg
+   138 Finished    0: 0: 0.06
+   139 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/get_yz.vcg
+   139 Finished    0: 0: 0.05
+   140 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/ibit_start.vcg
+   140 Finished    0: 0: 0.08
+   141 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/ibit_stop.vcg
+   141 Finished    0: 0: 0.16
+   142 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/poll.vcg
+   142 Finished    0: 0: 0.18
+   143 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_compass/init.vcg
+   143 Finished    0: 0: 0.07
+   144 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/extrapolate_speed.vcg
+   144 Finished    0: 0: 1.00
+   145 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/cycle.vcg
+   145 Finished    0: 0: 0.18
+   146 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/set_airspeed_profile.vcg
+   146 Finished    0: 0: 0.07
+   147 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/read_airspeed.vcg
+   147 Finished    0: 0: 0.06
+   148 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/read_accel.vcg
+   148 Finished    0: 0: 0.06
+   149 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/read_bit_status.vcg
+   149 Finished    0: 0: 0.06
+   150 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/fail_next_bit.vcg
+   150 Finished    0: 0: 0.05
+   151 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/airspeed/init.vcg
+   151 Finished    0: 0: 0.08
+   152 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_airspeed/get_ibit_state.vcg
+   152 Finished    0: 0: 0.06
+   153 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_airspeed/get_speed.vcg
+   153 Finished    0: 0: 0.06
+   154 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_airspeed/ibit_start.vcg
+   154 Finished    0: 0: 0.08
+   155 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_airspeed/ibit_stop.vcg
+   155 Finished    0: 0: 0.09
+   156 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_airspeed/poll.vcg
+   156 Finished    0: 0: 0.15
+   157 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_airspeed/init.vcg
+   157 Finished    0: 0: 0.07
+   158 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/extrapolate_position/extrapolate_dimension.vcg
+   158 Finished    0: 0: 0.57
+   159 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/extrapolate_position.vcg
+   159 Finished    0: 0: 0.20
+   160 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/cycle/write_distance.vcg
+   160 Finished    0: 0: 0.19
+   161 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/cycle.vcg
+   161 Finished    0: 0: 0.24
+   162 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/set_location.vcg
+   162 Finished    0: 0: 0.07
+   163 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/move.vcg
+   163 Finished    0: 0: 0.47
+   164 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/set_velocity.vcg
+   164 Finished    0: 0: 0.07
+   165 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/read_location.vcg
+   165 Finished    0: 0: 0.10
+   166 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/fail_next_bit.vcg
+   166 Finished    0: 0: 0.05
+   167 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ins/init.vcg
+   167 Finished    0: 0: 0.07
+   168 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/get_ibit_state.vcg
+   168 Finished    0: 0: 0.06
+   169 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/get_location.vcg
+   169 Finished    0: 0: 0.05
+   170 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/ibit_start.vcg
+   170 Finished    0: 0: 0.09
+   171 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/ibit_stop.vcg
+   171 Finished    0: 0: 0.09
+   172 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/poll/get_coord.vcg
+   172 Finished    0: 0: 0.26
+   173 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/poll.vcg
+   173 Finished    0: 0: 0.17
+   174 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ins/init.vcg
+   174 Finished    0: 0: 0.07
+   175 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/extrapolate_level/extrapolate_mass.vcg
+   175 Finished    0: 0: 0.31
+   176 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/extrapolate_level.vcg
+   176 Finished    0: 0: 0.09
+   177 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/cycle/write_mass.vcg
+   177 Finished    0: 0: 0.07
+   178 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/cycle.vcg
+   178 Finished    0: 0: 0.12
+   179 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/set_level.vcg
+   179 Finished    0: 0: 0.06
+   180 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/set_rate.vcg
+   180 Finished    0: 0: 0.06
+   181 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/read_level.vcg
+   181 Finished    0: 0: 0.06
+   182 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/fail_next_bit.vcg
+   182 Finished    0: 0: 0.05
+   183 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuel/init.vcg
+   183 Finished    0: 0: 0.08
+   184 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuel/get_ibit_state.vcg
+   184 Finished    0: 0: 0.06
+   185 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuel/get_level.vcg
+   185 Finished    0: 0: 0.06
+   186 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuel/ibit_start.vcg
+   186 Finished    0: 0: 0.09
+   187 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuel/ibit_stop.vcg
+   187 Finished    0: 0: 0.09
+   188 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuel/poll.vcg
+   188 Finished    0: 0: 0.15
+   189 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuel/init.vcg
+   189 Finished    0: 0: 0.07
+   190 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/update_state.vcg
+   190 Finished    0: 0: 0.11
+   191 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/set_state.vcg
+   191 Finished    0: 0: 0.06
+   192 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/cycle.vcg
+   192 Finished    0: 0: 0.27
+   193 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/set_timer.vcg
+   193 Finished    0: 0: 0.07
+   194 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/read_state.vcg
+   194 Finished    0: 0: 0.06
+   195 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/fail_next_bit.vcg
+   195 Finished    0: 0: 0.06
+   196 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/fuze/init.vcg
+   196 Finished    0: 0: 0.08
+   197 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/get_ibit_state.vcg
+   197 Finished    0: 0: 0.06
+   198 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/get_state.vcg
+   198 Finished    0: 0: 0.06
+   199 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/arm.vcg
+   199 Finished    0: 0: 0.14
+   200 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/disarm.vcg
+   200 Finished    0: 0: 0.07
+   201 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/ibit_start.vcg
+   201 Finished    0: 0: 0.09
+   202 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/ibit_stop.vcg
+   202 Finished    0: 0: 0.08
+   203 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/poll.vcg
+   203 Finished    0: 0: 0.22
+   204 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_fuze/init.vcg
+   204 Finished    0: 0: 0.07
+   205 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar_cfg/sector_to_millirad.vcg
+   205 Finished    0: 0: 0.06
+   206 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar_cfg/encode_sector.vcg
+   206 Finished    0: 0: 0.08
+   207 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar_cfg/decode_sector.vcg
+   207 Finished    0: 0: 0.07
+   208 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/set_bearing_return.vcg
+   208 Finished    0: 0: 0.06
+   209 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/read_location.vcg
+   209 Finished    0: 0: 0.10
+   210 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/do_ping.vcg
+   210 Finished    0: 0: 2.49
+   211 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/sweep/derive_grid.vcg
+   211 Finished    0: 0: 5.17
+   212 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/sweep.vcg
+   212 Finished    0: 0: 0.12
+   213 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/read_sector.vcg
+   213 Finished    0: 0: 0.09
+   214 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/cycle.vcg
+   214 Finished    0: 0: 0.62
+   215 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/fail_next_bit.vcg
+   215 Finished    0: 0: 0.05
+   216 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/radar/init.vcg
+   216 Finished    0: 0: 0.07
+   217 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/get_ibit_state.vcg
+   217 Finished    0: 0: 0.05
+   218 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/ping.vcg
+   218 Finished    0: 0: 0.14
+   219 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/sweep.vcg
+   219 Finished    0: 0: 0.21
+   220 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/read_ping.vcg
+   220 Finished    0: 0: 0.08
+   221 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/read_sweep.vcg
+   221 Finished    0: 0: 0.10
+   222 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/ibit_start.vcg
+   222 Finished    0: 0: 0.09
+   223 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/ibit_stop.vcg
+   223 Finished    0: 0: 0.09
+   224 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/poll.vcg
+   224 Finished    0: 0: 0.53
+   225 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_radar/init.vcg
+   225 Finished    0: 0: 0.07
+   226 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir_cfg/sector_to_millirad.vcg
+   226 Finished    0: 0: 0.06
+   227 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir_cfg/encode_sector.vcg
+   227 Finished    0: 0: 0.08
+   228 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir_cfg/decode_sector.vcg
+   228 Finished    0: 0: 0.07
+   229 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/set_cell_return.vcg
+   229 Finished    0: 0: 0.06
+   230 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/read_location.vcg
+   230 Finished    0: 0: 0.07
+   231 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/do_stare.vcg
+   231 Finished    0: 0: 0.62
+   232 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/do_sweep/derive_grid.vcg
+   232 Finished    0: 0: 4.34
+   233 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/do_sweep.vcg
+   233 Finished    0: 0: 0.11
+   234 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/read_sector.vcg
+   234 Finished    0: 0: 0.09
+   235 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/cycle.vcg
+   235 Finished    0: 0: 0.53
+   236 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/fail_next_bit.vcg
+   236 Finished    0: 0: 0.06
+   237 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/ir/init.vcg
+   237 Finished    0: 0: 0.07
+   238 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/get_ibit_state.vcg
+   238 Finished    0: 0: 0.06
+   239 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/stare.vcg
+   239 Finished    0: 0: 0.14
+   240 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/sweep.vcg
+   240 Finished    0: 0: 0.21
+   241 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/read_stare.vcg
+   241 Finished    0: 0: 0.08
+   242 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/read_sweep.vcg
+   242 Finished    0: 0: 0.10
+   243 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/ibit_start.vcg
+   243 Finished    0: 0: 0.08
+   244 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/ibit_stop.vcg
+   244 Finished    0: 0: 0.09
+   245 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/poll.vcg
+   245 Finished    0: 0: 0.44
+   246 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_ir/init.vcg
+   246 Finished    0: 0: 0.09
+   247 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/extrapolate_angle.vcg
+   247 Finished    0: 0: 1.01
+   248 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/set_deflection.vcg
+   248 Finished    0: 0: 0.10
+   249 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/read_deflection.vcg
+   249 Finished    0: 0: 0.07
+   250 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/cycle/write_fin_angle.vcg
+   250 Finished    0: 0: 0.11
+   251 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/cycle/read_fin_angle.vcg
+   251 Finished    0: 0: 0.12
+   252 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/cycle.vcg
+   252 Finished    0: 0: 0.32
+   253 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/fail_next_bit.vcg
+   253 Finished    0: 0: 0.21
+   254 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/steer/init.vcg
+   254 Finished    0: 0: 0.07
+   255 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/get_ibit_state.vcg
+   255 Finished    0: 0: 0.06
+   256 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/get_deflection.vcg
+   256 Finished    0: 0: 0.07
+   257 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/set_deflection.vcg
+   257 Finished    0: 0: 0.11
+   258 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/ibit_start.vcg
+   258 Finished    0: 0: 0.09
+   259 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/ibit_stop.vcg
+   259 Finished    0: 0: 0.09
+   260 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/poll/update_fin.vcg
+   260 Finished    0: 0: 0.10
+   261 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/poll.vcg
+   261 Finished    0: 0: 0.18
+   262 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_steer/init.vcg
+   262 Finished    0: 0: 0.07
+   263 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/motor/extrapolate_thrust.vcg
+   263 Finished    0: 0: 0.59
+   264 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/motor/set_thrust.vcg
+   264 Finished    0: 0: 0.08
+   265 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/motor/read_thrust.vcg
+   265 Finished    0: 0: 0.06
+   266 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/motor/cycle.vcg
+   266 Finished    0: 0: 0.45
+   267 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/motor/fail_next_bit.vcg
+   267 Finished    0: 0: 0.05
+   268 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/motor/init.vcg
+   268 Finished    0: 0: 0.08
+   269 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/get_ibit_state.vcg
+   269 Finished    0: 0: 0.06
+   270 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/get_thrust.vcg
+   270 Finished    0: 0: 0.06
+   271 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/set_thrust.vcg
+   271 Finished    0: 0: 0.08
+   272 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/ibit_start.vcg
+   272 Finished    0: 0: 0.09
+   273 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/ibit_stop.vcg
+   273 Finished    0: 0: 0.09
+   274 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/poll.vcg
+   274 Finished    0: 0: 0.23
+   275 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_motor/init.vcg
+   275 Finished    0: 0: 0.07
+   276 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead_cfg/code_to_state.vcg
+   276 Finished    0: 0: 0.10
+   277 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead_cfg/transition.vcg
+   277 Finished    0: 0: 0.09
+   278 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/update_stage.vcg
+   278 Finished    0: 0: 0.09
+   279 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/set_stage.vcg
+   279 Finished    0: 0: 0.06
+   280 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/cycle.vcg
+   280 Finished    0: 0: 0.30
+   281 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/set_timer.vcg
+   281 Finished    0: 0: 0.16
+   282 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/read_stage.vcg
+   282 Finished    0: 0: 0.06
+   283 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/fail_next_bit.vcg
+   283 Finished    0: 0: 0.05
+   284 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/warhead/init.vcg
+   284 Finished    0: 0: 0.08
+   285 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/get_ibit_state.vcg
+   285 Finished    0: 0: 0.06
+   286 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/get_stage.vcg
+   286 Finished    0: 0: 0.06
+   287 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/set_stage.vcg
+   287 Finished    0: 0: 0.08
+   288 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/ibit_start.vcg
+   288 Finished    0: 0: 0.09
+   289 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/ibit_stop.vcg
+   289 Finished    0: 0: 0.08
+   290 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/poll.vcg
+   290 Finished    0: 0: 0.16
+   291 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_warhead/init.vcg
+   291 Finished    0: 0: 0.08
+   292 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct_cfg/code_to_state.vcg
+   292 Finished    0: 0: 0.09
+   293 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct_cfg/transition.vcg
+   293 Finished    0: 0: 0.08
+   294 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/update_stage.vcg
+   294 Finished    0: 0: 0.08
+   295 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/set_stage.vcg
+   295 Finished    0: 0: 0.06
+   296 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/cycle.vcg
+   296 Finished    0: 0: 0.29
+   297 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/set_timer.vcg
+   297 Finished    0: 0: 0.06
+   298 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/read_stage.vcg
+   298 Finished    0: 0: 0.06
+   299 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/fail_next_bit.vcg
+   299 Finished    0: 0: 0.05
+   300 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/destruct/init.vcg
+   300 Finished    0: 0: 0.08
+   301 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/get_ibit_state.vcg
+   301 Finished    0: 0: 0.06
+   302 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/get_stage.vcg
+   302 Finished    0: 0: 0.06
+   303 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/set_stage.vcg
+   303 Finished    0: 0: 0.08
+   304 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/ibit_start.vcg
+   304 Finished    0: 0: 0.08
+   305 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/ibit_stop.vcg
+   305 Finished    0: 0: 0.09
+   306 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/poll.vcg
+   306 Finished    0: 0: 0.16
+   307 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/if_destruct/init.vcg
+   307 Finished    0: 0: 0.07
+   308 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/next_item.vcg
+   308 Finished    0: 0: 0.06
+   309 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/previous_item.vcg
+   309 Finished    0: 0: 0.06
+   310 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/get_recent_meter.vcg
+   310 Finished    0: 0: 0.10
+   311 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/update_meter_reading.vcg
+   311 Finished    0: 0: 0.16
+   312 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/get_recent_angle.vcg
+   312 Finished    0: 0: 0.08
+   313 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/update_angle_reading.vcg
+   313 Finished    0: 0: 0.12
+   314 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/get_recent_speed.vcg
+   314 Finished    0: 0: 0.09
+   315 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/sensor_history/update_speed_reading.vcg
+   315 Finished    0: 0: 0.13
+   316 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/handle_airspeed.vcg
+   316 Finished    0: 0: 0.09
+   317 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/handle_barometer.vcg
+   317 Finished    0: 0: 0.09
+   318 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/handle_ins.vcg
+   318 Finished    0: 0: 0.13
+   319 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/handle_compass.vcg
+   319 Finished    0: 0: 0.11
+   320 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/estimate_height.vcg
+   320 Finished    0: 0: 0.10
+   321 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/estimate_origin_offset.vcg
+   321 Finished    0: 0: 0.56
+   322 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/estimate_heading.vcg
+   322 Finished    0: 0: 0.15
+   323 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/estimate_speed.vcg
+   323 Finished    0: 0: 1.37
+   324 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/nav/maintain.vcg
+   324 Finished    0: 0: 0.06
+   325 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/missile/init.vcg
+   325 Finished    0: 0: 0.06
+   326 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/missile/check_ibit.vcg
+   326 Finished    0: 0: 0.84
+   327 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/missile/poll/init_ibit.vcg
+   327 Finished    0: 0: 0.10
+   328 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/missile/poll/manage_bit_process.vcg
+   328 Finished    0: 0: 0.16
+   329 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/missile/poll/manage_boost_process.vcg
+   329 Finished    0: 0: 0.11
+   330 Started  - /afs/inf.ed.ac.uk/user/p/pbj/praxis/hilton/work5/Code/missile/poll.vcg
+   330 Finished    0: 0: 0.06
+Total elapsed time:    0: 1: 4.87

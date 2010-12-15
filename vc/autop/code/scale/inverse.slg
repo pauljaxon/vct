@@ -1,0 +1,139 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:07
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function Scale.Inverse
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_inverse_1.  @@@@@@@@@@
+-S-  Applied substitution rule inverse_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H6:  flatness >= - 2147483648
+<S>  New C1:  100 * flatness div (flatness + val) >= - 2147483648
+-S-  Applied substitution rule inverse_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H7:  flatness <= 2147483647
+<S>  New C2:  100 * flatness div (flatness + val) <= 2147483647
+-S-  Applied substitution rule inverse_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C4:  flatness + val >= - 2147483648
+<S>  New C6:  100 * flatness >= - 2147483648
+-S-  Applied substitution rule inverse_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C5:  flatness + val <= 2147483647
+<S>  New C7:  100 * flatness <= 2147483647
+***  Proved C4:  flatness + val >= - 2147483648
+     using hypotheses H1 & H2.
+***  Proved C6:  100 * flatness >= - 2147483648
+     using hypothesis H2.
+***  Proved C7:  100 * flatness <= 2147483647
+     using hypothesis H3.
+-S-  Applied substitution rule inverse_rules(7).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H4:  val >= - 100
+-S-  Applied substitution rule inverse_rules(8).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H5:  val <= 100
+***  Proved C5:  flatness + val <= 2147483647
+     using hypotheses H3 & H5.
+---  Eliminated hypothesis H4 (redundant, given H1).
+---  Eliminated hypothesis H6 (redundant, given H2).
+---  Eliminated hypothesis H7 (redundant, given H3).
+***  Proved C3:  flatness + val <> 0
+     using hypotheses H1 & H2.
+***  Proved C1:  100 * flatness div (flatness + val) >= - 2147483648
+     using hypotheses H1 & H2.
+***  Proved C2:  100 * flatness div (flatness + val) <= 2147483647
+     using hypotheses H1, H2 & H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_inverse_2.  @@@@@@@@@@
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H9)
+          .
+-S-  Applied substitution rule inverse_rules(12).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New C1:  100 * flatness div (flatness + val) >= 0
+-S-  Applied substitution rule inverse_rules(13).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New C2:  100 * flatness div (flatness + val) <= 100
+-S-  Applied substitution rule inverse_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H6:  flatness >= - 2147483648
+<S>  New H8:  100 * flatness div (flatness + val) >= - 2147483648
+-S-  Applied substitution rule inverse_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H7:  flatness <= 2147483647
+<S>  New H9:  100 * flatness div (flatness + val) <= 2147483647
+-S-  Applied substitution rule inverse_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H11:  flatness + val >= - 2147483648
+<S>  New H13:  100 * flatness >= - 2147483648
+-S-  Applied substitution rule inverse_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H12:  flatness + val <= 2147483647
+<S>  New H14:  100 * flatness <= 2147483647
+-S-  Applied substitution rule inverse_rules(7).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H4:  val >= - 100
+-S-  Applied substitution rule inverse_rules(8).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H5:  val <= 100
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H4 (redundant, given H1).
+---  Eliminated hypothesis H6 (redundant, given H2).
+---  Eliminated hypothesis H7 (redundant, given H3).
+---  Eliminated hypothesis H13 (redundant, given H2).
+---  Eliminated hypothesis H14 (redundant, given H3).
+***  Proved C1:  100 * flatness div (flatness + val) >= 0
+     using hypotheses H1 & H2.
+     +++  New H17:  integer__size >= 0
+     +++  New H18:  scaledata__size >= 0
+     +++  New H19:  percent__size >= 0
+
+
+@@@@@@@@@@  VC: function_inverse_3.  @@@@@@@@@@
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+***  Proved C1:  true
+***  Proved C2:  100 * flatness div (flatness + val) >= percent__first
+     using hypothesis H17.
+***  Proved C3:  100 * flatness div (flatness + val) <= percent__last
+     using hypothesis H18.
+***  PROVED VC.
+

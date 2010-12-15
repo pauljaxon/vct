@@ -1,0 +1,66 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:39.06*/
+
+                      /*procedure watchdog.Check_Timeout*/
+
+
+rule_family check_timeou_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+check_timeou_rules(1): max_delay may_be_replaced_by 750.
+check_timeou_rules(2): clock__millisecond__size >= 0 may_be_deduced.
+check_timeou_rules(3): clock__millisecond__first may_be_replaced_by 0.
+check_timeou_rules(4): clock__millisecond__last may_be_replaced_by 8640000.
+check_timeou_rules(5): clock__millisecond__base__first may_be_replaced_by -2147483648.
+check_timeou_rules(6): clock__millisecond__base__last may_be_replaced_by 2147483647.
+check_timeou_rules(7): timer_check__size >= 0 may_be_deduced.
+check_timeou_rules(8): timer_check__first may_be_replaced_by timeout.
+check_timeou_rules(9): timer_check__last may_be_replaced_by invalid.
+check_timeou_rules(10): timer_check__base__first may_be_replaced_by timeout.
+check_timeou_rules(11): timer_check__base__last may_be_replaced_by invalid.
+check_timeou_rules(12): timer_check__pos(timer_check__first) may_be_replaced_by 0.
+check_timeou_rules(13): timer_check__pos(timeout) may_be_replaced_by 0.
+check_timeou_rules(14): timer_check__val(0) may_be_replaced_by 
+     timeout.
+check_timeou_rules(15): timer_check__pos(ok) may_be_replaced_by 1.
+check_timeou_rules(16): timer_check__val(1) may_be_replaced_by ok.
+check_timeou_rules(17): timer_check__pos(invalid) may_be_replaced_by 2.
+check_timeou_rules(18): timer_check__val(2) may_be_replaced_by 
+     invalid.
+check_timeou_rules(19): timer_check__pos(timer_check__last) may_be_replaced_by 2.
+check_timeou_rules(20): timer_check__pos(succ(X)) may_be_replaced_by 
+     timer_check__pos(X) + 1
+     if [X <=invalid, X <> invalid].
+check_timeou_rules(21): timer_check__pos(pred(X)) may_be_replaced_by 
+     timer_check__pos(X) - 1
+     if [X >=timeout, X <> timeout].
+check_timeou_rules(22): timer_check__pos(X) >= 0 may_be_deduced_from
+     [timeout <= X, X <= invalid].
+check_timeou_rules(23): timer_check__pos(X) <= 2 may_be_deduced_from
+     [timeout <= X, X <= invalid].
+check_timeou_rules(24): timer_check__val(X) >= timeout may_be_deduced_from
+     [0 <= X, X <= 2].
+check_timeou_rules(25): timer_check__val(X) <= invalid may_be_deduced_from
+     [0 <= X, X <= 2].
+check_timeou_rules(26): succ(timer_check__val(X)) may_be_replaced_by 
+     timer_check__val(X+1)
+     if [0 <= X, X < 2].
+check_timeou_rules(27): pred(timer_check__val(X)) may_be_replaced_by 
+     timer_check__val(X-1)
+     if [0 < X, X <= 2].
+check_timeou_rules(28): timer_check__pos(timer_check__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 2].
+check_timeou_rules(29): timer_check__val(timer_check__pos(X)) may_be_replaced_by X
+     if [timeout <= X, X <= invalid].
+check_timeou_rules(30): timer_check__pos(X) <= timer_check__pos(Y) & X <= Y are_interchangeable 
+     if [timeout <= X, X <= invalid, timeout <= Y, Y <= invalid].
+check_timeou_rules(31): timer_check__val(X) <= timer_check__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 2, 0 <= Y, Y <= 2].

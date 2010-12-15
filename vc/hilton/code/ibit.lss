@@ -1,0 +1,60 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.87
+
+Line
+   1  -- IBIT types
+   2  --
+   3  -- $Log: ibit.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.3  2003/02/11 20:48:34  adi
+   9  -- Added the RT state machine
+  10  --
+  11  -- Revision 1.2  2003/02/11 20:31:32  adi
+  12  -- Added State_Machine
+  13  --
+  14  -- Revision 1.1  2003/02/11 19:39:03  adi
+  15  -- Initial revision
+  16  --
+  17  --
+  18  with SystemTypes;
+  19  --# inherit SystemTypes;
+  20  package IBIT is
+  21  
+  22     type Phase is (Off,Request_Start,In_Progress,
+  23                    Request_Stop,Pass,Fail,Timeout);
+  24  
+  25     type Phase_Table is array(Phase) of SystemTypes.Byte;
+  26     Phase_Lookup : constant Phase_Table
+  27       := Phase_Table'(Off => 1,
+  28                       Request_Start => 2,
+  29                       In_Progress => 2,
+  30                       Request_Stop => 1,
+  31                       Pass => 4,
+  32                       Fail => 8,
+  33                       Timeout => 16);
+  34  
+  35     -- Phase state machine for the MCU, reading data from the RTs
+  36     procedure State_Machine(Bus_Data : in SystemTypes.Unsigned16;
+  37                             Current_Phase : in out Phase);
+  38     --# derives Current_Phase from *, Bus_Data;
+  39  
+  40     -- Phase state machine for the RTs, reading data from the MCU
+  41     procedure RT_State_Machine(Bus_Data : in SystemTypes.Unsigned16;
+  42                                Current_Phase : in out Phase);
+  43     --# derives Current_Phase from *, Bus_Data;
+  44  
+  45  end IBIT;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

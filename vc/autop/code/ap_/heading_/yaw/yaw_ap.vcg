@@ -1,0 +1,153 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.84
+
+                            procedure yaw.Yaw_AP
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 50:
+
+procedure_yaw_ap_1.
+H1:    true .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    slip >= instruments__slipangle__first .
+H5:    slip <= instruments__slipangle__last .
+        ->
+C1:    slip >= instruments__slipangle__first .
+C2:    slip <= instruments__slipangle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 50:
+
+procedure_yaw_ap_2.
+H1:    true .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    slip >= instruments__slipangle__first .
+H5:    slip <= instruments__slipangle__last .
+H6:    slip >= instruments__slipangle__first .
+H7:    slip <= instruments__slipangle__last .
+H8:    present_sliprate__1 >= degrees__degreespersec__first .
+H9:    present_sliprate__1 <= degrees__degreespersec__last .
+        ->
+C1:    present_sliprate__1 >= degreespersec__first .
+C2:    present_sliprate__1 <= degreespersec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 51:
+
+procedure_yaw_ap_3.
+H1:    true .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    slip >= instruments__slipangle__first .
+H5:    slip <= instruments__slipangle__last .
+H6:    slip >= instruments__slipangle__first .
+H7:    slip <= instruments__slipangle__last .
+H8:    present_sliprate__1 >= degrees__degreespersec__first .
+H9:    present_sliprate__1 <= degrees__degreespersec__last .
+H10:   present_sliprate__1 >= degreespersec__first .
+H11:   present_sliprate__1 <= degreespersec__last .
+H12:   present_sliprate__1 >= degreespersec__first .
+H13:   present_sliprate__1 <= degreespersec__last .
+        ->
+C1:    mach >= instruments__machnumber__first .
+C2:    mach <= instruments__machnumber__last .
+C3:    present_sliprate__1 >= degreespersec__first .
+C4:    present_sliprate__1 <= degreespersec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 51:
+
+procedure_yaw_ap_4.
+H1:    true .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    slip >= instruments__slipangle__first .
+H5:    slip <= instruments__slipangle__last .
+H6:    slip >= instruments__slipangle__first .
+H7:    slip <= instruments__slipangle__last .
+H8:    present_sliprate__1 >= degrees__degreespersec__first .
+H9:    present_sliprate__1 <= degrees__degreespersec__last .
+H10:   present_sliprate__1 >= degreespersec__first .
+H11:   present_sliprate__1 <= degreespersec__last .
+H12:   present_sliprate__1 >= degreespersec__first .
+H13:   present_sliprate__1 <= degreespersec__last .
+H14:   mach >= instruments__machnumber__first .
+H15:   mach <= instruments__machnumber__last .
+H16:   present_sliprate__1 >= degreespersec__first .
+H17:   present_sliprate__1 <= degreespersec__last .
+H18:   calc_rudder_move(present_sliprate__1, mach) >= 
+           surfaces__controlangle__first .
+H19:   calc_rudder_move(present_sliprate__1, mach) <= 
+           surfaces__controlangle__last .
+        ->
+C1:    calc_rudder_move(present_sliprate__1, mach) >= 
+           surfaces__controlangle__first .
+C2:    calc_rudder_move(present_sliprate__1, mach) <= 
+           surfaces__controlangle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 52:
+
+procedure_yaw_ap_5.
+H1:    true .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    slip >= instruments__slipangle__first .
+H5:    slip <= instruments__slipangle__last .
+H6:    slip >= instruments__slipangle__first .
+H7:    slip <= instruments__slipangle__last .
+H8:    present_sliprate__1 >= degrees__degreespersec__first .
+H9:    present_sliprate__1 <= degrees__degreespersec__last .
+H10:   present_sliprate__1 >= degreespersec__first .
+H11:   present_sliprate__1 <= degreespersec__last .
+H12:   present_sliprate__1 >= degreespersec__first .
+H13:   present_sliprate__1 <= degreespersec__last .
+H14:   mach >= instruments__machnumber__first .
+H15:   mach <= instruments__machnumber__last .
+H16:   present_sliprate__1 >= degreespersec__first .
+H17:   present_sliprate__1 <= degreespersec__last .
+H18:   calc_rudder_move(present_sliprate__1, mach) >= 
+           surfaces__controlangle__first .
+H19:   calc_rudder_move(present_sliprate__1, mach) <= 
+           surfaces__controlangle__last .
+H20:   calc_rudder_move(present_sliprate__1, mach) >= 
+           surfaces__controlangle__first .
+H21:   calc_rudder_move(present_sliprate__1, mach) <= 
+           surfaces__controlangle__last .
+H22:   calc_rudder_move(present_sliprate__1, mach) >= 
+           surfaces__controlangle__first .
+H23:   calc_rudder_move(present_sliprate__1, mach) <= 
+           surfaces__controlangle__last .
+        ->
+C1:    calc_rudder_move(present_sliprate__1, mach) >= 
+           surfaces__controlangle__first .
+C2:    calc_rudder_move(present_sliprate__1, mach) <= 
+           surfaces__controlangle__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_yaw_ap_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_yaw_ap_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_yaw_ap_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+

@@ -1,0 +1,27 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:43.06*/
+
+                       /*procedure if_motor.Get_Thrust*/
+
+
+rule_family get_thrust_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+get_thrust_rules(1): measuretypes__newton__size >= 0 may_be_deduced.
+get_thrust_rules(2): measuretypes__newton__first may_be_replaced_by -1000000.
+get_thrust_rules(3): measuretypes__newton__last may_be_replaced_by 1000000.
+get_thrust_rules(4): measuretypes__newton__base__first may_be_replaced_by -2147483648.
+get_thrust_rules(5): measuretypes__newton__base__last may_be_replaced_by 2147483647.
+get_thrust_rules(6): power__size >= 0 may_be_deduced.
+get_thrust_rules(7): power__first may_be_replaced_by 0.
+get_thrust_rules(8): power__last may_be_replaced_by 35000.
+get_thrust_rules(9): power__base__first may_be_replaced_by -2147483648.
+get_thrust_rules(10): power__base__last may_be_replaced_by 2147483647.

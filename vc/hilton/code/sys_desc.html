@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+   "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<link href="adi.css" rel="stylesheet" type="text/css">
+<title>
+Missile Guidance Simulator -- System Description
+</title>
+</head>
+
+<body>
+<div class="nav">
+<a href="../index.html">Adrian</a> &rarr;
+<a href="index.html">Harness</a> &rarr;
+System description
+</div>
+
+<h1>System Description</h1>
+
+<ul>
+ <li><a href="#subsys">Subsystems</a>
+ <li><a href="#system">Missile system</a>
+ <li><a href="#harness">Test harness</a>
+ <li><a href="#spark">SPARK configuration</a>
+</ul>
+
+<a name="subsys">
+<h2>Subsystems</h2>
+
+<p>The main guidance system consists of a number of more or less independent
+subsystems, linked at the top level.  Each subsystem listed below has a 
+package spec and body with the same name in which it handles reading
+of the data from the device and writing control information from
+the device.  It also has a package spec and body where the name is
+prefixed <kbd>if_</kbd> which is the test harnesses' mock-up of
+the sensor.  As an example, the Airspeed subsystem implements its
+reading and writing in <kbd>airspeed.ads, airspeed.adb</kbd> and
+has its mock-up in <kbd>if_airspeed.ads, if_airspeed.adb.</kbd>
+
+<dl>
+ <dt>Airspeed
+  <dd>Airspeed indicator; indicates speed of air relative to missile
+along missile long axis.
+ <dt>Barometer
+  <dd>Reads the current altitude via barometric pressure.
+ <dt>Compass
+  <dd>Reads the missile attitude in two planes relative to the
+Earth's magnetic field using a solid-state sensor.
+ <dt>Destruct
+  <dd>Self-destruct mechanism; destroys the missile with high
+explosive charges.
+ <dt>Fuel
+  <dd>Fuel tank sensor; measures the amount of fuel left in the missile. 
+ <dt>Fuze
+  <dd>Proximity fuze; when armed, triggers the warhead when the missile
+passes close by a target.
+ <dt>INS
+  <dd>Inertial navigation system; measures the displacement of the missile
+from its initialised starting point.
+ <dt>IR
+  <dd>Imaging infra-red sensor; produces a grid image of heat-emitting
+objects in front of the missile.
+ <dt>Motor
+  <dd>Rocket motor; variable thrust level may be commanded by the guidance
+system.
+ <dt>Radar
+  <dd>Millimetre-wave radar; produces angle and range data for
+ metallic objects in front of the missile.
+ <dt>Steer
+  <dd>Interface to the missile's steering fins; allows commands
+to steer the missile relative to its current heading.
+ <dt>Warhead
+  <dd>Small nuclear warhead; may be armed and disarmed, but can only
+be detonated via the fuze.
+</dl>
+
+<a name="system"></a>
+<h2>Missile System</h2>
+
+The top-level missile guidance code is in the
+<kbd>missile.ads, missile.adb</kbd> files.  It provides
+<kbd>Init</kbd> and <kbd>Poll</kbd> operations that
+respectively:
+<ul>
+ <li>initialise the system; and 
+ <li>poll each of the subsystems, then run higher-level operations
+  including the <kbd>nav</kbd> navigation package.
+</ul>
+
+<a name="harness"></a>
+<h2>Harness</h2>
+
+<p>The <kbd>test_harness.adb</kbd> file is the Ada main  program
+for the system.  It takes commands from standard input, parses
+them and either executes changes in the <kbd>if_...</kbd> packages
+or monitors the state of subsystems.
+
+<p>The test harness has a <kbd>Cycle</kbd> command which runs each
+subsystem component through one polling cycle.  This emulates a
+20ms slice of system operation.
+
+<a name="spark"></a>
+<h2>SPARK Configuration</h2>
+
+<p>The code is set up for comprehensive SPARK analysis including
+full proof of absence of run-time errors (exceptions).
+There is a <kbd>spark.sw</kbd> switch which defines the standard
+options to be used for SPARK analysis, including use of
+the <kbd>missile.idx</kbd> index file, the 
+<kbd>missile.wrn</kbd> warning control file, and
+use of <kbd>.lss, .lsb</kbd> extensions for specification
+and body listing files respectively.  
+
+<p>The <kbd>-exp</kbd> switch generates proof obligations to 
+show the absence of any run-time errors including those for
+expression overflow.  For this purpose it uses the 
+<kbd>gnat.cfg</kbd> file that specifies the type sizes for
+a specimen target compiler.  If you are planning to run this
+code on a real system, check that the type sizes are correct
+for your <em>target</em> compiler.
+
+<p>The system <kbd>Makefile</kbd> is set up to use the <kbd>pogs</kbd>
+and <kbd>sparksimp</kbd> tools to simplify and log the system proofs.
+
+<hr>
+</body>
+<address>
+Web pages maintained by 
+<a href="mailto:sim@suslik.org">Adrian Hilton</a>
+</address>
+</html>

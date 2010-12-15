@@ -1,0 +1,28 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:41.87*/
+
+                     /*function ir_cfg.Sector_To_Millirad*/
+
+
+rule_family sector_to_mi_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+sector_to_mi_rules(1): integer__size >= 0 may_be_deduced.
+sector_to_mi_rules(2): integer__first may_be_replaced_by -2147483648.
+sector_to_mi_rules(3): integer__last may_be_replaced_by 2147483647.
+sector_to_mi_rules(4): integer__base__first may_be_replaced_by -2147483648.
+sector_to_mi_rules(5): integer__base__last may_be_replaced_by 2147483647.
+sector_to_mi_rules(6): sector_range__size >= 0 may_be_deduced.
+sector_to_mi_rules(7): sector_range__first may_be_replaced_by -12.
+sector_to_mi_rules(8): sector_range__last may_be_replaced_by 12.
+sector_to_mi_rules(9): sector_range__base__first <= sector_range__base__last may_be_deduced.
+sector_to_mi_rules(10): sector_range__base__first <= sector_range__first may_be_deduced.
+sector_to_mi_rules(11): sector_range__base__last >= sector_range__last may_be_deduced.

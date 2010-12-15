@@ -1,0 +1,92 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:41  SIMPLIFIED 25-NOV-2009, 14:19:04
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure ir.Read_Location
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_read_location_1.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+***  Proved C3:  sy >= sector__first
+     using hypothesis H4.
+***  Proved C4:  sy <= sector__last
+     using hypothesis H5.
+***  Proved C5:  sx >= sector__first
+     using hypothesis H2.
+***  Proved C6:  sx <= sector__last
+     using hypothesis H3.
+-S-  Applied substitution rule read_locatio_rules(13).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+<S>  New C1:  fld_temp(element(element(detect_points, [sx]), [sy])) >= 0
+-S-  Applied substitution rule read_locatio_rules(14).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+<S>  New C2:  fld_temp(element(element(detect_points, [sx]), [sy])) <= 6000
+-S-  Applied substitution rule read_locatio_rules(18).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H2:  sx >= - 12
+<S>  New H4:  sy >= - 12
+<S>  New H6:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule read_locatio_rules(19).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H3:  sx <= 12
+<S>  New H5:  sy <= 12
+<S>  New H6:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+***  Proved C1:  fld_temp(element(element(detect_points, [sx]), [sy])) >= 0
+     using hypotheses H2, H3, H4, H5 & H6.
+***  Proved C2:  fld_temp(element(element(detect_points, [sx]), [sy])) <= 6000
+     using hypotheses H2, H3, H4, H5 & H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_location_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_location_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_location_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

@@ -1,0 +1,56 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.85
+
+                           procedure if_fuze.Arm
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 58:
+
+procedure_arm_1.
+H1:    true .
+H2:    last_state >= state_types__fuze__first .
+H3:    last_state <= state_types__fuze__last .
+H4:    last_state = state_types__unarmed .
+        ->
+C1:    bus_id >= bc1553__lru_name__first .
+C2:    bus_id <= bc1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    1 >= bus__word_index__first .
+C6:    1 <= bus__word_index__last .
+C7:    element(state_types__fuze_values, [state_types__arming]) >= 
+           bus__word__first .
+C8:    element(state_types__fuze_values, [state_types__arming]) <= 
+           bus__word__last .
+C9:    state_types__arming >= state_types__fuze__first .
+C10:   state_types__arming <= state_types__fuze__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_arm_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_arm_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_arm_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_arm_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+

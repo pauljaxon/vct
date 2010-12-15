@@ -1,0 +1,39 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.60
+
+                           function encode.Kelvin
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 27:
+
+function_kelvin_1.
+H1:    true .
+H2:    k >= measuretypes__kelvin__first .
+H3:    k <= measuretypes__kelvin__last .
+        ->
+C1:    k >= bus__word__first .
+C2:    k <= bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+function_kelvin_2.
+H1:    true .
+H2:    k >= measuretypes__kelvin__first .
+H3:    k <= measuretypes__kelvin__last .
+H4:    k >= bus__word__first .
+H5:    k <= bus__word__last .
+        ->
+C1:    true .
+C2:    k >= bus__word__first .
+C3:    k <= bus__word__last .
+ 
+

@@ -1,0 +1,177 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:40.86*/
+
+                          /*procedure if_fuze.Disarm*/
+
+
+rule_family disarm_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+disarm_rules(1): state_types__word__first <= element(state_types__fuze_values, [I]) may_be_deduced_from [state_types__unarmed <= I, I <= state_types__timed_out].
+disarm_rules(2): element(state_types__fuze_values, [I]) <= 
+     state_types__word__last may_be_deduced_from [state_types__unarmed <= I, I <= state_types__timed_out].
+disarm_rules(3): bus_id may_be_replaced_by bc1553__fuze.
+disarm_rules(4): integer__size >= 0 may_be_deduced.
+disarm_rules(5): integer__first may_be_replaced_by -2147483648.
+disarm_rules(6): integer__last may_be_replaced_by 2147483647.
+disarm_rules(7): integer__base__first may_be_replaced_by -2147483648.
+disarm_rules(8): integer__base__last may_be_replaced_by 2147483647.
+disarm_rules(9): state_types__word__size >= 0 may_be_deduced.
+disarm_rules(10): state_types__word__first may_be_replaced_by 0.
+disarm_rules(11): state_types__word__last may_be_replaced_by 65535.
+disarm_rules(12): state_types__word__base__first may_be_replaced_by -2147483648.
+disarm_rules(13): state_types__word__base__last may_be_replaced_by 2147483647.
+disarm_rules(14): state_types__fuze__size >= 0 may_be_deduced.
+disarm_rules(15): state_types__fuze__first may_be_replaced_by state_types__unarmed.
+disarm_rules(16): state_types__fuze__last may_be_replaced_by state_types__timed_out.
+disarm_rules(17): state_types__fuze__base__first may_be_replaced_by state_types__unarmed.
+disarm_rules(18): state_types__fuze__base__last may_be_replaced_by state_types__timed_out.
+disarm_rules(19): state_types__fuze__pos(state_types__fuze__first) may_be_replaced_by 0.
+disarm_rules(20): state_types__fuze__pos(state_types__unarmed) may_be_replaced_by 0.
+disarm_rules(21): state_types__fuze__val(0) may_be_replaced_by 
+     state_types__unarmed.
+disarm_rules(22): state_types__fuze__pos(state_types__arming) may_be_replaced_by 1.
+disarm_rules(23): state_types__fuze__val(1) may_be_replaced_by 
+     state_types__arming.
+disarm_rules(24): state_types__fuze__pos(state_types__live) may_be_replaced_by 2.
+disarm_rules(25): state_types__fuze__val(2) may_be_replaced_by 
+     state_types__live.
+disarm_rules(26): state_types__fuze__pos(state_types__triggering) may_be_replaced_by 3.
+disarm_rules(27): state_types__fuze__val(3) may_be_replaced_by 
+     state_types__triggering.
+disarm_rules(28): state_types__fuze__pos(state_types__timed_out) may_be_replaced_by 4.
+disarm_rules(29): state_types__fuze__val(4) may_be_replaced_by 
+     state_types__timed_out.
+disarm_rules(30): state_types__fuze__pos(state_types__fuze__last) may_be_replaced_by 4.
+disarm_rules(31): state_types__fuze__pos(succ(X)) may_be_replaced_by 
+     state_types__fuze__pos(X) + 1
+     if [X <=state_types__timed_out, X <> state_types__timed_out].
+disarm_rules(32): state_types__fuze__pos(pred(X)) may_be_replaced_by 
+     state_types__fuze__pos(X) - 1
+     if [X >=state_types__unarmed, X <> state_types__unarmed].
+disarm_rules(33): state_types__fuze__pos(X) >= 0 may_be_deduced_from
+     [state_types__unarmed <= X, X <= state_types__timed_out].
+disarm_rules(34): state_types__fuze__pos(X) <= 4 may_be_deduced_from
+     [state_types__unarmed <= X, X <= state_types__timed_out].
+disarm_rules(35): state_types__fuze__val(X) >= 
+     state_types__unarmed may_be_deduced_from
+     [0 <= X, X <= 4].
+disarm_rules(36): state_types__fuze__val(X) <= 
+     state_types__timed_out may_be_deduced_from
+     [0 <= X, X <= 4].
+disarm_rules(37): succ(state_types__fuze__val(X)) may_be_replaced_by 
+     state_types__fuze__val(X+1)
+     if [0 <= X, X < 4].
+disarm_rules(38): pred(state_types__fuze__val(X)) may_be_replaced_by 
+     state_types__fuze__val(X-1)
+     if [0 < X, X <= 4].
+disarm_rules(39): state_types__fuze__pos(state_types__fuze__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 4].
+disarm_rules(40): state_types__fuze__val(state_types__fuze__pos(X)) may_be_replaced_by X
+     if [state_types__unarmed <= X, X <= state_types__timed_out].
+disarm_rules(41): state_types__fuze__pos(X) <= state_types__fuze__pos(Y) & X <= Y are_interchangeable 
+     if [state_types__unarmed <= X, X <= state_types__timed_out, 
+     state_types__unarmed <= Y, Y <= state_types__timed_out].
+disarm_rules(42): state_types__fuze__val(X) <= state_types__fuze__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 4, 0 <= Y, Y <= 4].
+disarm_rules(43): bus__word_index__size >= 0 may_be_deduced.
+disarm_rules(44): bus__word_index__first may_be_replaced_by 1.
+disarm_rules(45): bus__word_index__last may_be_replaced_by 31.
+disarm_rules(46): bus__word_index__base__first <= bus__word_index__base__last may_be_deduced.
+disarm_rules(47): bus__word_index__base__first <= bus__word_index__first may_be_deduced.
+disarm_rules(48): bus__word_index__base__last >= bus__word_index__last may_be_deduced.
+disarm_rules(49): bus__word__size >= 0 may_be_deduced.
+disarm_rules(50): bus__word__first may_be_replaced_by 0.
+disarm_rules(51): bus__word__last may_be_replaced_by 65535.
+disarm_rules(52): bus__word__base__first may_be_replaced_by -2147483648.
+disarm_rules(53): bus__word__base__last may_be_replaced_by 2147483647.
+disarm_rules(54): bus__all_msg_index__size >= 0 may_be_deduced.
+disarm_rules(55): bus__all_msg_index__first may_be_replaced_by 0.
+disarm_rules(56): bus__all_msg_index__last may_be_replaced_by 63.
+disarm_rules(57): bus__all_msg_index__base__first may_be_replaced_by -32768.
+disarm_rules(58): bus__all_msg_index__base__last may_be_replaced_by 32767.
+disarm_rules(59): bus__lru_subaddress_index__size >= 0 may_be_deduced.
+disarm_rules(60): bus__lru_subaddress_index__first may_be_replaced_by 1.
+disarm_rules(61): bus__lru_subaddress_index__last may_be_replaced_by 8.
+disarm_rules(62): bus__lru_subaddress_index__base__first may_be_replaced_by -32768.
+disarm_rules(63): bus__lru_subaddress_index__base__last may_be_replaced_by 32767.
+disarm_rules(64): bc1553__lru_name__size >= 0 may_be_deduced.
+disarm_rules(65): bc1553__lru_name__first may_be_replaced_by bc1553__barometer.
+disarm_rules(66): bc1553__lru_name__last may_be_replaced_by bc1553__warhead.
+disarm_rules(67): bc1553__lru_name__base__first may_be_replaced_by bc1553__barometer.
+disarm_rules(68): bc1553__lru_name__base__last may_be_replaced_by bc1553__warhead.
+disarm_rules(69): bc1553__lru_name__pos(bc1553__lru_name__first) may_be_replaced_by 0.
+disarm_rules(70): bc1553__lru_name__pos(bc1553__barometer) may_be_replaced_by 0.
+disarm_rules(71): bc1553__lru_name__val(0) may_be_replaced_by 
+     bc1553__barometer.
+disarm_rules(72): bc1553__lru_name__pos(bc1553__asi) may_be_replaced_by 1.
+disarm_rules(73): bc1553__lru_name__val(1) may_be_replaced_by 
+     bc1553__asi.
+disarm_rules(74): bc1553__lru_name__pos(bc1553__ins) may_be_replaced_by 2.
+disarm_rules(75): bc1553__lru_name__val(2) may_be_replaced_by 
+     bc1553__ins.
+disarm_rules(76): bc1553__lru_name__pos(bc1553__compass) may_be_replaced_by 3.
+disarm_rules(77): bc1553__lru_name__val(3) may_be_replaced_by 
+     bc1553__compass.
+disarm_rules(78): bc1553__lru_name__pos(bc1553__fuel) may_be_replaced_by 4.
+disarm_rules(79): bc1553__lru_name__val(4) may_be_replaced_by 
+     bc1553__fuel.
+disarm_rules(80): bc1553__lru_name__pos(bc1553__fuze) may_be_replaced_by 5.
+disarm_rules(81): bc1553__lru_name__val(5) may_be_replaced_by 
+     bc1553__fuze.
+disarm_rules(82): bc1553__lru_name__pos(bc1553__radar) may_be_replaced_by 6.
+disarm_rules(83): bc1553__lru_name__val(6) may_be_replaced_by 
+     bc1553__radar.
+disarm_rules(84): bc1553__lru_name__pos(bc1553__infrared) may_be_replaced_by 7.
+disarm_rules(85): bc1553__lru_name__val(7) may_be_replaced_by 
+     bc1553__infrared.
+disarm_rules(86): bc1553__lru_name__pos(bc1553__fins) may_be_replaced_by 8.
+disarm_rules(87): bc1553__lru_name__val(8) may_be_replaced_by 
+     bc1553__fins.
+disarm_rules(88): bc1553__lru_name__pos(bc1553__motor) may_be_replaced_by 9.
+disarm_rules(89): bc1553__lru_name__val(9) may_be_replaced_by 
+     bc1553__motor.
+disarm_rules(90): bc1553__lru_name__pos(bc1553__destruct) may_be_replaced_by 10.
+disarm_rules(91): bc1553__lru_name__val(10) may_be_replaced_by 
+     bc1553__destruct.
+disarm_rules(92): bc1553__lru_name__pos(bc1553__warhead) may_be_replaced_by 11.
+disarm_rules(93): bc1553__lru_name__val(11) may_be_replaced_by 
+     bc1553__warhead.
+disarm_rules(94): bc1553__lru_name__pos(bc1553__lru_name__last) may_be_replaced_by 11.
+disarm_rules(95): bc1553__lru_name__pos(succ(X)) may_be_replaced_by 
+     bc1553__lru_name__pos(X) + 1
+     if [X <=bc1553__warhead, X <> bc1553__warhead].
+disarm_rules(96): bc1553__lru_name__pos(pred(X)) may_be_replaced_by 
+     bc1553__lru_name__pos(X) - 1
+     if [X >=bc1553__barometer, X <> bc1553__barometer].
+disarm_rules(97): bc1553__lru_name__pos(X) >= 0 may_be_deduced_from
+     [bc1553__barometer <= X, X <= bc1553__warhead].
+disarm_rules(98): bc1553__lru_name__pos(X) <= 11 may_be_deduced_from
+     [bc1553__barometer <= X, X <= bc1553__warhead].
+disarm_rules(99): bc1553__lru_name__val(X) >= bc1553__barometer may_be_deduced_from
+     [0 <= X, X <= 11].
+disarm_rules(100): bc1553__lru_name__val(X) <= bc1553__warhead may_be_deduced_from
+     [0 <= X, X <= 11].
+disarm_rules(101): succ(bc1553__lru_name__val(X)) may_be_replaced_by 
+     bc1553__lru_name__val(X+1)
+     if [0 <= X, X < 11].
+disarm_rules(102): pred(bc1553__lru_name__val(X)) may_be_replaced_by 
+     bc1553__lru_name__val(X-1)
+     if [0 < X, X <= 11].
+disarm_rules(103): bc1553__lru_name__pos(bc1553__lru_name__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 11].
+disarm_rules(104): bc1553__lru_name__val(bc1553__lru_name__pos(X)) may_be_replaced_by X
+     if [bc1553__barometer <= X, X <= bc1553__warhead].
+disarm_rules(105): bc1553__lru_name__pos(X) <= bc1553__lru_name__pos(Y) & X <= Y are_interchangeable 
+     if [bc1553__barometer <= X, X <= bc1553__warhead, 
+     bc1553__barometer <= Y, Y <= bc1553__warhead].
+disarm_rules(106): bc1553__lru_name__val(X) <= bc1553__lru_name__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 11, 0 <= Y, Y <= 11].

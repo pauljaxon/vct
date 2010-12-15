@@ -1,0 +1,536 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:05
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function Pitch.Target_Rate
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_target_rate_1.  @@@@@@@@@@
+***  Proved C1:  target_altitude >= instruments__feet__first
+     using hypothesis H4.
+***  Proved C2:  target_altitude <= instruments__feet__last
+     using hypothesis H5.
+***  Proved C3:  present_altitude >= instruments__feet__first
+     using hypothesis H2.
+***  Proved C4:  present_altitude <= instruments__feet__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_2.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+***  Proved C1:  target_roc(present_altitude, target_altitude) >= 
+          floorfpm__first
+     using hypothesis H12.
+***  Proved C2:  target_roc(present_altitude, target_altitude) <= floorfpm__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_3.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+***  Proved C1:  floorfpm__last >= floorfpm__first
+     using hypotheses H12 & H13.
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_4.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+***  Proved C1:  true
+***  Proved C2:  floorfpm__first <= floorfpm__last
+     using hypotheses H12 & H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_5.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+***  Proved C1:  climb_rate >= floorfpm__first
+     using hypothesis H17.
+***  Proved C2:  climb_rate <= floorfpm__last
+     using hypothesis H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_6.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  true
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+***  Proved C1:  floorfpm__last >= floorfpm__first
+     using hypothesis H17.
+***  Proved C2:  true
+***  Proved C3:  target_roc(present_altitude, target_altitude) >= 
+          floorfpm__first
+     using hypothesis H12.
+***  Proved C4:  target_roc(present_altitude, target_altitude) <= floorfpm__last
+     using hypothesis H13.
+***  Proved C5:  present_altitude >= instruments__feet__first
+     using hypothesis H2.
+***  Proved C6:  present_altitude <= instruments__feet__last
+     using hypothesis H3.
+***  Proved C7:  target_altitude >= instruments__feet__first
+     using hypothesis H4.
+***  Proved C8:  target_altitude <= instruments__feet__last
+     using hypothesis H5.
+***  Proved C9:  climb_rate >= instruments__feetpermin__first
+     using hypothesis H6.
+***  Proved C10:  climb_rate <= instruments__feetpermin__last
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_7.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  true
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+***  Proved C1:  true
+***  Proved C2:  floorfpm__first <= floorfpm__last
+     using hypothesis H19.
+***  Proved C3:  target_roc(present_altitude, target_altitude) >= 
+          floorfpm__first
+     using hypothesis H12.
+***  Proved C4:  target_roc(present_altitude, target_altitude) <= floorfpm__last
+     using hypothesis H13.
+***  Proved C5:  present_altitude >= instruments__feet__first
+     using hypothesis H2.
+***  Proved C6:  present_altitude <= instruments__feet__last
+     using hypothesis H3.
+***  Proved C7:  target_altitude >= instruments__feet__first
+     using hypothesis H4.
+***  Proved C8:  target_altitude <= instruments__feet__last
+     using hypothesis H5.
+***  Proved C9:  climb_rate >= instruments__feetpermin__first
+     using hypothesis H6.
+***  Proved C10:  climb_rate <= instruments__feetpermin__last
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_8.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+***  Proved C1:  climb_rate >= floorfpm__first
+     using hypothesis H18.
+***  Proved C2:  climb_rate <= floorfpm__last
+     using hypothesis H19.
+***  Proved C3:  target_roc(present_altitude, target_altitude) >= 
+          floorfpm__first
+     using hypothesis H12.
+***  Proved C4:  target_roc(present_altitude, target_altitude) <= floorfpm__last
+     using hypothesis H13.
+***  Proved C5:  present_altitude >= instruments__feet__first
+     using hypothesis H2.
+***  Proved C6:  present_altitude <= instruments__feet__last
+     using hypothesis H3.
+***  Proved C7:  target_altitude >= instruments__feet__first
+     using hypothesis H4.
+***  Proved C8:  target_altitude <= instruments__feet__last
+     using hypothesis H5.
+***  Proved C9:  climb_rate >= instruments__feetpermin__first
+     using hypothesis H6.
+***  Proved C10:  climb_rate <= instruments__feetpermin__last
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_9.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C7:  true
+-S-  Applied substitution rule target_rate_rules(24).
+     This was achieved by replacing all occurrences of degreespersec__first by:
+          - 180.
+<S>  New C1:  (target_climb_rate - floor_climb_rate) div 12 >= - 180
+<S>  New C3:  (target_climb_rate - floor_climb_rate) div 12 >= - 180
+-S-  Applied substitution rule target_rate_rules(25).
+     This was achieved by replacing all occurrences of degreespersec__last by:
+          180.
+<S>  New C2:  (target_climb_rate - floor_climb_rate) div 12 <= 180
+<S>  New C4:  (target_climb_rate - floor_climb_rate) div 12 <= 180
+-S-  Applied substitution rule target_rate_rules(16).
+     This was achieved by replacing all occurrences of 
+          instruments__feetpermin__base__first by:
+          - 32768.
+<S>  New C5:  (target_climb_rate - floor_climb_rate) div 12 >= - 32768
+<S>  New C8:  target_climb_rate - floor_climb_rate >= - 32768
+-S-  Applied substitution rule target_rate_rules(17).
+     This was achieved by replacing all occurrences of 
+          instruments__feetpermin__base__last by:
+          32767.
+<S>  New C6:  (target_climb_rate - floor_climb_rate) div 12 <= 32767
+<S>  New C9:  target_climb_rate - floor_climb_rate <= 32767
+-S-  Applied substitution rule target_rate_rules(9).
+     This was achieved by replacing all occurrences of instruments__feet__first 
+          by:
+          0.
+<S>  New H5:  present_altitude >= 0
+<S>  New H7:  target_altitude >= 0
+-S-  Applied substitution rule target_rate_rules(10).
+     This was achieved by replacing all occurrences of instruments__feet__last 
+          by:
+          50000.
+<S>  New H6:  present_altitude <= 50000
+<S>  New H8:  target_altitude <= 50000
+-S-  Applied substitution rule target_rate_rules(14).
+     This was achieved by replacing all occurrences of 
+          instruments__feetpermin__first by:
+          - 6000.
+<S>  New H9:  climb_rate >= - 6000
+-S-  Applied substitution rule target_rate_rules(15).
+     This was achieved by replacing all occurrences of 
+          instruments__feetpermin__last by:
+          6000.
+<S>  New H10:  climb_rate <= 6000
+-S-  Applied substitution rule target_rate_rules(19).
+     This was achieved by replacing all occurrences of floorfpm__first by:
+          - 1000.
+<S>  New H1:  floor_climb_rate >= - 1000
+<S>  New H3:  target_climb_rate >= - 1000
+-S-  Applied substitution rule target_rate_rules(20).
+     This was achieved by replacing all occurrences of floorfpm__last by:
+          1000.
+<S>  New H2:  floor_climb_rate <= 1000
+<S>  New H4:  target_climb_rate <= 1000
+***  Proved C8:  target_climb_rate - floor_climb_rate >= - 32768
+     using hypotheses H2 & H3.
+***  Proved C9:  target_climb_rate - floor_climb_rate <= 32767
+     using hypotheses H1 & H4.
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  (target_climb_rate - floor_climb_rate) div 12 >= - 180
+     using hypotheses H2 & H3.
+***  Proved C2:  (target_climb_rate - floor_climb_rate) div 12 <= 180
+     using hypotheses H1 & H4.
+***  Proved C5:  (target_climb_rate - floor_climb_rate) div 12 >= - 32768
+     using hypotheses H2 & H3.
+***  Proved C6:  (target_climb_rate - floor_climb_rate) div 12 <= 32767
+     using hypotheses H1 & H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_10.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  true
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+***  Proved C2:  10 <= degreespersec__last
+     using hypotheses H16 & H26.
+-S-  Applied substitution rule target_rate_rules(24).
+     This was achieved by replacing all occurrences of degreespersec__first by:
+          - 180.
+<S>  New H15:  (target_climb_rate - floor_climb_rate) div 12 >= - 180
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_11.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  true
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  - 10 >= system__min_int
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  - 10 <= system__max_int
+-S-  Applied substitution rule target_rate_rules(1).
+     This was achieved by replacing all occurrences of system__min_int by:
+          - 2147483648.
+<S>  New C1:  true
+-S-  Applied substitution rule target_rate_rules(2).
+     This was achieved by replacing all occurrences of system__max_int by:
+          2147483647.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_12.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  true
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H29 on reading formula in, to give:
+     %%%  H29:  - 10 >= system__min_int
+%%%  Simplified H30 on reading formula in, to give:
+     %%%  H30:  - 10 <= system__max_int
+%%%  Simplified H31 on reading formula in, to give:
+     %%%  H31:  (target_climb_rate - floor_climb_rate) div 12 < - 10
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  - 10 >= degreespersec__first
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  - 10 <= degreespersec__last
+***  Proved C1:  - 10 >= degreespersec__first
+     using hypotheses H15 & H31.
+-S-  Applied substitution rule target_rate_rules(25).
+     This was achieved by replacing all occurrences of degreespersec__last by:
+          180.
+<S>  New H16:  (target_climb_rate - floor_climb_rate) div 12 <= 180
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_13.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  true
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H28).
+***  Proved C1:  true
+***  Proved C2:  10 >= degreespersec__first
+     using hypothesis H27.
+***  Proved C3:  10 <= degreespersec__last
+     using hypothesis H28.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_14.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  true
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H29 on reading formula in, to give:
+     %%%  H29:  - 10 >= system__min_int
+%%%  Simplified H30 on reading formula in, to give:
+     %%%  H30:  - 10 <= system__max_int
+%%%  Simplified H31 on reading formula in, to give:
+     %%%  H31:  (target_climb_rate - floor_climb_rate) div 12 < - 10
+%%%  Simplified H32 on reading formula in, to give:
+     %%%  H32:  - 10 >= degreespersec__first
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  - 10 <= degreespersec__last
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  - 10 >= degreespersec__first
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  - 10 <= degreespersec__last
+***  Proved C1:  true
+***  Proved C2:  - 10 >= degreespersec__first
+     using hypothesis H32.
+***  Proved C3:  - 10 <= degreespersec__last
+     using hypothesis H33.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_15.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  true
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H29 on reading formula in, to give:
+     %%%  H29:  - 10 >= system__min_int
+%%%  Simplified H30 on reading formula in, to give:
+     %%%  H30:  - 10 <= system__max_int
+%%%  Simplified H31 on reading formula in, to give:
+     %%%  H31:  not (target_climb_rate - floor_climb_rate) div 12 < - 10
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H16).
+***  Proved C1:  true
+***  Proved C2:  (target_climb_rate - floor_climb_rate) div 12 >= 
+          degreespersec__first
+     using hypothesis H15.
+***  Proved C3:  (target_climb_rate - floor_climb_rate) div 12 <= 
+          degreespersec__last
+     using hypothesis H16.
+***  PROVED VC.
+

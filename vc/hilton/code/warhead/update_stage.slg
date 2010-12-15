@@ -1,0 +1,226 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:43  SIMPLIFIED 25-NOV-2009, 14:19:16
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure warhead.Update_Stage
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_update_stage_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  stage__first <= current_stage
+***  Proved C3:  stage__first <= current_stage
+     using hypothesis H2.
+***  Proved C4:  current_stage <= stage__last
+     using hypothesis H3.
+-S-  Applied substitution rule update_stage_rules(4).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  stage_timer >= 0
+<S>  New C1:  element(max_stage_time, [current_stage]) >= 0
+-S-  Applied substitution rule update_stage_rules(5).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  stage_timer <= 8640000
+<S>  New C2:  element(max_stage_time, [current_stage]) <= 8640000
+-S-  Applied substitution rule update_stage_rules(38).
+     This was achieved by replacing all occurrences of stage__first by:
+          warhead_cfg__inactive.
+<S>  New H2:  warhead_cfg__inactive <= current_stage
+-S-  Applied substitution rule update_stage_rules(39).
+     This was achieved by replacing all occurrences of stage__last by:
+          warhead_cfg__detonated.
+<S>  New H3:  current_stage <= warhead_cfg__detonated
+---  Eliminated hypothesis H1 (true-hypothesis).
+***  Proved C1:  element(max_stage_time, [current_stage]) >= 0
+     using hypotheses H2 & H3.
+***  Proved C2:  element(max_stage_time, [current_stage]) <= 8640000
+     using hypotheses H2 & H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_stage_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H7)
+          .
+***  Proved C1:  t_now__1 >= clock__millisecond__first
+     using hypothesis H13.
+***  Proved C2:  t_now__1 <= clock__millisecond__last
+     using hypothesis H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_stage_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+-S-  Applied substitution rule update_stage_rules(4).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  stage_timer >= 0
+<S>  New H6:  element(max_stage_time, [current_stage]) >= 0
+<S>  New H13:  t_now__1 >= 0
+-S-  Applied substitution rule update_stage_rules(5).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  stage_timer <= 8640000
+<S>  New H7:  element(max_stage_time, [current_stage]) <= 8640000
+<S>  New H14:  t_now__1 <= 8640000
+-S-  Applied substitution rule update_stage_rules(6).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__first by:
+          - 2147483648.
+<S>  New C1:  t_valid__1 and stage_timer < t_now__1 -> t_now__1 - stage_timer 
+          >= - 2147483648 and t_now__1 - stage_timer <= 
+          clock__millisecond__base__last
+-S-  Applied substitution rule update_stage_rules(7).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__last by:
+          2147483647.
+<S>  New C1:  t_valid__1 and stage_timer < t_now__1 -> t_now__1 - stage_timer 
+          >= - 2147483648 and t_now__1 - stage_timer <= 2147483647
+-S-  Applied substitution rule update_stage_rules(38).
+     This was achieved by replacing all occurrences of stage__first by:
+          warhead_cfg__inactive.
+<S>  New H2:  warhead_cfg__inactive <= current_stage
+-S-  Applied substitution rule update_stage_rules(39).
+     This was achieved by replacing all occurrences of stage__last by:
+          warhead_cfg__detonated.
+<S>  New H3:  current_stage <= warhead_cfg__detonated
+***  Proved C1:  t_valid__1 and stage_timer < t_now__1 -> t_now__1 - 
+          stage_timer >= - 2147483648 and t_now__1 - stage_timer <= 2147483647
+     using hypotheses H4, H5, H13 & H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_stage_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H14).
+***  Proved C1:  t_now__1 >= clock__millisecond__first
+     using hypothesis H13.
+***  Proved C2:  t_now__1 <= clock__millisecond__last
+     using hypothesis H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_stage_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= current_stage
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  stage__first <= warhead_cfg__inactive
+-S-  Applied substitution rule update_stage_rules(38).
+     This was achieved by replacing all occurrences of stage__first by:
+          warhead_cfg__inactive.
+<S>  New H2:  warhead_cfg__inactive <= current_stage
+<S>  New C1:  true
+-S-  Applied substitution rule update_stage_rules(39).
+     This was achieved by replacing all occurrences of stage__last by:
+          warhead_cfg__detonated.
+<S>  New H3:  current_stage <= warhead_cfg__detonated
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_stage_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_stage_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_stage_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

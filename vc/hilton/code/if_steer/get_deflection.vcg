@@ -1,0 +1,70 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.72
+
+                     procedure if_steer.Get_Deflection
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 51:
+
+procedure_get_deflection_1.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(last_fins, [
+           i___1]) >= angle__first) and (element(last_fins, [
+           i___1]) <= angle__last))) .
+H5:    true .
+H6:    last_valid .
+        ->
+C1:    element(last_fins, [for_fin]) >= angle__first .
+C2:    element(last_fins, [for_fin]) <= angle__last .
+C3:    for_fin >= fin__first .
+C4:    for_fin <= fin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 53:
+
+procedure_get_deflection_2.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(last_fins, [
+           i___1]) >= angle__first) and (element(last_fins, [
+           i___1]) <= angle__last))) .
+H5:    true .
+H6:    not last_valid .
+        ->
+C1:    0 >= angle__first .
+C2:    0 <= angle__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_get_deflection_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_get_deflection_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_get_deflection_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_get_deflection_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+

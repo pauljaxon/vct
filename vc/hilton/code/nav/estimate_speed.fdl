@@ -1,0 +1,87 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:44.21}
+
+                        {procedure nav.Estimate_Speed}
+
+
+title procedure estimate_speed;
+
+  function round__(real) : integer;
+  type long_integer = integer;
+  type measuretypes__meter = integer;
+  type measuretypes__meter_per_sec = integer;
+  type clock__millisecond = integer;
+  type confidence = (none, low, high);
+  type sensor_status = (unknown, valid, failed, restarted);
+  const sensor_status__base__last : sensor_status = pending; 
+  const sensor_status__base__first : sensor_status = pending; 
+  const integer32__base__last : integer = pending; 
+  const integer32__base__first : integer = pending; 
+  const meter_per_sec__base__last : integer = pending; 
+  const meter_per_sec__base__first : integer = pending; 
+  const meter__base__last : integer = pending; 
+  const meter__base__first : integer = pending; 
+  const confidence__base__last : confidence = pending; 
+  const confidence__base__first : confidence = pending; 
+  const sensor_history__meter_per_sec__base__last : integer = pending; 
+  const sensor_history__meter_per_sec__base__first : integer = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const measuretypes__meter_per_sec__base__last : integer = pending; 
+  const measuretypes__meter_per_sec__base__first : integer = pending; 
+  const measuretypes__meter__base__last : integer = pending; 
+  const measuretypes__meter__base__first : integer = pending; 
+  const long_integer__base__last : integer = pending; 
+  const long_integer__base__first : integer = pending; 
+  const sensor_status__size : integer = pending; 
+  const sensor_status__last : sensor_status = pending; 
+  const sensor_status__first : sensor_status = pending; 
+  const integer32__size : integer = pending; 
+  const integer32__last : integer = pending; 
+  const integer32__first : integer = pending; 
+  const meter_per_sec__size : integer = pending; 
+  const meter_per_sec__last : integer = pending; 
+  const meter_per_sec__first : integer = pending; 
+  const meter__size : integer = pending; 
+  const meter__last : integer = pending; 
+  const meter__first : integer = pending; 
+  const confidence__size : integer = pending; 
+  const confidence__last : confidence = pending; 
+  const confidence__first : confidence = pending; 
+  const sensor_history__meter_per_sec__size : integer = pending; 
+  const sensor_history__meter_per_sec__last : integer = pending; 
+  const sensor_history__meter_per_sec__first : integer = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  const measuretypes__meter_per_sec__size : integer = pending; 
+  const measuretypes__meter_per_sec__last : integer = pending; 
+  const measuretypes__meter_per_sec__first : integer = pending; 
+  const measuretypes__meter__size : integer = pending; 
+  const measuretypes__meter__last : integer = pending; 
+  const measuretypes__meter__first : integer = pending; 
+  const long_integer__size : integer = pending; 
+  const long_integer__last : integer = pending; 
+  const long_integer__first : integer = pending; 
+  var s : integer;
+  var compass_ss : sensor_status;
+  var ins_ss : sensor_status;
+  var airspeed_ss : sensor_status;
+  var t1 : integer;
+  var m : integer;
+  var c_tmp : confidence;
+  var time_valid : boolean;
+  var t1__3 : integer;
+  var s__3 : integer;
+  var time_valid__2 : boolean;
+  var t1__2 : integer;
+  var c_tmp__1 : confidence;
+  var m__1 : integer;
+
+end;

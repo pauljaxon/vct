@@ -1,0 +1,82 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.76
+
+                       function decode.Meter_Per_Sec
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 71:
+
+function_meter_per_sec_1.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    b >= 32768 .
+        ->
+C1:     -(b - 32768) >= measuretypes__meter_per_sec__first .
+C2:     -(b - 32768) <= measuretypes__meter_per_sec__last .
+C3:    b - 32768 >= measuretypes__meter_per_sec__first .
+C4:    b - 32768 <= measuretypes__meter_per_sec__last .
+C5:    b - 32768 >= integer__base__first .
+C6:    b - 32768 <= integer__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 73:
+
+function_meter_per_sec_2.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    not (b >= 32768) .
+        ->
+C1:    b >= measuretypes__meter_per_sec__first .
+C2:    b <= measuretypes__meter_per_sec__last .
+C3:    b >= measuretypes__meter_per_sec__first .
+C4:    b <= measuretypes__meter_per_sec__last .
+ 
+
+For path(s) from start to finish:
+
+function_meter_per_sec_3.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    b >= 32768 .
+H5:     -(b - 32768) >= measuretypes__meter_per_sec__first .
+H6:     -(b - 32768) <= measuretypes__meter_per_sec__last .
+H7:    b - 32768 >= measuretypes__meter_per_sec__first .
+H8:    b - 32768 <= measuretypes__meter_per_sec__last .
+H9:    b - 32768 >= integer__base__first .
+H10:   b - 32768 <= integer__base__last .
+H11:    -(b - 32768) >= measuretypes__meter_per_sec__first .
+H12:    -(b - 32768) <= measuretypes__meter_per_sec__last .
+        ->
+C1:    true .
+C2:     -(b - 32768) >= measuretypes__meter_per_sec__first .
+C3:     -(b - 32768) <= measuretypes__meter_per_sec__last .
+ 
+
+function_meter_per_sec_4.
+H1:    true .
+H2:    b >= bus__word__first .
+H3:    b <= bus__word__last .
+H4:    not (b >= 32768) .
+H5:    b >= measuretypes__meter_per_sec__first .
+H6:    b <= measuretypes__meter_per_sec__last .
+H7:    b >= measuretypes__meter_per_sec__first .
+H8:    b <= measuretypes__meter_per_sec__last .
+H9:    b >= measuretypes__meter_per_sec__first .
+H10:   b <= measuretypes__meter_per_sec__last .
+        ->
+C1:    true .
+C2:    b >= measuretypes__meter_per_sec__first .
+C3:    b <= measuretypes__meter_per_sec__last .
+ 
+

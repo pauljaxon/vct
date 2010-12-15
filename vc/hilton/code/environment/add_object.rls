@@ -1,0 +1,109 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.67*/
+
+                      /*procedure environment.Add_Object*/
+
+
+rule_family add_object_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+add_object_rules(1): null_handle may_be_replaced_by 0.
+add_object_rules(2): measuretypes__meter__size >= 0 may_be_deduced.
+add_object_rules(3): measuretypes__meter__first may_be_replaced_by -200000.
+add_object_rules(4): measuretypes__meter__last may_be_replaced_by 200000.
+add_object_rules(5): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+add_object_rules(6): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+add_object_rules(7): measuretypes__meter_2__size >= 0 may_be_deduced.
+add_object_rules(8): measuretypes__meter_2__first may_be_replaced_by 0.
+add_object_rules(9): measuretypes__meter_2__last may_be_replaced_by 1000.
+add_object_rules(10): measuretypes__meter_2__base__first may_be_replaced_by -2147483648.
+add_object_rules(11): measuretypes__meter_2__base__last may_be_replaced_by 2147483647.
+add_object_rules(12): measuretypes__meter_per_sec__size >= 0 may_be_deduced.
+add_object_rules(13): measuretypes__meter_per_sec__first may_be_replaced_by -5000.
+add_object_rules(14): measuretypes__meter_per_sec__last may_be_replaced_by 5000.
+add_object_rules(15): measuretypes__meter_per_sec__base__first may_be_replaced_by -2147483648.
+add_object_rules(16): measuretypes__meter_per_sec__base__last may_be_replaced_by 2147483647.
+add_object_rules(17): cartesian__position__size >= 0 may_be_deduced.
+add_object_rules(18): A = B may_be_deduced_from
+     [goal(checktype(A,cartesian__position)),
+      goal(checktype(B,cartesian__position)),
+      fld_x(A) = fld_x(B),
+      fld_y(A) = fld_y(B),
+      fld_z(A) = fld_z(B)].
+add_object_rules(19): cartesian__velocity__size >= 0 may_be_deduced.
+add_object_rules(20): A = B may_be_deduced_from
+     [goal(checktype(A,cartesian__velocity)),
+      goal(checktype(B,cartesian__velocity)),
+      fld_vx(A) = fld_vx(B),
+      fld_vy(A) = fld_vy(B),
+      fld_vz(A) = fld_vz(B)].
+add_object_rules(21): handle__size >= 0 may_be_deduced.
+add_object_rules(22): handle__first may_be_replaced_by 0.
+add_object_rules(23): handle__last may_be_replaced_by 20.
+add_object_rules(24): handle__base__first <= handle__base__last may_be_deduced.
+add_object_rules(25): handle__base__first <= handle__first may_be_deduced.
+add_object_rules(26): handle__base__last >= handle__last may_be_deduced.
+add_object_rules(27): kind__size >= 0 may_be_deduced.
+add_object_rules(28): kind__first may_be_replaced_by aircraft.
+add_object_rules(29): kind__last may_be_replaced_by cloud.
+add_object_rules(30): kind__base__first may_be_replaced_by aircraft.
+add_object_rules(31): kind__base__last may_be_replaced_by cloud.
+add_object_rules(32): kind__pos(kind__first) may_be_replaced_by 0.
+add_object_rules(33): kind__pos(aircraft) may_be_replaced_by 0.
+add_object_rules(34): kind__val(0) may_be_replaced_by aircraft.
+add_object_rules(35): kind__pos(missile) may_be_replaced_by 1.
+add_object_rules(36): kind__val(1) may_be_replaced_by missile.
+add_object_rules(37): kind__pos(cloud) may_be_replaced_by 2.
+add_object_rules(38): kind__val(2) may_be_replaced_by cloud.
+add_object_rules(39): kind__pos(kind__last) may_be_replaced_by 2.
+add_object_rules(40): kind__pos(succ(X)) may_be_replaced_by kind__pos(X) + 1
+     if [X <=cloud, X <> cloud].
+add_object_rules(41): kind__pos(pred(X)) may_be_replaced_by kind__pos(X) - 1
+     if [X >=aircraft, X <> aircraft].
+add_object_rules(42): kind__pos(X) >= 0 may_be_deduced_from
+     [aircraft <= X, X <= cloud].
+add_object_rules(43): kind__pos(X) <= 2 may_be_deduced_from
+     [aircraft <= X, X <= cloud].
+add_object_rules(44): kind__val(X) >= aircraft may_be_deduced_from
+     [0 <= X, X <= 2].
+add_object_rules(45): kind__val(X) <= cloud may_be_deduced_from
+     [0 <= X, X <= 2].
+add_object_rules(46): succ(kind__val(X)) may_be_replaced_by kind__val(X+1)
+     if [0 <= X, X < 2].
+add_object_rules(47): pred(kind__val(X)) may_be_replaced_by kind__val(X-1)
+     if [0 < X, X <= 2].
+add_object_rules(48): kind__pos(kind__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 2].
+add_object_rules(49): kind__val(kind__pos(X)) may_be_replaced_by X
+     if [aircraft <= X, X <= cloud].
+add_object_rules(50): kind__pos(X) <= kind__pos(Y) & X <= Y are_interchangeable 
+     if [aircraft <= X, X <= cloud, aircraft <= Y, Y <= cloud].
+add_object_rules(51): kind__val(X) <= kind__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 2, 0 <= Y, Y <= 2].
+add_object_rules(52): rcs__size >= 0 may_be_deduced.
+add_object_rules(53): rcs__first may_be_replaced_by 0.
+add_object_rules(54): rcs__last may_be_replaced_by 1000.
+add_object_rules(55): rcs__base__first may_be_replaced_by -2147483648.
+add_object_rules(56): rcs__base__last may_be_replaced_by 2147483647.
+add_object_rules(57): valid_handle__size >= 0 may_be_deduced.
+add_object_rules(58): valid_handle__first may_be_replaced_by 1.
+add_object_rules(59): valid_handle__last may_be_replaced_by 20.
+add_object_rules(60): valid_handle__base__first <= valid_handle__base__last may_be_deduced.
+add_object_rules(61): valid_handle__base__first <= valid_handle__first may_be_deduced.
+add_object_rules(62): valid_handle__base__last >= valid_handle__last may_be_deduced.
+add_object_rules(63): object__size >= 0 may_be_deduced.
+add_object_rules(64): A = B may_be_deduced_from
+     [goal(checktype(A,object)),
+      goal(checktype(B,object)),
+      fld_f(A) = fld_f(B),
+      fld_k(A) = fld_k(B),
+      fld_r(A) = fld_r(B),
+      fld_h(A) = fld_h(B)].

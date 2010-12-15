@@ -1,0 +1,27 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 26-NOV-2009 09:54:53.55*/
+
+                       /*function Scale.Heading_Offset*/
+
+
+rule_family heading_offs_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+heading_offs_rules(1): integer__size >= 0 may_be_deduced.
+heading_offs_rules(2): integer__first may_be_replaced_by -2147483648.
+heading_offs_rules(3): integer__last may_be_replaced_by 2147483647.
+heading_offs_rules(4): integer__base__first may_be_replaced_by -2147483648.
+heading_offs_rules(5): integer__base__last may_be_replaced_by 2147483647.
+heading_offs_rules(6): instruments__headdegree__size >= 0 may_be_deduced.
+heading_offs_rules(7): instruments__headdegree__first may_be_replaced_by 0.
+heading_offs_rules(8): instruments__headdegree__last may_be_replaced_by 359.
+heading_offs_rules(9): instruments__headdegree__base__first may_be_replaced_by -32768.
+heading_offs_rules(10): instruments__headdegree__base__last may_be_replaced_by 32767.

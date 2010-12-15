@@ -1,0 +1,1227 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:07
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function Scale.Scale_Movement
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_scale_movement_1.  @@@@@@@@@@
+***  Proved C2:  0 <= surfaces__controlangle__last
+     using hypotheses H1 & H9.
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H8:  max >= - 45
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_2.  @@@@@@@@@@
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New C1:  target - present >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New C2:  target - present <= 2147483647
+***  Proved C1:  target - present >= - 2147483648
+     using hypothesis H11.
+>>>  Restructured hypothesis H10 into:
+     >>>  H10:  present <> target
+-S-  Applied substitution rule scale_moveme_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H2:  mach >= 0
+-S-  Applied substitution rule scale_moveme_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H3:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H8:  max >= - 45
+-S-  Applied substitution rule scale_moveme_rules(13).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New H9:  max <= 45
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H4:  present >= - 100
+<S>  New H6:  target >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H5:  present <= 100
+<S>  New H7:  target <= 100
+***  Proved C2:  target - present <= 2147483647
+     using hypotheses H4 & H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_3.  @@@@@@@@@@
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New C1:  present - target >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New C2:  present - target <= 2147483647
+***  Proved C1:  present - target >= - 2147483648
+     using hypothesis H11.
+>>>  Restructured hypothesis H10 into:
+     >>>  H10:  present <> target
+>>>  Restructured hypothesis H11 into:
+     >>>  H11:  target <= present
+-S-  Applied substitution rule scale_moveme_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H2:  mach >= 0
+-S-  Applied substitution rule scale_moveme_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H3:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H8:  max >= - 45
+-S-  Applied substitution rule scale_moveme_rules(13).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New H9:  max <= 45
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H4:  present >= - 100
+<S>  New H6:  target >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H5:  present <= 100
+<S>  New H7:  target <= 100
+%%%  Hypotheses H11 & H10 together imply that
+          target < present.
+     H11 & H10 have therefore been deleted and a new H10 added to this effect.
+***  Proved C2:  present - target <= 2147483647
+     using hypotheses H5 & H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_4.  @@@@@@@@@@
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+***  Proved C2:  100 <= integer__last
+     using hypotheses H13 & H16.
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H12:  target - present >= - 2147483648
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_5.  @@@@@@@@@@
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+***  Proved C2:  100 <= integer__last
+     using hypotheses H13 & H16.
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H12:  present - target >= - 2147483648
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_6.  @@@@@@@@@@
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  mach >= instruments__machnumber__first
+     using hypothesis H2.
+***  Proved C4:  mach <= instruments__machnumber__last
+     using hypothesis H3.
+***  Proved C5:  present >= scaledata__first
+     using hypothesis H4.
+***  Proved C6:  present <= scaledata__last
+     using hypothesis H5.
+***  Proved C7:  target >= scaledata__first
+     using hypothesis H6.
+***  Proved C8:  target <= scaledata__last
+     using hypothesis H7.
+***  Proved C9:  max >= surfaces__controlangle__first
+     using hypothesis H8.
+***  Proved C10:  max <= surfaces__controlangle__last
+     using hypothesis H9.
+***  Proved C11:  max > 0
+     using hypothesis H1.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_7.  @@@@@@@@@@
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  mach >= instruments__machnumber__first
+     using hypothesis H2.
+***  Proved C4:  mach <= instruments__machnumber__last
+     using hypothesis H3.
+***  Proved C5:  present >= scaledata__first
+     using hypothesis H4.
+***  Proved C6:  present <= scaledata__last
+     using hypothesis H5.
+***  Proved C7:  target >= scaledata__first
+     using hypothesis H6.
+***  Proved C8:  target <= scaledata__last
+     using hypothesis H7.
+***  Proved C9:  max >= surfaces__controlangle__first
+     using hypothesis H8.
+***  Proved C10:  max <= surfaces__controlangle__last
+     using hypothesis H9.
+***  Proved C11:  max > 0
+     using hypothesis H1.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_8.  @@@@@@@@@@
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+***  Proved C1:  target - present > 0
+     using hypothesis H11.
+***  Proved C2:  target - present <= 100
+     using hypothesis H16.
+***  Proved C3:  mach >= instruments__machnumber__first
+     using hypothesis H2.
+***  Proved C4:  mach <= instruments__machnumber__last
+     using hypothesis H3.
+***  Proved C5:  present >= scaledata__first
+     using hypothesis H4.
+***  Proved C6:  present <= scaledata__last
+     using hypothesis H5.
+***  Proved C7:  target >= scaledata__first
+     using hypothesis H6.
+***  Proved C8:  target <= scaledata__last
+     using hypothesis H7.
+***  Proved C9:  max >= surfaces__controlangle__first
+     using hypothesis H8.
+***  Proved C10:  max <= surfaces__controlangle__last
+     using hypothesis H9.
+***  Proved C11:  max > 0
+     using hypothesis H1.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_9.  @@@@@@@@@@
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+***  Proved C1:  present - target > 0
+     using hypotheses H10 & H11.
+***  Proved C2:  present - target <= 100
+     using hypothesis H16.
+***  Proved C3:  mach >= instruments__machnumber__first
+     using hypothesis H2.
+***  Proved C4:  mach <= instruments__machnumber__last
+     using hypothesis H3.
+***  Proved C5:  present >= scaledata__first
+     using hypothesis H4.
+***  Proved C6:  present <= scaledata__last
+     using hypothesis H5.
+***  Proved C7:  target >= scaledata__first
+     using hypothesis H6.
+***  Proved C8:  target <= scaledata__last
+     using hypothesis H7.
+***  Proved C9:  max >= surfaces__controlangle__first
+     using hypothesis H8.
+***  Proved C10:  max <= surfaces__controlangle__last
+     using hypothesis H9.
+***  Proved C11:  max > 0
+     using hypothesis H1.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_10.  @@@@@@@@@@
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C2:  true
+***  Proved C3:  true
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New C4:  true
+<S>  New C8:  mach >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New C5:  true
+<S>  New C9:  mach <= 2147483647
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H5:  present >= - 100
+<S>  New H7:  target >= - 100
+<S>  New C6:  mach >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H6:  present <= 100
+<S>  New H8:  target <= 100
+<S>  New C7:  mach <= 100
+***  Proved C4:  true
+***  Proved C5:  true
+-S-  Applied substitution rule scale_moveme_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H3:  mach >= 0
+-S-  Applied substitution rule scale_moveme_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H4:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H9:  max >= - 45
+-S-  Applied substitution rule scale_moveme_rules(13).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New H10:  max <= 45
+***  Proved C1:  mach >= 0
+     using hypothesis H3.
+***  Proved C8:  mach >= - 2147483648
+     using hypothesis H3.
+***  Proved C9:  mach <= 2147483647
+     using hypothesis H4.
+***  Proved C6:  mach >= - 100
+     using hypothesis H3.
+***  Proved C7:  mach <= 100
+     using hypothesis H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_11.  @@@@@@@@@@
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  true
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H15:  true
+<S>  New H19:  mach >= - 2147483648
+<S>  New C1:  inverse(mach, 20) >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H16:  true
+<S>  New H20:  mach <= 2147483647
+<S>  New C2:  inverse(mach, 20) <= 2147483647
+-S-  Applied substitution rule scale_moveme_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H3:  mach >= 0
+-S-  Applied substitution rule scale_moveme_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H4:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H9:  max >= - 45
+-S-  Applied substitution rule scale_moveme_rules(13).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New H10:  max <= 45
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H5:  present >= - 100
+<S>  New H7:  target >= - 100
+<S>  New H17:  mach >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H6:  present <= 100
+<S>  New H8:  target <= 100
+<S>  New H18:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(22).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H21:  inverse(mach, 20) >= 0
+-S-  Applied substitution rule scale_moveme_rules(23).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H22:  inverse(mach, 20) <= 100
+***  Proved C1:  inverse(mach, 20) >= - 2147483648
+     using hypothesis H21.
+***  Proved C2:  inverse(mach, 20) <= 2147483647
+     using hypothesis H22.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_12.  @@@@@@@@@@
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  true
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C1:  gap >= 0
+     using hypothesis H1.
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  20 >= integer__first
+     using hypothesis H15.
+***  Proved C5:  20 <= integer__last
+     using hypothesis H16.
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H5:  present >= - 100
+<S>  New H7:  target >= - 100
+<S>  New H17:  mach >= - 100
+<S>  New C6:  gap >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H6:  present <= 100
+<S>  New H8:  target <= 100
+<S>  New H18:  mach <= 100
+<S>  New C7:  gap <= 100
+***  Proved C6:  gap >= - 100
+     using hypothesis H1.
+***  Proved C7:  gap <= 100
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_13.  @@@@@@@@@@
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  true
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H16).
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H15:  true
+<S>  New H19:  mach >= - 2147483648
+<S>  New H23:  inverse(mach, 20) >= - 2147483648
+<S>  New H25:  gap >= - 2147483648
+<S>  New C1:  inverse(gap, 20) >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H16:  true
+<S>  New H20:  mach <= 2147483647
+<S>  New H24:  inverse(mach, 20) <= 2147483647
+<S>  New H26:  gap <= 2147483647
+<S>  New C2:  inverse(gap, 20) <= 2147483647
+-S-  Applied substitution rule scale_moveme_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H3:  mach >= 0
+-S-  Applied substitution rule scale_moveme_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H4:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H9:  max >= - 45
+-S-  Applied substitution rule scale_moveme_rules(13).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New H10:  max <= 45
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H5:  present >= - 100
+<S>  New H7:  target >= - 100
+<S>  New H17:  mach >= - 100
+<S>  New H32:  gap >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H6:  present <= 100
+<S>  New H8:  target <= 100
+<S>  New H18:  mach <= 100
+<S>  New H33:  gap <= 100
+-S-  Applied substitution rule scale_moveme_rules(22).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H21:  inverse(mach, 20) >= 0
+<S>  New H34:  inverse(gap, 20) >= 0
+-S-  Applied substitution rule scale_moveme_rules(23).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H22:  inverse(mach, 20) <= 100
+<S>  New H35:  inverse(gap, 20) <= 100
+***  Proved C1:  inverse(gap, 20) >= - 2147483648
+     using hypothesis H34.
+***  Proved C2:  inverse(gap, 20) <= 2147483647
+     using hypothesis H35.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_14.  @@@@@@@@@@
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  true
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H36).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H37).
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H15:  true
+<S>  New H19:  mach >= - 2147483648
+<S>  New H23:  inverse(mach, 20) >= - 2147483648
+<S>  New H25:  gap >= - 2147483648
+<S>  New H36:  inverse(gap, 20) >= - 2147483648
+<S>  New C1:  1 + inverse(gap, 20) + inverse(mach, 20) >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H16:  true
+<S>  New H20:  mach <= 2147483647
+<S>  New H24:  inverse(mach, 20) <= 2147483647
+<S>  New H26:  gap <= 2147483647
+<S>  New H37:  inverse(gap, 20) <= 2147483647
+<S>  New C2:  1 + inverse(gap, 20) + inverse(mach, 20) <= 2147483647
+-S-  Applied substitution rule scale_moveme_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C3:  inverse(gap, 20) >= - 2147483649
+-S-  Applied substitution rule scale_moveme_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C4:  inverse(gap, 20) <= 2147483646
+***  Proved C3:  inverse(gap, 20) >= - 2147483649
+     using hypothesis H36.
+-S-  Applied substitution rule scale_moveme_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H3:  mach >= 0
+-S-  Applied substitution rule scale_moveme_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H4:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H9:  max >= - 45
+-S-  Applied substitution rule scale_moveme_rules(13).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New H10:  max <= 45
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H5:  present >= - 100
+<S>  New H7:  target >= - 100
+<S>  New H17:  mach >= - 100
+<S>  New H32:  gap >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H6:  present <= 100
+<S>  New H8:  target <= 100
+<S>  New H18:  mach <= 100
+<S>  New H33:  gap <= 100
+-S-  Applied substitution rule scale_moveme_rules(22).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H21:  inverse(mach, 20) >= 0
+<S>  New H34:  inverse(gap, 20) >= 0
+-S-  Applied substitution rule scale_moveme_rules(23).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H22:  inverse(mach, 20) <= 100
+<S>  New H35:  inverse(gap, 20) <= 100
+***  Proved C1:  1 + inverse(gap, 20) + inverse(mach, 20) >= - 2147483648
+     using hypotheses H23 & H34.
+***  Proved C2:  1 + inverse(gap, 20) + inverse(mach, 20) <= 2147483647
+     using hypotheses H22 & H35.
+***  Proved C4:  inverse(gap, 20) <= 2147483646
+     using hypothesis H35.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_15.  @@@@@@@@@@
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  true
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H36).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H37).
+***  Proved C1:  inverse(mach, 20) >= percent__first
+     using hypothesis H21.
+***  Proved C2:  inverse(mach, 20) <= percent__last
+     using hypothesis H22.
+***  Proved C5:  mach >= instruments__machnumber__first
+     using hypothesis H3.
+***  Proved C6:  mach <= instruments__machnumber__last
+     using hypothesis H4.
+***  Proved C7:  present >= scaledata__first
+     using hypothesis H5.
+***  Proved C8:  present <= scaledata__last
+     using hypothesis H6.
+***  Proved C9:  target >= scaledata__first
+     using hypothesis H7.
+***  Proved C10:  target <= scaledata__last
+     using hypothesis H8.
+***  Proved C11:  max >= surfaces__controlangle__first
+     using hypothesis H9.
+***  Proved C12:  max <= surfaces__controlangle__last
+     using hypothesis H10.
+***  Proved C13:  max > 0
+     using hypothesis H11.
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H15:  true
+<S>  New H19:  mach >= - 2147483648
+<S>  New H23:  inverse(mach, 20) >= - 2147483648
+<S>  New H25:  gap >= - 2147483648
+<S>  New H36:  inverse(gap, 20) >= - 2147483648
+<S>  New H42:  1 + inverse(gap, 20) + inverse(mach, 20) >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H16:  true
+<S>  New H20:  mach <= 2147483647
+<S>  New H24:  inverse(mach, 20) <= 2147483647
+<S>  New H26:  gap <= 2147483647
+<S>  New H37:  inverse(gap, 20) <= 2147483647
+<S>  New H43:  1 + inverse(gap, 20) + inverse(mach, 20) <= 2147483647
+-S-  Applied substitution rule scale_moveme_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H44:  inverse(gap, 20) >= - 2147483649
+-S-  Applied substitution rule scale_moveme_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H45:  inverse(gap, 20) <= 2147483646
+-S-  Applied substitution rule scale_moveme_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H3:  mach >= 0
+-S-  Applied substitution rule scale_moveme_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H4:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H9:  max >= - 45
+-S-  Applied substitution rule scale_moveme_rules(13).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New H10:  max <= 45
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H5:  present >= - 100
+<S>  New H7:  target >= - 100
+<S>  New H17:  mach >= - 100
+<S>  New H32:  gap >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H6:  present <= 100
+<S>  New H8:  target <= 100
+<S>  New H18:  mach <= 100
+<S>  New H33:  gap <= 100
+-S-  Applied substitution rule scale_moveme_rules(22).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H21:  inverse(mach, 20) >= 0
+<S>  New H34:  inverse(gap, 20) >= 0
+-S-  Applied substitution rule scale_moveme_rules(23).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H22:  inverse(mach, 20) <= 100
+<S>  New H35:  inverse(gap, 20) <= 100
+***  Proved C4:  inverse(mach, 20) <= 1 + inverse(gap, 20) + inverse(mach, 20)
+     via its standard form, which is:
+     Std.Fm C4:  inverse(gap, 20) > - 2
+     using hypothesis H34.
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H29 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H38 (true-hypothesis).
+---  Eliminated hypothesis H39 (true-hypothesis).
+---  Eliminated hypothesis H40 (true-hypothesis).
+---  Eliminated hypothesis H41 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H33 (duplicate of H2).
+---  Eliminated hypothesis H12 (duplicate of H3).
+---  Eliminated hypothesis H18 (duplicate of H4).
+---  Eliminated hypothesis H9 (redundant, given H11).
+---  Eliminated hypothesis H17 (redundant, given H3).
+---  Eliminated hypothesis H19 (redundant, given H3).
+---  Eliminated hypothesis H20 (redundant, given H4).
+---  Eliminated hypothesis H23 (redundant, given H21).
+---  Eliminated hypothesis H24 (redundant, given H22).
+---  Eliminated hypothesis H25 (redundant, given H1).
+---  Eliminated hypothesis H26 (redundant, given H2).
+---  Eliminated hypothesis H27 (redundant, given H1).
+---  Eliminated hypothesis H32 (redundant, given H1).
+---  Eliminated hypothesis H36 (redundant, given H34).
+---  Eliminated hypothesis H37 (redundant, given H35).
+---  Eliminated hypothesis H44 (redundant, given H34).
+---  Eliminated hypothesis H45 (redundant, given H35).
+***  Proved C3:  1 + inverse(gap, 20) + inverse(mach, 20) > 0
+     using hypotheses H21 & H34.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_16.  @@@@@@@@@@
+***  Proved C7:  k2 <> 0
+     using hypothesis H3.
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H11:  max >= - 45
+<S>  New C1:  max * k1 div k2 >= - 45
+<S>  New C3:  max * k1 div k2 >= - 45
+-S-  Applied substitution rule scale_moveme_rules(13).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New H12:  max <= 45
+<S>  New C2:  max * k1 div k2 <= 45
+<S>  New C4:  max * k1 div k2 <= 45
+-S-  Applied substitution rule scale_moveme_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C5:  max * k1 div k2 >= - 2147483648
+<S>  New C8:  max * k1 >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C6:  max * k1 div k2 <= 2147483647
+<S>  New C9:  max * k1 <= 2147483647
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H14:  k1 >= - 2147483648
+<S>  New H16:  k2 >= - 2147483648
+<S>  New C10:  max >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H15:  k1 <= 2147483647
+<S>  New H17:  k2 <= 2147483647
+<S>  New C11:  max <= 2147483647
+***  Proved C10:  max >= - 2147483648
+     using hypothesis H13.
+***  Proved C11:  max <= 2147483647
+     using hypothesis H12.
+-S-  Applied substitution rule scale_moveme_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H5:  mach >= 0
+-S-  Applied substitution rule scale_moveme_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H6:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H7:  present >= - 100
+<S>  New H9:  target >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H8:  present <= 100
+<S>  New H10:  target <= 100
+-S-  Applied substitution rule scale_moveme_rules(22).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H1:  k1 >= 0
+-S-  Applied substitution rule scale_moveme_rules(23).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H2:  k1 <= 100
+***  Proved C8:  max * k1 >= - 2147483648
+     using hypotheses H1 & H13.
+---  Eliminated hypothesis H11 (redundant, given H13).
+---  Eliminated hypothesis H14 (redundant, given H1).
+---  Eliminated hypothesis H15 (redundant, given H2).
+---  Eliminated hypothesis H16 (redundant, given H3).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  max * k1 div k2 >= - 45
+     using hypotheses H1, H3 & H13.
+***  Proved C5:  max * k1 div k2 >= - 2147483648
+     using hypotheses H1, H3 & H13.
+***  Proved C6:  max * k1 div k2 <= 2147483647
+     using hypotheses H1, H2, H3, H12 & H13.
+***  Proved C9:  max * k1 <= 2147483647
+     using hypotheses H12 & H2.
+     +++  New H18:  integer__size >= 0
+     +++  New H19:  instruments__machnumber__size >= 0
+     +++  New H20:  surfaces__controlangle__size >= 0
+     +++  New H21:  scaledata__size >= 0
+     +++  New H22:  percent__size >= 0
+
+
+@@@@@@@@@@  VC: function_scale_movement_17.  @@@@@@@@@@
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H19).
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H11:  max >= - 45
+<S>  New H18:  max * k1 div k2 >= - 45
+<S>  New C1:  - (max * k1 div k2) >= - 45
+-S-  Applied substitution rule scale_moveme_rules(13).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New H12:  max <= 45
+<S>  New H19:  max * k1 div k2 <= 45
+<S>  New C2:  - (max * k1 div k2) <= 45
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H14:  k1 >= - 2147483648
+<S>  New H16:  k2 >= - 2147483648
+<S>  New H27:  max >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H15:  k1 <= 2147483647
+<S>  New H17:  k2 <= 2147483647
+<S>  New H28:  max <= 2147483647
+-S-  Applied substitution rule scale_moveme_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H22:  max * k1 div k2 >= - 2147483648
+<S>  New H25:  max * k1 >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H23:  max * k1 div k2 <= 2147483647
+<S>  New H26:  max * k1 <= 2147483647
+-S-  Applied substitution rule scale_moveme_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H5:  mach >= 0
+-S-  Applied substitution rule scale_moveme_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H6:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H7:  present >= - 100
+<S>  New H9:  target >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H8:  present <= 100
+<S>  New H10:  target <= 100
+-S-  Applied substitution rule scale_moveme_rules(22).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H1:  k1 >= 0
+-S-  Applied substitution rule scale_moveme_rules(23).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H2:  k1 <= 100
+***  Proved C1:  - (max * k1 div k2) >= - 45
+     via its standard form, which is:
+     Std.Fm C1:  - (k1 * max div k2) > - 46
+     using hypothesis H19.
+***  Proved C2:  - (max * k1 div k2) <= 45
+     via its standard form, which is:
+     Std.Fm C2:  k1 * max div k2 > - 46
+     using hypothesis H18.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_18.  @@@@@@@@@@
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+***  Proved C2:  0 <= max
+     using hypothesis H1.
+***  Proved C3:  0 >= surfaces__controlangle__first
+     using hypothesis H11.
+***  Proved C4:  0 <= surfaces__controlangle__last
+     using hypothesis H12.
+-S-  Applied substitution rule scale_moveme_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H2:  mach >= 0
+-S-  Applied substitution rule scale_moveme_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H3:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H8:  max >= - 45
+<S>  New H11:  true
+-S-  Applied substitution rule scale_moveme_rules(13).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New H9:  max <= 45
+<S>  New H12:  true
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H4:  present >= - 100
+<S>  New H6:  target >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H5:  present <= 100
+<S>  New H7:  target <= 100
+***  Proved C1:  - max <= 0
+     via its standard form, which is:
+     Std.Fm C1:  max > - 1
+     using hypothesis H1.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_scale_movement_19.  @@@@@@@@@@
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+***  Proved C3:  - (max * k1 div k2) >= surfaces__controlangle__first
+     using hypothesis H32.
+***  Proved C4:  - (max * k1 div k2) <= surfaces__controlangle__last
+     using hypothesis H33.
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H14:  k1 >= - 2147483648
+<S>  New H16:  k2 >= - 2147483648
+<S>  New H27:  max >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H15:  k1 <= 2147483647
+<S>  New H17:  k2 <= 2147483647
+<S>  New H28:  max <= 2147483647
+-S-  Applied substitution rule scale_moveme_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H22:  max * k1 div k2 >= - 2147483648
+<S>  New H25:  max * k1 >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H23:  max * k1 div k2 <= 2147483647
+<S>  New H26:  max * k1 <= 2147483647
+-S-  Applied substitution rule scale_moveme_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H5:  mach >= 0
+-S-  Applied substitution rule scale_moveme_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H6:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H11:  max >= - 45
+<S>  New H18:  max * k1 div k2 >= - 45
+<S>  New H32:  - (max * k1 div k2) >= - 45
+-S-  Applied substitution rule scale_moveme_rules(13).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New H12:  max <= 45
+<S>  New H19:  max * k1 div k2 <= 45
+<S>  New H33:  - (max * k1 div k2) <= 45
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H7:  present >= - 100
+<S>  New H9:  target >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H8:  present <= 100
+<S>  New H10:  target <= 100
+-S-  Applied substitution rule scale_moveme_rules(22).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H1:  k1 >= 0
+-S-  Applied substitution rule scale_moveme_rules(23).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H2:  k1 <= 100
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H33 (duplicate of H18).
+---  Eliminated hypothesis H32 (duplicate of H19).
+---  Eliminated hypothesis H7 (redundant, given H9 & H29).
+---  Eliminated hypothesis H10 (redundant, given H8 & H29).
+---  Eliminated hypothesis H11 (redundant, given H13).
+---  Eliminated hypothesis H14 (redundant, given H1).
+---  Eliminated hypothesis H15 (redundant, given H2).
+---  Eliminated hypothesis H16 (redundant, given H3).
+---  Eliminated hypothesis H22 (redundant, given H18).
+---  Eliminated hypothesis H23 (redundant, given H19).
+---  Eliminated hypothesis H24 (redundant, given H3).
+---  Eliminated hypothesis H27 (redundant, given H13).
+---  Eliminated hypothesis H28 (redundant, given H12).
+***  Proved C2:  - (max * k1 div k2) <= max
+     via its standard form, which is:
+     Std.Fm C2:  max + k1 * max div k2 > - 1
+     using hypotheses H1, H3, H13 & H17.
+     +++  New H36:  integer__size >= 0
+     +++  New H37:  instruments__machnumber__size >= 0
+     +++  New H38:  surfaces__controlangle__size >= 0
+     +++  New H39:  scaledata__size >= 0
+     +++  New H40:  percent__size >= 0
+
+
+@@@@@@@@@@  VC: function_scale_movement_20.  @@@@@@@@@@
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H19).
+***  Proved C3:  max * k1 div k2 >= surfaces__controlangle__first
+     using hypothesis H18.
+***  Proved C4:  max * k1 div k2 <= surfaces__controlangle__last
+     using hypothesis H19.
+>>>  Restructured hypothesis H29 into:
+     >>>  H29:  present <= target
+-S-  Applied substitution rule scale_moveme_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H14:  k1 >= - 2147483648
+<S>  New H16:  k2 >= - 2147483648
+<S>  New H27:  max >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H15:  k1 <= 2147483647
+<S>  New H17:  k2 <= 2147483647
+<S>  New H28:  max <= 2147483647
+-S-  Applied substitution rule scale_moveme_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H22:  max * k1 div k2 >= - 2147483648
+<S>  New H25:  max * k1 >= - 2147483648
+-S-  Applied substitution rule scale_moveme_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H23:  max * k1 div k2 <= 2147483647
+<S>  New H26:  max * k1 <= 2147483647
+-S-  Applied substitution rule scale_moveme_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H5:  mach >= 0
+-S-  Applied substitution rule scale_moveme_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H6:  mach <= 100
+-S-  Applied substitution rule scale_moveme_rules(12).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New H11:  max >= - 45
+<S>  New H18:  max * k1 div k2 >= - 45
+-S-  Applied substitution rule scale_moveme_rules(13).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New H12:  max <= 45
+<S>  New H19:  max * k1 div k2 <= 45
+-S-  Applied substitution rule scale_moveme_rules(17).
+     This was achieved by replacing all occurrences of scaledata__first by:
+          - 100.
+<S>  New H7:  present >= - 100
+<S>  New H9:  target >= - 100
+-S-  Applied substitution rule scale_moveme_rules(18).
+     This was achieved by replacing all occurrences of scaledata__last by:
+          100.
+<S>  New H8:  present <= 100
+<S>  New H10:  target <= 100
+-S-  Applied substitution rule scale_moveme_rules(22).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H1:  k1 >= 0
+-S-  Applied substitution rule scale_moveme_rules(23).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H2:  k1 <= 100
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H11 (redundant, given H13).
+---  Eliminated hypothesis H14 (redundant, given H1).
+---  Eliminated hypothesis H15 (redundant, given H2).
+---  Eliminated hypothesis H16 (redundant, given H3).
+---  Eliminated hypothesis H22 (redundant, given H18).
+---  Eliminated hypothesis H23 (redundant, given H19).
+---  Eliminated hypothesis H24 (redundant, given H3).
+---  Eliminated hypothesis H27 (redundant, given H13).
+---  Eliminated hypothesis H28 (redundant, given H12).
+***  Proved C1:  - max <= max * k1 div k2
+     via its standard form, which is:
+     Std.Fm C1:  max + k1 * max div k2 > - 1
+     using hypotheses H1, H3, H13 & H17.
+     +++  New H32:  integer__size >= 0
+     +++  New H33:  instruments__machnumber__size >= 0
+     +++  New H34:  surfaces__controlangle__size >= 0
+     +++  New H35:  scaledata__size >= 0
+     +++  New H36:  percent__size >= 0
+

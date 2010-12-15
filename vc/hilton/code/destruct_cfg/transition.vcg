@@ -1,0 +1,197 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.51
+
+                      function destruct_cfg.Transition
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 39:
+
+function_transition_1.
+H1:    true .
+H2:    old_state >= state__first .
+H3:    old_state <= state__last .
+H4:    new_code >= systemtypes__unsigned16__first .
+H5:    new_code <= systemtypes__unsigned16__last .
+H6:    old_state = inactive .
+        ->
+C1:    new_code >= systemtypes__unsigned16__first .
+C2:    new_code <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 40:
+
+function_transition_2.
+H1:    true .
+H2:    old_state >= state__first .
+H3:    old_state <= state__last .
+H4:    new_code >= systemtypes__unsigned16__first .
+H5:    new_code <= systemtypes__unsigned16__last .
+H6:    old_state = inactive .
+H7:    new_code >= systemtypes__unsigned16__first .
+H8:    new_code <= systemtypes__unsigned16__last .
+H9:    code_to_state(new_code) >= state__first .
+H10:   code_to_state(new_code) <= state__last .
+H11:   code_to_state(new_code) = armed .
+        ->
+C1:    armed >= state__first .
+C2:    armed <= state__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 43:
+
+function_transition_3.
+H1:    true .
+H2:    old_state >= state__first .
+H3:    old_state <= state__last .
+H4:    new_code >= systemtypes__unsigned16__first .
+H5:    new_code <= systemtypes__unsigned16__last .
+H6:    old_state = armed .
+        ->
+C1:    new_code >= systemtypes__unsigned16__first .
+C2:    new_code <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 44:
+
+function_transition_4.
+H1:    true .
+H2:    old_state >= state__first .
+H3:    old_state <= state__last .
+H4:    new_code >= systemtypes__unsigned16__first .
+H5:    new_code <= systemtypes__unsigned16__last .
+H6:    old_state = armed .
+H7:    new_code >= systemtypes__unsigned16__first .
+H8:    new_code <= systemtypes__unsigned16__last .
+H9:    code_to_state(new_code) >= state__first .
+H10:   code_to_state(new_code) <= state__last .
+H11:   code_to_state(new_code) = detonated .
+        ->
+C1:    detonated >= state__first .
+C2:    detonated <= state__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 47:
+
+function_transition_5.
+H1:    true .
+H2:    old_state >= state__first .
+H3:    old_state <= state__last .
+H4:    new_code >= systemtypes__unsigned16__first .
+H5:    new_code <= systemtypes__unsigned16__last .
+H6:    old_state = detonated .
+        ->
+C1:    inactive >= state__first .
+C2:    inactive <= state__last .
+ 
+
+For path(s) from start to finish:
+
+function_transition_6.
+H1:    true .
+H2:    old_state >= state__first .
+H3:    old_state <= state__last .
+H4:    new_code >= systemtypes__unsigned16__first .
+H5:    new_code <= systemtypes__unsigned16__last .
+H6:    old_state = inactive .
+H7:    new_code >= systemtypes__unsigned16__first .
+H8:    new_code <= systemtypes__unsigned16__last .
+H9:    code_to_state(new_code) >= state__first .
+H10:   code_to_state(new_code) <= state__last .
+H11:   code_to_state(new_code) = armed .
+H12:   armed >= state__first .
+H13:   armed <= state__last .
+H14:   armed >= state__first .
+H15:   armed <= state__last .
+        ->
+C1:    true .
+C2:    armed >= state__first .
+C3:    armed <= state__last .
+ 
+
+function_transition_7.
+H1:    true .
+H2:    old_state >= state__first .
+H3:    old_state <= state__last .
+H4:    new_code >= systemtypes__unsigned16__first .
+H5:    new_code <= systemtypes__unsigned16__last .
+H6:    old_state = inactive .
+H7:    new_code >= systemtypes__unsigned16__first .
+H8:    new_code <= systemtypes__unsigned16__last .
+H9:    code_to_state(new_code) >= state__first .
+H10:   code_to_state(new_code) <= state__last .
+H11:   not (code_to_state(new_code) = armed) .
+H12:   inactive >= state__first .
+H13:   inactive <= state__last .
+        ->
+C1:    true .
+C2:    inactive >= state__first .
+C3:    inactive <= state__last .
+ 
+
+function_transition_8.
+H1:    true .
+H2:    old_state >= state__first .
+H3:    old_state <= state__last .
+H4:    new_code >= systemtypes__unsigned16__first .
+H5:    new_code <= systemtypes__unsigned16__last .
+H6:    old_state = armed .
+H7:    new_code >= systemtypes__unsigned16__first .
+H8:    new_code <= systemtypes__unsigned16__last .
+H9:    code_to_state(new_code) >= state__first .
+H10:   code_to_state(new_code) <= state__last .
+H11:   code_to_state(new_code) = detonated .
+H12:   detonated >= state__first .
+H13:   detonated <= state__last .
+H14:   detonated >= state__first .
+H15:   detonated <= state__last .
+        ->
+C1:    true .
+C2:    detonated >= state__first .
+C3:    detonated <= state__last .
+ 
+
+function_transition_9.
+H1:    true .
+H2:    old_state >= state__first .
+H3:    old_state <= state__last .
+H4:    new_code >= systemtypes__unsigned16__first .
+H5:    new_code <= systemtypes__unsigned16__last .
+H6:    old_state = armed .
+H7:    new_code >= systemtypes__unsigned16__first .
+H8:    new_code <= systemtypes__unsigned16__last .
+H9:    code_to_state(new_code) >= state__first .
+H10:   code_to_state(new_code) <= state__last .
+H11:   not (code_to_state(new_code) = detonated) .
+H12:   inactive >= state__first .
+H13:   inactive <= state__last .
+        ->
+C1:    true .
+C2:    inactive >= state__first .
+C3:    inactive <= state__last .
+ 
+
+function_transition_10.
+H1:    true .
+H2:    old_state >= state__first .
+H3:    old_state <= state__last .
+H4:    new_code >= systemtypes__unsigned16__first .
+H5:    new_code <= systemtypes__unsigned16__last .
+H6:    old_state = detonated .
+H7:    inactive >= state__first .
+H8:    inactive <= state__last .
+H9:    inactive >= state__first .
+H10:   inactive <= state__last .
+        ->
+C1:    true .
+C2:    inactive >= state__first .
+C3:    inactive <= state__last .
+ 
+

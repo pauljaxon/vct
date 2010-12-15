@@ -1,0 +1,100 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:40
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure bus_decode.Decode_Byte2
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_decode_byte2_1.  @@@@@@@@@@
+***  Proved C2:  word <= bus__word__last
+     using hypothesis H3.
+***  Proved C3:  word >= bus__word__first
+     using hypothesis H2.
+***  Proved C4:  word <= bus__word__last
+     using hypothesis H3.
+-S-  Applied substitution rule decode_byte2_rules(12).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  word >= 0
+-S-  Applied substitution rule decode_byte2_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  word <= 65535
+***  Proved C1:  word >= 0
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_decode_byte2_2.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule decode_byte2_rules(7).
+     This was achieved by replacing all occurrences of systemtypes__byte__first 
+          by:
+          0.
+<S>  New C1:  word mod 256 >= 0
+-S-  Applied substitution rule decode_byte2_rules(8).
+     This was achieved by replacing all occurrences of systemtypes__byte__last 
+          by:
+          255.
+<S>  New C2:  word mod 256 <= 255
+***  Proved C1:  word mod 256 >= 0
+***  Proved C2:  word mod 256 <= 255
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_decode_byte2_3.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  true
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule decode_byte2_rules(7).
+     This was achieved by replacing all occurrences of systemtypes__byte__first 
+          by:
+          0.
+<S>  New H5:  word mod 256 >= 0
+<S>  New C1:  word div 256 >= 0
+-S-  Applied substitution rule decode_byte2_rules(8).
+     This was achieved by replacing all occurrences of systemtypes__byte__last 
+          by:
+          255.
+<S>  New H6:  word mod 256 <= 255
+<S>  New C2:  word div 256 <= 255
+-S-  Applied substitution rule decode_byte2_rules(12).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H3:  word >= 0
+-S-  Applied substitution rule decode_byte2_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H2:  word <= 65535
+---  Eliminated hypothesis H4 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H3 (duplicate of H1).
+***  Proved C1:  word div 256 >= 0
+     using hypothesis H1.
+***  Proved C2:  word div 256 <= 255
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_decode_byte2_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

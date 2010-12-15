@@ -1,0 +1,60 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.75
+
+                      procedure if_destruct.Get_Stage
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 41:
+
+procedure_get_stage_1.
+H1:    true .
+H2:    last_state >= stage__first .
+H3:    last_state <= stage__last .
+H4:    true .
+H5:    last_valid .
+        ->
+C1:    last_state >= stage__first .
+C2:    last_state <= stage__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 43:
+
+procedure_get_stage_2.
+H1:    true .
+H2:    last_state >= stage__first .
+H3:    last_state <= stage__last .
+H4:    true .
+H5:    not last_valid .
+        ->
+C1:    destruct_cfg__inactive >= stage__first .
+C2:    destruct_cfg__inactive <= stage__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_get_stage_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_get_stage_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_get_stage_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_get_stage_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+

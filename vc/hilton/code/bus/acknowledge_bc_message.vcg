@@ -1,0 +1,181 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.17
+
+                    procedure bus.Acknowledge_BC_Message
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 510:
+
+procedure_acknowledge_bc_message_1.
+H1:    true .
+H2:    src >= lru_index__first .
+H3:    src <= lru_index__last .
+H4:    subaddress_idx >= lru_subaddress_index__first .
+H5:    subaddress_idx <= lru_subaddress_index__last .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H7:    true .
+H8:    true .
+        ->
+C1:    src >= lru_index__first .
+C2:    src <= lru_index__last .
+ 
+
+For path(s) from start to assertion of line 514:
+
+procedure_acknowledge_bc_message_2.
+H1:    true .
+H2:    src >= lru_index__first .
+H3:    src <= lru_index__last .
+H4:    subaddress_idx >= lru_subaddress_index__first .
+H5:    subaddress_idx <= lru_subaddress_index__last .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H7:    true .
+H8:    true .
+H9:    src >= lru_index__first .
+H10:   src <= lru_index__last .
+H11:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H12:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H13:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H14:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H15:   fld_initial(element(rt_to_bc, [src])) >= 
+           valid_msg_index__first .
+H16:   fld_initial(element(rt_to_bc, [src])) <= 
+           valid_msg_index__last .
+H17:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H18:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H19:   subaddress_idx <= fld_msg_count(element(rt_to_bc, [
+           src])) .
+        ->
+C1:    fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+C2:    fld_initial(element(rt_to_bc, [src])) >= 
+           valid_msg_index__first .
+C3:    src >= lru_index__first .
+C4:    src <= lru_index__last .
+C5:    subaddress_idx >= lru_subaddress_index__first .
+C6:    subaddress_idx <= lru_subaddress_index__last .
+C7:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+C8:    true .
+C9:    true .
+ 
+
+For path(s) from assertion of line 514 to run-time check associated with statement of line 516:
+
+procedure_acknowledge_bc_message_3.
+H1:    fld_initial(placing) <= lru_start_index__last .
+H2:    fld_initial(placing) >= valid_msg_index__first .
+H3:    src >= lru_index__first .
+H4:    src <= lru_index__last .
+H5:    subaddress_idx >= lru_subaddress_index__first .
+H6:    subaddress_idx <= lru_subaddress_index__last .
+H7:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H8:    true .
+H9:    true .
+H10:   fld_msg_count(placing) >= lru_subaddress_index__first .
+H11:   fld_msg_count(placing) <= lru_subaddress_index__last .
+H12:   fld_initial(placing) >= lru_start_index__first .
+H13:   fld_initial(placing) <= lru_start_index__last .
+        ->
+C1:    fld_initial(placing) + (subaddress_idx - 1) >= 
+           valid_msg_index__first .
+C2:    fld_initial(placing) + (subaddress_idx - 1) <= 
+           valid_msg_index__last .
+C3:    subaddress_idx - 1 >= all_msg_index__base__first .
+C4:    subaddress_idx - 1 <= all_msg_index__base__last .
+ 
+
+For path(s) from assertion of line 514 to run-time check associated with statement of line 517:
+
+procedure_acknowledge_bc_message_4.
+H1:    fld_initial(placing) <= lru_start_index__last .
+H2:    fld_initial(placing) >= valid_msg_index__first .
+H3:    src >= lru_index__first .
+H4:    src <= lru_index__last .
+H5:    subaddress_idx >= lru_subaddress_index__first .
+H6:    subaddress_idx <= lru_subaddress_index__last .
+H7:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H8:    true .
+H9:    true .
+H10:   fld_msg_count(placing) >= lru_subaddress_index__first .
+H11:   fld_msg_count(placing) <= lru_subaddress_index__last .
+H12:   fld_initial(placing) >= lru_start_index__first .
+H13:   fld_initial(placing) <= lru_start_index__last .
+H14:   fld_initial(placing) + (subaddress_idx - 1) >= 
+           valid_msg_index__first .
+H15:   fld_initial(placing) + (subaddress_idx - 1) <= 
+           valid_msg_index__last .
+H16:   subaddress_idx - 1 >= all_msg_index__base__first .
+H17:   subaddress_idx - 1 <= all_msg_index__base__last .
+        ->
+C1:    fld_initial(placing) + (subaddress_idx - 1) >= 
+           valid_msg_index__first .
+C2:    fld_initial(placing) + (subaddress_idx - 1) <= 
+           valid_msg_index__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_acknowledge_bc_message_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For path(s) from assertion of line 514 to finish:
+
+procedure_acknowledge_bc_message_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_acknowledge_bc_message_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_acknowledge_bc_message_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+

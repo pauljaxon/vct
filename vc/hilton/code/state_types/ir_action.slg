@@ -1,0 +1,218 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:19
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function State_Types.ir_Action
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_ir_action_1.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  infrared__first <= ir_inactive
+-S-  Applied substitution rule ir_action_rules(14).
+     This was achieved by replacing all occurrences of infrared__first by:
+          ir_inactive.
+<S>  New C1:  true
+-S-  Applied substitution rule ir_action_rules(15).
+     This was achieved by replacing all occurrences of infrared__last by:
+          ir_sweep.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_ir_action_2.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  infrared__first <= ir_inactive
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  infrared__first <= ir_inactive
+***  Proved C1:  infrared__first <= ir_inactive
+     using hypothesis H4.
+***  Proved C2:  ir_inactive <= infrared__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_ir_action_3.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  infrared__first <= ir_inactive
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  infrared__first <= ir_stare
+***  Proved C1:  infrared__first <= ir_stare
+     using hypothesis H4.
+-S-  Applied substitution rule ir_action_rules(15).
+     This was achieved by replacing all occurrences of infrared__last by:
+          ir_sweep.
+<S>  New H5:  true
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_ir_action_4.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  infrared__first <= ir_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  infrared__first <= ir_stare
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  infrared__first <= ir_stare
+***  Proved C1:  infrared__first <= ir_stare
+     using hypothesis H7.
+***  Proved C2:  ir_stare <= infrared__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_ir_action_5.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  infrared__first <= ir_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  infrared__first <= ir_stare
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  infrared__first <= ir_sweep
+***  Proved C1:  infrared__first <= ir_sweep
+     using hypothesis H4.
+-S-  Applied substitution rule ir_action_rules(15).
+     This was achieved by replacing all occurrences of infrared__last by:
+          ir_sweep.
+<S>  New H5:  true
+<S>  New H8:  true
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_ir_action_6.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  infrared__first <= ir_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  infrared__first <= ir_stare
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  infrared__first <= ir_sweep
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  infrared__first <= ir_sweep
+***  Proved C1:  infrared__first <= ir_sweep
+     using hypothesis H10.
+***  Proved C2:  ir_sweep <= infrared__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_ir_action_7.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  infrared__first <= ir_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  infrared__first <= ir_stare
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  infrared__first <= ir_sweep
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  infrared__first <= ir_inactive
+***  Proved C1:  infrared__first <= ir_inactive
+     using hypothesis H4.
+***  Proved C2:  ir_inactive <= infrared__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_ir_action_8.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  infrared__first <= ir_inactive
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  infrared__first <= ir_inactive
+***  Proved C1:  true
+***  Proved C2:  infrared__first <= ir_inactive
+     using hypothesis H4.
+***  Proved C3:  ir_inactive <= infrared__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_ir_action_9.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  infrared__first <= ir_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  infrared__first <= ir_stare
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  infrared__first <= ir_stare
+***  Proved C1:  true
+***  Proved C2:  infrared__first <= ir_stare
+     using hypothesis H7.
+***  Proved C3:  ir_stare <= infrared__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_ir_action_10.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  infrared__first <= ir_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  infrared__first <= ir_stare
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  infrared__first <= ir_sweep
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  infrared__first <= ir_sweep
+***  Proved C1:  true
+***  Proved C2:  infrared__first <= ir_sweep
+     using hypothesis H10.
+***  Proved C3:  ir_sweep <= infrared__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_ir_action_11.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  infrared__first <= ir_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  infrared__first <= ir_stare
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  infrared__first <= ir_sweep
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  infrared__first <= ir_inactive
+***  Proved C1:  true
+***  Proved C2:  infrared__first <= ir_inactive
+     using hypothesis H4.
+***  Proved C3:  ir_inactive <= infrared__last
+     using hypothesis H5.
+***  PROVED VC.
+

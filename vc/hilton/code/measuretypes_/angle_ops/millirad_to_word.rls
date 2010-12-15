@@ -1,0 +1,52 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.17*/
+
+                    /*function angle_ops.Millirad_To_Word*/
+
+
+rule_family millirad_to__rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+millirad_to__rules(1): integer__size >= 0 may_be_deduced.
+millirad_to__rules(2): integer__first may_be_replaced_by -2147483648.
+millirad_to__rules(3): integer__last may_be_replaced_by 2147483647.
+millirad_to__rules(4): integer__base__first may_be_replaced_by -2147483648.
+millirad_to__rules(5): integer__base__last may_be_replaced_by 2147483647.
+millirad_to__rules(6): long_integer__size >= 0 may_be_deduced.
+millirad_to__rules(7): long_integer__first may_be_replaced_by -2147483648.
+millirad_to__rules(8): long_integer__last may_be_replaced_by 2147483647.
+millirad_to__rules(9): long_integer__base__first may_be_replaced_by -2147483648.
+millirad_to__rules(10): long_integer__base__last may_be_replaced_by 2147483647.
+millirad_to__rules(11): systemtypes__integer32__size >= 0 may_be_deduced.
+millirad_to__rules(12): systemtypes__integer32__first may_be_replaced_by -2147483648.
+millirad_to__rules(13): systemtypes__integer32__last may_be_replaced_by 2147483647.
+millirad_to__rules(14): systemtypes__integer32__base__first may_be_replaced_by -2147483648.
+millirad_to__rules(15): systemtypes__integer32__base__last may_be_replaced_by 2147483647.
+millirad_to__rules(16): systemtypes__word__size >= 0 may_be_deduced.
+millirad_to__rules(17): systemtypes__word__first may_be_replaced_by 0.
+millirad_to__rules(18): systemtypes__word__last may_be_replaced_by 65535.
+millirad_to__rules(19): systemtypes__word__base__first may_be_replaced_by -2147483648.
+millirad_to__rules(20): systemtypes__word__base__last may_be_replaced_by 2147483647.
+millirad_to__rules(21): measuretypes__millirad__size >= 0 may_be_deduced.
+millirad_to__rules(22): measuretypes__millirad__first may_be_replaced_by -7000.
+millirad_to__rules(23): measuretypes__millirad__last may_be_replaced_by 7000.
+millirad_to__rules(24): measuretypes__millirad__base__first may_be_replaced_by -2147483648.
+millirad_to__rules(25): measuretypes__millirad__base__last may_be_replaced_by 2147483647.
+millirad_to__rules(26): millirad__size >= 0 may_be_deduced.
+millirad_to__rules(27): millirad__first may_be_replaced_by -7000.
+millirad_to__rules(28): millirad__last may_be_replaced_by 7000.
+millirad_to__rules(29): millirad__base__first may_be_replaced_by -2147483648.
+millirad_to__rules(30): millirad__base__last may_be_replaced_by 2147483647.
+millirad_to__rules(31): canon_millirad__size >= 0 may_be_deduced.
+millirad_to__rules(32): canon_millirad__first may_be_replaced_by -3141.
+millirad_to__rules(33): canon_millirad__last may_be_replaced_by 3142.
+millirad_to__rules(34): canon_millirad__base__first may_be_replaced_by -2147483648.
+millirad_to__rules(35): canon_millirad__base__last may_be_replaced_by 2147483647.

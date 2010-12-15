@@ -1,0 +1,190 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.04
+
+Line
+   1  -- Types for measuring physical phenomena
+   2  --
+   3  -- $Log: measuretypes.ads,v $
+   4  -- Revision 1.3  2004/12/17 17:51:22  adi
+   5  -- Fixed compass angle conversions and checks so that compass.in passes
+   6  --
+   7  -- Revision 1.2  2004/12/17 16:08:53  adi
+   8  -- Fixing errors in compass; renamed Angle to Angle_Degrees for clarity
+   9  --
+  10  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+  11  -- Added from tarfile
+  12  --
+  13  --
+  14  -- Revision 1.17  2003/08/26 18:26:06  adi
+  15  -- Added Kelvin
+  16  --
+  17  -- Revision 1.16  2003/08/25 13:25:27  adi
+  18  -- Added bit grids and slices
+  19  --
+  20  -- Revision 1.15  2003/08/22 18:20:25  adi
+  21  -- Added 40 and 45 millirad constants
+  22  --
+  23  -- Revision 1.14  2003/08/18 18:19:23  adi
+  24  -- Added 10,20,30 millirad angles
+  25  --
+  26  -- Revision 1.13  2003/08/12 18:29:56  adi
+  27  -- Added gram_per_sec
+  28  --
+  29  -- Revision 1.12  2003/08/11 18:28:14  adi
+  30  -- Added area
+  31  --
+  32  -- Revision 1.11  2003/08/08 19:15:11  adi
+  33  -- Split off operations to Angle_Ops
+  34  --
+  35  -- Revision 1.10  2003/08/06 21:00:42  adi
+  36  -- Added meter_per_sec_2
+  37  --
+  38  -- Revision 1.9  2003/08/04 20:35:20  adi
+  39  -- Added degree_to_millirad
+  40  --
+  41  -- Revision 1.8  2003/08/03 19:05:46  adi
+  42  -- Added Millirad_to_word
+  43  --
+  44  -- Revision 1.7  2003/08/03 18:55:24  adi
+  45  -- Added Int_To_Millirads
+  46  --
+  47  -- Revision 1.6  2003/08/02 19:42:27  adi
+  48  -- Added round_Degree
+  49  --
+  50  -- Revision 1.5  2003/08/02 19:31:30  adi
+  51  -- Added Angle type
+  52  --
+  53  -- Revision 1.4  2003/08/02 19:13:37  adi
+  54  -- Added ability to translate a word to an angle
+  55  --
+  56  -- Revision 1.3  2003/08/02 18:05:02  adi
+  57  -- Added Millirad type and operations
+  58  --
+  59  -- Revision 1.2  2003/02/09 20:54:41  adi
+  60  -- Added non-neg subtypes
+  61  --
+  62  -- Revision 1.1  2003/02/09 20:09:00  adi
+  63  -- Initial revision
+  64  --
+  65  --
+  66  with Systemtypes;
+  67  --# inherit Systemtypes;
+  68  package MeasureTypes is
+  69  
+  70     -- Distance
+  71     type Meter is range -200_000 .. 200_000;
+  72     --# assert Meter'base is long_integer;
+  73     subtype Pos_Meter is Meter range 0..Meter'Last;
+  74     -- Position
+  75     type Location is record
+  76        X : Meter;
+  77        Y : Meter;
+  78        Z : Meter;
+  79     end record;
+  80  
+  81     -- Area
+  82     type Meter_2 is range 0..1000;
+  83     --# assert Meter_2'base is integer;
+  84  
+  85     -- Velocity (scalar)
+  86     type Meter_Per_Sec is range -5000 .. 5000;
+  87     --# assert meter_per_sec'base is integer;
+  88     subtype Pos_Meter_Per_Sec is Meter_Per_Sec range 0..Meter_Per_Sec'Last;
+  89     -- Velocity (vector)
+  90     type Velocity is record
+  91        DX : Meter_Per_Sec;
+  92        DY : Meter_Per_Sec;
+  93        DZ : Meter_Per_Sec;
+  94     end record;
+  95  
+  96     -- Acceleration (scalar)
+  97     type Meter_Per_Sec_2 is range -200 .. 200;
+  98     --# assert meter_per_sec_2'base is integer;
+  99     type Cm_Per_Sec_2 is range -30_000 .. 30_000;
+ 100     --# assert cm_per_sec_2'base is integer;
+ 101  
+ 102     -- Mass
+ 103     type Kilo is range 0..20_000;
+ 104     --# assert kilo'base is integer;
+ 105  
+ 106     -- Mass rate
+ 107     type Gram_Per_Sec is range 0..30_000;
+ 108     --# assert gram_per_sec'base is integer;
+ 109  
+ 110     -- Temperature
+ 111     type Kelvin is range 0..6_000;
+ 112     --# assert kelvin'base is integer;
+ 113  
+ 114     -- Force
+ 115     type Newton is range -1_000_000 .. 1_000_000;
+ 116     --# assert newton'base is long_integer;
+ 117  
+ 118     -- Bit grids
+ 119     type Bit_Range is range 0..255;
+ 120     subtype bit4_Range is Bit_Range range 0..3;
+ 121     subtype Bit8_Range is Bit_Range range 0..7;
+ 122     subtype Bit16_Range is Bit_Range range 0..15;
+ 123  
+ 124     type Bit4_Slice  is array(bit4_Range) of Boolean;
+ 125     type Bit8_Slice  is array(bit8_Range) of Boolean;
+ 126     type Bit16_Slice is array(bit16_Range) of Boolean;
+ 127  
+ 128     type Bit4_Array is array(Bit4_range) of Bit4_Slice;
+ 129     type Bit8_Array is array(Bit8_range) of Bit8_Slice;
+ 130     type Bit16_Array is array(Bit16_range) of Bit16_Slice;
+ 131  
+ 132  
+ 133     -- Public angle for text entry purposes
+ 134     type Angle_Degrees is range 0..359;
+ 135  
+ 136     -- Angle: (-pi,+pi] radians
+ 137     -- Private type to prevent dumb handling
+ 138     type Millirad is private;
+ 139     Angle_Zero, Angle_Right, Angle_Left,
+ 140       Angle_Half, Angle_Minushalf : constant Millirad;
+ 141     Ten_Millirads    : constant Millirad;
+ 142     Twenty_Millirads : constant Millirad;
+ 143     Thirty_Millirads : constant Millirad;
+ 144     Forty_Millirads : constant Millirad;
+ 145     Fortyfive_Millirads : constant Millirad;
+ 146     Hundred_Millirads : constant Millirad;
+ 147  
+ 148     -- Rate of change of angle: from -2 to 2 rads/sec
+ 149     type Millirad_per_sec is range -2_000 .. 2000;
+ 150     Angle_Rate_Zero : constant Millirad_per_sec := 0;
+ 151     
+ 152  private
+ 153     -- Private millirad type
+ 154  
+ 155     type Millirad is range -7000 .. 7000;
+ 156     --# assert Millirad'base is Integer;
+ 157  
+ 158     Angle_Zero : constant Millirad := 0;
+ 159     Angle_Left : constant Millirad := -1571;
+ 160     Angle_Right : constant Millirad := 1572;
+ 161     Angle_Half : constant Millirad := 3142;
+ 162     Angle_Full : constant Millirad := 6283;
+ 163     Angle_Minushalf : constant Millirad := -3142;
+ 164  
+ 165     Ten_Millirads    : constant Millirad := 10;
+ 166     Twenty_Millirads : constant Millirad := 20;
+ 167     Thirty_Millirads : constant Millirad := 30;
+ 168     Forty_Millirads : constant Millirad  := 40;
+ 169     Fortyfive_Millirads : constant Millirad := 45;
+ 170     Hundred_Millirads : constant Millirad := 100;
+ 171  
+ 172     subtype Canon_Millirad is Millirad range (Angle_Minushalf+1) .. Angle_half;
+ 173     subtype Pos_milliRad is Millirad range 0 .. Angle_half;
+ 174  
+ 175  end MeasureTypes;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

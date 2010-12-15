@@ -1,0 +1,71 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:36.98*/
+
+                      /*function State_Types.Fuze_Action*/
+
+
+rule_family fuze_action_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+fuze_action_rules(1): word__first <= element(fuze_values, [I]) may_be_deduced_from [unarmed <= I, I <= timed_out].
+fuze_action_rules(2): element(fuze_values, [I]) <= word__last may_be_deduced_from [unarmed <= I, I <= timed_out].
+fuze_action_rules(3): integer__size >= 0 may_be_deduced.
+fuze_action_rules(4): integer__first may_be_replaced_by -2147483648.
+fuze_action_rules(5): integer__last may_be_replaced_by 2147483647.
+fuze_action_rules(6): integer__base__first may_be_replaced_by -2147483648.
+fuze_action_rules(7): integer__base__last may_be_replaced_by 2147483647.
+fuze_action_rules(8): word__size >= 0 may_be_deduced.
+fuze_action_rules(9): word__first may_be_replaced_by 0.
+fuze_action_rules(10): word__last may_be_replaced_by 65535.
+fuze_action_rules(11): word__base__first may_be_replaced_by -2147483648.
+fuze_action_rules(12): word__base__last may_be_replaced_by 2147483647.
+fuze_action_rules(13): fuze__size >= 0 may_be_deduced.
+fuze_action_rules(14): fuze__first may_be_replaced_by unarmed.
+fuze_action_rules(15): fuze__last may_be_replaced_by timed_out.
+fuze_action_rules(16): fuze__base__first may_be_replaced_by unarmed.
+fuze_action_rules(17): fuze__base__last may_be_replaced_by timed_out.
+fuze_action_rules(18): fuze__pos(fuze__first) may_be_replaced_by 0.
+fuze_action_rules(19): fuze__pos(unarmed) may_be_replaced_by 0.
+fuze_action_rules(20): fuze__val(0) may_be_replaced_by unarmed.
+fuze_action_rules(21): fuze__pos(arming) may_be_replaced_by 1.
+fuze_action_rules(22): fuze__val(1) may_be_replaced_by arming.
+fuze_action_rules(23): fuze__pos(live) may_be_replaced_by 2.
+fuze_action_rules(24): fuze__val(2) may_be_replaced_by live.
+fuze_action_rules(25): fuze__pos(triggering) may_be_replaced_by 3.
+fuze_action_rules(26): fuze__val(3) may_be_replaced_by triggering.
+fuze_action_rules(27): fuze__pos(timed_out) may_be_replaced_by 4.
+fuze_action_rules(28): fuze__val(4) may_be_replaced_by timed_out.
+fuze_action_rules(29): fuze__pos(fuze__last) may_be_replaced_by 4.
+fuze_action_rules(30): fuze__pos(succ(X)) may_be_replaced_by fuze__pos(X) + 1
+     if [X <=timed_out, X <> timed_out].
+fuze_action_rules(31): fuze__pos(pred(X)) may_be_replaced_by fuze__pos(X) - 1
+     if [X >=unarmed, X <> unarmed].
+fuze_action_rules(32): fuze__pos(X) >= 0 may_be_deduced_from
+     [unarmed <= X, X <= timed_out].
+fuze_action_rules(33): fuze__pos(X) <= 4 may_be_deduced_from
+     [unarmed <= X, X <= timed_out].
+fuze_action_rules(34): fuze__val(X) >= unarmed may_be_deduced_from
+     [0 <= X, X <= 4].
+fuze_action_rules(35): fuze__val(X) <= timed_out may_be_deduced_from
+     [0 <= X, X <= 4].
+fuze_action_rules(36): succ(fuze__val(X)) may_be_replaced_by fuze__val(X+1)
+     if [0 <= X, X < 4].
+fuze_action_rules(37): pred(fuze__val(X)) may_be_replaced_by fuze__val(X-1)
+     if [0 < X, X <= 4].
+fuze_action_rules(38): fuze__pos(fuze__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 4].
+fuze_action_rules(39): fuze__val(fuze__pos(X)) may_be_replaced_by X
+     if [unarmed <= X, X <= timed_out].
+fuze_action_rules(40): fuze__pos(X) <= fuze__pos(Y) & X <= Y are_interchangeable 
+     if [unarmed <= X, X <= timed_out, unarmed <= Y, Y <= 
+     timed_out].
+fuze_action_rules(41): fuze__val(X) <= fuze__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 4, 0 <= Y, Y <= 4].

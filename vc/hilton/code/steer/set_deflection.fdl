@@ -1,0 +1,59 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:42.54}
+
+                       {procedure steer.Set_Deflection}
+
+
+title procedure set_deflection;
+
+  function round__(real) : integer;
+  type clock__millisecond = integer;
+  type steer_cfg__fin_angle = integer;
+  type steer_cfg__fin = (steer_cfg__port, steer_cfg__starboard, 
+     steer_cfg__top, steer_cfg__bottom);
+  type fin_angles = array [steer_cfg__fin] of integer;
+  type fin_times = array [steer_cfg__fin] of integer;
+  const fin__base__last : steer_cfg__fin = pending; 
+  const fin__base__first : steer_cfg__fin = pending; 
+  const angle__base__last : integer = pending; 
+  const angle__base__first : integer = pending; 
+  const steer_cfg__fin__base__last : steer_cfg__fin = pending; 
+  const steer_cfg__fin__base__first : steer_cfg__fin = pending; 
+  const steer_cfg__fin_angle__base__last : integer = pending; 
+  const steer_cfg__fin_angle__base__first : integer = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const fin__size : integer = pending; 
+  const fin__last : steer_cfg__fin = pending; 
+  const fin__first : steer_cfg__fin = pending; 
+  const angle__size : integer = pending; 
+  const angle__last : integer = pending; 
+  const angle__first : integer = pending; 
+  const steer_cfg__fin__size : integer = pending; 
+  const steer_cfg__fin__last : steer_cfg__fin = pending; 
+  const steer_cfg__fin__first : steer_cfg__fin = pending; 
+  const steer_cfg__fin_angle__size : integer = pending; 
+  const steer_cfg__fin_angle__last : integer = pending; 
+  const steer_cfg__fin_angle__first : integer = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  var for_fin : steer_cfg__fin;
+  var new_angle : integer;
+  var current_angles : fin_angles;
+  var commanded_angles : fin_angles;
+  var command_times : fin_times;
+  var time_valid : boolean;
+  var t : integer;
+  var a : integer;
+  var time_valid__2 : boolean;
+  var t__2 : integer;
+  var a__1 : integer;
+
+end;

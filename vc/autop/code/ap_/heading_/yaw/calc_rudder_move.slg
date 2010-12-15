@@ -1,0 +1,162 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:06
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function yaw.Calc_Rudder_Move
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_calc_rudder_move_1.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+%%%  Simplified C14 on reading formula in, to give:
+     %%%  C14:  true
+***  Proved C1:  true
+***  Proved C14:  true
+***  Proved C15:  mach >= instruments__machnumber__first
+     using hypothesis H4.
+***  Proved C16:  mach <= instruments__machnumber__last
+     using hypothesis H5.
+-S-  Applied substitution rule calc_rudder__rules(17).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__first by:
+          - 45.
+<S>  New C2:  true
+<S>  New C4:  true
+-S-  Applied substitution rule calc_rudder__rules(18).
+     This was achieved by replacing all occurrences of 
+          surfaces__controlangle__last by:
+          45.
+<S>  New C3:  true
+<S>  New C5:  true
+-S-  Applied substitution rule calc_rudder__rules(22).
+     This was achieved by replacing all occurrences of scale__scaledata__first 
+          by:
+          - 100.
+<S>  New C6:  true
+<S>  New C8:  present_sliprate div 2 >= - 100
+<S>  New C10:  present_sliprate div 2 >= - 100
+-S-  Applied substitution rule calc_rudder__rules(23).
+     This was achieved by replacing all occurrences of scale__scaledata__last 
+          by:
+          100.
+<S>  New C7:  true
+<S>  New C9:  present_sliprate div 2 <= 100
+<S>  New C11:  present_sliprate div 2 <= 100
+-S-  Applied substitution rule calc_rudder__rules(9).
+     This was achieved by replacing all occurrences of 
+          degrees__degreespersec__base__first by:
+          - 32768.
+<S>  New C12:  present_sliprate div 2 >= - 32768
+-S-  Applied substitution rule calc_rudder__rules(10).
+     This was achieved by replacing all occurrences of 
+          degrees__degreespersec__base__last by:
+          32767.
+<S>  New C13:  present_sliprate div 2 <= 32767
+***  Proved C2:  true
+***  Proved C4:  true
+***  Proved C3:  true
+***  Proved C5:  true
+***  Proved C6:  true
+***  Proved C7:  true
+-S-  Applied substitution rule calc_rudder__rules(12).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H4:  mach >= 0
+-S-  Applied substitution rule calc_rudder__rules(13).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H5:  mach <= 100
+-S-  Applied substitution rule calc_rudder__rules(27).
+     This was achieved by replacing all occurrences of degreespersec__first by:
+          - 180.
+<S>  New H2:  present_sliprate >= - 180
+-S-  Applied substitution rule calc_rudder__rules(28).
+     This was achieved by replacing all occurrences of degreespersec__last by:
+          180.
+<S>  New H3:  present_sliprate <= 180
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated conclusion C10, which is a duplicate of C8.
+---  Eliminated conclusion C11, which is a duplicate of C9.
+***  Proved C8:  present_sliprate div 2 >= - 100
+     using hypothesis H2.
+***  Proved C9:  present_sliprate div 2 <= 100
+     using hypothesis H3.
+***  Proved C12:  present_sliprate div 2 >= - 32768
+     using hypothesis H2.
+***  Proved C13:  present_sliprate div 2 <= 32767
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_calc_rudder_move_2.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  true
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  true
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H5)
+          .
+***  Proved C1:  scale__scale_movement(mach, present_sliprate div 2, 0, 20) >= 
+          surfaces__controlangle__first
+     using hypothesis H22.
+***  Proved C2:  scale__scale_movement(mach, present_sliprate div 2, 0, 20) <= 
+          surfaces__controlangle__last
+     using hypothesis H23.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_calc_rudder_move_3.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  true
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified H19 on reading formula in, to give:
+     %%%  H19:  true
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H23).
+***  Proved C1:  true
+***  Proved C2:  scale__scale_movement(mach, present_sliprate div 2, 0, 20) >= 
+          surfaces__controlangle__first
+     using hypothesis H22.
+***  Proved C3:  scale__scale_movement(mach, present_sliprate div 2, 0, 20) <= 
+          surfaces__controlangle__last
+     using hypothesis H23.
+***  PROVED VC.
+

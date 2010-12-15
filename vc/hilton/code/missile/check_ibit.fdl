@@ -1,0 +1,91 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:44.29}
+
+                        {procedure missile.Check_Ibit}
+
+
+title procedure check_ibit;
+
+  function round__(real) : integer;
+  type bc1553__lru_name = (bc1553__barometer, bc1553__asi, 
+     bc1553__ins, bc1553__compass, bc1553__fuel, bc1553__fuze, 
+     bc1553__radar, bc1553__infrared, bc1553__fins, bc1553__motor, 
+     bc1553__destruct, bc1553__warhead);
+  type ibit__phase = (ibit__off, ibit__request_start, 
+     ibit__in_progress, ibit__request_stop, ibit__pass, 
+     ibit__fail, ibit__timeout);
+  type if_barometer__state__type = pending;
+  type if_compass__state__type = pending;
+  type if_airspeed__state__type = pending;
+  type if_ins__state__type = pending;
+  type if_fuel__state__type = pending;
+  type if_fuze__state__type = pending;
+  type if_radar__state__type = pending;
+  type if_ir__state__type = pending;
+  type if_steer__state__type = pending;
+  type if_motor__state__type = pending;
+  type if_warhead__state__type = pending;
+  type if_destruct__state__type = pending;
+  const ibit__phase__base__last : ibit__phase = pending; 
+  const ibit__phase__base__first : ibit__phase = pending; 
+  const bc1553__lru_name__base__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__base__first : bc1553__lru_name = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const ibit__phase__size : integer = pending; 
+  const ibit__phase__last : ibit__phase = pending; 
+  const ibit__phase__first : ibit__phase = pending; 
+  const bc1553__lru_name__size : integer = pending; 
+  const bc1553__lru_name__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__first : bc1553__lru_name = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+  var if_barometer__state : if_barometer__state__type;
+  var if_compass__state : if_compass__state__type;
+  var if_airspeed__state : if_airspeed__state__type;
+  var if_ins__state : if_ins__state__type;
+  var if_fuel__state : if_fuel__state__type;
+  var if_fuze__state : if_fuze__state__type;
+  var if_radar__state : if_radar__state__type;
+  var if_ir__state : if_ir__state__type;
+  var if_steer__state : if_steer__state__type;
+  var if_motor__state : if_motor__state__type;
+  var if_warhead__state : if_warhead__state__type;
+  var if_destruct__state : if_destruct__state__type;
+  var ibit_phase : ibit__phase;
+  var complete_count : integer;
+  var passed_count : integer;
+  var loop__1__lru : bc1553__lru_name;
+  function if_barometer__get_ibit_state(if_barometer__state__type) : 
+     ibit__phase;
+  function if_compass__get_ibit_state(if_compass__state__type) : 
+     ibit__phase;
+  function if_airspeed__get_ibit_state(if_airspeed__state__type) : 
+     ibit__phase;
+  function if_ins__get_ibit_state(if_ins__state__type) : 
+     ibit__phase;
+  function if_fuel__get_ibit_state(if_fuel__state__type) : 
+     ibit__phase;
+  function if_fuze__get_ibit_state(if_fuze__state__type) : 
+     ibit__phase;
+  function if_radar__get_ibit_state(if_radar__state__type) : 
+     ibit__phase;
+  function if_ir__get_ibit_state(if_ir__state__type) : 
+     ibit__phase;
+  function if_steer__get_ibit_state(if_steer__state__type) : 
+     ibit__phase;
+  function if_motor__get_ibit_state(if_motor__state__type) : 
+     ibit__phase;
+  function if_warhead__get_ibit_state(if_warhead__state__type) : 
+     ibit__phase;
+  function if_destruct__get_ibit_state(if_destruct__state__type) : 
+     ibit__phase;
+
+end;

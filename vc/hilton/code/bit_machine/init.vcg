@@ -1,0 +1,58 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.97
+
+                         procedure bit_machine.Init
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 46:
+
+procedure_init_1.
+H1:    true .
+H2:    fld_ticks_to_complete(state) >= 
+           systemtypes__unsigned16__first .
+H3:    fld_ticks_to_complete(state) <= 
+           systemtypes__unsigned16__last .
+H4:    true .
+H5:    fld_ticks(state) >= systemtypes__unsigned16__first .
+H6:    fld_ticks(state) <= systemtypes__unsigned16__last .
+H7:    fld_current_phase(state) >= ibit__phase__first .
+H8:    fld_current_phase(state) <= ibit__phase__last .
+        ->
+C1:    ibit__in_progress >= ibit__phase__first .
+C2:    ibit__in_progress <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 47:
+
+procedure_init_2.
+H1:    true .
+H2:    fld_ticks_to_complete(state) >= 
+           systemtypes__unsigned16__first .
+H3:    fld_ticks_to_complete(state) <= 
+           systemtypes__unsigned16__last .
+H4:    true .
+H5:    fld_ticks(state) >= systemtypes__unsigned16__first .
+H6:    fld_ticks(state) <= systemtypes__unsigned16__last .
+H7:    fld_current_phase(state) >= ibit__phase__first .
+H8:    fld_current_phase(state) <= ibit__phase__last .
+H9:    ibit__in_progress >= ibit__phase__first .
+H10:   ibit__in_progress <= ibit__phase__last .
+        ->
+C1:    0 >= systemtypes__unsigned16__first .
+C2:    0 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_init_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+

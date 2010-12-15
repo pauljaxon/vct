@@ -1,0 +1,226 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.12
+
+                       procedure nav.Estimate_Height
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 294:
+
+procedure_estimate_height_1.
+H1:    true .
+H2:    barometer_ss >= sensor_status__first .
+H3:    barometer_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (barometer_ss = unknown) or ((barometer_ss = failed) or (
+           barometer_ss = restarted)) .
+H7:    ins_ss = valid .
+H8:    m__1 >= sensor_history__meter__first .
+H9:    m__1 <= sensor_history__meter__last .
+H10:   t__1 >= clock__millisecond__first .
+H11:   t__1 <= clock__millisecond__last .
+        ->
+C1:    t__1 >= clock__millisecond__first .
+C2:    t__1 <= clock__millisecond__last .
+C3:    m__1 >= meter__first .
+C4:    m__1 <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 299:
+
+procedure_estimate_height_2.
+H1:    true .
+H2:    barometer_ss >= sensor_status__first .
+H3:    barometer_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (barometer_ss = unknown) or ((barometer_ss = failed) or (
+           barometer_ss = restarted)) .
+H7:    ins_ss = valid .
+H8:    m__1 >= sensor_history__meter__first .
+H9:    m__1 <= sensor_history__meter__last .
+H10:   t__1 >= clock__millisecond__first .
+H11:   t__1 <= clock__millisecond__last .
+H12:   t__1 >= clock__millisecond__first .
+H13:   t__1 <= clock__millisecond__last .
+H14:   m__1 >= meter__first .
+H15:   m__1 <= meter__last .
+H16:   t__1 >= clock__millisecond__first .
+H17:   t__1 <= clock__millisecond__last .
+H18:   t__1 = 0 .
+        ->
+C1:    none >= confidence__first .
+C2:    none <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 301:
+
+procedure_estimate_height_3.
+H1:    true .
+H2:    barometer_ss >= sensor_status__first .
+H3:    barometer_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (barometer_ss = unknown) or ((barometer_ss = failed) or (
+           barometer_ss = restarted)) .
+H7:    ins_ss = valid .
+H8:    m__1 >= sensor_history__meter__first .
+H9:    m__1 <= sensor_history__meter__last .
+H10:   t__1 >= clock__millisecond__first .
+H11:   t__1 <= clock__millisecond__last .
+H12:   t__1 >= clock__millisecond__first .
+H13:   t__1 <= clock__millisecond__last .
+H14:   m__1 >= meter__first .
+H15:   m__1 <= meter__last .
+H16:   t__1 >= clock__millisecond__first .
+H17:   t__1 <= clock__millisecond__last .
+H18:   not (t__1 = 0) .
+        ->
+C1:    low >= confidence__first .
+C2:    low <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 304:
+
+procedure_estimate_height_4.
+H1:    true .
+H2:    barometer_ss >= sensor_status__first .
+H3:    barometer_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (barometer_ss = unknown) or ((barometer_ss = failed) or (
+           barometer_ss = restarted)) .
+H7:    not (ins_ss = valid) .
+        ->
+C1:    0 >= meter__first .
+C2:    0 <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 305:
+
+procedure_estimate_height_5.
+H1:    true .
+H2:    barometer_ss >= sensor_status__first .
+H3:    barometer_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (barometer_ss = unknown) or ((barometer_ss = failed) or (
+           barometer_ss = restarted)) .
+H7:    not (ins_ss = valid) .
+H8:    0 >= meter__first .
+H9:    0 <= meter__last .
+        ->
+C1:    none >= confidence__first .
+C2:    none <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 308:
+
+procedure_estimate_height_6.
+H1:    true .
+H2:    barometer_ss >= sensor_status__first .
+H3:    barometer_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    barometer_ss = valid .
+H7:    m__2 >= sensor_history__meter__first .
+H8:    m__2 <= sensor_history__meter__last .
+H9:    t__2 >= clock__millisecond__first .
+H10:   t__2 <= clock__millisecond__last .
+        ->
+C1:    t__2 >= clock__millisecond__first .
+C2:    t__2 <= clock__millisecond__last .
+C3:    m__2 >= meter__first .
+C4:    m__2 <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 314:
+
+procedure_estimate_height_7.
+H1:    true .
+H2:    barometer_ss >= sensor_status__first .
+H3:    barometer_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    barometer_ss = valid .
+H7:    m__2 >= sensor_history__meter__first .
+H8:    m__2 <= sensor_history__meter__last .
+H9:    t__2 >= clock__millisecond__first .
+H10:   t__2 <= clock__millisecond__last .
+H11:   t__2 >= clock__millisecond__first .
+H12:   t__2 <= clock__millisecond__last .
+H13:   m__2 >= meter__first .
+H14:   m__2 <= meter__last .
+H15:   t__2 >= clock__millisecond__first .
+H16:   t__2 <= clock__millisecond__last .
+H17:   t__2 = 0 .
+        ->
+C1:    none >= confidence__first .
+C2:    none <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 316:
+
+procedure_estimate_height_8.
+H1:    true .
+H2:    barometer_ss >= sensor_status__first .
+H3:    barometer_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    barometer_ss = valid .
+H7:    m__2 >= sensor_history__meter__first .
+H8:    m__2 <= sensor_history__meter__last .
+H9:    t__2 >= clock__millisecond__first .
+H10:   t__2 <= clock__millisecond__last .
+H11:   t__2 >= clock__millisecond__first .
+H12:   t__2 <= clock__millisecond__last .
+H13:   m__2 >= meter__first .
+H14:   m__2 <= meter__last .
+H15:   t__2 >= clock__millisecond__first .
+H16:   t__2 <= clock__millisecond__last .
+H17:   not (t__2 = 0) .
+        ->
+C1:    high >= confidence__first .
+C2:    high <= confidence__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_estimate_height_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_height_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_height_11.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_height_12.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_height_13.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_estimate_height_14.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_height_15.
+*** true .          /* trivially true VC removed by Examiner */
+
+

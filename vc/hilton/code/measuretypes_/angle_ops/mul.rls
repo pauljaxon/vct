@@ -1,0 +1,37 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.07*/
+
+                           /*function angle_ops.Mul*/
+
+
+rule_family mul_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+mul_rules(1): integer__size >= 0 may_be_deduced.
+mul_rules(2): integer__first may_be_replaced_by -2147483648.
+mul_rules(3): integer__last may_be_replaced_by 2147483647.
+mul_rules(4): integer__base__first may_be_replaced_by -2147483648.
+mul_rules(5): integer__base__last may_be_replaced_by 2147483647.
+mul_rules(6): measuretypes__millirad__size >= 0 may_be_deduced.
+mul_rules(7): measuretypes__millirad__first may_be_replaced_by -7000.
+mul_rules(8): measuretypes__millirad__last may_be_replaced_by 7000.
+mul_rules(9): measuretypes__millirad__base__first may_be_replaced_by -2147483648.
+mul_rules(10): measuretypes__millirad__base__last may_be_replaced_by 2147483647.
+mul_rules(11): millirad__size >= 0 may_be_deduced.
+mul_rules(12): millirad__first may_be_replaced_by -7000.
+mul_rules(13): millirad__last may_be_replaced_by 7000.
+mul_rules(14): millirad__base__first may_be_replaced_by -2147483648.
+mul_rules(15): millirad__base__last may_be_replaced_by 2147483647.
+mul_rules(16): canon_millirad__size >= 0 may_be_deduced.
+mul_rules(17): canon_millirad__first may_be_replaced_by -3141.
+mul_rules(18): canon_millirad__last may_be_replaced_by 3142.
+mul_rules(19): canon_millirad__base__first may_be_replaced_by -2147483648.
+mul_rules(20): canon_millirad__base__last may_be_replaced_by 2147483647.

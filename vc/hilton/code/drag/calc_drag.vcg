@@ -1,0 +1,1316 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.81
+
+                          procedure drag.Calc_Drag
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 63:
+
+procedure_calc_drag_1.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    speed < constants__mach1_sea .
+H9:    speed < lin_quad_boundary .
+        ->
+C1:    speed >= integer32__first .
+C2:    speed <= integer32__last .
+C3:    speed >= integer32__first .
+C4:    speed <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 66:
+
+procedure_calc_drag_2.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    speed < constants__mach1_sea .
+H9:    not (speed < lin_quad_boundary) .
+        ->
+C1:    speed * speed div lin_quad_boundary >= integer32__first .
+C2:    speed * speed div lin_quad_boundary <= integer32__last .
+C3:    lin_quad_boundary <> 0 .
+C4:    lin_quad_boundary >= integer32__first .
+C5:    lin_quad_boundary <= integer32__last .
+C6:    speed * speed >= long_integer__base__first .
+C7:    speed * speed <= long_integer__base__last .
+C8:    speed >= integer32__first .
+C9:    speed <= integer32__last .
+C10:   speed >= integer32__first .
+C11:   speed <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 73:
+
+procedure_calc_drag_3.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    speed < transonic_boundary .
+        ->
+C1:    speed - constants__mach1_sea >= integer32__first .
+C2:    speed - constants__mach1_sea <= integer32__last .
+C3:    speed - constants__mach1_sea >= integer32__first .
+C4:    speed - constants__mach1_sea <= integer32__last .
+C5:    speed - constants__mach1_sea >= 
+           measuretypes__meter_per_sec__base__first .
+C6:    speed - constants__mach1_sea <= 
+           measuretypes__meter_per_sec__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 74:
+
+procedure_calc_drag_4.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    speed < transonic_boundary .
+H10:   speed - constants__mach1_sea >= integer32__first .
+H11:   speed - constants__mach1_sea <= integer32__last .
+H12:   speed - constants__mach1_sea >= integer32__first .
+H13:   speed - constants__mach1_sea <= integer32__last .
+H14:   speed - constants__mach1_sea >= 
+           measuretypes__meter_per_sec__base__first .
+H15:   speed - constants__mach1_sea <= 
+           measuretypes__meter_per_sec__base__last .
+H16:   speed - constants__mach1_sea >= integer32__first .
+H17:   speed - constants__mach1_sea <= integer32__last .
+        ->
+C1:    drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 >= integer32__first .
+C2:    drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 <= integer32__last .
+C3:    (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 >= long_integer__base__first .
+C4:    (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 <= long_integer__base__last .
+C5:    2000 <> 0 .
+C6:    (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) >= long_integer__base__first .
+C7:    (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) <= long_integer__base__last .
+C8:    (speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea) >= long_integer__base__first .
+C9:    (speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea) <= long_integer__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 77:
+
+procedure_calc_drag_5.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    not (speed < transonic_boundary) .
+H10:   speed < postsonic_boundary .
+        ->
+C1:    postsonic_boundary - transonic_boundary >= integer32__first .
+C2:    postsonic_boundary - transonic_boundary <= integer32__last .
+C3:    postsonic_boundary - transonic_boundary >= integer32__first .
+C4:    postsonic_boundary - transonic_boundary <= integer32__last .
+C5:    postsonic_boundary - transonic_boundary >= 
+           measuretypes__meter_per_sec__base__first .
+C6:    postsonic_boundary - transonic_boundary <= 
+           measuretypes__meter_per_sec__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 78:
+
+procedure_calc_drag_6.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    not (speed < transonic_boundary) .
+H10:   speed < postsonic_boundary .
+H11:   postsonic_boundary - transonic_boundary >= integer32__first .
+H12:   postsonic_boundary - transonic_boundary <= integer32__last .
+H13:   postsonic_boundary - transonic_boundary >= integer32__first .
+H14:   postsonic_boundary - transonic_boundary <= integer32__last .
+H15:   postsonic_boundary - transonic_boundary >= 
+           measuretypes__meter_per_sec__base__first .
+H16:   postsonic_boundary - transonic_boundary <= 
+           measuretypes__meter_per_sec__base__last .
+        ->
+C1:    drag_at_transonic - drag_at_mach1 >= integer32__first .
+C2:    drag_at_transonic - drag_at_mach1 <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 79:
+
+procedure_calc_drag_7.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    not (speed < transonic_boundary) .
+H10:   speed < postsonic_boundary .
+H11:   postsonic_boundary - transonic_boundary >= integer32__first .
+H12:   postsonic_boundary - transonic_boundary <= integer32__last .
+H13:   postsonic_boundary - transonic_boundary >= integer32__first .
+H14:   postsonic_boundary - transonic_boundary <= integer32__last .
+H15:   postsonic_boundary - transonic_boundary >= 
+           measuretypes__meter_per_sec__base__first .
+H16:   postsonic_boundary - transonic_boundary <= 
+           measuretypes__meter_per_sec__base__last .
+H17:   drag_at_transonic - drag_at_mach1 >= integer32__first .
+H18:   drag_at_transonic - drag_at_mach1 <= integer32__last .
+H19:   postsonic_boundary - transonic_boundary >= integer32__first .
+H20:   postsonic_boundary - transonic_boundary <= integer32__last .
+H21:   drag_at_transonic - drag_at_mach1 >= integer32__first .
+H22:   drag_at_transonic - drag_at_mach1 <= integer32__last .
+        ->
+C1:    drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) >= 
+           integer32__first .
+C2:    drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) <= 
+           integer32__last .
+C3:    (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) div (postsonic_boundary - 
+           transonic_boundary) >= long_integer__base__first .
+C4:    (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) div (postsonic_boundary - 
+           transonic_boundary) <= long_integer__base__last .
+C5:    postsonic_boundary - transonic_boundary <> 0 .
+C6:    (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) >= long_integer__base__first .
+C7:    (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) <= long_integer__base__last .
+C8:    postsonic_boundary - speed >= integer32__first .
+C9:    postsonic_boundary - speed <= integer32__last .
+C10:   postsonic_boundary - speed >= 
+           measuretypes__meter_per_sec__base__first .
+C11:   postsonic_boundary - speed <= 
+           measuretypes__meter_per_sec__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 83:
+
+procedure_calc_drag_8.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    not (speed < transonic_boundary) .
+H10:   not (speed < postsonic_boundary) .
+        ->
+C1:    speed - postsonic_boundary >= integer32__first .
+C2:    speed - postsonic_boundary <= integer32__last .
+C3:    speed - postsonic_boundary >= integer32__first .
+C4:    speed - postsonic_boundary <= integer32__last .
+C5:    speed - postsonic_boundary >= 
+           measuretypes__meter_per_sec__base__first .
+C6:    speed - postsonic_boundary <= 
+           measuretypes__meter_per_sec__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 84:
+
+procedure_calc_drag_9.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    not (speed < transonic_boundary) .
+H10:   not (speed < postsonic_boundary) .
+H11:   speed - postsonic_boundary >= integer32__first .
+H12:   speed - postsonic_boundary <= integer32__last .
+H13:   speed - postsonic_boundary >= integer32__first .
+H14:   speed - postsonic_boundary <= integer32__last .
+H15:   speed - postsonic_boundary >= 
+           measuretypes__meter_per_sec__base__first .
+H16:   speed - postsonic_boundary <= 
+           measuretypes__meter_per_sec__base__last .
+H17:   speed - postsonic_boundary >= integer32__first .
+H18:   speed - postsonic_boundary <= integer32__last .
+        ->
+C1:    drag_at_mach1 + (speed - postsonic_boundary) >= 
+           integer32__first .
+C2:    drag_at_mach1 + (speed - postsonic_boundary) <= 
+           integer32__last .
+ 
+
+For path(s) from start to precondition check associated with statement of line 87:
+
+procedure_calc_drag_10.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    speed < constants__mach1_sea .
+H9:    speed < lin_quad_boundary .
+H10:   speed >= integer32__first .
+H11:   speed <= integer32__last .
+H12:   speed >= integer32__first .
+H13:   speed <= integer32__last .
+H14:   speed >= integer32__first .
+H15:   speed <= integer32__last .
+        ->
+C1:    altitude >= 0 .
+C2:    altitude <= 25000 .
+C3:    altitude >= pos_meter__first .
+C4:    altitude <= pos_meter__last .
+ 
+
+procedure_calc_drag_11.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    speed < constants__mach1_sea .
+H9:    not (speed < lin_quad_boundary) .
+H10:   speed * speed div lin_quad_boundary >= integer32__first .
+H11:   speed * speed div lin_quad_boundary <= integer32__last .
+H12:   lin_quad_boundary <> 0 .
+H13:   lin_quad_boundary >= integer32__first .
+H14:   lin_quad_boundary <= integer32__last .
+H15:   speed * speed >= long_integer__base__first .
+H16:   speed * speed <= long_integer__base__last .
+H17:   speed >= integer32__first .
+H18:   speed <= integer32__last .
+H19:   speed >= integer32__first .
+H20:   speed <= integer32__last .
+H21:   speed * speed div lin_quad_boundary >= integer32__first .
+H22:   speed * speed div lin_quad_boundary <= integer32__last .
+        ->
+C1:    altitude >= 0 .
+C2:    altitude <= 25000 .
+C3:    altitude >= pos_meter__first .
+C4:    altitude <= pos_meter__last .
+ 
+
+procedure_calc_drag_12.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    speed < transonic_boundary .
+H10:   speed - constants__mach1_sea >= integer32__first .
+H11:   speed - constants__mach1_sea <= integer32__last .
+H12:   speed - constants__mach1_sea >= integer32__first .
+H13:   speed - constants__mach1_sea <= integer32__last .
+H14:   speed - constants__mach1_sea >= 
+           measuretypes__meter_per_sec__base__first .
+H15:   speed - constants__mach1_sea <= 
+           measuretypes__meter_per_sec__base__last .
+H16:   speed - constants__mach1_sea >= integer32__first .
+H17:   speed - constants__mach1_sea <= integer32__last .
+H18:   drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 >= integer32__first .
+H19:   drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 <= integer32__last .
+H20:   (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 >= long_integer__base__first .
+H21:   (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 <= long_integer__base__last .
+H22:   2000 <> 0 .
+H23:   (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) >= long_integer__base__first .
+H24:   (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) <= long_integer__base__last .
+H25:   (speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea) >= long_integer__base__first .
+H26:   (speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea) <= long_integer__base__last .
+H27:   drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 >= integer32__first .
+H28:   drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 <= integer32__last .
+        ->
+C1:    altitude >= 0 .
+C2:    altitude <= 25000 .
+C3:    altitude >= pos_meter__first .
+C4:    altitude <= pos_meter__last .
+ 
+
+procedure_calc_drag_13.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    not (speed < transonic_boundary) .
+H10:   speed < postsonic_boundary .
+H11:   postsonic_boundary - transonic_boundary >= integer32__first .
+H12:   postsonic_boundary - transonic_boundary <= integer32__last .
+H13:   postsonic_boundary - transonic_boundary >= integer32__first .
+H14:   postsonic_boundary - transonic_boundary <= integer32__last .
+H15:   postsonic_boundary - transonic_boundary >= 
+           measuretypes__meter_per_sec__base__first .
+H16:   postsonic_boundary - transonic_boundary <= 
+           measuretypes__meter_per_sec__base__last .
+H17:   drag_at_transonic - drag_at_mach1 >= integer32__first .
+H18:   drag_at_transonic - drag_at_mach1 <= integer32__last .
+H19:   postsonic_boundary - transonic_boundary >= integer32__first .
+H20:   postsonic_boundary - transonic_boundary <= integer32__last .
+H21:   drag_at_transonic - drag_at_mach1 >= integer32__first .
+H22:   drag_at_transonic - drag_at_mach1 <= integer32__last .
+H23:   drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) >= 
+           integer32__first .
+H24:   drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) <= 
+           integer32__last .
+H25:   (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) div (postsonic_boundary - 
+           transonic_boundary) >= long_integer__base__first .
+H26:   (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) div (postsonic_boundary - 
+           transonic_boundary) <= long_integer__base__last .
+H27:   postsonic_boundary - transonic_boundary <> 0 .
+H28:   (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) >= long_integer__base__first .
+H29:   (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) <= long_integer__base__last .
+H30:   postsonic_boundary - speed >= integer32__first .
+H31:   postsonic_boundary - speed <= integer32__last .
+H32:   postsonic_boundary - speed >= 
+           measuretypes__meter_per_sec__base__first .
+H33:   postsonic_boundary - speed <= 
+           measuretypes__meter_per_sec__base__last .
+H34:   drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) >= 
+           integer32__first .
+H35:   drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) <= 
+           integer32__last .
+        ->
+C1:    altitude >= 0 .
+C2:    altitude <= 25000 .
+C3:    altitude >= pos_meter__first .
+C4:    altitude <= pos_meter__last .
+ 
+
+procedure_calc_drag_14.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    not (speed < transonic_boundary) .
+H10:   not (speed < postsonic_boundary) .
+H11:   speed - postsonic_boundary >= integer32__first .
+H12:   speed - postsonic_boundary <= integer32__last .
+H13:   speed - postsonic_boundary >= integer32__first .
+H14:   speed - postsonic_boundary <= integer32__last .
+H15:   speed - postsonic_boundary >= 
+           measuretypes__meter_per_sec__base__first .
+H16:   speed - postsonic_boundary <= 
+           measuretypes__meter_per_sec__base__last .
+H17:   speed - postsonic_boundary >= integer32__first .
+H18:   speed - postsonic_boundary <= integer32__last .
+H19:   drag_at_mach1 + (speed - postsonic_boundary) >= 
+           integer32__first .
+H20:   drag_at_mach1 + (speed - postsonic_boundary) <= 
+           integer32__last .
+H21:   drag_at_mach1 + (speed - postsonic_boundary) >= 
+           integer32__first .
+H22:   drag_at_mach1 + (speed - postsonic_boundary) <= 
+           integer32__last .
+        ->
+C1:    altitude >= 0 .
+C2:    altitude <= 25000 .
+C3:    altitude >= pos_meter__first .
+C4:    altitude <= pos_meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 87:
+
+procedure_calc_drag_15.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    speed < constants__mach1_sea .
+H9:    speed < lin_quad_boundary .
+H10:   speed >= integer32__first .
+H11:   speed <= integer32__last .
+H12:   speed >= integer32__first .
+H13:   speed <= integer32__last .
+H14:   speed >= integer32__first .
+H15:   speed <= integer32__last .
+H16:   altitude >= 0 .
+H17:   altitude <= 25000 .
+H18:   altitude >= pos_meter__first .
+H19:   altitude <= pos_meter__last .
+H20:   relative_drag_at_altitude(altitude) >= percent__first .
+H21:   relative_drag_at_altitude(altitude) <= percent__last .
+        ->
+C1:    speed * relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+C2:    speed * relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+C3:    100 <> 0 .
+C4:    speed * relative_drag_at_altitude(altitude) >= 
+           long_integer__base__first .
+C5:    speed * relative_drag_at_altitude(altitude) <= 
+           long_integer__base__last .
+ 
+
+procedure_calc_drag_16.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    speed < constants__mach1_sea .
+H9:    not (speed < lin_quad_boundary) .
+H10:   speed * speed div lin_quad_boundary >= integer32__first .
+H11:   speed * speed div lin_quad_boundary <= integer32__last .
+H12:   lin_quad_boundary <> 0 .
+H13:   lin_quad_boundary >= integer32__first .
+H14:   lin_quad_boundary <= integer32__last .
+H15:   speed * speed >= long_integer__base__first .
+H16:   speed * speed <= long_integer__base__last .
+H17:   speed >= integer32__first .
+H18:   speed <= integer32__last .
+H19:   speed >= integer32__first .
+H20:   speed <= integer32__last .
+H21:   speed * speed div lin_quad_boundary >= integer32__first .
+H22:   speed * speed div lin_quad_boundary <= integer32__last .
+H23:   altitude >= 0 .
+H24:   altitude <= 25000 .
+H25:   altitude >= pos_meter__first .
+H26:   altitude <= pos_meter__last .
+H27:   relative_drag_at_altitude(altitude) >= percent__first .
+H28:   relative_drag_at_altitude(altitude) <= percent__last .
+        ->
+C1:    speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+C2:    speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+C3:    100 <> 0 .
+C4:    speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) >= 
+           long_integer__base__first .
+C5:    speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) <= 
+           long_integer__base__last .
+ 
+
+procedure_calc_drag_17.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    speed < transonic_boundary .
+H10:   speed - constants__mach1_sea >= integer32__first .
+H11:   speed - constants__mach1_sea <= integer32__last .
+H12:   speed - constants__mach1_sea >= integer32__first .
+H13:   speed - constants__mach1_sea <= integer32__last .
+H14:   speed - constants__mach1_sea >= 
+           measuretypes__meter_per_sec__base__first .
+H15:   speed - constants__mach1_sea <= 
+           measuretypes__meter_per_sec__base__last .
+H16:   speed - constants__mach1_sea >= integer32__first .
+H17:   speed - constants__mach1_sea <= integer32__last .
+H18:   drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 >= integer32__first .
+H19:   drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 <= integer32__last .
+H20:   (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 >= long_integer__base__first .
+H21:   (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 <= long_integer__base__last .
+H22:   2000 <> 0 .
+H23:   (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) >= long_integer__base__first .
+H24:   (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) <= long_integer__base__last .
+H25:   (speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea) >= long_integer__base__first .
+H26:   (speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea) <= long_integer__base__last .
+H27:   drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 >= integer32__first .
+H28:   drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 <= integer32__last .
+H29:   altitude >= 0 .
+H30:   altitude <= 25000 .
+H31:   altitude >= pos_meter__first .
+H32:   altitude <= pos_meter__last .
+H33:   relative_drag_at_altitude(altitude) >= percent__first .
+H34:   relative_drag_at_altitude(altitude) <= percent__last .
+        ->
+C1:    (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+C2:    (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+C3:    100 <> 0 .
+C4:    (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) >= 
+           long_integer__base__first .
+C5:    (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) <= 
+           long_integer__base__last .
+ 
+
+procedure_calc_drag_18.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    not (speed < transonic_boundary) .
+H10:   speed < postsonic_boundary .
+H11:   postsonic_boundary - transonic_boundary >= integer32__first .
+H12:   postsonic_boundary - transonic_boundary <= integer32__last .
+H13:   postsonic_boundary - transonic_boundary >= integer32__first .
+H14:   postsonic_boundary - transonic_boundary <= integer32__last .
+H15:   postsonic_boundary - transonic_boundary >= 
+           measuretypes__meter_per_sec__base__first .
+H16:   postsonic_boundary - transonic_boundary <= 
+           measuretypes__meter_per_sec__base__last .
+H17:   drag_at_transonic - drag_at_mach1 >= integer32__first .
+H18:   drag_at_transonic - drag_at_mach1 <= integer32__last .
+H19:   postsonic_boundary - transonic_boundary >= integer32__first .
+H20:   postsonic_boundary - transonic_boundary <= integer32__last .
+H21:   drag_at_transonic - drag_at_mach1 >= integer32__first .
+H22:   drag_at_transonic - drag_at_mach1 <= integer32__last .
+H23:   drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) >= 
+           integer32__first .
+H24:   drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) <= 
+           integer32__last .
+H25:   (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) div (postsonic_boundary - 
+           transonic_boundary) >= long_integer__base__first .
+H26:   (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) div (postsonic_boundary - 
+           transonic_boundary) <= long_integer__base__last .
+H27:   postsonic_boundary - transonic_boundary <> 0 .
+H28:   (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) >= long_integer__base__first .
+H29:   (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) <= long_integer__base__last .
+H30:   postsonic_boundary - speed >= integer32__first .
+H31:   postsonic_boundary - speed <= integer32__last .
+H32:   postsonic_boundary - speed >= 
+           measuretypes__meter_per_sec__base__first .
+H33:   postsonic_boundary - speed <= 
+           measuretypes__meter_per_sec__base__last .
+H34:   drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) >= 
+           integer32__first .
+H35:   drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) <= 
+           integer32__last .
+H36:   altitude >= 0 .
+H37:   altitude <= 25000 .
+H38:   altitude >= pos_meter__first .
+H39:   altitude <= pos_meter__last .
+H40:   relative_drag_at_altitude(altitude) >= percent__first .
+H41:   relative_drag_at_altitude(altitude) <= percent__last .
+        ->
+C1:    (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+C2:    (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+C3:    100 <> 0 .
+C4:    (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) >= 
+           long_integer__base__first .
+C5:    (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) <= 
+           long_integer__base__last .
+ 
+
+procedure_calc_drag_19.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    not (speed < transonic_boundary) .
+H10:   not (speed < postsonic_boundary) .
+H11:   speed - postsonic_boundary >= integer32__first .
+H12:   speed - postsonic_boundary <= integer32__last .
+H13:   speed - postsonic_boundary >= integer32__first .
+H14:   speed - postsonic_boundary <= integer32__last .
+H15:   speed - postsonic_boundary >= 
+           measuretypes__meter_per_sec__base__first .
+H16:   speed - postsonic_boundary <= 
+           measuretypes__meter_per_sec__base__last .
+H17:   speed - postsonic_boundary >= integer32__first .
+H18:   speed - postsonic_boundary <= integer32__last .
+H19:   drag_at_mach1 + (speed - postsonic_boundary) >= 
+           integer32__first .
+H20:   drag_at_mach1 + (speed - postsonic_boundary) <= 
+           integer32__last .
+H21:   drag_at_mach1 + (speed - postsonic_boundary) >= 
+           integer32__first .
+H22:   drag_at_mach1 + (speed - postsonic_boundary) <= 
+           integer32__last .
+H23:   altitude >= 0 .
+H24:   altitude <= 25000 .
+H25:   altitude >= pos_meter__first .
+H26:   altitude <= pos_meter__last .
+H27:   relative_drag_at_altitude(altitude) >= percent__first .
+H28:   relative_drag_at_altitude(altitude) <= percent__last .
+        ->
+C1:    (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+C2:    (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+C3:    100 <> 0 .
+C4:    (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) >= 
+           long_integer__base__first .
+C5:    (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) <= 
+           long_integer__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 88:
+
+procedure_calc_drag_20.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    speed < constants__mach1_sea .
+H9:    speed < lin_quad_boundary .
+H10:   speed >= integer32__first .
+H11:   speed <= integer32__last .
+H12:   speed >= integer32__first .
+H13:   speed <= integer32__last .
+H14:   speed >= integer32__first .
+H15:   speed <= integer32__last .
+H16:   altitude >= 0 .
+H17:   altitude <= 25000 .
+H18:   altitude >= pos_meter__first .
+H19:   altitude <= pos_meter__last .
+H20:   relative_drag_at_altitude(altitude) >= percent__first .
+H21:   relative_drag_at_altitude(altitude) <= percent__last .
+H22:   speed * relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+H23:   speed * relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+H24:   100 <> 0 .
+H25:   speed * relative_drag_at_altitude(altitude) >= 
+           long_integer__base__first .
+H26:   speed * relative_drag_at_altitude(altitude) <= 
+           long_integer__base__last .
+H27:   speed * relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+H28:   speed * relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+        ->
+C1:    speed * relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= measuretypes__newton__first .
+C2:    speed * relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= measuretypes__newton__last .
+C3:    speed * relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= measuretypes__newton__first .
+C4:    speed * relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= measuretypes__newton__last .
+C5:    speed * relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= long_integer__base__first .
+C6:    speed * relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= long_integer__base__last .
+C7:    2 <> 0 .
+C8:    speed * relative_drag_at_altitude(altitude) div 100 * 
+           profile >= long_integer__base__first .
+C9:    speed * relative_drag_at_altitude(altitude) div 100 * 
+           profile <= long_integer__base__last .
+C10:   profile >= integer32__first .
+C11:   profile <= integer32__last .
+ 
+
+procedure_calc_drag_21.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    speed < constants__mach1_sea .
+H9:    not (speed < lin_quad_boundary) .
+H10:   speed * speed div lin_quad_boundary >= integer32__first .
+H11:   speed * speed div lin_quad_boundary <= integer32__last .
+H12:   lin_quad_boundary <> 0 .
+H13:   lin_quad_boundary >= integer32__first .
+H14:   lin_quad_boundary <= integer32__last .
+H15:   speed * speed >= long_integer__base__first .
+H16:   speed * speed <= long_integer__base__last .
+H17:   speed >= integer32__first .
+H18:   speed <= integer32__last .
+H19:   speed >= integer32__first .
+H20:   speed <= integer32__last .
+H21:   speed * speed div lin_quad_boundary >= integer32__first .
+H22:   speed * speed div lin_quad_boundary <= integer32__last .
+H23:   altitude >= 0 .
+H24:   altitude <= 25000 .
+H25:   altitude >= pos_meter__first .
+H26:   altitude <= pos_meter__last .
+H27:   relative_drag_at_altitude(altitude) >= percent__first .
+H28:   relative_drag_at_altitude(altitude) <= percent__last .
+H29:   speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+H30:   speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+H31:   100 <> 0 .
+H32:   speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) >= 
+           long_integer__base__first .
+H33:   speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) <= 
+           long_integer__base__last .
+H34:   speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+H35:   speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+        ->
+C1:    speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= measuretypes__newton__first .
+C2:    speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= measuretypes__newton__last .
+C3:    speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= measuretypes__newton__first .
+C4:    speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= measuretypes__newton__last .
+C5:    speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= long_integer__base__first .
+C6:    speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= long_integer__base__last .
+C7:    2 <> 0 .
+C8:    speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile >= long_integer__base__first .
+C9:    speed * speed div lin_quad_boundary * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile <= long_integer__base__last .
+C10:   profile >= integer32__first .
+C11:   profile <= integer32__last .
+ 
+
+procedure_calc_drag_22.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    speed < transonic_boundary .
+H10:   speed - constants__mach1_sea >= integer32__first .
+H11:   speed - constants__mach1_sea <= integer32__last .
+H12:   speed - constants__mach1_sea >= integer32__first .
+H13:   speed - constants__mach1_sea <= integer32__last .
+H14:   speed - constants__mach1_sea >= 
+           measuretypes__meter_per_sec__base__first .
+H15:   speed - constants__mach1_sea <= 
+           measuretypes__meter_per_sec__base__last .
+H16:   speed - constants__mach1_sea >= integer32__first .
+H17:   speed - constants__mach1_sea <= integer32__last .
+H18:   drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 >= integer32__first .
+H19:   drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 <= integer32__last .
+H20:   (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 >= long_integer__base__first .
+H21:   (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 <= long_integer__base__last .
+H22:   2000 <> 0 .
+H23:   (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) >= long_integer__base__first .
+H24:   (speed - constants__mach1_sea) * ((speed - 
+           constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) <= long_integer__base__last .
+H25:   (speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea) >= long_integer__base__first .
+H26:   (speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea) <= long_integer__base__last .
+H27:   drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 >= integer32__first .
+H28:   drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000 <= integer32__last .
+H29:   altitude >= 0 .
+H30:   altitude <= 25000 .
+H31:   altitude >= pos_meter__first .
+H32:   altitude <= pos_meter__last .
+H33:   relative_drag_at_altitude(altitude) >= percent__first .
+H34:   relative_drag_at_altitude(altitude) <= percent__last .
+H35:   (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+H36:   (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+H37:   100 <> 0 .
+H38:   (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) >= 
+           long_integer__base__first .
+H39:   (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) <= 
+           long_integer__base__last .
+H40:   (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+H41:   (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+        ->
+C1:    (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= measuretypes__newton__first .
+C2:    (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= measuretypes__newton__last .
+C3:    (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= measuretypes__newton__first .
+C4:    (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= measuretypes__newton__last .
+C5:    (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= long_integer__base__first .
+C6:    (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= long_integer__base__last .
+C7:    2 <> 0 .
+C8:    (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile >= long_integer__base__first .
+C9:    (drag_at_mach1 + (speed - constants__mach1_sea) * ((
+           speed - constants__mach1_sea) * (speed - 
+           constants__mach1_sea)) div 2000) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile <= long_integer__base__last .
+C10:   profile >= integer32__first .
+C11:   profile <= integer32__last .
+ 
+
+procedure_calc_drag_23.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    not (speed < transonic_boundary) .
+H10:   speed < postsonic_boundary .
+H11:   postsonic_boundary - transonic_boundary >= integer32__first .
+H12:   postsonic_boundary - transonic_boundary <= integer32__last .
+H13:   postsonic_boundary - transonic_boundary >= integer32__first .
+H14:   postsonic_boundary - transonic_boundary <= integer32__last .
+H15:   postsonic_boundary - transonic_boundary >= 
+           measuretypes__meter_per_sec__base__first .
+H16:   postsonic_boundary - transonic_boundary <= 
+           measuretypes__meter_per_sec__base__last .
+H17:   drag_at_transonic - drag_at_mach1 >= integer32__first .
+H18:   drag_at_transonic - drag_at_mach1 <= integer32__last .
+H19:   postsonic_boundary - transonic_boundary >= integer32__first .
+H20:   postsonic_boundary - transonic_boundary <= integer32__last .
+H21:   drag_at_transonic - drag_at_mach1 >= integer32__first .
+H22:   drag_at_transonic - drag_at_mach1 <= integer32__last .
+H23:   drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) >= 
+           integer32__first .
+H24:   drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) <= 
+           integer32__last .
+H25:   (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) div (postsonic_boundary - 
+           transonic_boundary) >= long_integer__base__first .
+H26:   (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) div (postsonic_boundary - 
+           transonic_boundary) <= long_integer__base__last .
+H27:   postsonic_boundary - transonic_boundary <> 0 .
+H28:   (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) >= long_integer__base__first .
+H29:   (postsonic_boundary - speed) * (drag_at_transonic - 
+           drag_at_mach1) <= long_integer__base__last .
+H30:   postsonic_boundary - speed >= integer32__first .
+H31:   postsonic_boundary - speed <= integer32__last .
+H32:   postsonic_boundary - speed >= 
+           measuretypes__meter_per_sec__base__first .
+H33:   postsonic_boundary - speed <= 
+           measuretypes__meter_per_sec__base__last .
+H34:   drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) >= 
+           integer32__first .
+H35:   drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary) <= 
+           integer32__last .
+H36:   altitude >= 0 .
+H37:   altitude <= 25000 .
+H38:   altitude >= pos_meter__first .
+H39:   altitude <= pos_meter__last .
+H40:   relative_drag_at_altitude(altitude) >= percent__first .
+H41:   relative_drag_at_altitude(altitude) <= percent__last .
+H42:   (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+H43:   (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+H44:   100 <> 0 .
+H45:   (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) >= 
+           long_integer__base__first .
+H46:   (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) <= 
+           long_integer__base__last .
+H47:   (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+H48:   (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+        ->
+C1:    (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= measuretypes__newton__first .
+C2:    (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= measuretypes__newton__last .
+C3:    (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= measuretypes__newton__first .
+C4:    (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= measuretypes__newton__last .
+C5:    (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= long_integer__base__first .
+C6:    (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= long_integer__base__last .
+C7:    2 <> 0 .
+C8:    (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile >= long_integer__base__first .
+C9:    (drag_at_mach1 + (postsonic_boundary - speed) * (
+           drag_at_transonic - drag_at_mach1) div (
+           postsonic_boundary - transonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile <= long_integer__base__last .
+C10:   profile >= integer32__first .
+C11:   profile <= integer32__last .
+ 
+
+procedure_calc_drag_24.
+H1:    true .
+H2:    profile >= drag_coefficient__first .
+H3:    profile <= drag_coefficient__last .
+H4:    speed >= pos_meter_per_sec__first .
+H5:    speed <= pos_meter_per_sec__last .
+H6:    altitude >= pos_meter__first .
+H7:    altitude <= pos_meter__last .
+H8:    not (speed < constants__mach1_sea) .
+H9:    not (speed < transonic_boundary) .
+H10:   not (speed < postsonic_boundary) .
+H11:   speed - postsonic_boundary >= integer32__first .
+H12:   speed - postsonic_boundary <= integer32__last .
+H13:   speed - postsonic_boundary >= integer32__first .
+H14:   speed - postsonic_boundary <= integer32__last .
+H15:   speed - postsonic_boundary >= 
+           measuretypes__meter_per_sec__base__first .
+H16:   speed - postsonic_boundary <= 
+           measuretypes__meter_per_sec__base__last .
+H17:   speed - postsonic_boundary >= integer32__first .
+H18:   speed - postsonic_boundary <= integer32__last .
+H19:   drag_at_mach1 + (speed - postsonic_boundary) >= 
+           integer32__first .
+H20:   drag_at_mach1 + (speed - postsonic_boundary) <= 
+           integer32__last .
+H21:   drag_at_mach1 + (speed - postsonic_boundary) >= 
+           integer32__first .
+H22:   drag_at_mach1 + (speed - postsonic_boundary) <= 
+           integer32__last .
+H23:   altitude >= 0 .
+H24:   altitude <= 25000 .
+H25:   altitude >= pos_meter__first .
+H26:   altitude <= pos_meter__last .
+H27:   relative_drag_at_altitude(altitude) >= percent__first .
+H28:   relative_drag_at_altitude(altitude) <= percent__last .
+H29:   (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+H30:   (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+H31:   100 <> 0 .
+H32:   (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) >= 
+           long_integer__base__first .
+H33:   (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) <= 
+           long_integer__base__last .
+H34:   (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 >= 
+           integer32__first .
+H35:   (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 <= 
+           integer32__last .
+        ->
+C1:    (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= measuretypes__newton__first .
+C2:    (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= measuretypes__newton__last .
+C3:    (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= measuretypes__newton__first .
+C4:    (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= measuretypes__newton__last .
+C5:    (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 >= long_integer__base__first .
+C6:    (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile div 2 <= long_integer__base__last .
+C7:    2 <> 0 .
+C8:    (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile >= long_integer__base__first .
+C9:    (drag_at_mach1 + (speed - postsonic_boundary)) * 
+           relative_drag_at_altitude(altitude) div 100 * 
+           profile <= long_integer__base__last .
+C10:   profile >= integer32__first .
+C11:   profile <= integer32__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_calc_drag_25.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_calc_drag_26.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_calc_drag_27.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_calc_drag_28.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_calc_drag_29.
+*** true .          /* trivially true VC removed by Examiner */
+
+

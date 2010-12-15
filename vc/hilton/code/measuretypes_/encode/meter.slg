@@ -1,0 +1,146 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:21
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure encode.Meter
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_meter_1.  @@@@@@@@@@
+-S-  Applied substitution rule meter_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C1:  m mod word_max >= 0
+<S>  New C3:  m mod word_max >= 0
+-S-  Applied substitution rule meter_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C2:  m mod word_max <= 65535
+<S>  New C4:  m mod word_max <= 65535
+-S-  Applied substitution rule meter_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__base__first by:
+          - 2147483648.
+<S>  New C5:  m mod word_max >= - 2147483648
+-S-  Applied substitution rule meter_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__base__last by:
+          2147483647.
+<S>  New C6:  m mod word_max <= 2147483647
+-S-  Applied substitution rule meter_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New C7:  true
+<S>  New C1:  m mod 65536 >= 0
+<S>  New C3:  m mod 65536 >= 0
+<S>  New C2:  m mod 65536 <= 65535
+<S>  New C4:  m mod 65536 <= 65535
+<S>  New C5:  m mod 65536 >= - 2147483648
+<S>  New C6:  m mod 65536 <= 2147483647
+-S-  Applied substitution rule meter_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  m >= - 200000
+-S-  Applied substitution rule meter_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  m <= 200000
+***  Proved C7:  true
+***  Proved C1:  m mod 65536 >= 0
+***  Proved C3:  m mod 65536 >= 0
+***  Proved C2:  m mod 65536 <= 65535
+***  Proved C4:  m mod 65536 <= 65535
+***  Proved C5:  m mod 65536 >= - 2147483648
+***  Proved C6:  m mod 65536 <= 2147483647
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_meter_2.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+***  Proved C7:  word_max <> 0
+     using hypothesis H10.
+-S-  Applied substitution rule meter_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H4:  m mod word_max >= 0
+<S>  New C1:  m div word_max >= 0
+<S>  New C3:  m div word_max >= 0
+-S-  Applied substitution rule meter_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H5:  m mod word_max <= 65535
+<S>  New C2:  m div word_max <= 65535
+<S>  New C4:  m div word_max <= 65535
+-S-  Applied substitution rule meter_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__base__first by:
+          - 2147483648.
+<S>  New H8:  m mod word_max >= - 2147483648
+<S>  New C5:  m div word_max >= - 2147483648
+-S-  Applied substitution rule meter_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__base__last by:
+          2147483647.
+<S>  New H9:  m mod word_max <= 2147483647
+<S>  New C6:  m div word_max <= 2147483647
+-S-  Applied substitution rule meter_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New H4:  m mod 65536 >= 0
+<S>  New H5:  m mod 65536 <= 65535
+<S>  New H8:  m mod 65536 >= - 2147483648
+<S>  New H9:  m mod 65536 <= 2147483647
+<S>  New H10:  true
+<S>  New C1:  m div 65536 >= 0
+<S>  New C3:  m div 65536 >= 0
+<S>  New C2:  m div 65536 <= 65535
+<S>  New C4:  m div 65536 <= 65535
+<S>  New C5:  m div 65536 >= - 2147483648
+<S>  New C6:  m div 65536 <= 2147483647
+-S-  Applied substitution rule meter_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  m >= - 200000
+-S-  Applied substitution rule meter_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  m <= 200000
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H8 (redundant, given H4).
+---  Eliminated hypothesis H9 (redundant, given H5).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C2:  m div 65536 <= 65535
+     using hypothesis H3.
+***  Proved C5:  m div 65536 >= - 2147483648
+     using hypothesis H2.
+***  Proved C6:  m div 65536 <= 2147483647
+     using hypothesis H3.
+     +++  New H11:  integer__size >= 0
+     +++  New H12:  measuretypes__meter__size >= 0
+     +++  New H13:  bus__word__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_meter_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

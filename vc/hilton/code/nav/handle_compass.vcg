@@ -1,0 +1,440 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.10
+
+                        procedure nav.Handle_compass
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 246:
+
+procedure_handle_compass_1.
+H1:    true .
+H2:    true .
+H3:    compass_ss >= sensor_status__first .
+H4:    compass_ss <= sensor_status__last .
+H5:    restart .
+H6:    true .
+H7:    true .
+H8:    true .
+H9:    true .
+H10:   compass_valid1__1 .
+H11:   compass_valid2__2 .
+        ->
+C1:    valid >= sensor_status__first .
+C2:    valid <= sensor_status__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 247:
+
+procedure_handle_compass_2.
+H1:    true .
+H2:    true .
+H3:    compass_ss >= sensor_status__first .
+H4:    compass_ss <= sensor_status__last .
+H5:    restart .
+H6:    true .
+H7:    true .
+H8:    true .
+H9:    true .
+H10:   compass_valid1__1 .
+H11:   compass_valid2__2 .
+H12:   valid >= sensor_status__first .
+H13:   valid <= sensor_status__last .
+H14:   true .
+H15:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           measuretypes__angle_degrees__first .
+H16:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           measuretypes__angle_degrees__last .
+        ->
+C1:    measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           measuretypes__angle_degrees__first .
+C2:    measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           measuretypes__angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 248:
+
+procedure_handle_compass_3.
+H1:    true .
+H2:    true .
+H3:    compass_ss >= sensor_status__first .
+H4:    compass_ss <= sensor_status__last .
+H5:    restart .
+H6:    true .
+H7:    true .
+H8:    true .
+H9:    true .
+H10:   compass_valid1__1 .
+H11:   compass_valid2__2 .
+H12:   valid >= sensor_status__first .
+H13:   valid <= sensor_status__last .
+H14:   true .
+H15:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           measuretypes__angle_degrees__first .
+H16:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           measuretypes__angle_degrees__last .
+H17:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           measuretypes__angle_degrees__first .
+H18:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           measuretypes__angle_degrees__last .
+H19:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           measuretypes__angle_degrees__first .
+H20:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           measuretypes__angle_degrees__last .
+        ->
+C1:    measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           sensor_history__angle_degrees__first .
+C2:    measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           sensor_history__angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 250:
+
+procedure_handle_compass_4.
+H1:    true .
+H2:    true .
+H3:    compass_ss >= sensor_status__first .
+H4:    compass_ss <= sensor_status__last .
+H5:    restart .
+H6:    true .
+H7:    true .
+H8:    true .
+H9:    true .
+H10:   compass_valid1__1 .
+H11:   compass_valid2__2 .
+H12:   valid >= sensor_status__first .
+H13:   valid <= sensor_status__last .
+H14:   true .
+H15:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           measuretypes__angle_degrees__first .
+H16:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           measuretypes__angle_degrees__last .
+H17:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           measuretypes__angle_degrees__first .
+H18:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           measuretypes__angle_degrees__last .
+H19:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           measuretypes__angle_degrees__first .
+H20:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           measuretypes__angle_degrees__last .
+H21:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           sensor_history__angle_degrees__first .
+H22:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           sensor_history__angle_degrees__last .
+H23:   true .
+H24:   measuretypes__angle_ops__round_degree(bearing_mr_yz__2) >= 
+           measuretypes__angle_degrees__first .
+H25:   measuretypes__angle_ops__round_degree(bearing_mr_yz__2) <= 
+           measuretypes__angle_degrees__last .
+        ->
+C1:    measuretypes__angle_ops__round_degree(bearing_mr_yz__2) >= 
+           measuretypes__angle_degrees__first .
+C2:    measuretypes__angle_ops__round_degree(bearing_mr_yz__2) <= 
+           measuretypes__angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 251:
+
+procedure_handle_compass_5.
+H1:    true .
+H2:    true .
+H3:    compass_ss >= sensor_status__first .
+H4:    compass_ss <= sensor_status__last .
+H5:    restart .
+H6:    true .
+H7:    true .
+H8:    true .
+H9:    true .
+H10:   compass_valid1__1 .
+H11:   compass_valid2__2 .
+H12:   valid >= sensor_status__first .
+H13:   valid <= sensor_status__last .
+H14:   true .
+H15:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           measuretypes__angle_degrees__first .
+H16:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           measuretypes__angle_degrees__last .
+H17:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           measuretypes__angle_degrees__first .
+H18:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           measuretypes__angle_degrees__last .
+H19:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           measuretypes__angle_degrees__first .
+H20:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           measuretypes__angle_degrees__last .
+H21:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+           sensor_history__angle_degrees__first .
+H22:   measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+           sensor_history__angle_degrees__last .
+H23:   true .
+H24:   measuretypes__angle_ops__round_degree(bearing_mr_yz__2) >= 
+           measuretypes__angle_degrees__first .
+H25:   measuretypes__angle_ops__round_degree(bearing_mr_yz__2) <= 
+           measuretypes__angle_degrees__last .
+H26:   measuretypes__angle_ops__round_degree(bearing_mr_yz__2) >= 
+           measuretypes__angle_degrees__first .
+H27:   measuretypes__angle_ops__round_degree(bearing_mr_yz__2) <= 
+           measuretypes__angle_degrees__last .
+H28:   measuretypes__angle_ops__round_degree(bearing_mr_yz__2) >= 
+           measuretypes__angle_degrees__first .
+H29:   measuretypes__angle_ops__round_degree(bearing_mr_yz__2) <= 
+           measuretypes__angle_degrees__last .
+        ->
+C1:    measuretypes__angle_ops__round_degree(bearing_mr_yz__2) >= 
+           sensor_history__angle_degrees__first .
+C2:    measuretypes__angle_ops__round_degree(bearing_mr_yz__2) <= 
+           sensor_history__angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 255:
+
+procedure_handle_compass_6.
+H1:    true .
+H2:    true .
+H3:    compass_ss >= sensor_status__first .
+H4:    compass_ss <= sensor_status__last .
+H5:    restart .
+H6:    true .
+H7:    true .
+H8:    true .
+H9:    true .
+H10:   not (compass_valid1__1 and compass_valid2__2) .
+        ->
+C1:    restarted >= sensor_status__first .
+C2:    restarted <= sensor_status__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 263:
+
+procedure_handle_compass_7.
+H1:    true .
+H2:    true .
+H3:    compass_ss >= sensor_status__first .
+H4:    compass_ss <= sensor_status__last .
+H5:    not restart .
+H6:    (compass_ss = valid) or (compass_ss = restarted) .
+H7:    true .
+H8:    true .
+H9:    true .
+H10:   true .
+H11:   compass_valid1__5 .
+H12:   compass_valid2__6 .
+        ->
+C1:    valid >= sensor_status__first .
+C2:    valid <= sensor_status__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 264:
+
+procedure_handle_compass_8.
+H1:    true .
+H2:    true .
+H3:    compass_ss >= sensor_status__first .
+H4:    compass_ss <= sensor_status__last .
+H5:    not restart .
+H6:    (compass_ss = valid) or (compass_ss = restarted) .
+H7:    true .
+H8:    true .
+H9:    true .
+H10:   true .
+H11:   compass_valid1__5 .
+H12:   compass_valid2__6 .
+H13:   valid >= sensor_status__first .
+H14:   valid <= sensor_status__last .
+H15:   true .
+H16:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           measuretypes__angle_degrees__first .
+H17:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           measuretypes__angle_degrees__last .
+        ->
+C1:    measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           measuretypes__angle_degrees__first .
+C2:    measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           measuretypes__angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 265:
+
+procedure_handle_compass_9.
+H1:    true .
+H2:    true .
+H3:    compass_ss >= sensor_status__first .
+H4:    compass_ss <= sensor_status__last .
+H5:    not restart .
+H6:    (compass_ss = valid) or (compass_ss = restarted) .
+H7:    true .
+H8:    true .
+H9:    true .
+H10:   true .
+H11:   compass_valid1__5 .
+H12:   compass_valid2__6 .
+H13:   valid >= sensor_status__first .
+H14:   valid <= sensor_status__last .
+H15:   true .
+H16:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           measuretypes__angle_degrees__first .
+H17:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           measuretypes__angle_degrees__last .
+H18:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           measuretypes__angle_degrees__first .
+H19:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           measuretypes__angle_degrees__last .
+H20:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           measuretypes__angle_degrees__first .
+H21:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           measuretypes__angle_degrees__last .
+        ->
+C1:    measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           sensor_history__angle_degrees__first .
+C2:    measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           sensor_history__angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 267:
+
+procedure_handle_compass_10.
+H1:    true .
+H2:    true .
+H3:    compass_ss >= sensor_status__first .
+H4:    compass_ss <= sensor_status__last .
+H5:    not restart .
+H6:    (compass_ss = valid) or (compass_ss = restarted) .
+H7:    true .
+H8:    true .
+H9:    true .
+H10:   true .
+H11:   compass_valid1__5 .
+H12:   compass_valid2__6 .
+H13:   valid >= sensor_status__first .
+H14:   valid <= sensor_status__last .
+H15:   true .
+H16:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           measuretypes__angle_degrees__first .
+H17:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           measuretypes__angle_degrees__last .
+H18:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           measuretypes__angle_degrees__first .
+H19:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           measuretypes__angle_degrees__last .
+H20:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           measuretypes__angle_degrees__first .
+H21:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           measuretypes__angle_degrees__last .
+H22:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           sensor_history__angle_degrees__first .
+H23:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           sensor_history__angle_degrees__last .
+H24:   true .
+H25:   measuretypes__angle_ops__round_degree(bearing_mr_yz__6) >= 
+           measuretypes__angle_degrees__first .
+H26:   measuretypes__angle_ops__round_degree(bearing_mr_yz__6) <= 
+           measuretypes__angle_degrees__last .
+        ->
+C1:    measuretypes__angle_ops__round_degree(bearing_mr_yz__6) >= 
+           measuretypes__angle_degrees__first .
+C2:    measuretypes__angle_ops__round_degree(bearing_mr_yz__6) <= 
+           measuretypes__angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 268:
+
+procedure_handle_compass_11.
+H1:    true .
+H2:    true .
+H3:    compass_ss >= sensor_status__first .
+H4:    compass_ss <= sensor_status__last .
+H5:    not restart .
+H6:    (compass_ss = valid) or (compass_ss = restarted) .
+H7:    true .
+H8:    true .
+H9:    true .
+H10:   true .
+H11:   compass_valid1__5 .
+H12:   compass_valid2__6 .
+H13:   valid >= sensor_status__first .
+H14:   valid <= sensor_status__last .
+H15:   true .
+H16:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           measuretypes__angle_degrees__first .
+H17:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           measuretypes__angle_degrees__last .
+H18:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           measuretypes__angle_degrees__first .
+H19:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           measuretypes__angle_degrees__last .
+H20:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           measuretypes__angle_degrees__first .
+H21:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           measuretypes__angle_degrees__last .
+H22:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+           sensor_history__angle_degrees__first .
+H23:   measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+           sensor_history__angle_degrees__last .
+H24:   true .
+H25:   measuretypes__angle_ops__round_degree(bearing_mr_yz__6) >= 
+           measuretypes__angle_degrees__first .
+H26:   measuretypes__angle_ops__round_degree(bearing_mr_yz__6) <= 
+           measuretypes__angle_degrees__last .
+H27:   measuretypes__angle_ops__round_degree(bearing_mr_yz__6) >= 
+           measuretypes__angle_degrees__first .
+H28:   measuretypes__angle_ops__round_degree(bearing_mr_yz__6) <= 
+           measuretypes__angle_degrees__last .
+H29:   measuretypes__angle_ops__round_degree(bearing_mr_yz__6) >= 
+           measuretypes__angle_degrees__first .
+H30:   measuretypes__angle_ops__round_degree(bearing_mr_yz__6) <= 
+           measuretypes__angle_degrees__last .
+        ->
+C1:    measuretypes__angle_ops__round_degree(bearing_mr_yz__6) >= 
+           sensor_history__angle_degrees__first .
+C2:    measuretypes__angle_ops__round_degree(bearing_mr_yz__6) <= 
+           sensor_history__angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 272:
+
+procedure_handle_compass_12.
+H1:    true .
+H2:    true .
+H3:    compass_ss >= sensor_status__first .
+H4:    compass_ss <= sensor_status__last .
+H5:    not restart .
+H6:    (compass_ss = valid) or (compass_ss = restarted) .
+H7:    true .
+H8:    true .
+H9:    true .
+H10:   true .
+H11:   not (compass_valid1__5 and compass_valid2__6) .
+        ->
+C1:    failed >= sensor_status__first .
+C2:    failed <= sensor_status__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_handle_compass_13.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_handle_compass_14.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_handle_compass_15.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_handle_compass_16.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_handle_compass_17.
+*** true .          /* trivially true VC removed by Examiner */
+
+

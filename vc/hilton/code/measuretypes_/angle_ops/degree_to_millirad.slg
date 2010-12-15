@@ -1,0 +1,193 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:21
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function angle_ops.Degree_To_Millirad
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_degree_to_millirad_1.  @@@@@@@@@@
+-S-  Applied substitution rule degree_to_mi_rules(8).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New C1:  measuretypes__angle_full * orig_degree >= - 2147483648
+<S>  New C3:  orig_degree >= - 2147483648
+<S>  New C5:  measuretypes__angle_full >= - 2147483648
+-S-  Applied substitution rule degree_to_mi_rules(9).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New C2:  measuretypes__angle_full * orig_degree <= 2147483647
+<S>  New C4:  orig_degree <= 2147483647
+<S>  New C6:  measuretypes__angle_full <= 2147483647
+-S-  Applied substitution rule degree_to_mi_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New C1:  6283 * orig_degree >= - 2147483648
+<S>  New C5:  true
+<S>  New C2:  6283 * orig_degree <= 2147483647
+<S>  New C6:  true
+***  Proved C5:  true
+***  Proved C6:  true
+-S-  Applied substitution rule degree_to_mi_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__first by:
+          0.
+<S>  New H2:  orig_degree >= 0
+-S-  Applied substitution rule degree_to_mi_rules(14).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__last by:
+          359.
+<S>  New H3:  orig_degree <= 359
+***  Proved C3:  orig_degree >= - 2147483648
+     using hypothesis H2.
+***  Proved C4:  orig_degree <= 2147483647
+     using hypothesis H3.
+***  Proved C1:  6283 * orig_degree >= - 2147483648
+     using hypothesis H2.
+***  Proved C2:  6283 * orig_degree <= 2147483647
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_degree_to_millirad_2.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  measuretypes__angle_degrees__last <> - 1
+***  Proved C4:  measuretypes__angle_degrees__last + 1 >= 
+          systemtypes__integer32__first
+     using hypotheses H3 & H6.
+-S-  Applied substitution rule degree_to_mi_rules(8).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H4:  measuretypes__angle_full * orig_degree >= - 2147483648
+<S>  New H6:  orig_degree >= - 2147483648
+<S>  New H8:  measuretypes__angle_full >= - 2147483648
+<S>  New C1:  measuretypes__angle_full * orig_degree div (
+          measuretypes__angle_degrees__last + 1) >= - 2147483648
+-S-  Applied substitution rule degree_to_mi_rules(9).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H5:  measuretypes__angle_full * orig_degree <= 2147483647
+<S>  New H7:  orig_degree <= 2147483647
+<S>  New H9:  measuretypes__angle_full <= 2147483647
+<S>  New C2:  measuretypes__angle_full * orig_degree div (
+          measuretypes__angle_degrees__last + 1) <= 2147483647
+<S>  New C5:  measuretypes__angle_degrees__last <= 2147483646
+-S-  Applied substitution rule degree_to_mi_rules(14).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__last by:
+          359.
+<S>  New H3:  orig_degree <= 359
+<S>  New C3:  true
+<S>  New C6:  360 >= measuretypes__angle_degrees__base__first
+<S>  New C7:  360 <= measuretypes__angle_degrees__base__last
+<S>  New C1:  measuretypes__angle_full * orig_degree div 360 >= - 2147483648
+<S>  New C2:  measuretypes__angle_full * orig_degree div 360 <= 2147483647
+<S>  New C5:  true
+***  Proved C3:  true
+***  Proved C5:  true
+-S-  Applied substitution rule degree_to_mi_rules(1).
+     This was achieved by replacing all occurrences of measuretypes__angle_full 
+          by:
+          6283.
+<S>  New H4:  6283 * orig_degree >= - 2147483648
+<S>  New H5:  6283 * orig_degree <= 2147483647
+<S>  New H8:  true
+<S>  New H9:  true
+<S>  New C1:  6283 * orig_degree div 360 >= - 2147483648
+<S>  New C2:  6283 * orig_degree div 360 <= 2147483647
+-S-  Applied substitution rule degree_to_mi_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__first by:
+          0.
+<S>  New H2:  orig_degree >= 0
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H4 (redundant, given H2).
+---  Eliminated hypothesis H5 (redundant, given H3).
+---  Eliminated hypothesis H6 (redundant, given H2).
+---  Eliminated hypothesis H7 (redundant, given H3).
+***  Proved C6:  360 >= measuretypes__angle_degrees__base__first
+***  Proved C1:  6283 * orig_degree div 360 >= - 2147483648
+     using hypothesis H2.
+***  Proved C2:  6283 * orig_degree div 360 <= 2147483647
+     using hypothesis H5.
+     +++  New H12:  long_integer__size >= 0
+     +++  New H13:  systemtypes__integer32__size >= 0
+     +++  New H14:  measuretypes__angle_degrees__size >= 0
+     +++  New H15:  measuretypes__angle_degrees__base__first <= 
+          measuretypes__angle_degrees__base__last
+     +++  New H16:  measuretypes__millirad__size >= 0
+     +++  New H17:  measuretypes__angle_degrees__base__first <= 0
+     +++  New H18:  measuretypes__angle_degrees__base__last >= 359
+
+
+@@@@@@@@@@  VC: function_degree_to_millirad_3.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  measuretypes__angle_degrees__last <> - 1
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+***  Proved C1:  measuretypes__angle_full * orig_degree div (
+          measuretypes__angle_degrees__last + 1) >= 
+          systemtypes__integer32__first
+     using hypothesis H12.
+***  Proved C2:  measuretypes__angle_full * orig_degree div (
+          measuretypes__angle_degrees__last + 1) <= systemtypes__integer32__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_degree_to_millirad_4.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  measuretypes__angle_degrees__last <> - 1
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H13).
+***  Proved C1:  true
+***  Proved C2:  int_to_millirad(measuretypes__angle_full * orig_degree div (
+          measuretypes__angle_degrees__last + 1)) >= 
+          measuretypes__millirad__first
+     using hypothesis H23.
+***  Proved C3:  int_to_millirad(measuretypes__angle_full * orig_degree div (
+          measuretypes__angle_degrees__last + 1)) <= 
+          measuretypes__millirad__last
+     using hypothesis H24.
+***  PROVED VC.
+

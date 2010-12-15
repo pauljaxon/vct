@@ -1,0 +1,317 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:40
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function bus_decode.Decode_Bool8
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_decode_bool8_1.  @@@@@@@@@@
+***  Proved C1:  word >= bus__word__first
+     using hypothesis H2.
+***  Proved C2:  word <= bus__word__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_decode_bool8_2.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+***  Proved C1:  word >= 0
+     using hypothesis H8.
+***  Proved C2:  word <= bus__word__last
+     using hypothesis H3.
+***  Proved C5:  word >= bus__word__first
+     using hypothesis H2.
+***  Proved C6:  word <= bus__word__last
+     using hypothesis H3.
+-S-  Applied substitution rule decode_bool8_rules(12).
+     This was achieved by replacing all occurrences of bit8__first by:
+          1.
+<S>  New C3:  true
+<S>  New C4:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_decode_bool8_3.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  true
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H17).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  idx >= 0
+%%%  Simplified C4 on reading formula in, to give:
+     %%%  C4:  idx <= 7
+***  Proved C1:  working div 2 >= 0
+     using hypothesis H29.
+***  Proved C2:  working div 2 <= bus__word__last
+     using hypothesis H17.
+***  Proved C3:  idx >= 0
+     using hypothesis H3.
+***  Proved C5:  word >= bus__word__first
+     using hypothesis H5.
+***  Proved C6:  word <= bus__word__last
+     using hypothesis H6.
+-S-  Applied substitution rule decode_bool8_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H26:  idx <> 2147483647
+-S-  Applied substitution rule decode_bool8_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H9:  working mod 2 >= - 2147483648
+-S-  Applied substitution rule decode_bool8_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H10:  working mod 2 <= 2147483647
+-S-  Applied substitution rule decode_bool8_rules(7).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H5:  word >= 0
+<S>  New H7:  working >= 0
+<S>  New H16:  working div 2 >= 0
+-S-  Applied substitution rule decode_bool8_rules(8).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H2:  working <= 65535
+<S>  New H6:  word <= 65535
+<S>  New H17:  working div 2 <= 65535
+-S-  Applied substitution rule decode_bool8_rules(12).
+     This was achieved by replacing all occurrences of bit8__first by:
+          1.
+<S>  New H12:  idx >= 1
+<S>  New H24:  idx >= 0
+-S-  Applied substitution rule decode_bool8_rules(13).
+     This was achieved by replacing all occurrences of bit8__last by:
+          8.
+<S>  New H13:  idx <= 8
+<S>  New H21:  idx < 8
+<S>  New H25:  idx <= 7
+***  Proved C4:  idx <= 7
+     using hypothesis H25.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_decode_bool8_4.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  true
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+***  Proved C1:  working div 2 >= 0
+     using hypothesis H24.
+***  Proved C2:  working div 2 <= bus__word__last
+     using hypothesis H17.
+***  Proved C3:  idx >= 1
+     using hypothesis H3.
+***  Proved C4:  idx <= 8
+     using hypothesis H4.
+***  Proved C5:  word >= bus__word__first
+     using hypothesis H5.
+***  Proved C6:  word <= bus__word__last
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_decode_bool8_5.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule decode_bool8_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C1:  working mod 2 >= - 2147483648
+-S-  Applied substitution rule decode_bool8_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C2:  working mod 2 <= 2147483647
+-S-  Applied substitution rule decode_bool8_rules(12).
+     This was achieved by replacing all occurrences of bit8__first by:
+          1.
+<S>  New C4:  idx >= 1
+-S-  Applied substitution rule decode_bool8_rules(13).
+     This was achieved by replacing all occurrences of bit8__last by:
+          8.
+<S>  New C5:  idx <= 8
+***  Proved C1:  working mod 2 >= - 2147483648
+***  Proved C2:  working mod 2 <= 2147483647
+***  Proved C4:  idx >= 1
+     using hypothesis H3.
+***  Proved C5:  idx <= 8
+     using hypothesis H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_decode_bool8_6.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  true
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H2)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule decode_bool8_rules(7).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H5:  word >= 0
+<S>  New H7:  working >= 0
+<S>  New C1:  working div 2 >= 0
+-S-  Applied substitution rule decode_bool8_rules(8).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H2:  working <= 65535
+<S>  New H6:  word <= 65535
+<S>  New C2:  working div 2 <= 65535
+-S-  Applied substitution rule decode_bool8_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H9:  working mod 2 >= - 2147483648
+-S-  Applied substitution rule decode_bool8_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H10:  working mod 2 <= 2147483647
+-S-  Applied substitution rule decode_bool8_rules(12).
+     This was achieved by replacing all occurrences of bit8__first by:
+          1.
+<S>  New H12:  idx >= 1
+-S-  Applied substitution rule decode_bool8_rules(13).
+     This was achieved by replacing all occurrences of bit8__last by:
+          8.
+<S>  New H13:  idx <= 8
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H7 (duplicate of H1).
+---  Eliminated hypothesis H12 (duplicate of H3).
+---  Eliminated hypothesis H13 (duplicate of H4).
+***  Proved C1:  working div 2 >= 0
+     using hypothesis H1.
+***  Proved C2:  working div 2 <= 65535
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_decode_bool8_7.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  true
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H13).
+***  Proved C1:  idx + 1 >= bit8__first
+     using hypothesis H12.
+-S-  Applied substitution rule decode_bool8_rules(13).
+     This was achieved by replacing all occurrences of bit8__last by:
+          8.
+<S>  New H13:  idx <= 8
+<S>  New H21:  idx < 8
+<S>  New C2:  idx <= 7
+***  Proved C2:  idx <= 7
+     using hypothesis H21.
+-S-  Applied substitution rule decode_bool8_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New C3:  idx <> 2147483647
+-S-  Applied substitution rule decode_bool8_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H9:  working mod 2 >= - 2147483648
+-S-  Applied substitution rule decode_bool8_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H10:  working mod 2 <= 2147483647
+-S-  Applied substitution rule decode_bool8_rules(7).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H5:  word >= 0
+<S>  New H7:  working >= 0
+<S>  New H16:  working div 2 >= 0
+-S-  Applied substitution rule decode_bool8_rules(8).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H2:  working <= 65535
+<S>  New H6:  word <= 65535
+<S>  New H17:  working div 2 <= 65535
+-S-  Applied substitution rule decode_bool8_rules(12).
+     This was achieved by replacing all occurrences of bit8__first by:
+          1.
+<S>  New H12:  idx >= 1
+***  Proved C3:  idx <> 2147483647
+     using hypothesis H21.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_decode_bool8_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_decode_bool8_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_decode_bool8_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

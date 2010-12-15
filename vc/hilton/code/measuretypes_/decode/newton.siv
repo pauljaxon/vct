@@ -1,0 +1,83 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:22
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function decode.Newton
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 33:
+
+function_newton_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 35:
+
+function_newton_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 40:
+
+function_newton_3.
+H1:    lo >= 0 .
+H2:    lo <= 65535 .
+H3:    hi <= 65535 .
+H4:    hi >= 32768 .
+H5:    integer__size >= 0 .
+H6:    measuretypes__newton__size >= 0 .
+H7:    bus__word__size >= 0 .
+       ->
+C1:    lo + (hi - 32768) * 65536 <= 1000000 .
+
+
+function_newton_4.
+H1:    lo >= 0 .
+H2:    lo <= 65535 .
+H3:    hi >= 0 .
+H4:    hi < 32768 .
+H5:    integer__size >= 0 .
+H6:    measuretypes__newton__size >= 0 .
+H7:    bus__word__size >= 0 .
+       ->
+C1:    lo + hi * 65536 <= 1000000 .
+
+
+For path(s) from start to run-time check associated with statement of line 43:
+
+function_newton_5.
+*** true .          /* all conclusions proved */
+
+
+function_newton_6.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to finish:
+
+function_newton_7.
+*** true .          /* all conclusions proved */
+
+
+function_newton_8.
+*** true .          /* all conclusions proved */
+
+
+function_newton_9.
+*** true .          /* all conclusions proved */
+
+
+function_newton_10.
+*** true .          /* all conclusions proved */
+
+

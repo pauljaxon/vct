@@ -1,0 +1,42 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.51
+
+Line
+   1  -- Bus message decoder
+   2  --
+   3  -- $Log: bus_decode.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/02/10 20:25:01  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with Bus,SystemTypes;
+  13  --# inherit Bus, SystemTypes;
+  14  package Bus_Decode is
+  15     subtype Bit8 is Positive range 1..8;
+  16     type Bool8 is array(Bit8) of Boolean;
+  17  
+  18     subtype Bit2 is Positive range 1..2;
+  19     type Byte2 is array(Bit2) of SystemTypes.Byte;
+  20  
+  21     function Decode_Bool8(Word : in Bus.Word) return Bool8;
+  22  
+  23     procedure Decode_Byte2(Word : in Bus.Word;
+  24                            Lo,Hi : out SystemTypes.Byte);
+  25     --# derives Lo, Hi from Word;
+  26  
+  27  end Bus_Decode;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

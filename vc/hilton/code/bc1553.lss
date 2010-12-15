@@ -1,0 +1,234 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.23
+
+Line
+   1  --=head1 NAME
+   2  --
+   3  -- bc1553 - the 1553 bus interface for the Bus Controller (BC)
+   4  --
+   5  --=head1 REVISION HISTORY
+   6  --
+   7  -- $Log: bc1553.ads,v $
+   8  -- Revision 1.2  2004/12/19 15:53:40  adi
+   9  -- Added POD to airspeed, barometer, bc1553
+  10  --
+  11  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+  12  -- Added from tarfile
+  13  --
+  14  --
+  15  -- Revision 1.7  2003/08/17 22:06:24  adi
+  16  -- Added lru_number
+  17  --
+  18  -- Revision 1.6  2003/02/12 21:22:45  adi
+  19  -- Added Set_Message-Valid
+  20  --
+  21  -- Revision 1.5  2003/02/11 20:14:21  adi
+  22  -- Added fresh and valid checking functions
+  23  --
+  24  -- Revision 1.4  2003/02/05 22:49:00  adi
+  25  -- Fixed for renamed types
+  26  --
+  27  -- Revision 1.3  2003/02/03 23:17:17  adi
+  28  -- Added Acknowledge_Message
+  29  --
+  30  -- Revision 1.2  2003/02/03 18:26:27  adi
+  31  -- Moved the interesting stuff into bus.ads
+  32  --
+  33  -- Revision 1.1  2002/10/27 20:40:21  adi
+  34  -- Initial revision
+  35  --
+  36  --=cut
+  37  with Bus;
+  38  with SystemTypes;
+  39  --# inherit SystemTypes,Bus;
+  40  package BC1553
+  41  is
+  42     --=head1 TYPES
+  43     --
+  44     --=over 4
+  45     --
+  46     --=cut
+  47  
+  48     --=item *
+  49     --
+  50     type Lru_Name is
+  51       (Barometer,
+  52        Asi,
+  53        Ins,
+  54        Compass,
+  55        Fuel,
+  56        Fuze,
+  57        Radar,
+  58        Infrared,
+  59        Fins,
+  60        Motor,
+  61        Destruct,
+  62        Warhead
+  63       );
+  64     --
+  65     --Symbolic names for the Lrus
+  66     --
+  67     --=cut
+  68  
+  69     --=back
+  70     --
+  71     --=head1 SUBPROGRAMS
+  72     --
+  73     --=over 4
+  74  
+  75     --=item *
+  76     --
+  77     function Lru_Number(L : Lru_Name) return Bus.Lru_Index;
+  78     --
+  79     --Map LRU name C<L> to the number of the LRU on the bus
+  80     --
+  81  
+  82     --=item *
+  83     --
+  84     procedure Set_Message_Valid(Subaddress_Idx : in Bus.Lru_Subaddress_Index;
+  85                                 Dest    : in Lru_Name);
+  86     --# global in out Bus.Outputs;
+  87     --# derives Bus.Outputs from *, Subaddress_Idx, Dest;
+  88     --
+  89     --Write out data from subaddress C<Subaddress_Idx> from
+  90     --the BC to the RT called C<Dest>.
+  91     --
+  92  
+  93     --=item *
+  94     --
+  95     procedure Write_Word
+  96       (Data           : in Bus.Word;
+  97        Idx            : in Bus.Word_Index;
+  98        Subaddress_Idx : in Bus.Lru_Subaddress_Index;
+  99        Dest           : in Lru_Name);
+ 100     --# global in out Bus.Outputs;
+ 101     --# derives Bus.Outputs from *, Data, Idx, Subaddress_Idx, Dest;
+ 102     --
+ 103     --Write a word of data C<Data> to index C<Idx> in subaddress
+ 104     --C<Subaddress_Idx>, destined for LRU C<Dest>.
+ 105     --
+ 106  
+ 107     --=item *
+ 108     --
+ 109     procedure Write_Message
+ 110       (Data           : in Bus.Message;
+ 111        Subaddress_Idx : in Bus.Lru_Subaddress_Index;
+ 112        Dest           : in Lru_Name);
+ 113     --# global in out Bus.Outputs;
+ 114     --# derives Bus.Outputs from *, Data, Subaddress_Idx, Dest;
+ 115     --
+ 116     --Write an entire message of data C<Data> at subaddress
+ 117     --C<Subaddress_Idx>, destined for LRU C<Dest>.
+ 118     --
+ 119  
+ 120     --=item *
+ 121     --
+ 122     function Is_Fresh
+ 123       (Src            : Lru_Name;
+ 124        Subaddress_Idx : Bus.Lru_Subaddress_Index)
+ 125       return Boolean;
+ 126     --# global in Bus.Inputs;
+ 127     --
+ 128     --See if a message from LRU C<Src> at subaddress
+ 129     --C<Subaddress_Idx> is fresh.
+ 130     --
+ 131  
+ 132     --=item *
+ 133     --
+ 134     function Is_Valid
+ 135       (Src : Lru_Name;
+ 136        Subaddress_Idx : Bus.Lru_Subaddress_Index)
+ 137       return Boolean;
+ 138     --# global in Bus.Inputs;
+ 139     --
+ 140     --See if a message from LRU C<Src> at subaddress
+ 141     --C<Subaddress_Idx> is valid.
+ 142     --
+ 143  
+ 144     --=item *
+ 145     --
+ 146     procedure Read_Word
+ 147       (Src            : in  Lru_Name;
+ 148        Idx            : in  Bus.Word_Index;
+ 149        Subaddress_Idx : in  Bus.Lru_Subaddress_Index;
+ 150        Data           : out Bus.Word);
+ 151     --# global in Bus.Inputs;
+ 152     --# derives Data from Src, Idx, Subaddress_Idx, Bus.Inputs;
+ 153     --
+ 154     --Read data word C<Data> sent to the BC from LRU C<Src> at
+ 155     --word C<Idx>, subaddress C<Subaddress_Idx>.
+ 156     --
+ 157  
+ 158     --=item *
+ 159     --
+ 160     procedure Read_Message
+ 161       (Src            : in  Lru_Name;
+ 162        Subaddress_Idx : in  Bus.Lru_Subaddress_Index;
+ 163        Data           : out Bus.Message);
+ 164     --# global in Bus.Inputs;
+ 165     --# derives Data from Src, Subaddress_Idx, Bus.Inputs;
+ 166     --
+ 167     --Read message data C<Data> from LRU C<Src> at
+ 168     --subaddress C<Subaddress_Idx>.
+ 169     --
+ 170  
+ 171     --=item *
+ 172     --
+ 173     procedure Acknowledge_Message
+ 174       (Src            : in  Lru_Name;
+ 175        Subaddress_Idx : in  Bus.Lru_Subaddress_Index);
+ 176     --# global in out Bus.Inputs;
+ 177     --# derives Bus.Inputs from *, Src, Subaddress_Idx;
+ 178     --
+ 179     --Acknowledge a message from LRU C<Src> from subaddress
+ 180     --C<Subaddress_Idx> as fresh.
+ 181     --
+ 182  
+ 183     --=back
+ 184     --
+ 185     --=cut
+ 186  end BC1553;
+ 187  
+ 188  --=head1 NOTES
+ 189  --
+ 190  --All other system components are on the bus as remote
+ 191  --terminals (RTs). R messages go BC -> RT.  T messages go RT -> BC
+ 192  --
+ 193  --This package provides a simulator of a 1553 Bus Controller.
+ 194  --It allows the main system (the BC) to communicate data to the
+ 195  --interfacing LRUs (the RTs).
+ 196  --
+ 197  --=head1 AUTHOR
+ 198  --
+ 199  --Adrian J. Hilton.  Home web page at L<http://www.suslik.org/>
+ 200  --
+ 201  --=head1 LICENSE
+ 202  --
+ 203  --Copyright (C) 2003-2005, Adrian J. Hilton
+ 204  --
+ 205  --This program is free software; you can redistribute it and/or modify
+ 206  --it under the terms of the GNU General Public License as published by
+ 207  --the Free Software Foundation; either version 2 of the License, or
+ 208  --(at your option) any later version.
+ 209  --
+ 210  --This program is distributed in the hope that it will be useful,
+ 211  --but WITHOUT ANY WARRANTY; without even the implied warranty of
+ 212  --MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ 213  --GNU General Public License for more details.
+ 214  --
+ 215  --You should have received a copy of the GNU General Public License
+ 216  --along with this program; if not, write to the Free Software
+ 217  --Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 218  --
+ 219  --=cut
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

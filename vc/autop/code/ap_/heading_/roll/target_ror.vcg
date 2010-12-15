@@ -1,0 +1,456 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.73
+
+                          function roll.Target_ROR
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 26:
+
+function_target_ror_1.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+        ->
+C1:    target_heading >= instruments__headdegree__first .
+C2:    target_heading <= instruments__headdegree__last .
+C3:    present_heading >= instruments__headdegree__first .
+C4:    present_heading <= instruments__headdegree__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 26:
+
+function_target_ror_2.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    present_heading >= instruments__headdegree__first .
+H9:    present_heading <= instruments__headdegree__last .
+H10:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H11:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+        ->
+C1:    scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+C2:    scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 28:
+
+function_target_ror_3.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    present_heading >= instruments__headdegree__first .
+H9:    present_heading <= instruments__headdegree__last .
+H10:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H11:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H12:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H13:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H14:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H15:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H16:   scale__heading_offset(present_heading, 
+           target_heading) > 40 .
+H17:   scale__heading_offset(present_heading, 
+           target_heading) <= 180 .
+        ->
+C1:    40 >= instruments__bankangle__first .
+C2:    40 <= instruments__bankangle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 30:
+
+function_target_ror_4.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    present_heading >= instruments__headdegree__first .
+H9:    present_heading <= instruments__headdegree__last .
+H10:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H11:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H12:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H13:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H14:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H15:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H16:   not ((scale__heading_offset(present_heading, 
+           target_heading) > 40) and (scale__heading_offset(
+           present_heading, target_heading) <= 180)) .
+H17:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H18:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H19:   scale__heading_offset(present_heading, 
+           target_heading) > 180 .
+H20:   scale__heading_offset(present_heading, 
+           target_heading) < 319 .
+        ->
+C1:     -40 >= instruments__bankangle__first .
+C2:     -40 <= instruments__bankangle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 32:
+
+function_target_ror_5.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    present_heading >= instruments__headdegree__first .
+H9:    present_heading <= instruments__headdegree__last .
+H10:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H11:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H12:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H13:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H14:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H15:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H16:   not ((scale__heading_offset(present_heading, 
+           target_heading) > 40) and (scale__heading_offset(
+           present_heading, target_heading) <= 180)) .
+H17:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H18:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H19:   not ((scale__heading_offset(present_heading, 
+           target_heading) > 180) and (scale__heading_offset(
+           present_heading, target_heading) < 319)) .
+H20:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H21:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H22:   scale__heading_offset(present_heading, 
+           target_heading) <= 40 .
+H23:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H24:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+        ->
+C1:    scale__heading_offset(present_heading, 
+           target_heading) >= instruments__bankangle__first .
+C2:    scale__heading_offset(present_heading, 
+           target_heading) <= instruments__bankangle__last .
+C3:    scale__heading_offset(present_heading, 
+           target_heading) >= instruments__bankangle__first .
+C4:    scale__heading_offset(present_heading, 
+           target_heading) <= instruments__bankangle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 34:
+
+function_target_ror_6.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    present_heading >= instruments__headdegree__first .
+H9:    present_heading <= instruments__headdegree__last .
+H10:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H11:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H12:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H13:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H14:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H15:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H16:   not ((scale__heading_offset(present_heading, 
+           target_heading) > 40) and (scale__heading_offset(
+           present_heading, target_heading) <= 180)) .
+H17:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H18:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H19:   not ((scale__heading_offset(present_heading, 
+           target_heading) > 180) and (scale__heading_offset(
+           present_heading, target_heading) < 319)) .
+H20:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H21:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H22:   not (scale__heading_offset(present_heading, 
+           target_heading) <= 40) .
+H23:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H24:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+        ->
+C1:    360 - scale__heading_offset(present_heading, 
+           target_heading) >= instruments__bankangle__first .
+C2:    360 - scale__heading_offset(present_heading, 
+           target_heading) <= instruments__bankangle__last .
+C3:    360 - scale__heading_offset(present_heading, 
+           target_heading) >= instruments__bankangle__first .
+C4:    360 - scale__heading_offset(present_heading, 
+           target_heading) <= instruments__bankangle__last .
+C5:    360 - scale__heading_offset(present_heading, 
+           target_heading) >= integer__base__first .
+C6:    360 - scale__heading_offset(present_heading, 
+           target_heading) <= integer__base__last .
+C7:    scale__heading_offset(present_heading, 
+           target_heading) >= integer__first .
+C8:    scale__heading_offset(present_heading, 
+           target_heading) <= integer__last .
+ 
+
+For path(s) from start to finish:
+
+function_target_ror_7.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    present_heading >= instruments__headdegree__first .
+H9:    present_heading <= instruments__headdegree__last .
+H10:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H11:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H12:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H13:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H14:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H15:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H16:   scale__heading_offset(present_heading, 
+           target_heading) > 40 .
+H17:   scale__heading_offset(present_heading, 
+           target_heading) <= 180 .
+H18:   40 >= instruments__bankangle__first .
+H19:   40 <= instruments__bankangle__last .
+H20:   40 >= instruments__bankangle__first .
+H21:   40 <= instruments__bankangle__last .
+        ->
+C1:    true .
+C2:    40 >= instruments__bankangle__first .
+C3:    40 <= instruments__bankangle__last .
+ 
+
+function_target_ror_8.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    present_heading >= instruments__headdegree__first .
+H9:    present_heading <= instruments__headdegree__last .
+H10:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H11:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H12:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H13:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H14:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H15:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H16:   not ((scale__heading_offset(present_heading, 
+           target_heading) > 40) and (scale__heading_offset(
+           present_heading, target_heading) <= 180)) .
+H17:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H18:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H19:   scale__heading_offset(present_heading, 
+           target_heading) > 180 .
+H20:   scale__heading_offset(present_heading, 
+           target_heading) < 319 .
+H21:    -40 >= instruments__bankangle__first .
+H22:    -40 <= instruments__bankangle__last .
+H23:    -40 >= instruments__bankangle__first .
+H24:    -40 <= instruments__bankangle__last .
+        ->
+C1:    true .
+C2:     -40 >= instruments__bankangle__first .
+C3:     -40 <= instruments__bankangle__last .
+ 
+
+function_target_ror_9.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    present_heading >= instruments__headdegree__first .
+H9:    present_heading <= instruments__headdegree__last .
+H10:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H11:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H12:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H13:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H14:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H15:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H16:   not ((scale__heading_offset(present_heading, 
+           target_heading) > 40) and (scale__heading_offset(
+           present_heading, target_heading) <= 180)) .
+H17:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H18:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H19:   not ((scale__heading_offset(present_heading, 
+           target_heading) > 180) and (scale__heading_offset(
+           present_heading, target_heading) < 319)) .
+H20:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H21:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H22:   scale__heading_offset(present_heading, 
+           target_heading) <= 40 .
+H23:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H24:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H25:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__bankangle__first .
+H26:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__bankangle__last .
+H27:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__bankangle__first .
+H28:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__bankangle__last .
+H29:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__bankangle__first .
+H30:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__bankangle__last .
+        ->
+C1:    true .
+C2:    scale__heading_offset(present_heading, 
+           target_heading) >= instruments__bankangle__first .
+C3:    scale__heading_offset(present_heading, 
+           target_heading) <= instruments__bankangle__last .
+ 
+
+function_target_ror_10.
+H1:    true .
+H2:    present_heading >= instruments__headdegree__first .
+H3:    present_heading <= instruments__headdegree__last .
+H4:    target_heading >= instruments__headdegree__first .
+H5:    target_heading <= instruments__headdegree__last .
+H6:    target_heading >= instruments__headdegree__first .
+H7:    target_heading <= instruments__headdegree__last .
+H8:    present_heading >= instruments__headdegree__first .
+H9:    present_heading <= instruments__headdegree__last .
+H10:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H11:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H12:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H13:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H14:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H15:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H16:   not ((scale__heading_offset(present_heading, 
+           target_heading) > 40) and (scale__heading_offset(
+           present_heading, target_heading) <= 180)) .
+H17:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H18:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H19:   not ((scale__heading_offset(present_heading, 
+           target_heading) > 180) and (scale__heading_offset(
+           present_heading, target_heading) < 319)) .
+H20:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H21:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H22:   not (scale__heading_offset(present_heading, 
+           target_heading) <= 40) .
+H23:   scale__heading_offset(present_heading, 
+           target_heading) >= instruments__headdegree__first .
+H24:   scale__heading_offset(present_heading, 
+           target_heading) <= instruments__headdegree__last .
+H25:   360 - scale__heading_offset(present_heading, 
+           target_heading) >= instruments__bankangle__first .
+H26:   360 - scale__heading_offset(present_heading, 
+           target_heading) <= instruments__bankangle__last .
+H27:   360 - scale__heading_offset(present_heading, 
+           target_heading) >= instruments__bankangle__first .
+H28:   360 - scale__heading_offset(present_heading, 
+           target_heading) <= instruments__bankangle__last .
+H29:   360 - scale__heading_offset(present_heading, 
+           target_heading) >= integer__base__first .
+H30:   360 - scale__heading_offset(present_heading, 
+           target_heading) <= integer__base__last .
+H31:   scale__heading_offset(present_heading, 
+           target_heading) >= integer__first .
+H32:   scale__heading_offset(present_heading, 
+           target_heading) <= integer__last .
+H33:   360 - scale__heading_offset(present_heading, 
+           target_heading) >= instruments__bankangle__first .
+H34:   360 - scale__heading_offset(present_heading, 
+           target_heading) <= instruments__bankangle__last .
+        ->
+C1:    true .
+C2:    360 - scale__heading_offset(present_heading, 
+           target_heading) >= instruments__bankangle__first .
+C3:    360 - scale__heading_offset(present_heading, 
+           target_heading) <= instruments__bankangle__last .
+ 
+

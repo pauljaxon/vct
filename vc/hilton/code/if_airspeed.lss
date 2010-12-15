@@ -1,0 +1,77 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.94
+
+Line
+   1  -- MCU interface to the airspeed over the bus
+   2  --
+   3  -- $Log: if_airspeed.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/10 20:06:25  adi
+   9  -- Added IBIT phase detection
+  10  --
+  11  -- Revision 1.1  2003/08/10 16:46:11  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  --
+  16  with SystemTypes, MeasureTypes, Ibit;
+  17  use type MeasureTypes.Meter_Per_sec;
+  18  --# inherit SystemTypes, MeasureTypes, Bus, Ibit,
+  19  --# bc1553;
+  20  package If_Airspeed
+  21    --# own State;
+  22    --# initializes State;
+  23  is
+  24     -- Find out the current IBIT phase
+  25     function Get_Ibit_State return Ibit.Phase;
+  26     --# global state;
+  27  
+  28     -- Find out the current speed and its validity
+  29     procedure Get_Speed(Speed : out MeasureTypes.Meter_Per_sec;
+  30                          Valid  : out Boolean);
+  31     --# global in State;
+  32     --# derives Speed, Valid from State;
+  33  
+  34     -- Kick off a airspeed IBIT
+  35     procedure Ibit_Start;
+  36     --# global in out Bus.Outputs, State;
+  37     --# derives Bus.Outputs from * &
+  38     --#         State from *;
+  39  
+  40     -- Stop a airspeed IBIT
+  41     procedure Ibit_Stop;
+  42     --# global in out Bus.Outputs, State;
+  43     --# derives Bus.Outputs from * &
+  44     --#         State from *;
+  45  
+  46     -- Poll the bus
+  47     procedure Poll;
+  48     --# global in out State;
+  49     --#        in Bus.Inputs;
+  50     --# derives State from *, Bus.Inputs;
+  51  
+  52     -- Initialise
+  53     procedure Init;
+  54     --# global out State;
+  55     --#        in out Bus.Outputs;
+  56     --# derives State from &
+  57     --#         Bus.Outputs from *;
+  58  
+  59     -- test point
+  60     procedure Command;
+  61     --# derives;
+  62  end If_Airspeed;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

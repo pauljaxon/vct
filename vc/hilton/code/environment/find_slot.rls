@@ -1,0 +1,30 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.65*/
+
+                      /*procedure environment.Find_Slot*/
+
+
+rule_family find_slot_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+find_slot_rules(1): null_handle may_be_replaced_by 0.
+find_slot_rules(2): handle__size >= 0 may_be_deduced.
+find_slot_rules(3): handle__first may_be_replaced_by 0.
+find_slot_rules(4): handle__last may_be_replaced_by 20.
+find_slot_rules(5): handle__base__first <= handle__base__last may_be_deduced.
+find_slot_rules(6): handle__base__first <= handle__first may_be_deduced.
+find_slot_rules(7): handle__base__last >= handle__last may_be_deduced.
+find_slot_rules(8): valid_handle__size >= 0 may_be_deduced.
+find_slot_rules(9): valid_handle__first may_be_replaced_by 1.
+find_slot_rules(10): valid_handle__last may_be_replaced_by 20.
+find_slot_rules(11): valid_handle__base__first <= valid_handle__base__last may_be_deduced.
+find_slot_rules(12): valid_handle__base__first <= valid_handle__first may_be_deduced.
+find_slot_rules(13): valid_handle__base__last >= valid_handle__last may_be_deduced.

@@ -1,0 +1,36 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:36.98}
+
+                      {function State_Types.Fuze_Action}
+
+
+title function fuze_action;
+
+  function round__(real) : integer;
+  type fuze = (unarmed, arming, live, triggering, timed_out);
+  type fuze_to_word = array [fuze] of integer;
+  const fuze_values : fuze_to_word = pending;
+  const fuze__base__last : fuze = pending; 
+  const fuze__base__first : fuze = pending; 
+  const word__base__last : integer = pending; 
+  const word__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const fuze__size : integer = pending; 
+  const fuze__last : fuze = pending; 
+  const fuze__first : fuze = pending; 
+  const word__size : integer = pending; 
+  const word__last : integer = pending; 
+  const word__first : integer = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+  var val : integer;
+
+end;

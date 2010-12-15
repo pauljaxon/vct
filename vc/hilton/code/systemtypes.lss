@@ -1,0 +1,49 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:36.90
+
+Line
+   1  -- The basic system types
+   2  -- Used by most other packages.
+   3  --
+   4  -- $Id: systemtypes.ads,v 1.1.1.1 2004/01/12 19:29:12 adi Exp $
+   5  --
+   6  -- $Log: systemtypes.ads,v $
+   7  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   8  -- Added from tarfile
+   9  --
+  10  --
+  11  -- Revision 1.4  2003/08/03 12:46:42  adi
+  12  -- Added Signed16
+  13  --
+  14  -- Revision 1.3  2003/08/02 19:14:40  adi
+  15  -- Added Integer32
+  16  --
+  17  -- Revision 1.2  2003/02/10 20:05:21  adi
+  18  -- Fixed base type of Unsigned32
+  19  --
+  20  -- Revision 1.1  2002/10/27 20:33:59  adi
+  21  -- Initial revision
+  22  --
+  23  --
+  24  package SystemTypes is
+  25  
+  26     subtype Integer32 is Long_Integer range -2147483648 .. 2147483647;
+  27     subtype Unsigned32 is Natural range 0..2**31 -1;
+  28     subtype Unsigned16 is Unsigned32 range 0..2**16-1;
+  29     subtype Signed16 is Integer range -(2**15)..2**15-1;
+  30     subtype Word is Unsigned16;
+  31     subtype Unsigned8 is Unsigned32 range 0..2**8-1;
+  32     subtype Byte is Unsigned8;
+  33  
+  34  end SystemTypes;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

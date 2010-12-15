@@ -1,0 +1,78 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.90*/
+
+                        /*procedure bus.Write_RT_Word*/
+
+
+rule_family write_rt_wor_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+write_rt_wor_rules(1): lru_start_index__first <= fld_initial(element(bc_to_rt, [I])) may_be_deduced_from [1 <= I, I <= 12].
+write_rt_wor_rules(2): fld_initial(element(bc_to_rt, [I])) <= 
+     lru_start_index__last may_be_deduced_from [1 <= I, I <= 12].
+write_rt_wor_rules(3): lru_subaddress_index__first <= fld_msg_count(element(bc_to_rt, [I])) may_be_deduced_from [1 <= I, I <= 12].
+write_rt_wor_rules(4): fld_msg_count(element(bc_to_rt, [I])) <= 
+     lru_subaddress_index__last may_be_deduced_from [1 <= I, I <= 12].
+write_rt_wor_rules(5): integer__size >= 0 may_be_deduced.
+write_rt_wor_rules(6): integer__first may_be_replaced_by -2147483648.
+write_rt_wor_rules(7): integer__last may_be_replaced_by 2147483647.
+write_rt_wor_rules(8): integer__base__first may_be_replaced_by -2147483648.
+write_rt_wor_rules(9): integer__base__last may_be_replaced_by 2147483647.
+write_rt_wor_rules(10): word_index__size >= 0 may_be_deduced.
+write_rt_wor_rules(11): word_index__first may_be_replaced_by 1.
+write_rt_wor_rules(12): word_index__last may_be_replaced_by 31.
+write_rt_wor_rules(13): word_index__base__first <= word_index__base__last may_be_deduced.
+write_rt_wor_rules(14): word_index__base__first <= word_index__first may_be_deduced.
+write_rt_wor_rules(15): word_index__base__last >= word_index__last may_be_deduced.
+write_rt_wor_rules(16): word__size >= 0 may_be_deduced.
+write_rt_wor_rules(17): word__first may_be_replaced_by 0.
+write_rt_wor_rules(18): word__last may_be_replaced_by 65535.
+write_rt_wor_rules(19): word__base__first may_be_replaced_by -2147483648.
+write_rt_wor_rules(20): word__base__last may_be_replaced_by 2147483647.
+write_rt_wor_rules(21): message__size >= 0 may_be_deduced.
+write_rt_wor_rules(22): A = B may_be_deduced_from
+     [goal(checktype(A,message)),
+      goal(checktype(B,message)),
+      fld_valid(A) = fld_valid(B),
+      fld_fresh(A) = fld_fresh(B),
+      fld_data(A) = fld_data(B)].
+write_rt_wor_rules(23): all_msg_index__size >= 0 may_be_deduced.
+write_rt_wor_rules(24): all_msg_index__first may_be_replaced_by 0.
+write_rt_wor_rules(25): all_msg_index__last may_be_replaced_by 63.
+write_rt_wor_rules(26): all_msg_index__base__first may_be_replaced_by -32768.
+write_rt_wor_rules(27): all_msg_index__base__last may_be_replaced_by 32767.
+write_rt_wor_rules(28): valid_msg_index__size >= 0 may_be_deduced.
+write_rt_wor_rules(29): valid_msg_index__first may_be_replaced_by 1.
+write_rt_wor_rules(30): valid_msg_index__last may_be_replaced_by 63.
+write_rt_wor_rules(31): valid_msg_index__base__first may_be_replaced_by -32768.
+write_rt_wor_rules(32): valid_msg_index__base__last may_be_replaced_by 32767.
+write_rt_wor_rules(33): lru_subaddress_index__size >= 0 may_be_deduced.
+write_rt_wor_rules(34): lru_subaddress_index__first may_be_replaced_by 1.
+write_rt_wor_rules(35): lru_subaddress_index__last may_be_replaced_by 8.
+write_rt_wor_rules(36): lru_subaddress_index__base__first may_be_replaced_by -32768.
+write_rt_wor_rules(37): lru_subaddress_index__base__last may_be_replaced_by 32767.
+write_rt_wor_rules(38): lru_index__size >= 0 may_be_deduced.
+write_rt_wor_rules(39): lru_index__first may_be_replaced_by 1.
+write_rt_wor_rules(40): lru_index__last may_be_replaced_by 12.
+write_rt_wor_rules(41): lru_index__base__first <= lru_index__base__last may_be_deduced.
+write_rt_wor_rules(42): lru_index__base__first <= lru_index__first may_be_deduced.
+write_rt_wor_rules(43): lru_index__base__last >= lru_index__last may_be_deduced.
+write_rt_wor_rules(44): lru_start_index__size >= 0 may_be_deduced.
+write_rt_wor_rules(45): lru_start_index__first may_be_replaced_by 0.
+write_rt_wor_rules(46): lru_start_index__last may_be_replaced_by 55.
+write_rt_wor_rules(47): lru_start_index__base__first may_be_replaced_by -32768.
+write_rt_wor_rules(48): lru_start_index__base__last may_be_replaced_by 32767.
+write_rt_wor_rules(49): lru_message_record__size >= 0 may_be_deduced.
+write_rt_wor_rules(50): A = B may_be_deduced_from
+     [goal(checktype(A,lru_message_record)),
+      goal(checktype(B,lru_message_record)),
+      fld_initial(A) = fld_initial(B),
+      fld_msg_count(A) = fld_msg_count(B)].

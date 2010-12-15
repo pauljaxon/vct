@@ -1,0 +1,186 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.51
+
+Line
+   1  -- The 1553 bus interface for the Remote Terminal (RT)
+   2  --
+   3  -- $Id: rt1553.adb,v 1.1.1.1 2004/01/12 19:29:12 adi Exp $
+   4  --
+   5  -- $Log: rt1553.adb,v $
+   6  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   7  -- Added from tarfile
+   8  --
+   9  --
+  10  -- Revision 1.6  2003/08/17 22:04:38  adi
+  11  -- Added lru_number
+  12  --
+  13  -- Revision 1.5  2003/08/17 15:06:13  adi
+  14  -- Added is_fresh, is_valid
+  15  --
+  16  -- Revision 1.4  2003/02/12 21:24:55  adi
+  17  -- Added Set_Message_Valid
+  18  --
+  19  -- Revision 1.3  2003/02/05 22:51:25  adi
+  20  -- Fixed for renamed file
+  21  --
+  22  -- Revision 1.2  2003/02/03 23:19:38  adi
+  23  -- Added Acknowledge_Message
+  24  --
+  25  -- Revision 1.1  2003/02/03 18:35:30  adi
+  26  -- Initial revision
+  27  --
+  28  --
+  29  --
+  30  package body RT1553
+  31  is
+  32     -- Convert LRU names to LRU indices
+  33     type Lru_Table is array(Lru_Name) of Bus.Lru_Index;
+  34     Lru_Names : constant Lru_Table
+  35       := Lru_Table'(Barometer => 1,
+  36                     Asi      => 2,
+  37                     Ins      => 3,
+  38                     Compass  => 4,
+  39                     Fuel     => 5,
+  40                     Fuze     => 6,
+  41                     Radar    => 7,
+  42                     Infrared => 8,
+  43                     Fins     => 9,
+  44                     Motor    => 10,
+  45                     Destruct => 11,
+  46                     Warhead  => 12);
+  47  
+  48     function Lru_Number(L : Lru_Name) return Bus.Lru_Index
+  49     is begin
+  50        return Lru_Names(L);
+  51     end Lru_Number;
+
++++        Flow analysis of subprogram Lru_Number 
+           performed: no errors found.
+
+  52  
+  53     -- Write out data to the BC
+  54  
+  55     procedure Set_Message_Valid(Subaddress_Idx : in Bus.Lru_Subaddress_Index;
+  56                                 Src     : in Lru_Name)
+  57     is
+  58     begin
+  59        Bus.Set_BC_Message_Valid(Src => Lru_Names(src),
+  60                                 Subaddress_Idx => Subaddress_Idx);
+  61     end Set_Message_Valid;
+
++++        Flow analysis of subprogram Set_Message_Valid 
+           performed: no errors found.
+
+  62  
+  63  
+  64     procedure Write_Word(Data    : in Bus.Word;
+  65                          Idx     : in Bus.Word_Index;
+  66                          Subaddress_Idx : in Bus.Lru_Subaddress_Index;
+  67                          Src     : in Lru_Name)
+  68     is
+  69     begin
+  70        Bus.Write_BC_Word(Src => Lru_Names(src),
+  71                          Data => Data,
+  72                          Idx => Idx,
+  73                          Subaddress_Idx => Subaddress_Idx);
+  74     end Write_Word;
+
++++        Flow analysis of subprogram Write_Word 
+           performed: no errors found.
+
+  75  
+  76     procedure Write_Message(Data    : in Bus.Message;
+  77                             Subaddress_Idx : in Bus.Lru_Subaddress_Index;
+  78                             Src     : in Lru_Name)
+  79     is
+  80     begin
+  81        Bus.Write_BC_Message(Src => Lru_Names(src),
+  82                             Data => Data,
+  83                             Subaddress_Idx => Subaddress_Idx);
+  84     end Write_Message;
+
++++        Flow analysis of subprogram Write_Message 
+           performed: no errors found.
+
+  85  
+  86     -- Read data sent to the RTs
+  87  
+  88     procedure Read_Word(Src     : in  Lru_Name;
+  89                         Idx     : in  Bus.Word_Index;
+  90                         Subaddress_Idx : in  Bus.Lru_Subaddress_Index;
+  91                         Data    : out Bus.Word)
+  92     is
+  93     begin
+  94        Bus.Read_RT_Word(Idx => Idx,
+  95                         Subaddress_Idx => Subaddress_Idx,
+  96                         Data => Data,
+  97                         Dest => Lru_Names(Src));
+  98     end Read_Word;
+
++++        Flow analysis of subprogram Read_Word performed: 
+           no errors found.
+
+  99  
+ 100     procedure Read_Message(Src     : in  Lru_Name;
+ 101                            Subaddress_Idx : in  Bus.Lru_Subaddress_Index;
+ 102                            Data    : out Bus.Message)
+ 103     is
+ 104     begin
+ 105        Bus.Read_RT_Message(Subaddress_Idx => Subaddress_Idx,
+ 106                            Data => Data,
+ 107                            Dest => Lru_Names(Src));
+ 108     end Read_Message;
+
++++        Flow analysis of subprogram Read_Message 
+           performed: no errors found.
+
+ 109  
+ 110     procedure Acknowledge_Message(Src     : in  Lru_Name;
+ 111                                Subaddress_Idx : in  Bus.Lru_Subaddress_Index)
+ 112     is
+ 113     begin
+ 114        Bus.Acknowledge_RT_Message(Subaddress_Idx => Subaddress_Idx,
+ 115                                   Dest => Lru_Names(Src));
+ 116     end Acknowledge_Message;
+
++++        Flow analysis of subprogram Acknowledge_Message 
+           performed: no errors found.
+
+ 117  
+ 118         -- See if a message is fresh
+ 119     function Is_Fresh(Src : Lru_Name;
+ 120                       Subaddress_Idx : Bus.Lru_Subaddress_Index)
+ 121                      return Boolean
+ 122     is begin
+ 123        return Bus.Is_rt_Fresh(Lru_Names(Src),Subaddress_Idx);
+ 124     end Is_Fresh;
+
++++        Flow analysis of subprogram Is_Fresh performed: 
+           no errors found.
+
+ 125  
+ 126     -- See if a message is valid
+ 127     function Is_Valid(Src : Lru_Name;
+ 128                       Subaddress_Idx : Bus.Lru_Subaddress_Index)
+ 129                      return Boolean
+ 130     is begin
+ 131        return Bus.Is_rt_Valid(Lru_Names(Src),Subaddress_Idx);
+ 132     end Is_Valid;
+
++++        Flow analysis of subprogram Is_Valid performed: 
+           no errors found.
+
+ 133  
+ 134  
+ 135  end RT1553;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

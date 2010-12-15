@@ -1,0 +1,144 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.74
+
+                   procedure environment.Set_Object_accel
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 206:
+
+procedure_set_object_accel_1.
+H1:    true .
+H2:    h >= handle__first .
+H3:    h <= handle__last .
+H4:    fld_az(a) >= measuretypes__cm_per_sec_2__first .
+H5:    fld_az(a) <= measuretypes__cm_per_sec_2__last .
+H6:    fld_ay(a) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_ay(a) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ax(a) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ax(a) <= measuretypes__cm_per_sec_2__last .
+H10:   for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_h(element(
+           object_array, [i___1])) >= valid_handle__first) and (fld_h(element(
+           object_array, [i___1])) <= valid_handle__last))) .
+H11:   for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_r(element(
+           object_array, [i___1])) >= rcs__first) and (fld_r(element(
+           object_array, [i___1])) <= rcs__last))) .
+H12:   for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_k(element(
+           object_array, [i___1])) >= kind__first) and (fld_k(element(
+           object_array, [i___1])) <= kind__last))) .
+H13:   true .
+H14:   true .
+H15:   not ((h < valid_handle__first) or (h > valid_handle__last)) .
+        ->
+C1:    h >= valid_handle__first .
+C2:    h <= valid_handle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 208:
+
+procedure_set_object_accel_2.
+H1:    true .
+H2:    h >= handle__first .
+H3:    h <= handle__last .
+H4:    fld_az(a) >= measuretypes__cm_per_sec_2__first .
+H5:    fld_az(a) <= measuretypes__cm_per_sec_2__last .
+H6:    fld_ay(a) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_ay(a) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ax(a) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ax(a) <= measuretypes__cm_per_sec_2__last .
+H10:   for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_h(element(
+           object_array, [i___1])) >= valid_handle__first) and (fld_h(element(
+           object_array, [i___1])) <= valid_handle__last))) .
+H11:   for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_r(element(
+           object_array, [i___1])) >= rcs__first) and (fld_r(element(
+           object_array, [i___1])) <= rcs__last))) .
+H12:   for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_k(element(
+           object_array, [i___1])) >= kind__first) and (fld_k(element(
+           object_array, [i___1])) <= kind__last))) .
+H13:   true .
+H14:   true .
+H15:   not ((h < valid_handle__first) or (h > valid_handle__last)) .
+H16:   h >= valid_handle__first .
+H17:   h <= valid_handle__last .
+H18:   element(item_valid, [h]) .
+        ->
+C1:    h >= valid_handle__first .
+C2:    h <= valid_handle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 211:
+
+procedure_set_object_accel_3.
+H1:    true .
+H2:    h >= handle__first .
+H3:    h <= handle__last .
+H4:    fld_az(a) >= measuretypes__cm_per_sec_2__first .
+H5:    fld_az(a) <= measuretypes__cm_per_sec_2__last .
+H6:    fld_ay(a) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_ay(a) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ax(a) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ax(a) <= measuretypes__cm_per_sec_2__last .
+H10:   for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_h(element(
+           object_array, [i___1])) >= valid_handle__first) and (fld_h(element(
+           object_array, [i___1])) <= valid_handle__last))) .
+H11:   for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_r(element(
+           object_array, [i___1])) >= rcs__first) and (fld_r(element(
+           object_array, [i___1])) <= rcs__last))) .
+H12:   for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_k(element(
+           object_array, [i___1])) >= kind__first) and (fld_k(element(
+           object_array, [i___1])) <= kind__last))) .
+H13:   true .
+H14:   true .
+H15:   not ((h < valid_handle__first) or (h > valid_handle__last)) .
+H16:   h >= valid_handle__first .
+H17:   h <= valid_handle__last .
+H18:   element(item_valid, [h]) .
+H19:   h >= valid_handle__first .
+H20:   h <= valid_handle__last .
+H21:   true .
+H22:   true .
+        ->
+C1:    h >= valid_handle__first .
+C2:    h <= valid_handle__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_set_object_accel_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_object_accel_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_object_accel_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_set_object_accel_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_object_accel_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+

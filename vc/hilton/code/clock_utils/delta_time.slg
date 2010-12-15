@@ -1,0 +1,128 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:24
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function clock_utils.Delta_Time
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_delta_time_1.  @@@@@@@@@@
+-S-  Applied substitution rule delta_time_rules(2).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  orig >= 0
+<S>  New H4:  now >= 0
+<S>  New C1:  now - orig >= 0
+-S-  Applied substitution rule delta_time_rules(3).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  orig <= 8640000
+<S>  New H5:  now <= 8640000
+<S>  New C2:  now - orig <= 8640000
+***  Proved C1:  now - orig >= 0
+     using hypothesis H6.
+***  Proved C2:  now - orig <= 8640000
+     using hypotheses H2 & H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_delta_time_2.  @@@@@@@@@@
+-S-  Applied substitution rule delta_time_rules(2).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  orig >= 0
+<S>  New H4:  now >= 0
+<S>  New C1:  clock__millisecond__last - orig >= 0
+-S-  Applied substitution rule delta_time_rules(3).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  orig <= 8640000
+<S>  New H5:  now <= 8640000
+<S>  New C2:  0 <= orig
+<S>  New C1:  orig <= 8640000
+***  Proved C2:  0 <= orig
+     using hypothesis H2.
+***  Proved C1:  orig <= 8640000
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_delta_time_3.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+-S-  Applied substitution rule delta_time_rules(2).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  orig >= 0
+<S>  New H4:  now >= 0
+<S>  New H7:  clock__millisecond__last - orig >= 0
+<S>  New C1:  clock__millisecond__last - orig + now >= 0
+-S-  Applied substitution rule delta_time_rules(3).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  orig <= 8640000
+<S>  New H5:  now <= 8640000
+<S>  New H8:  0 <= orig
+<S>  New H7:  orig <= 8640000
+<S>  New C2:  8640000 - orig + now <= 8640000
+<S>  New C1:  8640000 - orig + now >= 0
+>>>  Restructured hypothesis H6 into:
+     >>>  H6:  now < orig
+***  Proved C2:  8640000 - orig + now <= 8640000
+     via its standard form, which is:
+     Std.Fm C2:  - now + orig > - 1
+     using hypothesis H6.
+***  Proved C1:  8640000 - orig + now >= 0
+     via its standard form, which is:
+     Std.Fm C1:  8640000 + (now - orig) >= 0
+     using hypotheses H3 & H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_delta_time_4.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+***  Proved C1:  true
+***  Proved C2:  now - orig >= clock__millisecond__first
+     using hypothesis H7.
+***  Proved C3:  now - orig <= clock__millisecond__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_delta_time_5.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+***  Proved C1:  true
+***  Proved C2:  clock__millisecond__last - orig + now >= 
+          clock__millisecond__first
+     using hypothesis H11.
+***  Proved C3:  clock__millisecond__last - orig + now <= 
+          clock__millisecond__last
+     using hypothesis H12.
+***  PROVED VC.
+

@@ -1,0 +1,180 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.00
+
+                         procedure bit_machine.Step
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 62:
+
+procedure_step_1.
+H1:    true .
+H2:    fld_ticks_to_complete(state) >= 
+           systemtypes__unsigned16__first .
+H3:    fld_ticks_to_complete(state) <= 
+           systemtypes__unsigned16__last .
+H4:    true .
+H5:    fld_ticks(state) >= systemtypes__unsigned16__first .
+H6:    fld_ticks(state) <= systemtypes__unsigned16__last .
+H7:    fld_current_phase(state) >= ibit__phase__first .
+H8:    fld_current_phase(state) <= ibit__phase__last .
+H9:    fld_current_phase(state) = ibit__in_progress .
+        ->
+C1:    fld_ticks(state) + 1 >= systemtypes__unsigned16__first .
+C2:    fld_ticks(state) + 1 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 66:
+
+procedure_step_2.
+H1:    true .
+H2:    fld_ticks_to_complete(state) >= 
+           systemtypes__unsigned16__first .
+H3:    fld_ticks_to_complete(state) <= 
+           systemtypes__unsigned16__last .
+H4:    true .
+H5:    fld_ticks(state) >= systemtypes__unsigned16__first .
+H6:    fld_ticks(state) <= systemtypes__unsigned16__last .
+H7:    fld_current_phase(state) >= ibit__phase__first .
+H8:    fld_current_phase(state) <= ibit__phase__last .
+H9:    fld_current_phase(state) = ibit__in_progress .
+H10:   fld_ticks(state) + 1 >= systemtypes__unsigned16__first .
+H11:   fld_ticks(state) + 1 <= systemtypes__unsigned16__last .
+H12:   fld_ticks(upf_ticks(state, fld_ticks(state) + 1)) >= 
+           fld_ticks_to_complete(upf_ticks(state, fld_ticks(
+           state) + 1)) .
+        ->
+C1:    0 >= systemtypes__unsigned16__first .
+C2:    0 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 68:
+
+procedure_step_3.
+H1:    true .
+H2:    fld_ticks_to_complete(state) >= 
+           systemtypes__unsigned16__first .
+H3:    fld_ticks_to_complete(state) <= 
+           systemtypes__unsigned16__last .
+H4:    true .
+H5:    fld_ticks(state) >= systemtypes__unsigned16__first .
+H6:    fld_ticks(state) <= systemtypes__unsigned16__last .
+H7:    fld_current_phase(state) >= ibit__phase__first .
+H8:    fld_current_phase(state) <= ibit__phase__last .
+H9:    fld_current_phase(state) = ibit__in_progress .
+H10:   fld_ticks(state) + 1 >= systemtypes__unsigned16__first .
+H11:   fld_ticks(state) + 1 <= systemtypes__unsigned16__last .
+H12:   fld_ticks(upf_ticks(state, fld_ticks(state) + 1)) >= 
+           fld_ticks_to_complete(upf_ticks(state, fld_ticks(
+           state) + 1)) .
+H13:   0 >= systemtypes__unsigned16__first .
+H14:   0 <= systemtypes__unsigned16__last .
+H15:   fld_fail_bit(upf_ticks(upf_ticks(state, fld_ticks(
+           state) + 1), 0)) .
+        ->
+C1:    ibit__fail >= ibit__phase__first .
+C2:    ibit__fail <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 71:
+
+procedure_step_4.
+H1:    true .
+H2:    fld_ticks_to_complete(state) >= 
+           systemtypes__unsigned16__first .
+H3:    fld_ticks_to_complete(state) <= 
+           systemtypes__unsigned16__last .
+H4:    true .
+H5:    fld_ticks(state) >= systemtypes__unsigned16__first .
+H6:    fld_ticks(state) <= systemtypes__unsigned16__last .
+H7:    fld_current_phase(state) >= ibit__phase__first .
+H8:    fld_current_phase(state) <= ibit__phase__last .
+H9:    fld_current_phase(state) = ibit__in_progress .
+H10:   fld_ticks(state) + 1 >= systemtypes__unsigned16__first .
+H11:   fld_ticks(state) + 1 <= systemtypes__unsigned16__last .
+H12:   fld_ticks(upf_ticks(state, fld_ticks(state) + 1)) >= 
+           fld_ticks_to_complete(upf_ticks(state, fld_ticks(
+           state) + 1)) .
+H13:   0 >= systemtypes__unsigned16__first .
+H14:   0 <= systemtypes__unsigned16__last .
+H15:   not (fld_fail_bit(upf_ticks(upf_ticks(state, fld_ticks(
+           state) + 1), 0))) .
+        ->
+C1:    ibit__pass >= ibit__phase__first .
+C2:    ibit__pass <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 76:
+
+procedure_step_5.
+H1:    true .
+H2:    fld_ticks_to_complete(state) >= 
+           systemtypes__unsigned16__first .
+H3:    fld_ticks_to_complete(state) <= 
+           systemtypes__unsigned16__last .
+H4:    true .
+H5:    fld_ticks(state) >= systemtypes__unsigned16__first .
+H6:    fld_ticks(state) <= systemtypes__unsigned16__last .
+H7:    fld_current_phase(state) >= ibit__phase__first .
+H8:    fld_current_phase(state) <= ibit__phase__last .
+H9:    (fld_current_phase(state) = ibit__pass) or (fld_current_phase(
+           state) = ibit__fail) .
+        ->
+C1:    0 >= systemtypes__unsigned16__first .
+C2:    0 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 80:
+
+procedure_step_6.
+H1:    true .
+H2:    fld_ticks_to_complete(state) >= 
+           systemtypes__unsigned16__first .
+H3:    fld_ticks_to_complete(state) <= 
+           systemtypes__unsigned16__last .
+H4:    true .
+H5:    fld_ticks(state) >= systemtypes__unsigned16__first .
+H6:    fld_ticks(state) <= systemtypes__unsigned16__last .
+H7:    fld_current_phase(state) >= ibit__phase__first .
+H8:    fld_current_phase(state) <= ibit__phase__last .
+H9:    (fld_current_phase(state) = ibit__request_start) or ((
+           fld_current_phase(state) = ibit__request_stop) or (
+           fld_current_phase(state) = ibit__timeout)) .
+        ->
+C1:    0 >= systemtypes__unsigned16__first .
+C2:    0 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_step_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_step_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_step_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_step_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_step_11.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_step_12.
+*** true .          /* trivially true VC removed by Examiner */
+
+

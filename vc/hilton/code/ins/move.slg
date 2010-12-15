@@ -1,0 +1,112 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:49
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure ins.Move
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_move_1.  @@@@@@@@@@
+-S-  Applied substitution rule move_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H8:  fld_z(last_position) >= - 200000
+<S>  New H10:  fld_y(last_position) >= - 200000
+<S>  New H12:  fld_x(last_position) >= - 200000
+<S>  New C1:  fld_z(last_position) + dz >= - 200000
+<S>  New C5:  fld_y(last_position) + dy >= - 200000
+<S>  New C9:  fld_x(last_position) + dx >= - 200000
+-S-  Applied substitution rule move_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H9:  fld_z(last_position) <= 200000
+<S>  New H11:  fld_y(last_position) <= 200000
+<S>  New H13:  fld_x(last_position) <= 200000
+<S>  New C2:  fld_z(last_position) + dz <= 200000
+<S>  New C6:  fld_y(last_position) + dy <= 200000
+<S>  New C10:  fld_x(last_position) + dx <= 200000
+-S-  Applied substitution rule move_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__base__first by:
+          - 2147483648.
+<S>  New C3:  fld_z(last_position) + dz >= - 2147483648
+<S>  New C7:  fld_y(last_position) + dy >= - 2147483648
+<S>  New C11:  fld_x(last_position) + dx >= - 2147483648
+-S-  Applied substitution rule move_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__base__last by:
+          2147483647.
+<S>  New C4:  fld_z(last_position) + dz <= 2147483647
+<S>  New C8:  fld_y(last_position) + dy <= 2147483647
+<S>  New C12:  fld_x(last_position) + dx <= 2147483647
+-S-  Applied substitution rule move_rules(14).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H2:  dx >= - 200000
+<S>  New H4:  dy >= - 200000
+<S>  New H6:  dz >= - 200000
+-S-  Applied substitution rule move_rules(15).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H3:  dx <= 200000
+<S>  New H5:  dy <= 200000
+<S>  New H7:  dz <= 200000
+***  Proved C3:  fld_z(last_position) + dz >= - 2147483648
+     using hypotheses H6 & H8.
+***  Proved C7:  fld_y(last_position) + dy >= - 2147483648
+     using hypotheses H4 & H10.
+***  Proved C11:  fld_x(last_position) + dx >= - 2147483648
+     using hypotheses H2 & H12.
+***  Proved C4:  fld_z(last_position) + dz <= 2147483647
+     using hypotheses H7 & H9.
+***  Proved C8:  fld_y(last_position) + dy <= 2147483647
+     using hypotheses H5 & H11.
+***  Proved C12:  fld_x(last_position) + dx <= 2147483647
+     using hypotheses H3 & H13.
+---  Eliminated hypothesis H1 (true-hypothesis).
+     +++  New H14:  measuretypes__meter__size >= 0
+     +++  New H15:  cartesian__position__size >= 0
+     +++  New H16:  clock__millisecond__size >= 0
+     +++  New H17:  meter__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_move_2.  @@@@@@@@@@
+***  Proved C1:  last_time__1 >= clock__millisecond__first
+     using hypothesis H26.
+***  Proved C2:  last_time__1 <= clock__millisecond__last
+     using hypothesis H27.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_move_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_move_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_move_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_move_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

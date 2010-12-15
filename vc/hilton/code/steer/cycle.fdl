@@ -1,0 +1,126 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:42.62}
+
+                           {procedure steer.Cycle}
+
+
+title procedure cycle;
+
+  function round__(real) : integer;
+  type clock__millisecond = integer;
+  type bus__outputs__type = pending;
+  type bus__word_index = integer;
+  type bus__all_msg_index = integer;
+  type rt1553__lru_name = (rt1553__barometer, rt1553__asi, 
+     rt1553__ins, rt1553__compass, rt1553__fuel, rt1553__fuze, 
+     rt1553__radar, rt1553__infrared, rt1553__fins, rt1553__motor, 
+     rt1553__destruct, rt1553__warhead);
+  type steer_cfg__fin_angle = integer;
+  type steer_cfg__fin = (steer_cfg__port, steer_cfg__starboard, 
+     steer_cfg__top, steer_cfg__bottom);
+  type ibit__phase = (ibit__off, ibit__request_start, 
+     ibit__in_progress, ibit__request_stop, ibit__pass, 
+     ibit__fail, ibit__timeout);
+  type bit_machine__machine = pending;
+  type ibit__phase_table = array [ibit__phase] of integer;
+  type fin_angles = array [steer_cfg__fin] of integer;
+  type fin_times = array [steer_cfg__fin] of integer;
+  const ibit__phase_lookup : ibit__phase_table = pending;
+  const bus_id : rt1553__lru_name = pending;
+  const fin__base__last : steer_cfg__fin = pending; 
+  const fin__base__first : steer_cfg__fin = pending; 
+  const angle__base__last : integer = pending; 
+  const angle__base__first : integer = pending; 
+  const ibit__phase__base__last : ibit__phase = pending; 
+  const ibit__phase__base__first : ibit__phase = pending; 
+  const steer_cfg__fin__base__last : steer_cfg__fin = pending; 
+  const steer_cfg__fin__base__first : steer_cfg__fin = pending; 
+  const steer_cfg__fin_angle__base__last : integer = pending; 
+  const steer_cfg__fin_angle__base__first : integer = pending; 
+  const rt1553__lru_name__base__last : rt1553__lru_name = pending; 
+  const rt1553__lru_name__base__first : rt1553__lru_name = pending; 
+  const bus__lru_subaddress_index__base__last : integer = pending; 
+  const bus__lru_subaddress_index__base__first : integer = pending; 
+  const bus__all_msg_index__base__last : integer = pending; 
+  const bus__all_msg_index__base__first : integer = pending; 
+  const bus__word__base__last : integer = pending; 
+  const bus__word__base__first : integer = pending; 
+  const bus__word_index__base__last : integer = pending; 
+  const bus__word_index__base__first : integer = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const systemtypes__byte__base__last : integer = pending; 
+  const systemtypes__byte__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const fin__size : integer = pending; 
+  const fin__last : steer_cfg__fin = pending; 
+  const fin__first : steer_cfg__fin = pending; 
+  const angle__size : integer = pending; 
+  const angle__last : integer = pending; 
+  const angle__first : integer = pending; 
+  const ibit__phase__size : integer = pending; 
+  const ibit__phase__last : ibit__phase = pending; 
+  const ibit__phase__first : ibit__phase = pending; 
+  const steer_cfg__fin__size : integer = pending; 
+  const steer_cfg__fin__last : steer_cfg__fin = pending; 
+  const steer_cfg__fin__first : steer_cfg__fin = pending; 
+  const steer_cfg__fin_angle__size : integer = pending; 
+  const steer_cfg__fin_angle__last : integer = pending; 
+  const steer_cfg__fin_angle__first : integer = pending; 
+  const rt1553__lru_name__size : integer = pending; 
+  const rt1553__lru_name__last : rt1553__lru_name = pending; 
+  const rt1553__lru_name__first : rt1553__lru_name = pending; 
+  const bus__lru_subaddress_index__size : integer = pending; 
+  const bus__lru_subaddress_index__last : integer = pending; 
+  const bus__lru_subaddress_index__first : integer = pending; 
+  const bus__all_msg_index__size : integer = pending; 
+  const bus__all_msg_index__last : integer = pending; 
+  const bus__all_msg_index__first : integer = pending; 
+  const bus__word__size : integer = pending; 
+  const bus__word__last : integer = pending; 
+  const bus__word__first : integer = pending; 
+  const bus__word_index__size : integer = pending; 
+  const bus__word_index__last : integer = pending; 
+  const bus__word_index__first : integer = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  const systemtypes__byte__size : integer = pending; 
+  const systemtypes__byte__last : integer = pending; 
+  const systemtypes__byte__first : integer = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+  var bus__outputs : bus__outputs__type;
+  var current_angles : fin_angles;
+  var commanded_angles : fin_angles;
+  var command_times : fin_times;
+  var bit_state : bit_machine__machine;
+  var datum : integer;
+  function rt1553__is_fresh(rt1553__lru_name, integer, 
+     bus__outputs__type) : boolean;
+  function rt1553__is_valid(rt1553__lru_name, integer, 
+     bus__outputs__type) : boolean;
+  function bit_machine__phase(bit_machine__machine) : ibit__phase;
+  var datum__10 : integer;
+  var command_times__9 : fin_times;
+  var commanded_angles__9 : fin_angles;
+  var current_angles__9 : fin_angles;
+  var command_times__8 : fin_times;
+  var commanded_angles__8 : fin_angles;
+  var current_angles__8 : fin_angles;
+  var command_times__7 : fin_times;
+  var commanded_angles__7 : fin_angles;
+  var current_angles__7 : fin_angles;
+  var command_times__6 : fin_times;
+  var commanded_angles__6 : fin_angles;
+  var current_angles__6 : fin_angles;
+
+end;

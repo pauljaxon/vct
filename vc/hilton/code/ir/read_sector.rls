@@ -1,0 +1,143 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:42.03*/
+
+                          /*procedure ir.Read_Sector*/
+
+
+rule_family read_sector_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+read_sector_rules(1): bus_id may_be_replaced_by rt1553__infrared.
+read_sector_rules(2): integer__size >= 0 may_be_deduced.
+read_sector_rules(3): integer__first may_be_replaced_by -2147483648.
+read_sector_rules(4): integer__last may_be_replaced_by 2147483647.
+read_sector_rules(5): integer__base__first may_be_replaced_by -2147483648.
+read_sector_rules(6): integer__base__last may_be_replaced_by 2147483647.
+read_sector_rules(7): systemtypes__unsigned16__size >= 0 may_be_deduced.
+read_sector_rules(8): systemtypes__unsigned16__first may_be_replaced_by 0.
+read_sector_rules(9): systemtypes__unsigned16__last may_be_replaced_by 65535.
+read_sector_rules(10): systemtypes__unsigned16__base__first may_be_replaced_by -2147483648.
+read_sector_rules(11): systemtypes__unsigned16__base__last may_be_replaced_by 2147483647.
+read_sector_rules(12): bus__word_index__size >= 0 may_be_deduced.
+read_sector_rules(13): bus__word_index__first may_be_replaced_by 1.
+read_sector_rules(14): bus__word_index__last may_be_replaced_by 31.
+read_sector_rules(15): bus__word_index__base__first <= 
+     bus__word_index__base__last may_be_deduced.
+read_sector_rules(16): bus__word_index__base__first <= 
+     bus__word_index__first may_be_deduced.
+read_sector_rules(17): bus__word_index__base__last >= 
+     bus__word_index__last may_be_deduced.
+read_sector_rules(18): bus__word__size >= 0 may_be_deduced.
+read_sector_rules(19): bus__word__first may_be_replaced_by 0.
+read_sector_rules(20): bus__word__last may_be_replaced_by 65535.
+read_sector_rules(21): bus__word__base__first may_be_replaced_by -2147483648.
+read_sector_rules(22): bus__word__base__last may_be_replaced_by 2147483647.
+read_sector_rules(23): bus__all_msg_index__size >= 0 may_be_deduced.
+read_sector_rules(24): bus__all_msg_index__first may_be_replaced_by 0.
+read_sector_rules(25): bus__all_msg_index__last may_be_replaced_by 63.
+read_sector_rules(26): bus__all_msg_index__base__first may_be_replaced_by -32768.
+read_sector_rules(27): bus__all_msg_index__base__last may_be_replaced_by 32767.
+read_sector_rules(28): bus__lru_subaddress_index__size >= 0 may_be_deduced.
+read_sector_rules(29): bus__lru_subaddress_index__first may_be_replaced_by 1.
+read_sector_rules(30): bus__lru_subaddress_index__last may_be_replaced_by 8.
+read_sector_rules(31): bus__lru_subaddress_index__base__first may_be_replaced_by -32768.
+read_sector_rules(32): bus__lru_subaddress_index__base__last may_be_replaced_by 32767.
+read_sector_rules(33): rt1553__lru_name__size >= 0 may_be_deduced.
+read_sector_rules(34): rt1553__lru_name__first may_be_replaced_by rt1553__barometer.
+read_sector_rules(35): rt1553__lru_name__last may_be_replaced_by rt1553__warhead.
+read_sector_rules(36): rt1553__lru_name__base__first may_be_replaced_by rt1553__barometer.
+read_sector_rules(37): rt1553__lru_name__base__last may_be_replaced_by rt1553__warhead.
+read_sector_rules(38): rt1553__lru_name__pos(rt1553__lru_name__first) may_be_replaced_by 0.
+read_sector_rules(39): rt1553__lru_name__pos(rt1553__barometer) may_be_replaced_by 0.
+read_sector_rules(40): rt1553__lru_name__val(0) may_be_replaced_by 
+     rt1553__barometer.
+read_sector_rules(41): rt1553__lru_name__pos(rt1553__asi) may_be_replaced_by 1.
+read_sector_rules(42): rt1553__lru_name__val(1) may_be_replaced_by 
+     rt1553__asi.
+read_sector_rules(43): rt1553__lru_name__pos(rt1553__ins) may_be_replaced_by 2.
+read_sector_rules(44): rt1553__lru_name__val(2) may_be_replaced_by 
+     rt1553__ins.
+read_sector_rules(45): rt1553__lru_name__pos(rt1553__compass) may_be_replaced_by 3.
+read_sector_rules(46): rt1553__lru_name__val(3) may_be_replaced_by 
+     rt1553__compass.
+read_sector_rules(47): rt1553__lru_name__pos(rt1553__fuel) may_be_replaced_by 4.
+read_sector_rules(48): rt1553__lru_name__val(4) may_be_replaced_by 
+     rt1553__fuel.
+read_sector_rules(49): rt1553__lru_name__pos(rt1553__fuze) may_be_replaced_by 5.
+read_sector_rules(50): rt1553__lru_name__val(5) may_be_replaced_by 
+     rt1553__fuze.
+read_sector_rules(51): rt1553__lru_name__pos(rt1553__radar) may_be_replaced_by 6.
+read_sector_rules(52): rt1553__lru_name__val(6) may_be_replaced_by 
+     rt1553__radar.
+read_sector_rules(53): rt1553__lru_name__pos(rt1553__infrared) may_be_replaced_by 7.
+read_sector_rules(54): rt1553__lru_name__val(7) may_be_replaced_by 
+     rt1553__infrared.
+read_sector_rules(55): rt1553__lru_name__pos(rt1553__fins) may_be_replaced_by 8.
+read_sector_rules(56): rt1553__lru_name__val(8) may_be_replaced_by 
+     rt1553__fins.
+read_sector_rules(57): rt1553__lru_name__pos(rt1553__motor) may_be_replaced_by 9.
+read_sector_rules(58): rt1553__lru_name__val(9) may_be_replaced_by 
+     rt1553__motor.
+read_sector_rules(59): rt1553__lru_name__pos(rt1553__destruct) may_be_replaced_by 10.
+read_sector_rules(60): rt1553__lru_name__val(10) may_be_replaced_by 
+     rt1553__destruct.
+read_sector_rules(61): rt1553__lru_name__pos(rt1553__warhead) may_be_replaced_by 11.
+read_sector_rules(62): rt1553__lru_name__val(11) may_be_replaced_by 
+     rt1553__warhead.
+read_sector_rules(63): rt1553__lru_name__pos(rt1553__lru_name__last) may_be_replaced_by 11.
+read_sector_rules(64): rt1553__lru_name__pos(succ(X)) may_be_replaced_by 
+     rt1553__lru_name__pos(X) + 1
+     if [X <=rt1553__warhead, X <> rt1553__warhead].
+read_sector_rules(65): rt1553__lru_name__pos(pred(X)) may_be_replaced_by 
+     rt1553__lru_name__pos(X) - 1
+     if [X >=rt1553__barometer, X <> rt1553__barometer].
+read_sector_rules(66): rt1553__lru_name__pos(X) >= 0 may_be_deduced_from
+     [rt1553__barometer <= X, X <= rt1553__warhead].
+read_sector_rules(67): rt1553__lru_name__pos(X) <= 11 may_be_deduced_from
+     [rt1553__barometer <= X, X <= rt1553__warhead].
+read_sector_rules(68): rt1553__lru_name__val(X) >= 
+     rt1553__barometer may_be_deduced_from
+     [0 <= X, X <= 11].
+read_sector_rules(69): rt1553__lru_name__val(X) <= 
+     rt1553__warhead may_be_deduced_from
+     [0 <= X, X <= 11].
+read_sector_rules(70): succ(rt1553__lru_name__val(X)) may_be_replaced_by 
+     rt1553__lru_name__val(X+1)
+     if [0 <= X, X < 11].
+read_sector_rules(71): pred(rt1553__lru_name__val(X)) may_be_replaced_by 
+     rt1553__lru_name__val(X-1)
+     if [0 < X, X <= 11].
+read_sector_rules(72): rt1553__lru_name__pos(rt1553__lru_name__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 11].
+read_sector_rules(73): rt1553__lru_name__val(rt1553__lru_name__pos(X)) may_be_replaced_by X
+     if [rt1553__barometer <= X, X <= rt1553__warhead].
+read_sector_rules(74): rt1553__lru_name__pos(X) <= 
+     rt1553__lru_name__pos(Y) & X <= Y are_interchangeable 
+     if [rt1553__barometer <= X, X <= rt1553__warhead, 
+     rt1553__barometer <= Y, Y <= rt1553__warhead].
+read_sector_rules(75): rt1553__lru_name__val(X) <= 
+     rt1553__lru_name__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 11, 0 <= Y, Y <= 11].
+read_sector_rules(76): ir_cfg__sector_range__size >= 0 may_be_deduced.
+read_sector_rules(77): ir_cfg__sector_range__first may_be_replaced_by -12.
+read_sector_rules(78): ir_cfg__sector_range__last may_be_replaced_by 12.
+read_sector_rules(79): ir_cfg__sector_range__base__first <= 
+     ir_cfg__sector_range__base__last may_be_deduced.
+read_sector_rules(80): ir_cfg__sector_range__base__first <= 
+     ir_cfg__sector_range__first may_be_deduced.
+read_sector_rules(81): ir_cfg__sector_range__base__last >= 
+     ir_cfg__sector_range__last may_be_deduced.
+read_sector_rules(82): sector__size >= 0 may_be_deduced.
+read_sector_rules(83): sector__first may_be_replaced_by -12.
+read_sector_rules(84): sector__last may_be_replaced_by 12.
+read_sector_rules(85): sector__base__first <= sector__base__last may_be_deduced.
+read_sector_rules(86): sector__base__first <= sector__first may_be_deduced.
+read_sector_rules(87): sector__base__last >= sector__last may_be_deduced.

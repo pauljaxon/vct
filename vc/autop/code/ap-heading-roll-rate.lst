@@ -1,0 +1,33 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.72
+
+Line
+   1  with Degrees;
+   2  --# inherit Instruments,Degrees;
+   3  private package AP.Heading.Roll.Rate
+   4    --# own Roll_History;
+   5    --# initializes Roll_History;
+   6  is
+   7     procedure Calc_Rollrate(Roll             : in  Instruments.Bankangle;
+   8     			   Present_Rollrate : out Degrees.Degreespersec);
+   9     --# global in out Roll_History;
+  10     --# derives Present_Rollrate 
+  11     --#          from Roll, 
+  12     --#               Roll_History &
+  13     --#         Roll_History
+  14     --#          from *,
+  15     --#               Roll
+  16     --#   ;
+  17     
+  18  end AP.Heading.Roll.Rate;
+  19  
+  20     
+
+
+--End of file--------------------------------------------------

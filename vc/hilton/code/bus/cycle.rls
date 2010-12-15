@@ -1,0 +1,52 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:38.19*/
+
+                            /*procedure bus.Cycle*/
+
+
+rule_family cycle_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+cycle_rules(1): word__first <= element(fld_data(null_message), [I]) may_be_deduced_from [1 <= I, I <= 31].
+cycle_rules(2): element(fld_data(null_message), [I]) <= word__last may_be_deduced_from [1 <= I, I <= 31].
+cycle_rules(3): integer__size >= 0 may_be_deduced.
+cycle_rules(4): integer__first may_be_replaced_by -2147483648.
+cycle_rules(5): integer__last may_be_replaced_by 2147483647.
+cycle_rules(6): integer__base__first may_be_replaced_by -2147483648.
+cycle_rules(7): integer__base__last may_be_replaced_by 2147483647.
+cycle_rules(8): word_index__size >= 0 may_be_deduced.
+cycle_rules(9): word_index__first may_be_replaced_by 1.
+cycle_rules(10): word_index__last may_be_replaced_by 31.
+cycle_rules(11): word_index__base__first <= word_index__base__last may_be_deduced.
+cycle_rules(12): word_index__base__first <= word_index__first may_be_deduced.
+cycle_rules(13): word_index__base__last >= word_index__last may_be_deduced.
+cycle_rules(14): word__size >= 0 may_be_deduced.
+cycle_rules(15): word__first may_be_replaced_by 0.
+cycle_rules(16): word__last may_be_replaced_by 65535.
+cycle_rules(17): word__base__first may_be_replaced_by -2147483648.
+cycle_rules(18): word__base__last may_be_replaced_by 2147483647.
+cycle_rules(19): message__size >= 0 may_be_deduced.
+cycle_rules(20): A = B may_be_deduced_from
+     [goal(checktype(A,message)),
+      goal(checktype(B,message)),
+      fld_valid(A) = fld_valid(B),
+      fld_fresh(A) = fld_fresh(B),
+      fld_data(A) = fld_data(B)].
+cycle_rules(21): all_msg_index__size >= 0 may_be_deduced.
+cycle_rules(22): all_msg_index__first may_be_replaced_by 0.
+cycle_rules(23): all_msg_index__last may_be_replaced_by 63.
+cycle_rules(24): all_msg_index__base__first may_be_replaced_by -32768.
+cycle_rules(25): all_msg_index__base__last may_be_replaced_by 32767.
+cycle_rules(26): valid_msg_index__size >= 0 may_be_deduced.
+cycle_rules(27): valid_msg_index__first may_be_replaced_by 1.
+cycle_rules(28): valid_msg_index__last may_be_replaced_by 63.
+cycle_rules(29): valid_msg_index__base__first may_be_replaced_by -32768.
+cycle_rules(30): valid_msg_index__base__last may_be_replaced_by 32767.

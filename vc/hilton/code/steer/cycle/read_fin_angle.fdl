@@ -1,0 +1,93 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:42.59}
+
+                    {procedure steer.Cycle.Read_Fin_Angle}
+
+
+title procedure read_fin_angle;
+
+  function round__(real) : integer;
+  type clock__millisecond = integer;
+  type bus__word_index = integer;
+  type bus__all_msg_index = integer;
+  type rt1553__lru_name = (rt1553__barometer, rt1553__asi, 
+     rt1553__ins, rt1553__compass, rt1553__fuel, rt1553__fuze, 
+     rt1553__radar, rt1553__infrared, rt1553__fins, rt1553__motor, 
+     rt1553__destruct, rt1553__warhead);
+  type steer_cfg__fin_angle = integer;
+  type steer_cfg__fin = (steer_cfg__port, steer_cfg__starboard, 
+     steer_cfg__top, steer_cfg__bottom);
+  type fin_angles = array [steer_cfg__fin] of integer;
+  type fin_times = array [steer_cfg__fin] of integer;
+  const bus_id : rt1553__lru_name = pending;
+  const fin__base__last : steer_cfg__fin = pending; 
+  const fin__base__first : steer_cfg__fin = pending; 
+  const angle__base__last : integer = pending; 
+  const angle__base__first : integer = pending; 
+  const steer_cfg__fin__base__last : steer_cfg__fin = pending; 
+  const steer_cfg__fin__base__first : steer_cfg__fin = pending; 
+  const steer_cfg__fin_angle__base__last : integer = pending; 
+  const steer_cfg__fin_angle__base__first : integer = pending; 
+  const rt1553__lru_name__base__last : rt1553__lru_name = pending; 
+  const rt1553__lru_name__base__first : rt1553__lru_name = pending; 
+  const bus__lru_subaddress_index__base__last : integer = pending; 
+  const bus__lru_subaddress_index__base__first : integer = pending; 
+  const bus__all_msg_index__base__last : integer = pending; 
+  const bus__all_msg_index__base__first : integer = pending; 
+  const bus__word__base__last : integer = pending; 
+  const bus__word__base__first : integer = pending; 
+  const bus__word_index__base__last : integer = pending; 
+  const bus__word_index__base__first : integer = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const fin__size : integer = pending; 
+  const fin__last : steer_cfg__fin = pending; 
+  const fin__first : steer_cfg__fin = pending; 
+  const angle__size : integer = pending; 
+  const angle__last : integer = pending; 
+  const angle__first : integer = pending; 
+  const steer_cfg__fin__size : integer = pending; 
+  const steer_cfg__fin__last : steer_cfg__fin = pending; 
+  const steer_cfg__fin__first : steer_cfg__fin = pending; 
+  const steer_cfg__fin_angle__size : integer = pending; 
+  const steer_cfg__fin_angle__last : integer = pending; 
+  const steer_cfg__fin_angle__first : integer = pending; 
+  const rt1553__lru_name__size : integer = pending; 
+  const rt1553__lru_name__last : rt1553__lru_name = pending; 
+  const rt1553__lru_name__first : rt1553__lru_name = pending; 
+  const bus__lru_subaddress_index__size : integer = pending; 
+  const bus__lru_subaddress_index__last : integer = pending; 
+  const bus__lru_subaddress_index__first : integer = pending; 
+  const bus__all_msg_index__size : integer = pending; 
+  const bus__all_msg_index__last : integer = pending; 
+  const bus__all_msg_index__first : integer = pending; 
+  const bus__word__size : integer = pending; 
+  const bus__word__last : integer = pending; 
+  const bus__word__first : integer = pending; 
+  const bus__word_index__size : integer = pending; 
+  const bus__word_index__last : integer = pending; 
+  const bus__word_index__first : integer = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+  var current_angles : fin_angles;
+  var commanded_angles : fin_angles;
+  var command_times : fin_times;
+  var f : steer_cfg__fin;
+  var i : integer;
+  var b : integer;
+  function steer_cfg__decode__fin_angle(integer) : integer;
+  var b__1 : integer;
+
+end;

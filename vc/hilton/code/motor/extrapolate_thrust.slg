@@ -1,0 +1,1824 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:42  SIMPLIFIED 25-NOV-2009, 14:19:14
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure motor.Extrapolate_thrust
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_1.  @@@@@@@@@@
+***  Proved C1:  now__1 >= clock__millisecond__first
+     using hypothesis H8.
+***  Proved C2:  now__1 <= clock__millisecond__last
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_2.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+***  Proved C1:  current_thrust >= power__first
+     using hypothesis H2.
+***  Proved C2:  current_thrust <= power__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_3.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New C1:  now__1 - command_time >= 0
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New C2:  now__1 - command_time <= 8640000
+***  Proved C2:  now__1 - command_time <= 8640000
+     using hypotheses H6 & H9.
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H15, which only specifies a value for time_valid__1.
+     This is not referred to anywhere else in the VC.
+     +++  New H18:  long_integer__size >= 0
+     +++  New H19:  measuretypes__newton__size >= 0
+     +++  New H20:  clock__millisecond__size >= 0
+     +++  New H21:  power__size >= 0
+     +++  New H22:  integer32__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_4.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+***  Proved C1:  current_thrust >= power__first
+     using hypothesis H2.
+***  Proved C2:  current_thrust <= power__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_5.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+***  Proved C2:  30000 <= clock__millisecond__last
+     using hypotheses H19 & H25.
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_6.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H27).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  true
+***  Proved C5:  true
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= - 
+          2147483648
+<S>  New C8:  true
+<S>  New C10:  current_thrust >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+          2147483647
+<S>  New C9:  true
+<S>  New C11:  current_thrust <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  30000 * motor_cfg__burn_rate div 1000 >= - 2147483648
+<S>  New C6:  30000 * motor_cfg__burn_rate >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  30000 * motor_cfg__burn_rate div 1000 <= 2147483647
+<S>  New C7:  30000 * motor_cfg__burn_rate <= 2147483647
+***  Proved C8:  true
+***  Proved C9:  true
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  0 <= now__1 - command_time
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of motor_cfg__burn_rate by:
+          5000.
+<S>  New C1:  current_thrust >= - 2147633648
+<S>  New C2:  current_thrust <= 2147333647
+<S>  New C3:  true
+<S>  New C6:  true
+<S>  New C4:  true
+<S>  New C7:  true
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+<S>  New H26:  true
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New H19:  now__1 - command_time <= 8640000
+<S>  New H27:  true
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+%%%  Hypotheses H28 & H13 together imply that
+          current_thrust < commanded_thrust.
+     H28 & H13 have therefore been deleted and a new H13 added to this effect.
+***  Proved C10:  current_thrust >= - 2147483648
+     using hypothesis H2.
+***  Proved C11:  current_thrust <= 2147483647
+     using hypothesis H3.
+***  Proved C1:  current_thrust >= - 2147633648
+     using hypothesis H2.
+***  Proved C2:  current_thrust <= 2147333647
+     using hypothesis H3.
+***  Proved C3:  true
+***  Proved C6:  true
+***  Proved C4:  true
+***  Proved C7:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_7.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  true
+***  Proved C5:  true
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  current_thrust + (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 >= - 2147483648
+<S>  New C8:  now__1 - command_time >= - 2147483648
+<S>  New C10:  current_thrust >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  current_thrust + (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 <= 2147483647
+<S>  New C9:  now__1 - command_time <= 2147483647
+<S>  New C11:  current_thrust <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  (now__1 - command_time) * motor_cfg__burn_rate div 1000 >= - 
+          2147483648
+<S>  New C6:  (now__1 - command_time) * motor_cfg__burn_rate >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  (now__1 - command_time) * motor_cfg__burn_rate div 1000 <= 
+          2147483647
+<S>  New C7:  (now__1 - command_time) * motor_cfg__burn_rate <= 2147483647
+***  Proved C8:  now__1 - command_time >= - 2147483648
+     using hypothesis H22.
+***  Proved C9:  now__1 - command_time <= 2147483647
+     using hypothesis H25.
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  0 <= now__1 - command_time
+>>>  Restructured hypothesis H25 into:
+     >>>  H25:  now__1 - command_time <= 30000
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of motor_cfg__burn_rate by:
+          5000.
+<S>  New C1:  current_thrust + (now__1 - command_time) * 5000 div 1000 >= - 
+          2147483648
+<S>  New C2:  current_thrust + (now__1 - command_time) * 5000 div 1000 <= 
+          2147483647
+<S>  New C3:  (now__1 - command_time) * 5000 div 1000 >= - 2147483648
+<S>  New C6:  (now__1 - command_time) * 5000 >= - 2147483648
+<S>  New C4:  (now__1 - command_time) * 5000 div 1000 <= 2147483647
+<S>  New C7:  (now__1 - command_time) * 5000 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New H19:  now__1 - command_time <= 8640000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+%%%  Hypotheses H26 & H13 together imply that
+          current_thrust < commanded_thrust.
+     H26 & H13 have therefore been deleted and a new H13 added to this effect.
+***  Proved C10:  current_thrust >= - 2147483648
+     using hypothesis H2.
+***  Proved C11:  current_thrust <= 2147483647
+     using hypothesis H3.
+***  Proved C6:  (now__1 - command_time) * 5000 >= - 2147483648
+     using hypothesis H18.
+***  Proved C7:  (now__1 - command_time) * 5000 <= 2147483647
+     using hypothesis H25.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H22 (duplicate of H18).
+---  Eliminated hypothesis H3 (redundant, given H5 & H13).
+---  Eliminated hypothesis H4 (redundant, given H2 & H13).
+---  Eliminated hypothesis H19 (redundant, given H25).
+---  Eliminated hypothesis H15, which only specifies a value for time_valid__1.
+     This is not referred to anywhere else in the VC.
+***  Proved C1:  current_thrust + (now__1 - command_time) * 5000 div 1000 >= - 
+          2147483648
+     using hypotheses H2 & H18.
+***  Proved C2:  current_thrust + (now__1 - command_time) * 5000 div 1000 <= 
+          2147483647
+     using hypotheses H5, H13 & H25.
+***  Proved C3:  (now__1 - command_time) * 5000 div 1000 >= - 2147483648
+     using hypothesis H18.
+***  Proved C4:  (now__1 - command_time) * 5000 div 1000 <= 2147483647
+     using hypothesis H25.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_8.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H27).
+%%%  Simplified H35 on reading formula in, to give:
+     %%%  H35:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H32).
+***  Proved C1:  commanded_thrust >= integer32__first
+     using hypotheses H28 & H40.
+-S-  Applied substitution rule extrapolate__rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H32:  current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+          2147483647
+<S>  New H39:  true
+<S>  New H41:  current_thrust <= 2147483647
+<S>  New C2:  commanded_thrust <= 2147483647
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  0 <= now__1 - command_time
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of motor_cfg__burn_rate by:
+          5000.
+<S>  New H31:  current_thrust + 150000 >= integer32__first
+<S>  New H32:  current_thrust <= 2147333647
+<S>  New H33:  150000 >= long_integer__base__first
+<S>  New H34:  150000 <= long_integer__base__last
+<S>  New H36:  150000000 >= long_integer__base__first
+<S>  New H37:  150000000 <= long_integer__base__last
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H33:  true
+<S>  New H36:  true
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H34:  true
+<S>  New H37:  true
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+<S>  New H26:  true
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New H19:  now__1 - command_time <= 8640000
+<S>  New H27:  true
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H38:  true
+<S>  New H40:  current_thrust >= - 2147483648
+<S>  New H31:  current_thrust >= - 2147633648
+%%%  Hypotheses H28 & H13 together imply that
+          current_thrust < commanded_thrust.
+     H28 & H13 have therefore been deleted and a new H13 added to this effect.
+***  Proved C2:  commanded_thrust <= 2147483647
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_9.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  true
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H30).
+***  Proved C1:  commanded_thrust >= integer32__first
+     using hypotheses H26 & H38.
+-S-  Applied substitution rule extrapolate__rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H30:  current_thrust + (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 <= 2147483647
+<S>  New H37:  now__1 - command_time <= 2147483647
+<S>  New H39:  current_thrust <= 2147483647
+<S>  New C2:  commanded_thrust <= 2147483647
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  0 <= now__1 - command_time
+>>>  Restructured hypothesis H25 into:
+     >>>  H25:  now__1 - command_time <= 30000
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of motor_cfg__burn_rate by:
+          5000.
+<S>  New H29:  current_thrust + (now__1 - command_time) * 5000 div 1000 >= 
+          integer32__first
+<S>  New H30:  current_thrust + (now__1 - command_time) * 5000 div 1000 <= 
+          2147483647
+<S>  New H31:  (now__1 - command_time) * 5000 div 1000 >= 
+          long_integer__base__first
+<S>  New H32:  (now__1 - command_time) * 5000 div 1000 <= 
+          long_integer__base__last
+<S>  New H34:  (now__1 - command_time) * 5000 >= long_integer__base__first
+<S>  New H35:  (now__1 - command_time) * 5000 <= long_integer__base__last
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H31:  (now__1 - command_time) * 5000 div 1000 >= - 2147483648
+<S>  New H34:  (now__1 - command_time) * 5000 >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H32:  (now__1 - command_time) * 5000 div 1000 <= 2147483647
+<S>  New H35:  (now__1 - command_time) * 5000 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New H19:  now__1 - command_time <= 8640000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H36:  now__1 - command_time >= - 2147483648
+<S>  New H38:  current_thrust >= - 2147483648
+<S>  New H29:  current_thrust + (now__1 - command_time) * 5000 div 1000 >= - 
+          2147483648
+%%%  Hypotheses H26 & H13 together imply that
+          current_thrust < commanded_thrust.
+     H26 & H13 have therefore been deleted and a new H13 added to this effect.
+***  Proved C2:  commanded_thrust <= 2147483647
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_10.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H27).
+%%%  Simplified H35 on reading formula in, to give:
+     %%%  H35:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H32).
+***  Proved C1:  commanded_thrust >= power__first
+     using hypothesis H4.
+***  Proved C2:  commanded_thrust <= power__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_11.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  true
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H30).
+***  Proved C1:  commanded_thrust >= power__first
+     using hypothesis H4.
+***  Proved C2:  commanded_thrust <= power__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_12.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H27).
+%%%  Simplified H35 on reading formula in, to give:
+     %%%  H35:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H32).
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+<S>  New C1:  current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= 0
+<S>  New C3:  current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= 0
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+<S>  New C2:  current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 35000
+<S>  New C4:  current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 35000
+***  Proved C2:  current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 35000
+     using hypotheses H5 & H46.
+***  Proved C4:  current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 35000
+     using hypotheses H5 & H46.
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  0 <= now__1 - command_time
+>>>  Restructured hypothesis H46 into:
+     >>>  H46:  current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+          commanded_thrust
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of motor_cfg__burn_rate by:
+          5000.
+<S>  New H31:  current_thrust + 150000 >= integer32__first
+<S>  New H32:  current_thrust + 150000 <= integer32__last
+<S>  New H33:  150000 >= long_integer__base__first
+<S>  New H34:  150000 <= long_integer__base__last
+<S>  New H36:  150000000 >= long_integer__base__first
+<S>  New H37:  150000000 <= long_integer__base__last
+<S>  New H46:  current_thrust + 150000 <= commanded_thrust
+<S>  New C1:  current_thrust >= - 150000
+<S>  New C3:  current_thrust >= - 150000
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H33:  true
+<S>  New H36:  true
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H34:  true
+<S>  New H37:  true
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+<S>  New H26:  true
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New H19:  now__1 - command_time <= 8640000
+<S>  New H27:  true
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H38:  true
+<S>  New H40:  current_thrust >= - 2147483648
+<S>  New H44:  commanded_thrust >= - 2147483648
+<S>  New H31:  current_thrust >= - 2147633648
+-S-  Applied substitution rule extrapolate__rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H39:  true
+<S>  New H41:  current_thrust <= 2147483647
+<S>  New H45:  commanded_thrust <= 2147483647
+<S>  New H32:  current_thrust <= 2147333647
+%%%  Hypotheses H28 & H13 together imply that
+          current_thrust < commanded_thrust.
+     H28 & H13 have therefore been deleted and a new H13 added to this effect.
+***  Proved C1:  current_thrust >= - 150000
+     using hypothesis H2.
+***  Proved C3:  current_thrust >= - 150000
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_13.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  true
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H30).
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+<S>  New C1:  current_thrust + (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 >= 0
+<S>  New C3:  current_thrust + (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 >= 0
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+<S>  New C2:  current_thrust + (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 <= 35000
+<S>  New C4:  current_thrust + (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 <= 35000
+***  Proved C2:  current_thrust + (now__1 - command_time) * 
+          motor_cfg__burn_rate div 1000 <= 35000
+     using hypotheses H5 & H44.
+***  Proved C4:  current_thrust + (now__1 - command_time) * 
+          motor_cfg__burn_rate div 1000 <= 35000
+     using hypotheses H5 & H44.
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  0 <= now__1 - command_time
+>>>  Restructured hypothesis H25 into:
+     >>>  H25:  now__1 - command_time <= 30000
+>>>  Restructured hypothesis H44 into:
+     >>>  H44:  current_thrust + (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 <= commanded_thrust
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of motor_cfg__burn_rate by:
+          5000.
+<S>  New H29:  current_thrust + (now__1 - command_time) * 5000 div 1000 >= 
+          integer32__first
+<S>  New H30:  current_thrust + (now__1 - command_time) * 5000 div 1000 <= 
+          integer32__last
+<S>  New H31:  (now__1 - command_time) * 5000 div 1000 >= 
+          long_integer__base__first
+<S>  New H32:  (now__1 - command_time) * 5000 div 1000 <= 
+          long_integer__base__last
+<S>  New H34:  (now__1 - command_time) * 5000 >= long_integer__base__first
+<S>  New H35:  (now__1 - command_time) * 5000 <= long_integer__base__last
+<S>  New H44:  current_thrust + (now__1 - command_time) * 5000 div 1000 <= 
+          commanded_thrust
+<S>  New C1:  current_thrust + (now__1 - command_time) * 5000 div 1000 >= 0
+<S>  New C3:  current_thrust + (now__1 - command_time) * 5000 div 1000 >= 0
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H31:  (now__1 - command_time) * 5000 div 1000 >= - 2147483648
+<S>  New H34:  (now__1 - command_time) * 5000 >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H32:  (now__1 - command_time) * 5000 div 1000 <= 2147483647
+<S>  New H35:  (now__1 - command_time) * 5000 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New H19:  now__1 - command_time <= 8640000
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H36:  now__1 - command_time >= - 2147483648
+<S>  New H38:  current_thrust >= - 2147483648
+<S>  New H42:  commanded_thrust >= - 2147483648
+<S>  New H29:  current_thrust + (now__1 - command_time) * 5000 div 1000 >= - 
+          2147483648
+-S-  Applied substitution rule extrapolate__rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H37:  now__1 - command_time <= 2147483647
+<S>  New H39:  current_thrust <= 2147483647
+<S>  New H43:  commanded_thrust <= 2147483647
+<S>  New H30:  current_thrust + (now__1 - command_time) * 5000 div 1000 <= 
+          2147483647
+%%%  Hypotheses H26 & H13 together imply that
+          current_thrust < commanded_thrust.
+     H26 & H13 have therefore been deleted and a new H13 added to this effect.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H33 (true-hypothesis).
+---  Eliminated hypothesis H40 (true-hypothesis).
+---  Eliminated hypothesis H41 (true-hypothesis).
+---  Eliminated hypothesis H45 (true-hypothesis).
+---  Eliminated hypothesis H46 (true-hypothesis).
+---  Eliminated hypothesis H22 (duplicate of H18).
+---  Eliminated hypothesis H3 (redundant, given H5 & H13).
+---  Eliminated hypothesis H4 (redundant, given H2 & H13).
+---  Eliminated hypothesis H19 (redundant, given H25).
+---  Eliminated hypothesis H30 (redundant, given H5 & H44).
+---  Eliminated hypothesis H34 (redundant, given H18).
+---  Eliminated hypothesis H35 (redundant, given H25).
+---  Eliminated hypothesis H36 (redundant, given H18).
+---  Eliminated hypothesis H37 (redundant, given H25).
+---  Eliminated hypothesis H38 (redundant, given H2).
+---  Eliminated hypothesis H39 (redundant, given H5 & H13).
+---  Eliminated hypothesis H42 (redundant, given H2 & H13).
+---  Eliminated hypothesis H43 (redundant, given H5).
+---  Eliminated hypothesis H15, which only specifies a value for time_valid__1.
+     This is not referred to anywhere else in the VC.
+---  Eliminated conclusion C3, which is a duplicate of C1.
+***  Proved C1:  current_thrust + (now__1 - command_time) * 5000 div 1000 >= 0
+     using hypotheses H2 & H18.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_14.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H27).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  true
+***  Proved C5:  true
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= - 
+          2147483648
+<S>  New C8:  true
+<S>  New C10:  current_thrust >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 
+          2147483647
+<S>  New C9:  true
+<S>  New C11:  current_thrust <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  30000 * motor_cfg__burn_rate div 1000 >= - 2147483648
+<S>  New C6:  30000 * motor_cfg__burn_rate >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  30000 * motor_cfg__burn_rate div 1000 <= 2147483647
+<S>  New C7:  30000 * motor_cfg__burn_rate <= 2147483647
+***  Proved C8:  true
+***  Proved C9:  true
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  0 <= now__1 - command_time
+>>>  Restructured hypothesis H28 into:
+     >>>  H28:  commanded_thrust < current_thrust
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of motor_cfg__burn_rate by:
+          5000.
+<S>  New C1:  current_thrust >= - 2147333648
+<S>  New C2:  current_thrust <= 2147633647
+<S>  New C3:  true
+<S>  New C6:  true
+<S>  New C4:  true
+<S>  New C7:  true
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+<S>  New H26:  true
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New H19:  now__1 - command_time <= 8640000
+<S>  New H27:  true
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+***  Proved C10:  current_thrust >= - 2147483648
+     using hypothesis H2.
+***  Proved C11:  current_thrust <= 2147483647
+     using hypothesis H3.
+***  Proved C1:  current_thrust >= - 2147333648
+     using hypothesis H2.
+***  Proved C2:  current_thrust <= 2147633647
+     using hypothesis H3.
+***  Proved C3:  true
+***  Proved C6:  true
+***  Proved C4:  true
+***  Proved C7:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_15.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  true
+***  Proved C5:  true
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  current_thrust - (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 >= - 2147483648
+<S>  New C8:  now__1 - command_time >= - 2147483648
+<S>  New C10:  current_thrust >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  current_thrust - (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 <= 2147483647
+<S>  New C9:  now__1 - command_time <= 2147483647
+<S>  New C11:  current_thrust <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  (now__1 - command_time) * motor_cfg__burn_rate div 1000 >= - 
+          2147483648
+<S>  New C6:  (now__1 - command_time) * motor_cfg__burn_rate >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  (now__1 - command_time) * motor_cfg__burn_rate div 1000 <= 
+          2147483647
+<S>  New C7:  (now__1 - command_time) * motor_cfg__burn_rate <= 2147483647
+***  Proved C8:  now__1 - command_time >= - 2147483648
+     using hypothesis H22.
+***  Proved C9:  now__1 - command_time <= 2147483647
+     using hypothesis H25.
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  0 <= now__1 - command_time
+>>>  Restructured hypothesis H25 into:
+     >>>  H25:  now__1 - command_time <= 30000
+>>>  Restructured hypothesis H26 into:
+     >>>  H26:  commanded_thrust < current_thrust
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of motor_cfg__burn_rate by:
+          5000.
+<S>  New C1:  current_thrust - (now__1 - command_time) * 5000 div 1000 >= - 
+          2147483648
+<S>  New C2:  current_thrust - (now__1 - command_time) * 5000 div 1000 <= 
+          2147483647
+<S>  New C3:  (now__1 - command_time) * 5000 div 1000 >= - 2147483648
+<S>  New C6:  (now__1 - command_time) * 5000 >= - 2147483648
+<S>  New C4:  (now__1 - command_time) * 5000 div 1000 <= 2147483647
+<S>  New C7:  (now__1 - command_time) * 5000 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New H19:  now__1 - command_time <= 8640000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+***  Proved C10:  current_thrust >= - 2147483648
+     using hypothesis H2.
+***  Proved C11:  current_thrust <= 2147483647
+     using hypothesis H3.
+***  Proved C6:  (now__1 - command_time) * 5000 >= - 2147483648
+     using hypothesis H18.
+***  Proved C7:  (now__1 - command_time) * 5000 <= 2147483647
+     using hypothesis H25.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H22 (duplicate of H18).
+---  Eliminated hypothesis H2 (redundant, given H4 & H26).
+---  Eliminated hypothesis H5 (redundant, given H3 & H26).
+---  Eliminated hypothesis H13 (redundant, given H26).
+---  Eliminated hypothesis H19 (redundant, given H25).
+---  Eliminated hypothesis H15, which only specifies a value for time_valid__1.
+     This is not referred to anywhere else in the VC.
+***  Proved C1:  current_thrust - (now__1 - command_time) * 5000 div 1000 >= - 
+          2147483648
+     using hypotheses H4, H25 & H26.
+***  Proved C2:  current_thrust - (now__1 - command_time) * 5000 div 1000 <= 
+          2147483647
+     using hypotheses H3 & H18.
+***  Proved C3:  (now__1 - command_time) * 5000 div 1000 >= - 2147483648
+     using hypothesis H18.
+***  Proved C4:  (now__1 - command_time) * 5000 div 1000 <= 2147483647
+     using hypothesis H25.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_16.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H27).
+%%%  Simplified H35 on reading formula in, to give:
+     %%%  H35:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H32).
+***  Proved C2:  commanded_thrust <= integer32__last
+     using hypotheses H28 & H41.
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H31:  current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= - 
+          2147483648
+<S>  New H38:  true
+<S>  New H40:  current_thrust >= - 2147483648
+<S>  New C1:  commanded_thrust >= - 2147483648
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  0 <= now__1 - command_time
+>>>  Restructured hypothesis H28 into:
+     >>>  H28:  commanded_thrust < current_thrust
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of motor_cfg__burn_rate by:
+          5000.
+<S>  New H31:  current_thrust >= - 2147333648
+<S>  New H32:  current_thrust - 150000 <= integer32__last
+<S>  New H33:  150000 >= long_integer__base__first
+<S>  New H34:  150000 <= long_integer__base__last
+<S>  New H36:  150000000 >= long_integer__base__first
+<S>  New H37:  150000000 <= long_integer__base__last
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H33:  true
+<S>  New H36:  true
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H34:  true
+<S>  New H37:  true
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+<S>  New H26:  true
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New H19:  now__1 - command_time <= 8640000
+<S>  New H27:  true
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+-S-  Applied substitution rule extrapolate__rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H39:  true
+<S>  New H41:  current_thrust <= 2147483647
+<S>  New H32:  current_thrust <= 2147633647
+***  Proved C1:  commanded_thrust >= - 2147483648
+     using hypothesis H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_17.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  true
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H30).
+***  Proved C2:  commanded_thrust <= integer32__last
+     using hypotheses H26 & H39.
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H29:  current_thrust - (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 >= - 2147483648
+<S>  New H36:  now__1 - command_time >= - 2147483648
+<S>  New H38:  current_thrust >= - 2147483648
+<S>  New C1:  commanded_thrust >= - 2147483648
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  0 <= now__1 - command_time
+>>>  Restructured hypothesis H25 into:
+     >>>  H25:  now__1 - command_time <= 30000
+>>>  Restructured hypothesis H26 into:
+     >>>  H26:  commanded_thrust < current_thrust
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of motor_cfg__burn_rate by:
+          5000.
+<S>  New H29:  current_thrust - (now__1 - command_time) * 5000 div 1000 >= - 
+          2147483648
+<S>  New H30:  current_thrust - (now__1 - command_time) * 5000 div 1000 <= 
+          integer32__last
+<S>  New H31:  (now__1 - command_time) * 5000 div 1000 >= 
+          long_integer__base__first
+<S>  New H32:  (now__1 - command_time) * 5000 div 1000 <= 
+          long_integer__base__last
+<S>  New H34:  (now__1 - command_time) * 5000 >= long_integer__base__first
+<S>  New H35:  (now__1 - command_time) * 5000 <= long_integer__base__last
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H31:  (now__1 - command_time) * 5000 div 1000 >= - 2147483648
+<S>  New H34:  (now__1 - command_time) * 5000 >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H32:  (now__1 - command_time) * 5000 div 1000 <= 2147483647
+<S>  New H35:  (now__1 - command_time) * 5000 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New H19:  now__1 - command_time <= 8640000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+-S-  Applied substitution rule extrapolate__rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H37:  now__1 - command_time <= 2147483647
+<S>  New H39:  current_thrust <= 2147483647
+<S>  New H30:  current_thrust - (now__1 - command_time) * 5000 div 1000 <= 
+          2147483647
+***  Proved C1:  commanded_thrust >= - 2147483648
+     using hypothesis H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_18.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H27).
+%%%  Simplified H35 on reading formula in, to give:
+     %%%  H35:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H32).
+***  Proved C1:  commanded_thrust >= power__first
+     using hypothesis H4.
+***  Proved C2:  commanded_thrust <= power__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_19.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  true
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H30).
+***  Proved C1:  commanded_thrust >= power__first
+     using hypothesis H4.
+***  Proved C2:  commanded_thrust <= power__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_20.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H27).
+%%%  Simplified H35 on reading formula in, to give:
+     %%%  H35:  true
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H32).
+***  Proved C1:  current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= 
+          power__first
+     using hypotheses H4 & H46.
+***  Proved C3:  current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= 
+          power__first
+     using hypotheses H4 & H46.
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+<S>  New C2:  current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 35000
+<S>  New C4:  current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 35000
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  0 <= now__1 - command_time
+>>>  Restructured hypothesis H28 into:
+     >>>  H28:  commanded_thrust < current_thrust
+>>>  Restructured hypothesis H46 into:
+     >>>  H46:  commanded_thrust <= current_thrust - 30000 * 
+          motor_cfg__burn_rate div 1000
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of motor_cfg__burn_rate by:
+          5000.
+<S>  New H31:  current_thrust - 150000 >= integer32__first
+<S>  New H32:  current_thrust - 150000 <= integer32__last
+<S>  New H33:  150000 >= long_integer__base__first
+<S>  New H34:  150000 <= long_integer__base__last
+<S>  New H36:  150000000 >= long_integer__base__first
+<S>  New H37:  150000000 <= long_integer__base__last
+<S>  New H46:  commanded_thrust <= current_thrust - 150000
+<S>  New C2:  current_thrust <= 185000
+<S>  New C4:  current_thrust <= 185000
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H33:  true
+<S>  New H36:  true
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H34:  true
+<S>  New H37:  true
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+<S>  New H26:  true
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New H19:  now__1 - command_time <= 8640000
+<S>  New H27:  true
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H38:  true
+<S>  New H40:  current_thrust >= - 2147483648
+<S>  New H44:  commanded_thrust >= - 2147483648
+<S>  New H31:  current_thrust >= - 2147333648
+-S-  Applied substitution rule extrapolate__rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H39:  true
+<S>  New H41:  current_thrust <= 2147483647
+<S>  New H45:  commanded_thrust <= 2147483647
+<S>  New H32:  current_thrust <= 2147633647
+***  Proved C2:  current_thrust <= 185000
+     using hypothesis H3.
+***  Proved C4:  current_thrust <= 185000
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_21.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  true
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H30).
+***  Proved C1:  current_thrust - (now__1 - command_time) * 
+          motor_cfg__burn_rate div 1000 >= power__first
+     using hypotheses H4 & H44.
+***  Proved C3:  current_thrust - (now__1 - command_time) * 
+          motor_cfg__burn_rate div 1000 >= power__first
+     using hypotheses H4 & H44.
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of power__last by:
+          35000.
+<S>  New H3:  current_thrust <= 35000
+<S>  New H5:  commanded_thrust <= 35000
+<S>  New C2:  current_thrust - (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 <= 35000
+<S>  New C4:  current_thrust - (now__1 - command_time) * motor_cfg__burn_rate 
+          div 1000 <= 35000
+>>>  Restructured hypothesis H13 into:
+     >>>  H13:  current_thrust <> commanded_thrust
+>>>  Restructured hypothesis H22 into:
+     >>>  H22:  0 <= now__1 - command_time
+>>>  Restructured hypothesis H25 into:
+     >>>  H25:  now__1 - command_time <= 30000
+>>>  Restructured hypothesis H26 into:
+     >>>  H26:  commanded_thrust < current_thrust
+>>>  Restructured hypothesis H44 into:
+     >>>  H44:  commanded_thrust <= current_thrust - (now__1 - command_time) * 
+          motor_cfg__burn_rate div 1000
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of motor_cfg__burn_rate by:
+          5000.
+<S>  New H29:  current_thrust - (now__1 - command_time) * 5000 div 1000 >= 
+          integer32__first
+<S>  New H30:  current_thrust - (now__1 - command_time) * 5000 div 1000 <= 
+          integer32__last
+<S>  New H31:  (now__1 - command_time) * 5000 div 1000 >= 
+          long_integer__base__first
+<S>  New H32:  (now__1 - command_time) * 5000 div 1000 <= 
+          long_integer__base__last
+<S>  New H34:  (now__1 - command_time) * 5000 >= long_integer__base__first
+<S>  New H35:  (now__1 - command_time) * 5000 <= long_integer__base__last
+<S>  New H44:  commanded_thrust <= current_thrust - (now__1 - command_time) * 
+          5000 div 1000
+<S>  New C2:  current_thrust - (now__1 - command_time) * 5000 div 1000 <= 35000
+<S>  New C4:  current_thrust - (now__1 - command_time) * 5000 div 1000 <= 35000
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H31:  (now__1 - command_time) * 5000 div 1000 >= - 2147483648
+<S>  New H34:  (now__1 - command_time) * 5000 >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H32:  (now__1 - command_time) * 5000 div 1000 <= 2147483647
+<S>  New H35:  (now__1 - command_time) * 5000 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  command_time >= 0
+<S>  New H8:  now__1 >= 0
+<S>  New H18:  now__1 - command_time >= 0
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  command_time <= 8640000
+<S>  New H9:  now__1 <= 8640000
+<S>  New H19:  now__1 - command_time <= 8640000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of power__first by:
+          0.
+<S>  New H2:  current_thrust >= 0
+<S>  New H4:  commanded_thrust >= 0
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H36:  now__1 - command_time >= - 2147483648
+<S>  New H38:  current_thrust >= - 2147483648
+<S>  New H42:  commanded_thrust >= - 2147483648
+<S>  New H29:  current_thrust - (now__1 - command_time) * 5000 div 1000 >= - 
+          2147483648
+-S-  Applied substitution rule extrapolate__rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H37:  now__1 - command_time <= 2147483647
+<S>  New H39:  current_thrust <= 2147483647
+<S>  New H43:  commanded_thrust <= 2147483647
+<S>  New H30:  current_thrust - (now__1 - command_time) * 5000 div 1000 <= 
+          2147483647
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H33 (true-hypothesis).
+---  Eliminated hypothesis H40 (true-hypothesis).
+---  Eliminated hypothesis H41 (true-hypothesis).
+---  Eliminated hypothesis H45 (true-hypothesis).
+---  Eliminated hypothesis H46 (true-hypothesis).
+---  Eliminated hypothesis H22 (duplicate of H18).
+---  Eliminated hypothesis H2 (redundant, given H4 & H26).
+---  Eliminated hypothesis H5 (redundant, given H3 & H26).
+---  Eliminated hypothesis H13 (redundant, given H26).
+---  Eliminated hypothesis H19 (redundant, given H25).
+---  Eliminated hypothesis H29 (redundant, given H4 & H44).
+---  Eliminated hypothesis H34 (redundant, given H18).
+---  Eliminated hypothesis H35 (redundant, given H25).
+---  Eliminated hypothesis H36 (redundant, given H18).
+---  Eliminated hypothesis H37 (redundant, given H25).
+---  Eliminated hypothesis H38 (redundant, given H4 & H26).
+---  Eliminated hypothesis H39 (redundant, given H3).
+---  Eliminated hypothesis H42 (redundant, given H4).
+---  Eliminated hypothesis H43 (redundant, given H3 & H26).
+---  Eliminated hypothesis H15, which only specifies a value for time_valid__1.
+     This is not referred to anywhere else in the VC.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C2:  current_thrust - (now__1 - command_time) * 5000 div 1000 <= 
+          35000
+     using hypotheses H3 & H18.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_22.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H9)
+          .
+***  Proved C1:  current_thrust >= power__first
+     using hypothesis H2.
+***  Proved C2:  current_thrust <= power__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_23.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_24.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_25.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_26.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_27.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_28.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_29.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_30.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_31.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_32.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_thrust_33.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

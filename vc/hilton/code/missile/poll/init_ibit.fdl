@@ -1,0 +1,52 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:44.38}
+
+                      {procedure missile.Poll.Init_Ibit}
+
+
+title procedure init_ibit;
+
+  function round__(real) : integer;
+  type bc1553__lru_name = (bc1553__barometer, bc1553__asi, 
+     bc1553__ins, bc1553__compass, bc1553__fuel, bc1553__fuze, 
+     bc1553__radar, bc1553__infrared, bc1553__fins, bc1553__motor, 
+     bc1553__destruct, bc1553__warhead);
+  type ibit__phase = (ibit__off, ibit__request_start, 
+     ibit__in_progress, ibit__request_stop, ibit__pass, 
+     ibit__fail, ibit__timeout);
+  type phase_stage = (off, bit, boost, locating, homing, shutdown);
+  type component_status = record
+        bit_phase : ibit__phase
+     end;
+  type component_array = array [bc1553__lru_name] of 
+     component_status;
+  type state_record = record
+        phase : phase_stage;
+        components : component_array
+     end;
+  const phase_stage__base__last : phase_stage = pending; 
+  const phase_stage__base__first : phase_stage = pending; 
+  const ibit__phase__base__last : ibit__phase = pending; 
+  const ibit__phase__base__first : ibit__phase = pending; 
+  const bc1553__lru_name__base__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__base__first : bc1553__lru_name = pending; 
+  const state_record__size : integer = pending; 
+  const component_status__size : integer = pending; 
+  const phase_stage__size : integer = pending; 
+  const phase_stage__last : phase_stage = pending; 
+  const phase_stage__first : phase_stage = pending; 
+  const ibit__phase__size : integer = pending; 
+  const ibit__phase__last : ibit__phase = pending; 
+  const ibit__phase__first : ibit__phase = pending; 
+  const bc1553__lru_name__size : integer = pending; 
+  const bc1553__lru_name__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__first : bc1553__lru_name = pending; 
+  var state : state_record;
+
+end;

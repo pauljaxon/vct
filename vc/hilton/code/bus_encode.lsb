@@ -1,0 +1,62 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.58
+
+Line
+   1  -- Bus message encoder implementation
+   2  --
+   3  -- $Log: bus_encode.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/02/10 20:33:50  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  package body Bus_Encode is
+  13  
+  14     function Encode_Bool8(data : in Bus_Decode.Bool8) return Bus.Word
+  15     is
+  16        Word : Bus.Word := 0;
+  17        Value : Bus.Word := 1;
+  18     begin
+  19        for Idx in Bus_Decode.Bit8 loop
+  20           --# assert Word >= 0 and Value >= 1;
+  21           if Data(Idx) then
+  22              Word := Word + Value;
+  23           end if;
+  24           if Value < 128 then
+  25              Value := Value * 2;
+  26           end if;
+  27        end loop;
+  28        return Word;
+  29     end Encode_bool8;
+
++++        Flow analysis of subprogram Encode_Bool8 
+           performed: no errors found.
+
+  30  
+  31     function Encode_Byte2(Lo, Hi : in SystemTypes.Byte) return Bus.Word
+  32     is
+  33        Value : Bus.Word;
+  34     begin
+  35        Value := Lo + (256 * Hi);
+  36        return Value;
+  37     end Encode_Byte2;
+
++++        Flow analysis of subprogram Encode_Byte2 
+           performed: no errors found.
+
+  38  
+  39  end Bus_Encode;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------
