@@ -1,0 +1,79 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:51
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure fuel.Set_Level
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_set_level_1.  @@@@@@@@@@
+***  Proved C1:  level >= measuretypes__kilo__first
+     using hypothesis H2.
+***  Proved C2:  level <= measuretypes__kilo__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_level_2.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+***  Proved C1:  last_time__1 >= clock__millisecond__first
+     using hypothesis H6.
+***  Proved C2:  last_time__1 <= clock__millisecond__last
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_level_3.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+-S-  Applied substitution rule set_level_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kilo__first by:
+          0.
+<S>  New H2:  level >= 0
+<S>  New C1:  true
+-S-  Applied substitution rule set_level_rules(3).
+     This was achieved by replacing all occurrences of measuretypes__kilo__last 
+          by:
+          20000.
+<S>  New H3:  level <= 20000
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_level_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_level_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_level_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_level_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

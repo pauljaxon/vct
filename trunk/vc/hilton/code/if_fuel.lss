@@ -1,0 +1,78 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.57
+
+Line
+   1  -- MCU interface to the fuel over the bus
+   2  --
+   3  -- $Log: if_fuel.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/10 20:59:31  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.1  2003/08/17 12:44:08  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with SystemTypes,
+  16    MeasureTypes,
+  17    Ibit;
+  18  use type MeasureTypes.Gram_Per_sec;
+  19  use type Measuretypes.kilo;
+  20  --# inherit SystemTypes, MeasureTypes, Bus, Ibit,
+  21  --# bc1553;
+  22  package If_Fuel
+  23    --# own State;
+  24    --# initializes State;
+  25  is
+  26     function Get_IBIT_State return Ibit.Phase;
+  27       --# global state;
+  28  
+  29     -- Find out the current location and its validity
+  30     procedure Get_Level(level : out Measuretypes.kilo;
+  31                         Valid  : out Boolean);
+  32     --# global in State;
+  33     --# derives level, Valid from State;
+  34  
+  35     -- Kick off a fuel IBIT
+  36     procedure Ibit_Start;
+  37     --# global in out Bus.Outputs, State;
+  38     --# derives Bus.Outputs from * &
+  39     --#         State from *;
+  40  
+  41     -- Stop a fuel IBIT
+  42     procedure Ibit_Stop;
+  43     --# global in out Bus.Outputs, State;
+  44     --# derives Bus.Outputs from * &
+  45     --#         State from *;
+  46  
+  47     -- Poll the bus
+  48     procedure Poll;
+  49     --# global in out State;
+  50     --#        in Bus.Inputs;
+  51     --# derives State from *, Bus.Inputs;
+  52  
+  53     -- Initialise
+  54     procedure Init;
+  55     --# global out State;
+  56     --#        in out Bus.Outputs;
+  57     --# derives State from &
+  58     --#         Bus.Outputs from *;
+  59  
+  60     -- test point
+  61     procedure Command;
+  62     --# derives;
+  63  end If_Fuel;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

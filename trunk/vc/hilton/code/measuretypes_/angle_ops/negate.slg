@@ -1,0 +1,84 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:20
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function angle_ops.Negate
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_negate_1.  @@@@@@@@@@
+-S-  Applied substitution rule negate_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New C1:  - orig_angle >= - 2147483648
+-S-  Applied substitution rule negate_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New C2:  - orig_angle <= 2147483647
+-S-  Applied substitution rule negate_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule negate_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+***  Proved C2:  - orig_angle <= 2147483647
+     via its standard form, which is:
+     Std.Fm C2:  orig_angle > - 2147483648
+     using hypothesis H2.
+---  Eliminated hypothesis H1 (true-hypothesis).
+***  Proved C1:  - orig_angle >= - 2147483648
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_negate_2.  @@@@@@@@@@
+***  Proved C1:  true
+-S-  Applied substitution rule negate_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+<S>  New C2:  - orig_angle >= - 7000
+-S-  Applied substitution rule negate_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+<S>  New C3:  - orig_angle <= 7000
+-S-  Applied substitution rule negate_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New H4:  - orig_angle >= - 2147483648
+-S-  Applied substitution rule negate_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New H5:  - orig_angle <= 2147483647
+***  Proved C2:  - orig_angle >= - 7000
+     via its standard form, which is:
+     Std.Fm C2:  - orig_angle > - 7001
+     using hypothesis H3.
+***  Proved C3:  - orig_angle <= 7000
+     via its standard form, which is:
+     Std.Fm C3:  orig_angle > - 7001
+     using hypothesis H2.
+***  PROVED VC.
+

@@ -1,0 +1,571 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.14
+
+                      function angle_ops.Create_Angle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 107:
+
+function_create_angle_1.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+        ->
+C1:    2 ** 15 >= system__min_int .
+C2:    2 ** 15 <= system__max_int .
+C3:    15 >= 0 .
+ 
+
+For path(s) from start to run-time check associated with statement of line 108:
+
+function_create_angle_2.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    word >= 2 ** 15 .
+        ->
+C1:     -(word - 2 ** 15) >= systemtypes__integer32__first .
+C2:     -(word - 2 ** 15) <= systemtypes__integer32__last .
+C3:    word - 2 ** 15 >= systemtypes__integer32__first .
+C4:    word - 2 ** 15 <= systemtypes__integer32__last .
+C5:    word - 2 ** 15 >= integer__base__first .
+C6:    word - 2 ** 15 <= integer__base__last .
+C7:    2 ** 15 >= systemtypes__word__first .
+C8:    2 ** 15 <= systemtypes__word__last .
+C9:    2 ** 15 >= system__min_int .
+C10:   2 ** 15 <= system__max_int .
+C11:   15 >= 0 .
+ 
+
+For path(s) from start to run-time check associated with statement of line 110:
+
+function_create_angle_3.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    not (word >= 2 ** 15) .
+        ->
+C1:    word >= systemtypes__integer32__first .
+C2:    word <= systemtypes__integer32__last .
+C3:    word >= systemtypes__integer32__first .
+C4:    word <= systemtypes__integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 112:
+
+function_create_angle_4.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    word >= 2 ** 15 .
+H8:     -(word - 2 ** 15) >= systemtypes__integer32__first .
+H9:     -(word - 2 ** 15) <= systemtypes__integer32__last .
+H10:   word - 2 ** 15 >= systemtypes__integer32__first .
+H11:   word - 2 ** 15 <= systemtypes__integer32__last .
+H12:   word - 2 ** 15 >= integer__base__first .
+H13:   word - 2 ** 15 <= integer__base__last .
+H14:   2 ** 15 >= systemtypes__word__first .
+H15:   2 ** 15 <= systemtypes__word__last .
+H16:   2 ** 15 >= system__min_int .
+H17:   2 ** 15 <= system__max_int .
+H18:   15 >= 0 .
+H19:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H20:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+        ->
+C1:    millirad__last >= systemtypes__integer32__first .
+C2:    millirad__last <= systemtypes__integer32__last .
+ 
+
+function_create_angle_5.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    not (word >= 2 ** 15) .
+H8:    word >= systemtypes__integer32__first .
+H9:    word <= systemtypes__integer32__last .
+H10:   word >= systemtypes__integer32__first .
+H11:   word <= systemtypes__integer32__last .
+H12:   word >= systemtypes__integer32__first .
+H13:   word <= systemtypes__integer32__last .
+        ->
+C1:    millirad__last >= systemtypes__integer32__first .
+C2:    millirad__last <= systemtypes__integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 113:
+
+function_create_angle_6.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    word >= 2 ** 15 .
+H8:     -(word - 2 ** 15) >= systemtypes__integer32__first .
+H9:     -(word - 2 ** 15) <= systemtypes__integer32__last .
+H10:   word - 2 ** 15 >= systemtypes__integer32__first .
+H11:   word - 2 ** 15 <= systemtypes__integer32__last .
+H12:   word - 2 ** 15 >= integer__base__first .
+H13:   word - 2 ** 15 <= integer__base__last .
+H14:   2 ** 15 >= systemtypes__word__first .
+H15:   2 ** 15 <= systemtypes__word__last .
+H16:   2 ** 15 >= system__min_int .
+H17:   2 ** 15 <= system__max_int .
+H18:   15 >= 0 .
+H19:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H20:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+H21:   millirad__last >= systemtypes__integer32__first .
+H22:   millirad__last <= systemtypes__integer32__last .
+H23:    -(word - 2 ** 15) > millirad__last .
+        ->
+C1:    millirad__last >= millirad__first .
+C2:    millirad__last <= millirad__last .
+ 
+
+function_create_angle_7.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    not (word >= 2 ** 15) .
+H8:    word >= systemtypes__integer32__first .
+H9:    word <= systemtypes__integer32__last .
+H10:   word >= systemtypes__integer32__first .
+H11:   word <= systemtypes__integer32__last .
+H12:   word >= systemtypes__integer32__first .
+H13:   word <= systemtypes__integer32__last .
+H14:   millirad__last >= systemtypes__integer32__first .
+H15:   millirad__last <= systemtypes__integer32__last .
+H16:   word > millirad__last .
+        ->
+C1:    millirad__last >= millirad__first .
+C2:    millirad__last <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 114:
+
+function_create_angle_8.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    word >= 2 ** 15 .
+H8:     -(word - 2 ** 15) >= systemtypes__integer32__first .
+H9:     -(word - 2 ** 15) <= systemtypes__integer32__last .
+H10:   word - 2 ** 15 >= systemtypes__integer32__first .
+H11:   word - 2 ** 15 <= systemtypes__integer32__last .
+H12:   word - 2 ** 15 >= integer__base__first .
+H13:   word - 2 ** 15 <= integer__base__last .
+H14:   2 ** 15 >= systemtypes__word__first .
+H15:   2 ** 15 <= systemtypes__word__last .
+H16:   2 ** 15 >= system__min_int .
+H17:   2 ** 15 <= system__max_int .
+H18:   15 >= 0 .
+H19:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H20:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+H21:   millirad__last >= systemtypes__integer32__first .
+H22:   millirad__last <= systemtypes__integer32__last .
+H23:   not ( -(word - 2 ** 15) > millirad__last) .
+H24:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H25:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+        ->
+C1:    millirad__first >= systemtypes__integer32__first .
+C2:    millirad__first <= systemtypes__integer32__last .
+ 
+
+function_create_angle_9.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    not (word >= 2 ** 15) .
+H8:    word >= systemtypes__integer32__first .
+H9:    word <= systemtypes__integer32__last .
+H10:   word >= systemtypes__integer32__first .
+H11:   word <= systemtypes__integer32__last .
+H12:   word >= systemtypes__integer32__first .
+H13:   word <= systemtypes__integer32__last .
+H14:   millirad__last >= systemtypes__integer32__first .
+H15:   millirad__last <= systemtypes__integer32__last .
+H16:   not (word > millirad__last) .
+H17:   word >= systemtypes__integer32__first .
+H18:   word <= systemtypes__integer32__last .
+        ->
+C1:    millirad__first >= systemtypes__integer32__first .
+C2:    millirad__first <= systemtypes__integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 115:
+
+function_create_angle_10.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    word >= 2 ** 15 .
+H8:     -(word - 2 ** 15) >= systemtypes__integer32__first .
+H9:     -(word - 2 ** 15) <= systemtypes__integer32__last .
+H10:   word - 2 ** 15 >= systemtypes__integer32__first .
+H11:   word - 2 ** 15 <= systemtypes__integer32__last .
+H12:   word - 2 ** 15 >= integer__base__first .
+H13:   word - 2 ** 15 <= integer__base__last .
+H14:   2 ** 15 >= systemtypes__word__first .
+H15:   2 ** 15 <= systemtypes__word__last .
+H16:   2 ** 15 >= system__min_int .
+H17:   2 ** 15 <= system__max_int .
+H18:   15 >= 0 .
+H19:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H20:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+H21:   millirad__last >= systemtypes__integer32__first .
+H22:   millirad__last <= systemtypes__integer32__last .
+H23:   not ( -(word - 2 ** 15) > millirad__last) .
+H24:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H25:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+H26:   millirad__first >= systemtypes__integer32__first .
+H27:   millirad__first <= systemtypes__integer32__last .
+H28:    -(word - 2 ** 15) < millirad__first .
+        ->
+C1:    millirad__first >= millirad__first .
+C2:    millirad__first <= millirad__last .
+ 
+
+function_create_angle_11.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    not (word >= 2 ** 15) .
+H8:    word >= systemtypes__integer32__first .
+H9:    word <= systemtypes__integer32__last .
+H10:   word >= systemtypes__integer32__first .
+H11:   word <= systemtypes__integer32__last .
+H12:   word >= systemtypes__integer32__first .
+H13:   word <= systemtypes__integer32__last .
+H14:   millirad__last >= systemtypes__integer32__first .
+H15:   millirad__last <= systemtypes__integer32__last .
+H16:   not (word > millirad__last) .
+H17:   word >= systemtypes__integer32__first .
+H18:   word <= systemtypes__integer32__last .
+H19:   millirad__first >= systemtypes__integer32__first .
+H20:   millirad__first <= systemtypes__integer32__last .
+H21:   word < millirad__first .
+        ->
+C1:    millirad__first >= millirad__first .
+C2:    millirad__first <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 117:
+
+function_create_angle_12.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    word >= 2 ** 15 .
+H8:     -(word - 2 ** 15) >= systemtypes__integer32__first .
+H9:     -(word - 2 ** 15) <= systemtypes__integer32__last .
+H10:   word - 2 ** 15 >= systemtypes__integer32__first .
+H11:   word - 2 ** 15 <= systemtypes__integer32__last .
+H12:   word - 2 ** 15 >= integer__base__first .
+H13:   word - 2 ** 15 <= integer__base__last .
+H14:   2 ** 15 >= systemtypes__word__first .
+H15:   2 ** 15 <= systemtypes__word__last .
+H16:   2 ** 15 >= system__min_int .
+H17:   2 ** 15 <= system__max_int .
+H18:   15 >= 0 .
+H19:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H20:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+H21:   millirad__last >= systemtypes__integer32__first .
+H22:   millirad__last <= systemtypes__integer32__last .
+H23:   not ( -(word - 2 ** 15) > millirad__last) .
+H24:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H25:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+H26:   millirad__first >= systemtypes__integer32__first .
+H27:   millirad__first <= systemtypes__integer32__last .
+H28:   not ( -(word - 2 ** 15) < millirad__first) .
+H29:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H30:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+        ->
+C1:     -(word - 2 ** 15) >= millirad__first .
+C2:     -(word - 2 ** 15) <= millirad__last .
+C3:     -(word - 2 ** 15) >= millirad__first .
+C4:     -(word - 2 ** 15) <= millirad__last .
+ 
+
+function_create_angle_13.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    not (word >= 2 ** 15) .
+H8:    word >= systemtypes__integer32__first .
+H9:    word <= systemtypes__integer32__last .
+H10:   word >= systemtypes__integer32__first .
+H11:   word <= systemtypes__integer32__last .
+H12:   word >= systemtypes__integer32__first .
+H13:   word <= systemtypes__integer32__last .
+H14:   millirad__last >= systemtypes__integer32__first .
+H15:   millirad__last <= systemtypes__integer32__last .
+H16:   not (word > millirad__last) .
+H17:   word >= systemtypes__integer32__first .
+H18:   word <= systemtypes__integer32__last .
+H19:   millirad__first >= systemtypes__integer32__first .
+H20:   millirad__first <= systemtypes__integer32__last .
+H21:   not (word < millirad__first) .
+H22:   word >= systemtypes__integer32__first .
+H23:   word <= systemtypes__integer32__last .
+        ->
+C1:    word >= millirad__first .
+C2:    word <= millirad__last .
+C3:    word >= millirad__first .
+C4:    word <= millirad__last .
+ 
+
+For path(s) from start to finish:
+
+function_create_angle_14.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    word >= 2 ** 15 .
+H8:     -(word - 2 ** 15) >= systemtypes__integer32__first .
+H9:     -(word - 2 ** 15) <= systemtypes__integer32__last .
+H10:   word - 2 ** 15 >= systemtypes__integer32__first .
+H11:   word - 2 ** 15 <= systemtypes__integer32__last .
+H12:   word - 2 ** 15 >= integer__base__first .
+H13:   word - 2 ** 15 <= integer__base__last .
+H14:   2 ** 15 >= systemtypes__word__first .
+H15:   2 ** 15 <= systemtypes__word__last .
+H16:   2 ** 15 >= system__min_int .
+H17:   2 ** 15 <= system__max_int .
+H18:   15 >= 0 .
+H19:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H20:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+H21:   millirad__last >= systemtypes__integer32__first .
+H22:   millirad__last <= systemtypes__integer32__last .
+H23:    -(word - 2 ** 15) > millirad__last .
+H24:   millirad__last >= millirad__first .
+H25:   millirad__last <= millirad__last .
+H26:   millirad__last >= millirad__first .
+H27:   millirad__last <= millirad__last .
+        ->
+C1:    true .
+C2:    millirad__last >= measuretypes__millirad__first .
+C3:    millirad__last <= measuretypes__millirad__last .
+ 
+
+function_create_angle_15.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    not (word >= 2 ** 15) .
+H8:    word >= systemtypes__integer32__first .
+H9:    word <= systemtypes__integer32__last .
+H10:   word >= systemtypes__integer32__first .
+H11:   word <= systemtypes__integer32__last .
+H12:   word >= systemtypes__integer32__first .
+H13:   word <= systemtypes__integer32__last .
+H14:   millirad__last >= systemtypes__integer32__first .
+H15:   millirad__last <= systemtypes__integer32__last .
+H16:   word > millirad__last .
+H17:   millirad__last >= millirad__first .
+H18:   millirad__last <= millirad__last .
+H19:   millirad__last >= millirad__first .
+H20:   millirad__last <= millirad__last .
+        ->
+C1:    true .
+C2:    millirad__last >= measuretypes__millirad__first .
+C3:    millirad__last <= measuretypes__millirad__last .
+ 
+
+function_create_angle_16.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    word >= 2 ** 15 .
+H8:     -(word - 2 ** 15) >= systemtypes__integer32__first .
+H9:     -(word - 2 ** 15) <= systemtypes__integer32__last .
+H10:   word - 2 ** 15 >= systemtypes__integer32__first .
+H11:   word - 2 ** 15 <= systemtypes__integer32__last .
+H12:   word - 2 ** 15 >= integer__base__first .
+H13:   word - 2 ** 15 <= integer__base__last .
+H14:   2 ** 15 >= systemtypes__word__first .
+H15:   2 ** 15 <= systemtypes__word__last .
+H16:   2 ** 15 >= system__min_int .
+H17:   2 ** 15 <= system__max_int .
+H18:   15 >= 0 .
+H19:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H20:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+H21:   millirad__last >= systemtypes__integer32__first .
+H22:   millirad__last <= systemtypes__integer32__last .
+H23:   not ( -(word - 2 ** 15) > millirad__last) .
+H24:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H25:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+H26:   millirad__first >= systemtypes__integer32__first .
+H27:   millirad__first <= systemtypes__integer32__last .
+H28:    -(word - 2 ** 15) < millirad__first .
+H29:   millirad__first >= millirad__first .
+H30:   millirad__first <= millirad__last .
+H31:   millirad__first >= millirad__first .
+H32:   millirad__first <= millirad__last .
+        ->
+C1:    true .
+C2:    millirad__first >= measuretypes__millirad__first .
+C3:    millirad__first <= measuretypes__millirad__last .
+ 
+
+function_create_angle_17.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    not (word >= 2 ** 15) .
+H8:    word >= systemtypes__integer32__first .
+H9:    word <= systemtypes__integer32__last .
+H10:   word >= systemtypes__integer32__first .
+H11:   word <= systemtypes__integer32__last .
+H12:   word >= systemtypes__integer32__first .
+H13:   word <= systemtypes__integer32__last .
+H14:   millirad__last >= systemtypes__integer32__first .
+H15:   millirad__last <= systemtypes__integer32__last .
+H16:   not (word > millirad__last) .
+H17:   word >= systemtypes__integer32__first .
+H18:   word <= systemtypes__integer32__last .
+H19:   millirad__first >= systemtypes__integer32__first .
+H20:   millirad__first <= systemtypes__integer32__last .
+H21:   word < millirad__first .
+H22:   millirad__first >= millirad__first .
+H23:   millirad__first <= millirad__last .
+H24:   millirad__first >= millirad__first .
+H25:   millirad__first <= millirad__last .
+        ->
+C1:    true .
+C2:    millirad__first >= measuretypes__millirad__first .
+C3:    millirad__first <= measuretypes__millirad__last .
+ 
+
+function_create_angle_18.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    word >= 2 ** 15 .
+H8:     -(word - 2 ** 15) >= systemtypes__integer32__first .
+H9:     -(word - 2 ** 15) <= systemtypes__integer32__last .
+H10:   word - 2 ** 15 >= systemtypes__integer32__first .
+H11:   word - 2 ** 15 <= systemtypes__integer32__last .
+H12:   word - 2 ** 15 >= integer__base__first .
+H13:   word - 2 ** 15 <= integer__base__last .
+H14:   2 ** 15 >= systemtypes__word__first .
+H15:   2 ** 15 <= systemtypes__word__last .
+H16:   2 ** 15 >= system__min_int .
+H17:   2 ** 15 <= system__max_int .
+H18:   15 >= 0 .
+H19:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H20:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+H21:   millirad__last >= systemtypes__integer32__first .
+H22:   millirad__last <= systemtypes__integer32__last .
+H23:   not ( -(word - 2 ** 15) > millirad__last) .
+H24:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H25:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+H26:   millirad__first >= systemtypes__integer32__first .
+H27:   millirad__first <= systemtypes__integer32__last .
+H28:   not ( -(word - 2 ** 15) < millirad__first) .
+H29:    -(word - 2 ** 15) >= systemtypes__integer32__first .
+H30:    -(word - 2 ** 15) <= systemtypes__integer32__last .
+H31:    -(word - 2 ** 15) >= millirad__first .
+H32:    -(word - 2 ** 15) <= millirad__last .
+H33:    -(word - 2 ** 15) >= millirad__first .
+H34:    -(word - 2 ** 15) <= millirad__last .
+H35:    -(word - 2 ** 15) >= millirad__first .
+H36:    -(word - 2 ** 15) <= millirad__last .
+        ->
+C1:    true .
+C2:     -(word - 2 ** 15) >= measuretypes__millirad__first .
+C3:     -(word - 2 ** 15) <= measuretypes__millirad__last .
+ 
+
+function_create_angle_19.
+H1:    true .
+H2:    word >= systemtypes__word__first .
+H3:    word <= systemtypes__word__last .
+H4:    2 ** 15 >= system__min_int .
+H5:    2 ** 15 <= system__max_int .
+H6:    15 >= 0 .
+H7:    not (word >= 2 ** 15) .
+H8:    word >= systemtypes__integer32__first .
+H9:    word <= systemtypes__integer32__last .
+H10:   word >= systemtypes__integer32__first .
+H11:   word <= systemtypes__integer32__last .
+H12:   word >= systemtypes__integer32__first .
+H13:   word <= systemtypes__integer32__last .
+H14:   millirad__last >= systemtypes__integer32__first .
+H15:   millirad__last <= systemtypes__integer32__last .
+H16:   not (word > millirad__last) .
+H17:   word >= systemtypes__integer32__first .
+H18:   word <= systemtypes__integer32__last .
+H19:   millirad__first >= systemtypes__integer32__first .
+H20:   millirad__first <= systemtypes__integer32__last .
+H21:   not (word < millirad__first) .
+H22:   word >= systemtypes__integer32__first .
+H23:   word <= systemtypes__integer32__last .
+H24:   word >= millirad__first .
+H25:   word <= millirad__last .
+H26:   word >= millirad__first .
+H27:   word <= millirad__last .
+H28:   word >= millirad__first .
+H29:   word <= millirad__last .
+        ->
+C1:    true .
+C2:    word >= measuretypes__millirad__first .
+C3:    word <= measuretypes__millirad__last .
+ 
+

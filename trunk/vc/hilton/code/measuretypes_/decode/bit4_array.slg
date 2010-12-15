@@ -1,0 +1,621 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:22
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function decode.Bit4_Array
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_bit4_array_1.  @@@@@@@@@@
+***  Proved C1:  b >= bus__word__first
+     using hypothesis H2.
+***  Proved C2:  b <= bus__word__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_2.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+-S-  Applied substitution rule bit4_array_rules(19).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  b >= 0
+<S>  New C1:  true
+-S-  Applied substitution rule bit4_array_rules(20).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  b <= 65535
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_3.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+%%%  Simplified C6 on reading formula in, to give:
+     %%%  C6:  true
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C2:  true
+***  Proved C3:  b >= bus__word__first
+     using hypothesis H2.
+***  Proved C4:  b <= bus__word__last
+     using hypothesis H3.
+***  Proved C6:  true
+***  Proved C7:  true
+-S-  Applied substitution rule bit4_array_rules(14).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New C1:  3 >= measuretypes__bit4_range__first
+<S>  New C5:  3 >= measuretypes__bit4_range__first
+<S>  New C8:  3 >= measuretypes__bit4_range__first
+-S-  Applied substitution rule bit4_array_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New C1:  true
+<S>  New C5:  true
+<S>  New C8:  true
+***  Proved C1:  true
+***  Proved C5:  true
+***  Proved C8:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_4.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H18).
+%%%  Simplified H34 on reading formula in, to give:
+     %%%  H34:  true
+***  Proved C2:  loop__1__actual_x - 1 <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C3:  b >= bus__word__first
+     using hypothesis H5.
+***  Proved C4:  b <= bus__word__last
+     using hypothesis H6.
+***  Proved C6:  loop__1__actual_x - 1 <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C7:  loop__1__actual_x - 1 <= measuretypes__bit4_range__last
+     using hypothesis H2.
+-S-  Applied substitution rule bit4_array_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H1:  loop__1__actual_x >= 0
+<S>  New H3:  loop__2__actual_y >= 0
+<S>  New H35:  loop__2__actual_y = 0
+<S>  New H36:  not loop__1__actual_x = 0
+<S>  New C1:  loop__1__actual_x >= 1
+<S>  New C5:  loop__1__actual_x >= 1
+<S>  New C8:  loop__1__actual_x >= 1
+***  Proved C1:  loop__1__actual_x >= 1
+     using hypotheses H1 & H36.
+***  Proved C5:  loop__1__actual_x >= 1
+     using hypotheses H1 & H36.
+***  Proved C8:  loop__1__actual_x >= 1
+     using hypotheses H1 & H36.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_5.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H18).
+%%%  Simplified H24 on reading formula in, to give:
+     %%%  H24:  true
+***  Proved C2:  loop__1__actual_x - 1 <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C3:  b >= bus__word__first
+     using hypothesis H5.
+***  Proved C4:  b <= bus__word__last
+     using hypothesis H6.
+***  Proved C6:  loop__1__actual_x - 1 <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C7:  loop__1__actual_x - 1 <= measuretypes__bit4_range__last
+     using hypothesis H2.
+-S-  Applied substitution rule bit4_array_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H1:  loop__1__actual_x >= 0
+<S>  New H3:  loop__2__actual_y >= 0
+<S>  New H25:  loop__2__actual_y = 0
+<S>  New H26:  not loop__1__actual_x = 0
+<S>  New C1:  loop__1__actual_x >= 1
+<S>  New C5:  loop__1__actual_x >= 1
+<S>  New C8:  loop__1__actual_x >= 1
+***  Proved C1:  loop__1__actual_x >= 1
+     using hypotheses H1 & H26.
+***  Proved C5:  loop__1__actual_x >= 1
+     using hypotheses H1 & H26.
+***  Proved C8:  loop__1__actual_x >= 1
+     using hypotheses H1 & H26.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_6.  @@@@@@@@@@
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H1).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H1).
+%%%  Simplified C4 on reading formula in, to give:
+     %%%  C4:  true
+%%%  Simplified C8 on reading formula in, to give:
+     %%%  C8:  true
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  true
+***  Proved C1:  loop__1__actual_x >= measuretypes__bit4_range__first
+     using hypothesis H1.
+***  Proved C2:  loop__1__actual_x <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C3:  measuretypes__bit4_range__last >= 
+          measuretypes__bit4_range__first
+     using hypotheses H1 & H2.
+***  Proved C4:  true
+***  Proved C5:  b >= bus__word__first
+     using hypothesis H3.
+***  Proved C6:  b <= bus__word__last
+     using hypothesis H4.
+***  Proved C7:  measuretypes__bit4_range__last >= 
+          measuretypes__bit4_range__first
+     using hypotheses H1 & H2.
+***  Proved C8:  true
+***  Proved C9:  true
+***  Proved C10:  measuretypes__bit4_range__last >= 
+          measuretypes__bit4_range__first
+     using hypotheses H1 & H2.
+***  Proved C11:  loop__1__actual_x >= measuretypes__bit4_range__first
+     using hypothesis H1.
+***  Proved C12:  loop__1__actual_x <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C13:  loop__1__actual_x <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C14:  loop__1__actual_x >= measuretypes__bit4_range__first
+     using hypothesis H1.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_7.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H18).
+%%%  Simplified H34 on reading formula in, to give:
+     %%%  H34:  true
+***  Proved C1:  loop__1__actual_x >= measuretypes__bit4_range__first
+     using hypothesis H1.
+***  Proved C2:  loop__1__actual_x <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C4:  loop__2__actual_y - 1 <= measuretypes__bit4_range__last
+     using hypothesis H4.
+***  Proved C5:  b >= bus__word__first
+     using hypothesis H5.
+***  Proved C6:  b <= bus__word__last
+     using hypothesis H6.
+***  Proved C8:  loop__2__actual_y - 1 <= measuretypes__bit4_range__last
+     using hypothesis H4.
+***  Proved C9:  loop__2__actual_y - 1 <= measuretypes__bit4_range__last
+     using hypothesis H4.
+***  Proved C11:  loop__1__actual_x >= measuretypes__bit4_range__first
+     using hypothesis H1.
+***  Proved C12:  loop__1__actual_x <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C13:  loop__1__actual_x <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C14:  loop__1__actual_x >= measuretypes__bit4_range__first
+     using hypothesis H1.
+-S-  Applied substitution rule bit4_array_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H1:  loop__1__actual_x >= 0
+<S>  New H3:  loop__2__actual_y >= 0
+<S>  New H35:  not loop__2__actual_y = 0
+<S>  New C3:  loop__2__actual_y >= 1
+<S>  New C7:  loop__2__actual_y >= 1
+<S>  New C10:  loop__2__actual_y >= 1
+***  Proved C3:  loop__2__actual_y >= 1
+     using hypotheses H3 & H35.
+***  Proved C7:  loop__2__actual_y >= 1
+     using hypotheses H3 & H35.
+***  Proved C10:  loop__2__actual_y >= 1
+     using hypotheses H3 & H35.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_8.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H18).
+%%%  Simplified H24 on reading formula in, to give:
+     %%%  H24:  true
+***  Proved C1:  loop__1__actual_x >= measuretypes__bit4_range__first
+     using hypothesis H1.
+***  Proved C2:  loop__1__actual_x <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C4:  loop__2__actual_y - 1 <= measuretypes__bit4_range__last
+     using hypothesis H4.
+***  Proved C5:  b >= bus__word__first
+     using hypothesis H5.
+***  Proved C6:  b <= bus__word__last
+     using hypothesis H6.
+***  Proved C8:  loop__2__actual_y - 1 <= measuretypes__bit4_range__last
+     using hypothesis H4.
+***  Proved C9:  loop__2__actual_y - 1 <= measuretypes__bit4_range__last
+     using hypothesis H4.
+***  Proved C11:  loop__1__actual_x >= measuretypes__bit4_range__first
+     using hypothesis H1.
+***  Proved C12:  loop__1__actual_x <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C13:  loop__1__actual_x <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  Proved C14:  loop__1__actual_x >= measuretypes__bit4_range__first
+     using hypothesis H1.
+-S-  Applied substitution rule bit4_array_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H1:  loop__1__actual_x >= 0
+<S>  New H3:  loop__2__actual_y >= 0
+<S>  New H25:  not loop__2__actual_y = 0
+<S>  New C3:  loop__2__actual_y >= 1
+<S>  New C7:  loop__2__actual_y >= 1
+<S>  New C10:  loop__2__actual_y >= 1
+***  Proved C3:  loop__2__actual_y >= 1
+     using hypotheses H3 & H25.
+***  Proved C7:  loop__2__actual_y >= 1
+     using hypotheses H3 & H25.
+***  Proved C10:  loop__2__actual_y >= 1
+     using hypotheses H3 & H25.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_9.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+***  Proved C1:  loop__2__actual_y >= measuretypes__bit4_range__first
+     using hypothesis H3.
+***  Proved C2:  loop__2__actual_y <= measuretypes__bit4_range__last
+     using hypothesis H4.
+***  Proved C3:  loop__1__actual_x >= measuretypes__bit4_range__first
+     using hypothesis H1.
+***  Proved C4:  loop__1__actual_x <= measuretypes__bit4_range__last
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_10.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+-S-  Applied substitution rule bit4_array_rules(19).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H5:  b >= 0
+<S>  New H15:  datum >= 0
+<S>  New H17:  add_bit >= 0
+<S>  New C1:  datum - add_bit >= 0
+-S-  Applied substitution rule bit4_array_rules(20).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H6:  b <= 65535
+<S>  New H16:  datum <= 65535
+<S>  New H18:  add_bit <= 65535
+<S>  New C2:  datum - add_bit <= 65535
+***  Proved C1:  datum - add_bit >= 0
+     using hypothesis H19.
+***  Proved C2:  datum - add_bit <= 65535
+     using hypotheses H16 & H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_11.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H18).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule bit4_array_rules(19).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H5:  b >= 0
+<S>  New H15:  datum >= 0
+<S>  New H17:  add_bit >= 0
+<S>  New H28:  datum - add_bit >= 0
+<S>  New C1:  add_bit div 2 >= 0
+-S-  Applied substitution rule bit4_array_rules(20).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H6:  b <= 65535
+<S>  New H16:  datum <= 65535
+<S>  New H18:  add_bit <= 65535
+<S>  New H29:  datum - add_bit <= 65535
+<S>  New C2:  add_bit div 2 <= 65535
+-S-  Applied substitution rule bit4_array_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H1:  loop__1__actual_x >= 0
+<S>  New H3:  loop__2__actual_y >= 0
+-S-  Applied substitution rule bit4_array_rules(14).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H2:  loop__1__actual_x <= 3
+<S>  New H4:  loop__2__actual_y <= 3
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H28 (duplicate of H19).
+***  Proved C1:  add_bit div 2 >= 0
+     using hypothesis H17.
+***  Proved C2:  add_bit div 2 <= 65535
+     using hypothesis H18.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_12.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H18).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule bit4_array_rules(19).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H5:  b >= 0
+<S>  New H15:  datum >= 0
+<S>  New H17:  add_bit >= 0
+<S>  New C1:  add_bit div 2 >= 0
+-S-  Applied substitution rule bit4_array_rules(20).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H6:  b <= 65535
+<S>  New H16:  datum <= 65535
+<S>  New H18:  add_bit <= 65535
+<S>  New C2:  add_bit div 2 <= 65535
+>>>  Restructured hypothesis H19 into:
+     >>>  H19:  datum < add_bit
+-S-  Applied substitution rule bit4_array_rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H1:  loop__1__actual_x >= 0
+<S>  New H3:  loop__2__actual_y >= 0
+-S-  Applied substitution rule bit4_array_rules(14).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H2:  loop__1__actual_x <= 3
+<S>  New H4:  loop__2__actual_y <= 3
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H16 (redundant, given H18 & H19).
+---  Eliminated hypothesis H17 (redundant, given H15 & H19).
+***  Proved C1:  add_bit div 2 >= 0
+     using hypothesis H17.
+***  Proved C2:  add_bit div 2 <= 65535
+     using hypothesis H18.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_13.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_bit4_array_14.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

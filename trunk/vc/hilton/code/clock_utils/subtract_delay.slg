@@ -1,0 +1,120 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:24
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function clock_utils.Subtract_Delay
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_subtract_delay_1.  @@@@@@@@@@
+-S-  Applied substitution rule subtract_del_rules(2).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  orig >= 0
+<S>  New H4:  minusdelta >= 0
+<S>  New C1:  orig - minusdelta >= 0
+-S-  Applied substitution rule subtract_del_rules(3).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  orig <= 8640000
+<S>  New H5:  minusdelta <= 8640000
+<S>  New C2:  orig - minusdelta <= 8640000
+***  Proved C1:  orig - minusdelta >= 0
+     using hypothesis H6.
+***  Proved C2:  orig - minusdelta <= 8640000
+     using hypotheses H3 & H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_subtract_delay_2.  @@@@@@@@@@
+-S-  Applied substitution rule subtract_del_rules(2).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  orig >= 0
+<S>  New H4:  minusdelta >= 0
+<S>  New C1:  minusdelta - orig >= 0
+-S-  Applied substitution rule subtract_del_rules(3).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  orig <= 8640000
+<S>  New H5:  minusdelta <= 8640000
+<S>  New C2:  minusdelta - orig <= 8640000
+***  Proved C1:  minusdelta - orig >= 0
+     using hypothesis H6.
+***  Proved C2:  minusdelta - orig <= 8640000
+     using hypotheses H2 & H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_subtract_delay_3.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+-S-  Applied substitution rule subtract_del_rules(2).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  orig >= 0
+<S>  New H4:  minusdelta >= 0
+<S>  New H7:  minusdelta - orig >= 0
+<S>  New C1:  clock__millisecond__last - (minusdelta - orig) >= 0
+-S-  Applied substitution rule subtract_del_rules(3).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  orig <= 8640000
+<S>  New H5:  minusdelta <= 8640000
+<S>  New H8:  minusdelta - orig <= 8640000
+<S>  New C2:  0 <= minusdelta - orig
+<S>  New C1:  minusdelta - orig <= 8640000
+***  Proved C2:  0 <= minusdelta - orig
+     using hypothesis H7.
+***  Proved C1:  minusdelta - orig <= 8640000
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_subtract_delay_4.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+***  Proved C1:  true
+***  Proved C2:  orig - minusdelta >= clock__millisecond__first
+     using hypothesis H7.
+***  Proved C3:  orig - minusdelta <= clock__millisecond__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_subtract_delay_5.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+***  Proved C1:  true
+***  Proved C2:  clock__millisecond__last - (minusdelta - orig) >= 
+          clock__millisecond__first
+     using hypothesis H11.
+***  Proved C3:  clock__millisecond__last - (minusdelta - orig) <= 
+          clock__millisecond__last
+     using hypothesis H12.
+***  PROVED VC.
+

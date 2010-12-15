@@ -1,0 +1,43 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:38.89}
+
+                        {procedure ibit.State_Machine}
+
+
+title procedure state_machine;
+
+  function round__(real) : integer;
+  type phase = (off, request_start, in_progress, request_stop, 
+     pass, fail, timeout);
+  type phase_table = array [phase] of integer;
+  const phase_lookup : phase_table = pending;
+  const phase__base__last : phase = pending; 
+  const phase__base__first : phase = pending; 
+  const systemtypes__byte__base__last : integer = pending; 
+  const systemtypes__byte__base__first : integer = pending; 
+  const systemtypes__unsigned16__base__last : integer = pending; 
+  const systemtypes__unsigned16__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const phase__size : integer = pending; 
+  const phase__last : phase = pending; 
+  const phase__first : phase = pending; 
+  const systemtypes__byte__size : integer = pending; 
+  const systemtypes__byte__last : integer = pending; 
+  const systemtypes__byte__first : integer = pending; 
+  const systemtypes__unsigned16__size : integer = pending; 
+  const systemtypes__unsigned16__last : integer = pending; 
+  const systemtypes__unsigned16__first : integer = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+  var bus_data : integer;
+  var current_phase : phase;
+
+end;

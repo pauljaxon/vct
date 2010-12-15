@@ -1,0 +1,54 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:40.95}
+
+                           {procedure if_fuze.Init}
+
+
+title procedure init;
+
+  function round__(real) : integer;
+  type state_types__fuze = (state_types__unarmed, 
+     state_types__arming, state_types__live, 
+     state_types__triggering, state_types__timed_out);
+  type bus__all_msg_index = integer;
+  type bc1553__lru_name = (bc1553__barometer, bc1553__asi, 
+     bc1553__ins, bc1553__compass, bc1553__fuel, bc1553__fuze, 
+     bc1553__radar, bc1553__infrared, bc1553__fins, bc1553__motor, 
+     bc1553__destruct, bc1553__warhead);
+  type ibit__phase = (ibit__off, ibit__request_start, 
+     ibit__in_progress, ibit__request_stop, ibit__pass, 
+     ibit__fail, ibit__timeout);
+  const bus_id : bc1553__lru_name = pending;
+  const ibit__phase__base__last : ibit__phase = pending; 
+  const ibit__phase__base__first : ibit__phase = pending; 
+  const bc1553__lru_name__base__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__base__first : bc1553__lru_name = pending; 
+  const bus__lru_subaddress_index__base__last : integer = pending; 
+  const bus__lru_subaddress_index__base__first : integer = pending; 
+  const bus__all_msg_index__base__last : integer = pending; 
+  const bus__all_msg_index__base__first : integer = pending; 
+  const state_types__fuze__base__last : state_types__fuze = pending; 
+  const state_types__fuze__base__first : state_types__fuze = pending; 
+  const ibit__phase__size : integer = pending; 
+  const ibit__phase__last : ibit__phase = pending; 
+  const ibit__phase__first : ibit__phase = pending; 
+  const bc1553__lru_name__size : integer = pending; 
+  const bc1553__lru_name__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__first : bc1553__lru_name = pending; 
+  const bus__lru_subaddress_index__size : integer = pending; 
+  const bus__lru_subaddress_index__last : integer = pending; 
+  const bus__lru_subaddress_index__first : integer = pending; 
+  const bus__all_msg_index__size : integer = pending; 
+  const bus__all_msg_index__last : integer = pending; 
+  const bus__all_msg_index__first : integer = pending; 
+  const state_types__fuze__size : integer = pending; 
+  const state_types__fuze__last : state_types__fuze = pending; 
+  const state_types__fuze__first : state_types__fuze = pending; 
+
+end;

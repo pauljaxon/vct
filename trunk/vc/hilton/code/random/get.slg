@@ -1,0 +1,1345 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:23
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure random.Get
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_get_1.  @@@@@@@@@@
+-S-  Applied substitution rule get_rules(17).
+     This was achieved by replacing all occurrences of seed_range__first by:
+          0.
+<S>  New H4:  fld_s(n) >= 0
+<S>  New C1:  fld_last_v(n) mod max_seed >= 0
+<S>  New C3:  fld_last_v(n) mod max_seed >= 0
+-S-  Applied substitution rule get_rules(18).
+     This was achieved by replacing all occurrences of seed_range__last by:
+          971.
+<S>  New H5:  fld_s(n) <= 971
+<S>  New C2:  fld_last_v(n) mod max_seed <= 971
+<S>  New C4:  fld_last_v(n) mod max_seed <= 971
+-S-  Applied substitution rule get_rules(2).
+     This was achieved by replacing all occurrences of max_seed by:
+          971.
+<S>  New C5:  fld_last_v(n) mod 971 >= value__base__first
+<S>  New C6:  fld_last_v(n) mod 971 <= value__base__last
+<S>  New C7:  true
+<S>  New C1:  fld_last_v(n) mod 971 >= 0
+<S>  New C3:  fld_last_v(n) mod 971 >= 0
+<S>  New C2:  fld_last_v(n) mod 971 <= 971
+<S>  New C4:  fld_last_v(n) mod 971 <= 971
+-S-  Applied substitution rule get_rules(9).
+     This was achieved by replacing all occurrences of value__first by:
+          0.
+<S>  New H2:  fld_last_v(n) >= 0
+-S-  Applied substitution rule get_rules(10).
+     This was achieved by replacing all occurrences of value__last by:
+          63001.
+<S>  New H3:  fld_last_v(n) <= 63001
+***  Proved C7:  true
+***  Proved C1:  fld_last_v(n) mod 971 >= 0
+***  Proved C3:  fld_last_v(n) mod 971 >= 0
+***  Proved C2:  fld_last_v(n) mod 971 <= 971
+***  Proved C4:  fld_last_v(n) mod 971 <= 971
+---  Eliminated hypothesis H1 (true-hypothesis).
+     +++  New H6:  long_integer__size >= 0
+     +++  New H7:  value__size >= 0
+     +++  New H8:  value__base__first <= value__base__last
+     +++  New H9:  number__size >= 0
+     +++  New H10:  seed_range__size >= 0
+     +++  New H11:  uint32__size >= 0
+     +++  New H12:  value__base__first <= 0
+     +++  New H13:  value__base__last >= 63001
+***  Proved C5:  fld_last_v(n) mod 971 >= value__base__first
+     using hypothesis H12.
+***  Proved C6:  fld_last_v(n) mod 971 <= value__base__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_2.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+***  Proved C1:  fld_s(n) >= seed_range__first
+     using hypothesis H4.
+***  Proved C2:  fld_s(n) <= seed_range__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_3.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+***  Proved C3:  max_seed <> 0
+     using hypothesis H12.
+-S-  Applied substitution rule get_rules(22).
+     This was achieved by replacing all occurrences of uint32__first by:
+          0.
+<S>  New H15:  poly1(fld_s(n)) >= 0
+<S>  New C1:  poly1(fld_s(n)) mod max_seed >= 0
+-S-  Applied substitution rule get_rules(23).
+     This was achieved by replacing all occurrences of uint32__last by:
+          2147483647.
+<S>  New H16:  poly1(fld_s(n)) <= 2147483647
+<S>  New C2:  poly1(fld_s(n)) mod max_seed <= 2147483647
+-S-  Applied substitution rule get_rules(2).
+     This was achieved by replacing all occurrences of max_seed by:
+          971.
+<S>  New H6:  fld_last_v(n) mod 971 >= seed_range__first
+<S>  New H7:  fld_last_v(n) mod 971 <= seed_range__last
+<S>  New H10:  fld_last_v(n) mod 971 >= value__base__first
+<S>  New H11:  fld_last_v(n) mod 971 <= value__base__last
+<S>  New H12:  true
+<S>  New C1:  poly1(fld_s(n)) mod 971 >= 0
+<S>  New C2:  poly1(fld_s(n)) mod 971 <= 2147483647
+-S-  Applied substitution rule get_rules(9).
+     This was achieved by replacing all occurrences of value__first by:
+          0.
+<S>  New H2:  fld_last_v(n) >= 0
+-S-  Applied substitution rule get_rules(10).
+     This was achieved by replacing all occurrences of value__last by:
+          63001.
+<S>  New H3:  fld_last_v(n) <= 63001
+-S-  Applied substitution rule get_rules(17).
+     This was achieved by replacing all occurrences of seed_range__first by:
+          0.
+<S>  New H4:  fld_s(n) >= 0
+<S>  New H6:  fld_last_v(n) mod 971 >= 0
+-S-  Applied substitution rule get_rules(18).
+     This was achieved by replacing all occurrences of seed_range__last by:
+          971.
+<S>  New H5:  fld_s(n) <= 971
+<S>  New H7:  fld_last_v(n) mod 971 <= 971
+***  Proved C1:  poly1(fld_s(n)) mod 971 >= 0
+***  Proved C2:  poly1(fld_s(n)) mod 971 <= 2147483647
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_4.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+***  Proved C1:  fld_last_v(n) mod max_seed >= seed_range__first
+     using hypothesis H6.
+***  Proved C2:  fld_last_v(n) mod max_seed <= seed_range__last
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_5.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H7)
+          .
+***  Proved C3:  max_seed <> 0
+     using hypothesis H12.
+-S-  Applied substitution rule get_rules(22).
+     This was achieved by replacing all occurrences of uint32__first by:
+          0.
+<S>  New H15:  poly1(fld_s(n)) >= 0
+<S>  New H17:  poly1(fld_s(n)) mod max_seed >= 0
+<S>  New H24:  poly1(fld_last_v(n) mod max_seed) >= 0
+<S>  New C1:  poly1(fld_last_v(n) mod max_seed) mod max_seed >= 0
+-S-  Applied substitution rule get_rules(23).
+     This was achieved by replacing all occurrences of uint32__last by:
+          2147483647.
+<S>  New H16:  poly1(fld_s(n)) <= 2147483647
+<S>  New H18:  poly1(fld_s(n)) mod max_seed <= 2147483647
+<S>  New H25:  poly1(fld_last_v(n) mod max_seed) <= 2147483647
+<S>  New C2:  poly1(fld_last_v(n) mod max_seed) mod max_seed <= 2147483647
+-S-  Applied substitution rule get_rules(2).
+     This was achieved by replacing all occurrences of max_seed by:
+          971.
+<S>  New H6:  fld_last_v(n) mod 971 >= seed_range__first
+<S>  New H7:  fld_last_v(n) mod 971 <= seed_range__last
+<S>  New H10:  fld_last_v(n) mod 971 >= value__base__first
+<S>  New H11:  fld_last_v(n) mod 971 <= value__base__last
+<S>  New H12:  true
+<S>  New H17:  poly1(fld_s(n)) mod 971 >= 0
+<S>  New H18:  poly1(fld_s(n)) mod 971 <= 2147483647
+<S>  New H24:  poly1(fld_last_v(n) mod 971) >= 0
+<S>  New H25:  poly1(fld_last_v(n) mod 971) <= 2147483647
+<S>  New C1:  poly1(fld_last_v(n) mod 971) mod 971 >= 0
+<S>  New C2:  poly1(fld_last_v(n) mod 971) mod 971 <= 2147483647
+-S-  Applied substitution rule get_rules(9).
+     This was achieved by replacing all occurrences of value__first by:
+          0.
+<S>  New H2:  fld_last_v(n) >= 0
+-S-  Applied substitution rule get_rules(10).
+     This was achieved by replacing all occurrences of value__last by:
+          63001.
+<S>  New H3:  fld_last_v(n) <= 63001
+-S-  Applied substitution rule get_rules(17).
+     This was achieved by replacing all occurrences of seed_range__first by:
+          0.
+<S>  New H4:  fld_s(n) >= 0
+<S>  New H6:  fld_last_v(n) mod 971 >= 0
+-S-  Applied substitution rule get_rules(18).
+     This was achieved by replacing all occurrences of seed_range__last by:
+          971.
+<S>  New H5:  fld_s(n) <= 971
+<S>  New H7:  fld_last_v(n) mod 971 <= 971
+***  Proved C1:  poly1(fld_last_v(n) mod 971) mod 971 >= 0
+***  Proved C2:  poly1(fld_last_v(n) mod 971) mod 971 <= 2147483647
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_6.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H12).
+***  Proved C1:  fld_s(n) >= seed_range__first
+     using hypothesis H4.
+***  Proved C2:  fld_s(n) <= seed_range__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_7.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H5)
+          .
+***  Proved C3:  max_seed <> 0
+     using hypothesis H12.
+-S-  Applied substitution rule get_rules(22).
+     This was achieved by replacing all occurrences of uint32__first by:
+          0.
+<S>  New H15:  poly1(fld_s(n)) >= 0
+<S>  New H17:  poly1(fld_s(n)) mod max_seed >= 0
+<S>  New H24:  poly1(fld_last_v(n) mod max_seed) >= 0
+<S>  New H26:  poly1(fld_last_v(n) mod max_seed) mod max_seed >= 0
+<S>  New H31:  poly2(fld_s(n)) >= 0
+<S>  New C1:  poly2(fld_s(n)) mod max_seed >= 0
+-S-  Applied substitution rule get_rules(23).
+     This was achieved by replacing all occurrences of uint32__last by:
+          2147483647.
+<S>  New H16:  poly1(fld_s(n)) <= 2147483647
+<S>  New H18:  poly1(fld_s(n)) mod max_seed <= 2147483647
+<S>  New H25:  poly1(fld_last_v(n) mod max_seed) <= 2147483647
+<S>  New H27:  poly1(fld_last_v(n) mod max_seed) mod max_seed <= 2147483647
+<S>  New H32:  poly2(fld_s(n)) <= 2147483647
+<S>  New C2:  poly2(fld_s(n)) mod max_seed <= 2147483647
+-S-  Applied substitution rule get_rules(2).
+     This was achieved by replacing all occurrences of max_seed by:
+          971.
+<S>  New H6:  fld_last_v(n) mod 971 >= seed_range__first
+<S>  New H7:  fld_last_v(n) mod 971 <= seed_range__last
+<S>  New H10:  fld_last_v(n) mod 971 >= value__base__first
+<S>  New H11:  fld_last_v(n) mod 971 <= value__base__last
+<S>  New H12:  true
+<S>  New H17:  poly1(fld_s(n)) mod 971 >= 0
+<S>  New H18:  poly1(fld_s(n)) mod 971 <= 2147483647
+<S>  New H24:  poly1(fld_last_v(n) mod 971) >= 0
+<S>  New H25:  poly1(fld_last_v(n) mod 971) <= 2147483647
+<S>  New H26:  poly1(fld_last_v(n) mod 971) mod 971 >= 0
+<S>  New H27:  poly1(fld_last_v(n) mod 971) mod 971 <= 2147483647
+<S>  New C1:  poly2(fld_s(n)) mod 971 >= 0
+<S>  New C2:  poly2(fld_s(n)) mod 971 <= 2147483647
+-S-  Applied substitution rule get_rules(9).
+     This was achieved by replacing all occurrences of value__first by:
+          0.
+<S>  New H2:  fld_last_v(n) >= 0
+-S-  Applied substitution rule get_rules(10).
+     This was achieved by replacing all occurrences of value__last by:
+          63001.
+<S>  New H3:  fld_last_v(n) <= 63001
+-S-  Applied substitution rule get_rules(17).
+     This was achieved by replacing all occurrences of seed_range__first by:
+          0.
+<S>  New H4:  fld_s(n) >= 0
+<S>  New H6:  fld_last_v(n) mod 971 >= 0
+-S-  Applied substitution rule get_rules(18).
+     This was achieved by replacing all occurrences of seed_range__last by:
+          971.
+<S>  New H5:  fld_s(n) <= 971
+<S>  New H7:  fld_last_v(n) mod 971 <= 971
+***  Proved C1:  poly2(fld_s(n)) mod 971 >= 0
+***  Proved C2:  poly2(fld_s(n)) mod 971 <= 2147483647
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_8.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H7)
+          .
+***  Proved C1:  fld_last_v(n) mod max_seed >= seed_range__first
+     using hypothesis H6.
+***  Proved C2:  fld_last_v(n) mod max_seed <= seed_range__last
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_9.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as H7)
+          .
+***  Proved C3:  max_seed <> 0
+     using hypothesis H12.
+-S-  Applied substitution rule get_rules(22).
+     This was achieved by replacing all occurrences of uint32__first by:
+          0.
+<S>  New H15:  poly1(fld_s(n)) >= 0
+<S>  New H17:  poly1(fld_s(n)) mod max_seed >= 0
+<S>  New H24:  poly1(fld_last_v(n) mod max_seed) >= 0
+<S>  New H26:  poly1(fld_last_v(n) mod max_seed) mod max_seed >= 0
+<S>  New H31:  poly2(fld_s(n)) >= 0
+<S>  New H33:  poly2(fld_s(n)) mod max_seed >= 0
+<S>  New H40:  poly2(fld_last_v(n) mod max_seed) >= 0
+<S>  New C1:  poly2(fld_last_v(n) mod max_seed) mod max_seed >= 0
+-S-  Applied substitution rule get_rules(23).
+     This was achieved by replacing all occurrences of uint32__last by:
+          2147483647.
+<S>  New H16:  poly1(fld_s(n)) <= 2147483647
+<S>  New H18:  poly1(fld_s(n)) mod max_seed <= 2147483647
+<S>  New H25:  poly1(fld_last_v(n) mod max_seed) <= 2147483647
+<S>  New H27:  poly1(fld_last_v(n) mod max_seed) mod max_seed <= 2147483647
+<S>  New H32:  poly2(fld_s(n)) <= 2147483647
+<S>  New H34:  poly2(fld_s(n)) mod max_seed <= 2147483647
+<S>  New H41:  poly2(fld_last_v(n) mod max_seed) <= 2147483647
+<S>  New C2:  poly2(fld_last_v(n) mod max_seed) mod max_seed <= 2147483647
+-S-  Applied substitution rule get_rules(2).
+     This was achieved by replacing all occurrences of max_seed by:
+          971.
+<S>  New H6:  fld_last_v(n) mod 971 >= seed_range__first
+<S>  New H7:  fld_last_v(n) mod 971 <= seed_range__last
+<S>  New H10:  fld_last_v(n) mod 971 >= value__base__first
+<S>  New H11:  fld_last_v(n) mod 971 <= value__base__last
+<S>  New H12:  true
+<S>  New H17:  poly1(fld_s(n)) mod 971 >= 0
+<S>  New H18:  poly1(fld_s(n)) mod 971 <= 2147483647
+<S>  New H24:  poly1(fld_last_v(n) mod 971) >= 0
+<S>  New H25:  poly1(fld_last_v(n) mod 971) <= 2147483647
+<S>  New H26:  poly1(fld_last_v(n) mod 971) mod 971 >= 0
+<S>  New H27:  poly1(fld_last_v(n) mod 971) mod 971 <= 2147483647
+<S>  New H33:  poly2(fld_s(n)) mod 971 >= 0
+<S>  New H34:  poly2(fld_s(n)) mod 971 <= 2147483647
+<S>  New H40:  poly2(fld_last_v(n) mod 971) >= 0
+<S>  New H41:  poly2(fld_last_v(n) mod 971) <= 2147483647
+<S>  New C1:  poly2(fld_last_v(n) mod 971) mod 971 >= 0
+<S>  New C2:  poly2(fld_last_v(n) mod 971) mod 971 <= 2147483647
+-S-  Applied substitution rule get_rules(9).
+     This was achieved by replacing all occurrences of value__first by:
+          0.
+<S>  New H2:  fld_last_v(n) >= 0
+-S-  Applied substitution rule get_rules(10).
+     This was achieved by replacing all occurrences of value__last by:
+          63001.
+<S>  New H3:  fld_last_v(n) <= 63001
+-S-  Applied substitution rule get_rules(17).
+     This was achieved by replacing all occurrences of seed_range__first by:
+          0.
+<S>  New H4:  fld_s(n) >= 0
+<S>  New H6:  fld_last_v(n) mod 971 >= 0
+-S-  Applied substitution rule get_rules(18).
+     This was achieved by replacing all occurrences of seed_range__last by:
+          971.
+<S>  New H5:  fld_s(n) <= 971
+<S>  New H7:  fld_last_v(n) mod 971 <= 971
+***  Proved C1:  poly2(fld_last_v(n) mod 971) mod 971 >= 0
+***  Proved C2:  poly2(fld_last_v(n) mod 971) mod 971 <= 2147483647
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_10.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H27).
+-S-  Applied substitution rule get_rules(22).
+     This was achieved by replacing all occurrences of uint32__first by:
+          0.
+<S>  New H15:  poly1(fld_s(n)) >= 0
+<S>  New H17:  poly1(fld_s(n)) mod max_seed >= 0
+<S>  New H24:  poly1(fld_last_v(n) mod max_seed) >= 0
+<S>  New H26:  poly1(fld_last_v(n) mod max_seed) mod max_seed >= 0
+<S>  New H31:  poly2(fld_s(n)) >= 0
+<S>  New H33:  poly2(fld_s(n)) mod max_seed >= 0
+<S>  New H40:  poly2(fld_last_v(n) mod max_seed) >= 0
+<S>  New H42:  poly2(fld_last_v(n) mod max_seed) mod max_seed >= 0
+<S>  New C1:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed) 
+          mod max_seed) >= 0
+-S-  Applied substitution rule get_rules(23).
+     This was achieved by replacing all occurrences of uint32__last by:
+          2147483647.
+<S>  New H16:  poly1(fld_s(n)) <= 2147483647
+<S>  New H18:  poly1(fld_s(n)) mod max_seed <= 2147483647
+<S>  New H25:  poly1(fld_last_v(n) mod max_seed) <= 2147483647
+<S>  New H27:  poly1(fld_last_v(n) mod max_seed) mod max_seed <= 2147483647
+<S>  New H32:  poly2(fld_s(n)) <= 2147483647
+<S>  New H34:  poly2(fld_s(n)) mod max_seed <= 2147483647
+<S>  New H41:  poly2(fld_last_v(n) mod max_seed) <= 2147483647
+<S>  New H43:  poly2(fld_last_v(n) mod max_seed) mod max_seed <= 2147483647
+<S>  New C2:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed) 
+          mod max_seed) <= 2147483647
+-S-  Applied substitution rule get_rules(6).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed) 
+          mod max_seed) >= - 2147483648
+-S-  Applied substitution rule get_rules(7).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed) 
+          mod max_seed) <= 2147483647
+***  Proved C1:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod 
+          max_seed) mod max_seed) >= 0
+     using hypotheses H17 & H26.
+***  Proved C3:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod 
+          max_seed) mod max_seed) >= - 2147483648
+     using hypotheses H17 & H26.
+-S-  Applied substitution rule get_rules(2).
+     This was achieved by replacing all occurrences of max_seed by:
+          971.
+<S>  New H6:  fld_last_v(n) mod 971 >= seed_range__first
+<S>  New H7:  fld_last_v(n) mod 971 <= seed_range__last
+<S>  New H10:  fld_last_v(n) mod 971 >= value__base__first
+<S>  New H11:  fld_last_v(n) mod 971 <= value__base__last
+<S>  New H12:  true
+<S>  New H17:  poly1(fld_s(n)) mod 971 >= 0
+<S>  New H18:  poly1(fld_s(n)) mod 971 <= 2147483647
+<S>  New H24:  poly1(fld_last_v(n) mod 971) >= 0
+<S>  New H25:  poly1(fld_last_v(n) mod 971) <= 2147483647
+<S>  New H26:  poly1(fld_last_v(n) mod 971) mod 971 >= 0
+<S>  New H27:  poly1(fld_last_v(n) mod 971) mod 971 <= 2147483647
+<S>  New H33:  poly2(fld_s(n)) mod 971 >= 0
+<S>  New H34:  poly2(fld_s(n)) mod 971 <= 2147483647
+<S>  New H40:  poly2(fld_last_v(n) mod 971) >= 0
+<S>  New H41:  poly2(fld_last_v(n) mod 971) <= 2147483647
+<S>  New H42:  poly2(fld_last_v(n) mod 971) mod 971 >= 0
+<S>  New H43:  poly2(fld_last_v(n) mod 971) mod 971 <= 2147483647
+<S>  New C2:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          <= 2147483647
+<S>  New C4:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          <= 2147483647
+-S-  Applied substitution rule get_rules(9).
+     This was achieved by replacing all occurrences of value__first by:
+          0.
+<S>  New H2:  fld_last_v(n) >= 0
+-S-  Applied substitution rule get_rules(10).
+     This was achieved by replacing all occurrences of value__last by:
+          63001.
+<S>  New H3:  fld_last_v(n) <= 63001
+-S-  Applied substitution rule get_rules(17).
+     This was achieved by replacing all occurrences of seed_range__first by:
+          0.
+<S>  New H4:  fld_s(n) >= 0
+<S>  New H6:  fld_last_v(n) mod 971 >= 0
+-S-  Applied substitution rule get_rules(18).
+     This was achieved by replacing all occurrences of seed_range__last by:
+          971.
+<S>  New H5:  fld_s(n) <= 971
+<S>  New H7:  fld_last_v(n) mod 971 <= 971
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H29 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H36 (true-hypothesis).
+---  Eliminated hypothesis H37 (true-hypothesis).
+---  Eliminated hypothesis H38 (true-hypothesis).
+---  Eliminated hypothesis H39 (true-hypothesis).
+---  Eliminated hypothesis H44 (true-hypothesis).
+---  Eliminated hypothesis H45 (true-hypothesis).
+---  Eliminated hypothesis H46 (true-hypothesis).
+---  Eliminated hypothesis H47 (true-hypothesis).
+---  Eliminated hypothesis H48 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C2:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 
+          971) <= 2147483647
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_11.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H54 has been replaced by "true".  (It is already present, as 
+          H50).
+***  Proved C7:  max_seed <> 0
+     using hypothesis H12.
+-S-  Applied substitution rule get_rules(17).
+     This was achieved by replacing all occurrences of seed_range__first by:
+          0.
+<S>  New H4:  fld_s(n) >= 0
+<S>  New H6:  fld_last_v(n) mod max_seed >= 0
+<S>  New C1:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod max_seed >= 0
+<S>  New C3:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod max_seed >= 0
+-S-  Applied substitution rule get_rules(18).
+     This was achieved by replacing all occurrences of seed_range__last by:
+          971.
+<S>  New H5:  fld_s(n) <= 971
+<S>  New H7:  fld_last_v(n) mod max_seed <= 971
+<S>  New C2:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod max_seed <= 971
+<S>  New C4:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod max_seed <= 971
+-S-  Applied substitution rule get_rules(6).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H51:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed)
+           mod max_seed) >= - 2147483648
+<S>  New C5:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod max_seed >= - 2147483648
+-S-  Applied substitution rule get_rules(7).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H52:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed)
+           mod max_seed) <= 2147483647
+<S>  New C6:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod max_seed <= 2147483647
+-S-  Applied substitution rule get_rules(2).
+     This was achieved by replacing all occurrences of max_seed by:
+          971.
+<S>  New H6:  fld_last_v(n) mod 971 >= 0
+<S>  New H7:  fld_last_v(n) mod 971 <= 971
+<S>  New H10:  fld_last_v(n) mod 971 >= value__base__first
+<S>  New H11:  fld_last_v(n) mod 971 <= value__base__last
+<S>  New H12:  true
+<S>  New H17:  poly1(fld_s(n)) mod 971 >= uint32__first
+<S>  New H18:  poly1(fld_s(n)) mod 971 <= uint32__last
+<S>  New H24:  poly1(fld_last_v(n) mod 971) >= uint32__first
+<S>  New H25:  poly1(fld_last_v(n) mod 971) <= uint32__last
+<S>  New H26:  poly1(fld_last_v(n) mod 971) mod 971 >= uint32__first
+<S>  New H27:  poly1(fld_last_v(n) mod 971) mod 971 <= uint32__last
+<S>  New H33:  poly2(fld_s(n)) mod 971 >= uint32__first
+<S>  New H34:  poly2(fld_s(n)) mod 971 <= uint32__last
+<S>  New H40:  poly2(fld_last_v(n) mod 971) >= uint32__first
+<S>  New H41:  poly2(fld_last_v(n) mod 971) <= uint32__last
+<S>  New H42:  poly2(fld_last_v(n) mod 971) mod 971 >= uint32__first
+<S>  New H43:  poly2(fld_last_v(n) mod 971) mod 971 <= uint32__last
+<S>  New H49:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          >= uint32__first
+<S>  New H50:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          <= uint32__last
+<S>  New H51:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          >= - 2147483648
+<S>  New H52:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          <= 2147483647
+<S>  New C1:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 >= 0
+<S>  New C3:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 >= 0
+<S>  New C2:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 <= 971
+<S>  New C4:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 <= 971
+<S>  New C5:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 >= - 2147483648
+<S>  New C6:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 <= 2147483647
+-S-  Applied substitution rule get_rules(9).
+     This was achieved by replacing all occurrences of value__first by:
+          0.
+<S>  New H2:  fld_last_v(n) >= 0
+-S-  Applied substitution rule get_rules(10).
+     This was achieved by replacing all occurrences of value__last by:
+          63001.
+<S>  New H3:  fld_last_v(n) <= 63001
+-S-  Applied substitution rule get_rules(22).
+     This was achieved by replacing all occurrences of uint32__first by:
+          0.
+<S>  New H15:  poly1(fld_s(n)) >= 0
+<S>  New H31:  poly2(fld_s(n)) >= 0
+<S>  New H17:  poly1(fld_s(n)) mod 971 >= 0
+<S>  New H24:  poly1(fld_last_v(n) mod 971) >= 0
+<S>  New H26:  poly1(fld_last_v(n) mod 971) mod 971 >= 0
+<S>  New H33:  poly2(fld_s(n)) mod 971 >= 0
+<S>  New H40:  poly2(fld_last_v(n) mod 971) >= 0
+<S>  New H42:  poly2(fld_last_v(n) mod 971) mod 971 >= 0
+<S>  New H49:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          >= 0
+-S-  Applied substitution rule get_rules(23).
+     This was achieved by replacing all occurrences of uint32__last by:
+          2147483647.
+<S>  New H16:  poly1(fld_s(n)) <= 2147483647
+<S>  New H32:  poly2(fld_s(n)) <= 2147483647
+<S>  New H18:  poly1(fld_s(n)) mod 971 <= 2147483647
+<S>  New H25:  poly1(fld_last_v(n) mod 971) <= 2147483647
+<S>  New H27:  poly1(fld_last_v(n) mod 971) mod 971 <= 2147483647
+<S>  New H34:  poly2(fld_s(n)) mod 971 <= 2147483647
+<S>  New H41:  poly2(fld_last_v(n) mod 971) <= 2147483647
+<S>  New H43:  poly2(fld_last_v(n) mod 971) mod 971 <= 2147483647
+<S>  New H50:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          <= 2147483647
+***  Proved C1:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 
+          971) mod 971 >= 0
+***  Proved C3:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 
+          971) mod 971 >= 0
+***  Proved C2:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 
+          971) mod 971 <= 971
+***  Proved C4:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 
+          971) mod 971 <= 971
+***  Proved C5:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 
+          971) mod 971 >= - 2147483648
+***  Proved C6:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 
+          971) mod 971 <= 2147483647
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_12.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H54 has been replaced by "true".  (It is already present, as 
+          H50).
+---  Hypothesis H57 has been replaced by "true".  (It is already present, as 
+          H55).
+---  Hypothesis H58 has been replaced by "true".  (It is already present, as 
+          H56).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H34).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H65 has been replaced by "true".  (It is already present, as 
+          H43).
+-S-  Applied substitution rule get_rules(22).
+     This was achieved by replacing all occurrences of uint32__first by:
+          0.
+<S>  New H15:  poly1(fld_s(n)) >= 0
+<S>  New H17:  poly1(fld_s(n)) mod max_seed >= 0
+<S>  New H24:  poly1(fld_last_v(n) mod max_seed) >= 0
+<S>  New H26:  poly1(fld_last_v(n) mod max_seed) mod max_seed >= 0
+<S>  New H31:  poly2(fld_s(n)) >= 0
+<S>  New H33:  poly2(fld_s(n)) mod max_seed >= 0
+<S>  New H40:  poly2(fld_last_v(n) mod max_seed) >= 0
+<S>  New H42:  poly2(fld_last_v(n) mod max_seed) mod max_seed >= 0
+<S>  New H49:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed)
+           mod max_seed) >= 0
+<S>  New C1:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) >= 0
+-S-  Applied substitution rule get_rules(23).
+     This was achieved by replacing all occurrences of uint32__last by:
+          2147483647.
+<S>  New H16:  poly1(fld_s(n)) <= 2147483647
+<S>  New H18:  poly1(fld_s(n)) mod max_seed <= 2147483647
+<S>  New H25:  poly1(fld_last_v(n) mod max_seed) <= 2147483647
+<S>  New H27:  poly1(fld_last_v(n) mod max_seed) mod max_seed <= 2147483647
+<S>  New H32:  poly2(fld_s(n)) <= 2147483647
+<S>  New H34:  poly2(fld_s(n)) mod max_seed <= 2147483647
+<S>  New H41:  poly2(fld_last_v(n) mod max_seed) <= 2147483647
+<S>  New H43:  poly2(fld_last_v(n) mod max_seed) mod max_seed <= 2147483647
+<S>  New H50:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed)
+           mod max_seed) <= 2147483647
+<S>  New C2:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) <= 2147483647
+-S-  Applied substitution rule get_rules(6).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H51:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed)
+           mod max_seed) >= - 2147483648
+<S>  New H59:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed)
+           mod max_seed) mod max_seed >= - 2147483648
+<S>  New C3:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) >= - 2147483648
+-S-  Applied substitution rule get_rules(7).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H52:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed)
+           mod max_seed) <= 2147483647
+<S>  New H60:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed)
+           mod max_seed) mod max_seed <= 2147483647
+<S>  New C4:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) <= 2147483647
+***  Proved C1:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod 
+          max_seed) mod max_seed) >= 0
+     using hypotheses H33 & H42.
+***  Proved C3:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod 
+          max_seed) mod max_seed) >= - 2147483648
+     using hypotheses H33 & H42.
+-S-  Applied substitution rule get_rules(2).
+     This was achieved by replacing all occurrences of max_seed by:
+          971.
+<S>  New H6:  fld_last_v(n) mod 971 >= seed_range__first
+<S>  New H7:  fld_last_v(n) mod 971 <= seed_range__last
+<S>  New H10:  fld_last_v(n) mod 971 >= value__base__first
+<S>  New H11:  fld_last_v(n) mod 971 <= value__base__last
+<S>  New H12:  true
+<S>  New H17:  poly1(fld_s(n)) mod 971 >= 0
+<S>  New H18:  poly1(fld_s(n)) mod 971 <= 2147483647
+<S>  New H24:  poly1(fld_last_v(n) mod 971) >= 0
+<S>  New H25:  poly1(fld_last_v(n) mod 971) <= 2147483647
+<S>  New H26:  poly1(fld_last_v(n) mod 971) mod 971 >= 0
+<S>  New H27:  poly1(fld_last_v(n) mod 971) mod 971 <= 2147483647
+<S>  New H33:  poly2(fld_s(n)) mod 971 >= 0
+<S>  New H34:  poly2(fld_s(n)) mod 971 <= 2147483647
+<S>  New H40:  poly2(fld_last_v(n) mod 971) >= 0
+<S>  New H41:  poly2(fld_last_v(n) mod 971) <= 2147483647
+<S>  New H42:  poly2(fld_last_v(n) mod 971) mod 971 >= 0
+<S>  New H43:  poly2(fld_last_v(n) mod 971) mod 971 <= 2147483647
+<S>  New H49:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          >= 0
+<S>  New H50:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          <= 2147483647
+<S>  New H51:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          >= - 2147483648
+<S>  New H52:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          <= 2147483647
+<S>  New H55:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 >= seed_range__first
+<S>  New H56:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 <= seed_range__last
+<S>  New H59:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 >= - 2147483648
+<S>  New H60:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 <= 2147483647
+<S>  New C2:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          <= 2147483647
+<S>  New C4:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          <= 2147483647
+-S-  Applied substitution rule get_rules(9).
+     This was achieved by replacing all occurrences of value__first by:
+          0.
+<S>  New H2:  fld_last_v(n) >= 0
+-S-  Applied substitution rule get_rules(10).
+     This was achieved by replacing all occurrences of value__last by:
+          63001.
+<S>  New H3:  fld_last_v(n) <= 63001
+-S-  Applied substitution rule get_rules(17).
+     This was achieved by replacing all occurrences of seed_range__first by:
+          0.
+<S>  New H4:  fld_s(n) >= 0
+<S>  New H6:  fld_last_v(n) mod 971 >= 0
+<S>  New H55:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 >= 0
+-S-  Applied substitution rule get_rules(18).
+     This was achieved by replacing all occurrences of seed_range__last by:
+          971.
+<S>  New H5:  fld_s(n) <= 971
+<S>  New H7:  fld_last_v(n) mod 971 <= 971
+<S>  New H56:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 <= 971
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H29 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H36 (true-hypothesis).
+---  Eliminated hypothesis H37 (true-hypothesis).
+---  Eliminated hypothesis H38 (true-hypothesis).
+---  Eliminated hypothesis H39 (true-hypothesis).
+---  Eliminated hypothesis H44 (true-hypothesis).
+---  Eliminated hypothesis H45 (true-hypothesis).
+---  Eliminated hypothesis H46 (true-hypothesis).
+---  Eliminated hypothesis H47 (true-hypothesis).
+---  Eliminated hypothesis H48 (true-hypothesis).
+---  Eliminated hypothesis H53 (true-hypothesis).
+---  Eliminated hypothesis H54 (true-hypothesis).
+---  Eliminated hypothesis H57 (true-hypothesis).
+---  Eliminated hypothesis H58 (true-hypothesis).
+---  Eliminated hypothesis H61 (true-hypothesis).
+---  Eliminated hypothesis H62 (true-hypothesis).
+---  Eliminated hypothesis H63 (true-hypothesis).
+---  Eliminated hypothesis H64 (true-hypothesis).
+---  Eliminated hypothesis H65 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H52 (duplicate of H50).
+---  Eliminated hypothesis H51 (redundant, given H49).
+---  Eliminated hypothesis H59 (redundant, given H55).
+---  Eliminated hypothesis H60 (redundant, given H56).
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C2:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 
+          971) <= 2147483647
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_13.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H54 has been replaced by "true".  (It is already present, as 
+          H50).
+---  Hypothesis H57 has been replaced by "true".  (It is already present, as 
+          H55).
+---  Hypothesis H58 has been replaced by "true".  (It is already present, as 
+          H56).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H34).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H65 has been replaced by "true".  (It is already present, as 
+          H43).
+---  Hypothesis H70 has been replaced by "true".  (It is already present, as 
+          H66).
+---  Hypothesis H71 has been replaced by "true".  (It is already present, as 
+          H67).
+-S-  Applied substitution rule get_rules(9).
+     This was achieved by replacing all occurrences of value__first by:
+          0.
+<S>  New H2:  fld_last_v(n) >= 0
+<S>  New C1:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod max_val >= 0
+<S>  New C3:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod max_val >= 0
+-S-  Applied substitution rule get_rules(10).
+     This was achieved by replacing all occurrences of value__last by:
+          63001.
+<S>  New H3:  fld_last_v(n) <= 63001
+<S>  New C2:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod max_val <= 63001
+<S>  New C4:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod max_val <= 63001
+-S-  Applied substitution rule get_rules(6).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H51:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed)
+           mod max_seed) >= - 2147483648
+<S>  New H59:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed)
+           mod max_seed) mod max_seed >= - 2147483648
+<S>  New H68:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed)
+           mod max_seed) >= - 2147483648
+<S>  New C5:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod max_val >= - 2147483648
+-S-  Applied substitution rule get_rules(7).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H52:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed)
+           mod max_seed) <= 2147483647
+<S>  New H60:  poly1(fld_s(n)) mod max_seed * (poly1(fld_last_v(n) mod max_seed)
+           mod max_seed) mod max_seed <= 2147483647
+<S>  New H69:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed)
+           mod max_seed) <= 2147483647
+<S>  New C6:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod max_val <= 2147483647
+-S-  Applied substitution rule get_rules(1).
+     This was achieved by replacing all occurrences of max_val by:
+          63001.
+<S>  New C7:  true
+<S>  New C1:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod 63001 >= 0
+<S>  New C3:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod 63001 >= 0
+<S>  New C2:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod 63001 <= 63001
+<S>  New C4:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod 63001 <= 63001
+<S>  New C5:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod 63001 >= - 2147483648
+<S>  New C6:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed) 
+          mod max_seed) mod 63001 <= 2147483647
+-S-  Applied substitution rule get_rules(2).
+     This was achieved by replacing all occurrences of max_seed by:
+          971.
+<S>  New H6:  fld_last_v(n) mod 971 >= seed_range__first
+<S>  New H7:  fld_last_v(n) mod 971 <= seed_range__last
+<S>  New H10:  fld_last_v(n) mod 971 >= value__base__first
+<S>  New H11:  fld_last_v(n) mod 971 <= value__base__last
+<S>  New H12:  true
+<S>  New H17:  poly1(fld_s(n)) mod 971 >= uint32__first
+<S>  New H18:  poly1(fld_s(n)) mod 971 <= uint32__last
+<S>  New H24:  poly1(fld_last_v(n) mod 971) >= uint32__first
+<S>  New H25:  poly1(fld_last_v(n) mod 971) <= uint32__last
+<S>  New H26:  poly1(fld_last_v(n) mod 971) mod 971 >= uint32__first
+<S>  New H27:  poly1(fld_last_v(n) mod 971) mod 971 <= uint32__last
+<S>  New H33:  poly2(fld_s(n)) mod 971 >= uint32__first
+<S>  New H34:  poly2(fld_s(n)) mod 971 <= uint32__last
+<S>  New H40:  poly2(fld_last_v(n) mod 971) >= uint32__first
+<S>  New H41:  poly2(fld_last_v(n) mod 971) <= uint32__last
+<S>  New H42:  poly2(fld_last_v(n) mod 971) mod 971 >= uint32__first
+<S>  New H43:  poly2(fld_last_v(n) mod 971) mod 971 <= uint32__last
+<S>  New H49:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          >= uint32__first
+<S>  New H50:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          <= uint32__last
+<S>  New H51:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          >= - 2147483648
+<S>  New H52:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          <= 2147483647
+<S>  New H55:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 >= seed_range__first
+<S>  New H56:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 <= seed_range__last
+<S>  New H59:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 >= - 2147483648
+<S>  New H60:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 <= 2147483647
+<S>  New H66:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          >= uint32__first
+<S>  New H67:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          <= uint32__last
+<S>  New H68:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          >= - 2147483648
+<S>  New H69:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          <= 2147483647
+<S>  New C1:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          mod 63001 >= 0
+<S>  New C3:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          mod 63001 >= 0
+<S>  New C2:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          mod 63001 <= 63001
+<S>  New C4:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          mod 63001 <= 63001
+<S>  New C5:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          mod 63001 >= - 2147483648
+<S>  New C6:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          mod 63001 <= 2147483647
+-S-  Applied substitution rule get_rules(17).
+     This was achieved by replacing all occurrences of seed_range__first by:
+          0.
+<S>  New H4:  fld_s(n) >= 0
+<S>  New H6:  fld_last_v(n) mod 971 >= 0
+<S>  New H55:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 >= 0
+-S-  Applied substitution rule get_rules(18).
+     This was achieved by replacing all occurrences of seed_range__last by:
+          971.
+<S>  New H5:  fld_s(n) <= 971
+<S>  New H7:  fld_last_v(n) mod 971 <= 971
+<S>  New H56:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          mod 971 <= 971
+-S-  Applied substitution rule get_rules(22).
+     This was achieved by replacing all occurrences of uint32__first by:
+          0.
+<S>  New H15:  poly1(fld_s(n)) >= 0
+<S>  New H31:  poly2(fld_s(n)) >= 0
+<S>  New H17:  poly1(fld_s(n)) mod 971 >= 0
+<S>  New H24:  poly1(fld_last_v(n) mod 971) >= 0
+<S>  New H26:  poly1(fld_last_v(n) mod 971) mod 971 >= 0
+<S>  New H33:  poly2(fld_s(n)) mod 971 >= 0
+<S>  New H40:  poly2(fld_last_v(n) mod 971) >= 0
+<S>  New H42:  poly2(fld_last_v(n) mod 971) mod 971 >= 0
+<S>  New H49:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          >= 0
+<S>  New H66:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          >= 0
+-S-  Applied substitution rule get_rules(23).
+     This was achieved by replacing all occurrences of uint32__last by:
+          2147483647.
+<S>  New H16:  poly1(fld_s(n)) <= 2147483647
+<S>  New H32:  poly2(fld_s(n)) <= 2147483647
+<S>  New H18:  poly1(fld_s(n)) mod 971 <= 2147483647
+<S>  New H25:  poly1(fld_last_v(n) mod 971) <= 2147483647
+<S>  New H27:  poly1(fld_last_v(n) mod 971) mod 971 <= 2147483647
+<S>  New H34:  poly2(fld_s(n)) mod 971 <= 2147483647
+<S>  New H41:  poly2(fld_last_v(n) mod 971) <= 2147483647
+<S>  New H43:  poly2(fld_last_v(n) mod 971) mod 971 <= 2147483647
+<S>  New H50:  poly1(fld_s(n)) mod 971 * (poly1(fld_last_v(n) mod 971) mod 971) 
+          <= 2147483647
+<S>  New H67:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 971) 
+          <= 2147483647
+***  Proved C7:  true
+***  Proved C1:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 
+          971) mod 63001 >= 0
+***  Proved C3:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 
+          971) mod 63001 >= 0
+***  Proved C2:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 
+          971) mod 63001 <= 63001
+***  Proved C4:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 
+          971) mod 63001 <= 63001
+***  Proved C5:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 
+          971) mod 63001 >= - 2147483648
+***  Proved C6:  poly2(fld_s(n)) mod 971 * (poly2(fld_last_v(n) mod 971) mod 
+          971) mod 63001 <= 2147483647
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_14.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H27).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H54 has been replaced by "true".  (It is already present, as 
+          H50).
+---  Hypothesis H57 has been replaced by "true".  (It is already present, as 
+          H55).
+---  Hypothesis H58 has been replaced by "true".  (It is already present, as 
+          H56).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H33).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H34).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H65 has been replaced by "true".  (It is already present, as 
+          H43).
+---  Hypothesis H70 has been replaced by "true".  (It is already present, as 
+          H66).
+---  Hypothesis H71 has been replaced by "true".  (It is already present, as 
+          H67).
+---  Hypothesis H74 has been replaced by "true".  (It is already present, as 
+          H72).
+---  Hypothesis H75 has been replaced by "true".  (It is already present, as 
+          H73).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed)
+           mod max_seed) mod max_val >= value__first
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod max_seed)
+           mod max_seed) mod max_val <= value__last
+***  Proved C1:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod 
+          max_seed) mod max_seed) mod max_val >= value__first
+     using hypothesis H72.
+***  Proved C2:  poly2(fld_s(n)) mod max_seed * (poly2(fld_last_v(n) mod 
+          max_seed) mod max_seed) mod max_val <= value__last
+     using hypothesis H73.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_15.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

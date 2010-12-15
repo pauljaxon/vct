@@ -1,0 +1,70 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:43  SIMPLIFIED 25-NOV-2009, 14:19:18
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure if_destruct.Get_Stage
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_get_stage_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= last_state
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  stage__first <= last_state
+***  Proved C1:  stage__first <= last_state
+     using hypothesis H2.
+***  Proved C2:  last_state <= stage__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_stage_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  stage__first <= last_state
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  stage__first <= destruct_cfg__inactive
+-S-  Applied substitution rule get_stage_rules(27).
+     This was achieved by replacing all occurrences of stage__first by:
+          destruct_cfg__inactive.
+<S>  New H2:  destruct_cfg__inactive <= last_state
+<S>  New C1:  true
+-S-  Applied substitution rule get_stage_rules(28).
+     This was achieved by replacing all occurrences of stage__last by:
+          destruct_cfg__detonated.
+<S>  New H3:  last_state <= destruct_cfg__detonated
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_stage_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_stage_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_stage_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_stage_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

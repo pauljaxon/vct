@@ -1,0 +1,48 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:41.85
+
+Line
+   1  -- IR configuration
+   2  --
+   3  -- $Log: ir_cfg.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/08/26 18:27:27  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with MeasureTypes,systemtypes;
+  13  --# inherit Measuretypes, measuretypes.angle_ops,
+  14  --#  systemtypes;
+  15  package Ir_Cfg
+  16  is
+  17     Max_Detect_Range : constant Measuretypes.Meter := 30_000;
+  18  
+  19     type Sector_Range is range -12..12;
+  20  
+  21     Sector_Angle : constant Measuretypes.Millirad
+  22       := Measuretypes.Hundred_Millirads;
+  23  
+  24     function Sector_To_Millirad(S : Sector_Range)
+  25                                return Measuretypes.Millirad;
+  26  
+  27     function Encode_Sector(S : Sector_Range) return
+  28       Systemtypes.Unsigned16;
+  29  
+  30     function decode_Sector(B : Systemtypes.unsigned16) return
+  31       Sector_Range;
+  32  
+  33  end ir_Cfg;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

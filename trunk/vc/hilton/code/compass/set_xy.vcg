@@ -1,0 +1,62 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.38
+
+                          procedure compass.Set_XY
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 167:
+
+procedure_set_xy_1.
+H1:    true .
+H2:    xy >= angle_degrees__first .
+H3:    xy <= angle_degrees__last .
+        ->
+C1:    xy >= measuretypes__angle_degrees__first .
+C2:    xy <= measuretypes__angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 168:
+
+procedure_set_xy_2.
+H1:    true .
+H2:    xy >= angle_degrees__first .
+H3:    xy <= angle_degrees__last .
+H4:    xy >= measuretypes__angle_degrees__first .
+H5:    xy <= measuretypes__angle_degrees__last .
+H6:    true .
+H7:    last_time__1 >= clock__millisecond__first .
+H8:    last_time__1 <= clock__millisecond__last .
+H9:    true .
+        ->
+C1:    last_time__1 >= clock__millisecond__first .
+C2:    last_time__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_set_xy_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_xy_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_set_xy_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_xy_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+

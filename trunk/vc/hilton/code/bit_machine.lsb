@@ -1,0 +1,149 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.03
+
+Line
+   1  -- Implementation of a bit machine type package
+   2  --
+   3  -- $Log: bit_machine.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/10 20:03:56  adi
+   9  -- Added Machine_Ticks counter
+  10  --
+  11  --
+  12  package body BIT_Machine
+  13  is
+  14  
+  15     procedure Create(Ticks_To_Complete : in SystemTypes.Unsigned16;
+  16                      State : out Machine)
+  17     is begin
+  18        State := Machine'(Current_Phase => IBIT.Off,
+  19                          Ticks => 0,
+  20                          Fail_BIT => False,
+  21                          Ticks_To_Complete => Ticks_To_Complete);
+  22     end Create;
+
++++        Flow analysis of subprogram Create performed: no 
+           errors found.
+
+  23  
+  24     procedure Change_State(Word : in Bus.Word;
+  25                            State : in out Machine)
+  26     is
+  27     begin
+  28        Ibit.RT_State_Machine(Bus_Data => Word,
+  29                              Current_Phase => State.Current_Phase);
+  30     end Change_State;
+
++++        Flow analysis of subprogram Change_State 
+           performed: no errors found.
+
+  31  
+  32  
+  33     function Phase(State : Machine) return IBIT.Phase
+  34     is begin
+  35        return State.Current_Phase;
+  36     end Phase;
+
++++        Flow analysis of subprogram Phase performed: no 
+           errors found.
+
+  37  
+  38     function Machine_Ticks(State : Machine) return
+  39       Systemtypes.Unsigned16
+  40     is begin
+  41        return State.Ticks;
+  42     end Machine_Ticks;
+
++++        Flow analysis of subprogram Machine_Ticks 
+           performed: no errors found.
+
+  43  
+  44     procedure Init(State : in out Machine)
+  45     is begin
+  46        State.Current_Phase := Ibit.In_Progress;
+  47        State.Ticks := 0;
+  48     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+  49  
+  50     procedure Halt(State : in out Machine)
+  51     is begin
+  52        State.Current_Phase := Ibit.off;
+  53     end Halt;
+
++++        Flow analysis of subprogram Halt performed: no 
+           errors found.
+
+  54  
+  55     procedure Step(State : in out Machine)
+  56     is begin
+  57        case State.Current_Phase is
+  58           when IBIT.Off =>
+  59              -- Do nothing
+  60              null;
+  61           when IBIT.In_Progress =>
+  62              State.Ticks := State.Ticks + 1;
+  63              -- Complete BIT yet?
+  64              if State.Ticks >= State.Ticks_To_Complete then
+  65                 -- Bit is complete
+  66                 State.Ticks := 0;
+  67                 if State.Fail_BIT then
+  68                    State.Current_Phase := IBIT.Fail;
+  69                    State.Fail_BIT := False;
+  70                 else
+  71                    State.Current_Phase := IBIT.Pass;
+  72                 end if;
+  73              end if;
+  74           when IBIT.Pass | IBIT.Fail =>
+  75              -- Do nothing other than reset ticks
+  76              State.Ticks := 0;
+  77              null;
+  78           when IBIT.Request_Start | IBIT.Request_Stop |
+  79             IBIT.Timeout =>
+  80              State.Ticks := 0;
+  81              -- Should never be here
+  82              null;
+  83        end case;
+  84     end Step;
+
++++        Flow analysis of subprogram Step performed: no 
+           errors found.
+
+  85  
+  86     -- Fail the next BIT
+  87     procedure Fail_Next(State : in out Machine)
+  88     is begin
+  89        State.Fail_BIT := True;
+  90     end Fail_Next;
+
++++        Flow analysis of subprogram Fail_Next performed: 
+           no errors found.
+
+  91  
+  92     procedure Reset(State : in out Machine)
+  93     is begin
+  94        State.Current_Phase := IBIT.Off;
+  95        State.Ticks := 0;
+  96        State.Fail_BIT := False;
+  97     end Reset;
+
++++        Flow analysis of subprogram Reset performed: no 
+           errors found.
+
+  98  end BIT_Machine;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

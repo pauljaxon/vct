@@ -1,0 +1,311 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.23
+
+Line
+   1  -- INS
+   2  --
+   3  -- $Log: ins.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/08/10 18:19:25  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  --
+  13  with Clock_Utils,SystemTypes;
+  14  with Bus,RT1553,IBIT,Bit_Machine;
+  15  with Cartesian;
+  16  package body Ins
+  17    --# own State is
+  18    --#     Last_Position,
+  19    --#     Last_Velocity,
+  20    --#     Last_Time,
+  21    --#     BIT_State;
+  22  is
+  23     Last_Position : Cartesian.Position := Cartesian.Zero_Position;
+  24     Last_Velocity : Cartesian.Velocity := Cartesian.Zero_Velocity;
+  25     Last_Time     : Clock.Millisecond := Clock.Millisecond'First;
+  26     Bit_State : Bit_Machine.Machine := Bit_Machine.Initial_Machine;
+  27  
+  28     Bus_Id : constant Rt1553.Lru_Name := Rt1553.Ins;
+  29  
+  30     -- Work out the current position.
+  31     procedure Extrapolate_Position(Position : out Cartesian.position)
+  32       --# global in     Last_Position, Last_Velocity, Last_Time;
+  33       --#        in out Clock.Time;
+  34       --# derives Clock.Time from * &
+  35       --#         Position from Clock.Time, Last_Position,
+  36       --#         Last_Velocity, Last_Time;
+  37     is
+  38        Time_Now,T_Delta : Clock.Millisecond;
+  39        Time_Valid : Boolean;
+  40  
+  41        procedure Extrapolate_Dimension(O : in Meter;
+  42                                        V : in Meter_Per_Sec;
+  43                                        S : out Meter)
+  44          --# global in t_delta;
+  45          --# derives S from O, V, t_delta;
+  46        is
+  47           S_Delta : Meter;
+  48           VMS : Clock.Millisecond;
+  49        begin
+  50           if v < 0 then
+  51              VMS := Clock.Millisecond(-v);
+  52              S_Delta := -Meter((VMS * T_Delta)/1000);
+  53           else
+  54              VMS := Clock.Millisecond(v);
+  55              S_Delta := Meter((VMS * T_Delta)/1000);
+  56           end if;
+  57           S := O + S_Delta;
+  58        end Extrapolate_Dimension;
+
++++        Flow analysis of subprogram 
+           Extrapolate_Dimension performed: no errors found.
+
+  59     begin
+  60        Clock.Read(T => Time_Now,
+  61                   Valid => Time_Valid);
+  62        if not Time_Valid then
+  63          -- Can't extrapolate
+  64           Position := Cartesian.Zero_Position;
+  65        else
+  66           -- How many seconds change
+  67           T_Delta := Clock_Utils.Delta_Time(Last_Time,Time_Now);
+  68           Extrapolate_Dimension(Last_Position.X,
+
+--- (  1)  Warning           :420: Instance of SEPR 2124 found. An extra VC will be 
+           generated here and must be discharged to ensure absence of run-time 
+           errors. Please seek advice for assistance with this issue.
+
+  69                                 Last_Velocity.vX,
+  70                                 Position.X);
+  71           Extrapolate_Dimension(Last_Position.Y,
+
+--- (  2)  Warning           :420: Instance of SEPR 2124 found. An extra VC will be 
+           generated here and must be discharged to ensure absence of run-time 
+           errors. Please seek advice for assistance with this issue.
+
+  72                                 Last_Velocity.vY,
+  73                                 Position.Y);
+  74           Extrapolate_Dimension(Last_Position.Z,
+
+--- (  3)  Warning           :420: Instance of SEPR 2124 found. An extra VC will be 
+           generated here and must be discharged to ensure absence of run-time 
+           errors. Please seek advice for assistance with this issue.
+
+  75                                 Last_Velocity.vZ,
+  76                                 Position.Z);
+  77        end if;
+  78     end Extrapolate_position;
+
++++        Flow analysis of subprogram Extrapolate_Position 
+           performed: no errors found.
+
+  79  
+  80     --------- Public subprograms
+  81  
+  82     -- Cycle the reading of data from the bus
+  83     -- and writing of data to the bus
+  84     procedure Cycle
+  85       --# global in Last_Position, Last_Time, Last_Velocity;
+  86       --#        in out BIT_State;
+  87       --#        in out Clock.Time;
+  88       --#        in Bus.Outputs;
+  89       --#        in out Bus.Inputs;
+  90       --# derives
+  91       --#        BIT_State
+  92       --#          from *, Bus.Outputs &
+  93       --#        Bus.Inputs from *, Clock.Time,
+  94       --#        Last_Position, Last_Time,
+  95       --#        Last_Velocity, BIT_State &
+  96       --#        Clock.Time from *;
+  97     is
+  98        Position : Cartesian.Position;
+  99        Datum : Bus.Word;
+ 100  
+ 101        procedure Write_Distance(D : in Meter;
+ 102                                 I1 : in Bus.Word_Index;
+ 103                                 I2 : in Bus.Word_Index)
+ 104          --# global in out Bus.Inputs;
+ 105          --# derives Bus.Inputs from
+ 106          --#   *, D, I1, I2;
+ 107        is
+ 108        begin
+ 109           Rt1553.Write_Word(Data => Bus.Word(D / 16#10000#),
+ 110                             Idx  => I1,
+ 111                             Subaddress_Idx => 1,
+ 112                             Src => Bus_id);
+ 113           Rt1553.Write_Word(Data => Bus.Word(D mod 16#10000#),
+ 114                             Idx  => I2,
+ 115                             Subaddress_Idx => 1,
+ 116                             Src => Bus_Id);
+ 117        end Write_Distance;
+
++++        Flow analysis of subprogram Write_Distance 
+           performed: no errors found.
+
+ 118     begin
+ 119        Extrapolate_Position(position);
+ 120        -- Write the X position info to T1 word 1, 2
+ 121        Write_Distance(D => Position.X,
+ 122                       I1 => 1,
+ 123                       I2 => 2);
+ 124        Write_Distance(D => Position.Y,
+ 125                       I1 => 3,
+ 126                       I2 => 4);
+ 127        Write_Distance(D => Position.Z,
+ 128                       I1 => 5,
+ 129                       I2 => 6);
+ 130        -- Write the BIT phase to T1 word 7
+ 131        Rt1553.Write_Word(Data => IBIT.Phase_Lookup(BIT_Machine.Phase(Bit_State)),
+ 132                         Idx => 7,
+ 133                         Subaddress_Idx => 1,
+ 134                         Src => Bus_id);
+ 135        -- Read the BIT info off R1
+ 136        Rt1553.Read_Word(Src => Bus_id,
+ 137                         Idx => 1,
+ 138                         Subaddress_Idx => 1,
+ 139                         Data => Datum);
+ 140        BIT_Machine.Change_State(Word => Datum,
+ 141                                 State => Bit_state);
+ 142        -- And cycle the BIT
+ 143        BIT_Machine.Step(Bit_State);
+ 144     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+ 145  
+ 146     -- Set the current position
+ 147     procedure Set_Location(X, Y, Z : in Meter)
+ 148     --# global    out Last_position, last_time;
+ 149     --#        in out Clock.Time;
+ 150     --# derives Clock.Time from * &
+ 151     --#         Last_position from x, y, z, Clock.Time &
+ 152     --#         Last_Time     from Clock.Time;
+ 153     is
+ 154        Time_Valid : Boolean;
+ 155     begin
+ 156        Last_Position := Cartesian.Position'(X => X, Y => Y, Z => Z);
+ 157        Clock.Read(Last_Time,Time_Valid);
+ 158        if not Time_Valid then
+ 159           Last_position := Cartesian.Zero_Position;
+ 160        end if;
+ 161     end Set_location;
+
++++        Flow analysis of subprogram Set_Location 
+           performed: no errors found.
+
+ 162  
+ 163     -- Move the current position
+ 164     procedure Move(DX, DY, DZ : in Meter)
+ 165       --# global in out Last_position;
+ 166       --#         out last_time;
+ 167     --#        in out Clock.Time;
+ 168     --# derives Clock.Time from * &
+ 169     --#         Last_position from *, dx, dy, dz, Clock.Time &
+ 170     --#         Last_Time     from Clock.Time;
+ 171     is
+ 172        Time_Valid : Boolean;
+ 173     begin
+ 174        Last_Position := Cartesian.Position'(X => Last_Position.X + dx,
+ 175                                             Y => Last_Position.Y + Dy,
+ 176                                             Z => Last_Position.Z + dZ);
+ 177        Clock.Read(Last_Time,Time_Valid);
+ 178        if not Time_Valid then
+ 179           Last_position := Cartesian.Zero_Position;
+ 180        end if;
+ 181     end Move;
+
++++        Flow analysis of subprogram Move performed: no 
+           errors found.
+
+ 182  
+ 183     -- Set the current motion
+ 184     procedure Set_velocity(vX, vY, vZ : in Meter_Per_Sec)
+ 185     --# global    out last_time, last_velocity;
+ 186     --#        in out Clock.Time;
+ 187     --# derives Clock.Time from * &
+ 188     --#         Last_Time     from Clock.Time &
+ 189     --#         Last_velocity from vx, vy, vz, Clock.Time;
+ 190     is
+ 191        Time_Valid : Boolean;
+ 192     begin
+ 193        Last_Velocity := Cartesian.Velocity'(Vx => Vx, Vy => Vy, Vz => Vz);
+ 194        Clock.Read(Last_Time,Time_Valid);
+ 195        if not Time_Valid then
+ 196           Last_velocity := Cartesian.Zero_velocity;
+ 197        end if;
+ 198     end Set_velocity;
+
++++        Flow analysis of subprogram Set_Velocity 
+           performed: no errors found.
+
+ 199  
+ 200     -- Read the current speed
+ 201     procedure Read_Location(X, Y, Z : out Meter)
+ 202       --# global in     Last_Position, Last_Time, Last_velocity;
+ 203       --#        in out Clock.Time;
+ 204       --# derives Clock.Time from * &
+ 205       --#         x, y, z from last_position, Last_Time, last_velocity,
+ 206       --#         Clock.Time;
+ 207     is
+ 208        Position : Cartesian.Position;
+ 209     begin
+ 210        Extrapolate_position(position);
+ 211        X := Position.X;
+ 212        Y := Position.Y;
+ 213        Z := Position.Z;
+ 214     end Read_Location;
+
++++        Flow analysis of subprogram Read_Location 
+           performed: no errors found.
+
+ 215  
+ 216     procedure Fail_Next_Bit
+ 217       --# global in out BIT_State;
+ 218       --# derives BIT_State from *;
+ 219     is begin
+ 220        BIT_Machine.Fail_Next(Bit_State);
+ 221     end Fail_Next_Bit;
+
++++        Flow analysis of subprogram Fail_Next_Bit 
+           performed: no errors found.
+
+ 222  
+ 223     procedure Init
+ 224       --# global out Last_Position, Last_Time, Last_Velocity, BIT_State;
+ 225       --#        in out Bus.Inputs;
+ 226       --# derives Last_Position, Last_Time, last_velocity, BIT_State from &
+ 227       --#        Bus.Inputs from *;
+ 228     is begin
+ 229        -- Initialise the bus message 1T
+ 230        RT1553.Set_Message_Valid(Subaddress_Idx => 1,
+ 231                                 Src => Bus_id);
+ 232        -- Initialise the variables
+ 233        Last_Position := Cartesian.Zero_position;
+ 234        Last_Time     := Clock.Millisecond'First;
+ 235        Last_Velocity := Cartesian.Zero_velocity;
+ 236        BIT_Machine.Create(Ticks_To_Complete => 25,
+ 237                           State => Bit_State);
+ 238     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 239  
+ 240     procedure Command is separate;
+ 241  end Ins;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

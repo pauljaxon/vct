@@ -1,0 +1,52 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:24
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure flying_object.Extrapolate_Position.Extrapolate_Linear
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 32:
+
+procedure_extrapolate_linear_1.
+H1:    u >= - 5000 .
+H2:    u <= 5000 .
+H3:    a >= - 30000 .
+H4:    a <= 30000 .
+H5:    t_offset >= - 2147483648 .
+H6:    t_offset <= 2147483647 .
+H7:    t_o_squared >= - 2147483648 .
+H8:    t_o_squared <= 2147483647 .
+H9:    long_integer__size >= 0 .
+H10:   measuretypes__meter__size >= 0 .
+H11:   measuretypes__meter_per_sec__size >= 0 .
+H12:   measuretypes__cm_per_sec_2__size >= 0 .
+H13:   integer32__size >= 0 .
+       ->
+C1:    u * t_offset + a * t_o_squared div 2 >= - 200000 .
+C2:    u * t_offset + a * t_o_squared div 2 <= 200000 .
+C3:    u * t_offset + a * t_o_squared div 2 >= - 2147483648 .
+C4:    u * t_offset + a * t_o_squared div 2 <= 2147483647 .
+C5:    a * t_o_squared div 2 >= - 2147483648 .
+C6:    a * t_o_squared div 2 <= 2147483647 .
+C7:    a * t_o_squared >= - 2147483648 .
+C8:    a * t_o_squared <= 2147483647 .
+C9:    u * t_offset >= - 2147483648 .
+C10:   u * t_offset <= 2147483647 .
+
+
+For path(s) from start to finish:
+
+procedure_extrapolate_linear_2.
+*** true .          /* all conclusions proved */
+
+

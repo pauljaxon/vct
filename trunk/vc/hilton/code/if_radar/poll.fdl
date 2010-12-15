@@ -1,0 +1,155 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:41.75}
+
+                          {procedure if_radar.Poll}
+
+
+title procedure poll;
+
+  function round__(real) : integer;
+  type state_types__radar = (state_types__rad_inactive, 
+     state_types__ping, state_types__sweep);
+  type measuretypes__meter = integer;
+  type measuretypes__meter_per_sec = integer;
+  type measuretypes__bit_range = integer;
+  type bus__inputs__type = pending;
+  type bus__word_index = integer;
+  type bus__all_msg_index = integer;
+  type bc1553__lru_name = (bc1553__barometer, bc1553__asi, 
+     bc1553__ins, bc1553__compass, bc1553__fuel, bc1553__fuze, 
+     bc1553__radar, bc1553__infrared, bc1553__fins, bc1553__motor, 
+     bc1553__destruct, bc1553__warhead);
+  type ibit__phase = (ibit__off, ibit__request_start, 
+     ibit__in_progress, ibit__request_stop, ibit__pass, 
+     ibit__fail, ibit__timeout);
+  type radar_cfg__sector_range = integer;
+  type measuretypes__bit4_slice = array [integer] of boolean;
+  type ping_request = record
+        sx : integer;
+        sy : integer;
+        fresh_request : boolean;
+        fresh_answer : boolean;
+        distance : integer;
+        velocity : integer
+     end;
+  type measuretypes__bit4_array = array [integer] of 
+     measuretypes__bit4_slice;
+  type sweep_request = record
+        sx_start : integer;
+        sx_end : integer;
+        sy_start : integer;
+        sy_end : integer;
+        fresh_request : boolean;
+        fresh_answer : boolean;
+        grid : measuretypes__bit4_array
+     end;
+  const bus_id : bc1553__lru_name = pending;
+  const sector__base__last : integer = pending; 
+  const sector__base__first : integer = pending; 
+  const radar_cfg__sector_range__base__last : integer = pending; 
+  const radar_cfg__sector_range__base__first : integer = pending; 
+  const ibit__phase__base__last : ibit__phase = pending; 
+  const ibit__phase__base__first : ibit__phase = pending; 
+  const bc1553__lru_name__base__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__base__first : bc1553__lru_name = pending; 
+  const bus__lru_subaddress_index__base__last : integer = pending; 
+  const bus__lru_subaddress_index__base__first : integer = pending; 
+  const bus__all_msg_index__base__last : integer = pending; 
+  const bus__all_msg_index__base__first : integer = pending; 
+  const bus__word__base__last : integer = pending; 
+  const bus__word__base__first : integer = pending; 
+  const bus__word_index__base__last : integer = pending; 
+  const bus__word_index__base__first : integer = pending; 
+  const measuretypes__bit4_range__base__last : integer = pending; 
+  const measuretypes__bit4_range__base__first : integer = pending; 
+  const measuretypes__bit_range__base__last : integer = pending; 
+  const measuretypes__bit_range__base__first : integer = pending; 
+  const measuretypes__meter_per_sec__base__last : integer = pending; 
+  const measuretypes__meter_per_sec__base__first : integer = pending; 
+  const measuretypes__meter__base__last : integer = pending; 
+  const measuretypes__meter__base__first : integer = pending; 
+  const state_types__radar__base__last : state_types__radar = pending; 
+  const state_types__radar__base__first : state_types__radar = pending; 
+  const state_types__word__base__last : integer = pending; 
+  const state_types__word__base__first : integer = pending; 
+  const systemtypes__unsigned16__base__last : integer = pending; 
+  const systemtypes__unsigned16__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const sweep_request__size : integer = pending; 
+  const ping_request__size : integer = pending; 
+  const sector__size : integer = pending; 
+  const sector__last : integer = pending; 
+  const sector__first : integer = pending; 
+  const radar_cfg__sector_range__size : integer = pending; 
+  const radar_cfg__sector_range__last : integer = pending; 
+  const radar_cfg__sector_range__first : integer = pending; 
+  const ibit__phase__size : integer = pending; 
+  const ibit__phase__last : ibit__phase = pending; 
+  const ibit__phase__first : ibit__phase = pending; 
+  const bc1553__lru_name__size : integer = pending; 
+  const bc1553__lru_name__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__first : bc1553__lru_name = pending; 
+  const bus__lru_subaddress_index__size : integer = pending; 
+  const bus__lru_subaddress_index__last : integer = pending; 
+  const bus__lru_subaddress_index__first : integer = pending; 
+  const bus__all_msg_index__size : integer = pending; 
+  const bus__all_msg_index__last : integer = pending; 
+  const bus__all_msg_index__first : integer = pending; 
+  const bus__word__size : integer = pending; 
+  const bus__word__last : integer = pending; 
+  const bus__word__first : integer = pending; 
+  const bus__word_index__size : integer = pending; 
+  const bus__word_index__last : integer = pending; 
+  const bus__word_index__first : integer = pending; 
+  const measuretypes__bit4_range__size : integer = pending; 
+  const measuretypes__bit4_range__last : integer = pending; 
+  const measuretypes__bit4_range__first : integer = pending; 
+  const measuretypes__bit_range__size : integer = pending; 
+  const measuretypes__bit_range__last : integer = pending; 
+  const measuretypes__bit_range__first : integer = pending; 
+  const measuretypes__meter_per_sec__size : integer = pending; 
+  const measuretypes__meter_per_sec__last : integer = pending; 
+  const measuretypes__meter_per_sec__first : integer = pending; 
+  const measuretypes__meter__size : integer = pending; 
+  const measuretypes__meter__last : integer = pending; 
+  const measuretypes__meter__first : integer = pending; 
+  const state_types__radar__size : integer = pending; 
+  const state_types__radar__last : state_types__radar = pending; 
+  const state_types__radar__first : state_types__radar = pending; 
+  const state_types__word__size : integer = pending; 
+  const state_types__word__last : integer = pending; 
+  const state_types__word__first : integer = pending; 
+  const systemtypes__unsigned16__size : integer = pending; 
+  const systemtypes__unsigned16__last : integer = pending; 
+  const systemtypes__unsigned16__first : integer = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+  var bus__inputs : bus__inputs__type;
+  var last_ping : ping_request;
+  var last_sweep : sweep_request;
+  var ibit_request : ibit__phase;
+  var word : integer;
+  function state_types__radar_action(integer) : 
+     state_types__radar;
+  function bc1553__is_fresh(bc1553__lru_name, integer, 
+     bus__inputs__type) : boolean;
+  function bc1553__is_valid(bc1553__lru_name, integer, 
+     bus__inputs__type) : boolean;
+  function measuretypes__decode__meter_single(integer) : integer;
+  function measuretypes__decode__meter_per_sec(integer) : integer;
+  var ibit_request__6 : ibit__phase;
+  var word__5 : integer;
+  var word__4 : integer;
+  var word__3 : integer;
+  var word__2 : integer;
+  var word__1 : integer;
+
+end;

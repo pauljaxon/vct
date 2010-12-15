@@ -1,0 +1,79 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:43.33*/
+
+                        /*procedure warhead.Read_Stage*/
+
+
+rule_family read_stage_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+read_stage_rules(1): warhead_cfg__state__size >= 0 may_be_deduced.
+read_stage_rules(2): warhead_cfg__state__first may_be_replaced_by warhead_cfg__inactive.
+read_stage_rules(3): warhead_cfg__state__last may_be_replaced_by warhead_cfg__detonated.
+read_stage_rules(4): warhead_cfg__state__base__first may_be_replaced_by warhead_cfg__inactive.
+read_stage_rules(5): warhead_cfg__state__base__last may_be_replaced_by warhead_cfg__detonated.
+read_stage_rules(6): warhead_cfg__state__pos(warhead_cfg__state__first) may_be_replaced_by 0.
+read_stage_rules(7): warhead_cfg__state__pos(
+     warhead_cfg__inactive) may_be_replaced_by 0.
+read_stage_rules(8): warhead_cfg__state__val(0) may_be_replaced_by 
+     warhead_cfg__inactive.
+read_stage_rules(9): warhead_cfg__state__pos(warhead_cfg__awake) may_be_replaced_by 1.
+read_stage_rules(10): warhead_cfg__state__val(1) may_be_replaced_by 
+     warhead_cfg__awake.
+read_stage_rules(11): warhead_cfg__state__pos(warhead_cfg__armed) may_be_replaced_by 2.
+read_stage_rules(12): warhead_cfg__state__val(2) may_be_replaced_by 
+     warhead_cfg__armed.
+read_stage_rules(13): warhead_cfg__state__pos(warhead_cfg__final) may_be_replaced_by 3.
+read_stage_rules(14): warhead_cfg__state__val(3) may_be_replaced_by 
+     warhead_cfg__final.
+read_stage_rules(15): warhead_cfg__state__pos(
+     warhead_cfg__detonated) may_be_replaced_by 4.
+read_stage_rules(16): warhead_cfg__state__val(4) may_be_replaced_by 
+     warhead_cfg__detonated.
+read_stage_rules(17): warhead_cfg__state__pos(warhead_cfg__state__last) may_be_replaced_by 4.
+read_stage_rules(18): warhead_cfg__state__pos(succ(X)) may_be_replaced_by 
+     warhead_cfg__state__pos(X) + 1
+     if [X <=warhead_cfg__detonated, X <> warhead_cfg__detonated].
+read_stage_rules(19): warhead_cfg__state__pos(pred(X)) may_be_replaced_by 
+     warhead_cfg__state__pos(X) - 1
+     if [X >=warhead_cfg__inactive, X <> warhead_cfg__inactive].
+read_stage_rules(20): warhead_cfg__state__pos(X) >= 0 may_be_deduced_from
+     [warhead_cfg__inactive <= X, X <= warhead_cfg__detonated].
+read_stage_rules(21): warhead_cfg__state__pos(X) <= 4 may_be_deduced_from
+     [warhead_cfg__inactive <= X, X <= warhead_cfg__detonated].
+read_stage_rules(22): warhead_cfg__state__val(X) >= 
+     warhead_cfg__inactive may_be_deduced_from
+     [0 <= X, X <= 4].
+read_stage_rules(23): warhead_cfg__state__val(X) <= 
+     warhead_cfg__detonated may_be_deduced_from
+     [0 <= X, X <= 4].
+read_stage_rules(24): succ(warhead_cfg__state__val(X)) may_be_replaced_by 
+     warhead_cfg__state__val(X+1)
+     if [0 <= X, X < 4].
+read_stage_rules(25): pred(warhead_cfg__state__val(X)) may_be_replaced_by 
+     warhead_cfg__state__val(X-1)
+     if [0 < X, X <= 4].
+read_stage_rules(26): warhead_cfg__state__pos(warhead_cfg__state__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 4].
+read_stage_rules(27): warhead_cfg__state__val(warhead_cfg__state__pos(X)) may_be_replaced_by X
+     if [warhead_cfg__inactive <= X, X <= warhead_cfg__detonated].
+read_stage_rules(28): warhead_cfg__state__pos(X) <= 
+     warhead_cfg__state__pos(Y) & X <= Y are_interchangeable 
+     if [warhead_cfg__inactive <= X, X <= warhead_cfg__detonated, 
+     warhead_cfg__inactive <= Y, Y <= warhead_cfg__detonated].
+read_stage_rules(29): warhead_cfg__state__val(X) <= 
+     warhead_cfg__state__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 4, 0 <= Y, Y <= 4].
+read_stage_rules(30): stage__size >= 0 may_be_deduced.
+read_stage_rules(31): stage__first may_be_replaced_by warhead_cfg__inactive.
+read_stage_rules(32): stage__last may_be_replaced_by warhead_cfg__detonated.
+read_stage_rules(33): stage__base__first may_be_replaced_by warhead_cfg__inactive.
+read_stage_rules(34): stage__base__last may_be_replaced_by warhead_cfg__detonated.

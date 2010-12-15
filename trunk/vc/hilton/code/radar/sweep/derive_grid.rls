@@ -1,0 +1,86 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:41.22*/
+
+                     /*procedure Radar.Sweep.Derive_Grid*/
+
+
+rule_family derive_grid_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+derive_grid_rules(1): long_integer__size >= 0 may_be_deduced.
+derive_grid_rules(2): long_integer__first may_be_replaced_by -2147483648.
+derive_grid_rules(3): long_integer__last may_be_replaced_by 2147483647.
+derive_grid_rules(4): long_integer__base__first may_be_replaced_by -2147483648.
+derive_grid_rules(5): long_integer__base__last may_be_replaced_by 2147483647.
+derive_grid_rules(6): measuretypes__meter__size >= 0 may_be_deduced.
+derive_grid_rules(7): measuretypes__meter__first may_be_replaced_by -200000.
+derive_grid_rules(8): measuretypes__meter__last may_be_replaced_by 200000.
+derive_grid_rules(9): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+derive_grid_rules(10): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+derive_grid_rules(11): measuretypes__meter_per_sec__size >= 0 may_be_deduced.
+derive_grid_rules(12): measuretypes__meter_per_sec__first may_be_replaced_by -5000.
+derive_grid_rules(13): measuretypes__meter_per_sec__last may_be_replaced_by 5000.
+derive_grid_rules(14): measuretypes__meter_per_sec__base__first may_be_replaced_by -2147483648.
+derive_grid_rules(15): measuretypes__meter_per_sec__base__last may_be_replaced_by 2147483647.
+derive_grid_rules(16): measuretypes__bit_range__size >= 0 may_be_deduced.
+derive_grid_rules(17): measuretypes__bit_range__first may_be_replaced_by 0.
+derive_grid_rules(18): measuretypes__bit_range__last may_be_replaced_by 255.
+derive_grid_rules(19): measuretypes__bit_range__base__first <= 
+     measuretypes__bit_range__base__last may_be_deduced.
+derive_grid_rules(20): measuretypes__bit_range__base__first <= 
+     measuretypes__bit_range__first may_be_deduced.
+derive_grid_rules(21): measuretypes__bit_range__base__last >= 
+     measuretypes__bit_range__last may_be_deduced.
+derive_grid_rules(22): measuretypes__bit4_range__size >= 0 may_be_deduced.
+derive_grid_rules(23): measuretypes__bit4_range__first may_be_replaced_by 0.
+derive_grid_rules(24): measuretypes__bit4_range__last may_be_replaced_by 3.
+derive_grid_rules(25): measuretypes__bit4_range__base__first <= 
+     measuretypes__bit4_range__base__last may_be_deduced.
+derive_grid_rules(26): measuretypes__bit4_range__base__first <= 
+     measuretypes__bit4_range__first may_be_deduced.
+derive_grid_rules(27): measuretypes__bit4_range__base__last >= 
+     measuretypes__bit4_range__last may_be_deduced.
+derive_grid_rules(28): radar_cfg__sector_range__size >= 0 may_be_deduced.
+derive_grid_rules(29): radar_cfg__sector_range__first may_be_replaced_by -20.
+derive_grid_rules(30): radar_cfg__sector_range__last may_be_replaced_by 20.
+derive_grid_rules(31): radar_cfg__sector_range__base__first <= 
+     radar_cfg__sector_range__base__last may_be_deduced.
+derive_grid_rules(32): radar_cfg__sector_range__base__first <= 
+     radar_cfg__sector_range__first may_be_deduced.
+derive_grid_rules(33): radar_cfg__sector_range__base__last >= 
+     radar_cfg__sector_range__last may_be_deduced.
+derive_grid_rules(34): meter__size >= 0 may_be_deduced.
+derive_grid_rules(35): meter__first may_be_replaced_by -200000.
+derive_grid_rules(36): meter__last may_be_replaced_by 200000.
+derive_grid_rules(37): meter__base__first may_be_replaced_by -2147483648.
+derive_grid_rules(38): meter__base__last may_be_replaced_by 2147483647.
+derive_grid_rules(39): meter_per_sec__size >= 0 may_be_deduced.
+derive_grid_rules(40): meter_per_sec__first may_be_replaced_by -5000.
+derive_grid_rules(41): meter_per_sec__last may_be_replaced_by 5000.
+derive_grid_rules(42): meter_per_sec__base__first may_be_replaced_by -2147483648.
+derive_grid_rules(43): meter_per_sec__base__last may_be_replaced_by 2147483647.
+derive_grid_rules(44): sector__size >= 0 may_be_deduced.
+derive_grid_rules(45): sector__first may_be_replaced_by -20.
+derive_grid_rules(46): sector__last may_be_replaced_by 20.
+derive_grid_rules(47): sector__base__first <= sector__base__last may_be_deduced.
+derive_grid_rules(48): sector__base__first <= sector__first may_be_deduced.
+derive_grid_rules(49): sector__base__last >= sector__last may_be_deduced.
+derive_grid_rules(50): integer32__size >= 0 may_be_deduced.
+derive_grid_rules(51): integer32__first may_be_replaced_by -2147483648.
+derive_grid_rules(52): integer32__last may_be_replaced_by 2147483647.
+derive_grid_rules(53): integer32__base__first may_be_replaced_by -2147483648.
+derive_grid_rules(54): integer32__base__last may_be_replaced_by 2147483647.
+derive_grid_rules(55): ping__size >= 0 may_be_deduced.
+derive_grid_rules(56): A = B may_be_deduced_from
+     [goal(checktype(A,ping)),
+      goal(checktype(B,ping)),
+      fld_distance(A) = fld_distance(B),
+      fld_rel_vel(A) = fld_rel_vel(B)].

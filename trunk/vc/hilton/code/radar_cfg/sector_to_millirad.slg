@@ -1,0 +1,53 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:53
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function radar_cfg.Sector_To_Millirad
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_sector_to_millirad_1.  @@@@@@@@@@
+-S-  Applied substitution rule sector_to_mi_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New C1:  s >= - 2147483648
+<S>  New C3:  s >= - 2147483648
+-S-  Applied substitution rule sector_to_mi_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New C2:  s <= 2147483647
+<S>  New C4:  s <= 2147483647
+-S-  Applied substitution rule sector_to_mi_rules(7).
+     This was achieved by replacing all occurrences of sector_range__first by:
+          - 20.
+<S>  New H2:  s >= - 20
+-S-  Applied substitution rule sector_to_mi_rules(8).
+     This was achieved by replacing all occurrences of sector_range__last by:
+          20.
+<S>  New H3:  s <= 20
+***  Proved C1:  s >= - 2147483648
+     using hypothesis H2.
+***  Proved C3:  s >= - 2147483648
+     using hypothesis H2.
+***  Proved C2:  s <= 2147483647
+     using hypothesis H3.
+***  Proved C4:  s <= 2147483647
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_sector_to_millirad_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

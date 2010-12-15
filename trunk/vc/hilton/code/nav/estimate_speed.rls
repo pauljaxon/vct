@@ -1,0 +1,148 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:44.21*/
+
+                        /*procedure nav.Estimate_Speed*/
+
+
+rule_family estimate_spe_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+estimate_spe_rules(1): long_integer__size >= 0 may_be_deduced.
+estimate_spe_rules(2): long_integer__first may_be_replaced_by -2147483648.
+estimate_spe_rules(3): long_integer__last may_be_replaced_by 2147483647.
+estimate_spe_rules(4): long_integer__base__first may_be_replaced_by -2147483648.
+estimate_spe_rules(5): long_integer__base__last may_be_replaced_by 2147483647.
+estimate_spe_rules(6): measuretypes__meter__size >= 0 may_be_deduced.
+estimate_spe_rules(7): measuretypes__meter__first may_be_replaced_by -200000.
+estimate_spe_rules(8): measuretypes__meter__last may_be_replaced_by 200000.
+estimate_spe_rules(9): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+estimate_spe_rules(10): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+estimate_spe_rules(11): measuretypes__meter_per_sec__size >= 0 may_be_deduced.
+estimate_spe_rules(12): measuretypes__meter_per_sec__first may_be_replaced_by -5000.
+estimate_spe_rules(13): measuretypes__meter_per_sec__last may_be_replaced_by 5000.
+estimate_spe_rules(14): measuretypes__meter_per_sec__base__first may_be_replaced_by -2147483648.
+estimate_spe_rules(15): measuretypes__meter_per_sec__base__last may_be_replaced_by 2147483647.
+estimate_spe_rules(16): clock__millisecond__size >= 0 may_be_deduced.
+estimate_spe_rules(17): clock__millisecond__first may_be_replaced_by 0.
+estimate_spe_rules(18): clock__millisecond__last may_be_replaced_by 8640000.
+estimate_spe_rules(19): clock__millisecond__base__first may_be_replaced_by -2147483648.
+estimate_spe_rules(20): clock__millisecond__base__last may_be_replaced_by 2147483647.
+estimate_spe_rules(21): sensor_history__meter_per_sec__size >= 0 may_be_deduced.
+estimate_spe_rules(22): sensor_history__meter_per_sec__first may_be_replaced_by -5000.
+estimate_spe_rules(23): sensor_history__meter_per_sec__last may_be_replaced_by 5000.
+estimate_spe_rules(24): sensor_history__meter_per_sec__base__first may_be_replaced_by -2147483648.
+estimate_spe_rules(25): sensor_history__meter_per_sec__base__last may_be_replaced_by 2147483647.
+estimate_spe_rules(26): confidence__size >= 0 may_be_deduced.
+estimate_spe_rules(27): confidence__first may_be_replaced_by none.
+estimate_spe_rules(28): confidence__last may_be_replaced_by high.
+estimate_spe_rules(29): confidence__base__first may_be_replaced_by none.
+estimate_spe_rules(30): confidence__base__last may_be_replaced_by high.
+estimate_spe_rules(31): confidence__pos(confidence__first) may_be_replaced_by 0.
+estimate_spe_rules(32): confidence__pos(none) may_be_replaced_by 0.
+estimate_spe_rules(33): confidence__val(0) may_be_replaced_by 
+     none.
+estimate_spe_rules(34): confidence__pos(low) may_be_replaced_by 1.
+estimate_spe_rules(35): confidence__val(1) may_be_replaced_by low.
+estimate_spe_rules(36): confidence__pos(high) may_be_replaced_by 2.
+estimate_spe_rules(37): confidence__val(2) may_be_replaced_by 
+     high.
+estimate_spe_rules(38): confidence__pos(confidence__last) may_be_replaced_by 2.
+estimate_spe_rules(39): confidence__pos(succ(X)) may_be_replaced_by 
+     confidence__pos(X) + 1
+     if [X <=high, X <> high].
+estimate_spe_rules(40): confidence__pos(pred(X)) may_be_replaced_by 
+     confidence__pos(X) - 1
+     if [X >=none, X <> none].
+estimate_spe_rules(41): confidence__pos(X) >= 0 may_be_deduced_from
+     [none <= X, X <= high].
+estimate_spe_rules(42): confidence__pos(X) <= 2 may_be_deduced_from
+     [none <= X, X <= high].
+estimate_spe_rules(43): confidence__val(X) >= none may_be_deduced_from
+     [0 <= X, X <= 2].
+estimate_spe_rules(44): confidence__val(X) <= high may_be_deduced_from
+     [0 <= X, X <= 2].
+estimate_spe_rules(45): succ(confidence__val(X)) may_be_replaced_by 
+     confidence__val(X+1)
+     if [0 <= X, X < 2].
+estimate_spe_rules(46): pred(confidence__val(X)) may_be_replaced_by 
+     confidence__val(X-1)
+     if [0 < X, X <= 2].
+estimate_spe_rules(47): confidence__pos(confidence__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 2].
+estimate_spe_rules(48): confidence__val(confidence__pos(X)) may_be_replaced_by X
+     if [none <= X, X <= high].
+estimate_spe_rules(49): confidence__pos(X) <= confidence__pos(Y) & X <= Y are_interchangeable 
+     if [none <= X, X <= high, none <= Y, Y <= high].
+estimate_spe_rules(50): confidence__val(X) <= confidence__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 2, 0 <= Y, Y <= 2].
+estimate_spe_rules(51): meter__size >= 0 may_be_deduced.
+estimate_spe_rules(52): meter__first may_be_replaced_by -200000.
+estimate_spe_rules(53): meter__last may_be_replaced_by 200000.
+estimate_spe_rules(54): meter__base__first may_be_replaced_by -2147483648.
+estimate_spe_rules(55): meter__base__last may_be_replaced_by 2147483647.
+estimate_spe_rules(56): meter_per_sec__size >= 0 may_be_deduced.
+estimate_spe_rules(57): meter_per_sec__first may_be_replaced_by -5000.
+estimate_spe_rules(58): meter_per_sec__last may_be_replaced_by 5000.
+estimate_spe_rules(59): meter_per_sec__base__first may_be_replaced_by -2147483648.
+estimate_spe_rules(60): meter_per_sec__base__last may_be_replaced_by 2147483647.
+estimate_spe_rules(61): integer32__size >= 0 may_be_deduced.
+estimate_spe_rules(62): integer32__first may_be_replaced_by -2147483648.
+estimate_spe_rules(63): integer32__last may_be_replaced_by 2147483647.
+estimate_spe_rules(64): integer32__base__first may_be_replaced_by -2147483648.
+estimate_spe_rules(65): integer32__base__last may_be_replaced_by 2147483647.
+estimate_spe_rules(66): sensor_status__size >= 0 may_be_deduced.
+estimate_spe_rules(67): sensor_status__first may_be_replaced_by unknown.
+estimate_spe_rules(68): sensor_status__last may_be_replaced_by restarted.
+estimate_spe_rules(69): sensor_status__base__first may_be_replaced_by unknown.
+estimate_spe_rules(70): sensor_status__base__last may_be_replaced_by restarted.
+estimate_spe_rules(71): sensor_status__pos(sensor_status__first) may_be_replaced_by 0.
+estimate_spe_rules(72): sensor_status__pos(unknown) may_be_replaced_by 0.
+estimate_spe_rules(73): sensor_status__val(0) may_be_replaced_by 
+     unknown.
+estimate_spe_rules(74): sensor_status__pos(valid) may_be_replaced_by 1.
+estimate_spe_rules(75): sensor_status__val(1) may_be_replaced_by 
+     valid.
+estimate_spe_rules(76): sensor_status__pos(failed) may_be_replaced_by 2.
+estimate_spe_rules(77): sensor_status__val(2) may_be_replaced_by 
+     failed.
+estimate_spe_rules(78): sensor_status__pos(restarted) may_be_replaced_by 3.
+estimate_spe_rules(79): sensor_status__val(3) may_be_replaced_by 
+     restarted.
+estimate_spe_rules(80): sensor_status__pos(sensor_status__last) may_be_replaced_by 3.
+estimate_spe_rules(81): sensor_status__pos(succ(X)) may_be_replaced_by 
+     sensor_status__pos(X) + 1
+     if [X <=restarted, X <> restarted].
+estimate_spe_rules(82): sensor_status__pos(pred(X)) may_be_replaced_by 
+     sensor_status__pos(X) - 1
+     if [X >=unknown, X <> unknown].
+estimate_spe_rules(83): sensor_status__pos(X) >= 0 may_be_deduced_from
+     [unknown <= X, X <= restarted].
+estimate_spe_rules(84): sensor_status__pos(X) <= 3 may_be_deduced_from
+     [unknown <= X, X <= restarted].
+estimate_spe_rules(85): sensor_status__val(X) >= unknown may_be_deduced_from
+     [0 <= X, X <= 3].
+estimate_spe_rules(86): sensor_status__val(X) <= restarted may_be_deduced_from
+     [0 <= X, X <= 3].
+estimate_spe_rules(87): succ(sensor_status__val(X)) may_be_replaced_by 
+     sensor_status__val(X+1)
+     if [0 <= X, X < 3].
+estimate_spe_rules(88): pred(sensor_status__val(X)) may_be_replaced_by 
+     sensor_status__val(X-1)
+     if [0 < X, X <= 3].
+estimate_spe_rules(89): sensor_status__pos(sensor_status__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 3].
+estimate_spe_rules(90): sensor_status__val(sensor_status__pos(X)) may_be_replaced_by X
+     if [unknown <= X, X <= restarted].
+estimate_spe_rules(91): sensor_status__pos(X) <= sensor_status__pos(Y) & X <= Y are_interchangeable 
+     if [unknown <= X, X <= restarted, unknown <= Y, Y <= 
+     restarted].
+estimate_spe_rules(92): sensor_status__val(X) <= sensor_status__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 3, 0 <= Y, Y <= 3].

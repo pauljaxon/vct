@@ -1,0 +1,155 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:44.18*/
+
+                       /*procedure nav.Estimate_Heading*/
+
+
+rule_family estimate_hea_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+estimate_hea_rules(1): measuretypes__meter__size >= 0 may_be_deduced.
+estimate_hea_rules(2): measuretypes__meter__first may_be_replaced_by -200000.
+estimate_hea_rules(3): measuretypes__meter__last may_be_replaced_by 200000.
+estimate_hea_rules(4): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+estimate_hea_rules(5): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+estimate_hea_rules(6): measuretypes__angle_degrees__size >= 0 may_be_deduced.
+estimate_hea_rules(7): measuretypes__angle_degrees__first may_be_replaced_by 0.
+estimate_hea_rules(8): measuretypes__angle_degrees__last may_be_replaced_by 359.
+estimate_hea_rules(9): measuretypes__angle_degrees__base__first <= 
+     measuretypes__angle_degrees__base__last may_be_deduced.
+estimate_hea_rules(10): measuretypes__angle_degrees__base__first <= 
+     measuretypes__angle_degrees__first may_be_deduced.
+estimate_hea_rules(11): measuretypes__angle_degrees__base__last >= 
+     measuretypes__angle_degrees__last may_be_deduced.
+estimate_hea_rules(12): clock__millisecond__size >= 0 may_be_deduced.
+estimate_hea_rules(13): clock__millisecond__first may_be_replaced_by 0.
+estimate_hea_rules(14): clock__millisecond__last may_be_replaced_by 8640000.
+estimate_hea_rules(15): clock__millisecond__base__first may_be_replaced_by -2147483648.
+estimate_hea_rules(16): clock__millisecond__base__last may_be_replaced_by 2147483647.
+estimate_hea_rules(17): sensor_history__meter__size >= 0 may_be_deduced.
+estimate_hea_rules(18): sensor_history__meter__first may_be_replaced_by -200000.
+estimate_hea_rules(19): sensor_history__meter__last may_be_replaced_by 200000.
+estimate_hea_rules(20): sensor_history__meter__base__first may_be_replaced_by -2147483648.
+estimate_hea_rules(21): sensor_history__meter__base__last may_be_replaced_by 2147483647.
+estimate_hea_rules(22): sensor_history__angle_degrees__size >= 0 may_be_deduced.
+estimate_hea_rules(23): sensor_history__angle_degrees__first may_be_replaced_by 0.
+estimate_hea_rules(24): sensor_history__angle_degrees__last may_be_replaced_by 359.
+estimate_hea_rules(25): sensor_history__angle_degrees__base__first <= 
+     sensor_history__angle_degrees__base__last may_be_deduced.
+estimate_hea_rules(26): sensor_history__angle_degrees__base__first <= 
+     sensor_history__angle_degrees__first may_be_deduced.
+estimate_hea_rules(27): sensor_history__angle_degrees__base__last >= 
+     sensor_history__angle_degrees__last may_be_deduced.
+estimate_hea_rules(28): confidence__size >= 0 may_be_deduced.
+estimate_hea_rules(29): confidence__first may_be_replaced_by none.
+estimate_hea_rules(30): confidence__last may_be_replaced_by high.
+estimate_hea_rules(31): confidence__base__first may_be_replaced_by none.
+estimate_hea_rules(32): confidence__base__last may_be_replaced_by high.
+estimate_hea_rules(33): confidence__pos(confidence__first) may_be_replaced_by 0.
+estimate_hea_rules(34): confidence__pos(none) may_be_replaced_by 0.
+estimate_hea_rules(35): confidence__val(0) may_be_replaced_by 
+     none.
+estimate_hea_rules(36): confidence__pos(low) may_be_replaced_by 1.
+estimate_hea_rules(37): confidence__val(1) may_be_replaced_by low.
+estimate_hea_rules(38): confidence__pos(high) may_be_replaced_by 2.
+estimate_hea_rules(39): confidence__val(2) may_be_replaced_by 
+     high.
+estimate_hea_rules(40): confidence__pos(confidence__last) may_be_replaced_by 2.
+estimate_hea_rules(41): confidence__pos(succ(X)) may_be_replaced_by 
+     confidence__pos(X) + 1
+     if [X <=high, X <> high].
+estimate_hea_rules(42): confidence__pos(pred(X)) may_be_replaced_by 
+     confidence__pos(X) - 1
+     if [X >=none, X <> none].
+estimate_hea_rules(43): confidence__pos(X) >= 0 may_be_deduced_from
+     [none <= X, X <= high].
+estimate_hea_rules(44): confidence__pos(X) <= 2 may_be_deduced_from
+     [none <= X, X <= high].
+estimate_hea_rules(45): confidence__val(X) >= none may_be_deduced_from
+     [0 <= X, X <= 2].
+estimate_hea_rules(46): confidence__val(X) <= high may_be_deduced_from
+     [0 <= X, X <= 2].
+estimate_hea_rules(47): succ(confidence__val(X)) may_be_replaced_by 
+     confidence__val(X+1)
+     if [0 <= X, X < 2].
+estimate_hea_rules(48): pred(confidence__val(X)) may_be_replaced_by 
+     confidence__val(X-1)
+     if [0 < X, X <= 2].
+estimate_hea_rules(49): confidence__pos(confidence__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 2].
+estimate_hea_rules(50): confidence__val(confidence__pos(X)) may_be_replaced_by X
+     if [none <= X, X <= high].
+estimate_hea_rules(51): confidence__pos(X) <= confidence__pos(Y) & X <= Y are_interchangeable 
+     if [none <= X, X <= high, none <= Y, Y <= high].
+estimate_hea_rules(52): confidence__val(X) <= confidence__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 2, 0 <= Y, Y <= 2].
+estimate_hea_rules(53): meter__size >= 0 may_be_deduced.
+estimate_hea_rules(54): meter__first may_be_replaced_by -200000.
+estimate_hea_rules(55): meter__last may_be_replaced_by 200000.
+estimate_hea_rules(56): meter__base__first may_be_replaced_by -2147483648.
+estimate_hea_rules(57): meter__base__last may_be_replaced_by 2147483647.
+estimate_hea_rules(58): angle_degrees__size >= 0 may_be_deduced.
+estimate_hea_rules(59): angle_degrees__first may_be_replaced_by 0.
+estimate_hea_rules(60): angle_degrees__last may_be_replaced_by 359.
+estimate_hea_rules(61): angle_degrees__base__first <= 
+     angle_degrees__base__last may_be_deduced.
+estimate_hea_rules(62): angle_degrees__base__first <= 
+     angle_degrees__first may_be_deduced.
+estimate_hea_rules(63): angle_degrees__base__last >= 
+     angle_degrees__last may_be_deduced.
+estimate_hea_rules(64): sensor_status__size >= 0 may_be_deduced.
+estimate_hea_rules(65): sensor_status__first may_be_replaced_by unknown.
+estimate_hea_rules(66): sensor_status__last may_be_replaced_by restarted.
+estimate_hea_rules(67): sensor_status__base__first may_be_replaced_by unknown.
+estimate_hea_rules(68): sensor_status__base__last may_be_replaced_by restarted.
+estimate_hea_rules(69): sensor_status__pos(sensor_status__first) may_be_replaced_by 0.
+estimate_hea_rules(70): sensor_status__pos(unknown) may_be_replaced_by 0.
+estimate_hea_rules(71): sensor_status__val(0) may_be_replaced_by 
+     unknown.
+estimate_hea_rules(72): sensor_status__pos(valid) may_be_replaced_by 1.
+estimate_hea_rules(73): sensor_status__val(1) may_be_replaced_by 
+     valid.
+estimate_hea_rules(74): sensor_status__pos(failed) may_be_replaced_by 2.
+estimate_hea_rules(75): sensor_status__val(2) may_be_replaced_by 
+     failed.
+estimate_hea_rules(76): sensor_status__pos(restarted) may_be_replaced_by 3.
+estimate_hea_rules(77): sensor_status__val(3) may_be_replaced_by 
+     restarted.
+estimate_hea_rules(78): sensor_status__pos(sensor_status__last) may_be_replaced_by 3.
+estimate_hea_rules(79): sensor_status__pos(succ(X)) may_be_replaced_by 
+     sensor_status__pos(X) + 1
+     if [X <=restarted, X <> restarted].
+estimate_hea_rules(80): sensor_status__pos(pred(X)) may_be_replaced_by 
+     sensor_status__pos(X) - 1
+     if [X >=unknown, X <> unknown].
+estimate_hea_rules(81): sensor_status__pos(X) >= 0 may_be_deduced_from
+     [unknown <= X, X <= restarted].
+estimate_hea_rules(82): sensor_status__pos(X) <= 3 may_be_deduced_from
+     [unknown <= X, X <= restarted].
+estimate_hea_rules(83): sensor_status__val(X) >= unknown may_be_deduced_from
+     [0 <= X, X <= 3].
+estimate_hea_rules(84): sensor_status__val(X) <= restarted may_be_deduced_from
+     [0 <= X, X <= 3].
+estimate_hea_rules(85): succ(sensor_status__val(X)) may_be_replaced_by 
+     sensor_status__val(X+1)
+     if [0 <= X, X < 3].
+estimate_hea_rules(86): pred(sensor_status__val(X)) may_be_replaced_by 
+     sensor_status__val(X-1)
+     if [0 < X, X <= 3].
+estimate_hea_rules(87): sensor_status__pos(sensor_status__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 3].
+estimate_hea_rules(88): sensor_status__val(sensor_status__pos(X)) may_be_replaced_by X
+     if [unknown <= X, X <= restarted].
+estimate_hea_rules(89): sensor_status__pos(X) <= sensor_status__pos(Y) & X <= Y are_interchangeable 
+     if [unknown <= X, X <= restarted, unknown <= Y, Y <= 
+     restarted].
+estimate_hea_rules(90): sensor_status__val(X) <= sensor_status__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 3, 0 <= Y, Y <= 3].

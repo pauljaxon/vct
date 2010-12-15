@@ -1,0 +1,218 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:19
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function State_Types.Radar_Action
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_radar_action_1.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  radar__first <= rad_inactive
+-S-  Applied substitution rule radar_action_rules(14).
+     This was achieved by replacing all occurrences of radar__first by:
+          rad_inactive.
+<S>  New C1:  true
+-S-  Applied substitution rule radar_action_rules(15).
+     This was achieved by replacing all occurrences of radar__last by:
+          sweep.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_radar_action_2.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  radar__first <= rad_inactive
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  radar__first <= rad_inactive
+***  Proved C1:  radar__first <= rad_inactive
+     using hypothesis H4.
+***  Proved C2:  rad_inactive <= radar__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_radar_action_3.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  radar__first <= rad_inactive
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  radar__first <= ping
+***  Proved C1:  radar__first <= ping
+     using hypothesis H4.
+-S-  Applied substitution rule radar_action_rules(15).
+     This was achieved by replacing all occurrences of radar__last by:
+          sweep.
+<S>  New H5:  true
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_radar_action_4.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  radar__first <= rad_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  radar__first <= ping
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  radar__first <= ping
+***  Proved C1:  radar__first <= ping
+     using hypothesis H7.
+***  Proved C2:  ping <= radar__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_radar_action_5.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  radar__first <= rad_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  radar__first <= ping
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  radar__first <= sweep
+***  Proved C1:  radar__first <= sweep
+     using hypothesis H4.
+-S-  Applied substitution rule radar_action_rules(15).
+     This was achieved by replacing all occurrences of radar__last by:
+          sweep.
+<S>  New H5:  true
+<S>  New H8:  true
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_radar_action_6.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  radar__first <= rad_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  radar__first <= ping
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  radar__first <= sweep
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  radar__first <= sweep
+***  Proved C1:  radar__first <= sweep
+     using hypothesis H10.
+***  Proved C2:  sweep <= radar__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_radar_action_7.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  radar__first <= rad_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  radar__first <= ping
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  radar__first <= sweep
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  radar__first <= rad_inactive
+***  Proved C1:  radar__first <= rad_inactive
+     using hypothesis H4.
+***  Proved C2:  rad_inactive <= radar__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_radar_action_8.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  radar__first <= rad_inactive
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  radar__first <= rad_inactive
+***  Proved C1:  true
+***  Proved C2:  radar__first <= rad_inactive
+     using hypothesis H4.
+***  Proved C3:  rad_inactive <= radar__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_radar_action_9.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  radar__first <= rad_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  radar__first <= ping
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  radar__first <= ping
+***  Proved C1:  true
+***  Proved C2:  radar__first <= ping
+     using hypothesis H7.
+***  Proved C3:  ping <= radar__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_radar_action_10.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  radar__first <= rad_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  radar__first <= ping
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  radar__first <= sweep
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  radar__first <= sweep
+***  Proved C1:  true
+***  Proved C2:  radar__first <= sweep
+     using hypothesis H10.
+***  Proved C3:  sweep <= radar__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_radar_action_11.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  radar__first <= rad_inactive
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  radar__first <= ping
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  radar__first <= sweep
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  radar__first <= rad_inactive
+***  Proved C1:  true
+***  Proved C2:  radar__first <= rad_inactive
+     using hypothesis H4.
+***  Proved C3:  rad_inactive <= radar__last
+     using hypothesis H5.
+***  PROVED VC.
+

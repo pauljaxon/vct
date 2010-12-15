@@ -1,0 +1,587 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.15
+
+                    procedure nav.Estimate_Origin_Offset
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 334:
+
+procedure_estimate_origin_offset_1.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    (ins_ss = unknown) or ((ins_ss = failed) or (ins_ss = 
+           restarted)) .
+H9:    compass_ss = valid .
+H10:   airspeed_ss = valid .
+        ->
+C1:    0 >= meter__first .
+C2:    0 <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 335:
+
+procedure_estimate_origin_offset_2.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    (ins_ss = unknown) or ((ins_ss = failed) or (ins_ss = 
+           restarted)) .
+H9:    compass_ss = valid .
+H10:   airspeed_ss = valid .
+H11:   0 >= meter__first .
+H12:   0 <= meter__last .
+        ->
+C1:    none >= confidence__first .
+C2:    none <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 338:
+
+procedure_estimate_origin_offset_3.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    (ins_ss = unknown) or ((ins_ss = failed) or (ins_ss = 
+           restarted)) .
+H9:    not ((compass_ss = valid) and (airspeed_ss = valid)) .
+        ->
+C1:    0 >= meter__first .
+C2:    0 <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 339:
+
+procedure_estimate_origin_offset_4.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    (ins_ss = unknown) or ((ins_ss = failed) or (ins_ss = 
+           restarted)) .
+H9:    not ((compass_ss = valid) and (airspeed_ss = valid)) .
+H10:   0 >= meter__first .
+H11:   0 <= meter__last .
+        ->
+C1:    none >= confidence__first .
+C2:    none <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 342:
+
+procedure_estimate_origin_offset_5.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    ins_ss = valid .
+H9:    edx__1 >= sensor_history__meter__first .
+H10:   edx__1 <= sensor_history__meter__last .
+H11:   t1__1 >= clock__millisecond__first .
+H12:   t1__1 <= clock__millisecond__last .
+        ->
+C1:    t1__1 >= clock__millisecond__first .
+C2:    t1__1 <= clock__millisecond__last .
+C3:    edx__1 >= meter__first .
+C4:    edx__1 <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 345:
+
+procedure_estimate_origin_offset_6.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    ins_ss = valid .
+H9:    edx__1 >= sensor_history__meter__first .
+H10:   edx__1 <= sensor_history__meter__last .
+H11:   t1__1 >= clock__millisecond__first .
+H12:   t1__1 <= clock__millisecond__last .
+H13:   t1__1 >= clock__millisecond__first .
+H14:   t1__1 <= clock__millisecond__last .
+H15:   edx__1 >= meter__first .
+H16:   edx__1 <= meter__last .
+H17:   edy__2 >= sensor_history__meter__first .
+H18:   edy__2 <= sensor_history__meter__last .
+H19:   t2__2 >= clock__millisecond__first .
+H20:   t2__2 <= clock__millisecond__last .
+        ->
+C1:    t2__2 >= clock__millisecond__first .
+C2:    t2__2 <= clock__millisecond__last .
+C3:    edy__2 >= meter__first .
+C4:    edy__2 <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 351:
+
+procedure_estimate_origin_offset_7.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    ins_ss = valid .
+H9:    edx__1 >= sensor_history__meter__first .
+H10:   edx__1 <= sensor_history__meter__last .
+H11:   t1__1 >= clock__millisecond__first .
+H12:   t1__1 <= clock__millisecond__last .
+H13:   t1__1 >= clock__millisecond__first .
+H14:   t1__1 <= clock__millisecond__last .
+H15:   edx__1 >= meter__first .
+H16:   edx__1 <= meter__last .
+H17:   edy__2 >= sensor_history__meter__first .
+H18:   edy__2 <= sensor_history__meter__last .
+H19:   t2__2 >= clock__millisecond__first .
+H20:   t2__2 <= clock__millisecond__last .
+H21:   t2__2 >= clock__millisecond__first .
+H22:   t2__2 <= clock__millisecond__last .
+H23:   edy__2 >= meter__first .
+H24:   edy__2 <= meter__last .
+H25:   t1__1 >= clock__millisecond__first .
+H26:   t1__1 <= clock__millisecond__last .
+H27:   t2__2 >= clock__millisecond__first .
+H28:   t2__2 <= clock__millisecond__last .
+H29:   (t1__1 = 0) or (t2__2 = 0) .
+        ->
+C1:    0 >= meter__first .
+C2:    0 <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 352:
+
+procedure_estimate_origin_offset_8.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    ins_ss = valid .
+H9:    edx__1 >= sensor_history__meter__first .
+H10:   edx__1 <= sensor_history__meter__last .
+H11:   t1__1 >= clock__millisecond__first .
+H12:   t1__1 <= clock__millisecond__last .
+H13:   t1__1 >= clock__millisecond__first .
+H14:   t1__1 <= clock__millisecond__last .
+H15:   edx__1 >= meter__first .
+H16:   edx__1 <= meter__last .
+H17:   edy__2 >= sensor_history__meter__first .
+H18:   edy__2 <= sensor_history__meter__last .
+H19:   t2__2 >= clock__millisecond__first .
+H20:   t2__2 <= clock__millisecond__last .
+H21:   t2__2 >= clock__millisecond__first .
+H22:   t2__2 <= clock__millisecond__last .
+H23:   edy__2 >= meter__first .
+H24:   edy__2 <= meter__last .
+H25:   t1__1 >= clock__millisecond__first .
+H26:   t1__1 <= clock__millisecond__last .
+H27:   t2__2 >= clock__millisecond__first .
+H28:   t2__2 <= clock__millisecond__last .
+H29:   (t1__1 = 0) or (t2__2 = 0) .
+H30:   0 >= meter__first .
+H31:   0 <= meter__last .
+        ->
+C1:    none >= confidence__first .
+C2:    none <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 354:
+
+procedure_estimate_origin_offset_9.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    ins_ss = valid .
+H9:    edx__1 >= sensor_history__meter__first .
+H10:   edx__1 <= sensor_history__meter__last .
+H11:   t1__1 >= clock__millisecond__first .
+H12:   t1__1 <= clock__millisecond__last .
+H13:   t1__1 >= clock__millisecond__first .
+H14:   t1__1 <= clock__millisecond__last .
+H15:   edx__1 >= meter__first .
+H16:   edx__1 <= meter__last .
+H17:   edy__2 >= sensor_history__meter__first .
+H18:   edy__2 <= sensor_history__meter__last .
+H19:   t2__2 >= clock__millisecond__first .
+H20:   t2__2 <= clock__millisecond__last .
+H21:   t2__2 >= clock__millisecond__first .
+H22:   t2__2 <= clock__millisecond__last .
+H23:   edy__2 >= meter__first .
+H24:   edy__2 <= meter__last .
+H25:   t1__1 >= clock__millisecond__first .
+H26:   t1__1 <= clock__millisecond__last .
+H27:   t2__2 >= clock__millisecond__first .
+H28:   t2__2 <= clock__millisecond__last .
+H29:   not ((t1__1 = 0) or (t2__2 = 0)) .
+H30:   edx__1 >= meter__first .
+H31:   edx__1 <= meter__last .
+H32:   edy__2 >= meter__first .
+H33:   edy__2 <= meter__last .
+        ->
+C1:    edx__1 * edx__1 + edy__2 * edy__2 >= integer32__first .
+C2:    edx__1 * edx__1 + edy__2 * edy__2 <= integer32__last .
+C3:    edy__2 * edy__2 >= long_integer__base__first .
+C4:    edy__2 * edy__2 <= long_integer__base__last .
+C5:    edy__2 >= integer32__first .
+C6:    edy__2 <= integer32__last .
+C7:    edy__2 >= integer32__first .
+C8:    edy__2 <= integer32__last .
+C9:    edx__1 * edx__1 >= long_integer__base__first .
+C10:   edx__1 * edx__1 <= long_integer__base__last .
+C11:   edx__1 >= integer32__first .
+C12:   edx__1 <= integer32__last .
+C13:   edx__1 >= integer32__first .
+C14:   edx__1 <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 356:
+
+procedure_estimate_origin_offset_10.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    ins_ss = valid .
+H9:    edx__1 >= sensor_history__meter__first .
+H10:   edx__1 <= sensor_history__meter__last .
+H11:   t1__1 >= clock__millisecond__first .
+H12:   t1__1 <= clock__millisecond__last .
+H13:   t1__1 >= clock__millisecond__first .
+H14:   t1__1 <= clock__millisecond__last .
+H15:   edx__1 >= meter__first .
+H16:   edx__1 <= meter__last .
+H17:   edy__2 >= sensor_history__meter__first .
+H18:   edy__2 <= sensor_history__meter__last .
+H19:   t2__2 >= clock__millisecond__first .
+H20:   t2__2 <= clock__millisecond__last .
+H21:   t2__2 >= clock__millisecond__first .
+H22:   t2__2 <= clock__millisecond__last .
+H23:   edy__2 >= meter__first .
+H24:   edy__2 <= meter__last .
+H25:   t1__1 >= clock__millisecond__first .
+H26:   t1__1 <= clock__millisecond__last .
+H27:   t2__2 >= clock__millisecond__first .
+H28:   t2__2 <= clock__millisecond__last .
+H29:   not ((t1__1 = 0) or (t2__2 = 0)) .
+H30:   edx__1 >= meter__first .
+H31:   edx__1 <= meter__last .
+H32:   edy__2 >= meter__first .
+H33:   edy__2 <= meter__last .
+H34:   edx__1 * edx__1 + edy__2 * edy__2 >= integer32__first .
+H35:   edx__1 * edx__1 + edy__2 * edy__2 <= integer32__last .
+H36:   edy__2 * edy__2 >= long_integer__base__first .
+H37:   edy__2 * edy__2 <= long_integer__base__last .
+H38:   edy__2 >= integer32__first .
+H39:   edy__2 <= integer32__last .
+H40:   edy__2 >= integer32__first .
+H41:   edy__2 <= integer32__last .
+H42:   edx__1 * edx__1 >= long_integer__base__first .
+H43:   edx__1 * edx__1 <= long_integer__base__last .
+H44:   edx__1 >= integer32__first .
+H45:   edx__1 <= integer32__last .
+H46:   edx__1 >= integer32__first .
+H47:   edx__1 <= integer32__last .
+H48:   edx__1 * edx__1 + edy__2 * edy__2 >= integer32__first .
+H49:   edx__1 * edx__1 + edy__2 * edy__2 <= integer32__last .
+        ->
+C1:    edx__1 * edx__1 + edy__2 * edy__2 >= 
+           systemtypes__integer32__first .
+C2:    edx__1 * edx__1 + edy__2 * edy__2 <= 
+           systemtypes__integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 356:
+
+procedure_estimate_origin_offset_11.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    ins_ss = valid .
+H9:    edx__1 >= sensor_history__meter__first .
+H10:   edx__1 <= sensor_history__meter__last .
+H11:   t1__1 >= clock__millisecond__first .
+H12:   t1__1 <= clock__millisecond__last .
+H13:   t1__1 >= clock__millisecond__first .
+H14:   t1__1 <= clock__millisecond__last .
+H15:   edx__1 >= meter__first .
+H16:   edx__1 <= meter__last .
+H17:   edy__2 >= sensor_history__meter__first .
+H18:   edy__2 <= sensor_history__meter__last .
+H19:   t2__2 >= clock__millisecond__first .
+H20:   t2__2 <= clock__millisecond__last .
+H21:   t2__2 >= clock__millisecond__first .
+H22:   t2__2 <= clock__millisecond__last .
+H23:   edy__2 >= meter__first .
+H24:   edy__2 <= meter__last .
+H25:   t1__1 >= clock__millisecond__first .
+H26:   t1__1 <= clock__millisecond__last .
+H27:   t2__2 >= clock__millisecond__first .
+H28:   t2__2 <= clock__millisecond__last .
+H29:   not ((t1__1 = 0) or (t2__2 = 0)) .
+H30:   edx__1 >= meter__first .
+H31:   edx__1 <= meter__last .
+H32:   edy__2 >= meter__first .
+H33:   edy__2 <= meter__last .
+H34:   edx__1 * edx__1 + edy__2 * edy__2 >= integer32__first .
+H35:   edx__1 * edx__1 + edy__2 * edy__2 <= integer32__last .
+H36:   edy__2 * edy__2 >= long_integer__base__first .
+H37:   edy__2 * edy__2 <= long_integer__base__last .
+H38:   edy__2 >= integer32__first .
+H39:   edy__2 <= integer32__last .
+H40:   edy__2 >= integer32__first .
+H41:   edy__2 <= integer32__last .
+H42:   edx__1 * edx__1 >= long_integer__base__first .
+H43:   edx__1 * edx__1 <= long_integer__base__last .
+H44:   edx__1 >= integer32__first .
+H45:   edx__1 <= integer32__last .
+H46:   edx__1 >= integer32__first .
+H47:   edx__1 <= integer32__last .
+H48:   edx__1 * edx__1 + edy__2 * edy__2 >= integer32__first .
+H49:   edx__1 * edx__1 + edy__2 * edy__2 <= integer32__last .
+H50:   edx__1 * edx__1 + edy__2 * edy__2 >= 
+           systemtypes__integer32__first .
+H51:   edx__1 * edx__1 + edy__2 * edy__2 <= 
+           systemtypes__integer32__last .
+H52:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) >= 
+           systemtypes__integer32__first .
+H53:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) <= 
+           systemtypes__integer32__last .
+        ->
+C1:    systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) >= 
+           integer32__first .
+C2:    systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) <= 
+           integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 357:
+
+procedure_estimate_origin_offset_12.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    ins_ss = valid .
+H9:    edx__1 >= sensor_history__meter__first .
+H10:   edx__1 <= sensor_history__meter__last .
+H11:   t1__1 >= clock__millisecond__first .
+H12:   t1__1 <= clock__millisecond__last .
+H13:   t1__1 >= clock__millisecond__first .
+H14:   t1__1 <= clock__millisecond__last .
+H15:   edx__1 >= meter__first .
+H16:   edx__1 <= meter__last .
+H17:   edy__2 >= sensor_history__meter__first .
+H18:   edy__2 <= sensor_history__meter__last .
+H19:   t2__2 >= clock__millisecond__first .
+H20:   t2__2 <= clock__millisecond__last .
+H21:   t2__2 >= clock__millisecond__first .
+H22:   t2__2 <= clock__millisecond__last .
+H23:   edy__2 >= meter__first .
+H24:   edy__2 <= meter__last .
+H25:   t1__1 >= clock__millisecond__first .
+H26:   t1__1 <= clock__millisecond__last .
+H27:   t2__2 >= clock__millisecond__first .
+H28:   t2__2 <= clock__millisecond__last .
+H29:   not ((t1__1 = 0) or (t2__2 = 0)) .
+H30:   edx__1 >= meter__first .
+H31:   edx__1 <= meter__last .
+H32:   edy__2 >= meter__first .
+H33:   edy__2 <= meter__last .
+H34:   edx__1 * edx__1 + edy__2 * edy__2 >= integer32__first .
+H35:   edx__1 * edx__1 + edy__2 * edy__2 <= integer32__last .
+H36:   edy__2 * edy__2 >= long_integer__base__first .
+H37:   edy__2 * edy__2 <= long_integer__base__last .
+H38:   edy__2 >= integer32__first .
+H39:   edy__2 <= integer32__last .
+H40:   edy__2 >= integer32__first .
+H41:   edy__2 <= integer32__last .
+H42:   edx__1 * edx__1 >= long_integer__base__first .
+H43:   edx__1 * edx__1 <= long_integer__base__last .
+H44:   edx__1 >= integer32__first .
+H45:   edx__1 <= integer32__last .
+H46:   edx__1 >= integer32__first .
+H47:   edx__1 <= integer32__last .
+H48:   edx__1 * edx__1 + edy__2 * edy__2 >= integer32__first .
+H49:   edx__1 * edx__1 + edy__2 * edy__2 <= integer32__last .
+H50:   edx__1 * edx__1 + edy__2 * edy__2 >= 
+           systemtypes__integer32__first .
+H51:   edx__1 * edx__1 + edy__2 * edy__2 <= 
+           systemtypes__integer32__last .
+H52:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) >= 
+           systemtypes__integer32__first .
+H53:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) <= 
+           systemtypes__integer32__last .
+H54:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) >= 
+           integer32__first .
+H55:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) <= 
+           integer32__last .
+H56:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) >= 
+           integer32__first .
+H57:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) <= 
+           integer32__last .
+        ->
+C1:    systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) >= 
+           meter__first .
+C2:    systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) <= 
+           meter__last .
+C3:    systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) >= 
+           meter__first .
+C4:    systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) <= 
+           meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 358:
+
+procedure_estimate_origin_offset_13.
+H1:    true .
+H2:    ins_ss >= sensor_status__first .
+H3:    ins_ss <= sensor_status__last .
+H4:    compass_ss >= sensor_status__first .
+H5:    compass_ss <= sensor_status__last .
+H6:    airspeed_ss >= sensor_status__first .
+H7:    airspeed_ss <= sensor_status__last .
+H8:    ins_ss = valid .
+H9:    edx__1 >= sensor_history__meter__first .
+H10:   edx__1 <= sensor_history__meter__last .
+H11:   t1__1 >= clock__millisecond__first .
+H12:   t1__1 <= clock__millisecond__last .
+H13:   t1__1 >= clock__millisecond__first .
+H14:   t1__1 <= clock__millisecond__last .
+H15:   edx__1 >= meter__first .
+H16:   edx__1 <= meter__last .
+H17:   edy__2 >= sensor_history__meter__first .
+H18:   edy__2 <= sensor_history__meter__last .
+H19:   t2__2 >= clock__millisecond__first .
+H20:   t2__2 <= clock__millisecond__last .
+H21:   t2__2 >= clock__millisecond__first .
+H22:   t2__2 <= clock__millisecond__last .
+H23:   edy__2 >= meter__first .
+H24:   edy__2 <= meter__last .
+H25:   t1__1 >= clock__millisecond__first .
+H26:   t1__1 <= clock__millisecond__last .
+H27:   t2__2 >= clock__millisecond__first .
+H28:   t2__2 <= clock__millisecond__last .
+H29:   not ((t1__1 = 0) or (t2__2 = 0)) .
+H30:   edx__1 >= meter__first .
+H31:   edx__1 <= meter__last .
+H32:   edy__2 >= meter__first .
+H33:   edy__2 <= meter__last .
+H34:   edx__1 * edx__1 + edy__2 * edy__2 >= integer32__first .
+H35:   edx__1 * edx__1 + edy__2 * edy__2 <= integer32__last .
+H36:   edy__2 * edy__2 >= long_integer__base__first .
+H37:   edy__2 * edy__2 <= long_integer__base__last .
+H38:   edy__2 >= integer32__first .
+H39:   edy__2 <= integer32__last .
+H40:   edy__2 >= integer32__first .
+H41:   edy__2 <= integer32__last .
+H42:   edx__1 * edx__1 >= long_integer__base__first .
+H43:   edx__1 * edx__1 <= long_integer__base__last .
+H44:   edx__1 >= integer32__first .
+H45:   edx__1 <= integer32__last .
+H46:   edx__1 >= integer32__first .
+H47:   edx__1 <= integer32__last .
+H48:   edx__1 * edx__1 + edy__2 * edy__2 >= integer32__first .
+H49:   edx__1 * edx__1 + edy__2 * edy__2 <= integer32__last .
+H50:   edx__1 * edx__1 + edy__2 * edy__2 >= 
+           systemtypes__integer32__first .
+H51:   edx__1 * edx__1 + edy__2 * edy__2 <= 
+           systemtypes__integer32__last .
+H52:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) >= 
+           systemtypes__integer32__first .
+H53:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) <= 
+           systemtypes__integer32__last .
+H54:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) >= 
+           integer32__first .
+H55:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) <= 
+           integer32__last .
+H56:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) >= 
+           integer32__first .
+H57:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) <= 
+           integer32__last .
+H58:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) >= 
+           meter__first .
+H59:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) <= 
+           meter__last .
+H60:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) >= 
+           meter__first .
+H61:   systemtypes__maths__sqrt(edx__1 * edx__1 + edy__2 * edy__2) <= 
+           meter__last .
+        ->
+C1:    high >= confidence__first .
+C2:    high <= confidence__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_estimate_origin_offset_14.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_origin_offset_15.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_origin_offset_16.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_origin_offset_17.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_estimate_origin_offset_18.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_origin_offset_19.
+*** true .          /* trivially true VC removed by Examiner */
+
+

@@ -1,0 +1,77 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.16
+
+                         procedure ins.Set_Location
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 156:
+
+procedure_set_location_1.
+H1:    true .
+H2:    x >= meter__first .
+H3:    x <= meter__last .
+H4:    y >= meter__first .
+H5:    y <= meter__last .
+H6:    z >= meter__first .
+H7:    z <= meter__last .
+        ->
+C1:    z >= measuretypes__meter__first .
+C2:    z <= measuretypes__meter__last .
+C3:    y >= measuretypes__meter__first .
+C4:    y <= measuretypes__meter__last .
+C5:    x >= measuretypes__meter__first .
+C6:    x <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 157:
+
+procedure_set_location_2.
+H1:    true .
+H2:    x >= meter__first .
+H3:    x <= meter__last .
+H4:    y >= meter__first .
+H5:    y <= meter__last .
+H6:    z >= meter__first .
+H7:    z <= meter__last .
+H8:    z >= measuretypes__meter__first .
+H9:    z <= measuretypes__meter__last .
+H10:   y >= measuretypes__meter__first .
+H11:   y <= measuretypes__meter__last .
+H12:   x >= measuretypes__meter__first .
+H13:   x <= measuretypes__meter__last .
+H14:   last_time__1 >= clock__millisecond__first .
+H15:   last_time__1 <= clock__millisecond__last .
+H16:   true .
+        ->
+C1:    last_time__1 >= clock__millisecond__first .
+C2:    last_time__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_set_location_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_location_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_set_location_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_location_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+

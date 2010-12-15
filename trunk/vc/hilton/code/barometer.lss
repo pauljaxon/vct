@@ -1,0 +1,171 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.07
+
+Line
+   1  --=head1 NAME
+   2  --
+   3  -- Barometer - barometer simulator code
+   4  --
+   5  --=head1 REVISION HISTORY
+   6  --
+   7  -- $Log: barometer.ads,v $
+   8  -- Revision 1.2  2004/12/19 15:53:40  adi
+   9  -- Added POD to airspeed, barometer, bc1553
+  10  --
+  11  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+  12  -- Added from tarfile
+  13  --
+  14  --
+  15  -- Revision 1.6  2003/08/06 20:41:22  adi
+  16  -- Use bit_machine
+  17  --
+  18  -- Revision 1.5  2003/02/19 19:04:44  adi
+  19  -- Details for Command proc
+  20  --
+  21  -- Revision 1.4  2003/02/12 23:11:25  adi
+  22  -- Added init routine
+  23  --
+  24  -- Revision 1.3  2003/02/11 20:49:31  adi
+  25  -- Minor fixes to withs and inherits
+  26  --
+  27  -- Revision 1.2  2003/02/10 20:06:40  adi
+  28  -- SPARKs after body implemented
+  29  --
+  30  -- Revision 1.1  2003/02/09 20:58:42  adi
+  31  -- Initial revision
+  32  --
+  33  --=cut
+  34  with MeasureTypes,Clock;
+  35  use type MeasureTypes.Meter;
+  36  use type MeasureTypes.Meter_Per_Sec;
+  37  use type Clock.Millisecond;
+  38  --# inherit MeasureTypes, Bus, Rt1553,
+  39  --#         Clock, Clock_Utils, SystemTypes,
+  40  --#         IBIT, Bit_Machine;
+  41  package Barometer
+  42    --# own State;
+  43    --# initializes State;
+  44  is
+  45     -- Type renamings for brevity
+  46     subtype Meter is MeasureTypes.Meter;
+  47     subtype Meter_Per_Sec is MeasureTypes.Meter_Per_Sec;
+  48  
+  49     --=head1 SUBPROGRAMS
+  50     --
+  51     --=over 4
+  52     --
+  53     --=item *
+  54     --
+  55     procedure Cycle;
+  56     --# global in out State;
+  57     --#        in out Clock.Time;
+  58     --#        in Bus.Outputs;
+  59     --#        in out Bus.Inputs;
+  60     --# derives State from *, Bus.Outputs &
+  61     --#        Bus.Inputs from *, Clock.Time, State &
+  62     --#        Clock.Time from *;
+  63     --
+  64     --Cycle the reading of data from the bus
+  65     --and writing of data to the bus
+  66     --
+  67  
+  68     --=item *
+  69     --
+  70     procedure Set_Altitude_Profile(Height : in Meter;
+  71                                    DZ     : in Meter_Per_Sec);
+  72     --# global in out State, Clock.Time;
+  73     --# derives Clock.Time from * &
+  74     --#         State from *, Clock.Time, Height, DZ;
+  75     --
+  76     --Set the current altitude profile and vertical velocity
+  77     --to C<Height> and C<DZ> respectively.
+  78     --
+  79  
+  80     --=item *
+  81     --
+  82     procedure Read_Altitude(Height : out Meter);
+  83     --# global in     State;
+  84     --#        in out Clock.Time;
+  85     --# derives Clock.Time from * &
+  86     --#         Height from State, Clock.Time;
+  87     --
+  88     --Read the current altitude as C<Height>
+  89     --
+  90  
+  91     --=item *
+  92     --
+  93     procedure Fail_Next_Bit;
+  94     --# global in out State;
+  95     --# derives State from *;
+  96     --
+  97     --Cause the next BIT to fail.
+  98     --
+  99  
+ 100     --=item *
+ 101     --
+ 102     procedure Init;
+ 103     --# global out State;
+ 104     --#        in out Bus.Inputs;
+ 105     --# derives State from &
+ 106     --#         Bus.Inputs from *;
+ 107     --
+ 108     --Initialise the barometric simulator.
+ 109     --
+ 110  
+ 111     --=item *
+ 112     --
+ 113     procedure Command;
+ 114     --# derives;
+ 115     --
+ 116     --Test harness point.  Reads controlling keywords from
+ 117     --standard input, and adjusts barometer sim state accordingly.
+ 118     --
+ 119  
+ 120     --=back
+ 121     --
+ 122     --=cut
+ 123  end Barometer;
+ 124  
+ 125  --=head1 NOTES
+ 126  --
+ 127  --This package provides a simulator of a barometric pressure
+ 128  --measuring device for the
+ 129  --system.  It allows the testing harness to set a current altitude and
+ 130  --constant vertical speed, and will extrapolate to calculate new altitude
+ 131  --at each future read.  It also allows very basic control over failure of
+ 132  --built-in test run requests.
+ 133  --
+ 134  --=head1 AUTHOR
+ 135  --
+ 136  --Adrian J. Hilton.  Home web page at L<http://www.suslik.org/>
+ 137  --
+ 138  --=head1 LICENSE
+ 139  --
+ 140  --Copyright (C) 2003-2005, Adrian J. Hilton
+ 141  --
+ 142  --This program is free software; you can redistribute it and/or modify
+ 143  --it under the terms of the GNU General Public License as published by
+ 144  --the Free Software Foundation; either version 2 of the License, or
+ 145  --(at your option) any later version.
+ 146  --
+ 147  --This program is distributed in the hope that it will be useful,
+ 148  --but WITHOUT ANY WARRANTY; without even the implied warranty of
+ 149  --MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ 150  --GNU General Public License for more details.
+ 151  --
+ 152  --You should have received a copy of the GNU General Public License
+ 153  --along with this program; if not, write to the Free Software
+ 154  --Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 155  --
+ 156  --=cut
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

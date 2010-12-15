@@ -1,0 +1,71 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:41.00
+
+Line
+   1  -- Radar configuration
+   2  --
+   3  -- $Log: radar_cfg.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/08/25 19:35:00  adi
+   9  -- Added encode and decode of sector
+  10  --
+  11  -- Revision 1.1  2003/08/25 14:03:52  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with Measuretypes.Angle_Ops;
+  16  package body Radar_Cfg
+  17  is
+  18     subtype Integer32 is Systemtypes.Integer32;
+  19  
+  20     function Sector_To_Millirad(S : Sector_Range)
+  21                                return Measuretypes.Millirad
+  22     is
+  23        Ans : Measuretypes.Millirad;
+  24     begin
+  25        Ans := Measuretypes.Angle_Ops.Mul(Orig_Angle => Sector_angle,
+  26                                          Mult  => Integer(S));
+  27        return Ans;
+  28     end Sector_To_Millirad;
+
++++        Flow analysis of subprogram Sector_To_Millirad 
+           performed: no errors found.
+
+  29  
+  30  
+  31     function Encode_Sector(S : Sector_Range) return
+  32       Systemtypes.Unsigned16
+  33     is
+  34     begin
+  35        return Systemtypes.Unsigned16(S - Sector_Range'First);
+  36     end Encode_Sector;
+
++++        Flow analysis of subprogram Encode_Sector 
+           performed: no errors found.
+
+  37  
+  38     function decode_Sector(B : Systemtypes.unsigned16) return
+  39       Sector_Range
+  40     is begin
+  41         return Sector_Range(Integer32(Sector_Range'First) + Integer32(B));
+  42     end Decode_Sector;
+
++++        Flow analysis of subprogram decode_Sector 
+           performed: no errors found.
+
+  43  
+  44  end Radar_Cfg;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

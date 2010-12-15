@@ -1,0 +1,317 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:06
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure Pitch.Pitch_AP
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_pitch_ap_1.  @@@@@@@@@@
+***  Proved C1:  the_pitch >= instruments__pitchangle__first
+     using hypothesis H10.
+***  Proved C2:  the_pitch <= instruments__pitchangle__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_pitch_ap_2.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+-S-  Applied substitution rule pitch_ap_rules(32).
+     This was achieved by replacing all occurrences of degreespersec__first by:
+          - 180.
+<S>  New C1:  present_pitchrate__1 >= - 180
+-S-  Applied substitution rule pitch_ap_rules(33).
+     This was achieved by replacing all occurrences of degreespersec__last by:
+          180.
+<S>  New C2:  present_pitchrate__1 <= 180
+-S-  Applied substitution rule pitch_ap_rules(2).
+     This was achieved by replacing all occurrences of 
+          degrees__degreespersec__first by:
+          - 180.
+<S>  New H14:  present_pitchrate__1 >= - 180
+-S-  Applied substitution rule pitch_ap_rules(3).
+     This was achieved by replacing all occurrences of 
+          degrees__degreespersec__last by:
+          180.
+<S>  New H15:  present_pitchrate__1 <= 180
+-S-  Applied substitution rule pitch_ap_rules(7).
+     This was achieved by replacing all occurrences of instruments__feet__first 
+          by:
+          0.
+<S>  New H2:  present_altitude >= 0
+<S>  New H4:  target_altitude >= 0
+-S-  Applied substitution rule pitch_ap_rules(8).
+     This was achieved by replacing all occurrences of instruments__feet__last 
+          by:
+          50000.
+<S>  New H3:  present_altitude <= 50000
+<S>  New H5:  target_altitude <= 50000
+-S-  Applied substitution rule pitch_ap_rules(12).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H6:  mach >= 0
+-S-  Applied substitution rule pitch_ap_rules(13).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H7:  mach <= 100
+-S-  Applied substitution rule pitch_ap_rules(17).
+     This was achieved by replacing all occurrences of 
+          instruments__pitchangle__first by:
+          - 10.
+<S>  New H10:  the_pitch >= - 10
+-S-  Applied substitution rule pitch_ap_rules(18).
+     This was achieved by replacing all occurrences of 
+          instruments__pitchangle__last by:
+          20.
+<S>  New H11:  the_pitch <= 20
+-S-  Applied substitution rule pitch_ap_rules(22).
+     This was achieved by replacing all occurrences of 
+          instruments__feetpermin__first by:
+          - 6000.
+<S>  New H8:  climb_rate >= - 6000
+-S-  Applied substitution rule pitch_ap_rules(23).
+     This was achieved by replacing all occurrences of 
+          instruments__feetpermin__last by:
+          6000.
+<S>  New H9:  climb_rate <= 6000
+***  Proved C1:  present_pitchrate__1 >= - 180
+     using hypothesis H14.
+***  Proved C2:  present_pitchrate__1 <= 180
+     using hypothesis H15.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_pitch_ap_3.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C1:  climb_rate >= instruments__feetpermin__first
+     using hypothesis H8.
+***  Proved C2:  climb_rate <= instruments__feetpermin__last
+     using hypothesis H9.
+***  Proved C3:  target_altitude >= instruments__feet__first
+     using hypothesis H4.
+***  Proved C4:  target_altitude <= instruments__feet__last
+     using hypothesis H5.
+***  Proved C5:  present_altitude >= instruments__feet__first
+     using hypothesis H2.
+***  Proved C6:  present_altitude <= instruments__feet__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_pitch_ap_4.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H3)
+          .
+***  Proved C1:  target_rate(present_altitude, target_altitude, climb_rate) >= 
+          degreespersec__first
+     using hypothesis H24.
+***  Proved C2:  target_rate(present_altitude, target_altitude, climb_rate) <= 
+          degreespersec__last
+     using hypothesis H25.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_pitch_ap_5.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H25).
+***  Proved C1:  mach >= instruments__machnumber__first
+     using hypothesis H6.
+***  Proved C2:  mach <= instruments__machnumber__last
+     using hypothesis H7.
+***  Proved C3:  target_rate(present_altitude, target_altitude, climb_rate) >= 
+          degreespersec__first
+     using hypothesis H24.
+***  Proved C4:  target_rate(present_altitude, target_altitude, climb_rate) <= 
+          degreespersec__last
+     using hypothesis H25.
+***  Proved C5:  present_pitchrate__1 >= degreespersec__first
+     using hypothesis H16.
+***  Proved C6:  present_pitchrate__1 <= degreespersec__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_pitch_ap_6.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H17).
+***  Proved C1:  calc_elevator_move(present_pitchrate__1, target_rate(
+          present_altitude, target_altitude, climb_rate), mach) >= 
+          surfaces__controlangle__first
+     using hypothesis H38.
+***  Proved C2:  calc_elevator_move(present_pitchrate__1, target_rate(
+          present_altitude, target_altitude, climb_rate), mach) <= 
+          surfaces__controlangle__last
+     using hypothesis H39.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_pitch_ap_7.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H38).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H38).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H39).
+***  Proved C1:  calc_elevator_move(present_pitchrate__1, target_rate(
+          present_altitude, target_altitude, climb_rate), mach) >= 
+          surfaces__controlangle__first
+     using hypothesis H38.
+***  Proved C2:  calc_elevator_move(present_pitchrate__1, target_rate(
+          present_altitude, target_altitude, climb_rate), mach) <= 
+          surfaces__controlangle__last
+     using hypothesis H39.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_pitch_ap_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_pitch_ap_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_pitch_ap_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

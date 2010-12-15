@@ -1,0 +1,55 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 26-NOV-2009 09:54:53.69}
+
+                        {procedure Altitude.Maintain}
+
+
+title procedure maintain;
+
+  function round__(real) : integer;
+  type instruments__feet = integer;
+  type instruments__machnumber = integer;
+  type instruments__pitchangle = integer;
+  type instruments__feetpermin = integer;
+  type ap__controls__switch = (ap__controls__on, 
+     ap__controls__off);
+  const ap__controls__switch__base__last : ap__controls__switch = pending; 
+  const ap__controls__switch__base__first : ap__controls__switch = pending; 
+  const instruments__feetpermin__base__last : integer = pending; 
+  const instruments__feetpermin__base__first : integer = pending; 
+  const instruments__pitchangle__base__last : integer = pending; 
+  const instruments__pitchangle__base__first : integer = pending; 
+  const instruments__machnumber__base__last : integer = pending; 
+  const instruments__machnumber__base__first : integer = pending; 
+  const instruments__feet__base__last : integer = pending; 
+  const instruments__feet__base__first : integer = pending; 
+  const ap__controls__switch__size : integer = pending; 
+  const ap__controls__switch__last : ap__controls__switch = pending; 
+  const ap__controls__switch__first : ap__controls__switch = pending; 
+  const instruments__feetpermin__size : integer = pending; 
+  const instruments__feetpermin__last : integer = pending; 
+  const instruments__feetpermin__first : integer = pending; 
+  const instruments__pitchangle__size : integer = pending; 
+  const instruments__pitchangle__last : integer = pending; 
+  const instruments__pitchangle__first : integer = pending; 
+  const instruments__machnumber__size : integer = pending; 
+  const instruments__machnumber__last : integer = pending; 
+  const instruments__machnumber__first : integer = pending; 
+  const instruments__feet__size : integer = pending; 
+  const instruments__feet__last : integer = pending; 
+  const instruments__feet__first : integer = pending; 
+  var switch_pressed : ap__controls__switch;
+  var present_altitude : integer;
+  var mach : integer;
+  var climb_rate : integer;
+  var the_pitch : integer;
+  var target_altitude : integer;
+  var switch_pressed_before : ap__controls__switch;
+
+end;

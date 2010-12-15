@@ -1,0 +1,47 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 26-NOV-2009 09:54:53.78*/
+
+                      /*function roll.Calc_Aileron_Move*/
+
+
+rule_family calc_aileron_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+calc_aileron_rules(1): integer__size >= 0 may_be_deduced.
+calc_aileron_rules(2): integer__first may_be_replaced_by -2147483648.
+calc_aileron_rules(3): integer__last may_be_replaced_by 2147483647.
+calc_aileron_rules(4): integer__base__first may_be_replaced_by -2147483648.
+calc_aileron_rules(5): integer__base__last may_be_replaced_by 2147483647.
+calc_aileron_rules(6): degrees__degreespersec__size >= 0 may_be_deduced.
+calc_aileron_rules(7): degrees__degreespersec__first may_be_replaced_by -180.
+calc_aileron_rules(8): degrees__degreespersec__last may_be_replaced_by 180.
+calc_aileron_rules(9): degrees__degreespersec__base__first may_be_replaced_by -32768.
+calc_aileron_rules(10): degrees__degreespersec__base__last may_be_replaced_by 32767.
+calc_aileron_rules(11): instruments__machnumber__size >= 0 may_be_deduced.
+calc_aileron_rules(12): instruments__machnumber__first may_be_replaced_by 0.
+calc_aileron_rules(13): instruments__machnumber__last may_be_replaced_by 100.
+calc_aileron_rules(14): instruments__machnumber__base__first may_be_replaced_by -128.
+calc_aileron_rules(15): instruments__machnumber__base__last may_be_replaced_by 127.
+calc_aileron_rules(16): surfaces__controlangle__size >= 0 may_be_deduced.
+calc_aileron_rules(17): surfaces__controlangle__first may_be_replaced_by -45.
+calc_aileron_rules(18): surfaces__controlangle__last may_be_replaced_by 45.
+calc_aileron_rules(19): surfaces__controlangle__base__first may_be_replaced_by -128.
+calc_aileron_rules(20): surfaces__controlangle__base__last may_be_replaced_by 127.
+calc_aileron_rules(21): scale__scaledata__size >= 0 may_be_deduced.
+calc_aileron_rules(22): scale__scaledata__first may_be_replaced_by -100.
+calc_aileron_rules(23): scale__scaledata__last may_be_replaced_by 100.
+calc_aileron_rules(24): scale__scaledata__base__first may_be_replaced_by -2147483648.
+calc_aileron_rules(25): scale__scaledata__base__last may_be_replaced_by 2147483647.
+calc_aileron_rules(26): degreespersec__size >= 0 may_be_deduced.
+calc_aileron_rules(27): degreespersec__first may_be_replaced_by -180.
+calc_aileron_rules(28): degreespersec__last may_be_replaced_by 180.
+calc_aileron_rules(29): degreespersec__base__first may_be_replaced_by -32768.
+calc_aileron_rules(30): degreespersec__base__last may_be_replaced_by 32767.

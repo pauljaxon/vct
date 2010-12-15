@@ -1,0 +1,42 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.79*/
+
+                  /*function drag.Relative_Drag_At_Altitude*/
+
+
+rule_family relative_dra_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+relative_dra_rules(1): long_integer__size >= 0 may_be_deduced.
+relative_dra_rules(2): long_integer__first may_be_replaced_by -2147483648.
+relative_dra_rules(3): long_integer__last may_be_replaced_by 2147483647.
+relative_dra_rules(4): long_integer__base__first may_be_replaced_by -2147483648.
+relative_dra_rules(5): long_integer__base__last may_be_replaced_by 2147483647.
+relative_dra_rules(6): measuretypes__meter__size >= 0 may_be_deduced.
+relative_dra_rules(7): measuretypes__meter__first may_be_replaced_by -200000.
+relative_dra_rules(8): measuretypes__meter__last may_be_replaced_by 200000.
+relative_dra_rules(9): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+relative_dra_rules(10): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+relative_dra_rules(11): pos_meter__size >= 0 may_be_deduced.
+relative_dra_rules(12): pos_meter__first may_be_replaced_by 0.
+relative_dra_rules(13): pos_meter__last may_be_replaced_by 200000.
+relative_dra_rules(14): pos_meter__base__first may_be_replaced_by -2147483648.
+relative_dra_rules(15): pos_meter__base__last may_be_replaced_by 2147483647.
+relative_dra_rules(16): integer32__size >= 0 may_be_deduced.
+relative_dra_rules(17): integer32__first may_be_replaced_by -2147483648.
+relative_dra_rules(18): integer32__last may_be_replaced_by 2147483647.
+relative_dra_rules(19): integer32__base__first may_be_replaced_by -2147483648.
+relative_dra_rules(20): integer32__base__last may_be_replaced_by 2147483647.
+relative_dra_rules(21): percent__size >= 0 may_be_deduced.
+relative_dra_rules(22): percent__first may_be_replaced_by 0.
+relative_dra_rules(23): percent__last may_be_replaced_by 100.
+relative_dra_rules(24): percent__base__first may_be_replaced_by -2147483648.
+relative_dra_rules(25): percent__base__last may_be_replaced_by 2147483647.

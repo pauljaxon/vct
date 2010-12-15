@@ -1,0 +1,648 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:43  SIMPLIFIED 25-NOV-2009, 14:19:19
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure sensor_history.Update_Meter_Reading
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_update_meter_reading_1.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+***  Proved C1:  t__1 >= clock__millisecond__first
+     using hypothesis H10.
+***  Proved C2:  t__1 <= clock__millisecond__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_meter_reading_2.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C1:  t__1 >= clock__millisecond__first
+     using hypothesis H10.
+***  Proved C2:  t__1 <= clock__millisecond__last
+     using hypothesis H11.
+***  Proved C3:  fld_new_idx(item) >= history_count__first
+     using hypothesis H2.
+***  Proved C4:  fld_new_idx(item) <= history_count__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_meter_reading_3.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C3:  fld_new_idx(item) >= history_count__first
+     using hypothesis H2.
+***  Proved C4:  fld_new_idx(item) <= history_count__last
+     using hypothesis H3.
+-S-  Applied substitution rule update_meter_rules(18).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> 0 <= element(fld_times(item), [i___4]) and 
+          element(fld_times(item), [i___4]) <= clock__millisecond__last)
+<S>  New H10:  t__1 >= 0
+<S>  New C1:  true
+-S-  Applied substitution rule update_meter_rules(19).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H11:  t__1 <= 8640000
+<S>  New H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> 0 <= element(fld_times(item), [i___4]) and 
+          element(fld_times(item), [i___4]) <= 8640000)
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_meter_reading_4.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H3)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fld_new_idx(item) >= history_count__first
+%%%  Simplified C4 on reading formula in, to give:
+     %%%  C4:  fld_new_idx(item) <= history_count__last
+***  Proved C3:  fld_new_idx(item) >= history_count__first
+     using hypothesis H2.
+***  Proved C4:  fld_new_idx(item) <= history_count__last
+     using hypothesis H3.
+-S-  Applied substitution rule update_meter_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> - 200000 <= element(fld_distance(item), [
+          i___1]) and element(fld_distance(item), [i___1]) <= 
+          measuretypes__meter__last)
+<S>  New C1:  data >= - 200000
+-S-  Applied substitution rule update_meter_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> - 200000 <= element(fld_distance(item), [
+          i___1]) and element(fld_distance(item), [i___1]) <= 200000)
+<S>  New C2:  data <= 200000
+-S-  Applied substitution rule update_meter_rules(18).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> 0 <= element(fld_times(item), [i___4]) and 
+          element(fld_times(item), [i___4]) <= clock__millisecond__last)
+<S>  New H10:  t__1 >= 0
+-S-  Applied substitution rule update_meter_rules(19).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H11:  t__1 <= 8640000
+<S>  New H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> 0 <= element(fld_times(item), [i___4]) and 
+          element(fld_times(item), [i___4]) <= 8640000)
+-S-  Applied substitution rule update_meter_rules(23).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H8:  data >= - 200000
+-S-  Applied substitution rule update_meter_rules(24).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H9:  data <= 200000
+-S-  Applied substitution rule update_meter_rules(28).
+     This was achieved by replacing all occurrences of angle_degrees__first by:
+          0.
+<S>  New H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> 0 <= element(fld_bearing(item), [i___2]) 
+          and element(fld_bearing(item), [i___2]) <= angle_degrees__last)
+-S-  Applied substitution rule update_meter_rules(29).
+     This was achieved by replacing all occurrences of angle_degrees__last by:
+          359.
+<S>  New H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> 0 <= element(fld_bearing(item), [i___2]) 
+          and element(fld_bearing(item), [i___2]) <= 359)
+-S-  Applied substitution rule update_meter_rules(34).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> - 5000 <= element(fld_speed(item), [i___3]) 
+          and element(fld_speed(item), [i___3]) <= meter_per_sec__last)
+-S-  Applied substitution rule update_meter_rules(35).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> - 5000 <= element(fld_speed(item), [i___3]) 
+          and element(fld_speed(item), [i___3]) <= 5000)
+-S-  Applied substitution rule update_meter_rules(39).
+     This was achieved by replacing all occurrences of history_count__first by:
+          1.
+<S>  New H2:  fld_new_idx(item) >= 1
+<S>  New H7:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          history_count__last -> - 200000 <= element(fld_distance(item), [i___1]
+          ) and element(fld_distance(item), [i___1]) <= 200000)
+<S>  New H4:  for_all(i___4 : integer, 1 <= i___4 and i___4 <= 
+          history_count__last -> 0 <= element(fld_times(item), [i___4]) and 
+          element(fld_times(item), [i___4]) <= 8640000)
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 
+          history_count__last -> 0 <= element(fld_bearing(item), [i___2]) and 
+          element(fld_bearing(item), [i___2]) <= 359)
+<S>  New H5:  for_all(i___3 : integer, 1 <= i___3 and i___3 <= 
+          history_count__last -> - 5000 <= element(fld_speed(item), [i___3]) 
+          and element(fld_speed(item), [i___3]) <= 5000)
+-S-  Applied substitution rule update_meter_rules(40).
+     This was achieved by replacing all occurrences of history_count__last by:
+          4.
+<S>  New H3:  fld_new_idx(item) <= 4
+<S>  New H7:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 4 -> - 200000 <= 
+          element(fld_distance(item), [i___1]) and element(fld_distance(item), [
+          i___1]) <= 200000)
+<S>  New H4:  for_all(i___4 : integer, 1 <= i___4 and i___4 <= 4 -> 0 <= 
+          element(fld_times(item), [i___4]) and element(fld_times(item), [i___4]
+          ) <= 8640000)
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 4 -> 0 <= 
+          element(fld_bearing(item), [i___2]) and element(fld_bearing(item), [
+          i___2]) <= 359)
+<S>  New H5:  for_all(i___3 : integer, 1 <= i___3 and i___3 <= 4 -> - 5000 <= 
+          element(fld_speed(item), [i___3]) and element(fld_speed(item), [i___3]
+          ) <= 5000)
+***  Proved C1:  data >= - 200000
+     using hypothesis H8.
+***  Proved C2:  data <= 200000
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_meter_reading_5.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H3)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fld_new_idx(item) >= history_count__first
+%%%  Simplified C4 on reading formula in, to give:
+     %%%  C4:  fld_new_idx(item) <= history_count__last
+***  Proved C3:  fld_new_idx(item) >= history_count__first
+     using hypothesis H2.
+***  Proved C4:  fld_new_idx(item) <= history_count__last
+     using hypothesis H3.
+-S-  Applied substitution rule update_meter_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> - 200000 <= element(fld_distance(item), [
+          i___1]) and element(fld_distance(item), [i___1]) <= 
+          measuretypes__meter__last)
+<S>  New C1:  data >= - 200000
+-S-  Applied substitution rule update_meter_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> - 200000 <= element(fld_distance(item), [
+          i___1]) and element(fld_distance(item), [i___1]) <= 200000)
+<S>  New C2:  data <= 200000
+-S-  Applied substitution rule update_meter_rules(18).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> 0 <= element(fld_times(item), [i___4]) and 
+          element(fld_times(item), [i___4]) <= clock__millisecond__last)
+<S>  New H10:  t__1 >= 0
+<S>  New H17:  true
+-S-  Applied substitution rule update_meter_rules(19).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H11:  t__1 <= 8640000
+<S>  New H18:  true
+<S>  New H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> 0 <= element(fld_times(item), [i___4]) and 
+          element(fld_times(item), [i___4]) <= 8640000)
+-S-  Applied substitution rule update_meter_rules(23).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H8:  data >= - 200000
+-S-  Applied substitution rule update_meter_rules(24).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H9:  data <= 200000
+-S-  Applied substitution rule update_meter_rules(28).
+     This was achieved by replacing all occurrences of angle_degrees__first by:
+          0.
+<S>  New H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> 0 <= element(fld_bearing(item), [i___2]) 
+          and element(fld_bearing(item), [i___2]) <= angle_degrees__last)
+-S-  Applied substitution rule update_meter_rules(29).
+     This was achieved by replacing all occurrences of angle_degrees__last by:
+          359.
+<S>  New H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> 0 <= element(fld_bearing(item), [i___2]) 
+          and element(fld_bearing(item), [i___2]) <= 359)
+-S-  Applied substitution rule update_meter_rules(34).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> - 5000 <= element(fld_speed(item), [i___3]) 
+          and element(fld_speed(item), [i___3]) <= meter_per_sec__last)
+-S-  Applied substitution rule update_meter_rules(35).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> - 5000 <= element(fld_speed(item), [i___3]) 
+          and element(fld_speed(item), [i___3]) <= 5000)
+-S-  Applied substitution rule update_meter_rules(39).
+     This was achieved by replacing all occurrences of history_count__first by:
+          1.
+<S>  New H2:  fld_new_idx(item) >= 1
+<S>  New H7:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          history_count__last -> - 200000 <= element(fld_distance(item), [i___1]
+          ) and element(fld_distance(item), [i___1]) <= 200000)
+<S>  New H4:  for_all(i___4 : integer, 1 <= i___4 and i___4 <= 
+          history_count__last -> 0 <= element(fld_times(item), [i___4]) and 
+          element(fld_times(item), [i___4]) <= 8640000)
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 
+          history_count__last -> 0 <= element(fld_bearing(item), [i___2]) and 
+          element(fld_bearing(item), [i___2]) <= 359)
+<S>  New H5:  for_all(i___3 : integer, 1 <= i___3 and i___3 <= 
+          history_count__last -> - 5000 <= element(fld_speed(item), [i___3]) 
+          and element(fld_speed(item), [i___3]) <= 5000)
+-S-  Applied substitution rule update_meter_rules(40).
+     This was achieved by replacing all occurrences of history_count__last by:
+          4.
+<S>  New H3:  fld_new_idx(item) <= 4
+<S>  New H7:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 4 -> - 200000 <= 
+          element(fld_distance(item), [i___1]) and element(fld_distance(item), [
+          i___1]) <= 200000)
+<S>  New H4:  for_all(i___4 : integer, 1 <= i___4 and i___4 <= 4 -> 0 <= 
+          element(fld_times(item), [i___4]) and element(fld_times(item), [i___4]
+          ) <= 8640000)
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 4 -> 0 <= 
+          element(fld_bearing(item), [i___2]) and element(fld_bearing(item), [
+          i___2]) <= 359)
+<S>  New H5:  for_all(i___3 : integer, 1 <= i___3 and i___3 <= 4 -> - 5000 <= 
+          element(fld_speed(item), [i___3]) and element(fld_speed(item), [i___3]
+          ) <= 5000)
+***  Proved C1:  data >= - 200000
+     using hypothesis H8.
+***  Proved C2:  data <= 200000
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_meter_reading_6.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H3)
+          .
+%%%  Simplified H25 on reading formula in, to give:
+     %%%  H25:  fld_new_idx(item) >= history_count__first
+%%%  Simplified H26 on reading formula in, to give:
+     %%%  H26:  fld_new_idx(item) <= history_count__last
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fld_new_idx(item) >= history_count__first
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  fld_new_idx(item) <= history_count__last
+***  Proved C1:  fld_new_idx(item) >= history_count__first
+     using hypothesis H2.
+***  Proved C2:  fld_new_idx(item) <= history_count__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_meter_reading_7.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H3)
+          .
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  fld_new_idx(item) >= history_count__first
+%%%  Simplified H24 on reading formula in, to give:
+     %%%  H24:  fld_new_idx(item) <= history_count__last
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fld_new_idx(item) >= history_count__first
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  fld_new_idx(item) <= history_count__last
+***  Proved C1:  fld_new_idx(item) >= history_count__first
+     using hypothesis H2.
+***  Proved C2:  fld_new_idx(item) <= history_count__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_meter_reading_8.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H3)
+          .
+%%%  Simplified H25 on reading formula in, to give:
+     %%%  H25:  fld_new_idx(item) >= history_count__first
+%%%  Simplified H26 on reading formula in, to give:
+     %%%  H26:  fld_new_idx(item) <= history_count__last
+%%%  Simplified H27 on reading formula in, to give:
+     %%%  H27:  fld_new_idx(item) >= history_count__first
+%%%  Simplified H28 on reading formula in, to give:
+     %%%  H28:  fld_new_idx(item) <= history_count__last
+%%%  Simplified H29 on reading formula in, to give:
+     %%%  H29:  next_item(fld_new_idx(item)) >= history_count__first
+%%%  Simplified H30 on reading formula in, to give:
+     %%%  H30:  next_item(fld_new_idx(item)) <= history_count__last
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  next_item(fld_new_idx(item)) >= history_count__first
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  next_item(fld_new_idx(item)) <= history_count__last
+***  Proved C1:  next_item(fld_new_idx(item)) >= history_count__first
+     using hypothesis H29.
+***  Proved C2:  next_item(fld_new_idx(item)) <= history_count__last
+     using hypothesis H30.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_meter_reading_9.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H3)
+          .
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  fld_new_idx(item) >= history_count__first
+%%%  Simplified H24 on reading formula in, to give:
+     %%%  H24:  fld_new_idx(item) <= history_count__last
+%%%  Simplified H25 on reading formula in, to give:
+     %%%  H25:  fld_new_idx(item) >= history_count__first
+%%%  Simplified H26 on reading formula in, to give:
+     %%%  H26:  fld_new_idx(item) <= history_count__last
+%%%  Simplified H27 on reading formula in, to give:
+     %%%  H27:  next_item(fld_new_idx(item)) >= history_count__first
+%%%  Simplified H28 on reading formula in, to give:
+     %%%  H28:  next_item(fld_new_idx(item)) <= history_count__last
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  next_item(fld_new_idx(item)) >= history_count__first
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  next_item(fld_new_idx(item)) <= history_count__last
+***  Proved C1:  next_item(fld_new_idx(item)) >= history_count__first
+     using hypothesis H27.
+***  Proved C2:  next_item(fld_new_idx(item)) <= history_count__last
+     using hypothesis H28.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_meter_reading_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_update_meter_reading_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

@@ -1,0 +1,104 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:41.48
+
+Line
+   1  -- MCU interface to the radar over the bus
+   2  --
+   3  -- $Log: if_radar.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.4  2003/09/11 19:52:07  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.3  2003/08/25 19:45:04  adi
+  12  -- Updated annos
+  13  --
+  14  -- Revision 1.2  2003/08/25 14:43:09  adi
+  15  -- Added use of measuretypes.decode
+  16  --
+  17  -- Revision 1.1  2003/08/25 14:13:00  adi
+  18  -- Initial revision
+  19  --
+  20  --
+  21  with SystemTypes,
+  22    MeasureTypes,
+  23    Radar_Cfg,
+  24    Ibit;
+  25  --# inherit SystemTypes, MeasureTypes, Bus, Ibit,
+  26  --# bc1553, radar_cfg, state_types, measuretypes.decode;
+  27  package If_Radar
+  28    --# own State;
+  29    --# initializes State;
+  30  is
+  31     function Get_Ibit_State return Ibit.Phase;
+  32     --# global state;
+  33  
+  34     -- Ping the radar
+  35     procedure Ping(Sx, Sy : in Radar_Cfg.Sector_Range);
+  36     --# global in out Bus.Outputs, state;
+  37     --# derives Bus.Outputs from *, sx, sy &
+  38     --#         state from *, sx, sy;
+  39  
+  40     -- Sweep the radar
+  41     procedure Sweep(Sx_Start, Sx_End : in Radar_Cfg.Sector_Range;
+  42                     Sy_Start, Sy_End : in Radar_Cfg.Sector_Range);
+  43     --# global in out bus.outputs, state;
+  44     --# derives bus.outputs from *, sx_start, sx_end,
+  45     --#          sy_start, sy_end &
+  46     --#         state from *, sx_start, sx_end, sy_start, sy_end;
+  47  
+  48     procedure Read_Ping(Sx,Sy : out Radar_Cfg.Sector_Range;
+  49                         Dist  : out Measuretypes.Meter;
+  50                         Vel   : out Measuretypes.Meter_Per_Sec);
+  51     --# global in state;
+  52     --# derives sx, sy, dist, vel from state;
+  53  
+  54     procedure Read_sweep(Sx_start,Sx_end : out Radar_Cfg.Sector_Range;
+  55                          Sy_Start,Sy_End : out Radar_Cfg.Sector_Range;
+  56                          Grid : out Measuretypes.Bit4_Array);
+  57     --# global in state;
+  58     --# derives sx_start, sx_end, sy_start, sy_end,
+  59     --#         grid from state;
+  60  
+  61     -- Kick off a radar IBIT
+  62     procedure Ibit_Start;
+  63     --# global in out Bus.Outputs, State;
+  64     --# derives Bus.Outputs from * &
+  65     --#         State from *;
+  66  
+  67     -- Stop a radar IBIT
+  68     procedure Ibit_Stop;
+  69     --# global in out Bus.Outputs, State;
+  70     --# derives Bus.Outputs from * &
+  71     --#         State from *;
+  72  
+  73     -- Poll the bus
+  74     procedure Poll;
+  75     --# global in out State;
+  76     --#        in Bus.Inputs;
+  77     --# derives State from *, Bus.Inputs;
+  78  
+  79     -- Initialise
+  80     procedure Init;
+  81     --# global out State;
+  82     --#        in out Bus.Outputs;
+  83     --# derives State from &
+  84     --#         Bus.Outputs from *;
+  85  
+  86     -- test point
+  87     procedure Command;
+  88     --# derives;
+  89  end If_Radar;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

@@ -1,0 +1,367 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:39  SIMPLIFIED 25-NOV-2009, 14:18:44
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure compass.Extrapolate_Angle
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_1.  @@@@@@@@@@
+***  Proved C1:  time_now__1 >= clock__millisecond__first
+     using hypothesis H6.
+***  Proved C2:  time_now__1 <= clock__millisecond__last
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_2.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  time_valid__1
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H7)
+          .
+***  Proved C1:  time_now__1 >= clock__millisecond__first
+     using hypothesis H6.
+***  Proved C2:  time_now__1 <= clock__millisecond__last
+     using hypothesis H7.
+***  Proved C3:  last_time >= clock__millisecond__first
+     using hypothesis H4.
+***  Proved C4:  last_time <= clock__millisecond__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_3.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  time_valid__1
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H5)
+          .
+***  Proved C1:  clock_utils__delta_time(last_time, time_now__1) >= 
+          clock__millisecond__first
+     using hypothesis H19.
+***  Proved C2:  clock_utils__delta_time(last_time, time_now__1) <= 
+          clock__millisecond__last
+     using hypothesis H20.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_4.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  time_valid__1
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New C1:  last_delta * clock_utils__delta_time(last_time, time_now__1) >= - 
+          2147483648
+<S>  New C3:  clock_utils__delta_time(last_time, time_now__1) >= - 2147483648
+<S>  New C5:  last_delta >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New C2:  last_delta * clock_utils__delta_time(last_time, time_now__1) <= 
+          2147483647
+<S>  New C4:  clock_utils__delta_time(last_time, time_now__1) <= 2147483647
+<S>  New C6:  last_delta <= 2147483647
+>>>  Restructured hypothesis H25 into:
+     >>>  H25:  clock_utils__delta_time(last_time, time_now__1) <> 0
+>>>  Restructured hypothesis H28 into:
+     >>>  H28:  clock_utils__delta_time(last_time, time_now__1) <= 
+          max_extrapolate_time
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of max_extrapolate_time by:
+          600000.
+<S>  New H28:  clock_utils__delta_time(last_time, time_now__1) <= 600000
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad_per_sec__first by:
+          - 2000.
+<S>  New H2:  last_delta >= - 2000
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad_per_sec__last by:
+          2000.
+<S>  New H3:  last_delta <= 2000
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  last_time >= 0
+<S>  New H6:  time_now__1 >= 0
+<S>  New H19:  clock_utils__delta_time(last_time, time_now__1) >= 0
+-S-  Applied substitution rule extrapolate__rules(20).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  last_time <= 8640000
+<S>  New H7:  time_now__1 <= 8640000
+<S>  New H20:  clock_utils__delta_time(last_time, time_now__1) <= 8640000
+%%%  Hypotheses H19 & H25 together imply that
+          0 < clock_utils__delta_time(last_time, time_now__1).
+     H19 & H25 have therefore been deleted and a new H19 added to this effect.
+***  Proved C3:  clock_utils__delta_time(last_time, time_now__1) >= - 2147483648
+     using hypothesis H19.
+***  Proved C5:  last_delta >= - 2147483648
+     using hypothesis H2.
+***  Proved C4:  clock_utils__delta_time(last_time, time_now__1) <= 2147483647
+     using hypothesis H28.
+***  Proved C6:  last_delta <= 2147483647
+     using hypothesis H3.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H29 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H20 (redundant, given H28).
+---  Eliminated hypothesis H12, which only specifies a value for time_valid__1.
+     This is not referred to anywhere else in the VC.
+***  Proved C1:  last_delta * clock_utils__delta_time(last_time, time_now__1) 
+          >= - 2147483648
+     using hypotheses H2 & H28.
+***  Proved C2:  last_delta * clock_utils__delta_time(last_time, time_now__1) 
+          <= 2147483647
+     using hypotheses H3 & H28.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_5.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  time_valid__1
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H32).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  true
+***  Proved C5:  true
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H31:  last_delta * clock_utils__delta_time(last_time, time_now__1) >= 
+          - 2147483648
+<S>  New H33:  clock_utils__delta_time(last_time, time_now__1) >= - 2147483648
+<S>  New H35:  last_delta >= - 2147483648
+<S>  New C1:  last_delta * clock_utils__delta_time(last_time, time_now__1) div 
+          1000 >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H32:  last_delta * clock_utils__delta_time(last_time, time_now__1) <= 
+          2147483647
+<S>  New H34:  clock_utils__delta_time(last_time, time_now__1) <= 2147483647
+<S>  New H36:  last_delta <= 2147483647
+<S>  New C2:  last_delta * clock_utils__delta_time(last_time, time_now__1) div 
+          1000 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  last_delta * clock_utils__delta_time(last_time, time_now__1) div 
+          1000 >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  last_delta * clock_utils__delta_time(last_time, time_now__1) div 
+          1000 <= 2147483647
+>>>  Restructured hypothesis H25 into:
+     >>>  H25:  clock_utils__delta_time(last_time, time_now__1) <> 0
+>>>  Restructured hypothesis H28 into:
+     >>>  H28:  clock_utils__delta_time(last_time, time_now__1) <= 
+          max_extrapolate_time
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of max_extrapolate_time by:
+          600000.
+<S>  New H28:  clock_utils__delta_time(last_time, time_now__1) <= 600000
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad_per_sec__first by:
+          - 2000.
+<S>  New H2:  last_delta >= - 2000
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad_per_sec__last by:
+          2000.
+<S>  New H3:  last_delta <= 2000
+-S-  Applied substitution rule extrapolate__rules(19).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  last_time >= 0
+<S>  New H6:  time_now__1 >= 0
+<S>  New H19:  clock_utils__delta_time(last_time, time_now__1) >= 0
+-S-  Applied substitution rule extrapolate__rules(20).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  last_time <= 8640000
+<S>  New H7:  time_now__1 <= 8640000
+<S>  New H20:  clock_utils__delta_time(last_time, time_now__1) <= 8640000
+%%%  Hypotheses H19 & H25 together imply that
+          0 < clock_utils__delta_time(last_time, time_now__1).
+     H19 & H25 have therefore been deleted and a new H19 added to this effect.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H29 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H37 (true-hypothesis).
+---  Eliminated hypothesis H38 (true-hypothesis).
+---  Eliminated hypothesis H20 (redundant, given H28).
+---  Eliminated hypothesis H33 (redundant, given H19).
+---  Eliminated hypothesis H34 (redundant, given H28).
+---  Eliminated hypothesis H35 (redundant, given H2).
+---  Eliminated hypothesis H36 (redundant, given H3).
+---  Eliminated hypothesis H12, which only specifies a value for time_valid__1.
+     This is not referred to anywhere else in the VC.
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  last_delta * clock_utils__delta_time(last_time, time_now__1) 
+          div 1000 >= - 2147483648
+     using hypothesis H31.
+***  Proved C2:  last_delta * clock_utils__delta_time(last_time, time_now__1) 
+          div 1000 <= 2147483647
+     using hypothesis H32.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

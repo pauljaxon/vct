@@ -1,0 +1,153 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:39  SIMPLIFIED 25-NOV-2009, 14:18:43
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure if_barometer.Poll
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 98:
+
+procedure_poll_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 98:
+
+procedure_poll_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 103:
+
+procedure_poll_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 103:
+
+procedure_poll_4.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 107:
+
+procedure_poll_5.
+H1:    last_height >= - 200000 .
+H2:    last_height <= 200000 .
+H3:    ibit__off <= ibit_request .
+H4:    ibit_request <= ibit__timeout .
+H5:    bc1553__is_valid(bc1553__barometer, 1, bus__inputs) .
+H6:    bc1553__is_fresh(bc1553__barometer, 1, bus__inputs) .
+H7:    word__1 >= 0 .
+H8:    word__1 <= 65535 .
+H9:    integer__size >= 0 .
+H10:   systemtypes__unsigned16__size >= 0 .
+H11:   measuretypes__meter__size >= 0 .
+H12:   bus__word_index__size >= 0 .
+H13:   bus__word_index__base__first <= bus__word_index__base__last .
+H14:   bus__word__size >= 0 .
+H15:   bus__all_msg_index__size >= 0 .
+H16:   bus__lru_subaddress_index__size >= 0 .
+H17:   bc1553__lru_name__size >= 0 .
+H18:   ibit__phase__size >= 0 .
+H19:   bus__word_index__base__first <= 1 .
+H20:   bus__word_index__base__last >= 31 .
+       ->
+C1:    256 * word__1 <= 200000 .
+
+
+For path(s) from start to run-time check associated with statement of line 109:
+
+procedure_poll_6.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 109:
+
+procedure_poll_7.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 113:
+
+procedure_poll_8.
+H1:    last_height >= - 200000 .
+H2:    last_height <= 200000 .
+H3:    ibit__off <= ibit_request .
+H4:    ibit_request <= ibit__timeout .
+H5:    bc1553__is_valid(bc1553__barometer, 1, bus__inputs) .
+H6:    bc1553__is_fresh(bc1553__barometer, 1, bus__inputs) .
+H7:    word__1 >= 0 .
+H8:    256 * word__1 <= 200000 .
+H9:    word__2 >= 0 .
+H10:   word__2 <= 65535 .
+H11:   integer__size >= 0 .
+H12:   systemtypes__unsigned16__size >= 0 .
+H13:   measuretypes__meter__size >= 0 .
+H14:   bus__word_index__size >= 0 .
+H15:   bus__word_index__base__first <= bus__word_index__base__last .
+H16:   bus__word__size >= 0 .
+H17:   bus__all_msg_index__size >= 0 .
+H18:   bus__lru_subaddress_index__size >= 0 .
+H19:   bc1553__lru_name__size >= 0 .
+H20:   ibit__phase__size >= 0 .
+H21:   bus__word_index__base__first <= 1 .
+H22:   bus__word_index__base__last >= 31 .
+       ->
+C1:    256 * word__1 + word__2 <= 200000 .
+
+
+For path(s) from start to run-time check associated with statement of line 117:
+
+procedure_poll_9.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 117:
+
+procedure_poll_10.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 123:
+
+procedure_poll_11.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 123:
+
+procedure_poll_12.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to finish:
+
+procedure_poll_13.
+*** true .          /* all conclusions proved */
+
+
+procedure_poll_14.
+*** true .          /* all conclusions proved */
+
+
+For checks of refinement integrity: 
+
+procedure_poll_15.
+*** true .          /* all conclusions proved */
+
+
+procedure_poll_16.
+*** true .          /* all conclusions proved */
+
+

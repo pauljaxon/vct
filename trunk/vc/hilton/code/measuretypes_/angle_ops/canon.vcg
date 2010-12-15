@@ -1,0 +1,163 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.06
+
+                          function angle_ops.Canon
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 13:
+
+function_canon_1.
+H1:    true .
+H2:    orig_angle >= millirad__first .
+H3:    orig_angle <= millirad__last .
+        ->
+C1:    orig_angle >= millirad__first .
+C2:    orig_angle <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 15:
+
+function_canon_2.
+H1:    true .
+H2:    orig_angle >= millirad__first .
+H3:    orig_angle <= millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    orig_angle >= millirad__first .
+H7:    orig_angle <= millirad__last .
+H8:    orig_angle > canon_millirad__last .
+H9:    orig_angle >= millirad__first .
+H10:   orig_angle <= millirad__last .
+        ->
+C1:    canon_millirad__first + (orig_angle - canon_millirad__last) >= 
+           millirad__first .
+C2:    canon_millirad__first + (orig_angle - canon_millirad__last) <= 
+           millirad__last .
+C3:    orig_angle - canon_millirad__last >= 
+           measuretypes__millirad__base__first .
+C4:    orig_angle - canon_millirad__last <= 
+           measuretypes__millirad__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 17:
+
+function_canon_3.
+H1:    true .
+H2:    orig_angle >= millirad__first .
+H3:    orig_angle <= millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    orig_angle >= millirad__first .
+H7:    orig_angle <= millirad__last .
+H8:    not (orig_angle > canon_millirad__last) .
+H9:    orig_angle >= millirad__first .
+H10:   orig_angle <= millirad__last .
+H11:   orig_angle < canon_millirad__first .
+H12:   orig_angle >= millirad__first .
+H13:   orig_angle <= millirad__last .
+        ->
+C1:    canon_millirad__last - (canon_millirad__first - 
+           orig_angle) >= millirad__first .
+C2:    canon_millirad__last - (canon_millirad__first - 
+           orig_angle) <= millirad__last .
+C3:    canon_millirad__first - orig_angle >= 
+           measuretypes__millirad__base__first .
+C4:    canon_millirad__first - orig_angle <= 
+           measuretypes__millirad__base__last .
+ 
+
+For path(s) from start to finish:
+
+function_canon_4.
+H1:    true .
+H2:    orig_angle >= millirad__first .
+H3:    orig_angle <= millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    orig_angle >= millirad__first .
+H7:    orig_angle <= millirad__last .
+H8:    orig_angle > canon_millirad__last .
+H9:    orig_angle >= millirad__first .
+H10:   orig_angle <= millirad__last .
+H11:   canon_millirad__first + (orig_angle - canon_millirad__last) >= 
+           millirad__first .
+H12:   canon_millirad__first + (orig_angle - canon_millirad__last) <= 
+           millirad__last .
+H13:   orig_angle - canon_millirad__last >= 
+           measuretypes__millirad__base__first .
+H14:   orig_angle - canon_millirad__last <= 
+           measuretypes__millirad__base__last .
+H15:   canon_millirad__first + (orig_angle - canon_millirad__last) >= 
+           millirad__first .
+H16:   canon_millirad__first + (orig_angle - canon_millirad__last) <= 
+           millirad__last .
+        ->
+C1:    true .
+C2:    canon_millirad__first + (orig_angle - canon_millirad__last) >= 
+           canon_millirad__first .
+C3:    canon_millirad__first + (orig_angle - canon_millirad__last) <= 
+           canon_millirad__last .
+ 
+
+function_canon_5.
+H1:    true .
+H2:    orig_angle >= millirad__first .
+H3:    orig_angle <= millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    orig_angle >= millirad__first .
+H7:    orig_angle <= millirad__last .
+H8:    not (orig_angle > canon_millirad__last) .
+H9:    orig_angle >= millirad__first .
+H10:   orig_angle <= millirad__last .
+H11:   orig_angle < canon_millirad__first .
+H12:   orig_angle >= millirad__first .
+H13:   orig_angle <= millirad__last .
+H14:   canon_millirad__last - (canon_millirad__first - 
+           orig_angle) >= millirad__first .
+H15:   canon_millirad__last - (canon_millirad__first - 
+           orig_angle) <= millirad__last .
+H16:   canon_millirad__first - orig_angle >= 
+           measuretypes__millirad__base__first .
+H17:   canon_millirad__first - orig_angle <= 
+           measuretypes__millirad__base__last .
+H18:   canon_millirad__last - (canon_millirad__first - 
+           orig_angle) >= millirad__first .
+H19:   canon_millirad__last - (canon_millirad__first - 
+           orig_angle) <= millirad__last .
+        ->
+C1:    true .
+C2:    canon_millirad__last - (canon_millirad__first - 
+           orig_angle) >= canon_millirad__first .
+C3:    canon_millirad__last - (canon_millirad__first - 
+           orig_angle) <= canon_millirad__last .
+ 
+
+function_canon_6.
+H1:    true .
+H2:    orig_angle >= millirad__first .
+H3:    orig_angle <= millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    orig_angle >= millirad__first .
+H7:    orig_angle <= millirad__last .
+H8:    not (orig_angle > canon_millirad__last) .
+H9:    orig_angle >= millirad__first .
+H10:   orig_angle <= millirad__last .
+H11:   not (orig_angle < canon_millirad__first) .
+H12:   orig_angle >= millirad__first .
+H13:   orig_angle <= millirad__last .
+        ->
+C1:    true .
+C2:    orig_angle >= canon_millirad__first .
+C3:    orig_angle <= canon_millirad__last .
+ 
+

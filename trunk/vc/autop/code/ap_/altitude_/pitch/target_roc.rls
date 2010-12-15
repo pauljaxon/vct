@@ -1,0 +1,37 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 26-NOV-2009 09:54:53.60*/
+
+                         /*function Pitch.Target_ROC*/
+
+
+rule_family target_roc_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+target_roc_rules(1): integer__size >= 0 may_be_deduced.
+target_roc_rules(2): integer__first may_be_replaced_by -2147483648.
+target_roc_rules(3): integer__last may_be_replaced_by 2147483647.
+target_roc_rules(4): integer__base__first may_be_replaced_by -2147483648.
+target_roc_rules(5): integer__base__last may_be_replaced_by 2147483647.
+target_roc_rules(6): instruments__feet__size >= 0 may_be_deduced.
+target_roc_rules(7): instruments__feet__first may_be_replaced_by 0.
+target_roc_rules(8): instruments__feet__last may_be_replaced_by 50000.
+target_roc_rules(9): instruments__feet__base__first may_be_replaced_by -2147483648.
+target_roc_rules(10): instruments__feet__base__last may_be_replaced_by 2147483647.
+target_roc_rules(11): instruments__feetpermin__size >= 0 may_be_deduced.
+target_roc_rules(12): instruments__feetpermin__first may_be_replaced_by -6000.
+target_roc_rules(13): instruments__feetpermin__last may_be_replaced_by 6000.
+target_roc_rules(14): instruments__feetpermin__base__first may_be_replaced_by -32768.
+target_roc_rules(15): instruments__feetpermin__base__last may_be_replaced_by 32767.
+target_roc_rules(16): floorfpm__size >= 0 may_be_deduced.
+target_roc_rules(17): floorfpm__first may_be_replaced_by -1000.
+target_roc_rules(18): floorfpm__last may_be_replaced_by 1000.
+target_roc_rules(19): floorfpm__base__first may_be_replaced_by -32768.
+target_roc_rules(20): floorfpm__base__last may_be_replaced_by 32767.

@@ -1,0 +1,47 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.53
+
+                         procedure fuel.Read_Level
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 176:
+
+procedure_read_level_1.
+H1:    true .
+H2:    last_level >= measuretypes__kilo__first .
+H3:    last_level <= measuretypes__kilo__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_rate >= measuretypes__gram_per_sec__first .
+H7:    last_rate <= measuretypes__gram_per_sec__last .
+H8:    level__1 >= measuretypes__kilo__first .
+H9:    level__1 <= measuretypes__kilo__last .
+        ->
+C1:    level__1 >= measuretypes__kilo__first .
+C2:    level__1 <= measuretypes__kilo__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_level_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_read_level_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_level_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+

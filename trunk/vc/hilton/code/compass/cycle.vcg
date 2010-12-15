@@ -1,0 +1,597 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.35
+
+                          procedure compass.Cycle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 121:
+
+procedure_cycle_1.
+H1:    true .
+H2:    last_time >= clock__millisecond__first .
+H3:    last_time <= clock__millisecond__last .
+H4:    last_dxy >= measuretypes__millirad_per_sec__first .
+H5:    last_dxy <= measuretypes__millirad_per_sec__last .
+H6:    last_dyz >= measuretypes__millirad_per_sec__first .
+H7:    last_dyz <= measuretypes__millirad_per_sec__last .
+        ->
+C1:    last_dxy >= measuretypes__millirad_per_sec__first .
+C2:    last_dxy <= measuretypes__millirad_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 124:
+
+procedure_cycle_2.
+H1:    true .
+H2:    last_time >= clock__millisecond__first .
+H3:    last_time <= clock__millisecond__last .
+H4:    last_dxy >= measuretypes__millirad_per_sec__first .
+H5:    last_dxy <= measuretypes__millirad_per_sec__last .
+H6:    last_dyz >= measuretypes__millirad_per_sec__first .
+H7:    last_dyz <= measuretypes__millirad_per_sec__last .
+H8:    last_dxy >= measuretypes__millirad_per_sec__first .
+H9:    last_dxy <= measuretypes__millirad_per_sec__last .
+H10:   true .
+H11:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           systemtypes__word__first .
+H12:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           systemtypes__word__last .
+        ->
+C1:    measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+C2:    measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 126:
+
+procedure_cycle_3.
+H1:    true .
+H2:    last_time >= clock__millisecond__first .
+H3:    last_time <= clock__millisecond__last .
+H4:    last_dxy >= measuretypes__millirad_per_sec__first .
+H5:    last_dxy <= measuretypes__millirad_per_sec__last .
+H6:    last_dyz >= measuretypes__millirad_per_sec__first .
+H7:    last_dyz <= measuretypes__millirad_per_sec__last .
+H8:    last_dxy >= measuretypes__millirad_per_sec__first .
+H9:    last_dxy <= measuretypes__millirad_per_sec__last .
+H10:   true .
+H11:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           systemtypes__word__first .
+H12:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           systemtypes__word__last .
+H13:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H14:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H15:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H16:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+        ->
+C1:    rt1553__compass >= rt1553__lru_name__first .
+C2:    rt1553__compass <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    1 >= bus__word_index__first .
+C6:    1 <= bus__word_index__last .
+C7:    measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+C8:    measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 131:
+
+procedure_cycle_4.
+H1:    true .
+H2:    last_time >= clock__millisecond__first .
+H3:    last_time <= clock__millisecond__last .
+H4:    last_dxy >= measuretypes__millirad_per_sec__first .
+H5:    last_dxy <= measuretypes__millirad_per_sec__last .
+H6:    last_dyz >= measuretypes__millirad_per_sec__first .
+H7:    last_dyz <= measuretypes__millirad_per_sec__last .
+H8:    last_dxy >= measuretypes__millirad_per_sec__first .
+H9:    last_dxy <= measuretypes__millirad_per_sec__last .
+H10:   true .
+H11:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           systemtypes__word__first .
+H12:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           systemtypes__word__last .
+H13:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H14:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H15:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H16:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H17:   rt1553__compass >= rt1553__lru_name__first .
+H18:   rt1553__compass <= rt1553__lru_name__last .
+H19:   1 >= bus__lru_subaddress_index__first .
+H20:   1 <= bus__lru_subaddress_index__last .
+H21:   1 >= bus__word_index__first .
+H22:   1 <= bus__word_index__last .
+H23:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H24:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+        ->
+C1:    last_dyz >= measuretypes__millirad_per_sec__first .
+C2:    last_dyz <= measuretypes__millirad_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 134:
+
+procedure_cycle_5.
+H1:    true .
+H2:    last_time >= clock__millisecond__first .
+H3:    last_time <= clock__millisecond__last .
+H4:    last_dxy >= measuretypes__millirad_per_sec__first .
+H5:    last_dxy <= measuretypes__millirad_per_sec__last .
+H6:    last_dyz >= measuretypes__millirad_per_sec__first .
+H7:    last_dyz <= measuretypes__millirad_per_sec__last .
+H8:    last_dxy >= measuretypes__millirad_per_sec__first .
+H9:    last_dxy <= measuretypes__millirad_per_sec__last .
+H10:   true .
+H11:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           systemtypes__word__first .
+H12:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           systemtypes__word__last .
+H13:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H14:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H15:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H16:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H17:   rt1553__compass >= rt1553__lru_name__first .
+H18:   rt1553__compass <= rt1553__lru_name__last .
+H19:   1 >= bus__lru_subaddress_index__first .
+H20:   1 <= bus__lru_subaddress_index__last .
+H21:   1 >= bus__word_index__first .
+H22:   1 <= bus__word_index__last .
+H23:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H24:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H25:   last_dyz >= measuretypes__millirad_per_sec__first .
+H26:   last_dyz <= measuretypes__millirad_per_sec__last .
+H27:   true .
+H28:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           systemtypes__word__first .
+H29:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           systemtypes__word__last .
+        ->
+C1:    measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+C2:    measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 136:
+
+procedure_cycle_6.
+H1:    true .
+H2:    last_time >= clock__millisecond__first .
+H3:    last_time <= clock__millisecond__last .
+H4:    last_dxy >= measuretypes__millirad_per_sec__first .
+H5:    last_dxy <= measuretypes__millirad_per_sec__last .
+H6:    last_dyz >= measuretypes__millirad_per_sec__first .
+H7:    last_dyz <= measuretypes__millirad_per_sec__last .
+H8:    last_dxy >= measuretypes__millirad_per_sec__first .
+H9:    last_dxy <= measuretypes__millirad_per_sec__last .
+H10:   true .
+H11:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           systemtypes__word__first .
+H12:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           systemtypes__word__last .
+H13:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H14:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H15:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H16:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H17:   rt1553__compass >= rt1553__lru_name__first .
+H18:   rt1553__compass <= rt1553__lru_name__last .
+H19:   1 >= bus__lru_subaddress_index__first .
+H20:   1 <= bus__lru_subaddress_index__last .
+H21:   1 >= bus__word_index__first .
+H22:   1 <= bus__word_index__last .
+H23:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H24:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H25:   last_dyz >= measuretypes__millirad_per_sec__first .
+H26:   last_dyz <= measuretypes__millirad_per_sec__last .
+H27:   true .
+H28:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           systemtypes__word__first .
+H29:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           systemtypes__word__last .
+H30:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H31:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H32:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H33:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+        ->
+C1:    rt1553__compass >= rt1553__lru_name__first .
+C2:    rt1553__compass <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    2 >= bus__word_index__first .
+C6:    2 <= bus__word_index__last .
+C7:    measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+C8:    measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 142:
+
+procedure_cycle_7.
+H1:    true .
+H2:    last_time >= clock__millisecond__first .
+H3:    last_time <= clock__millisecond__last .
+H4:    last_dxy >= measuretypes__millirad_per_sec__first .
+H5:    last_dxy <= measuretypes__millirad_per_sec__last .
+H6:    last_dyz >= measuretypes__millirad_per_sec__first .
+H7:    last_dyz <= measuretypes__millirad_per_sec__last .
+H8:    last_dxy >= measuretypes__millirad_per_sec__first .
+H9:    last_dxy <= measuretypes__millirad_per_sec__last .
+H10:   true .
+H11:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           systemtypes__word__first .
+H12:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           systemtypes__word__last .
+H13:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H14:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H15:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H16:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H17:   rt1553__compass >= rt1553__lru_name__first .
+H18:   rt1553__compass <= rt1553__lru_name__last .
+H19:   1 >= bus__lru_subaddress_index__first .
+H20:   1 <= bus__lru_subaddress_index__last .
+H21:   1 >= bus__word_index__first .
+H22:   1 <= bus__word_index__last .
+H23:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H24:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H25:   last_dyz >= measuretypes__millirad_per_sec__first .
+H26:   last_dyz <= measuretypes__millirad_per_sec__last .
+H27:   true .
+H28:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           systemtypes__word__first .
+H29:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           systemtypes__word__last .
+H30:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H31:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H32:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H33:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H34:   rt1553__compass >= rt1553__lru_name__first .
+H35:   rt1553__compass <= rt1553__lru_name__last .
+H36:   1 >= bus__lru_subaddress_index__first .
+H37:   1 <= bus__lru_subaddress_index__last .
+H38:   2 >= bus__word_index__first .
+H39:   2 <= bus__word_index__last .
+H40:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H41:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H42:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H43:   bit_machine__phase(bit_state) <= ibit__phase__last .
+        ->
+C1:    rt1553__compass >= rt1553__lru_name__first .
+C2:    rt1553__compass <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    3 >= bus__word_index__first .
+C6:    3 <= bus__word_index__last .
+C7:    element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+C8:    element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+C9:    bit_machine__phase(bit_state) >= ibit__phase__first .
+C10:   bit_machine__phase(bit_state) <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 147:
+
+procedure_cycle_8.
+H1:    true .
+H2:    last_time >= clock__millisecond__first .
+H3:    last_time <= clock__millisecond__last .
+H4:    last_dxy >= measuretypes__millirad_per_sec__first .
+H5:    last_dxy <= measuretypes__millirad_per_sec__last .
+H6:    last_dyz >= measuretypes__millirad_per_sec__first .
+H7:    last_dyz <= measuretypes__millirad_per_sec__last .
+H8:    last_dxy >= measuretypes__millirad_per_sec__first .
+H9:    last_dxy <= measuretypes__millirad_per_sec__last .
+H10:   true .
+H11:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           systemtypes__word__first .
+H12:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           systemtypes__word__last .
+H13:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H14:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H15:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H16:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H17:   rt1553__compass >= rt1553__lru_name__first .
+H18:   rt1553__compass <= rt1553__lru_name__last .
+H19:   1 >= bus__lru_subaddress_index__first .
+H20:   1 <= bus__lru_subaddress_index__last .
+H21:   1 >= bus__word_index__first .
+H22:   1 <= bus__word_index__last .
+H23:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H24:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H25:   last_dyz >= measuretypes__millirad_per_sec__first .
+H26:   last_dyz <= measuretypes__millirad_per_sec__last .
+H27:   true .
+H28:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           systemtypes__word__first .
+H29:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           systemtypes__word__last .
+H30:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H31:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H32:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H33:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H34:   rt1553__compass >= rt1553__lru_name__first .
+H35:   rt1553__compass <= rt1553__lru_name__last .
+H36:   1 >= bus__lru_subaddress_index__first .
+H37:   1 <= bus__lru_subaddress_index__last .
+H38:   2 >= bus__word_index__first .
+H39:   2 <= bus__word_index__last .
+H40:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H41:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H42:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H43:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H44:   rt1553__compass >= rt1553__lru_name__first .
+H45:   rt1553__compass <= rt1553__lru_name__last .
+H46:   1 >= bus__lru_subaddress_index__first .
+H47:   1 <= bus__lru_subaddress_index__last .
+H48:   3 >= bus__word_index__first .
+H49:   3 <= bus__word_index__last .
+H50:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H51:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H52:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H53:   bit_machine__phase(bit_state) <= ibit__phase__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    rt1553__compass >= rt1553__lru_name__first .
+C6:    rt1553__compass <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 147:
+
+procedure_cycle_9.
+H1:    true .
+H2:    last_time >= clock__millisecond__first .
+H3:    last_time <= clock__millisecond__last .
+H4:    last_dxy >= measuretypes__millirad_per_sec__first .
+H5:    last_dxy <= measuretypes__millirad_per_sec__last .
+H6:    last_dyz >= measuretypes__millirad_per_sec__first .
+H7:    last_dyz <= measuretypes__millirad_per_sec__last .
+H8:    last_dxy >= measuretypes__millirad_per_sec__first .
+H9:    last_dxy <= measuretypes__millirad_per_sec__last .
+H10:   true .
+H11:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           systemtypes__word__first .
+H12:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           systemtypes__word__last .
+H13:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H14:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H15:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H16:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H17:   rt1553__compass >= rt1553__lru_name__first .
+H18:   rt1553__compass <= rt1553__lru_name__last .
+H19:   1 >= bus__lru_subaddress_index__first .
+H20:   1 <= bus__lru_subaddress_index__last .
+H21:   1 >= bus__word_index__first .
+H22:   1 <= bus__word_index__last .
+H23:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H24:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H25:   last_dyz >= measuretypes__millirad_per_sec__first .
+H26:   last_dyz <= measuretypes__millirad_per_sec__last .
+H27:   true .
+H28:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           systemtypes__word__first .
+H29:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           systemtypes__word__last .
+H30:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H31:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H32:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H33:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H34:   rt1553__compass >= rt1553__lru_name__first .
+H35:   rt1553__compass <= rt1553__lru_name__last .
+H36:   1 >= bus__lru_subaddress_index__first .
+H37:   1 <= bus__lru_subaddress_index__last .
+H38:   2 >= bus__word_index__first .
+H39:   2 <= bus__word_index__last .
+H40:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H41:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H42:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H43:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H44:   rt1553__compass >= rt1553__lru_name__first .
+H45:   rt1553__compass <= rt1553__lru_name__last .
+H46:   1 >= bus__lru_subaddress_index__first .
+H47:   1 <= bus__lru_subaddress_index__last .
+H48:   3 >= bus__word_index__first .
+H49:   3 <= bus__word_index__last .
+H50:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H51:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H52:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H53:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H54:   1 >= bus__lru_subaddress_index__first .
+H55:   1 <= bus__lru_subaddress_index__last .
+H56:   1 >= bus__word_index__first .
+H57:   1 <= bus__word_index__last .
+H58:   rt1553__compass >= rt1553__lru_name__first .
+H59:   rt1553__compass <= rt1553__lru_name__last .
+H60:   datum__6 >= bus__word__first .
+H61:   datum__6 <= bus__word__last .
+        ->
+C1:    datum__6 >= bus__word__first .
+C2:    datum__6 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 151:
+
+procedure_cycle_10.
+H1:    true .
+H2:    last_time >= clock__millisecond__first .
+H3:    last_time <= clock__millisecond__last .
+H4:    last_dxy >= measuretypes__millirad_per_sec__first .
+H5:    last_dxy <= measuretypes__millirad_per_sec__last .
+H6:    last_dyz >= measuretypes__millirad_per_sec__first .
+H7:    last_dyz <= measuretypes__millirad_per_sec__last .
+H8:    last_dxy >= measuretypes__millirad_per_sec__first .
+H9:    last_dxy <= measuretypes__millirad_per_sec__last .
+H10:   true .
+H11:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           systemtypes__word__first .
+H12:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           systemtypes__word__last .
+H13:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H14:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H15:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H16:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H17:   rt1553__compass >= rt1553__lru_name__first .
+H18:   rt1553__compass <= rt1553__lru_name__last .
+H19:   1 >= bus__lru_subaddress_index__first .
+H20:   1 <= bus__lru_subaddress_index__last .
+H21:   1 >= bus__word_index__first .
+H22:   1 <= bus__word_index__last .
+H23:   measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+           bus__word__first .
+H24:   measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+           bus__word__last .
+H25:   last_dyz >= measuretypes__millirad_per_sec__first .
+H26:   last_dyz <= measuretypes__millirad_per_sec__last .
+H27:   true .
+H28:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           systemtypes__word__first .
+H29:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           systemtypes__word__last .
+H30:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H31:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H32:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H33:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H34:   rt1553__compass >= rt1553__lru_name__first .
+H35:   rt1553__compass <= rt1553__lru_name__last .
+H36:   1 >= bus__lru_subaddress_index__first .
+H37:   1 <= bus__lru_subaddress_index__last .
+H38:   2 >= bus__word_index__first .
+H39:   2 <= bus__word_index__last .
+H40:   measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+           bus__word__first .
+H41:   measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+           bus__word__last .
+H42:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H43:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H44:   rt1553__compass >= rt1553__lru_name__first .
+H45:   rt1553__compass <= rt1553__lru_name__last .
+H46:   1 >= bus__lru_subaddress_index__first .
+H47:   1 <= bus__lru_subaddress_index__last .
+H48:   3 >= bus__word_index__first .
+H49:   3 <= bus__word_index__last .
+H50:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H51:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H52:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H53:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H54:   1 >= bus__lru_subaddress_index__first .
+H55:   1 <= bus__lru_subaddress_index__last .
+H56:   1 >= bus__word_index__first .
+H57:   1 <= bus__word_index__last .
+H58:   rt1553__compass >= rt1553__lru_name__first .
+H59:   rt1553__compass <= rt1553__lru_name__last .
+H60:   datum__6 >= bus__word__first .
+H61:   datum__6 <= bus__word__last .
+H62:   datum__6 >= bus__word__first .
+H63:   datum__6 <= bus__word__last .
+H64:   datum__6 >= bus__word__first .
+H65:   datum__6 <= bus__word__last .
+        ->
+C1:    datum__6 >= bus__word__first .
+C2:    datum__6 <= bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_cycle_11.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_cycle_12.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_13.
+*** true .          /* trivially true VC removed by Examiner */
+
+

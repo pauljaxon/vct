@@ -1,0 +1,188 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:43  SIMPLIFIED 25-NOV-2009, 14:19:18
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function destruct_cfg.Transition
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_transition_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state__first <= old_state
+***  Proved C1:  new_code >= systemtypes__unsigned16__first
+     using hypothesis H4.
+***  Proved C2:  new_code <= systemtypes__unsigned16__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_transition_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state__first <= old_state
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  state__first <= code_to_state(new_code)
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  state__first <= armed
+***  Proved C1:  state__first <= armed
+     using hypotheses H2 & H6.
+***  Proved C2:  armed <= state__last
+     using hypotheses H10 & H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_transition_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state__first <= old_state
+***  Proved C1:  new_code >= systemtypes__unsigned16__first
+     using hypothesis H4.
+***  Proved C2:  new_code <= systemtypes__unsigned16__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_transition_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state__first <= old_state
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  state__first <= code_to_state(new_code)
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  state__first <= detonated
+***  Proved C1:  state__first <= detonated
+     using hypotheses H2 & H6.
+***  Proved C2:  detonated <= state__last
+     using hypotheses H10 & H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_transition_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state__first <= old_state
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  state__first <= inactive
+***  Proved C2:  inactive <= state__last
+     using hypotheses H3 & H6.
+-S-  Applied substitution rule transition_rules(12).
+     This was achieved by replacing all occurrences of state__first by:
+          inactive.
+<S>  New H2:  inactive <= old_state
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_transition_6.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state__first <= old_state
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  state__first <= code_to_state(new_code)
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  state__first <= armed
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  state__first <= armed
+***  Proved C1:  true
+***  Proved C2:  state__first <= armed
+     using hypothesis H12.
+***  Proved C3:  armed <= state__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_transition_7.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state__first <= old_state
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  state__first <= code_to_state(new_code)
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  state__first <= inactive
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  state__first <= inactive
+***  Proved C1:  true
+***  Proved C2:  state__first <= inactive
+     using hypothesis H12.
+***  Proved C3:  inactive <= state__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_transition_8.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state__first <= old_state
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  state__first <= code_to_state(new_code)
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  state__first <= detonated
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  state__first <= detonated
+***  Proved C1:  true
+***  Proved C2:  state__first <= detonated
+     using hypothesis H12.
+***  Proved C3:  detonated <= state__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_transition_9.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state__first <= old_state
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  state__first <= code_to_state(new_code)
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  state__first <= inactive
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  state__first <= inactive
+***  Proved C1:  true
+***  Proved C2:  state__first <= inactive
+     using hypothesis H12.
+***  Proved C3:  inactive <= state__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_transition_10.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  state__first <= old_state
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  state__first <= inactive
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  state__first <= inactive
+***  Proved C1:  true
+***  Proved C2:  state__first <= inactive
+     using hypothesis H7.
+***  Proved C3:  inactive <= state__last
+     using hypothesis H8.
+***  PROVED VC.
+

@@ -1,0 +1,214 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.85
+
+Line
+   1  -- The 1553 bus interface.
+   2  -- The missile manager is a bus controller (BC); all
+   3  -- other system components are on the bus as remote
+   4  -- terminals (RTs).
+   5  --  R messages go BC -> RT
+   6  --  T messages go RT -> BC
+   7  --
+   8  -- $Id: bus.ads,v 1.1.1.1 2004/01/12 19:29:12 adi Exp $
+   9  --
+  10  -- $Log: bus.ads,v $
+  11  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+  12  -- Added from tarfile
+  13  --
+  14  --
+  15  -- Revision 1.7  2003/06/25 20:26:41  adi
+  16  -- Added base type assertion
+  17  --
+  18  -- Revision 1.6  2003/02/12 21:09:38  adi
+  19  -- Added Set_X_Message_Valid public functions and the Show
+  20  -- debugging functions
+  21  --
+  22  -- Revision 1.5  2003/02/11 20:13:06  adi
+  23  -- Added valid and fresh checking functions
+  24  --
+  25  -- Revision 1.4  2003/02/05 22:42:10  adi
+  26  -- Improved typing for RTC proof
+  27  --
+  28  -- Revision 1.3  2003/02/03 23:15:07  adi
+  29  -- Added Acknowledge functions
+  30  --
+  31  -- Revision 1.2  2003/02/03 19:47:15  adi
+  32  -- Made it easier to test
+  33  --
+  34  -- Revision 1.1  2003/02/03 18:13:16  adi
+  35  -- Initial revision
+  36  --
+  37  --
+  38  with SystemTypes;
+  39  --# inherit SystemTypes;
+  40  package Bus
+  41    --# own Inputs, Outputs;
+  42    --# initializes Inputs, Outputs;
+  43  is
+  44     -- Maximum number of words in a R/T message
+  45     Max_Words : constant := 31;
+  46  
+  47     -- Components of a message
+  48     type Word_Index is range 1..Max_Words;
+  49     subtype Word is SystemTypes.Word;
+  50     type Message_Data is array(Word_Index) of Word;
+  51     Null_Message_Data : constant Message_Data :=
+  52       Message_Data'(others => 0);
+  53  
+  54     -- The message itself
+  55     type Message is record
+  56        Valid : Boolean;
+  57        Fresh : Boolean;
+  58        Data : Message_Data;
+  59     end record;
+  60     Null_Message : constant Message :=
+  61       Message'(Valid => False,
+  62                Fresh => False,
+  63                Data  => Null_Message_Data);
+  64  
+  65     -- The total number of in or out messages in the system
+  66     type All_Msg_Index is range 0..63;
+  67     --# assert All_Msg_Index'Base is Short_Integer;
+  68     subtype Valid_Msg_Index is All_Msg_Index range
+  69       1..All_Msg_Index'Last;
+  70     -- The max range of Subaddresses for each LRU
+  71     Max_Lru_Subaddress : constant Valid_Msg_Index := 8;
+  72     subtype Lru_Subaddress_Index is Valid_Msg_Index range
+  73       1..Max_Lru_Subaddress;
+  74  
+  75     -- The LRU entities
+  76     Max_LRUs : constant := 12;
+  77     type LRU_Index is range 1..Max_LRUs;
+  78  
+  79     -- Write out data to the RT
+  80  
+  81     -- Make a message valid
+  82     procedure Set_RT_Message_Valid(Subaddress_Idx : in Lru_Subaddress_Index;
+  83                              Dest : in LRU_Index);
+  84     --# global in out Outputs;
+  85     --# derives Outputs from *, Subaddress_Idx, Dest;
+  86  
+  87     procedure Write_RT_Word(Data    : in Word;
+  88                             Idx     : in Word_Index;
+  89                             Subaddress_Idx : in Lru_Subaddress_Index;
+  90                             Dest    : in LRU_Index);
+  91     --# global in out Outputs;
+  92     --# derives Outputs from *, Data, Idx, Subaddress_Idx, Dest;
+  93  
+  94     procedure Write_RT_Message(Data    : in Message;
+  95                                Subaddress_Idx : in Lru_Subaddress_Index;
+  96                                Dest    : in LRU_Index);
+  97     --# global in out Outputs;
+  98     --# derives Outputs from *, Data, Subaddress_Idx, Dest;
+  99  
+ 100  
+ 101     -- Write out data to send to the BC destination
+ 102  
+ 103     -- Make a message valid
+ 104     procedure Set_BC_Message_Valid(Subaddress_Idx : in Lru_Subaddress_Index;
+ 105                                    Src : in LRU_Index);
+ 106     --# global in out Inputs;
+ 107     --# derives Inputs from *, Subaddress_Idx, Src;
+ 108  
+ 109     procedure Write_BC_Word(Data    : in Word;
+ 110                             Idx     : in Word_Index;
+ 111                             Subaddress_Idx : in Lru_Subaddress_Index;
+ 112                             Src     : in LRU_Index);
+ 113     --# global in out Inputs;
+ 114     --# derives Inputs from *, Data, Idx, Subaddress_Idx, Src;
+ 115  
+ 116     procedure Write_BC_Message(Data    : in Message;
+ 117                                Subaddress_Idx : in Lru_Subaddress_Index;
+ 118                                Src     : in LRU_Index);
+ 119     --# global in out Inputs;
+ 120     --# derives Inputs from *, Data, Subaddress_Idx, Src;
+ 121  
+ 122  
+ 123     -- Read data sent to an RT
+ 124     function Is_RT_Fresh(Dest : LRU_Index;
+ 125                          Subaddress_Idx : in Lru_Subaddress_Index)
+ 126                         return Boolean;
+ 127     --# global Outputs;
+ 128  
+ 129     function Is_RT_Valid(Dest : LRU_Index;
+ 130                          Subaddress_Idx : in Lru_Subaddress_Index)
+ 131                         return Boolean;
+ 132     --# global Outputs;
+ 133  
+ 134     procedure Read_RT_Word(Dest    : in LRU_Index;
+ 135                            Idx     : in Word_Index;
+ 136                            Subaddress_Idx : in Lru_Subaddress_Index;
+ 137                            Data    : out Word);
+ 138     --# global in Outputs;
+ 139     --# derives Data from Dest, Idx, Subaddress_Idx, Outputs;
+ 140  
+ 141     procedure Read_RT_Message(Dest    : in LRU_Index;
+ 142                               Subaddress_Idx : in Lru_Subaddress_Index;
+ 143                               Data    : out Message);
+ 144     --# global in Outputs;
+ 145     --# derives Data from Dest, Subaddress_Idx, Outputs;
+ 146  
+ 147     procedure Acknowledge_RT_Message(Dest : in LRU_Index;
+ 148                                      Subaddress_Idx : in Lru_Subaddress_Index);
+ 149     --# global in out Outputs;
+ 150     --# derives Outputs from *, Dest, Subaddress_Idx;
+ 151  
+ 152  
+ 153     -- Read data sent to the BC
+ 154     function Is_BC_Fresh(Src : LRU_Index;
+ 155                          Subaddress_Idx : in Lru_Subaddress_Index)
+ 156                         return Boolean;
+ 157     --# global Inputs;
+ 158  
+ 159     function Is_BC_Valid(Src : LRU_Index;
+ 160                          Subaddress_Idx : in Lru_Subaddress_Index)
+ 161                         return Boolean;
+ 162     --# global Inputs;
+ 163  
+ 164     procedure Read_BC_Word(Src     : in LRU_Index;
+ 165                            Idx     : in Word_Index;
+ 166                            Subaddress_Idx : in Lru_Subaddress_Index;
+ 167                            Data    : out Word);
+ 168     --# global in Inputs;
+ 169     --# derives Data from Src, Idx, Subaddress_Idx, Inputs;
+ 170  
+ 171     procedure Read_BC_Message(Src     : in LRU_Index;
+ 172                               Subaddress_Idx : in Lru_Subaddress_Index;
+ 173                               Data    : out Message);
+ 174     --# global in Inputs;
+ 175     --# derives Data from Src, Subaddress_Idx, Inputs;
+ 176  
+ 177     procedure Acknowledge_BC_Message(Src : in LRU_Index;
+ 178                                      Subaddress_Idx : in Lru_Subaddress_Index);
+ 179     --# global in out Inputs;
+ 180     --# derives Inputs from *, Src, Subaddress_Idx;
+ 181  
+ 182  
+ 183     -- Run a cycle of the bus
+ 184     procedure Cycle;
+ 185     --# global in out Inputs, Outputs;
+ 186     --# derives Inputs, Outputs from *;
+ 187  
+ 188     -- Auxiliary debugging routines
+ 189     procedure Show_RT(Subaddress_Idx : in Lru_Subaddress_Index;
+ 190                       Dest : in LRU_Index);
+ 191     --# global in out Outputs;
+ 192     --# derives Outputs from *, Subaddress_Idx, Dest;
+ 193  
+ 194     procedure Show_BC(Subaddress_Idx : in Lru_Subaddress_Index;
+ 195                       Src : in LRU_Index);
+ 196     --# global in out Inputs;
+ 197     --# derives Inputs from *, Subaddress_Idx, Src;
+ 198  
+ 199  end Bus;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

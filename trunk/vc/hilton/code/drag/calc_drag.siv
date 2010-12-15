@@ -1,0 +1,301 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:33
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure drag.Calc_Drag
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 63:
+
+procedure_calc_drag_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 66:
+
+procedure_calc_drag_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 73:
+
+procedure_calc_drag_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 74:
+
+procedure_calc_drag_4.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 77:
+
+procedure_calc_drag_5.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 78:
+
+procedure_calc_drag_6.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 79:
+
+procedure_calc_drag_7.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 83:
+
+procedure_calc_drag_8.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 84:
+
+procedure_calc_drag_9.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to precondition check associated with statement of line 
+          87:
+
+procedure_calc_drag_10.
+H1:    profile >= 1 .
+H2:    profile <= 1000 .
+H3:    speed >= 0 .
+H4:    altitude >= 0 .
+H5:    altitude <= 200000 .
+H6:    speed < 100 .
+H7:    long_integer__size >= 0 .
+H8:    measuretypes__meter__size >= 0 .
+H9:    measuretypes__meter_per_sec__size >= 0 .
+H10:   measuretypes__newton__size >= 0 .
+H11:   drag_coefficient__size >= 0 .
+H12:   drag_coefficient__base__first <= drag_coefficient__base__last .
+H13:   pos_meter__size >= 0 .
+H14:   pos_meter_per_sec__size >= 0 .
+H15:   integer32__size >= 0 .
+H16:   percent__size >= 0 .
+H17:   drag_coefficient__base__first <= 1 .
+H18:   drag_coefficient__base__last >= 1000 .
+       ->
+C1:    altitude <= 25000 .
+
+
+procedure_calc_drag_11.
+H1:    profile >= 1 .
+H2:    profile <= 1000 .
+H3:    altitude >= 0 .
+H4:    altitude <= 200000 .
+H5:    speed < 307 .
+H6:    100 <= speed .
+H7:    speed * speed div 100 >= - 2147483648 .
+H8:    speed * speed div 100 <= 2147483647 .
+H9:    speed * speed >= - 2147483648 .
+H10:   speed * speed <= 2147483647 .
+H11:   long_integer__size >= 0 .
+H12:   measuretypes__meter__size >= 0 .
+H13:   measuretypes__meter_per_sec__size >= 0 .
+H14:   measuretypes__newton__size >= 0 .
+H15:   drag_coefficient__size >= 0 .
+H16:   drag_coefficient__base__first <= drag_coefficient__base__last .
+H17:   pos_meter__size >= 0 .
+H18:   pos_meter_per_sec__size >= 0 .
+H19:   integer32__size >= 0 .
+H20:   percent__size >= 0 .
+H21:   drag_coefficient__base__first <= 1 .
+H22:   drag_coefficient__base__last >= 1000 .
+       ->
+C1:    altitude <= 25000 .
+
+
+procedure_calc_drag_12.
+H1:    profile >= 1 .
+H2:    profile <= 1000 .
+H3:    altitude >= 0 .
+H4:    altitude <= 200000 .
+H5:    307 <= speed .
+H6:    speed < 400 .
+H7:    (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= - 2147484590 
+          .
+H8:    (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 2147482705 .
+H9:    (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= - 2147483648 
+          .
+H10:   (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 2147483647 .
+H11:   (speed - 307) * ((speed - 307) * (speed - 307)) >= - 2147483648 .
+H12:   (speed - 307) * ((speed - 307) * (speed - 307)) <= 2147483647 .
+H13:   (speed - 307) * (speed - 307) >= - 2147483648 .
+H14:   (speed - 307) * (speed - 307) <= 2147483647 .
+H15:   long_integer__size >= 0 .
+H16:   measuretypes__meter__size >= 0 .
+H17:   measuretypes__meter_per_sec__size >= 0 .
+H18:   measuretypes__newton__size >= 0 .
+H19:   drag_coefficient__size >= 0 .
+H20:   drag_coefficient__base__first <= drag_coefficient__base__last .
+H21:   pos_meter__size >= 0 .
+H22:   pos_meter_per_sec__size >= 0 .
+H23:   integer32__size >= 0 .
+H24:   percent__size >= 0 .
+H25:   drag_coefficient__base__first <= 1 .
+H26:   drag_coefficient__base__last >= 1000 .
+       ->
+C1:    altitude <= 25000 .
+
+
+procedure_calc_drag_13.
+H1:    profile >= 1 .
+H2:    profile <= 1000 .
+H3:    altitude >= 0 .
+H4:    altitude <= 200000 .
+H5:    400 <= speed .
+H6:    speed < 450 .
+H7:    (450 - speed) * 402 div 50 <= 2147482705 .
+H8:    (450 - speed) * 402 div 50 >= - 2147483648 .
+H9:    long_integer__size >= 0 .
+H10:   measuretypes__meter__size >= 0 .
+H11:   measuretypes__meter_per_sec__size >= 0 .
+H12:   measuretypes__newton__size >= 0 .
+H13:   drag_coefficient__size >= 0 .
+H14:   drag_coefficient__base__first <= drag_coefficient__base__last .
+H15:   pos_meter__size >= 0 .
+H16:   pos_meter_per_sec__size >= 0 .
+H17:   integer32__size >= 0 .
+H18:   percent__size >= 0 .
+H19:   drag_coefficient__base__first <= 1 .
+H20:   drag_coefficient__base__last >= 1000 .
+       ->
+C1:    altitude <= 25000 .
+
+
+procedure_calc_drag_14.
+H1:    profile >= 1 .
+H2:    profile <= 1000 .
+H3:    speed <= 5000 .
+H4:    altitude >= 0 .
+H5:    altitude <= 200000 .
+H6:    450 <= speed .
+H7:    long_integer__size >= 0 .
+H8:    measuretypes__meter__size >= 0 .
+H9:    measuretypes__meter_per_sec__size >= 0 .
+H10:   measuretypes__newton__size >= 0 .
+H11:   drag_coefficient__size >= 0 .
+H12:   drag_coefficient__base__first <= drag_coefficient__base__last .
+H13:   pos_meter__size >= 0 .
+H14:   pos_meter_per_sec__size >= 0 .
+H15:   integer32__size >= 0 .
+H16:   percent__size >= 0 .
+H17:   drag_coefficient__base__first <= 1 .
+H18:   drag_coefficient__base__last >= 1000 .
+       ->
+C1:    altitude <= 25000 .
+
+
+For path(s) from start to run-time check associated with statement of line 87:
+
+procedure_calc_drag_15.
+*** true .          /* all conclusions proved */
+
+
+procedure_calc_drag_16.
+*** true .          /* all conclusions proved */
+
+
+procedure_calc_drag_17.
+*** true .          /* all conclusions proved */
+
+
+procedure_calc_drag_18.
+*** true .          /* all conclusions proved */
+
+
+procedure_calc_drag_19.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 88:
+
+procedure_calc_drag_20.
+*** true .          /* all conclusions proved */
+
+
+procedure_calc_drag_21.
+*** true .          /* all conclusions proved */
+
+
+procedure_calc_drag_22.
+*** true .          /* all conclusions proved */
+
+
+procedure_calc_drag_23.
+*** true .          /* all conclusions proved */
+
+
+procedure_calc_drag_24.
+H1:    profile >= 1 .
+H2:    profile <= 1000 .
+H3:    speed <= 5000 .
+H4:    altitude >= 0 .
+H5:    450 <= speed .
+H6:    altitude <= 25000 .
+H7:    relative_drag_at_altitude(altitude) >= 0 .
+H8:    relative_drag_at_altitude(altitude) <= 100 .
+H9:    (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 100 >= - 
+          2147483648 .
+H10:   (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 100 <= 
+          2147483647 .
+H11:   (942 + (speed - 450)) * relative_drag_at_altitude(altitude) >= - 
+          2147483648 .
+H12:   (942 + (speed - 450)) * relative_drag_at_altitude(altitude) <= 
+          2147483647 .
+H13:   long_integer__size >= 0 .
+H14:   measuretypes__meter__size >= 0 .
+H15:   measuretypes__meter_per_sec__size >= 0 .
+H16:   measuretypes__newton__size >= 0 .
+H17:   drag_coefficient__size >= 0 .
+H18:   drag_coefficient__base__first <= drag_coefficient__base__last .
+H19:   pos_meter__size >= 0 .
+H20:   pos_meter_per_sec__size >= 0 .
+H21:   integer32__size >= 0 .
+H22:   percent__size >= 0 .
+H23:   drag_coefficient__base__first <= 1 .
+H24:   drag_coefficient__base__last >= 1000 .
+       ->
+C1:    (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 100 * 
+          profile div 2 <= 1000000 .
+
+
+For path(s) from start to finish:
+
+procedure_calc_drag_25.
+*** true .          /* all conclusions proved */
+
+
+procedure_calc_drag_26.
+*** true .          /* all conclusions proved */
+
+
+procedure_calc_drag_27.
+*** true .          /* all conclusions proved */
+
+
+procedure_calc_drag_28.
+*** true .          /* all conclusions proved */
+
+
+procedure_calc_drag_29.
+*** true .          /* all conclusions proved */
+
+

@@ -1,0 +1,71 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:43.93}
+
+                 {procedure sensor_history.Get_Recent_angle}
+
+
+title procedure get_recent_angle;
+
+  function round__(real) : integer;
+  type measuretypes__meter = integer;
+  type measuretypes__meter_per_sec = integer;
+  type measuretypes__angle_degrees = integer;
+  type clock__millisecond = integer;
+  type history_count = integer;
+  type time_list = array [integer] of integer;
+  type dist_history_list = array [integer] of integer;
+  type angle_history_list = array [integer] of integer;
+  type speed_list = array [integer] of integer;
+  type measure_history = record
+        distance : dist_history_list;
+        bearing : angle_history_list;
+        speed : speed_list;
+        times : time_list;
+        new_idx : integer
+     end;
+  const history_count__base__last : integer = pending; 
+  const history_count__base__first : integer = pending; 
+  const meter_per_sec__base__last : integer = pending; 
+  const meter_per_sec__base__first : integer = pending; 
+  const angle_degrees__base__last : integer = pending; 
+  const angle_degrees__base__first : integer = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const measuretypes__angle_degrees__base__last : integer = pending; 
+  const measuretypes__angle_degrees__base__first : integer = pending; 
+  const measuretypes__meter_per_sec__base__last : integer = pending; 
+  const measuretypes__meter_per_sec__base__first : integer = pending; 
+  const measuretypes__meter__base__last : integer = pending; 
+  const measuretypes__meter__base__first : integer = pending; 
+  const measure_history__size : integer = pending; 
+  const history_count__size : integer = pending; 
+  const history_count__last : integer = pending; 
+  const history_count__first : integer = pending; 
+  const meter_per_sec__size : integer = pending; 
+  const meter_per_sec__last : integer = pending; 
+  const meter_per_sec__first : integer = pending; 
+  const angle_degrees__size : integer = pending; 
+  const angle_degrees__last : integer = pending; 
+  const angle_degrees__first : integer = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  const measuretypes__angle_degrees__size : integer = pending; 
+  const measuretypes__angle_degrees__last : integer = pending; 
+  const measuretypes__angle_degrees__first : integer = pending; 
+  const measuretypes__meter_per_sec__size : integer = pending; 
+  const measuretypes__meter_per_sec__last : integer = pending; 
+  const measuretypes__meter_per_sec__first : integer = pending; 
+  const measuretypes__meter__size : integer = pending; 
+  const measuretypes__meter__last : integer = pending; 
+  const measuretypes__meter__first : integer = pending; 
+  var item : measure_history;
+  function previous_item(integer) : integer;
+
+end;

@@ -1,0 +1,358 @@
+           *******************************************************
+                         Report of SPARK Examination
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.96
+
+Options:
+    default switch file used
+    index_file=ap.idx
+    nowarning_file
+    notarget_compiler_data
+    config_file=gnat.cfg
+    source_extension=ada
+    listing_extension=lst
+    nodictionary
+    report_file=spark.rep
+    no_html
+    exp_checks
+    rtc
+    RealRTCs
+    vcs
+    statistics
+    fdl_identifiers
+    flow_analysis=information
+    language=95
+    profile=sequential
+    annotation_character=#
+    rules=none
+    error_explanations=off
+    justification_option=full
+    output_directory (requested)=.
+    output_directory (actual)=/afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/
+
+Selected files:
+   @main.smf
+
+
+Index Filename(s) used were: 
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap.idx
+
+
+Meta File(s) used were:
+   main.smf
+      /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/degrees.ads
+      /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/instruments.ads
+      /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/surfaces.ads
+      /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/scale.ads
+      /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/scale.adb
+      /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap.smf
+         /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap.ads
+         /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-controls.ads
+         /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude.smf
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude.ads
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude-pitch.ads
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude-pitch-rate.ads
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude-pitch.adb
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude.adb
+         /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading.smf
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading.ads
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-roll.ads
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-roll-rate.ads
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-roll.adb
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-yaw.ads
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-yaw-rate.ads
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-yaw.adb
+            /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading.adb
+         /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap.adb
+      /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/main.adb
+
+
+Full warning reporting selected
+
+
+Target configuration file:
+Line
+   1  package Standard is
+   2     type Integer is range -2147483648 ..  2147483647;
+   3     type Float is digits  6 range -3.40282E+38 ..  3.40282E+38;
+   4     type Short_Short_Integer is range -128 ..  127;
+   5     type Short_Integer is range -32768 ..  32767;
+   6     type Long_Integer is range -2147483648 ..  2147483647;
+   7  end Standard;
+   8  
+   9  package System is
+  10     Min_Int : constant := -2147483648;
+  11     Max_Int : constant :=  2147483647;
+  12  end System;
+  13  
+  14  
+
+
+Source Filename(s) used were:
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/degrees.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/instruments.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/surfaces.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/scale.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/scale.adb
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-controls.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude-pitch.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude-pitch-rate.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude-pitch.adb
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude.adb
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-roll.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-roll-rate.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-roll.adb
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-yaw.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-yaw-rate.ads
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-yaw.adb
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading.adb
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap.adb
+   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/main.adb
+
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/degrees.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/degrees.lst
+
+   Unit name:  Degrees
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/instruments.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/instruments.lst
+
+   Unit name:  Instruments
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/surfaces.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/surfaces.lst
+
+   Unit name:  Surfaces
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/scale.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/scale.lst
+
+   Unit name:  Scale
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/scale.adb
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/scale.lst
+
+   Unit name:  Scale
+   Unit type:  package body
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap.lst
+
+   Unit name:  ap
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-controls.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-controls.lst
+
+   Unit name:  ap.controls
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude.lst
+
+   Unit name:  ap.Altitude
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude-pitch.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude-pitch.lst
+
+   Unit name:  ap.Altitude.Pitch
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude-pitch-rate.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude-pitch-rate.lst
+
+   Unit name:  ap.Altitude.Pitch.rate
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude-pitch.adb
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude-pitch.lst
+
+   Unit name:  ap.Altitude.Pitch
+   Unit type:  package body
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude.adb
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-altitude.lst
+
+   Unit name:  ap.Altitude
+   Unit type:  package body
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading.lst
+
+   Unit name:  ap.Heading
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-roll.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-roll.lst
+
+   Unit name:  ap.Heading.roll
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-roll-rate.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-roll-rate.lst
+
+   Unit name:  ap.Heading.roll.rate
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-roll.adb
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-roll.lst
+
+   Unit name:  ap.Heading.roll
+   Unit type:  package body
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-yaw.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-yaw.lst
+
+   Unit name:  ap.Heading.yaw
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-yaw-rate.ads
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-yaw-rate.lst
+
+   Unit name:  ap.Heading.yaw.rate
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-yaw.adb
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading-yaw.lst
+
+   Unit name:  ap.Heading.yaw
+   Unit type:  package body
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading.adb
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap-heading.lst
+
+   Unit name:  ap.Heading
+   Unit type:  package body
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap.adb
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/ap.lst
+
+   Unit name:  ap
+   Unit type:  package body
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/main.adb
+Listing Filename:  /afs/inf.ed.ac.uk/user/p/pbj/praxis/autop/work4/main.lst
+
+   Unit name:  Main
+   Unit type:  main program
+   Unit has been analysed, any errors are listed below.
+
+1 error(s) or warning(s)
+
+Line
+  55        AP.Control;
+
+--- (  1)  Warning           :402: Default assertion planted to cut loop.
+
+
+Resource statistics
+
+Table              Units used  Max Size    % used
+Relation Table           1885   2000000         0
+String Table             9383   2097152         0
+Symbol Table             1556    160000         0
+Syntax Tree              1676   3200000         0
+VCG Heap                12208   3500000         0
+Record components           0     16000         0
+Record errors               0     16000         0
+
+
+--End of file--------------------------------------------------

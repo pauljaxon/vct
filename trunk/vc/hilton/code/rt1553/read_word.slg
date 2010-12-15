@@ -1,0 +1,103 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:40
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure rt1553.Read_Word
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_read_word_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  lru_name__first <= src
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  lru_name__first <= src
+***  Proved C1:  subaddress_idx >= bus__lru_subaddress_index__first
+     using hypothesis H6.
+***  Proved C2:  subaddress_idx <= bus__lru_subaddress_index__last
+     using hypothesis H7.
+***  Proved C3:  idx >= bus__word_index__first
+     using hypothesis H4.
+***  Proved C4:  idx <= bus__word_index__last
+     using hypothesis H5.
+***  Proved C7:  lru_name__first <= src
+     using hypothesis H2.
+***  Proved C8:  src <= lru_name__last
+     using hypothesis H3.
+-S-  Applied substitution rule read_word_rules(30).
+     This was achieved by replacing all occurrences of bus__lru_index__first by:
+          1.
+<S>  New C5:  element(lru_names, [src]) >= 1
+-S-  Applied substitution rule read_word_rules(31).
+     This was achieved by replacing all occurrences of bus__lru_index__last by:
+          12.
+<S>  New C6:  element(lru_names, [src]) <= 12
+-S-  Applied substitution rule read_word_rules(9).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H4:  idx >= 1
+-S-  Applied substitution rule read_word_rules(10).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H5:  idx <= 31
+-S-  Applied substitution rule read_word_rules(25).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H6:  subaddress_idx >= 1
+-S-  Applied substitution rule read_word_rules(26).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H7:  subaddress_idx <= 8
+-S-  Applied substitution rule read_word_rules(36).
+     This was achieved by replacing all occurrences of lru_name__first by:
+          barometer.
+<S>  New H2:  barometer <= src
+-S-  Applied substitution rule read_word_rules(37).
+     This was achieved by replacing all occurrences of lru_name__last by:
+          warhead.
+<S>  New H3:  src <= warhead
+---  Eliminated hypothesis H1 (true-hypothesis).
+***  Proved C5:  element(lru_names, [src]) >= 1
+     using hypotheses H2 & H3.
+***  Proved C6:  element(lru_names, [src]) <= 12
+     using hypotheses H2 & H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_word_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  lru_name__first <= src
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+***  Proved C1:  data__1 >= bus__word__first
+     using hypothesis H16.
+***  Proved C2:  data__1 <= bus__word__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_word_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

@@ -1,0 +1,162 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.55
+
+                       function Scale.Heading_Offset
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 73:
+
+function_heading_offset_1.
+H1:    true .
+H2:    present >= instruments__headdegree__first .
+H3:    present <= instruments__headdegree__last .
+H4:    target >= instruments__headdegree__first .
+H5:    target <= instruments__headdegree__last .
+        ->
+C1:    360 + target - present >= integer__first .
+C2:    360 + target - present <= integer__last .
+C3:    present >= integer__first .
+C4:    present <= integer__last .
+C5:    360 + target >= integer__base__first .
+C6:    360 + target <= integer__base__last .
+C7:    target >= integer__first .
+C8:    target <= integer__last .
+ 
+
+For path(s) from start to assertion of line 74:
+
+function_heading_offset_2.
+H1:    true .
+H2:    present >= instruments__headdegree__first .
+H3:    present <= instruments__headdegree__last .
+H4:    target >= instruments__headdegree__first .
+H5:    target <= instruments__headdegree__last .
+H6:    360 + target - present >= integer__first .
+H7:    360 + target - present <= integer__last .
+H8:    present >= integer__first .
+H9:    present <= integer__last .
+H10:   360 + target >= integer__base__first .
+H11:   360 + target <= integer__base__last .
+H12:   target >= integer__first .
+H13:   target <= integer__last .
+        ->
+C1:    360 + target - present >= 0 .
+C2:    360 + target - present < 720 .
+C3:    present >= instruments__headdegree__first .
+C4:    present <= instruments__headdegree__last .
+C5:    target >= instruments__headdegree__first .
+C6:    target <= instruments__headdegree__last .
+ 
+
+For path(s) from assertion of line 74 to run-time check associated with statement of line 76:
+
+function_heading_offset_3.
+H1:    v >= 0 .
+H2:    v < 720 .
+H3:    present >= instruments__headdegree__first .
+H4:    present <= instruments__headdegree__last .
+H5:    target >= instruments__headdegree__first .
+H6:    target <= instruments__headdegree__last .
+H7:    v >= integer__first .
+H8:    v <= integer__last .
+H9:    v >= 360 .
+H10:   v >= integer__first .
+H11:   v <= integer__last .
+        ->
+C1:    v - 360 >= integer__first .
+C2:    v - 360 <= integer__last .
+ 
+
+For path(s) from assertion of line 74 to assertion of line 78:
+
+function_heading_offset_4.
+H1:    v >= 0 .
+H2:    v < 720 .
+H3:    present >= instruments__headdegree__first .
+H4:    present <= instruments__headdegree__last .
+H5:    target >= instruments__headdegree__first .
+H6:    target <= instruments__headdegree__last .
+H7:    v >= integer__first .
+H8:    v <= integer__last .
+H9:    v >= 360 .
+H10:   v >= integer__first .
+H11:   v <= integer__last .
+H12:   v - 360 >= integer__first .
+H13:   v - 360 <= integer__last .
+        ->
+C1:    v - 360 >= 0 .
+C2:    v - 360 < 360 .
+C3:    present >= instruments__headdegree__first .
+C4:    present <= instruments__headdegree__last .
+C5:    target >= instruments__headdegree__first .
+C6:    target <= instruments__headdegree__last .
+ 
+
+function_heading_offset_5.
+H1:    v >= 0 .
+H2:    v < 720 .
+H3:    present >= instruments__headdegree__first .
+H4:    present <= instruments__headdegree__last .
+H5:    target >= instruments__headdegree__first .
+H6:    target <= instruments__headdegree__last .
+H7:    v >= integer__first .
+H8:    v <= integer__last .
+H9:    not (v >= 360) .
+        ->
+C1:    v >= 0 .
+C2:    v < 360 .
+C3:    present >= instruments__headdegree__first .
+C4:    present <= instruments__headdegree__last .
+C5:    target >= instruments__headdegree__first .
+C6:    target <= instruments__headdegree__last .
+ 
+
+For path(s) from assertion of line 78 to run-time check associated with statement of line 79:
+
+function_heading_offset_6.
+H1:    v >= 0 .
+H2:    v < 360 .
+H3:    present >= instruments__headdegree__first .
+H4:    present <= instruments__headdegree__last .
+H5:    target >= instruments__headdegree__first .
+H6:    target <= instruments__headdegree__last .
+H7:    v >= integer__first .
+H8:    v <= integer__last .
+        ->
+C1:    v >= instruments__headdegree__first .
+C2:    v <= instruments__headdegree__last .
+C3:    v >= instruments__headdegree__first .
+C4:    v <= instruments__headdegree__last .
+ 
+
+For path(s) from assertion of line 78 to finish:
+
+function_heading_offset_7.
+H1:    v >= 0 .
+H2:    v < 360 .
+H3:    present >= instruments__headdegree__first .
+H4:    present <= instruments__headdegree__last .
+H5:    target >= instruments__headdegree__first .
+H6:    target <= instruments__headdegree__last .
+H7:    v >= integer__first .
+H8:    v <= integer__last .
+H9:    v >= instruments__headdegree__first .
+H10:   v <= instruments__headdegree__last .
+H11:   v >= instruments__headdegree__first .
+H12:   v <= instruments__headdegree__last .
+H13:   v >= instruments__headdegree__first .
+H14:   v <= instruments__headdegree__last .
+        ->
+C1:    true .
+C2:    v >= instruments__headdegree__first .
+C3:    v <= instruments__headdegree__last .
+ 
+

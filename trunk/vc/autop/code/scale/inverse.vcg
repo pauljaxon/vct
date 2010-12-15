@@ -1,0 +1,87 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.51
+
+                           function Scale.Inverse
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 19:
+
+function_inverse_1.
+H1:    val >= 0 .
+H2:    flatness > 0 .
+H3:    flatness <= 100 .
+H4:    val >= scaledata__first .
+H5:    val <= scaledata__last .
+H6:    flatness >= integer__first .
+H7:    flatness <= integer__last .
+        ->
+C1:    100 * flatness div (flatness + val) >= integer__first .
+C2:    100 * flatness div (flatness + val) <= integer__last .
+C3:    flatness + val <> 0 .
+C4:    flatness + val >= integer__base__first .
+C5:    flatness + val <= integer__base__last .
+C6:    100 * flatness >= integer__base__first .
+C7:    100 * flatness <= integer__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 20:
+
+function_inverse_2.
+H1:    val >= 0 .
+H2:    flatness > 0 .
+H3:    flatness <= 100 .
+H4:    val >= scaledata__first .
+H5:    val <= scaledata__last .
+H6:    flatness >= integer__first .
+H7:    flatness <= integer__last .
+H8:    100 * flatness div (flatness + val) >= integer__first .
+H9:    100 * flatness div (flatness + val) <= integer__last .
+H10:   flatness + val <> 0 .
+H11:   flatness + val >= integer__base__first .
+H12:   flatness + val <= integer__base__last .
+H13:   100 * flatness >= integer__base__first .
+H14:   100 * flatness <= integer__base__last .
+H15:   100 * flatness div (flatness + val) >= integer__first .
+H16:   100 * flatness div (flatness + val) <= integer__last .
+        ->
+C1:    100 * flatness div (flatness + val) >= percent__first .
+C2:    100 * flatness div (flatness + val) <= percent__last .
+ 
+
+For path(s) from start to finish:
+
+function_inverse_3.
+H1:    val >= 0 .
+H2:    flatness > 0 .
+H3:    flatness <= 100 .
+H4:    val >= scaledata__first .
+H5:    val <= scaledata__last .
+H6:    flatness >= integer__first .
+H7:    flatness <= integer__last .
+H8:    100 * flatness div (flatness + val) >= integer__first .
+H9:    100 * flatness div (flatness + val) <= integer__last .
+H10:   flatness + val <> 0 .
+H11:   flatness + val >= integer__base__first .
+H12:   flatness + val <= integer__base__last .
+H13:   100 * flatness >= integer__base__first .
+H14:   100 * flatness <= integer__base__last .
+H15:   100 * flatness div (flatness + val) >= integer__first .
+H16:   100 * flatness div (flatness + val) <= integer__last .
+H17:   100 * flatness div (flatness + val) >= percent__first .
+H18:   100 * flatness div (flatness + val) <= percent__last .
+H19:   100 * flatness div (flatness + val) >= percent__first .
+H20:   100 * flatness div (flatness + val) <= percent__last .
+        ->
+C1:    true .
+C2:    100 * flatness div (flatness + val) >= percent__first .
+C3:    100 * flatness div (flatness + val) <= percent__last .
+ 
+

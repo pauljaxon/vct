@@ -1,0 +1,224 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:42  SIMPLIFIED 25-NOV-2009, 14:19:11
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure steer.Extrapolate_Angle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 70:
+
+procedure_extrapolate_angle_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 71:
+
+procedure_extrapolate_angle_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 72:
+
+procedure_extrapolate_angle_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 74:
+
+procedure_extrapolate_angle_4.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 76:
+
+procedure_extrapolate_angle_5.
+H1:    steer_cfg__port <= for_fin .
+H2:    for_fin <= steer_cfg__bottom .
+H3:    for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and i___1 <= 
+          steer_cfg__bottom -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57) .
+H4:    for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and i___1 <= 
+          steer_cfg__bottom -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57) .
+H5:    for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and i___1 <= 
+          steer_cfg__bottom -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000) .
+H6:    now__1 >= 0 .
+H7:    now__1 <= 8640000 .
+H8:    element(current_angles, [for_fin]) >= - 57 .
+H9:    element(current_angles, [for_fin]) <= 57 .
+H10:   element(commanded_angles, [for_fin]) >= - 57 .
+H11:   element(commanded_angles, [for_fin]) <= 57 .
+H12:   element(current_angles, [for_fin]) <> element(commanded_angles, [for_fin]
+          ) .
+H13:   long_integer__size >= 0 .
+H14:   clock__millisecond__size >= 0 .
+H15:   steer_cfg__fin_angle__size >= 0 .
+H16:   steer_cfg__fin_angle__base__first <= steer_cfg__fin_angle__base__last .
+H17:   steer_cfg__fin__size >= 0 .
+H18:   angle__size >= 0 .
+H19:   angle__base__first <= angle__base__last .
+H20:   fin__size >= 0 .
+H21:   integer32__size >= 0 .
+H22:   steer_cfg__fin_angle__base__first <= - 57 .
+H23:   steer_cfg__fin_angle__base__last >= 57 .
+H24:   angle__base__first <= - 57 .
+H25:   angle__base__last >= 57 .
+       ->
+C1:    now__1 - element(command_times, [for_fin]) >= 0 .
+
+
+For path(s) from start to run-time check associated with statement of line 79:
+
+procedure_extrapolate_angle_6.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 83:
+
+procedure_extrapolate_angle_7.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 87:
+
+procedure_extrapolate_angle_8.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_9.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 89:
+
+procedure_extrapolate_angle_10.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_11.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 90:
+
+procedure_extrapolate_angle_12.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_13.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 92:
+
+procedure_extrapolate_angle_14.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_15.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 96:
+
+procedure_extrapolate_angle_16.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_17.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 98:
+
+procedure_extrapolate_angle_18.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_19.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 99:
+
+procedure_extrapolate_angle_20.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_21.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 101:
+
+procedure_extrapolate_angle_22.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_23.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 107:
+
+procedure_extrapolate_angle_24.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to finish:
+
+procedure_extrapolate_angle_25.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_26.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_27.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_28.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_29.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_30.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_31.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_32.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_33.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_34.
+*** true .          /* all conclusions proved */
+
+
+procedure_extrapolate_angle_35.
+*** true .          /* all conclusions proved */
+
+

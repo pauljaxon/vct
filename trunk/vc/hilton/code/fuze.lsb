@@ -1,0 +1,254 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.81
+
+Line
+   1  -- Proximity fuze implementation
+   2  --
+   3  -- $Log: fuze.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.3  2003/08/17 15:07:48  adi
+   9  -- Added check that new arm data is fresh
+  10  --
+  11  -- Revision 1.2  2003/08/17 14:58:35  adi
+  12  -- Updated to read back info from bus
+  13  --
+  14  -- Revision 1.1  2003/08/17 14:17:06  adi
+  15  -- Initial revision
+  16  --
+  17  --
+  18  with Clock_Utils,SystemTypes;
+  19  with Bus,RT1553,IBIT,Bit_Machine;
+  20  package body Fuze
+  21    --# own State is
+  22    --#     current_state,
+  23    --#     state_timer,
+  24    --#     BIT_State;
+  25  is
+  26     -- The current action state of the fuze
+  27     Current_State : State_Types.Fuze := State_Types.Unarmed;
+  28     -- What time the fuze state last changed
+  29     State_timer  : Clock.Millisecond := Clock.Millisecond'First;
+  30     -- The BIT state
+  31     Bit_State  : Bit_Machine.Machine := Bit_Machine.Initial_Machine;
+  32  
+  33     Bus_Id : constant Rt1553.Lru_Name := Rt1553.Fuze;
+  34  
+  35     -- maximum times to remain in states
+  36     type Time_Array is array(State_Types.Fuze) of Clock.Millisecond;
+  37     Max_State_Time : constant Time_Array
+  38       := Time_Array'(State_Types.Unarmed    =>      0,
+  39                      State_Types.Arming     =>  3_000,
+  40                      State_Types.Live       =>      0,
+  41                      State_Types.Triggering =>  2_000,
+  42                      State_Types.Timed_Out  =>      0);
+  43     type State_Change_Array is array(State_Types.Fuze) of
+  44       State_Types.Fuze;
+  45     State_Change : constant State_Change_Array :=
+  46       State_Change_Array'(State_Types.Unarmed    => State_Types.Unarmed,
+  47                           State_Types.arming     => State_Types.live,
+  48                           State_Types.live       => State_Types.live,
+  49                           State_Types.triggering => State_Types.unarmed,
+  50                           State_Types.Timed_Out  => State_Types.Timed_out);
+  51  
+  52     -- See whether the current state needs updating automatically
+  53     procedure Update_State
+  54       --# global in out current_state, state_timer;
+  55       --#        in out clock.time;
+  56       --# derives clock.time from *, current_state &
+  57       --#         current_state, state_timer from
+  58       --#         state_timer, clock.time, current_state;
+  59     is
+  60        T_Now,T_Delta : Clock.Millisecond;
+  61        T_Valid : Boolean;
+  62     begin
+  63        T_Delta := Max_State_Time(Current_State);
+  64        if T_Delta > 0 then
+  65           Clock.Read(T => T_Now,
+  66                      Valid => T_Valid);
+  67           if T_Valid and then
+  68             State_Timer < T_Now and then
+  69             (T_Now - State_Timer) >= T_Delta then
+  70              -- Time is valid and enough has passed
+  71              State_Timer := T_Now;
+  72              Current_State := State_Change(Current_State);
+  73           else
+  74              -- Can't change state as no time known
+  75              null;
+  76           end if;
+  77        else
+  78           -- No automatic change
+  79           null;
+  80        end if;
+  81     end Update_State;
+
++++        Flow analysis of subprogram Update_State 
+           performed: no errors found.
+
+  82  
+  83  
+  84     --------- Public subprograms
+  85  
+  86     procedure Set_state(New_state : in State_Types.fuze)
+  87       --# global    out current_state, state_timer;
+  88       --#           in out clock.time;
+  89       --# derives current_state from new_state, clock.time &
+  90       --#         clock.time from * &
+  91       --#         state_timer from clock.time;
+  92     is
+  93        Time_Valid : Boolean;
+  94     begin
+  95        Current_State := New_State;
+  96        Clock.Read(State_timer,Time_Valid);
+  97        if not Time_Valid then
+  98           -- This is OK for now
+  99           Current_State := New_State;
+ 100        end if;
+ 101     end Set_state;
+
++++        Flow analysis of subprogram Set_state performed: 
+           no errors found.
+
+ 102  
+ 103     -- Cycle the reading of data from the bus
+ 104     -- and writing of data to the bus
+ 105     procedure Cycle
+ 106       --# global in out current_state, state_timer;
+ 107       --#        in out BIT_State;
+ 108       --#        in out Clock.Time;
+ 109       --#        in Bus.Outputs;
+ 110       --#        in out Bus.Inputs;
+ 111       --# derives
+ 112       --#        BIT_State
+ 113       --#          from *, Bus.Outputs &
+ 114       --#        Bus.Inputs from *, Clock.Time,
+ 115       --#        current_state, state_timer,
+ 116       --#        BIT_State &
+ 117       --#        Clock.Time from *, current_state, bus.outputs,
+ 118       --#                    state_timer &
+ 119       --#        current_state from *, clock.time, state_timer,
+ 120       --#                bus.outputs &
+ 121       --#        state_timer from *, clock.time, current_state,
+ 122       --#                bus.outputs;
+ 123     is
+ 124        Datum : Bus.Word;
+ 125        New_State : State_Types.Fuze;
+ 126     begin
+ 127        Update_State;
+ 128        -- Write the state info to T1 word 1
+ 129        Rt1553.Write_Word(Data =>
+ 130                            State_Types.Fuze_Values(Current_State),
+ 131                          Idx => 1,
+ 132                          Subaddress_Idx => 1,
+ 133                          Src => Bus_Id);
+ 134        -- Write the BIT phase to T1 word 2
+ 135        Rt1553.Write_Word(Data =>
+ 136                            IBIT.Phase_Lookup(BIT_Machine.Phase(Bit_State)),
+ 137                         Idx => 2,
+ 138                         Subaddress_Idx => 1,
+ 139                          Src => Bus_id);
+ 140        if Rt1553.Is_Valid(Src => Bus_Id,
+ 141                           Subaddress_Idx => 1) and then
+ 142          Rt1553.Is_Fresh(Src => Bus_Id,
+ 143                          Subaddress_Idx => 1) then
+ 144           -- Read in armament control data
+ 145           -- Read a new state value off R1 word 1
+ 146           Rt1553.Read_Word(Src => Bus_id,
+ 147                            Idx => 1,
+ 148                            Subaddress_Idx => 1,
+ 149                            Data => Datum);
+ 150           if Datum /= 0 then
+ 151              New_State := State_Types.Fuze_Action(Datum);
+ 152              if New_State /= Current_State then
+ 153                 -- State change commanded
+ 154                 Set_State(New_State);
+ 155              end if;
+ 156           end if;
+ 157        end if;
+ 158        -- Read the BIT info off R1 word 2
+ 159        Rt1553.Read_Word(Src => Bus_id,
+ 160                         Idx => 2,
+ 161                         Subaddress_Idx => 1,
+ 162                         Data => Datum);
+ 163        BIT_Machine.Change_State(Word => Datum,
+ 164                                 State => Bit_state);
+ 165        -- And cycle the BIT
+ 166        BIT_Machine.Step(Bit_State);
+ 167     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+ 168  
+ 169  
+ 170     -- Set the current state timer
+ 171     procedure Set_timer(Ms : in Clock.Millisecond)
+ 172     --# global    out state_timer;
+ 173     --# derives state_timer from ms;
+ 174     is begin
+ 175        State_Timer := Ms;
+ 176     end Set_timer;
+
++++        Flow analysis of subprogram Set_Timer performed: 
+           no errors found.
+
+ 177  
+ 178     -- Read the current state
+ 179     procedure Read_state(This_State : out State_Types.Fuze)
+ 180       --# global in     current_state;
+ 181       --# derives this_state from current_state;
+ 182     is
+ 183     begin
+ 184        This_State := Current_State;
+ 185     end Read_state;
+
++++        Flow analysis of subprogram Read_state 
+           performed: no errors found.
+
+ 186  
+ 187     procedure Fail_Next_Bit
+ 188       --# global in out BIT_State;
+ 189       --# derives BIT_State from *;
+ 190     is begin
+ 191        BIT_Machine.Fail_Next(Bit_State);
+ 192     end Fail_Next_Bit;
+
++++        Flow analysis of subprogram Fail_Next_Bit 
+           performed: no errors found.
+
+ 193  
+ 194     procedure Init
+ 195       --# global out current_state, state_timer, BIT_State;
+ 196       --#        in out Bus.Inputs;
+ 197       --# derives current_state, state_timer, BIT_State from &
+ 198       --#        Bus.Inputs from *;
+ 199     is begin
+ 200        -- Initialise the bus message 1T
+ 201        RT1553.Set_Message_Valid(Subaddress_Idx => 1,
+ 202                                 Src => Bus_id);
+ 203        -- Initialise the variables
+ 204        Current_State := State_Types.Unarmed;
+ 205        State_Timer   := Clock.Millisecond'First;
+ 206        BIT_Machine.Create(Ticks_To_Complete => 30,
+ 207                           State => Bit_State);
+ 208     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 209  
+ 210     procedure Command is separate;
+ 211  end Fuze;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

@@ -1,0 +1,100 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.44
+
+Line
+   1  -- Flying_object
+   2  -- Provide a private type describing an object
+   3  --  and tracking its motion
+   4  -- $Log: flying_object.ads,v $
+   5  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   6  -- Added from tarfile
+   7  --
+   8  --
+   9  -- Revision 1.3  2003/08/11 19:24:39  adi
+  10  -- Time-extrapolate position and velocity on read
+  11  --
+  12  -- Revision 1.2  2003/08/11 18:39:06  adi
+  13  -- Added  null_entity
+  14  --
+  15  -- Revision 1.1  2003/08/11 18:02:06  adi
+  16  -- Initial revision
+  17  --
+  18  --
+  19  with Measuretypes,Cartesian,clock;
+  20  use type Measuretypes.Meter,
+  21    Measuretypes.Meter_Per_sec;
+  22  --# inherit measuretypes,cartesian,clock,systemtypes;
+  23  package Flying_Object is
+  24     type Entity is private;
+  25     Null_Entity : constant Entity;
+  26  
+  27     procedure Create(P : in Cartesian.Position;
+  28                      V : in Cartesian.Velocity;
+  29                      A : in Cartesian.Accel;
+  30                      E : out Entity);
+  31     --# global in out clock.time;
+  32     --# derives E from P, V, A, clock.time &
+  33     --#  clock.time from *;
+  34  
+  35     procedure Set_Position(P : in Cartesian.Position;
+  36                            E : in out Entity);
+  37     --# global in out clock.time;
+  38     --# derives E from *, P, clock.time &
+  39     --#   clock.time from *;
+  40  
+  41     procedure Get_Position(E : in Entity;
+  42                            P : out Cartesian.Position);
+  43     --# global in out clock.time;
+  44     --# derives P from E, clock.time &
+  45     --#   clock.time from *;
+  46  
+  47     procedure Set_Velocity(V : in Cartesian.Velocity;
+  48                            E : in out Entity);
+  49     --# global in out clock.time;
+  50     --# derives E from *, V, clock.time &
+  51     --#   clock.time from *;
+  52  
+  53     procedure Get_Velocity(E : in Entity;
+  54                            V  : out Cartesian.Velocity);
+  55     --# global in out clock.time;
+  56     --# derives V from E, clock.time &
+  57     --#         clock.time from *;
+  58  
+  59     procedure Set_accel(A : in Cartesian.Accel;
+  60                         E : in out Entity);
+  61     --# global in out clock.time;
+  62     --# derives E from *, A, clock.time &
+  63     --#   clock.time from *;
+  64  
+  65     procedure Get_accel(E : in Entity;
+  66                         A  : out Cartesian.accel);
+  67     --# derives A from E;
+  68  
+  69  private
+  70     type Entity is record
+  71        P : Cartesian.Position;
+  72        V : Cartesian.Velocity;
+  73        A : Cartesian.Accel;
+  74        T : Clock.Millisecond;
+  75     end record;
+  76  
+  77     Null_Entity : constant Entity :=
+  78       Entity'(P => Cartesian.Zero_Position,
+  79               V => Cartesian.Zero_Velocity,
+  80               A => Cartesian.Zero_Accel,
+  81               T => 0);
+  82  
+  83  end Flying_Object;
+  84  
+  85  
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

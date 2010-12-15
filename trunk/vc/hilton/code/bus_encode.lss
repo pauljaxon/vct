@@ -1,0 +1,35 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.55
+
+Line
+   1  -- Bus message encoder
+   2  --
+   3  -- $Log: bus_encode.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/02/10 20:33:45  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with Bus,SystemTypes,Bus_Decode;
+  13  --# inherit Bus, SystemTypes, Bus_Decode;
+  14  package Bus_Encode is
+  15  
+  16     function Encode_Bool8(data : in Bus_Decode.Bool8) return Bus.Word;
+  17  
+  18     function Encode_Byte2(Lo, Hi : in SystemTypes.Byte) return Bus.Word;
+  19  
+  20  end Bus_Encode;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

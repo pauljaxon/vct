@@ -1,0 +1,80 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:36.91
+
+Line
+   1  -- Types for component states
+   2  --
+   3  -- $Log: state_types.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.5  2003/08/27 20:36:09  adi
+   9  -- Added IR components
+  10  --
+  11  -- Revision 1.4  2003/08/22 18:26:19  adi
+  12  -- Added Radar action
+  13  --
+  14  -- Revision 1.3  2003/08/17 22:10:02  adi
+  15  -- Made state values more distinctr
+  16  --
+  17  -- Revision 1.2  2003/08/17 13:52:27  adi
+  18  -- Added lookup table and values
+  19  --
+  20  -- Revision 1.1  2003/08/17 13:34:26  adi
+  21  -- Initial revision
+  22  --
+  23  --
+  24  with Systemtypes;
+  25  --# inherit systemtypes;
+  26  package State_Types is
+  27  
+  28     subtype Word is Systemtypes.Unsigned16;
+  29  
+  30     -- Fuze action state
+  31     type Fuze is (Unarmed, Arming, Live, Triggering, Timed_Out);
+  32  
+  33     type Fuze_To_Word is array(Fuze) of Word;
+  34     Fuze_Values : constant Fuze_To_Word :=
+  35       Fuze_To_Word'(Unarmed    => 16#0003#,
+  36                     Arming     => 16#0006#,
+  37                     Live       => 16#0030#,
+  38                     Triggering => 16#0060#,
+  39                     Timed_Out  => 16#0300#);
+  40  
+  41     function Fuze_Action(Val : Word) return Fuze;
+  42  
+  43     -- Radar action state
+  44     type Radar is (Rad_Inactive, Ping, Sweep);
+  45  
+  46     type Radar_To_Word is array(Radar) of Word;
+  47     Radar_Values : constant Radar_To_Word :=
+  48       Radar_To_Word'(Rad_Inactive  => 16#0005#,
+  49                      Ping  => 16#0006#,
+  50                      Sweep => 16#0050#);
+  51  
+  52     function Radar_Action(Val : Word) return Radar;
+  53  
+  54     -- IR action state
+  55     type Infrared is (Ir_Inactive, Ir_Stare, Ir_Sweep);
+  56  
+  57     type ir_To_Word is array(infrared) of Word;
+  58     ir_Values : constant ir_To_Word :=
+  59       ir_To_Word'(ir_Inactive => 16#0009#,
+  60                   Ir_stare    => 16#0006#,
+  61                   Ir_sweep    => 16#0090#);
+  62  
+  63     function ir_Action(Val : Word) return infrared;
+  64  
+  65  end State_Types;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

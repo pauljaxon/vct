@@ -1,0 +1,1154 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.87
+
+                     procedure motor.Extrapolate_thrust
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 62:
+
+procedure_extrapolate_thrust_1.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+        ->
+C1:    now__1 >= clock__millisecond__first .
+C2:    now__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 64:
+
+procedure_extrapolate_thrust_2.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   current_thrust = commanded_thrust .
+        ->
+C1:    current_thrust >= power__first .
+C2:    current_thrust <= power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 66:
+
+procedure_extrapolate_thrust_3.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+        ->
+C1:    now__1 - command_time >= clock__millisecond__first .
+C2:    now__1 - command_time <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 69:
+
+procedure_extrapolate_thrust_4.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   now__1 - command_time < 0 .
+        ->
+C1:    current_thrust >= power__first .
+C2:    current_thrust <= power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 73:
+
+procedure_extrapolate_thrust_5.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   now__1 - command_time > 30000 .
+        ->
+C1:    30000 >= clock__millisecond__first .
+C2:    30000 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 77:
+
+procedure_extrapolate_thrust_6.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   now__1 - command_time > 30000 .
+H26:   30000 >= clock__millisecond__first .
+H27:   30000 <= clock__millisecond__last .
+H28:   commanded_thrust >= current_thrust .
+H29:   30000 >= clock__millisecond__first .
+H30:   30000 <= clock__millisecond__last .
+        ->
+C1:    current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+C2:    current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+C3:    30000 * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+C4:    30000 * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+C5:    1000 <> 0 .
+C6:    30000 * motor_cfg__burn_rate >= long_integer__base__first .
+C7:    30000 * motor_cfg__burn_rate <= long_integer__base__last .
+C8:    30000 >= integer32__first .
+C9:    30000 <= integer32__last .
+C10:   current_thrust >= integer32__first .
+C11:   current_thrust <= integer32__last .
+ 
+
+procedure_extrapolate_thrust_7.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   not (now__1 - command_time > 30000) .
+H26:   commanded_thrust >= current_thrust .
+H27:   now__1 - command_time >= clock__millisecond__first .
+H28:   now__1 - command_time <= clock__millisecond__last .
+        ->
+C1:    current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+C2:    current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+C3:    (now__1 - command_time) * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+C4:    (now__1 - command_time) * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+C5:    1000 <> 0 .
+C6:    (now__1 - command_time) * motor_cfg__burn_rate >= 
+           long_integer__base__first .
+C7:    (now__1 - command_time) * motor_cfg__burn_rate <= 
+           long_integer__base__last .
+C8:    now__1 - command_time >= integer32__first .
+C9:    now__1 - command_time <= integer32__last .
+C10:   current_thrust >= integer32__first .
+C11:   current_thrust <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 79:
+
+procedure_extrapolate_thrust_8.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   now__1 - command_time > 30000 .
+H26:   30000 >= clock__millisecond__first .
+H27:   30000 <= clock__millisecond__last .
+H28:   commanded_thrust >= current_thrust .
+H29:   30000 >= clock__millisecond__first .
+H30:   30000 <= clock__millisecond__last .
+H31:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H32:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+H33:   30000 * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+H34:   30000 * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+H35:   1000 <> 0 .
+H36:   30000 * motor_cfg__burn_rate >= long_integer__base__first .
+H37:   30000 * motor_cfg__burn_rate <= long_integer__base__last .
+H38:   30000 >= integer32__first .
+H39:   30000 <= integer32__last .
+H40:   current_thrust >= integer32__first .
+H41:   current_thrust <= integer32__last .
+H42:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H43:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+        ->
+C1:    commanded_thrust >= integer32__first .
+C2:    commanded_thrust <= integer32__last .
+ 
+
+procedure_extrapolate_thrust_9.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   not (now__1 - command_time > 30000) .
+H26:   commanded_thrust >= current_thrust .
+H27:   now__1 - command_time >= clock__millisecond__first .
+H28:   now__1 - command_time <= clock__millisecond__last .
+H29:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H30:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+H31:   (now__1 - command_time) * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+H32:   (now__1 - command_time) * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+H33:   1000 <> 0 .
+H34:   (now__1 - command_time) * motor_cfg__burn_rate >= 
+           long_integer__base__first .
+H35:   (now__1 - command_time) * motor_cfg__burn_rate <= 
+           long_integer__base__last .
+H36:   now__1 - command_time >= integer32__first .
+H37:   now__1 - command_time <= integer32__last .
+H38:   current_thrust >= integer32__first .
+H39:   current_thrust <= integer32__last .
+H40:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H41:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+        ->
+C1:    commanded_thrust >= integer32__first .
+C2:    commanded_thrust <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 80:
+
+procedure_extrapolate_thrust_10.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   now__1 - command_time > 30000 .
+H26:   30000 >= clock__millisecond__first .
+H27:   30000 <= clock__millisecond__last .
+H28:   commanded_thrust >= current_thrust .
+H29:   30000 >= clock__millisecond__first .
+H30:   30000 <= clock__millisecond__last .
+H31:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H32:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+H33:   30000 * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+H34:   30000 * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+H35:   1000 <> 0 .
+H36:   30000 * motor_cfg__burn_rate >= long_integer__base__first .
+H37:   30000 * motor_cfg__burn_rate <= long_integer__base__last .
+H38:   30000 >= integer32__first .
+H39:   30000 <= integer32__last .
+H40:   current_thrust >= integer32__first .
+H41:   current_thrust <= integer32__last .
+H42:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H43:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+H44:   commanded_thrust >= integer32__first .
+H45:   commanded_thrust <= integer32__last .
+H46:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 > 
+           commanded_thrust .
+        ->
+C1:    commanded_thrust >= power__first .
+C2:    commanded_thrust <= power__last .
+ 
+
+procedure_extrapolate_thrust_11.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   not (now__1 - command_time > 30000) .
+H26:   commanded_thrust >= current_thrust .
+H27:   now__1 - command_time >= clock__millisecond__first .
+H28:   now__1 - command_time <= clock__millisecond__last .
+H29:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H30:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+H31:   (now__1 - command_time) * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+H32:   (now__1 - command_time) * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+H33:   1000 <> 0 .
+H34:   (now__1 - command_time) * motor_cfg__burn_rate >= 
+           long_integer__base__first .
+H35:   (now__1 - command_time) * motor_cfg__burn_rate <= 
+           long_integer__base__last .
+H36:   now__1 - command_time >= integer32__first .
+H37:   now__1 - command_time <= integer32__last .
+H38:   current_thrust >= integer32__first .
+H39:   current_thrust <= integer32__last .
+H40:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H41:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+H42:   commanded_thrust >= integer32__first .
+H43:   commanded_thrust <= integer32__last .
+H44:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 > commanded_thrust .
+        ->
+C1:    commanded_thrust >= power__first .
+C2:    commanded_thrust <= power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 82:
+
+procedure_extrapolate_thrust_12.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   now__1 - command_time > 30000 .
+H26:   30000 >= clock__millisecond__first .
+H27:   30000 <= clock__millisecond__last .
+H28:   commanded_thrust >= current_thrust .
+H29:   30000 >= clock__millisecond__first .
+H30:   30000 <= clock__millisecond__last .
+H31:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H32:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+H33:   30000 * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+H34:   30000 * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+H35:   1000 <> 0 .
+H36:   30000 * motor_cfg__burn_rate >= long_integer__base__first .
+H37:   30000 * motor_cfg__burn_rate <= long_integer__base__last .
+H38:   30000 >= integer32__first .
+H39:   30000 <= integer32__last .
+H40:   current_thrust >= integer32__first .
+H41:   current_thrust <= integer32__last .
+H42:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H43:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+H44:   commanded_thrust >= integer32__first .
+H45:   commanded_thrust <= integer32__last .
+H46:   not (current_thrust + 30000 * motor_cfg__burn_rate div 1000 > 
+           commanded_thrust) .
+H47:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H48:   current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+        ->
+C1:    current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= 
+           power__first .
+C2:    current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+           power__last .
+C3:    current_thrust + 30000 * motor_cfg__burn_rate div 1000 >= 
+           power__first .
+C4:    current_thrust + 30000 * motor_cfg__burn_rate div 1000 <= 
+           power__last .
+ 
+
+procedure_extrapolate_thrust_13.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   not (now__1 - command_time > 30000) .
+H26:   commanded_thrust >= current_thrust .
+H27:   now__1 - command_time >= clock__millisecond__first .
+H28:   now__1 - command_time <= clock__millisecond__last .
+H29:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H30:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+H31:   (now__1 - command_time) * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+H32:   (now__1 - command_time) * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+H33:   1000 <> 0 .
+H34:   (now__1 - command_time) * motor_cfg__burn_rate >= 
+           long_integer__base__first .
+H35:   (now__1 - command_time) * motor_cfg__burn_rate <= 
+           long_integer__base__last .
+H36:   now__1 - command_time >= integer32__first .
+H37:   now__1 - command_time <= integer32__last .
+H38:   current_thrust >= integer32__first .
+H39:   current_thrust <= integer32__last .
+H40:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H41:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+H42:   commanded_thrust >= integer32__first .
+H43:   commanded_thrust <= integer32__last .
+H44:   not (current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 > commanded_thrust) .
+H45:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H46:   current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+        ->
+C1:    current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= power__first .
+C2:    current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= power__last .
+C3:    current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= power__first .
+C4:    current_thrust + (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 86:
+
+procedure_extrapolate_thrust_14.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   now__1 - command_time > 30000 .
+H26:   30000 >= clock__millisecond__first .
+H27:   30000 <= clock__millisecond__last .
+H28:   not (commanded_thrust >= current_thrust) .
+H29:   30000 >= clock__millisecond__first .
+H30:   30000 <= clock__millisecond__last .
+        ->
+C1:    current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+C2:    current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+C3:    30000 * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+C4:    30000 * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+C5:    1000 <> 0 .
+C6:    30000 * motor_cfg__burn_rate >= long_integer__base__first .
+C7:    30000 * motor_cfg__burn_rate <= long_integer__base__last .
+C8:    30000 >= integer32__first .
+C9:    30000 <= integer32__last .
+C10:   current_thrust >= integer32__first .
+C11:   current_thrust <= integer32__last .
+ 
+
+procedure_extrapolate_thrust_15.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   not (now__1 - command_time > 30000) .
+H26:   not (commanded_thrust >= current_thrust) .
+H27:   now__1 - command_time >= clock__millisecond__first .
+H28:   now__1 - command_time <= clock__millisecond__last .
+        ->
+C1:    current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+C2:    current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+C3:    (now__1 - command_time) * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+C4:    (now__1 - command_time) * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+C5:    1000 <> 0 .
+C6:    (now__1 - command_time) * motor_cfg__burn_rate >= 
+           long_integer__base__first .
+C7:    (now__1 - command_time) * motor_cfg__burn_rate <= 
+           long_integer__base__last .
+C8:    now__1 - command_time >= integer32__first .
+C9:    now__1 - command_time <= integer32__last .
+C10:   current_thrust >= integer32__first .
+C11:   current_thrust <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 88:
+
+procedure_extrapolate_thrust_16.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   now__1 - command_time > 30000 .
+H26:   30000 >= clock__millisecond__first .
+H27:   30000 <= clock__millisecond__last .
+H28:   not (commanded_thrust >= current_thrust) .
+H29:   30000 >= clock__millisecond__first .
+H30:   30000 <= clock__millisecond__last .
+H31:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H32:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+H33:   30000 * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+H34:   30000 * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+H35:   1000 <> 0 .
+H36:   30000 * motor_cfg__burn_rate >= long_integer__base__first .
+H37:   30000 * motor_cfg__burn_rate <= long_integer__base__last .
+H38:   30000 >= integer32__first .
+H39:   30000 <= integer32__last .
+H40:   current_thrust >= integer32__first .
+H41:   current_thrust <= integer32__last .
+H42:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H43:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+        ->
+C1:    commanded_thrust >= integer32__first .
+C2:    commanded_thrust <= integer32__last .
+ 
+
+procedure_extrapolate_thrust_17.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   not (now__1 - command_time > 30000) .
+H26:   not (commanded_thrust >= current_thrust) .
+H27:   now__1 - command_time >= clock__millisecond__first .
+H28:   now__1 - command_time <= clock__millisecond__last .
+H29:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H30:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+H31:   (now__1 - command_time) * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+H32:   (now__1 - command_time) * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+H33:   1000 <> 0 .
+H34:   (now__1 - command_time) * motor_cfg__burn_rate >= 
+           long_integer__base__first .
+H35:   (now__1 - command_time) * motor_cfg__burn_rate <= 
+           long_integer__base__last .
+H36:   now__1 - command_time >= integer32__first .
+H37:   now__1 - command_time <= integer32__last .
+H38:   current_thrust >= integer32__first .
+H39:   current_thrust <= integer32__last .
+H40:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H41:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+        ->
+C1:    commanded_thrust >= integer32__first .
+C2:    commanded_thrust <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 89:
+
+procedure_extrapolate_thrust_18.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   now__1 - command_time > 30000 .
+H26:   30000 >= clock__millisecond__first .
+H27:   30000 <= clock__millisecond__last .
+H28:   not (commanded_thrust >= current_thrust) .
+H29:   30000 >= clock__millisecond__first .
+H30:   30000 <= clock__millisecond__last .
+H31:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H32:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+H33:   30000 * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+H34:   30000 * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+H35:   1000 <> 0 .
+H36:   30000 * motor_cfg__burn_rate >= long_integer__base__first .
+H37:   30000 * motor_cfg__burn_rate <= long_integer__base__last .
+H38:   30000 >= integer32__first .
+H39:   30000 <= integer32__last .
+H40:   current_thrust >= integer32__first .
+H41:   current_thrust <= integer32__last .
+H42:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H43:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+H44:   commanded_thrust >= integer32__first .
+H45:   commanded_thrust <= integer32__last .
+H46:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 < 
+           commanded_thrust .
+        ->
+C1:    commanded_thrust >= power__first .
+C2:    commanded_thrust <= power__last .
+ 
+
+procedure_extrapolate_thrust_19.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   not (now__1 - command_time > 30000) .
+H26:   not (commanded_thrust >= current_thrust) .
+H27:   now__1 - command_time >= clock__millisecond__first .
+H28:   now__1 - command_time <= clock__millisecond__last .
+H29:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H30:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+H31:   (now__1 - command_time) * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+H32:   (now__1 - command_time) * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+H33:   1000 <> 0 .
+H34:   (now__1 - command_time) * motor_cfg__burn_rate >= 
+           long_integer__base__first .
+H35:   (now__1 - command_time) * motor_cfg__burn_rate <= 
+           long_integer__base__last .
+H36:   now__1 - command_time >= integer32__first .
+H37:   now__1 - command_time <= integer32__last .
+H38:   current_thrust >= integer32__first .
+H39:   current_thrust <= integer32__last .
+H40:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H41:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+H42:   commanded_thrust >= integer32__first .
+H43:   commanded_thrust <= integer32__last .
+H44:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 < commanded_thrust .
+        ->
+C1:    commanded_thrust >= power__first .
+C2:    commanded_thrust <= power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 91:
+
+procedure_extrapolate_thrust_20.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   now__1 - command_time > 30000 .
+H26:   30000 >= clock__millisecond__first .
+H27:   30000 <= clock__millisecond__last .
+H28:   not (commanded_thrust >= current_thrust) .
+H29:   30000 >= clock__millisecond__first .
+H30:   30000 <= clock__millisecond__last .
+H31:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H32:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+H33:   30000 * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+H34:   30000 * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+H35:   1000 <> 0 .
+H36:   30000 * motor_cfg__burn_rate >= long_integer__base__first .
+H37:   30000 * motor_cfg__burn_rate <= long_integer__base__last .
+H38:   30000 >= integer32__first .
+H39:   30000 <= integer32__last .
+H40:   current_thrust >= integer32__first .
+H41:   current_thrust <= integer32__last .
+H42:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H43:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+H44:   commanded_thrust >= integer32__first .
+H45:   commanded_thrust <= integer32__last .
+H46:   not (current_thrust - 30000 * motor_cfg__burn_rate div 1000 < 
+           commanded_thrust) .
+H47:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= 
+           integer32__first .
+H48:   current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 
+           integer32__last .
+        ->
+C1:    current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= 
+           power__first .
+C2:    current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 
+           power__last .
+C3:    current_thrust - 30000 * motor_cfg__burn_rate div 1000 >= 
+           power__first .
+C4:    current_thrust - 30000 * motor_cfg__burn_rate div 1000 <= 
+           power__last .
+ 
+
+procedure_extrapolate_thrust_21.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   time_valid__1 .
+H16:   now__1 >= clock__millisecond__first .
+H17:   now__1 <= clock__millisecond__last .
+H18:   now__1 - command_time >= clock__millisecond__first .
+H19:   now__1 - command_time <= clock__millisecond__last .
+H20:   now__1 - command_time >= clock__millisecond__first .
+H21:   now__1 - command_time <= clock__millisecond__last .
+H22:   not (now__1 - command_time < 0) .
+H23:   now__1 - command_time >= clock__millisecond__first .
+H24:   now__1 - command_time <= clock__millisecond__last .
+H25:   not (now__1 - command_time > 30000) .
+H26:   not (commanded_thrust >= current_thrust) .
+H27:   now__1 - command_time >= clock__millisecond__first .
+H28:   now__1 - command_time <= clock__millisecond__last .
+H29:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H30:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+H31:   (now__1 - command_time) * motor_cfg__burn_rate div 1000 >= 
+           long_integer__base__first .
+H32:   (now__1 - command_time) * motor_cfg__burn_rate div 1000 <= 
+           long_integer__base__last .
+H33:   1000 <> 0 .
+H34:   (now__1 - command_time) * motor_cfg__burn_rate >= 
+           long_integer__base__first .
+H35:   (now__1 - command_time) * motor_cfg__burn_rate <= 
+           long_integer__base__last .
+H36:   now__1 - command_time >= integer32__first .
+H37:   now__1 - command_time <= integer32__last .
+H38:   current_thrust >= integer32__first .
+H39:   current_thrust <= integer32__last .
+H40:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H41:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+H42:   commanded_thrust >= integer32__first .
+H43:   commanded_thrust <= integer32__last .
+H44:   not (current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 < commanded_thrust) .
+H45:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= integer32__first .
+H46:   current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= integer32__last .
+        ->
+C1:    current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= power__first .
+C2:    current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= power__last .
+C3:    current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 >= power__first .
+C4:    current_thrust - (now__1 - command_time) * 
+           motor_cfg__burn_rate div 1000 <= power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 97:
+
+procedure_extrapolate_thrust_22.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    now__1 >= clock__millisecond__first .
+H9:    now__1 <= clock__millisecond__last .
+H10:   true .
+H11:   now__1 >= clock__millisecond__first .
+H12:   now__1 <= clock__millisecond__last .
+H13:   not (current_thrust = commanded_thrust) .
+H14:   true .
+H15:   not time_valid__1 .
+        ->
+C1:    current_thrust >= power__first .
+C2:    current_thrust <= power__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_extrapolate_thrust_23.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_thrust_24.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_thrust_25.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_thrust_26.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_thrust_27.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_thrust_28.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_thrust_29.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_thrust_30.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_thrust_31.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_thrust_32.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_thrust_33.
+*** true .          /* trivially true VC removed by Examiner */
+
+

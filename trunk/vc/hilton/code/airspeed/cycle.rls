@@ -1,0 +1,204 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:39.85*/
+
+                          /*procedure airspeed.Cycle*/
+
+
+rule_family cycle_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+cycle_rules(1): systemtypes__byte__first <= element(ibit__phase_lookup, [I]) may_be_deduced_from [ibit__off <= I, I <= ibit__timeout].
+cycle_rules(2): element(ibit__phase_lookup, [I]) <= 
+     systemtypes__byte__last may_be_deduced_from [ibit__off <= I, I <= ibit__timeout].
+cycle_rules(3): integer__size >= 0 may_be_deduced.
+cycle_rules(4): integer__first may_be_replaced_by -2147483648.
+cycle_rules(5): integer__last may_be_replaced_by 2147483647.
+cycle_rules(6): integer__base__first may_be_replaced_by -2147483648.
+cycle_rules(7): integer__base__last may_be_replaced_by 2147483647.
+cycle_rules(8): systemtypes__byte__size >= 0 may_be_deduced.
+cycle_rules(9): systemtypes__byte__first may_be_replaced_by 0.
+cycle_rules(10): systemtypes__byte__last may_be_replaced_by 255.
+cycle_rules(11): systemtypes__byte__base__first may_be_replaced_by -2147483648.
+cycle_rules(12): systemtypes__byte__base__last may_be_replaced_by 2147483647.
+cycle_rules(13): measuretypes__meter_per_sec__size >= 0 may_be_deduced.
+cycle_rules(14): measuretypes__meter_per_sec__first may_be_replaced_by -5000.
+cycle_rules(15): measuretypes__meter_per_sec__last may_be_replaced_by 5000.
+cycle_rules(16): measuretypes__meter_per_sec__base__first may_be_replaced_by -2147483648.
+cycle_rules(17): measuretypes__meter_per_sec__base__last may_be_replaced_by 2147483647.
+cycle_rules(18): measuretypes__cm_per_sec_2__size >= 0 may_be_deduced.
+cycle_rules(19): measuretypes__cm_per_sec_2__first may_be_replaced_by -30000.
+cycle_rules(20): measuretypes__cm_per_sec_2__last may_be_replaced_by 30000.
+cycle_rules(21): measuretypes__cm_per_sec_2__base__first may_be_replaced_by -2147483648.
+cycle_rules(22): measuretypes__cm_per_sec_2__base__last may_be_replaced_by 2147483647.
+cycle_rules(23): clock__millisecond__size >= 0 may_be_deduced.
+cycle_rules(24): clock__millisecond__first may_be_replaced_by 0.
+cycle_rules(25): clock__millisecond__last may_be_replaced_by 8640000.
+cycle_rules(26): clock__millisecond__base__first may_be_replaced_by -2147483648.
+cycle_rules(27): clock__millisecond__base__last may_be_replaced_by 2147483647.
+cycle_rules(28): bus__word_index__size >= 0 may_be_deduced.
+cycle_rules(29): bus__word_index__first may_be_replaced_by 1.
+cycle_rules(30): bus__word_index__last may_be_replaced_by 31.
+cycle_rules(31): bus__word_index__base__first <= bus__word_index__base__last may_be_deduced.
+cycle_rules(32): bus__word_index__base__first <= bus__word_index__first may_be_deduced.
+cycle_rules(33): bus__word_index__base__last >= bus__word_index__last may_be_deduced.
+cycle_rules(34): bus__word__size >= 0 may_be_deduced.
+cycle_rules(35): bus__word__first may_be_replaced_by 0.
+cycle_rules(36): bus__word__last may_be_replaced_by 65535.
+cycle_rules(37): bus__word__base__first may_be_replaced_by -2147483648.
+cycle_rules(38): bus__word__base__last may_be_replaced_by 2147483647.
+cycle_rules(39): bus__all_msg_index__size >= 0 may_be_deduced.
+cycle_rules(40): bus__all_msg_index__first may_be_replaced_by 0.
+cycle_rules(41): bus__all_msg_index__last may_be_replaced_by 63.
+cycle_rules(42): bus__all_msg_index__base__first may_be_replaced_by -32768.
+cycle_rules(43): bus__all_msg_index__base__last may_be_replaced_by 32767.
+cycle_rules(44): bus__lru_subaddress_index__size >= 0 may_be_deduced.
+cycle_rules(45): bus__lru_subaddress_index__first may_be_replaced_by 1.
+cycle_rules(46): bus__lru_subaddress_index__last may_be_replaced_by 8.
+cycle_rules(47): bus__lru_subaddress_index__base__first may_be_replaced_by -32768.
+cycle_rules(48): bus__lru_subaddress_index__base__last may_be_replaced_by 32767.
+cycle_rules(49): rt1553__lru_name__size >= 0 may_be_deduced.
+cycle_rules(50): rt1553__lru_name__first may_be_replaced_by rt1553__barometer.
+cycle_rules(51): rt1553__lru_name__last may_be_replaced_by rt1553__warhead.
+cycle_rules(52): rt1553__lru_name__base__first may_be_replaced_by rt1553__barometer.
+cycle_rules(53): rt1553__lru_name__base__last may_be_replaced_by rt1553__warhead.
+cycle_rules(54): rt1553__lru_name__pos(rt1553__lru_name__first) may_be_replaced_by 0.
+cycle_rules(55): rt1553__lru_name__pos(rt1553__barometer) may_be_replaced_by 0.
+cycle_rules(56): rt1553__lru_name__val(0) may_be_replaced_by 
+     rt1553__barometer.
+cycle_rules(57): rt1553__lru_name__pos(rt1553__asi) may_be_replaced_by 1.
+cycle_rules(58): rt1553__lru_name__val(1) may_be_replaced_by 
+     rt1553__asi.
+cycle_rules(59): rt1553__lru_name__pos(rt1553__ins) may_be_replaced_by 2.
+cycle_rules(60): rt1553__lru_name__val(2) may_be_replaced_by 
+     rt1553__ins.
+cycle_rules(61): rt1553__lru_name__pos(rt1553__compass) may_be_replaced_by 3.
+cycle_rules(62): rt1553__lru_name__val(3) may_be_replaced_by 
+     rt1553__compass.
+cycle_rules(63): rt1553__lru_name__pos(rt1553__fuel) may_be_replaced_by 4.
+cycle_rules(64): rt1553__lru_name__val(4) may_be_replaced_by 
+     rt1553__fuel.
+cycle_rules(65): rt1553__lru_name__pos(rt1553__fuze) may_be_replaced_by 5.
+cycle_rules(66): rt1553__lru_name__val(5) may_be_replaced_by 
+     rt1553__fuze.
+cycle_rules(67): rt1553__lru_name__pos(rt1553__radar) may_be_replaced_by 6.
+cycle_rules(68): rt1553__lru_name__val(6) may_be_replaced_by 
+     rt1553__radar.
+cycle_rules(69): rt1553__lru_name__pos(rt1553__infrared) may_be_replaced_by 7.
+cycle_rules(70): rt1553__lru_name__val(7) may_be_replaced_by 
+     rt1553__infrared.
+cycle_rules(71): rt1553__lru_name__pos(rt1553__fins) may_be_replaced_by 8.
+cycle_rules(72): rt1553__lru_name__val(8) may_be_replaced_by 
+     rt1553__fins.
+cycle_rules(73): rt1553__lru_name__pos(rt1553__motor) may_be_replaced_by 9.
+cycle_rules(74): rt1553__lru_name__val(9) may_be_replaced_by 
+     rt1553__motor.
+cycle_rules(75): rt1553__lru_name__pos(rt1553__destruct) may_be_replaced_by 10.
+cycle_rules(76): rt1553__lru_name__val(10) may_be_replaced_by 
+     rt1553__destruct.
+cycle_rules(77): rt1553__lru_name__pos(rt1553__warhead) may_be_replaced_by 11.
+cycle_rules(78): rt1553__lru_name__val(11) may_be_replaced_by 
+     rt1553__warhead.
+cycle_rules(79): rt1553__lru_name__pos(rt1553__lru_name__last) may_be_replaced_by 11.
+cycle_rules(80): rt1553__lru_name__pos(succ(X)) may_be_replaced_by 
+     rt1553__lru_name__pos(X) + 1
+     if [X <=rt1553__warhead, X <> rt1553__warhead].
+cycle_rules(81): rt1553__lru_name__pos(pred(X)) may_be_replaced_by 
+     rt1553__lru_name__pos(X) - 1
+     if [X >=rt1553__barometer, X <> rt1553__barometer].
+cycle_rules(82): rt1553__lru_name__pos(X) >= 0 may_be_deduced_from
+     [rt1553__barometer <= X, X <= rt1553__warhead].
+cycle_rules(83): rt1553__lru_name__pos(X) <= 11 may_be_deduced_from
+     [rt1553__barometer <= X, X <= rt1553__warhead].
+cycle_rules(84): rt1553__lru_name__val(X) >= rt1553__barometer may_be_deduced_from
+     [0 <= X, X <= 11].
+cycle_rules(85): rt1553__lru_name__val(X) <= rt1553__warhead may_be_deduced_from
+     [0 <= X, X <= 11].
+cycle_rules(86): succ(rt1553__lru_name__val(X)) may_be_replaced_by 
+     rt1553__lru_name__val(X+1)
+     if [0 <= X, X < 11].
+cycle_rules(87): pred(rt1553__lru_name__val(X)) may_be_replaced_by 
+     rt1553__lru_name__val(X-1)
+     if [0 < X, X <= 11].
+cycle_rules(88): rt1553__lru_name__pos(rt1553__lru_name__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 11].
+cycle_rules(89): rt1553__lru_name__val(rt1553__lru_name__pos(X)) may_be_replaced_by X
+     if [rt1553__barometer <= X, X <= rt1553__warhead].
+cycle_rules(90): rt1553__lru_name__pos(X) <= rt1553__lru_name__pos(Y) & X <= Y are_interchangeable 
+     if [rt1553__barometer <= X, X <= rt1553__warhead, 
+     rt1553__barometer <= Y, Y <= rt1553__warhead].
+cycle_rules(91): rt1553__lru_name__val(X) <= rt1553__lru_name__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 11, 0 <= Y, Y <= 11].
+cycle_rules(92): ibit__phase__size >= 0 may_be_deduced.
+cycle_rules(93): ibit__phase__first may_be_replaced_by ibit__off.
+cycle_rules(94): ibit__phase__last may_be_replaced_by ibit__timeout.
+cycle_rules(95): ibit__phase__base__first may_be_replaced_by ibit__off.
+cycle_rules(96): ibit__phase__base__last may_be_replaced_by ibit__timeout.
+cycle_rules(97): ibit__phase__pos(ibit__phase__first) may_be_replaced_by 0.
+cycle_rules(98): ibit__phase__pos(ibit__off) may_be_replaced_by 0.
+cycle_rules(99): ibit__phase__val(0) may_be_replaced_by ibit__off.
+cycle_rules(100): ibit__phase__pos(ibit__request_start) may_be_replaced_by 1.
+cycle_rules(101): ibit__phase__val(1) may_be_replaced_by 
+     ibit__request_start.
+cycle_rules(102): ibit__phase__pos(ibit__in_progress) may_be_replaced_by 2.
+cycle_rules(103): ibit__phase__val(2) may_be_replaced_by 
+     ibit__in_progress.
+cycle_rules(104): ibit__phase__pos(ibit__request_stop) may_be_replaced_by 3.
+cycle_rules(105): ibit__phase__val(3) may_be_replaced_by 
+     ibit__request_stop.
+cycle_rules(106): ibit__phase__pos(ibit__pass) may_be_replaced_by 4.
+cycle_rules(107): ibit__phase__val(4) may_be_replaced_by 
+     ibit__pass.
+cycle_rules(108): ibit__phase__pos(ibit__fail) may_be_replaced_by 5.
+cycle_rules(109): ibit__phase__val(5) may_be_replaced_by 
+     ibit__fail.
+cycle_rules(110): ibit__phase__pos(ibit__timeout) may_be_replaced_by 6.
+cycle_rules(111): ibit__phase__val(6) may_be_replaced_by 
+     ibit__timeout.
+cycle_rules(112): ibit__phase__pos(ibit__phase__last) may_be_replaced_by 6.
+cycle_rules(113): ibit__phase__pos(succ(X)) may_be_replaced_by 
+     ibit__phase__pos(X) + 1
+     if [X <=ibit__timeout, X <> ibit__timeout].
+cycle_rules(114): ibit__phase__pos(pred(X)) may_be_replaced_by 
+     ibit__phase__pos(X) - 1
+     if [X >=ibit__off, X <> ibit__off].
+cycle_rules(115): ibit__phase__pos(X) >= 0 may_be_deduced_from
+     [ibit__off <= X, X <= ibit__timeout].
+cycle_rules(116): ibit__phase__pos(X) <= 6 may_be_deduced_from
+     [ibit__off <= X, X <= ibit__timeout].
+cycle_rules(117): ibit__phase__val(X) >= ibit__off may_be_deduced_from
+     [0 <= X, X <= 6].
+cycle_rules(118): ibit__phase__val(X) <= ibit__timeout may_be_deduced_from
+     [0 <= X, X <= 6].
+cycle_rules(119): succ(ibit__phase__val(X)) may_be_replaced_by 
+     ibit__phase__val(X+1)
+     if [0 <= X, X < 6].
+cycle_rules(120): pred(ibit__phase__val(X)) may_be_replaced_by 
+     ibit__phase__val(X-1)
+     if [0 < X, X <= 6].
+cycle_rules(121): ibit__phase__pos(ibit__phase__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 6].
+cycle_rules(122): ibit__phase__val(ibit__phase__pos(X)) may_be_replaced_by X
+     if [ibit__off <= X, X <= ibit__timeout].
+cycle_rules(123): ibit__phase__pos(X) <= ibit__phase__pos(Y) & X <= Y are_interchangeable 
+     if [ibit__off <= X, X <= ibit__timeout, ibit__off <= Y, Y <= 
+     ibit__timeout].
+cycle_rules(124): ibit__phase__val(X) <= ibit__phase__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 6, 0 <= Y, Y <= 6].
+cycle_rules(125): meter_per_sec__size >= 0 may_be_deduced.
+cycle_rules(126): meter_per_sec__first may_be_replaced_by -5000.
+cycle_rules(127): meter_per_sec__last may_be_replaced_by 5000.
+cycle_rules(128): meter_per_sec__base__first may_be_replaced_by -2147483648.
+cycle_rules(129): meter_per_sec__base__last may_be_replaced_by 2147483647.
+cycle_rules(130): cm_per_sec_2__size >= 0 may_be_deduced.
+cycle_rules(131): cm_per_sec_2__first may_be_replaced_by -30000.
+cycle_rules(132): cm_per_sec_2__last may_be_replaced_by 30000.
+cycle_rules(133): cm_per_sec_2__base__first may_be_replaced_by -2147483648.
+cycle_rules(134): cm_per_sec_2__base__last may_be_replaced_by 2147483647.

@@ -1,0 +1,681 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.53
+
+                       function Scale.Scale_Movement
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 35:
+
+function_scale_movement_1.
+H1:    max > 0 .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present >= scaledata__first .
+H5:    present <= scaledata__last .
+H6:    target >= scaledata__first .
+H7:    target <= scaledata__last .
+H8:    max >= surfaces__controlangle__first .
+H9:    max <= surfaces__controlangle__last .
+H10:   present = target .
+        ->
+C1:    0 >= surfaces__controlangle__first .
+C2:    0 <= surfaces__controlangle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 40:
+
+function_scale_movement_2.
+H1:    max > 0 .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present >= scaledata__first .
+H5:    present <= scaledata__last .
+H6:    target >= scaledata__first .
+H7:    target <= scaledata__last .
+H8:    max >= surfaces__controlangle__first .
+H9:    max <= surfaces__controlangle__last .
+H10:   not (present = target) .
+H11:   present < target .
+        ->
+C1:    target - present >= integer__first .
+C2:    target - present <= integer__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 43:
+
+function_scale_movement_3.
+H1:    max > 0 .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present >= scaledata__first .
+H5:    present <= scaledata__last .
+H6:    target >= scaledata__first .
+H7:    target <= scaledata__last .
+H8:    max >= surfaces__controlangle__first .
+H9:    max <= surfaces__controlangle__last .
+H10:   not (present = target) .
+H11:   not (present < target) .
+        ->
+C1:    present - target >= integer__first .
+C2:    present - target <= integer__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 46:
+
+function_scale_movement_4.
+H1:    max > 0 .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present >= scaledata__first .
+H5:    present <= scaledata__last .
+H6:    target >= scaledata__first .
+H7:    target <= scaledata__last .
+H8:    max >= surfaces__controlangle__first .
+H9:    max <= surfaces__controlangle__last .
+H10:   not (present = target) .
+H11:   present < target .
+H12:   target - present >= integer__first .
+H13:   target - present <= integer__last .
+H14:   target - present >= integer__first .
+H15:   target - present <= integer__last .
+H16:   target - present > 100 .
+        ->
+C1:    100 >= integer__first .
+C2:    100 <= integer__last .
+ 
+
+function_scale_movement_5.
+H1:    max > 0 .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present >= scaledata__first .
+H5:    present <= scaledata__last .
+H6:    target >= scaledata__first .
+H7:    target <= scaledata__last .
+H8:    max >= surfaces__controlangle__first .
+H9:    max <= surfaces__controlangle__last .
+H10:   not (present = target) .
+H11:   not (present < target) .
+H12:   present - target >= integer__first .
+H13:   present - target <= integer__last .
+H14:   present - target >= integer__first .
+H15:   present - target <= integer__last .
+H16:   present - target > 100 .
+        ->
+C1:    100 >= integer__first .
+C2:    100 <= integer__last .
+ 
+
+For path(s) from start to assertion of line 48:
+
+function_scale_movement_6.
+H1:    max > 0 .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present >= scaledata__first .
+H5:    present <= scaledata__last .
+H6:    target >= scaledata__first .
+H7:    target <= scaledata__last .
+H8:    max >= surfaces__controlangle__first .
+H9:    max <= surfaces__controlangle__last .
+H10:   not (present = target) .
+H11:   present < target .
+H12:   target - present >= integer__first .
+H13:   target - present <= integer__last .
+H14:   target - present >= integer__first .
+H15:   target - present <= integer__last .
+H16:   target - present > 100 .
+H17:   100 >= integer__first .
+H18:   100 <= integer__last .
+        ->
+C1:    100 > 0 .
+C2:    100 <= 100 .
+C3:    mach >= instruments__machnumber__first .
+C4:    mach <= instruments__machnumber__last .
+C5:    present >= scaledata__first .
+C6:    present <= scaledata__last .
+C7:    target >= scaledata__first .
+C8:    target <= scaledata__last .
+C9:    max >= surfaces__controlangle__first .
+C10:   max <= surfaces__controlangle__last .
+C11:   max > 0 .
+ 
+
+function_scale_movement_7.
+H1:    max > 0 .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present >= scaledata__first .
+H5:    present <= scaledata__last .
+H6:    target >= scaledata__first .
+H7:    target <= scaledata__last .
+H8:    max >= surfaces__controlangle__first .
+H9:    max <= surfaces__controlangle__last .
+H10:   not (present = target) .
+H11:   not (present < target) .
+H12:   present - target >= integer__first .
+H13:   present - target <= integer__last .
+H14:   present - target >= integer__first .
+H15:   present - target <= integer__last .
+H16:   present - target > 100 .
+H17:   100 >= integer__first .
+H18:   100 <= integer__last .
+        ->
+C1:    100 > 0 .
+C2:    100 <= 100 .
+C3:    mach >= instruments__machnumber__first .
+C4:    mach <= instruments__machnumber__last .
+C5:    present >= scaledata__first .
+C6:    present <= scaledata__last .
+C7:    target >= scaledata__first .
+C8:    target <= scaledata__last .
+C9:    max >= surfaces__controlangle__first .
+C10:   max <= surfaces__controlangle__last .
+C11:   max > 0 .
+ 
+
+function_scale_movement_8.
+H1:    max > 0 .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present >= scaledata__first .
+H5:    present <= scaledata__last .
+H6:    target >= scaledata__first .
+H7:    target <= scaledata__last .
+H8:    max >= surfaces__controlangle__first .
+H9:    max <= surfaces__controlangle__last .
+H10:   not (present = target) .
+H11:   present < target .
+H12:   target - present >= integer__first .
+H13:   target - present <= integer__last .
+H14:   target - present >= integer__first .
+H15:   target - present <= integer__last .
+H16:   not (target - present > 100) .
+        ->
+C1:    target - present > 0 .
+C2:    target - present <= 100 .
+C3:    mach >= instruments__machnumber__first .
+C4:    mach <= instruments__machnumber__last .
+C5:    present >= scaledata__first .
+C6:    present <= scaledata__last .
+C7:    target >= scaledata__first .
+C8:    target <= scaledata__last .
+C9:    max >= surfaces__controlangle__first .
+C10:   max <= surfaces__controlangle__last .
+C11:   max > 0 .
+ 
+
+function_scale_movement_9.
+H1:    max > 0 .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present >= scaledata__first .
+H5:    present <= scaledata__last .
+H6:    target >= scaledata__first .
+H7:    target <= scaledata__last .
+H8:    max >= surfaces__controlangle__first .
+H9:    max <= surfaces__controlangle__last .
+H10:   not (present = target) .
+H11:   not (present < target) .
+H12:   present - target >= integer__first .
+H13:   present - target <= integer__last .
+H14:   present - target >= integer__first .
+H15:   present - target <= integer__last .
+H16:   not (present - target > 100) .
+        ->
+C1:    present - target > 0 .
+C2:    present - target <= 100 .
+C3:    mach >= instruments__machnumber__first .
+C4:    mach <= instruments__machnumber__last .
+C5:    present >= scaledata__first .
+C6:    present <= scaledata__last .
+C7:    target >= scaledata__first .
+C8:    target <= scaledata__last .
+C9:    max >= surfaces__controlangle__first .
+C10:   max <= surfaces__controlangle__last .
+C11:   max > 0 .
+ 
+
+For path(s) from assertion of line 48 to precondition check associated with statement of line 53:
+
+function_scale_movement_10.
+H1:    gap > 0 .
+H2:    gap <= 100 .
+H3:    mach >= instruments__machnumber__first .
+H4:    mach <= instruments__machnumber__last .
+H5:    present >= scaledata__first .
+H6:    present <= scaledata__last .
+H7:    target >= scaledata__first .
+H8:    target <= scaledata__last .
+H9:    max >= surfaces__controlangle__first .
+H10:   max <= surfaces__controlangle__last .
+H11:   max > 0 .
+        ->
+C1:    mach >= 0 .
+C2:    20 > 0 .
+C3:    20 <= 100 .
+C4:    20 >= integer__first .
+C5:    20 <= integer__last .
+C6:    mach >= scaledata__first .
+C7:    mach <= scaledata__last .
+C8:    mach >= integer__first .
+C9:    mach <= integer__last .
+ 
+
+For path(s) from assertion of line 48 to run-time check associated with statement of line 53:
+
+function_scale_movement_11.
+H1:    gap > 0 .
+H2:    gap <= 100 .
+H3:    mach >= instruments__machnumber__first .
+H4:    mach <= instruments__machnumber__last .
+H5:    present >= scaledata__first .
+H6:    present <= scaledata__last .
+H7:    target >= scaledata__first .
+H8:    target <= scaledata__last .
+H9:    max >= surfaces__controlangle__first .
+H10:   max <= surfaces__controlangle__last .
+H11:   max > 0 .
+H12:   mach >= 0 .
+H13:   20 > 0 .
+H14:   20 <= 100 .
+H15:   20 >= integer__first .
+H16:   20 <= integer__last .
+H17:   mach >= scaledata__first .
+H18:   mach <= scaledata__last .
+H19:   mach >= integer__first .
+H20:   mach <= integer__last .
+H21:   inverse(mach, 20) >= percent__first .
+H22:   inverse(mach, 20) <= percent__last .
+        ->
+C1:    inverse(mach, 20) >= integer__first .
+C2:    inverse(mach, 20) <= integer__last .
+ 
+
+For path(s) from assertion of line 48 to precondition check associated with statement of line 54:
+
+function_scale_movement_12.
+H1:    gap > 0 .
+H2:    gap <= 100 .
+H3:    mach >= instruments__machnumber__first .
+H4:    mach <= instruments__machnumber__last .
+H5:    present >= scaledata__first .
+H6:    present <= scaledata__last .
+H7:    target >= scaledata__first .
+H8:    target <= scaledata__last .
+H9:    max >= surfaces__controlangle__first .
+H10:   max <= surfaces__controlangle__last .
+H11:   max > 0 .
+H12:   mach >= 0 .
+H13:   20 > 0 .
+H14:   20 <= 100 .
+H15:   20 >= integer__first .
+H16:   20 <= integer__last .
+H17:   mach >= scaledata__first .
+H18:   mach <= scaledata__last .
+H19:   mach >= integer__first .
+H20:   mach <= integer__last .
+H21:   inverse(mach, 20) >= percent__first .
+H22:   inverse(mach, 20) <= percent__last .
+H23:   inverse(mach, 20) >= integer__first .
+H24:   inverse(mach, 20) <= integer__last .
+H25:   gap >= integer__first .
+H26:   gap <= integer__last .
+        ->
+C1:    gap >= 0 .
+C2:    20 > 0 .
+C3:    20 <= 100 .
+C4:    20 >= integer__first .
+C5:    20 <= integer__last .
+C6:    gap >= scaledata__first .
+C7:    gap <= scaledata__last .
+ 
+
+For path(s) from assertion of line 48 to run-time check associated with statement of line 54:
+
+function_scale_movement_13.
+H1:    gap > 0 .
+H2:    gap <= 100 .
+H3:    mach >= instruments__machnumber__first .
+H4:    mach <= instruments__machnumber__last .
+H5:    present >= scaledata__first .
+H6:    present <= scaledata__last .
+H7:    target >= scaledata__first .
+H8:    target <= scaledata__last .
+H9:    max >= surfaces__controlangle__first .
+H10:   max <= surfaces__controlangle__last .
+H11:   max > 0 .
+H12:   mach >= 0 .
+H13:   20 > 0 .
+H14:   20 <= 100 .
+H15:   20 >= integer__first .
+H16:   20 <= integer__last .
+H17:   mach >= scaledata__first .
+H18:   mach <= scaledata__last .
+H19:   mach >= integer__first .
+H20:   mach <= integer__last .
+H21:   inverse(mach, 20) >= percent__first .
+H22:   inverse(mach, 20) <= percent__last .
+H23:   inverse(mach, 20) >= integer__first .
+H24:   inverse(mach, 20) <= integer__last .
+H25:   gap >= integer__first .
+H26:   gap <= integer__last .
+H27:   gap >= 0 .
+H28:   20 > 0 .
+H29:   20 <= 100 .
+H30:   20 >= integer__first .
+H31:   20 <= integer__last .
+H32:   gap >= scaledata__first .
+H33:   gap <= scaledata__last .
+H34:   inverse(gap, 20) >= percent__first .
+H35:   inverse(gap, 20) <= percent__last .
+        ->
+C1:    inverse(gap, 20) >= integer__first .
+C2:    inverse(gap, 20) <= integer__last .
+ 
+
+For path(s) from assertion of line 48 to run-time check associated with statement of line 55:
+
+function_scale_movement_14.
+H1:    gap > 0 .
+H2:    gap <= 100 .
+H3:    mach >= instruments__machnumber__first .
+H4:    mach <= instruments__machnumber__last .
+H5:    present >= scaledata__first .
+H6:    present <= scaledata__last .
+H7:    target >= scaledata__first .
+H8:    target <= scaledata__last .
+H9:    max >= surfaces__controlangle__first .
+H10:   max <= surfaces__controlangle__last .
+H11:   max > 0 .
+H12:   mach >= 0 .
+H13:   20 > 0 .
+H14:   20 <= 100 .
+H15:   20 >= integer__first .
+H16:   20 <= integer__last .
+H17:   mach >= scaledata__first .
+H18:   mach <= scaledata__last .
+H19:   mach >= integer__first .
+H20:   mach <= integer__last .
+H21:   inverse(mach, 20) >= percent__first .
+H22:   inverse(mach, 20) <= percent__last .
+H23:   inverse(mach, 20) >= integer__first .
+H24:   inverse(mach, 20) <= integer__last .
+H25:   gap >= integer__first .
+H26:   gap <= integer__last .
+H27:   gap >= 0 .
+H28:   20 > 0 .
+H29:   20 <= 100 .
+H30:   20 >= integer__first .
+H31:   20 <= integer__last .
+H32:   gap >= scaledata__first .
+H33:   gap <= scaledata__last .
+H34:   inverse(gap, 20) >= percent__first .
+H35:   inverse(gap, 20) <= percent__last .
+H36:   inverse(gap, 20) >= integer__first .
+H37:   inverse(gap, 20) <= integer__last .
+H38:   inverse(mach, 20) >= integer__first .
+H39:   inverse(mach, 20) <= integer__last .
+H40:   inverse(gap, 20) >= integer__first .
+H41:   inverse(gap, 20) <= integer__last .
+        ->
+C1:    1 + inverse(gap, 20) + inverse(mach, 20) >= integer__first .
+C2:    1 + inverse(gap, 20) + inverse(mach, 20) <= integer__last .
+C3:    1 + inverse(gap, 20) >= integer__base__first .
+C4:    1 + inverse(gap, 20) <= integer__base__last .
+ 
+
+For path(s) from assertion of line 48 to assertion of line 57:
+
+function_scale_movement_15.
+H1:    gap > 0 .
+H2:    gap <= 100 .
+H3:    mach >= instruments__machnumber__first .
+H4:    mach <= instruments__machnumber__last .
+H5:    present >= scaledata__first .
+H6:    present <= scaledata__last .
+H7:    target >= scaledata__first .
+H8:    target <= scaledata__last .
+H9:    max >= surfaces__controlangle__first .
+H10:   max <= surfaces__controlangle__last .
+H11:   max > 0 .
+H12:   mach >= 0 .
+H13:   20 > 0 .
+H14:   20 <= 100 .
+H15:   20 >= integer__first .
+H16:   20 <= integer__last .
+H17:   mach >= scaledata__first .
+H18:   mach <= scaledata__last .
+H19:   mach >= integer__first .
+H20:   mach <= integer__last .
+H21:   inverse(mach, 20) >= percent__first .
+H22:   inverse(mach, 20) <= percent__last .
+H23:   inverse(mach, 20) >= integer__first .
+H24:   inverse(mach, 20) <= integer__last .
+H25:   gap >= integer__first .
+H26:   gap <= integer__last .
+H27:   gap >= 0 .
+H28:   20 > 0 .
+H29:   20 <= 100 .
+H30:   20 >= integer__first .
+H31:   20 <= integer__last .
+H32:   gap >= scaledata__first .
+H33:   gap <= scaledata__last .
+H34:   inverse(gap, 20) >= percent__first .
+H35:   inverse(gap, 20) <= percent__last .
+H36:   inverse(gap, 20) >= integer__first .
+H37:   inverse(gap, 20) <= integer__last .
+H38:   inverse(mach, 20) >= integer__first .
+H39:   inverse(mach, 20) <= integer__last .
+H40:   inverse(gap, 20) >= integer__first .
+H41:   inverse(gap, 20) <= integer__last .
+H42:   1 + inverse(gap, 20) + inverse(mach, 20) >= integer__first .
+H43:   1 + inverse(gap, 20) + inverse(mach, 20) <= integer__last .
+H44:   1 + inverse(gap, 20) >= integer__base__first .
+H45:   1 + inverse(gap, 20) <= integer__base__last .
+        ->
+C1:    inverse(mach, 20) >= percent__first .
+C2:    inverse(mach, 20) <= percent__last .
+C3:    1 + inverse(gap, 20) + inverse(mach, 20) > 0 .
+C4:    inverse(mach, 20) <= 1 + inverse(gap, 20) + inverse(
+           mach, 20) .
+C5:    mach >= instruments__machnumber__first .
+C6:    mach <= instruments__machnumber__last .
+C7:    present >= scaledata__first .
+C8:    present <= scaledata__last .
+C9:    target >= scaledata__first .
+C10:   target <= scaledata__last .
+C11:   max >= surfaces__controlangle__first .
+C12:   max <= surfaces__controlangle__last .
+C13:   max > 0 .
+ 
+
+For path(s) from assertion of line 57 to run-time check associated with statement of line 58:
+
+function_scale_movement_16.
+H1:    k1 >= percent__first .
+H2:    k1 <= percent__last .
+H3:    k2 > 0 .
+H4:    k1 <= k2 .
+H5:    mach >= instruments__machnumber__first .
+H6:    mach <= instruments__machnumber__last .
+H7:    present >= scaledata__first .
+H8:    present <= scaledata__last .
+H9:    target >= scaledata__first .
+H10:   target <= scaledata__last .
+H11:   max >= surfaces__controlangle__first .
+H12:   max <= surfaces__controlangle__last .
+H13:   max > 0 .
+H14:   k1 >= integer__first .
+H15:   k1 <= integer__last .
+H16:   k2 >= integer__first .
+H17:   k2 <= integer__last .
+        ->
+C1:    max * k1 div k2 >= surfaces__controlangle__first .
+C2:    max * k1 div k2 <= surfaces__controlangle__last .
+C3:    max * k1 div k2 >= surfaces__controlangle__first .
+C4:    max * k1 div k2 <= surfaces__controlangle__last .
+C5:    max * k1 div k2 >= integer__base__first .
+C6:    max * k1 div k2 <= integer__base__last .
+C7:    k2 <> 0 .
+C8:    max * k1 >= integer__base__first .
+C9:    max * k1 <= integer__base__last .
+C10:   max >= integer__first .
+C11:   max <= integer__last .
+ 
+
+For path(s) from assertion of line 57 to run-time check associated with statement of line 60:
+
+function_scale_movement_17.
+H1:    k1 >= percent__first .
+H2:    k1 <= percent__last .
+H3:    k2 > 0 .
+H4:    k1 <= k2 .
+H5:    mach >= instruments__machnumber__first .
+H6:    mach <= instruments__machnumber__last .
+H7:    present >= scaledata__first .
+H8:    present <= scaledata__last .
+H9:    target >= scaledata__first .
+H10:   target <= scaledata__last .
+H11:   max >= surfaces__controlangle__first .
+H12:   max <= surfaces__controlangle__last .
+H13:   max > 0 .
+H14:   k1 >= integer__first .
+H15:   k1 <= integer__last .
+H16:   k2 >= integer__first .
+H17:   k2 <= integer__last .
+H18:   max * k1 div k2 >= surfaces__controlangle__first .
+H19:   max * k1 div k2 <= surfaces__controlangle__last .
+H20:   max * k1 div k2 >= surfaces__controlangle__first .
+H21:   max * k1 div k2 <= surfaces__controlangle__last .
+H22:   max * k1 div k2 >= integer__base__first .
+H23:   max * k1 div k2 <= integer__base__last .
+H24:   k2 <> 0 .
+H25:   max * k1 >= integer__base__first .
+H26:   max * k1 <= integer__base__last .
+H27:   max >= integer__first .
+H28:   max <= integer__last .
+H29:   present > target .
+H30:   max * k1 div k2 >= surfaces__controlangle__first .
+H31:   max * k1 div k2 <= surfaces__controlangle__last .
+        ->
+C1:     -(max * k1 div k2) >= surfaces__controlangle__first .
+C2:     -(max * k1 div k2) <= surfaces__controlangle__last .
+ 
+
+For path(s) from start to finish:
+
+function_scale_movement_18.
+H1:    max > 0 .
+H2:    mach >= instruments__machnumber__first .
+H3:    mach <= instruments__machnumber__last .
+H4:    present >= scaledata__first .
+H5:    present <= scaledata__last .
+H6:    target >= scaledata__first .
+H7:    target <= scaledata__last .
+H8:    max >= surfaces__controlangle__first .
+H9:    max <= surfaces__controlangle__last .
+H10:   present = target .
+H11:   0 >= surfaces__controlangle__first .
+H12:   0 <= surfaces__controlangle__last .
+H13:   0 >= surfaces__controlangle__first .
+H14:   0 <= surfaces__controlangle__last .
+        ->
+C1:     -max <= 0 .
+C2:    0 <= max .
+C3:    0 >= surfaces__controlangle__first .
+C4:    0 <= surfaces__controlangle__last .
+ 
+
+For path(s) from assertion of line 57 to finish:
+
+function_scale_movement_19.
+H1:    k1 >= percent__first .
+H2:    k1 <= percent__last .
+H3:    k2 > 0 .
+H4:    k1 <= k2 .
+H5:    mach >= instruments__machnumber__first .
+H6:    mach <= instruments__machnumber__last .
+H7:    present >= scaledata__first .
+H8:    present <= scaledata__last .
+H9:    target >= scaledata__first .
+H10:   target <= scaledata__last .
+H11:   max >= surfaces__controlangle__first .
+H12:   max <= surfaces__controlangle__last .
+H13:   max > 0 .
+H14:   k1 >= integer__first .
+H15:   k1 <= integer__last .
+H16:   k2 >= integer__first .
+H17:   k2 <= integer__last .
+H18:   max * k1 div k2 >= surfaces__controlangle__first .
+H19:   max * k1 div k2 <= surfaces__controlangle__last .
+H20:   max * k1 div k2 >= surfaces__controlangle__first .
+H21:   max * k1 div k2 <= surfaces__controlangle__last .
+H22:   max * k1 div k2 >= integer__base__first .
+H23:   max * k1 div k2 <= integer__base__last .
+H24:   k2 <> 0 .
+H25:   max * k1 >= integer__base__first .
+H26:   max * k1 <= integer__base__last .
+H27:   max >= integer__first .
+H28:   max <= integer__last .
+H29:   present > target .
+H30:   max * k1 div k2 >= surfaces__controlangle__first .
+H31:   max * k1 div k2 <= surfaces__controlangle__last .
+H32:    -(max * k1 div k2) >= surfaces__controlangle__first .
+H33:    -(max * k1 div k2) <= surfaces__controlangle__last .
+H34:    -(max * k1 div k2) >= surfaces__controlangle__first .
+H35:    -(max * k1 div k2) <= surfaces__controlangle__last .
+        ->
+C1:     -max <=  -(max * k1 div k2) .
+C2:     -(max * k1 div k2) <= max .
+C3:     -(max * k1 div k2) >= surfaces__controlangle__first .
+C4:     -(max * k1 div k2) <= surfaces__controlangle__last .
+ 
+
+function_scale_movement_20.
+H1:    k1 >= percent__first .
+H2:    k1 <= percent__last .
+H3:    k2 > 0 .
+H4:    k1 <= k2 .
+H5:    mach >= instruments__machnumber__first .
+H6:    mach <= instruments__machnumber__last .
+H7:    present >= scaledata__first .
+H8:    present <= scaledata__last .
+H9:    target >= scaledata__first .
+H10:   target <= scaledata__last .
+H11:   max >= surfaces__controlangle__first .
+H12:   max <= surfaces__controlangle__last .
+H13:   max > 0 .
+H14:   k1 >= integer__first .
+H15:   k1 <= integer__last .
+H16:   k2 >= integer__first .
+H17:   k2 <= integer__last .
+H18:   max * k1 div k2 >= surfaces__controlangle__first .
+H19:   max * k1 div k2 <= surfaces__controlangle__last .
+H20:   max * k1 div k2 >= surfaces__controlangle__first .
+H21:   max * k1 div k2 <= surfaces__controlangle__last .
+H22:   max * k1 div k2 >= integer__base__first .
+H23:   max * k1 div k2 <= integer__base__last .
+H24:   k2 <> 0 .
+H25:   max * k1 >= integer__base__first .
+H26:   max * k1 <= integer__base__last .
+H27:   max >= integer__first .
+H28:   max <= integer__last .
+H29:   not (present > target) .
+H30:   max * k1 div k2 >= surfaces__controlangle__first .
+H31:   max * k1 div k2 <= surfaces__controlangle__last .
+        ->
+C1:     -max <= max * k1 div k2 .
+C2:    max * k1 div k2 <= max .
+C3:    max * k1 div k2 >= surfaces__controlangle__first .
+C4:    max * k1 div k2 <= surfaces__controlangle__last .
+ 
+

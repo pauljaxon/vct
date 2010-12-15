@@ -1,0 +1,199 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:07
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function Scale.Scale_Movement
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 35:
+
+function_scale_movement_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 40:
+
+function_scale_movement_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 43:
+
+function_scale_movement_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 46:
+
+function_scale_movement_4.
+*** true .          /* all conclusions proved */
+
+
+function_scale_movement_5.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to assertion of line 48:
+
+function_scale_movement_6.
+*** true .          /* all conclusions proved */
+
+
+function_scale_movement_7.
+*** true .          /* all conclusions proved */
+
+
+function_scale_movement_8.
+*** true .          /* all conclusions proved */
+
+
+function_scale_movement_9.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 48 to precondition check associated with 
+          statement of line 53:
+
+function_scale_movement_10.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 48 to run-time check associated with 
+          statement of line 53:
+
+function_scale_movement_11.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 48 to precondition check associated with 
+          statement of line 54:
+
+function_scale_movement_12.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 48 to run-time check associated with 
+          statement of line 54:
+
+function_scale_movement_13.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 48 to run-time check associated with 
+          statement of line 55:
+
+function_scale_movement_14.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 48 to assertion of line 57:
+
+function_scale_movement_15.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 57 to run-time check associated with 
+          statement of line 58:
+
+function_scale_movement_16.
+H1:    k1 >= 0 .
+H2:    k1 <= 100 .
+H3:    k2 > 0 .
+H4:    k1 <= k2 .
+H5:    mach >= 0 .
+H6:    mach <= 100 .
+H7:    present >= - 100 .
+H8:    present <= 100 .
+H9:    target >= - 100 .
+H10:   target <= 100 .
+H11:   max <= 45 .
+H12:   max > 0 .
+H13:   k2 <= 2147483647 .
+H14:   integer__size >= 0 .
+H15:   instruments__machnumber__size >= 0 .
+H16:   surfaces__controlangle__size >= 0 .
+H17:   scaledata__size >= 0 .
+H18:   percent__size >= 0 .
+       ->
+C1:    max * k1 div k2 <= 45 .
+
+
+For path(s) from assertion of line 57 to run-time check associated with 
+          statement of line 60:
+
+function_scale_movement_17.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to finish:
+
+function_scale_movement_18.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 57 to finish:
+
+function_scale_movement_19.
+H1:    k1 >= 0 .
+H2:    k1 <= 100 .
+H3:    k2 > 0 .
+H4:    k1 <= k2 .
+H5:    mach >= 0 .
+H6:    mach <= 100 .
+H7:    present <= 100 .
+H8:    target >= - 100 .
+H9:    max <= 45 .
+H10:   max > 0 .
+H11:   k2 <= 2147483647 .
+H12:   max * k1 div k2 >= - 45 .
+H13:   max * k1 div k2 <= 45 .
+H14:   max * k1 >= - 2147483648 .
+H15:   max * k1 <= 2147483647 .
+H16:   present > target .
+H17:   integer__size >= 0 .
+H18:   instruments__machnumber__size >= 0 .
+H19:   surfaces__controlangle__size >= 0 .
+H20:   scaledata__size >= 0 .
+H21:   percent__size >= 0 .
+       ->
+C1:    - max <= - (max * k1 div k2) .
+
+
+function_scale_movement_20.
+H1:    k1 >= 0 .
+H2:    k1 <= 100 .
+H3:    k2 > 0 .
+H4:    k1 <= k2 .
+H5:    mach >= 0 .
+H6:    mach <= 100 .
+H7:    present >= - 100 .
+H8:    present <= 100 .
+H9:    target >= - 100 .
+H10:   target <= 100 .
+H11:   max <= 45 .
+H12:   max > 0 .
+H13:   k2 <= 2147483647 .
+H14:   max * k1 div k2 >= - 45 .
+H15:   max * k1 div k2 <= 45 .
+H16:   max * k1 >= - 2147483648 .
+H17:   max * k1 <= 2147483647 .
+H18:   present <= target .
+H19:   integer__size >= 0 .
+H20:   instruments__machnumber__size >= 0 .
+H21:   surfaces__controlangle__size >= 0 .
+H22:   scaledata__size >= 0 .
+H23:   percent__size >= 0 .
+       ->
+C1:    max * k1 div k2 <= max .
+
+

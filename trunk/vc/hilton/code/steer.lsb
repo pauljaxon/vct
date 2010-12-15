@@ -1,0 +1,407 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.69
+
+Line
+   1  -- Steering implementation
+   2  --
+   3  -- $Log: steer.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/08/31 20:06:22  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with
+  13    Clock_Utils,
+  14    Systemtypes,
+  15    Steer_Cfg.Encode,
+  16    Steer_Cfg.Decode,
+  17    Bus,
+  18    RT1553,
+  19    IBIT,
+  20    Bit_Machine;
+  21  package body Steer
+  22    --# own State is
+  23    --#     current_angles,
+  24    --#     commanded_angles,
+  25    --#     command_times,
+  26    --#     BIT_State;
+  27  is
+  28     subtype Integer32 is Systemtypes.Integer32;
+  29  
+  30     type Fin_Angles is array(Fin) of Angle;
+  31     Zero_Angles : constant Fin_Angles :=
+  32       Fin_Angles'(others => 0);
+  33  
+  34     type Fin_Times is array(Fin) of Clock.Millisecond;
+  35     Zero_Times : constant Fin_Times :=
+  36       Fin_Times'(others => 0);
+  37  
+  38     -- The current and commanded angles of the steering fins
+  39     Current_angles : Fin_Angles := Zero_angles;
+  40     Commanded_Angles : Fin_Angles := Zero_Angles;
+  41  
+  42     -- What time the angle was last requested for each fin
+  43     Command_Times : Fin_Times := Zero_Times;
+  44  
+  45     -- The BIT state
+  46     Bit_State  : Bit_Machine.Machine := Bit_Machine.Initial_Machine;
+  47  
+  48     Bus_Id : constant Rt1553.Lru_Name := Rt1553.Fins;
+  49  
+  50     -- Extrapolate the actual angle of a fin
+  51     procedure Extrapolate_Angle(For_Fin : in Fin;
+  52                                 New_Angle : out Angle)
+  53       --# global in out clock.time;
+  54       --#        in current_angles, commanded_angles, command_times;
+  55       --# derives
+  56       --#     clock.time from * &
+  57       --#     new_angle from
+  58       --#        for_fin,
+  59       --#        clock.time,
+  60       --#        current_angles,
+  61       --#        commanded_angles,
+  62       --#        command_times;
+  63     is
+  64        Current, Target : Angle;
+  65        Now : Clock.Millisecond;
+  66        Time_Valid : Boolean;
+  67        Diff_Time : Clock.Millisecond;
+  68        Tmp : Integer32;
+  69     begin
+  70        Clock.Read(T => Now,Valid => Time_Valid);
+  71        Current := Current_Angles(For_Fin);
+  72        Target  := Commanded_Angles(For_Fin);
+  73        if Current = Target then
+  74           New_Angle := Current;
+  75        elsif Time_Valid then
+  76           Diff_Time := Now - Command_Times(For_Fin);
+  77           if Diff_Time < 0 then
+  78              -- No movement
+  79              New_Angle := Current;
+  80           else
+  81              if Diff_Time > 2_000 then
+  82                 -- Max response is under 1 second anyway
+  83                 Diff_Time := 2_000;
+  84              end if;
+  85              -- Work out the angle extrapolated
+  86              if Target >= Current then
+  87                 Tmp := Integer32(Current) +
+  88                   (Integer32(Diff_Time) * Steer_Cfg.Move_Rate) / 1000;
+  89                 if Tmp > Integer32(Target) then
+  90                    New_angle := Target;
+  91                 else
+  92                    New_Angle := Angle(Tmp);
+  93                 end if;
+  94              else
+  95                 -- target < current
+  96                 Tmp := Integer32(Current) -
+  97                   (Integer32(Diff_Time) * Steer_Cfg.Move_Rate) / 1000;
+  98                 if Tmp < Integer32(Target) then
+  99                    New_Angle := Target;
+ 100                 else
+ 101                    New_Angle := Angle(Tmp);
+ 102                 end if;
+ 103              end if;
+ 104           end if;
+ 105        else
+ 106           -- Can't estimate, return the current value
+ 107           New_Angle := Current;
+ 108        end if;
+ 109     end Extrapolate_Angle;
+
++++        Flow analysis of subprogram Extrapolate_Angle 
+           performed: no errors found.
+
+ 110  
+ 111  
+ 112     --------- Public subprograms
+ 113  
+ 114     procedure Set_deflection(For_Fin : in Fin;
+ 115                              New_Angle : in Angle)
+ 116       --# global in out
+ 117       --#     current_angles,
+ 118       --#     commanded_angles,
+ 119       --#     command_times,
+ 120       --#     clock.time;
+ 121       --# derives
+ 122       --#     current_angles from
+ 123       --#         *,
+ 124       --#         commanded_angles,
+ 125       --#         command_times,
+ 126       --#         clock.time,
+ 127       --#         for_fin &
+ 128       --#     commanded_angles from
+ 129       --#         *,
+ 130       --#         for_fin,
+ 131       --#         new_angle &
+ 132       --#     command_times from
+ 133       --#         *,
+ 134       --#         for_fin,
+ 135       --#         clock.time &
+ 136       --#     clock.time from
+ 137       --#         *;
+ 138     is
+ 139        Time_Valid : Boolean;
+ 140        T : Clock.Millisecond;
+ 141        A : Angle;
+ 142     begin
+ 143        -- Update the fin's current angle
+ 144        Extrapolate_Angle(For_Fin => For_Fin,
+ 145                          New_Angle => A);
+ 146        Current_Angles(For_Fin) := a;
+ 147        Commanded_Angles(For_Fin) := New_Angle;
+ 148        Clock.Read(T => T,Valid => Time_Valid);
+ 149        if Time_Valid then
+ 150           Command_Times(For_Fin) := T;
+ 151        else
+ 152           Command_Times(For_Fin) := 0;
+ 153        end if;
+ 154     end Set_deflection;
+
++++        Flow analysis of subprogram Set_Deflection 
+           performed: no errors found.
+
+ 155  
+ 156  
+ 157     procedure Read_deflection(For_Fin : in Fin;
+ 158                              this_Angle : out Angle)
+ 159       --# global in out clock.time;
+ 160       --#     in current_angles,
+ 161       --#     commanded_angles,
+ 162       --#     command_times;
+ 163       --# derives
+ 164       --#     this_angle from
+ 165       --#         current_angles,
+ 166       --#         commanded_angles,
+ 167       --#         command_times,
+ 168       --#         clock.time,
+ 169       --#         for_fin &
+ 170       --#     clock.time from
+ 171       --#         *;
+ 172     is
+ 173     begin
+ 174        Extrapolate_Angle(For_Fin => For_Fin,
+ 175                          New_Angle => This_Angle);
+ 176     end Read_deflection;
+
++++        Flow analysis of subprogram Read_Deflection 
+           performed: no errors found.
+
+ 177  
+ 178  
+ 179     -- Cycle the reading of data from the bus
+ 180     -- and writing of data to the bus
+ 181     procedure Cycle
+ 182       --# global in out current_angles, commanded_angles, command_times;
+ 183       --#        in out BIT_State;
+ 184       --#        in out Clock.Time;
+ 185       --#        in Bus.Outputs;
+ 186       --#        in out Bus.Inputs;
+ 187       --# derives
+ 188       --#     BIT_State from
+ 189       --#        *, Bus.Outputs &
+ 190       --#     Bus.Inputs from
+ 191       --#        *, Clock.Time,
+ 192       --#        current_angles,
+ 193       --#        commanded_angles,
+ 194       --#        command_times,
+ 195       --#        BIT_State &
+ 196       --#     Clock.Time,
+ 197       --#     current_angles,
+ 198       --#     commanded_angles from
+ 199       --#        current_angles,
+ 200       --#        clock.time,
+ 201       --#        commanded_angles,
+ 202       --#        command_times,
+ 203       --#        bus.outputs &
+ 204       --#     command_times from
+ 205       --#        *, clock.time,
+ 206       --#        current_angles,
+ 207       --#        commanded_angles,
+ 208       --#        bus.outputs;
+ 209     is
+ 210        Datum : Bus.Word;
+ 211  
+ 212        procedure Write_Fin_Angle(F : in Fin;
+ 213                                  I : in Bus.Word_Index)
+ 214          --# global
+ 215          --#        in out Clock.Time;
+ 216          --#        in out Bus.Inputs;
+ 217          --#        in current_angles, commanded_angles, command_times;
+ 218          --# derives
+ 219          --#    clock.time from
+ 220          --#        * &
+ 221          --#    bus.inputs from
+ 222          --#        *, f, I,
+ 223          --#        clock.time,
+ 224          --#        current_angles,
+ 225          --#        commanded_angles,
+ 226          --#        command_times;
+ 227        is
+ 228           A : Angle;
+ 229           B : Bus.Word;
+ 230        begin
+ 231           Extrapolate_Angle(For_Fin => F,
+ 232                             New_Angle => A);
+ 233           B := Steer_Cfg.Encode.Fin_angle(A);
+ 234           Rt1553.Write_Word(Data => B,
+ 235                             Idx => I,
+ 236                             Subaddress_Idx => 1,
+ 237                             Src => Bus_Id);
+ 238        end Write_Fin_Angle;
+
++++        Flow analysis of subprogram Write_Fin_Angle 
+           performed: no errors found.
+
+ 239  
+ 240        procedure Read_Fin_Angle(F : in Fin;
+ 241                                  I : in Bus.Word_Index)
+ 242          --# global in out
+ 243          --#    current_angles,
+ 244          --#    commanded_angles,
+ 245          --#    command_times;
+ 246          --#        in out Clock.Time;
+ 247          --#        in Bus.Outputs;
+ 248          --# derives
+ 249          --#    clock.time from
+ 250          --#       *, f, i,
+ 251          --#       current_angles,
+ 252          --#       bus.outputs &
+ 253          --#    current_angles from
+ 254          --#       *, f, I,
+ 255          --#       commanded_angles,
+ 256          --#       command_times,
+ 257          --#       clock.time,
+ 258          --#       bus.outputs &
+ 259          --#    commanded_angles from
+ 260          --#       *, f, I,
+ 261          --#       current_angles,
+ 262          --#       bus.outputs &
+ 263          --#    command_times from
+ 264          --#       *, f, I,
+ 265          --#       current_angles,
+ 266          --#       clock.time,
+ 267          --#       bus.outputs;
+ 268        is
+ 269           A : Angle;
+ 270           B : Bus.Word;
+ 271        begin
+ 272           -- Read a new state value off R1
+ 273           Rt1553.Read_Word(Src => Bus_id,
+ 274                            Idx => I,
+ 275                            Subaddress_Idx => 1,
+ 276                            Data => B);
+ 277           A := Steer_Cfg.Decode.Fin_angle(b);
+ 278           if A /= Current_Angles(F) Then
+ 279              -- Angle change
+ 280              Set_Deflection(For_Fin => F,
+ 281                             New_Angle => A);
+ 282           end if;
+ 283        end Read_Fin_Angle;
+
++++        Flow analysis of subprogram Read_Fin_Angle 
+           performed: no errors found.
+
+ 284  
+ 285     begin
+ 286        -- Write the fin angles out to T1 words 1-4
+ 287        Write_Fin_Angle(F => Steer_Cfg.Port,
+ 288                        I => 1);
+ 289        Write_Fin_Angle(F => Steer_Cfg.Starboard,
+ 290                        I => 2);
+ 291        Write_Fin_Angle(F => Steer_Cfg.Top,
+ 292                        I => 3);
+ 293        Write_Fin_Angle(F => Steer_Cfg.Bottom,
+ 294                        I => 4);
+ 295        -- Write the BIT phase to T1 word 5
+ 296        Rt1553.Write_Word(Data =>
+ 297                            IBIT.Phase_Lookup(BIT_Machine.Phase(Bit_State)),
+ 298                          Idx => 5,
+ 299                          Subaddress_Idx => 1,
+ 300                          Src => Bus_id);
+ 301        -- Look for commands on R1
+ 302        if Rt1553.Is_Valid(Src => Bus_Id,
+ 303                           Subaddress_Idx => 1) and then
+ 304          Rt1553.Is_Fresh(Src => Bus_Id,
+ 305                          Subaddress_Idx => 1) then
+ 306           -- Read in new fin commands
+ 307           Read_Fin_Angle(F => Steer_Cfg.Port,
+ 308                          I => 1);
+ 309           Read_Fin_Angle(F => Steer_Cfg.Starboard,
+ 310                          I => 2);
+ 311           Read_Fin_Angle(F => Steer_Cfg.Top,
+ 312                          I => 3);
+ 313           Read_Fin_Angle(F => Steer_Cfg.Bottom,
+ 314                          I => 4);
+ 315  
+ 316        end if;
+ 317        -- Read the BIT info off R1 word 5
+ 318        Rt1553.Read_Word(Src => Bus_id,
+ 319                         Idx => 5,
+ 320                         Subaddress_Idx => 1,
+ 321                         Data => Datum);
+ 322        BIT_Machine.Change_State(Word => Datum,
+ 323                                 State => Bit_state);
+ 324        -- And cycle the BIT
+ 325        BIT_Machine.Step(Bit_State);
+ 326     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+ 327  
+ 328  
+ 329     procedure Fail_Next_Bit
+ 330       --# global in out BIT_State;
+ 331       --# derives BIT_State from *;
+ 332     is begin
+ 333        BIT_Machine.Fail_Next(Bit_State);
+ 334     end Fail_Next_Bit;
+
++++        Flow analysis of subprogram Fail_Next_Bit 
+           performed: no errors found.
+
+ 335  
+ 336     procedure Init
+ 337       --# global out current_angles,
+ 338       --#            commanded_angles,
+ 339       --#            command_times,
+ 340       --#            BIT_State;
+ 341       --#        in out Bus.Inputs;
+ 342       --# derives current_angles,
+ 343       --#        commanded_angles,
+ 344       --#        command_times,
+ 345       --#        BIT_State from &
+ 346       --#        Bus.Inputs from *;
+ 347     is begin
+ 348        -- Initialise the bus message 1T
+ 349        RT1553.Set_Message_Valid(Subaddress_Idx => 1,
+ 350                                 Src => Bus_id);
+ 351        -- Initialise the variables
+ 352        Current_angles := Zero_Angles;
+ 353        Commanded_Angles := Zero_Angles;
+ 354        Command_times := Zero_Times;
+ 355        BIT_Machine.Create(Ticks_To_Complete => 41,
+ 356                           State => Bit_State);
+ 357     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 358  
+ 359     procedure Command is separate;
+ 360  end Steer;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

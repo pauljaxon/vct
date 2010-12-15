@@ -1,0 +1,38 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.30
+
+                            function random.Seed
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 34:
+
+function_seed_1.
+H1:    true .
+H2:    v >= value__first .
+H3:    v <= value__last .
+        ->
+C1:    v >= value__first .
+C2:    v <= value__last .
+C3:    v mod max_seed >= seed_range__first .
+C4:    v mod max_seed <= seed_range__last .
+C5:    v mod max_seed >= seed_range__base__first .
+C6:    v mod max_seed <= seed_range__base__last .
+C7:    max_seed <> 0 .
+C8:    v >= seed_range__first .
+C9:    v <= seed_range__last .
+ 
+
+For path(s) from start to finish:
+
+function_seed_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+

@@ -1,0 +1,97 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.21
+
+Line
+   1  -- MCU interface to the IR over the bus
+   2  --
+   3  -- $Log: if_ir.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/11 19:48:12  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.1  2003/08/27 20:54:50  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with SystemTypes,
+  16    MeasureTypes,
+  17    Ir_Cfg,
+  18    Ibit;
+  19  --# inherit SystemTypes, MeasureTypes, Bus, Ibit,
+  20  --# bc1553, Ir_cfg, state_types, measuretypes.decode;
+  21  package If_Ir
+  22    --# own State;
+  23    --# initializes State;
+  24  is
+  25     function Get_Ibit_State return Ibit.Phase;
+  26     --# global state;
+  27  
+  28     -- Stare at an IR cell
+  29     procedure stare(Sx, Sy : in Ir_Cfg.Sector_Range);
+  30     --# global in out Bus.Outputs, state;
+  31     --# derives Bus.Outputs from *, sx, sy &
+  32     --#         state from *, sx, sy;
+  33  
+  34     -- Sweep the ir
+  35     procedure Sweep(Sx_Start, Sx_End : in Ir_Cfg.Sector_Range;
+  36                     Sy_Start, Sy_End : in Ir_Cfg.Sector_Range);
+  37     --# global in out bus.outputs, state;
+  38     --# derives bus.outputs from *, sx_start, sx_end,
+  39     --#          sy_start, sy_end &
+  40     --#         state from *, sx_start, sx_end, sy_start, sy_end;
+  41  
+  42     procedure Read_stare(Sx,Sy : out Ir_Cfg.Sector_Range;
+  43                          Temp : out Measuretypes.Kelvin);
+  44     --# global in state;
+  45     --# derives sx, sy, temp from state;
+  46  
+  47     procedure Read_sweep(Sx_start,Sx_end : out Ir_Cfg.Sector_Range;
+  48                          Sy_Start,Sy_End : out Ir_Cfg.Sector_Range;
+  49                          Grid : out Measuretypes.Bit4_Array);
+  50     --# global in state;
+  51     --# derives sx_start, sx_end, sy_start, sy_end,
+  52     --#         grid from state;
+  53  
+  54     -- Kick off a ir IBIT
+  55     procedure Ibit_Start;
+  56     --# global in out Bus.Outputs, State;
+  57     --# derives Bus.Outputs from * &
+  58     --#         State from *;
+  59  
+  60     -- Stop a ir IBIT
+  61     procedure Ibit_Stop;
+  62     --# global in out Bus.Outputs, State;
+  63     --# derives Bus.Outputs from * &
+  64     --#         State from *;
+  65  
+  66     -- Poll the bus
+  67     procedure Poll;
+  68     --# global in out State;
+  69     --#        in Bus.Inputs;
+  70     --# derives State from *, Bus.Inputs;
+  71  
+  72     -- Initialise
+  73     procedure Init;
+  74     --# global out State;
+  75     --#        in out Bus.Outputs;
+  76     --# derives State from &
+  77     --#         Bus.Outputs from *;
+  78  
+  79     -- test point
+  80     procedure Command;
+  81     --# derives;
+  82  end If_Ir;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

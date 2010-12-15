@@ -1,0 +1,34 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.09*/
+
+                           /*function angle_ops.Sum*/
+
+
+rule_family sum_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+sum_rules(1): measuretypes__angle_half may_be_replaced_by 3142.
+sum_rules(2): measuretypes__angle_minushalf may_be_replaced_by -3142.
+sum_rules(3): measuretypes__millirad__size >= 0 may_be_deduced.
+sum_rules(4): measuretypes__millirad__first may_be_replaced_by -7000.
+sum_rules(5): measuretypes__millirad__last may_be_replaced_by 7000.
+sum_rules(6): measuretypes__millirad__base__first may_be_replaced_by -2147483648.
+sum_rules(7): measuretypes__millirad__base__last may_be_replaced_by 2147483647.
+sum_rules(8): millirad__size >= 0 may_be_deduced.
+sum_rules(9): millirad__first may_be_replaced_by -7000.
+sum_rules(10): millirad__last may_be_replaced_by 7000.
+sum_rules(11): millirad__base__first may_be_replaced_by -2147483648.
+sum_rules(12): millirad__base__last may_be_replaced_by 2147483647.
+sum_rules(13): canon_millirad__size >= 0 may_be_deduced.
+sum_rules(14): canon_millirad__first may_be_replaced_by -3141.
+sum_rules(15): canon_millirad__last may_be_replaced_by 3142.
+sum_rules(16): canon_millirad__base__first may_be_replaced_by -2147483648.
+sum_rules(17): canon_millirad__base__last may_be_replaced_by 2147483647.

@@ -1,0 +1,138 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.67
+
+Line
+   1  with Instruments,Surfaces,Degrees, Scale;
+   2  with AP.Altitude.Pitch.Rate;
+   3  
+   4  
+   5  use type Instruments.Feet,
+   6    Instruments.Feetpermin,
+   7    Degrees.Degreespersec,
+   8    Surfaces.ControlAngle;
+   9  
+  10  
+  11  package body AP.Altitude.Pitch
+  12    --# own State is AP.Altitude.Pitch.Rate.Pitch_History;
+  13  is
+  14     procedure Calc_Pitchrate(Pitch : in Instruments.Pitchangle;
+  15                              Present_Pitchrate : out Degrees.Degreespersec)
+  16       renames Rate.Calc_Pitchrate;
+  17  
+  18     subtype Floorfpm is Instruments.Feetpermin range -1000 .. 1000;
+  19     subtype Degreespersec is Degrees.Degreespersec;
+  20  
+  21     function Target_ROC(Present_Altitude : Instruments.Feet;
+  22                         Target_Altitude  : Instruments.Feet)
+  23                        return Floorfpm
+  24     is
+  25        Result : Instruments.Feetpermin;
+  26     begin
+  27        Result := Instruments.Feetpermin( Integer(Target_Altitude - Present_Altitude) / 10);
+  28        if (Result > Floorfpm'Last) then
+  29           Result := Floorfpm'Last;
+  30        elsif Result <  Floorfpm'First then
+  31           Result := Floorfpm'First;
+  32        end if;
+  33        return Result;
+  34     end Target_ROC;
+
++++        Flow analysis of subprogram Target_ROC 
+           performed: no errors found.
+
+  35  
+  36     function Target_Rate(Present_Altitude : Instruments.Feet;
+  37                          Target_Altitude  : Instruments.Feet;
+  38                          Climb_Rate : Instruments.Feetpermin)
+  39                         return Degreespersec is
+  40        Target_Climb_Rate : Floorfpm;
+  41        Floor_Climb_Rate  : Floorfpm;
+  42        Result            : Degreespersec;
+  43     begin
+  44        Target_Climb_Rate := Target_ROC(Present_Altitude,Target_Altitude);
+  45        if Climb_Rate > Floorfpm'Last then
+  46           Floor_Climb_Rate := Floorfpm'Last;
+  47        elsif Climb_Rate < Floorfpm'First then
+  48           Floor_Climb_Rate := Floorfpm'First;
+  49        else
+  50           Floor_Climb_Rate := Climb_Rate;
+  51        end if;
+  52        --# assert Floor_Climb_Rate  in Floorfpm and
+  53        --#        Target_Climb_Rate in Floorfpm;
+  54        Result := Degreespersec( (Target_Climb_Rate - Floor_Climb_Rate) / 12);
+  55        if (Result > 10) then
+  56           Result := 10;
+  57        elsif (Result < -10) then
+  58           Result := -10;
+  59        end if;
+  60        return Result;
+  61     end Target_Rate;
+
++++        Flow analysis of subprogram Target_Rate 
+           performed: no errors found.
+
+  62  
+  63     function Calc_Elevator_Move(Present_Pitchrate : Degreespersec;
+  64                                 Target_Pitchrate  : Degreespersec;
+  65                                 Mach              : Instruments.Machnumber)
+  66                                return Surfaces.ControlAngle
+  67     is
+  68        Target_Angle : Surfaces.ControlAngle;
+  69     begin
+  70        Target_Angle := Scale.Scale_Movement(
+  71          Mach    => Mach,
+  72          Present => Scale.Scaledata(Present_Pitchrate / 2),
+  73          Target  => Scale.Scaledata(Target_Pitchrate / 2),
+  74          Max     => Surfaces.ControlAngle(30));
+  75  
+  76        return Target_Angle;
+  77     end Calc_Elevator_Move;
+
++++        Flow analysis of subprogram Calc_Elevator_Move 
+           performed: no errors found.
+
+  78  
+  79  
+  80     procedure Pitch_AP(Present_Altitude : in Instruments.Feet;
+  81                        Target_Altitude  : in Instruments.Feet;
+  82                        Mach             : in Instruments.Machnumber;
+  83                        Climb_Rate       : in Instruments.Feetpermin;
+  84                        The_Pitch        : in Instruments.Pitchangle)
+  85     --# global in out Rate.Pitch_History;
+  86     --#           out Surfaces.Elevators;
+  87     --# derives Rate.Pitch_History
+  88     --#         from *,
+  89     --#              The_Pitch &
+  90     --#         Surfaces.Elevators
+  91     --#         from Rate.Pitch_History,
+  92     --#              Present_Altitude,
+  93     --#              Target_Altitude,
+  94     --#              Mach,
+  95     --#              Climb_Rate,
+  96     --#              The_Pitch
+  97     --#  ;
+  98     is
+  99        Present_Pitchrate : Degreespersec;
+ 100        Target_Pitchrate  : Degreespersec;
+ 101        Elevator_Movement : Surfaces.Controlangle;
+ 102     begin
+ 103        Calc_Pitchrate(The_Pitch, Present_Pitchrate);
+ 104        Target_Pitchrate := Target_Rate(Present_Altitude,Target_Altitude,Climb_Rate);
+ 105        Elevator_Movement := Calc_Elevator_Move(Present_Pitchrate,Target_Pitchrate,Mach);
+ 106        Surfaces.Move_Elevators(Elevator_Movement);
+ 107     end Pitch_AP;
+
++++        Flow analysis of subprogram Pitch_AP performed: 
+           no errors found.
+
+ 108  
+ 109  end AP.Altitude.Pitch;
+
+
+--End of file--------------------------------------------------

@@ -1,0 +1,307 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:06
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure roll.Roll_AP
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_roll_ap_1.  @@@@@@@@@@
+***  Proved C1:  bank >= instruments__bankangle__first
+     using hypothesis H8.
+***  Proved C2:  bank <= instruments__bankangle__last
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_roll_ap_2.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+-S-  Applied substitution rule roll_ap_rules(27).
+     This was achieved by replacing all occurrences of degreespersec__first by:
+          - 180.
+<S>  New C1:  present_rollrate__1 >= - 180
+-S-  Applied substitution rule roll_ap_rules(28).
+     This was achieved by replacing all occurrences of degreespersec__last by:
+          180.
+<S>  New C2:  present_rollrate__1 <= 180
+-S-  Applied substitution rule roll_ap_rules(2).
+     This was achieved by replacing all occurrences of 
+          degrees__degreespersec__first by:
+          - 180.
+<S>  New H12:  present_rollrate__1 >= - 180
+-S-  Applied substitution rule roll_ap_rules(3).
+     This was achieved by replacing all occurrences of 
+          degrees__degreespersec__last by:
+          180.
+<S>  New H13:  present_rollrate__1 <= 180
+-S-  Applied substitution rule roll_ap_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__bankangle__first by:
+          - 45.
+<S>  New H8:  bank >= - 45
+-S-  Applied substitution rule roll_ap_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__bankangle__last by:
+          45.
+<S>  New H9:  bank <= 45
+-S-  Applied substitution rule roll_ap_rules(12).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__first by:
+          0.
+<S>  New H4:  present_heading >= 0
+<S>  New H6:  target_heading >= 0
+-S-  Applied substitution rule roll_ap_rules(13).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__last by:
+          359.
+<S>  New H5:  present_heading <= 359
+<S>  New H7:  target_heading <= 359
+-S-  Applied substitution rule roll_ap_rules(17).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H2:  mach >= 0
+-S-  Applied substitution rule roll_ap_rules(18).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H3:  mach <= 100
+***  Proved C1:  present_rollrate__1 >= - 180
+     using hypothesis H12.
+***  Proved C2:  present_rollrate__1 <= 180
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_roll_ap_3.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+***  Proved C1:  bank >= instruments__bankangle__first
+     using hypothesis H8.
+***  Proved C2:  bank <= instruments__bankangle__last
+     using hypothesis H9.
+***  Proved C3:  target_heading >= instruments__headdegree__first
+     using hypothesis H6.
+***  Proved C4:  target_heading <= instruments__headdegree__last
+     using hypothesis H7.
+***  Proved C5:  present_heading >= instruments__headdegree__first
+     using hypothesis H4.
+***  Proved C6:  present_heading <= instruments__headdegree__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_roll_ap_4.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H5)
+          .
+***  Proved C1:  target_rate(present_heading, target_heading, bank) >= 
+          degreespersec__first
+     using hypothesis H22.
+***  Proved C2:  target_rate(present_heading, target_heading, bank) <= 
+          degreespersec__last
+     using hypothesis H23.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_roll_ap_5.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H23).
+***  Proved C1:  mach >= instruments__machnumber__first
+     using hypothesis H2.
+***  Proved C2:  mach <= instruments__machnumber__last
+     using hypothesis H3.
+***  Proved C3:  target_rate(present_heading, target_heading, bank) >= 
+          degreespersec__first
+     using hypothesis H22.
+***  Proved C4:  target_rate(present_heading, target_heading, bank) <= 
+          degreespersec__last
+     using hypothesis H23.
+***  Proved C5:  present_rollrate__1 >= degreespersec__first
+     using hypothesis H14.
+***  Proved C6:  present_rollrate__1 <= degreespersec__last
+     using hypothesis H15.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_roll_ap_6.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H15).
+***  Proved C1:  calc_aileron_move(present_rollrate__1, target_rate(
+          present_heading, target_heading, bank), mach) >= 
+          surfaces__controlangle__first
+     using hypothesis H36.
+***  Proved C2:  calc_aileron_move(present_rollrate__1, target_rate(
+          present_heading, target_heading, bank), mach) <= 
+          surfaces__controlangle__last
+     using hypothesis H37.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_roll_ap_7.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H36).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H37).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H36).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H37).
+***  Proved C1:  calc_aileron_move(present_rollrate__1, target_rate(
+          present_heading, target_heading, bank), mach) >= 
+          surfaces__controlangle__first
+     using hypothesis H36.
+***  Proved C2:  calc_aileron_move(present_rollrate__1, target_rate(
+          present_heading, target_heading, bank), mach) <= 
+          surfaces__controlangle__last
+     using hypothesis H37.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_roll_ap_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_roll_ap_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_roll_ap_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

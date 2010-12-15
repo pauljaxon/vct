@@ -1,0 +1,189 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:33
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure environment.Set_Object_accel
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_set_object_accel_1.  @@@@@@@@@@
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> valid_handle__first <= fld_h(element(
+          object_array, [i___1])) and fld_h(element(object_array, [i___1])) <= 
+          valid_handle__last)
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> rcs__first <= fld_r(element(object_array, [
+          i___1])) and fld_r(element(object_array, [i___1])) <= rcs__last)
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> kind__first <= fld_k(element(object_array, [
+          i___1])) and fld_k(element(object_array, [i___1])) <= kind__last)
+-S-  Applied substitution rule set_object_a_rules(50).
+     This was achieved by replacing all occurrences of valid_handle__first by:
+          1.
+<S>  New H10:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          valid_handle__last -> 1 <= fld_h(element(object_array, [i___1])) and 
+          fld_h(element(object_array, [i___1])) <= valid_handle__last)
+<S>  New H11:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          valid_handle__last -> rcs__first <= fld_r(element(object_array, [
+          i___1])) and fld_r(element(object_array, [i___1])) <= rcs__last)
+<S>  New H12:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          valid_handle__last -> kind__first <= fld_k(element(object_array, [
+          i___1])) and fld_k(element(object_array, [i___1])) <= kind__last)
+<S>  New H15:  not (h < 1 or h > valid_handle__last)
+<S>  New C1:  h >= 1
+-S-  Applied substitution rule set_object_a_rules(51).
+     This was achieved by replacing all occurrences of valid_handle__last by:
+          20.
+<S>  New H10:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> 1 <= 
+          fld_h(element(object_array, [i___1])) and fld_h(element(object_array, 
+          [i___1])) <= 20)
+<S>  New H11:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> 
+          rcs__first <= fld_r(element(object_array, [i___1])) and fld_r(element(
+          object_array, [i___1])) <= rcs__last)
+<S>  New H12:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> 
+          kind__first <= fld_k(element(object_array, [i___1])) and fld_k(
+          element(object_array, [i___1])) <= kind__last)
+<S>  New H15:  not (h < 1 or h > 20)
+<S>  New C2:  h <= 20
+>>>  Restructured hypothesis H15 into:
+     >>>  H15:  1 <= h and h <= 20
+>>>  Hypothesis H15 has now been split into two, giving:
+     >>>  H15:  1 <= h
+     >>>  H16:  h <= 20
+-S-  Applied substitution rule set_object_a_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__cm_per_sec_2__first by:
+          - 30000.
+<S>  New H4:  fld_az(a) >= - 30000
+<S>  New H6:  fld_ay(a) >= - 30000
+<S>  New H8:  fld_ax(a) >= - 30000
+-S-  Applied substitution rule set_object_a_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__cm_per_sec_2__last by:
+          30000.
+<S>  New H5:  fld_az(a) <= 30000
+<S>  New H7:  fld_ay(a) <= 30000
+<S>  New H9:  fld_ax(a) <= 30000
+-S-  Applied substitution rule set_object_a_rules(14).
+     This was achieved by replacing all occurrences of handle__first by:
+          0.
+<S>  New H2:  h >= 0
+-S-  Applied substitution rule set_object_a_rules(15).
+     This was achieved by replacing all occurrences of handle__last by:
+          20.
+<S>  New H3:  h <= 20
+-S-  Applied substitution rule set_object_a_rules(20).
+     This was achieved by replacing all occurrences of kind__first by:
+          aircraft.
+<S>  New H12:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> aircraft 
+          <= fld_k(element(object_array, [i___1])) and fld_k(element(
+          object_array, [i___1])) <= kind__last)
+-S-  Applied substitution rule set_object_a_rules(21).
+     This was achieved by replacing all occurrences of kind__last by:
+          cloud.
+<S>  New H12:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> aircraft 
+          <= fld_k(element(object_array, [i___1])) and fld_k(element(
+          object_array, [i___1])) <= cloud)
+-S-  Applied substitution rule set_object_a_rules(45).
+     This was achieved by replacing all occurrences of rcs__first by:
+          0.
+<S>  New H11:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> 0 <= 
+          fld_r(element(object_array, [i___1])) and fld_r(element(object_array, 
+          [i___1])) <= rcs__last)
+-S-  Applied substitution rule set_object_a_rules(46).
+     This was achieved by replacing all occurrences of rcs__last by:
+          1000.
+<S>  New H11:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> 0 <= 
+          fld_r(element(object_array, [i___1])) and fld_r(element(object_array, 
+          [i___1])) <= 1000)
+***  Proved C1:  h >= 1
+     using hypothesis H15.
+***  Proved C2:  h <= 20
+     using hypothesis H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_object_accel_2.  @@@@@@@@@@
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> valid_handle__first <= fld_h(element(
+          object_array, [i___1])) and fld_h(element(object_array, [i___1])) <= 
+          valid_handle__last)
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> rcs__first <= fld_r(element(object_array, [
+          i___1])) and fld_r(element(object_array, [i___1])) <= rcs__last)
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> kind__first <= fld_k(element(object_array, [
+          i___1])) and fld_k(element(object_array, [i___1])) <= kind__last)
+***  Proved C1:  h >= valid_handle__first
+     using hypothesis H16.
+***  Proved C2:  h <= valid_handle__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_object_accel_3.  @@@@@@@@@@
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> valid_handle__first <= fld_h(element(
+          object_array, [i___1])) and fld_h(element(object_array, [i___1])) <= 
+          valid_handle__last)
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> rcs__first <= fld_r(element(object_array, [
+          i___1])) and fld_r(element(object_array, [i___1])) <= rcs__last)
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> kind__first <= fld_k(element(object_array, [
+          i___1])) and fld_k(element(object_array, [i___1])) <= kind__last)
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+***  Proved C1:  h >= valid_handle__first
+     using hypothesis H16.
+***  Proved C2:  h <= valid_handle__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_object_accel_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_object_accel_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_object_accel_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_object_accel_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_object_accel_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

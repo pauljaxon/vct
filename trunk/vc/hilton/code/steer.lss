@@ -1,0 +1,185 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.45
+
+Line
+   1  --=head1 NAME
+   2  --
+   3  -- Steer - steering simulator
+   4  --
+   5  --=head1 REVISION HISTORY
+   6  --
+   7  -- $Log: steer.ads,v $
+   8  -- Revision 1.2  2005/01/24 19:19:05  adi
+   9  -- Hacked to implement logging
+  10  --
+  11  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+  12  -- Added from tarfile
+  13  --
+  14  --
+  15  -- Revision 1.4  2003/08/31 20:06:35  adi
+  16  -- Corrected inheritance to encode and decode
+  17  --
+  18  -- Revision 1.3  2003/08/30 18:34:24  adi
+  19  -- Corrected annos for anticipated refinement relations
+  20  --
+  21  -- Revision 1.2  2003/08/30 18:12:07  adi
+  22  -- Read and set deflection for each individual fin
+  23  --
+  24  -- Revision 1.1  2003/08/30 17:48:24  adi
+  25  -- Initial revision
+  26  --
+  27  --=cut
+  28  
+  29  with MeasureTypes,Clock,Steer_cfg;
+  30  use type Clock.Millisecond, Steer_Cfg.Fin_Angle;
+  31  --# inherit state_types, MeasureTypes, Bus, Rt1553,
+  32  --#         Clock, Clock_Utils, steer_cfg,
+  33  --#         IBIT, Bit_Machine, systemtypes,
+  34  --#         steer_cfg.encode, steer_cfg.decode;
+  35  package Steer
+  36    --# own State;
+  37    --# initializes State;
+  38  is
+  39     -- 4 fins, each independent
+  40     -- Deflect +- 1 radian
+  41     -- 800ms max response to command
+  42  
+  43     subtype Angle is Steer_Cfg.Fin_Angle;
+  44     subtype Fin is Steer_Cfg.Fin;
+  45  
+  46     --=head1 SUBPROGRAMS
+  47     --
+  48     --=over 4
+  49  
+  50     --=item *
+  51     --
+  52     procedure Cycle;
+  53     --# global in out State;
+  54     --#        in out Clock.Time;
+  55     --#        in     Bus.Outputs;
+  56     --#        in out Bus.Inputs;
+  57     --# derives
+  58     --#   State,
+  59     --#   Clock.Time
+  60     --#     from  State,
+  61     --#           Bus.Outputs,
+  62     --#           Clock.Time
+  63     --#  &
+  64     --#   Bus.Inputs
+  65     --#     from  *,
+  66     --#           Clock.Time,
+  67     --#           State;
+  68     --
+  69     --Cycle the reading of data from the bus
+  70     --and writing of data to the bus
+  71  
+  72     --=item *
+  73     --
+  74     procedure Set_Deflection
+  75       (For_Fin   : in Fin;
+  76        New_Angle : in Angle);
+  77     --# global in out State, Clock.Time;
+  78     --# derives
+  79     --#   Clock.Time
+  80     --#     from  *
+  81     --#  &
+  82     --#   State
+  83     --#     from  *,
+  84     --#           Clock.Time,
+  85     --#           New_Angle,
+  86     --#           For_Fin;
+  87     --
+  88     --Set the current steer deflection for the
+  89     --fin C<For_Fin> to C<New_Angle>.
+  90  
+  91     --=item *
+  92     --
+  93     procedure Read_Deflection
+  94       (For_Fin    : in Fin;
+  95        This_Angle : out Angle);
+  96     --# global in      State;
+  97     --#         in out Clock.Time;
+  98     --# derives
+  99     --#   This_Angle
+ 100     --#     from  State,
+ 101     --#           For_Fin,
+ 102     --#           Clock.Time
+ 103     --#  &
+ 104     --#   Clock.Time
+ 105     --#     from  *;
+ 106     --
+ 107     --Read the current steer deflection for
+ 108     --fin C<For_Fin> into C<This_Angle>.
+ 109  
+ 110     --=item *
+ 111     --
+ 112     procedure Fail_Next_Bit;
+ 113     --# global in out State;
+ 114     --# derives State from *;
+ 115     --
+ 116     --Cause the next BIT to fail.
+ 117  
+ 118     --=item *
+ 119     --
+ 120     procedure Init;
+ 121     --# global out State;
+ 122     --#        in out Bus.Inputs;
+ 123     --# derives
+ 124     --#   State from
+ 125     --#  &
+ 126     --#   Bus.Inputs from *;
+ 127     --
+ 128     --Initialise the steering simulator.
+ 129  
+ 130     --=item *
+ 131     --
+ 132     procedure Command;
+ 133     --# derives;
+ 134     --
+ 135     --Test stub
+ 136  
+ 137     --=back
+ 138     --
+ 139     --=cut
+ 140  end Steer;
+ 141  
+ 142  --=head1 NOTES
+ 143  --
+ 144  --This package provides a simulator for steering the missile.
+ 145  --Its control fin count and properties are set in
+ 146  --package C<Steer_Cfg>.
+ 147  --
+ 148  --=head1 AUTHOR
+ 149  --
+ 150  --Adrian J. Hilton.  Home web page at L<http://www.suslik.org/>
+ 151  --
+ 152  --=head1 LICENSE
+ 153  --
+ 154  --Copyright (C) 2003-2005, Adrian J. Hilton
+ 155  --
+ 156  --This program is free software; you can redistribute it and/or modify
+ 157  --it under the terms of the GNU General Public License as published by
+ 158  --the Free Software Foundation; either version 2 of the License, or
+ 159  --(at your option) any later version.
+ 160  --
+ 161  --This program is distributed in the hope that it will be useful,
+ 162  --but WITHOUT ANY WARRANTY; without even the implied warranty of
+ 163  --MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ 164  --GNU General Public License for more details.
+ 165  --
+ 166  --You should have received a copy of the GNU General Public License
+ 167  --along with this program; if not, write to the Free Software
+ 168  --Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 169  --
+ 170  --=cut
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

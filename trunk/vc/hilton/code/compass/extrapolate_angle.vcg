@@ -1,0 +1,231 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.33
+
+                    procedure compass.Extrapolate_Angle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 62:
+
+procedure_extrapolate_angle_1.
+H1:    true .
+H2:    last_delta >= measuretypes__millirad_per_sec__first .
+H3:    last_delta <= measuretypes__millirad_per_sec__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    time_now__1 >= clock__millisecond__first .
+H7:    time_now__1 <= clock__millisecond__last .
+H8:    true .
+        ->
+C1:    time_now__1 >= clock__millisecond__first .
+C2:    time_now__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 69:
+
+procedure_extrapolate_angle_2.
+H1:    true .
+H2:    last_delta >= measuretypes__millirad_per_sec__first .
+H3:    last_delta <= measuretypes__millirad_per_sec__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    time_now__1 >= clock__millisecond__first .
+H7:    time_now__1 <= clock__millisecond__last .
+H8:    true .
+H9:    time_now__1 >= clock__millisecond__first .
+H10:   time_now__1 <= clock__millisecond__last .
+H11:   true .
+H12:   not (not time_valid__1) .
+H13:   time_now__1 >= clock__millisecond__first .
+H14:   time_now__1 <= clock__millisecond__last .
+        ->
+C1:    time_now__1 >= clock__millisecond__first .
+C2:    time_now__1 <= clock__millisecond__last .
+C3:    last_time >= clock__millisecond__first .
+C4:    last_time <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 69:
+
+procedure_extrapolate_angle_3.
+H1:    true .
+H2:    last_delta >= measuretypes__millirad_per_sec__first .
+H3:    last_delta <= measuretypes__millirad_per_sec__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    time_now__1 >= clock__millisecond__first .
+H7:    time_now__1 <= clock__millisecond__last .
+H8:    true .
+H9:    time_now__1 >= clock__millisecond__first .
+H10:   time_now__1 <= clock__millisecond__last .
+H11:   true .
+H12:   not (not time_valid__1) .
+H13:   time_now__1 >= clock__millisecond__first .
+H14:   time_now__1 <= clock__millisecond__last .
+H15:   time_now__1 >= clock__millisecond__first .
+H16:   time_now__1 <= clock__millisecond__last .
+H17:   last_time >= clock__millisecond__first .
+H18:   last_time <= clock__millisecond__last .
+H19:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H20:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+        ->
+C1:    clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+C2:    clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 80:
+
+procedure_extrapolate_angle_4.
+H1:    true .
+H2:    last_delta >= measuretypes__millirad_per_sec__first .
+H3:    last_delta <= measuretypes__millirad_per_sec__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    time_now__1 >= clock__millisecond__first .
+H7:    time_now__1 <= clock__millisecond__last .
+H8:    true .
+H9:    time_now__1 >= clock__millisecond__first .
+H10:   time_now__1 <= clock__millisecond__last .
+H11:   true .
+H12:   not (not time_valid__1) .
+H13:   time_now__1 >= clock__millisecond__first .
+H14:   time_now__1 <= clock__millisecond__last .
+H15:   time_now__1 >= clock__millisecond__first .
+H16:   time_now__1 <= clock__millisecond__last .
+H17:   last_time >= clock__millisecond__first .
+H18:   last_time <= clock__millisecond__last .
+H19:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H20:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H21:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H22:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H23:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H24:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H25:   not (clock_utils__delta_time(last_time, time_now__1) = 0) .
+H26:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H27:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H28:   not (clock_utils__delta_time(last_time, time_now__1) > 
+           max_extrapolate_time) .
+H29:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H30:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+        ->
+C1:    last_delta * clock_utils__delta_time(last_time, time_now__1) >= 
+           systemtypes__integer32__first .
+C2:    last_delta * clock_utils__delta_time(last_time, time_now__1) <= 
+           systemtypes__integer32__last .
+C3:    clock_utils__delta_time(last_time, time_now__1) >= 
+           systemtypes__integer32__first .
+C4:    clock_utils__delta_time(last_time, time_now__1) <= 
+           systemtypes__integer32__last .
+C5:    last_delta >= systemtypes__integer32__first .
+C6:    last_delta <= systemtypes__integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 84:
+
+procedure_extrapolate_angle_5.
+H1:    true .
+H2:    last_delta >= measuretypes__millirad_per_sec__first .
+H3:    last_delta <= measuretypes__millirad_per_sec__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    time_now__1 >= clock__millisecond__first .
+H7:    time_now__1 <= clock__millisecond__last .
+H8:    true .
+H9:    time_now__1 >= clock__millisecond__first .
+H10:   time_now__1 <= clock__millisecond__last .
+H11:   true .
+H12:   not (not time_valid__1) .
+H13:   time_now__1 >= clock__millisecond__first .
+H14:   time_now__1 <= clock__millisecond__last .
+H15:   time_now__1 >= clock__millisecond__first .
+H16:   time_now__1 <= clock__millisecond__last .
+H17:   last_time >= clock__millisecond__first .
+H18:   last_time <= clock__millisecond__last .
+H19:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H20:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H21:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H22:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H23:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H24:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H25:   not (clock_utils__delta_time(last_time, time_now__1) = 0) .
+H26:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H27:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H28:   not (clock_utils__delta_time(last_time, time_now__1) > 
+           max_extrapolate_time) .
+H29:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H30:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H31:   last_delta * clock_utils__delta_time(last_time, time_now__1) >= 
+           systemtypes__integer32__first .
+H32:   last_delta * clock_utils__delta_time(last_time, time_now__1) <= 
+           systemtypes__integer32__last .
+H33:   clock_utils__delta_time(last_time, time_now__1) >= 
+           systemtypes__integer32__first .
+H34:   clock_utils__delta_time(last_time, time_now__1) <= 
+           systemtypes__integer32__last .
+H35:   last_delta >= systemtypes__integer32__first .
+H36:   last_delta <= systemtypes__integer32__last .
+H37:   last_delta * clock_utils__delta_time(last_time, time_now__1) >= 
+           systemtypes__integer32__first .
+H38:   last_delta * clock_utils__delta_time(last_time, time_now__1) <= 
+           systemtypes__integer32__last .
+        ->
+C1:    last_delta * clock_utils__delta_time(last_time, time_now__1) div 
+           1000 >= systemtypes__integer32__first .
+C2:    last_delta * clock_utils__delta_time(last_time, time_now__1) div 
+           1000 <= systemtypes__integer32__last .
+C3:    last_delta * clock_utils__delta_time(last_time, time_now__1) div 
+           1000 >= long_integer__base__first .
+C4:    last_delta * clock_utils__delta_time(last_time, time_now__1) div 
+           1000 <= long_integer__base__last .
+C5:    1000 <> 0 .
+ 
+
+For path(s) from start to finish:
+
+procedure_extrapolate_angle_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+

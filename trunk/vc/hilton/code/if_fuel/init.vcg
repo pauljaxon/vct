@@ -1,0 +1,65 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.66
+
+                           procedure if_fuel.Init
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 125:
+
+procedure_init_1.
+H1:    true .
+        ->
+C1:    0 >= measuretypes__kilo__first .
+C2:    0 <= measuretypes__kilo__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 127:
+
+procedure_init_2.
+H1:    true .
+H2:    0 >= measuretypes__kilo__first .
+H3:    0 <= measuretypes__kilo__last .
+        ->
+C1:    ibit__off >= ibit__phase__first .
+C2:    ibit__off <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 128:
+
+procedure_init_3.
+H1:    true .
+H2:    0 >= measuretypes__kilo__first .
+H3:    0 <= measuretypes__kilo__last .
+H4:    ibit__off >= ibit__phase__first .
+H5:    ibit__off <= ibit__phase__last .
+        ->
+C1:    bus_id >= bc1553__lru_name__first .
+C2:    bus_id <= bc1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_init_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_init_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_init_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+

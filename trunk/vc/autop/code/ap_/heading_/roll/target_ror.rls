@@ -1,0 +1,32 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 26-NOV-2009 09:54:53.73*/
+
+                          /*function roll.Target_ROR*/
+
+
+rule_family target_ror_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+target_ror_rules(1): integer__size >= 0 may_be_deduced.
+target_ror_rules(2): integer__first may_be_replaced_by -2147483648.
+target_ror_rules(3): integer__last may_be_replaced_by 2147483647.
+target_ror_rules(4): integer__base__first may_be_replaced_by -2147483648.
+target_ror_rules(5): integer__base__last may_be_replaced_by 2147483647.
+target_ror_rules(6): instruments__bankangle__size >= 0 may_be_deduced.
+target_ror_rules(7): instruments__bankangle__first may_be_replaced_by -45.
+target_ror_rules(8): instruments__bankangle__last may_be_replaced_by 45.
+target_ror_rules(9): instruments__bankangle__base__first may_be_replaced_by -128.
+target_ror_rules(10): instruments__bankangle__base__last may_be_replaced_by 127.
+target_ror_rules(11): instruments__headdegree__size >= 0 may_be_deduced.
+target_ror_rules(12): instruments__headdegree__first may_be_replaced_by 0.
+target_ror_rules(13): instruments__headdegree__last may_be_replaced_by 359.
+target_ror_rules(14): instruments__headdegree__base__first may_be_replaced_by -32768.
+target_ror_rules(15): instruments__headdegree__base__last may_be_replaced_by 32767.

@@ -1,0 +1,177 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:43  SIMPLIFIED 25-NOV-2009, 14:19:20
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure sensor_history.Get_Recent_Speed
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_get_recent_speed_1.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+***  Proved C1:  fld_new_idx(item) >= history_count__first
+     using hypothesis H2.
+***  Proved C2:  fld_new_idx(item) <= history_count__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_recent_speed_2.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+***  Proved C1:  previous_item(fld_new_idx(item)) >= history_count__first
+     using hypothesis H10.
+***  Proved C2:  previous_item(fld_new_idx(item)) <= history_count__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_recent_speed_3.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C1:  element(fld_speed(item), [previous_item(fld_new_idx(item))]) 
+          >= meter_per_sec__first
+     using hypotheses H5, H10 & H11.
+***  Proved C2:  element(fld_speed(item), [previous_item(fld_new_idx(item))]) 
+          <= meter_per_sec__last
+     using hypotheses H5, H10 & H11.
+***  Proved C3:  previous_item(fld_new_idx(item)) >= history_count__first
+     using hypothesis H10.
+***  Proved C4:  previous_item(fld_new_idx(item)) <= history_count__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_recent_speed_4.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___4 : integer, history_count__first <= i___4 and i___4 
+          <= history_count__last -> clock__millisecond__first <= element(
+          fld_times(item), [i___4]) and element(fld_times(item), [i___4]) <= 
+          clock__millisecond__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___3 : integer, history_count__first <= i___3 and i___3 
+          <= history_count__last -> meter_per_sec__first <= element(fld_speed(
+          item), [i___3]) and element(fld_speed(item), [i___3]) <= 
+          meter_per_sec__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, history_count__first <= i___2 and i___2 
+          <= history_count__last -> angle_degrees__first <= element(fld_bearing(
+          item), [i___2]) and element(fld_bearing(item), [i___2]) <= 
+          angle_degrees__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, history_count__first <= i___1 and i___1 
+          <= history_count__last -> measuretypes__meter__first <= element(
+          fld_distance(item), [i___1]) and element(fld_distance(item), [i___1]) 
+          <= measuretypes__meter__last)
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C1:  element(fld_times(item), [previous_item(fld_new_idx(item))]) 
+          >= clock__millisecond__first
+     using hypotheses H4, H10 & H11.
+***  Proved C2:  element(fld_times(item), [previous_item(fld_new_idx(item))]) 
+          <= clock__millisecond__last
+     using hypotheses H4, H10 & H11.
+***  Proved C3:  previous_item(fld_new_idx(item)) >= history_count__first
+     using hypothesis H10.
+***  Proved C4:  previous_item(fld_new_idx(item)) <= history_count__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_recent_speed_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

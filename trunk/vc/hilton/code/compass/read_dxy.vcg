@@ -1,0 +1,41 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.44
+
+                         procedure compass.Read_dXY
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 247:
+
+procedure_read_dxy_1.
+H1:    true .
+H2:    last_dxy >= measuretypes__millirad_per_sec__first .
+H3:    last_dxy <= measuretypes__millirad_per_sec__last .
+        ->
+C1:    last_dxy >= measuretypes__millirad_per_sec__first .
+C2:    last_dxy <= measuretypes__millirad_per_sec__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_dxy_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_read_dxy_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_dxy_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+

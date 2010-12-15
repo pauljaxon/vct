@@ -1,0 +1,223 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:41.94*/
+
+                           /*procedure ir.Do_Stare*/
+
+
+rule_family do_stare_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+do_stare_rules(1): state_types__word__first <= element(state_types__ir_values, [I]) may_be_deduced_from [state_types__ir_inactive <= I, I <= state_types__ir_sweep].
+do_stare_rules(2): element(state_types__ir_values, [I]) <= 
+     state_types__word__last may_be_deduced_from [state_types__ir_inactive <= I, I <= state_types__ir_sweep].
+do_stare_rules(3): bus_id may_be_replaced_by rt1553__infrared.
+do_stare_rules(4): integer__size >= 0 may_be_deduced.
+do_stare_rules(5): integer__first may_be_replaced_by -2147483648.
+do_stare_rules(6): integer__last may_be_replaced_by 2147483647.
+do_stare_rules(7): integer__base__first may_be_replaced_by -2147483648.
+do_stare_rules(8): integer__base__last may_be_replaced_by 2147483647.
+do_stare_rules(9): state_types__word__size >= 0 may_be_deduced.
+do_stare_rules(10): state_types__word__first may_be_replaced_by 0.
+do_stare_rules(11): state_types__word__last may_be_replaced_by 65535.
+do_stare_rules(12): state_types__word__base__first may_be_replaced_by -2147483648.
+do_stare_rules(13): state_types__word__base__last may_be_replaced_by 2147483647.
+do_stare_rules(14): state_types__infrared__size >= 0 may_be_deduced.
+do_stare_rules(15): state_types__infrared__first may_be_replaced_by state_types__ir_inactive.
+do_stare_rules(16): state_types__infrared__last may_be_replaced_by state_types__ir_sweep.
+do_stare_rules(17): state_types__infrared__base__first may_be_replaced_by state_types__ir_inactive.
+do_stare_rules(18): state_types__infrared__base__last may_be_replaced_by state_types__ir_sweep.
+do_stare_rules(19): state_types__infrared__pos(
+     state_types__infrared__first) may_be_replaced_by 0.
+do_stare_rules(20): state_types__infrared__pos(
+     state_types__ir_inactive) may_be_replaced_by 0.
+do_stare_rules(21): state_types__infrared__val(0) may_be_replaced_by 
+     state_types__ir_inactive.
+do_stare_rules(22): state_types__infrared__pos(
+     state_types__ir_stare) may_be_replaced_by 1.
+do_stare_rules(23): state_types__infrared__val(1) may_be_replaced_by 
+     state_types__ir_stare.
+do_stare_rules(24): state_types__infrared__pos(
+     state_types__ir_sweep) may_be_replaced_by 2.
+do_stare_rules(25): state_types__infrared__val(2) may_be_replaced_by 
+     state_types__ir_sweep.
+do_stare_rules(26): state_types__infrared__pos(
+     state_types__infrared__last) may_be_replaced_by 2.
+do_stare_rules(27): state_types__infrared__pos(succ(X)) may_be_replaced_by 
+     state_types__infrared__pos(X) + 1
+     if [X <=state_types__ir_sweep, X <> state_types__ir_sweep].
+do_stare_rules(28): state_types__infrared__pos(pred(X)) may_be_replaced_by 
+     state_types__infrared__pos(X) - 1
+     if [X >=state_types__ir_inactive, X <> 
+     state_types__ir_inactive].
+do_stare_rules(29): state_types__infrared__pos(X) >= 0 may_be_deduced_from
+     [state_types__ir_inactive <= X, X <= state_types__ir_sweep].
+do_stare_rules(30): state_types__infrared__pos(X) <= 2 may_be_deduced_from
+     [state_types__ir_inactive <= X, X <= state_types__ir_sweep].
+do_stare_rules(31): state_types__infrared__val(X) >= 
+     state_types__ir_inactive may_be_deduced_from
+     [0 <= X, X <= 2].
+do_stare_rules(32): state_types__infrared__val(X) <= 
+     state_types__ir_sweep may_be_deduced_from
+     [0 <= X, X <= 2].
+do_stare_rules(33): succ(state_types__infrared__val(X)) may_be_replaced_by 
+     state_types__infrared__val(X+1)
+     if [0 <= X, X < 2].
+do_stare_rules(34): pred(state_types__infrared__val(X)) may_be_replaced_by 
+     state_types__infrared__val(X-1)
+     if [0 < X, X <= 2].
+do_stare_rules(35): state_types__infrared__pos(
+     state_types__infrared__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 2].
+do_stare_rules(36): state_types__infrared__val(
+     state_types__infrared__pos(X)) may_be_replaced_by X
+     if [state_types__ir_inactive <= X, X <= 
+     state_types__ir_sweep].
+do_stare_rules(37): state_types__infrared__pos(X) <= 
+     state_types__infrared__pos(Y) & X <= Y are_interchangeable 
+     if [state_types__ir_inactive <= X, X <= 
+     state_types__ir_sweep, state_types__ir_inactive <= Y, Y <= 
+     state_types__ir_sweep].
+do_stare_rules(38): state_types__infrared__val(X) <= 
+     state_types__infrared__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 2, 0 <= Y, Y <= 2].
+do_stare_rules(39): measuretypes__kelvin__size >= 0 may_be_deduced.
+do_stare_rules(40): measuretypes__kelvin__first may_be_replaced_by 0.
+do_stare_rules(41): measuretypes__kelvin__last may_be_replaced_by 6000.
+do_stare_rules(42): measuretypes__kelvin__base__first may_be_replaced_by -2147483648.
+do_stare_rules(43): measuretypes__kelvin__base__last may_be_replaced_by 2147483647.
+do_stare_rules(44): random__value__size >= 0 may_be_deduced.
+do_stare_rules(45): random__value__first may_be_replaced_by 0.
+do_stare_rules(46): random__value__last may_be_replaced_by 63001.
+do_stare_rules(47): random__value__base__first <= random__value__base__last may_be_deduced.
+do_stare_rules(48): random__value__base__first <= random__value__first may_be_deduced.
+do_stare_rules(49): random__value__base__last >= random__value__last may_be_deduced.
+do_stare_rules(50): bus__word_index__size >= 0 may_be_deduced.
+do_stare_rules(51): bus__word_index__first may_be_replaced_by 1.
+do_stare_rules(52): bus__word_index__last may_be_replaced_by 31.
+do_stare_rules(53): bus__word_index__base__first <= 
+     bus__word_index__base__last may_be_deduced.
+do_stare_rules(54): bus__word_index__base__first <= 
+     bus__word_index__first may_be_deduced.
+do_stare_rules(55): bus__word_index__base__last >= 
+     bus__word_index__last may_be_deduced.
+do_stare_rules(56): bus__word__size >= 0 may_be_deduced.
+do_stare_rules(57): bus__word__first may_be_replaced_by 0.
+do_stare_rules(58): bus__word__last may_be_replaced_by 65535.
+do_stare_rules(59): bus__word__base__first may_be_replaced_by -2147483648.
+do_stare_rules(60): bus__word__base__last may_be_replaced_by 2147483647.
+do_stare_rules(61): bus__all_msg_index__size >= 0 may_be_deduced.
+do_stare_rules(62): bus__all_msg_index__first may_be_replaced_by 0.
+do_stare_rules(63): bus__all_msg_index__last may_be_replaced_by 63.
+do_stare_rules(64): bus__all_msg_index__base__first may_be_replaced_by -32768.
+do_stare_rules(65): bus__all_msg_index__base__last may_be_replaced_by 32767.
+do_stare_rules(66): bus__lru_subaddress_index__size >= 0 may_be_deduced.
+do_stare_rules(67): bus__lru_subaddress_index__first may_be_replaced_by 1.
+do_stare_rules(68): bus__lru_subaddress_index__last may_be_replaced_by 8.
+do_stare_rules(69): bus__lru_subaddress_index__base__first may_be_replaced_by -32768.
+do_stare_rules(70): bus__lru_subaddress_index__base__last may_be_replaced_by 32767.
+do_stare_rules(71): rt1553__lru_name__size >= 0 may_be_deduced.
+do_stare_rules(72): rt1553__lru_name__first may_be_replaced_by rt1553__barometer.
+do_stare_rules(73): rt1553__lru_name__last may_be_replaced_by rt1553__warhead.
+do_stare_rules(74): rt1553__lru_name__base__first may_be_replaced_by rt1553__barometer.
+do_stare_rules(75): rt1553__lru_name__base__last may_be_replaced_by rt1553__warhead.
+do_stare_rules(76): rt1553__lru_name__pos(rt1553__lru_name__first) may_be_replaced_by 0.
+do_stare_rules(77): rt1553__lru_name__pos(rt1553__barometer) may_be_replaced_by 0.
+do_stare_rules(78): rt1553__lru_name__val(0) may_be_replaced_by 
+     rt1553__barometer.
+do_stare_rules(79): rt1553__lru_name__pos(rt1553__asi) may_be_replaced_by 1.
+do_stare_rules(80): rt1553__lru_name__val(1) may_be_replaced_by 
+     rt1553__asi.
+do_stare_rules(81): rt1553__lru_name__pos(rt1553__ins) may_be_replaced_by 2.
+do_stare_rules(82): rt1553__lru_name__val(2) may_be_replaced_by 
+     rt1553__ins.
+do_stare_rules(83): rt1553__lru_name__pos(rt1553__compass) may_be_replaced_by 3.
+do_stare_rules(84): rt1553__lru_name__val(3) may_be_replaced_by 
+     rt1553__compass.
+do_stare_rules(85): rt1553__lru_name__pos(rt1553__fuel) may_be_replaced_by 4.
+do_stare_rules(86): rt1553__lru_name__val(4) may_be_replaced_by 
+     rt1553__fuel.
+do_stare_rules(87): rt1553__lru_name__pos(rt1553__fuze) may_be_replaced_by 5.
+do_stare_rules(88): rt1553__lru_name__val(5) may_be_replaced_by 
+     rt1553__fuze.
+do_stare_rules(89): rt1553__lru_name__pos(rt1553__radar) may_be_replaced_by 6.
+do_stare_rules(90): rt1553__lru_name__val(6) may_be_replaced_by 
+     rt1553__radar.
+do_stare_rules(91): rt1553__lru_name__pos(rt1553__infrared) may_be_replaced_by 7.
+do_stare_rules(92): rt1553__lru_name__val(7) may_be_replaced_by 
+     rt1553__infrared.
+do_stare_rules(93): rt1553__lru_name__pos(rt1553__fins) may_be_replaced_by 8.
+do_stare_rules(94): rt1553__lru_name__val(8) may_be_replaced_by 
+     rt1553__fins.
+do_stare_rules(95): rt1553__lru_name__pos(rt1553__motor) may_be_replaced_by 9.
+do_stare_rules(96): rt1553__lru_name__val(9) may_be_replaced_by 
+     rt1553__motor.
+do_stare_rules(97): rt1553__lru_name__pos(rt1553__destruct) may_be_replaced_by 10.
+do_stare_rules(98): rt1553__lru_name__val(10) may_be_replaced_by 
+     rt1553__destruct.
+do_stare_rules(99): rt1553__lru_name__pos(rt1553__warhead) may_be_replaced_by 11.
+do_stare_rules(100): rt1553__lru_name__val(11) may_be_replaced_by 
+     rt1553__warhead.
+do_stare_rules(101): rt1553__lru_name__pos(rt1553__lru_name__last) may_be_replaced_by 11.
+do_stare_rules(102): rt1553__lru_name__pos(succ(X)) may_be_replaced_by 
+     rt1553__lru_name__pos(X) + 1
+     if [X <=rt1553__warhead, X <> rt1553__warhead].
+do_stare_rules(103): rt1553__lru_name__pos(pred(X)) may_be_replaced_by 
+     rt1553__lru_name__pos(X) - 1
+     if [X >=rt1553__barometer, X <> rt1553__barometer].
+do_stare_rules(104): rt1553__lru_name__pos(X) >= 0 may_be_deduced_from
+     [rt1553__barometer <= X, X <= rt1553__warhead].
+do_stare_rules(105): rt1553__lru_name__pos(X) <= 11 may_be_deduced_from
+     [rt1553__barometer <= X, X <= rt1553__warhead].
+do_stare_rules(106): rt1553__lru_name__val(X) >= 
+     rt1553__barometer may_be_deduced_from
+     [0 <= X, X <= 11].
+do_stare_rules(107): rt1553__lru_name__val(X) <= rt1553__warhead may_be_deduced_from
+     [0 <= X, X <= 11].
+do_stare_rules(108): succ(rt1553__lru_name__val(X)) may_be_replaced_by 
+     rt1553__lru_name__val(X+1)
+     if [0 <= X, X < 11].
+do_stare_rules(109): pred(rt1553__lru_name__val(X)) may_be_replaced_by 
+     rt1553__lru_name__val(X-1)
+     if [0 < X, X <= 11].
+do_stare_rules(110): rt1553__lru_name__pos(rt1553__lru_name__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 11].
+do_stare_rules(111): rt1553__lru_name__val(rt1553__lru_name__pos(X)) may_be_replaced_by X
+     if [rt1553__barometer <= X, X <= rt1553__warhead].
+do_stare_rules(112): rt1553__lru_name__pos(X) <= rt1553__lru_name__pos(Y) & X <= Y are_interchangeable 
+     if [rt1553__barometer <= X, X <= rt1553__warhead, 
+     rt1553__barometer <= Y, Y <= rt1553__warhead].
+do_stare_rules(113): rt1553__lru_name__val(X) <= rt1553__lru_name__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 11, 0 <= Y, Y <= 11].
+do_stare_rules(114): ir_cfg__sector_range__size >= 0 may_be_deduced.
+do_stare_rules(115): ir_cfg__sector_range__first may_be_replaced_by -12.
+do_stare_rules(116): ir_cfg__sector_range__last may_be_replaced_by 12.
+do_stare_rules(117): ir_cfg__sector_range__base__first <= 
+     ir_cfg__sector_range__base__last may_be_deduced.
+do_stare_rules(118): ir_cfg__sector_range__base__first <= 
+     ir_cfg__sector_range__first may_be_deduced.
+do_stare_rules(119): ir_cfg__sector_range__base__last >= 
+     ir_cfg__sector_range__last may_be_deduced.
+do_stare_rules(120): kelvin__size >= 0 may_be_deduced.
+do_stare_rules(121): kelvin__first may_be_replaced_by 0.
+do_stare_rules(122): kelvin__last may_be_replaced_by 6000.
+do_stare_rules(123): kelvin__base__first may_be_replaced_by -2147483648.
+do_stare_rules(124): kelvin__base__last may_be_replaced_by 2147483647.
+do_stare_rules(125): sector__size >= 0 may_be_deduced.
+do_stare_rules(126): sector__first may_be_replaced_by -12.
+do_stare_rules(127): sector__last may_be_replaced_by 12.
+do_stare_rules(128): sector__base__first <= sector__base__last may_be_deduced.
+do_stare_rules(129): sector__base__first <= sector__first may_be_deduced.
+do_stare_rules(130): sector__base__last >= sector__last may_be_deduced.
+do_stare_rules(131): cell__size >= 0 may_be_deduced.
+do_stare_rules(132): A = B may_be_deduced_from
+     [goal(checktype(A,cell)),
+      goal(checktype(B,cell)),
+      fld_temp(A) = fld_temp(B)].

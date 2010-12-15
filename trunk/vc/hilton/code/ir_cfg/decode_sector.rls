@@ -1,0 +1,43 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:41.89*/
+
+                       /*function ir_cfg.decode_Sector*/
+
+
+rule_family decode_secto_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+decode_secto_rules(1): integer__size >= 0 may_be_deduced.
+decode_secto_rules(2): integer__first may_be_replaced_by -2147483648.
+decode_secto_rules(3): integer__last may_be_replaced_by 2147483647.
+decode_secto_rules(4): integer__base__first may_be_replaced_by -2147483648.
+decode_secto_rules(5): integer__base__last may_be_replaced_by 2147483647.
+decode_secto_rules(6): long_integer__size >= 0 may_be_deduced.
+decode_secto_rules(7): long_integer__first may_be_replaced_by -2147483648.
+decode_secto_rules(8): long_integer__last may_be_replaced_by 2147483647.
+decode_secto_rules(9): long_integer__base__first may_be_replaced_by -2147483648.
+decode_secto_rules(10): long_integer__base__last may_be_replaced_by 2147483647.
+decode_secto_rules(11): systemtypes__unsigned16__size >= 0 may_be_deduced.
+decode_secto_rules(12): systemtypes__unsigned16__first may_be_replaced_by 0.
+decode_secto_rules(13): systemtypes__unsigned16__last may_be_replaced_by 65535.
+decode_secto_rules(14): systemtypes__unsigned16__base__first may_be_replaced_by -2147483648.
+decode_secto_rules(15): systemtypes__unsigned16__base__last may_be_replaced_by 2147483647.
+decode_secto_rules(16): sector_range__size >= 0 may_be_deduced.
+decode_secto_rules(17): sector_range__first may_be_replaced_by -12.
+decode_secto_rules(18): sector_range__last may_be_replaced_by 12.
+decode_secto_rules(19): sector_range__base__first <= sector_range__base__last may_be_deduced.
+decode_secto_rules(20): sector_range__base__first <= sector_range__first may_be_deduced.
+decode_secto_rules(21): sector_range__base__last >= sector_range__last may_be_deduced.
+decode_secto_rules(22): integer32__size >= 0 may_be_deduced.
+decode_secto_rules(23): integer32__first may_be_replaced_by -2147483648.
+decode_secto_rules(24): integer32__last may_be_replaced_by 2147483647.
+decode_secto_rules(25): integer32__base__first may_be_replaced_by -2147483648.
+decode_secto_rules(26): integer32__base__last may_be_replaced_by 2147483647.

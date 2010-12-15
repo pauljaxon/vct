@@ -1,0 +1,201 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.91
+
+                         procedure motor.Set_thrust
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 128:
+
+procedure_set_thrust_1.
+H1:    true .
+H2:    new_level >= power__first .
+H3:    new_level <= power__last .
+H4:    current_thrust >= power__first .
+H5:    current_thrust <= power__last .
+H6:    commanded_thrust >= power__first .
+H7:    commanded_thrust <= power__last .
+H8:    command_time >= clock__millisecond__first .
+H9:    command_time <= clock__millisecond__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+        ->
+C1:    p__1 >= power__first .
+C2:    p__1 <= power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 129:
+
+procedure_set_thrust_2.
+H1:    true .
+H2:    new_level >= power__first .
+H3:    new_level <= power__last .
+H4:    current_thrust >= power__first .
+H5:    current_thrust <= power__last .
+H6:    commanded_thrust >= power__first .
+H7:    commanded_thrust <= power__last .
+H8:    command_time >= clock__millisecond__first .
+H9:    command_time <= clock__millisecond__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= power__first .
+H15:   p__1 <= power__last .
+        ->
+C1:    p__1 >= power__first .
+C2:    p__1 <= power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 130:
+
+procedure_set_thrust_3.
+H1:    true .
+H2:    new_level >= power__first .
+H3:    new_level <= power__last .
+H4:    current_thrust >= power__first .
+H5:    current_thrust <= power__last .
+H6:    commanded_thrust >= power__first .
+H7:    commanded_thrust <= power__last .
+H8:    command_time >= clock__millisecond__first .
+H9:    command_time <= clock__millisecond__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= power__first .
+H15:   p__1 <= power__last .
+H16:   p__1 >= power__first .
+H17:   p__1 <= power__last .
+        ->
+C1:    new_level >= power__first .
+C2:    new_level <= power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 131:
+
+procedure_set_thrust_4.
+H1:    true .
+H2:    new_level >= power__first .
+H3:    new_level <= power__last .
+H4:    current_thrust >= power__first .
+H5:    current_thrust <= power__last .
+H6:    commanded_thrust >= power__first .
+H7:    commanded_thrust <= power__last .
+H8:    command_time >= clock__millisecond__first .
+H9:    command_time <= clock__millisecond__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= power__first .
+H15:   p__1 <= power__last .
+H16:   p__1 >= power__first .
+H17:   p__1 <= power__last .
+H18:   new_level >= power__first .
+H19:   new_level <= power__last .
+H20:   t__2 >= clock__millisecond__first .
+H21:   t__2 <= clock__millisecond__last .
+H22:   true .
+        ->
+C1:    t__2 >= clock__millisecond__first .
+C2:    t__2 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 133:
+
+procedure_set_thrust_5.
+H1:    true .
+H2:    new_level >= power__first .
+H3:    new_level <= power__last .
+H4:    current_thrust >= power__first .
+H5:    current_thrust <= power__last .
+H6:    commanded_thrust >= power__first .
+H7:    commanded_thrust <= power__last .
+H8:    command_time >= clock__millisecond__first .
+H9:    command_time <= clock__millisecond__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= power__first .
+H15:   p__1 <= power__last .
+H16:   p__1 >= power__first .
+H17:   p__1 <= power__last .
+H18:   new_level >= power__first .
+H19:   new_level <= power__last .
+H20:   t__2 >= clock__millisecond__first .
+H21:   t__2 <= clock__millisecond__last .
+H22:   true .
+H23:   t__2 >= clock__millisecond__first .
+H24:   t__2 <= clock__millisecond__last .
+H25:   true .
+H26:   time_valid__2 .
+H27:   t__2 >= clock__millisecond__first .
+H28:   t__2 <= clock__millisecond__last .
+        ->
+C1:    t__2 >= clock__millisecond__first .
+C2:    t__2 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 135:
+
+procedure_set_thrust_6.
+H1:    true .
+H2:    new_level >= power__first .
+H3:    new_level <= power__last .
+H4:    current_thrust >= power__first .
+H5:    current_thrust <= power__last .
+H6:    commanded_thrust >= power__first .
+H7:    commanded_thrust <= power__last .
+H8:    command_time >= clock__millisecond__first .
+H9:    command_time <= clock__millisecond__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= power__first .
+H15:   p__1 <= power__last .
+H16:   p__1 >= power__first .
+H17:   p__1 <= power__last .
+H18:   new_level >= power__first .
+H19:   new_level <= power__last .
+H20:   t__2 >= clock__millisecond__first .
+H21:   t__2 <= clock__millisecond__last .
+H22:   true .
+H23:   t__2 >= clock__millisecond__first .
+H24:   t__2 <= clock__millisecond__last .
+H25:   true .
+H26:   not time_valid__2 .
+        ->
+C1:    0 >= clock__millisecond__first .
+C2:    0 <= clock__millisecond__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_set_thrust_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_thrust_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_set_thrust_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_thrust_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+

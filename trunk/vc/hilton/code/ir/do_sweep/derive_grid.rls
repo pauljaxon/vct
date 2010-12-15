@@ -1,0 +1,75 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:41.97*/
+
+                     /*procedure ir.Do_Sweep.Derive_Grid*/
+
+
+rule_family derive_grid_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+derive_grid_rules(1): long_integer__size >= 0 may_be_deduced.
+derive_grid_rules(2): long_integer__first may_be_replaced_by -2147483648.
+derive_grid_rules(3): long_integer__last may_be_replaced_by 2147483647.
+derive_grid_rules(4): long_integer__base__first may_be_replaced_by -2147483648.
+derive_grid_rules(5): long_integer__base__last may_be_replaced_by 2147483647.
+derive_grid_rules(6): measuretypes__kelvin__size >= 0 may_be_deduced.
+derive_grid_rules(7): measuretypes__kelvin__first may_be_replaced_by 0.
+derive_grid_rules(8): measuretypes__kelvin__last may_be_replaced_by 6000.
+derive_grid_rules(9): measuretypes__kelvin__base__first may_be_replaced_by -2147483648.
+derive_grid_rules(10): measuretypes__kelvin__base__last may_be_replaced_by 2147483647.
+derive_grid_rules(11): measuretypes__bit_range__size >= 0 may_be_deduced.
+derive_grid_rules(12): measuretypes__bit_range__first may_be_replaced_by 0.
+derive_grid_rules(13): measuretypes__bit_range__last may_be_replaced_by 255.
+derive_grid_rules(14): measuretypes__bit_range__base__first <= 
+     measuretypes__bit_range__base__last may_be_deduced.
+derive_grid_rules(15): measuretypes__bit_range__base__first <= 
+     measuretypes__bit_range__first may_be_deduced.
+derive_grid_rules(16): measuretypes__bit_range__base__last >= 
+     measuretypes__bit_range__last may_be_deduced.
+derive_grid_rules(17): measuretypes__bit4_range__size >= 0 may_be_deduced.
+derive_grid_rules(18): measuretypes__bit4_range__first may_be_replaced_by 0.
+derive_grid_rules(19): measuretypes__bit4_range__last may_be_replaced_by 3.
+derive_grid_rules(20): measuretypes__bit4_range__base__first <= 
+     measuretypes__bit4_range__base__last may_be_deduced.
+derive_grid_rules(21): measuretypes__bit4_range__base__first <= 
+     measuretypes__bit4_range__first may_be_deduced.
+derive_grid_rules(22): measuretypes__bit4_range__base__last >= 
+     measuretypes__bit4_range__last may_be_deduced.
+derive_grid_rules(23): ir_cfg__sector_range__size >= 0 may_be_deduced.
+derive_grid_rules(24): ir_cfg__sector_range__first may_be_replaced_by -12.
+derive_grid_rules(25): ir_cfg__sector_range__last may_be_replaced_by 12.
+derive_grid_rules(26): ir_cfg__sector_range__base__first <= 
+     ir_cfg__sector_range__base__last may_be_deduced.
+derive_grid_rules(27): ir_cfg__sector_range__base__first <= 
+     ir_cfg__sector_range__first may_be_deduced.
+derive_grid_rules(28): ir_cfg__sector_range__base__last >= 
+     ir_cfg__sector_range__last may_be_deduced.
+derive_grid_rules(29): kelvin__size >= 0 may_be_deduced.
+derive_grid_rules(30): kelvin__first may_be_replaced_by 0.
+derive_grid_rules(31): kelvin__last may_be_replaced_by 6000.
+derive_grid_rules(32): kelvin__base__first may_be_replaced_by -2147483648.
+derive_grid_rules(33): kelvin__base__last may_be_replaced_by 2147483647.
+derive_grid_rules(34): sector__size >= 0 may_be_deduced.
+derive_grid_rules(35): sector__first may_be_replaced_by -12.
+derive_grid_rules(36): sector__last may_be_replaced_by 12.
+derive_grid_rules(37): sector__base__first <= sector__base__last may_be_deduced.
+derive_grid_rules(38): sector__base__first <= sector__first may_be_deduced.
+derive_grid_rules(39): sector__base__last >= sector__last may_be_deduced.
+derive_grid_rules(40): integer32__size >= 0 may_be_deduced.
+derive_grid_rules(41): integer32__first may_be_replaced_by -2147483648.
+derive_grid_rules(42): integer32__last may_be_replaced_by 2147483647.
+derive_grid_rules(43): integer32__base__first may_be_replaced_by -2147483648.
+derive_grid_rules(44): integer32__base__last may_be_replaced_by 2147483647.
+derive_grid_rules(45): cell__size >= 0 may_be_deduced.
+derive_grid_rules(46): A = B may_be_deduced_from
+     [goal(checktype(A,cell)),
+      goal(checktype(B,cell)),
+      fld_temp(A) = fld_temp(B)].

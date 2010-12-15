@@ -1,0 +1,72 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.02*/
+
+                       /*function State_Types.ir_Action*/
+
+
+rule_family ir_action_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+ir_action_rules(1): word__first <= element(ir_values, [I]) may_be_deduced_from [ir_inactive <= I, I <= ir_sweep].
+ir_action_rules(2): element(ir_values, [I]) <= word__last may_be_deduced_from [ir_inactive <= I, I <= ir_sweep].
+ir_action_rules(3): integer__size >= 0 may_be_deduced.
+ir_action_rules(4): integer__first may_be_replaced_by -2147483648.
+ir_action_rules(5): integer__last may_be_replaced_by 2147483647.
+ir_action_rules(6): integer__base__first may_be_replaced_by -2147483648.
+ir_action_rules(7): integer__base__last may_be_replaced_by 2147483647.
+ir_action_rules(8): word__size >= 0 may_be_deduced.
+ir_action_rules(9): word__first may_be_replaced_by 0.
+ir_action_rules(10): word__last may_be_replaced_by 65535.
+ir_action_rules(11): word__base__first may_be_replaced_by -2147483648.
+ir_action_rules(12): word__base__last may_be_replaced_by 2147483647.
+ir_action_rules(13): infrared__size >= 0 may_be_deduced.
+ir_action_rules(14): infrared__first may_be_replaced_by ir_inactive.
+ir_action_rules(15): infrared__last may_be_replaced_by ir_sweep.
+ir_action_rules(16): infrared__base__first may_be_replaced_by ir_inactive.
+ir_action_rules(17): infrared__base__last may_be_replaced_by ir_sweep.
+ir_action_rules(18): infrared__pos(infrared__first) may_be_replaced_by 0.
+ir_action_rules(19): infrared__pos(ir_inactive) may_be_replaced_by 0.
+ir_action_rules(20): infrared__val(0) may_be_replaced_by 
+     ir_inactive.
+ir_action_rules(21): infrared__pos(ir_stare) may_be_replaced_by 1.
+ir_action_rules(22): infrared__val(1) may_be_replaced_by ir_stare.
+ir_action_rules(23): infrared__pos(ir_sweep) may_be_replaced_by 2.
+ir_action_rules(24): infrared__val(2) may_be_replaced_by ir_sweep.
+ir_action_rules(25): infrared__pos(infrared__last) may_be_replaced_by 2.
+ir_action_rules(26): infrared__pos(succ(X)) may_be_replaced_by 
+     infrared__pos(X) + 1
+     if [X <=ir_sweep, X <> ir_sweep].
+ir_action_rules(27): infrared__pos(pred(X)) may_be_replaced_by 
+     infrared__pos(X) - 1
+     if [X >=ir_inactive, X <> ir_inactive].
+ir_action_rules(28): infrared__pos(X) >= 0 may_be_deduced_from
+     [ir_inactive <= X, X <= ir_sweep].
+ir_action_rules(29): infrared__pos(X) <= 2 may_be_deduced_from
+     [ir_inactive <= X, X <= ir_sweep].
+ir_action_rules(30): infrared__val(X) >= ir_inactive may_be_deduced_from
+     [0 <= X, X <= 2].
+ir_action_rules(31): infrared__val(X) <= ir_sweep may_be_deduced_from
+     [0 <= X, X <= 2].
+ir_action_rules(32): succ(infrared__val(X)) may_be_replaced_by 
+     infrared__val(X+1)
+     if [0 <= X, X < 2].
+ir_action_rules(33): pred(infrared__val(X)) may_be_replaced_by 
+     infrared__val(X-1)
+     if [0 < X, X <= 2].
+ir_action_rules(34): infrared__pos(infrared__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 2].
+ir_action_rules(35): infrared__val(infrared__pos(X)) may_be_replaced_by X
+     if [ir_inactive <= X, X <= ir_sweep].
+ir_action_rules(36): infrared__pos(X) <= infrared__pos(Y) & X <= Y are_interchangeable 
+     if [ir_inactive <= X, X <= ir_sweep, ir_inactive <= Y, Y <= 
+     ir_sweep].
+ir_action_rules(37): infrared__val(X) <= infrared__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 2, 0 <= Y, Y <= 2].

@@ -1,0 +1,49 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.77
+
+Line
+   1  -- Dynamic drag computation
+   2  -- $Log: drag.ads,v $
+   3  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   4  -- Added from tarfile
+   5  --
+   6  --
+   7  -- Revision 1.1  2003/08/12 18:11:40  adi
+   8  -- Initial revision
+   9  --
+  10  --
+  11  
+  12  with Measuretypes;
+  13  use type measuretypes.meter;
+  14  use type measuretypes.meter_per_sec;
+  15  use type measuretypes.cm_per_sec_2;
+  16  --# inherit measuretypes, constants;
+  17  package Drag
+  18  is
+  19     type Drag_Coefficient is range 1..1000;
+  20  
+  21     subtype pos_meter is measuretypes.meter range 0.. measuretypes.meter'last;
+  22     subtype Pos_Meter_Per_Sec is Measuretypes.Meter_Per_Sec
+  23       range 0 .. Measuretypes.Meter_Per_Sec'last;
+  24     subtype cm_Per_Sec_2 is Measuretypes.cM_Per_Sec_2;
+  25  
+  26     procedure Calc_Drag(Profile    : in Drag_Coefficient;
+  27                         Speed      : in Pos_Meter_Per_Sec;
+  28                         Altitude   : in Pos_Meter;
+  29                         Drag_force : out measuretypes.newton);
+  30     --# derives Drag_force from Speed, Profile, Altitude;
+  31  
+  32     procedure testpoint;
+  33     --# derives ;
+  34  end Drag;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

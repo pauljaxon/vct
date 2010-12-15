@@ -1,0 +1,95 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:39
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure bc1553.Write_Word
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_write_word_1.  @@@@@@@@@@
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  lru_name__first <= dest
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  lru_name__first <= dest
+***  Proved C3:  subaddress_idx >= bus__lru_subaddress_index__first
+     using hypothesis H6.
+***  Proved C4:  subaddress_idx <= bus__lru_subaddress_index__last
+     using hypothesis H7.
+***  Proved C5:  idx >= bus__word_index__first
+     using hypothesis H4.
+***  Proved C6:  idx <= bus__word_index__last
+     using hypothesis H5.
+***  Proved C7:  data >= bus__word__first
+     using hypothesis H2.
+***  Proved C8:  data <= bus__word__last
+     using hypothesis H3.
+***  Proved C9:  lru_name__first <= dest
+     using hypothesis H8.
+***  Proved C10:  dest <= lru_name__last
+     using hypothesis H9.
+-S-  Applied substitution rule write_word_rules(30).
+     This was achieved by replacing all occurrences of bus__lru_index__first by:
+          1.
+<S>  New C1:  element(lru_names, [dest]) >= 1
+-S-  Applied substitution rule write_word_rules(31).
+     This was achieved by replacing all occurrences of bus__lru_index__last by:
+          12.
+<S>  New C2:  element(lru_names, [dest]) <= 12
+-S-  Applied substitution rule write_word_rules(9).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H4:  idx >= 1
+-S-  Applied substitution rule write_word_rules(10).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H5:  idx <= 31
+-S-  Applied substitution rule write_word_rules(15).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  data >= 0
+-S-  Applied substitution rule write_word_rules(16).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  data <= 65535
+-S-  Applied substitution rule write_word_rules(25).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H6:  subaddress_idx >= 1
+-S-  Applied substitution rule write_word_rules(26).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H7:  subaddress_idx <= 8
+-S-  Applied substitution rule write_word_rules(36).
+     This was achieved by replacing all occurrences of lru_name__first by:
+          barometer.
+<S>  New H8:  barometer <= dest
+-S-  Applied substitution rule write_word_rules(37).
+     This was achieved by replacing all occurrences of lru_name__last by:
+          warhead.
+<S>  New H9:  dest <= warhead
+---  Eliminated hypothesis H1 (true-hypothesis).
+***  Proved C1:  element(lru_names, [dest]) >= 1
+     using hypotheses H8 & H9.
+***  Proved C2:  element(lru_names, [dest]) <= 12
+     using hypotheses H8 & H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_write_word_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

@@ -1,0 +1,235 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:41  SIMPLIFIED 25-NOV-2009, 14:18:54
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure Radar.Read_Location
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_read_location_1.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+***  Proved C3:  sy >= sector__first
+     using hypothesis H4.
+***  Proved C4:  sy <= sector__last
+     using hypothesis H5.
+***  Proved C5:  sx >= sector__first
+     using hypothesis H2.
+***  Proved C6:  sx <= sector__last
+     using hypothesis H3.
+-S-  Applied substitution rule read_locatio_rules(18).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H7:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+<S>  New C1:  fld_distance(element(element(detect_points, [sx]), [sy])) >= - 
+          200000
+-S-  Applied substitution rule read_locatio_rules(19).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H7:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= 200000))
+<S>  New C2:  fld_distance(element(element(detect_points, [sx]), [sy])) <= 
+          200000
+-S-  Applied substitution rule read_locatio_rules(23).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+-S-  Applied substitution rule read_locatio_rules(24).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= 5000))
+-S-  Applied substitution rule read_locatio_rules(28).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H2:  sx >= - 20
+<S>  New H4:  sy >= - 20
+<S>  New H7:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) and fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) <= 5000))
+-S-  Applied substitution rule read_locatio_rules(29).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H3:  sx <= 20
+<S>  New H5:  sy <= 20
+<S>  New H7:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+***  Proved C1:  fld_distance(element(element(detect_points, [sx]), [sy])) >= - 
+          200000
+     using hypotheses H2, H3, H4, H5 & H7.
+***  Proved C2:  fld_distance(element(element(detect_points, [sx]), [sy])) <= 
+          200000
+     using hypotheses H2, H3, H4, H5 & H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_location_2.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter_per_sec__first <= fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) and fld_rel_vel(element(
+          element(detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> meter__first <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H3)
+          .
+***  Proved C3:  sy >= sector__first
+     using hypothesis H4.
+***  Proved C4:  sy <= sector__last
+     using hypothesis H5.
+***  Proved C5:  sx >= sector__first
+     using hypothesis H2.
+***  Proved C6:  sx <= sector__last
+     using hypothesis H3.
+-S-  Applied substitution rule read_locatio_rules(23).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= meter_per_sec__last))
+<S>  New C1:  fld_rel_vel(element(element(detect_points, [sx]), [sy])) >= - 5000
+-S-  Applied substitution rule read_locatio_rules(24).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H6:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 5000 <= fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) and fld_rel_vel(element(element(
+          detect_points, [i___1]), [i___2])) <= 5000))
+<S>  New C2:  fld_rel_vel(element(element(detect_points, [sx]), [sy])) <= 5000
+-S-  Applied substitution rule read_locatio_rules(18).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H7:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= meter__last))
+<S>  New H8:  fld_distance(element(element(detect_points, [sx]), [sy])) >= - 
+          200000
+-S-  Applied substitution rule read_locatio_rules(19).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H9:  fld_distance(element(element(detect_points, [sx]), [sy])) <= 
+          200000
+<S>  New H7:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> - 200000 <= fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) and fld_distance(element(element(
+          detect_points, [i___1]), [i___2])) <= 200000))
+-S-  Applied substitution rule read_locatio_rules(28).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 20.
+<S>  New H2:  sx >= - 20
+<S>  New H4:  sy >= - 20
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 5000 <= fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) and fld_rel_vel(element(element(detect_points, [i___1]), [
+          i___2])) <= 5000))
+<S>  New H7:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 20 <= i___1 and i___1 <= sector__last 
+          -> - 200000 <= fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) and fld_distance(element(element(detect_points, [i___1]), [
+          i___2])) <= 200000))
+-S-  Applied substitution rule read_locatio_rules(29).
+     This was achieved by replacing all occurrences of sector__last by:
+          20.
+<S>  New H3:  sx <= 20
+<S>  New H5:  sy <= 20
+<S>  New H6:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 5000 <= 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_rel_vel(element(element(detect_points, [i___1]), [i___2])) <= 
+          5000))
+<S>  New H7:  for_all(i___2 : integer, - 20 <= i___2 and i___2 <= 20 -> for_all(
+          i___1 : integer, - 20 <= i___1 and i___1 <= 20 -> - 200000 <= 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_distance(element(element(detect_points, [i___1]), [i___2])) <= 
+          200000))
+***  Proved C1:  fld_rel_vel(element(element(detect_points, [sx]), [sy])) >= - 
+          5000
+     using hypotheses H2, H3, H4, H5 & H6.
+***  Proved C2:  fld_rel_vel(element(element(detect_points, [sx]), [sy])) <= 
+          5000
+     using hypotheses H2, H3, H4, H5 & H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_location_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_location_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_location_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

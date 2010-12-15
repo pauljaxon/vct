@@ -1,0 +1,129 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.16
+
+Line
+   1  --=head1 NAME
+   2  --
+   3  -- Warhead_Cfg - warhead configuration
+   4  --
+   5  --=head1 REVISION HISTORY
+   6  --
+   7  -- $Log: warhead_cfg.ads,v $
+   8  -- Revision 1.2  2005/01/24 19:19:05  adi
+   9  -- Hacked to implement logging
+  10  --
+  11  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+  12  -- Added from tarfile
+  13  --
+  14  --
+  15  -- Revision 1.1  2003/09/01 18:25:50  adi
+  16  -- Initial revision
+  17  --
+  18  --=cut
+  19  
+  20  with Systemtypes;
+  21  --# inherit systemtypes;
+  22  package Warhead_Cfg
+  23  is
+  24  
+  25     --=head1 TYPES
+  26     --
+  27     --=over 4
+  28  
+  29     --=item *
+  30     --
+  31     type State is (Inactive,Awake,Armed,Final,Detonated);
+  32     --
+  33     --Basic state of the warhead.
+  34  
+  35     --=item *
+  36     --
+  37     type State_Code_Table is array (State) of
+  38       Systemtypes.Unsigned16;
+  39     --
+  40     --Type for a lookup table on status codes
+  41  
+  42     --=item *
+  43     --
+  44     State_To_Code : constant State_Code_Table :=
+  45       State_Code_Table'(Inactive  => 0,
+  46                         Awake     => 16#54a3#,
+  47                         Armed     => 16#9054#,
+  48                         Final     => 16#7df2#,
+  49                         Detonated => 16#386c#);
+  50     --
+  51     --Status codes for reporting on the bus
+  52  
+  53     --=back
+  54     --
+  55     --=head1 SUBPROGRAMS
+  56     --
+  57     --=over 4
+  58  
+  59     --=item *
+  60     --
+  61     function Code_To_State(C : Systemtypes.Unsigned16)
+  62                           return State;
+  63     --
+  64     --Reverse lookup of a status code given a bus value.
+  65     --Default for no match is C<Invalid>.
+  66  
+  67     --=item *
+  68     --
+  69     function Transition(Old_state : State;
+  70                         New_Code  : Systemtypes.Unsigned16)
+  71                        return State;
+  72     --
+  73     --Given the previous reported code and the new code,
+  74     --update the state of the warhead I<if> the transition
+  75     --is a valid one.  E.g. jumping from C<Awake> to C<Final> is
+  76     --not valid.
+  77  
+  78     --=back
+  79     --
+  80     --=cut
+  81  end Warhead_Cfg;
+  82  
+  83  --=head1 NOTES
+  84  --
+  85  --This package contains specific configuration information for
+  86  --the C<Warhead> package.  It provides information common for
+  87  --simulation and interfacing, specifying bus codes for the
+  88  --warhead states.
+  89  --
+  90  --=head1 AUTHOR
+  91  --
+  92  --Adrian J. Hilton.  Home web page at L<http://www.suslik.org/>
+  93  --
+  94  --=head1 LICENSE
+  95  --
+  96  --Copyright (C) 2003-2005, Adrian J. Hilton
+  97  --
+  98  --This program is free software; you can redistribute it and/or modify
+  99  --it under the terms of the GNU General Public License as published by
+ 100  --the Free Software Foundation; either version 2 of the License, or
+ 101  --(at your option) any later version.
+ 102  --
+ 103  --This program is distributed in the hope that it will be useful,
+ 104  --but WITHOUT ANY WARRANTY; without even the implied warranty of
+ 105  --MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ 106  --GNU General Public License for more details.
+ 107  --
+ 108  --You should have received a copy of the GNU General Public License
+ 109  --along with this program; if not, write to the Free Software
+ 110  --Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 111  --
+ 112  --=cut
+ 113  
+ 114  
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

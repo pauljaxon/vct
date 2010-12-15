@@ -1,0 +1,125 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.03
+
+Line
+   1  --=head1 NAME
+   2  --
+   3  -- Watchdog - watchdog timer
+   4  --
+   5  --=head1 REVISION HISTORY
+   6  --
+   7  -- $Log: watchdog.ads,v $
+   8  -- Revision 1.2  2005/01/24 19:19:05  adi
+   9  -- Hacked to implement logging
+  10  --
+  11  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+  12  -- Added from tarfile
+  13  --
+  14  --
+  15  -- Revision 1.1  2003/02/09 19:48:11  adi
+  16  -- Initial revision
+  17  --
+  18  --
+  19  --=cut
+  20  
+  21  --# inherit Clock;
+  22  package Watchdog
+  23    --# own State;
+  24    --# initializes State;
+  25  is
+  26     --=head1 TYPES
+  27     --
+  28     --=over 4
+  29     --
+  30     --=cut
+  31  
+  32     --=item *
+  33     --
+  34     type Timer_Check is (Timeout,OK,Invalid);
+  35     --
+  36     --A status code to see whether the current watchdog has
+  37     --timed out (C<Timeout>), has broken (C<Invalid>) or is
+  38     --all right (C<OK>).
+  39     --
+  40     --=cut
+  41  
+  42     --=back
+  43     --
+  44     --=head1 SUBPROGRAMS
+  45     --
+  46     --=over 4
+  47  
+  48     --=item *
+  49     --
+  50     procedure Reset;
+  51     --# global    out State;
+  52     --#        in out Clock.Time;
+  53     --# derives
+  54     --#   State,
+  55     --#   Clock.Time
+  56     --#     from  Clock.Time;
+  57     --
+  58     --The public watchdog reset procedure.  Must be called
+  59     --periodically to stop the system being reset.
+  60  
+  61     --=item *
+  62     --
+  63     procedure Check_Timeout(V : out Timer_Check);
+  64     --# global in     State;
+  65     --#        in out Clock.Time;
+  66     --# derives
+  67     --#   Clock.Time
+  68     --#     from *
+  69     --# &
+  70     --#   V
+  71     --#   from  State,
+  72     --#         Clock.Time;
+  73     --
+  74     --Check to see what state the watchdog is in currently.
+  75  
+  76     --=back
+  77     --
+  78     --=cut
+  79  end Watchdog;
+  80  
+  81  --=head1 NOTES
+  82  --
+  83  --This package is a simple implementation of a watchdog timer
+  84  --interface.  It tracks the time between resets, and if this is
+  85  --too long (750ms, configured in the package body) it will
+  86  --indicate a Timeout on the subsequent checks.
+  87  --
+  88  --=head1 AUTHOR
+  89  --
+  90  --Adrian J. Hilton.  Home web page at L<http://www.suslik.org/>
+  91  --
+  92  --=head1 LICENSE
+  93  --
+  94  --Copyright (C) 2003-2005, Adrian J. Hilton
+  95  --
+  96  --This program is free software; you can redistribute it and/or modify
+  97  --it under the terms of the GNU General Public License as published by
+  98  --the Free Software Foundation; either version 2 of the License, or
+  99  --(at your option) any later version.
+ 100  --
+ 101  --This program is distributed in the hope that it will be useful,
+ 102  --but WITHOUT ANY WARRANTY; without even the implied warranty of
+ 103  --MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ 104  --GNU General Public License for more details.
+ 105  --
+ 106  --You should have received a copy of the GNU General Public License
+ 107  --along with this program; if not, write to the Free Software
+ 108  --Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 109  --
+ 110  --=cut
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

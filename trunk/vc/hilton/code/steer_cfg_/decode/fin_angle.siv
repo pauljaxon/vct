@@ -1,0 +1,50 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:41
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function decode.Fin_Angle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 26:
+
+function_fin_angle_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 27:
+
+function_fin_angle_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 28:
+
+function_fin_angle_3.
+H1:    b >= 0 .
+H2:    b <= 65535 .
+H3:    integer__size >= 0 .
+H4:    bus__word__size >= 0 .
+H5:    steer_cfg__fin_angle__size >= 0 .
+H6:    steer_cfg__fin_angle__base__first <= steer_cfg__fin_angle__base__last .
+H7:    steer_cfg__fin_angle__base__first <= - 57 .
+H8:    steer_cfg__fin_angle__base__last >= 57 .
+       ->
+C1:    b <= 114 .
+
+
+For path(s) from start to finish:
+
+function_fin_angle_4.
+*** true .          /* all conclusions proved */
+
+

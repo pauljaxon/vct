@@ -1,0 +1,82 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.20
+
+Line
+   1  -- MCU interface to the barometer over the bus
+   2  --
+   3  -- $Log: if_barometer.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.4  2003/09/10 20:08:36  adi
+   9  -- Added IBIT state accessor
+  10  --
+  11  -- Revision 1.3  2003/02/19 19:11:57  adi
+  12  -- Added Command stub
+  13  --
+  14  -- Revision 1.2  2003/02/12 23:22:54  adi
+  15  -- Added Init procedure
+  16  --
+  17  -- Revision 1.1  2003/02/11 20:37:13  adi
+  18  -- Initial revision
+  19  --
+  20  --
+  21  with SystemTypes, MeasureTypes, Ibit;
+  22  use type MeasureTypes.Meter;
+  23  --# inherit SystemTypes, MeasureTypes, Bus, Ibit,
+  24  --# bc1553;
+  25  package If_Barometer
+  26    --# own State;
+  27    --# initializes State;
+  28  is
+  29     -- Get the IBIT state
+  30     function Get_IBIT_State return IBIT.Phase;
+  31     --# global State;
+  32  
+  33     -- Find out the current height and its validity
+  34     procedure Get_Height(Height : out MeasureTypes.Meter;
+  35                          Valid  : out Boolean);
+  36     --# global in State;
+  37     --# derives Height, Valid from State;
+  38  
+  39     -- Kick off a barometer IBIT
+  40     procedure Ibit_Start;
+  41     --# global in out Bus.Outputs, State;
+  42     --# derives Bus.Outputs from * &
+  43     --#         State from *;
+  44  
+  45     -- Stop a barometer IBIT
+  46     procedure Ibit_Stop;
+  47     --# global in out Bus.Outputs, State;
+  48     --# derives Bus.Outputs from * &
+  49     --#         State from *;
+  50  
+  51     -- Poll the bus
+  52     procedure Poll;
+  53     --# global in out State;
+  54     --#        in Bus.Inputs;
+  55     --# derives State from *, Bus.Inputs;
+  56  
+  57     -- Initialise
+  58     procedure Init;
+  59     --# global out State;
+  60     --#        in out Bus.Outputs;
+  61     --# derives State from &
+  62     --#         Bus.Outputs from *;
+  63  
+  64     -- test point
+  65     procedure Command;
+  66     --# derives;
+  67  end If_Barometer;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

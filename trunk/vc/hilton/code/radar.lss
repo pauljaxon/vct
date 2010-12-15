@@ -1,0 +1,105 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:41.00
+
+Line
+   1  -- RADAR simulator
+   2  --
+   3  -- $Log: radar.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.6  2003/08/25 13:29:19  adi
+   9  -- Use measuretypes.encode
+  10  --
+  11  -- Revision 1.5  2003/08/24 18:44:58  adi
+  12  -- Amended cycle anno
+  13  --
+  14  -- Revision 1.4  2003/08/23 13:42:53  adi
+  15  -- Added state_types
+  16  --
+  17  -- Revision 1.3  2003/08/22 18:21:37  adi
+  18  -- Changed accessing to 2-d not 1-d
+  19  --
+  20  -- Revision 1.2  2003/08/20 21:14:59  adi
+  21  -- Corrected use of clock.time
+  22  --
+  23  -- Revision 1.1  2003/08/18 19:49:33  adi
+  24  -- Initial revision
+  25  --
+  26  --
+  27  with MeasureTypes,Clock,Radar_Cfg,random;
+  28  use type MeasureTypes.Meter;
+  29  use type MeasureTypes.Meter_Per_Sec;
+  30  use type Clock.Millisecond;
+  31  use type Radar_Cfg.Sector_Range;
+  32  use type Random.Value;
+  33  --# inherit MeasureTypes, measuretypes.encode,
+  34  --#         Bus, Rt1553,
+  35  --#         Clock, Clock_Utils,
+  36  --#         random, SystemTypes, state_types,
+  37  --#         IBIT, Bit_Machine, radar_cfg;
+  38  package Radar
+  39    --# own State;
+  40    --# initializes State;
+  41  is
+  42     -- Type renamings for brevity
+  43     subtype Meter is Measuretypes.Meter;
+  44     subtype Meter_Per_Sec is MeasureTypes.Meter_Per_Sec;
+  45     subtype Sector is Radar_Cfg.Sector_Range;
+  46  
+  47     -- Cone of detection is 800 millirads left and right of axis
+  48     -- Detection distance up to 10,000m
+  49     -- Accuracy is +- 20millirads
+  50     -- Also detects velocity relative to missile long axis
+  51  
+  52     -- Cycle the reading of data from the bus
+  53     -- and writing of data to the bus
+  54     procedure Cycle;
+  55     --# global in out State;
+  56     --#        in Bus.Outputs;
+  57     --#        in out Bus.Inputs;
+  58     --# derives State from *, Bus.Outputs &
+  59     --#        Bus.Inputs from *, State, bus.outputs;
+  60  
+  61  
+  62     procedure Set_Bearing_Return(Sx, Sy : in Sector;
+  63                                  D : in Meter;
+  64                                  V : in Meter_Per_sec);
+  65     --# global in out State;
+  66     --# derives State from *, Sx, Sy, D, V;
+  67  
+  68     -- Read what's at a bearing
+  69     procedure Read_Location(Sx, Sy : in Sector;
+  70                             D : out Meter;
+  71                             V : out Meter_Per_sec);
+  72     --# global in     State;
+  73     --# derives D, V from State, Sx, Sy;
+  74  
+  75     -- Cause the next BIT to fail
+  76     procedure Fail_Next_Bit;
+  77     --# global in out State;
+  78     --# derives State from *;
+  79  
+  80     procedure Init;
+  81     --# global out State;
+  82     --#        in out Bus.Inputs;
+  83     --# derives State from &
+  84     --#         Bus.Inputs from *;
+  85  
+  86     -- Test stub
+  87     procedure Command;
+  88     --# derives;
+  89  
+  90  end Radar;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

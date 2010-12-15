@@ -1,0 +1,352 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.56
+
+                      function bus_encode.Encode_Bool8
+
+
+
+
+For path(s) from start to assertion of line 20:
+
+function_encode_bool8_1.
+H1:    true .
+H2:    true .
+        ->
+C1:    0 >= 0 .
+C2:    1 >= 1 .
+C3:    true .
+C4:    bus_decode__bit8__first >= bus_decode__bit8__first .
+C5:    bus_decode__bit8__first <= bus_decode__bit8__last .
+C6:    bus_decode__bit8__first >= bus_decode__bit8__first .
+C7:    bus_decode__bit8__first <= bus_decode__bit8__last .
+ 
+
+For path(s) from assertion of line 20 to assertion of line 20:
+
+function_encode_bool8_2.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    true .
+H4:    loop__1__idx >= bus_decode__bit8__first .
+H5:    loop__1__idx <= bus_decode__bit8__last .
+H6:    loop__1__idx >= bus_decode__bit8__first .
+H7:    loop__1__idx <= bus_decode__bit8__last .
+H8:    loop__1__idx >= bus_decode__bit8__first .
+H9:    loop__1__idx <= bus_decode__bit8__last .
+H10:   element(data, [loop__1__idx]) .
+H11:   word >= bus__word__first .
+H12:   word <= bus__word__last .
+H13:   value >= bus__word__first .
+H14:   value <= bus__word__last .
+H15:   word + value >= bus__word__first .
+H16:   word + value <= bus__word__last .
+H17:   value >= bus__word__first .
+H18:   value <= bus__word__last .
+H19:   value < 128 .
+H20:   value >= bus__word__first .
+H21:   value <= bus__word__last .
+H22:   value * 2 >= bus__word__first .
+H23:   value * 2 <= bus__word__last .
+H24:   not (loop__1__idx = bus_decode__bit8__last) .
+        ->
+C1:    word + value >= 0 .
+C2:    value * 2 >= 1 .
+C3:    true .
+C4:    loop__1__idx + 1 >= bus_decode__bit8__first .
+C5:    loop__1__idx + 1 <= bus_decode__bit8__last .
+C6:    loop__1__idx + 1 >= bus_decode__bit8__first .
+C7:    loop__1__idx + 1 <= bus_decode__bit8__last .
+ 
+
+function_encode_bool8_3.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    true .
+H4:    loop__1__idx >= bus_decode__bit8__first .
+H5:    loop__1__idx <= bus_decode__bit8__last .
+H6:    loop__1__idx >= bus_decode__bit8__first .
+H7:    loop__1__idx <= bus_decode__bit8__last .
+H8:    loop__1__idx >= bus_decode__bit8__first .
+H9:    loop__1__idx <= bus_decode__bit8__last .
+H10:   not (element(data, [loop__1__idx])) .
+H11:   value >= bus__word__first .
+H12:   value <= bus__word__last .
+H13:   value < 128 .
+H14:   value >= bus__word__first .
+H15:   value <= bus__word__last .
+H16:   value * 2 >= bus__word__first .
+H17:   value * 2 <= bus__word__last .
+H18:   not (loop__1__idx = bus_decode__bit8__last) .
+        ->
+C1:    word >= 0 .
+C2:    value * 2 >= 1 .
+C3:    true .
+C4:    loop__1__idx + 1 >= bus_decode__bit8__first .
+C5:    loop__1__idx + 1 <= bus_decode__bit8__last .
+C6:    loop__1__idx + 1 >= bus_decode__bit8__first .
+C7:    loop__1__idx + 1 <= bus_decode__bit8__last .
+ 
+
+function_encode_bool8_4.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    true .
+H4:    loop__1__idx >= bus_decode__bit8__first .
+H5:    loop__1__idx <= bus_decode__bit8__last .
+H6:    loop__1__idx >= bus_decode__bit8__first .
+H7:    loop__1__idx <= bus_decode__bit8__last .
+H8:    loop__1__idx >= bus_decode__bit8__first .
+H9:    loop__1__idx <= bus_decode__bit8__last .
+H10:   element(data, [loop__1__idx]) .
+H11:   word >= bus__word__first .
+H12:   word <= bus__word__last .
+H13:   value >= bus__word__first .
+H14:   value <= bus__word__last .
+H15:   word + value >= bus__word__first .
+H16:   word + value <= bus__word__last .
+H17:   value >= bus__word__first .
+H18:   value <= bus__word__last .
+H19:   not (value < 128) .
+H20:   not (loop__1__idx = bus_decode__bit8__last) .
+        ->
+C1:    word + value >= 0 .
+C2:    value >= 1 .
+C3:    true .
+C4:    loop__1__idx + 1 >= bus_decode__bit8__first .
+C5:    loop__1__idx + 1 <= bus_decode__bit8__last .
+C6:    loop__1__idx + 1 >= bus_decode__bit8__first .
+C7:    loop__1__idx + 1 <= bus_decode__bit8__last .
+ 
+
+function_encode_bool8_5.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    true .
+H4:    loop__1__idx >= bus_decode__bit8__first .
+H5:    loop__1__idx <= bus_decode__bit8__last .
+H6:    loop__1__idx >= bus_decode__bit8__first .
+H7:    loop__1__idx <= bus_decode__bit8__last .
+H8:    loop__1__idx >= bus_decode__bit8__first .
+H9:    loop__1__idx <= bus_decode__bit8__last .
+H10:   not (element(data, [loop__1__idx])) .
+H11:   value >= bus__word__first .
+H12:   value <= bus__word__last .
+H13:   not (value < 128) .
+H14:   not (loop__1__idx = bus_decode__bit8__last) .
+        ->
+C1:    word >= 0 .
+C2:    value >= 1 .
+C3:    true .
+C4:    loop__1__idx + 1 >= bus_decode__bit8__first .
+C5:    loop__1__idx + 1 <= bus_decode__bit8__last .
+C6:    loop__1__idx + 1 >= bus_decode__bit8__first .
+C7:    loop__1__idx + 1 <= bus_decode__bit8__last .
+ 
+
+For path(s) from assertion of line 20 to run-time check associated with statement of line 21:
+
+function_encode_bool8_6.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    true .
+H4:    loop__1__idx >= bus_decode__bit8__first .
+H5:    loop__1__idx <= bus_decode__bit8__last .
+H6:    loop__1__idx >= bus_decode__bit8__first .
+H7:    loop__1__idx <= bus_decode__bit8__last .
+        ->
+C1:    loop__1__idx >= bus_decode__bit8__first .
+C2:    loop__1__idx <= bus_decode__bit8__last .
+ 
+
+For path(s) from assertion of line 20 to run-time check associated with statement of line 22:
+
+function_encode_bool8_7.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    true .
+H4:    loop__1__idx >= bus_decode__bit8__first .
+H5:    loop__1__idx <= bus_decode__bit8__last .
+H6:    loop__1__idx >= bus_decode__bit8__first .
+H7:    loop__1__idx <= bus_decode__bit8__last .
+H8:    loop__1__idx >= bus_decode__bit8__first .
+H9:    loop__1__idx <= bus_decode__bit8__last .
+H10:   element(data, [loop__1__idx]) .
+H11:   word >= bus__word__first .
+H12:   word <= bus__word__last .
+H13:   value >= bus__word__first .
+H14:   value <= bus__word__last .
+        ->
+C1:    word + value >= bus__word__first .
+C2:    word + value <= bus__word__last .
+ 
+
+For path(s) from assertion of line 20 to run-time check associated with statement of line 25:
+
+function_encode_bool8_8.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    true .
+H4:    loop__1__idx >= bus_decode__bit8__first .
+H5:    loop__1__idx <= bus_decode__bit8__last .
+H6:    loop__1__idx >= bus_decode__bit8__first .
+H7:    loop__1__idx <= bus_decode__bit8__last .
+H8:    loop__1__idx >= bus_decode__bit8__first .
+H9:    loop__1__idx <= bus_decode__bit8__last .
+H10:   element(data, [loop__1__idx]) .
+H11:   word >= bus__word__first .
+H12:   word <= bus__word__last .
+H13:   value >= bus__word__first .
+H14:   value <= bus__word__last .
+H15:   word + value >= bus__word__first .
+H16:   word + value <= bus__word__last .
+H17:   value >= bus__word__first .
+H18:   value <= bus__word__last .
+H19:   value < 128 .
+H20:   value >= bus__word__first .
+H21:   value <= bus__word__last .
+        ->
+C1:    value * 2 >= bus__word__first .
+C2:    value * 2 <= bus__word__last .
+ 
+
+function_encode_bool8_9.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    true .
+H4:    loop__1__idx >= bus_decode__bit8__first .
+H5:    loop__1__idx <= bus_decode__bit8__last .
+H6:    loop__1__idx >= bus_decode__bit8__first .
+H7:    loop__1__idx <= bus_decode__bit8__last .
+H8:    loop__1__idx >= bus_decode__bit8__first .
+H9:    loop__1__idx <= bus_decode__bit8__last .
+H10:   not (element(data, [loop__1__idx])) .
+H11:   value >= bus__word__first .
+H12:   value <= bus__word__last .
+H13:   value < 128 .
+H14:   value >= bus__word__first .
+H15:   value <= bus__word__last .
+        ->
+C1:    value * 2 >= bus__word__first .
+C2:    value * 2 <= bus__word__last .
+ 
+
+For path(s) from assertion of line 20 to finish:
+
+function_encode_bool8_10.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    true .
+H4:    loop__1__idx >= bus_decode__bit8__first .
+H5:    loop__1__idx <= bus_decode__bit8__last .
+H6:    loop__1__idx >= bus_decode__bit8__first .
+H7:    loop__1__idx <= bus_decode__bit8__last .
+H8:    loop__1__idx >= bus_decode__bit8__first .
+H9:    loop__1__idx <= bus_decode__bit8__last .
+H10:   element(data, [loop__1__idx]) .
+H11:   word >= bus__word__first .
+H12:   word <= bus__word__last .
+H13:   value >= bus__word__first .
+H14:   value <= bus__word__last .
+H15:   word + value >= bus__word__first .
+H16:   word + value <= bus__word__last .
+H17:   value >= bus__word__first .
+H18:   value <= bus__word__last .
+H19:   value < 128 .
+H20:   value >= bus__word__first .
+H21:   value <= bus__word__last .
+H22:   value * 2 >= bus__word__first .
+H23:   value * 2 <= bus__word__last .
+H24:   loop__1__idx = bus_decode__bit8__last .
+H25:   word + value >= bus__word__first .
+H26:   word + value <= bus__word__last .
+        ->
+C1:    true .
+C2:    word + value >= bus__word__first .
+C3:    word + value <= bus__word__last .
+ 
+
+function_encode_bool8_11.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    true .
+H4:    loop__1__idx >= bus_decode__bit8__first .
+H5:    loop__1__idx <= bus_decode__bit8__last .
+H6:    loop__1__idx >= bus_decode__bit8__first .
+H7:    loop__1__idx <= bus_decode__bit8__last .
+H8:    loop__1__idx >= bus_decode__bit8__first .
+H9:    loop__1__idx <= bus_decode__bit8__last .
+H10:   not (element(data, [loop__1__idx])) .
+H11:   value >= bus__word__first .
+H12:   value <= bus__word__last .
+H13:   value < 128 .
+H14:   value >= bus__word__first .
+H15:   value <= bus__word__last .
+H16:   value * 2 >= bus__word__first .
+H17:   value * 2 <= bus__word__last .
+H18:   loop__1__idx = bus_decode__bit8__last .
+H19:   word >= bus__word__first .
+H20:   word <= bus__word__last .
+        ->
+C1:    true .
+C2:    word >= bus__word__first .
+C3:    word <= bus__word__last .
+ 
+
+function_encode_bool8_12.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    true .
+H4:    loop__1__idx >= bus_decode__bit8__first .
+H5:    loop__1__idx <= bus_decode__bit8__last .
+H6:    loop__1__idx >= bus_decode__bit8__first .
+H7:    loop__1__idx <= bus_decode__bit8__last .
+H8:    loop__1__idx >= bus_decode__bit8__first .
+H9:    loop__1__idx <= bus_decode__bit8__last .
+H10:   element(data, [loop__1__idx]) .
+H11:   word >= bus__word__first .
+H12:   word <= bus__word__last .
+H13:   value >= bus__word__first .
+H14:   value <= bus__word__last .
+H15:   word + value >= bus__word__first .
+H16:   word + value <= bus__word__last .
+H17:   value >= bus__word__first .
+H18:   value <= bus__word__last .
+H19:   not (value < 128) .
+H20:   loop__1__idx = bus_decode__bit8__last .
+H21:   word + value >= bus__word__first .
+H22:   word + value <= bus__word__last .
+        ->
+C1:    true .
+C2:    word + value >= bus__word__first .
+C3:    word + value <= bus__word__last .
+ 
+
+function_encode_bool8_13.
+H1:    word >= 0 .
+H2:    value >= 1 .
+H3:    true .
+H4:    loop__1__idx >= bus_decode__bit8__first .
+H5:    loop__1__idx <= bus_decode__bit8__last .
+H6:    loop__1__idx >= bus_decode__bit8__first .
+H7:    loop__1__idx <= bus_decode__bit8__last .
+H8:    loop__1__idx >= bus_decode__bit8__first .
+H9:    loop__1__idx <= bus_decode__bit8__last .
+H10:   not (element(data, [loop__1__idx])) .
+H11:   value >= bus__word__first .
+H12:   value <= bus__word__last .
+H13:   not (value < 128) .
+H14:   loop__1__idx = bus_decode__bit8__last .
+H15:   word >= bus__word__first .
+H16:   word <= bus__word__last .
+        ->
+C1:    true .
+C2:    word >= bus__word__first .
+C3:    word <= bus__word__last .
+ 
+

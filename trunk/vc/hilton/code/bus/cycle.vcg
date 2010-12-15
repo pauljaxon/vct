@@ -1,0 +1,1074 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.19
+
+                            procedure bus.Cycle
+
+
+
+
+For path(s) from start to assertion of line 539:
+
+procedure_cycle_1.
+H1:    true .
+H2:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H3:    true .
+H4:    true .
+H5:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H6:    true .
+H7:    true .
+H8:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H9:    true .
+H10:   true .
+H11:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H12:   true .
+H13:   true .
+        ->
+C1:    valid_msg_index__first >= valid_msg_index__first .
+C2:    valid_msg_index__first <= valid_msg_index__last .
+C3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+C4:    true .
+C5:    true .
+C6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+C7:    true .
+C8:    true .
+C9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+C10:   true .
+C11:   true .
+C12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+C13:   true .
+C14:   true .
+C15:   valid_msg_index__first >= valid_msg_index__first .
+C16:   valid_msg_index__first <= valid_msg_index__last .
+C17:   valid_msg_index__first >= valid_msg_index__first .
+C18:   valid_msg_index__first <= valid_msg_index__last .
+ 
+
+For path(s) from assertion of line 551 to assertion of line 539:
+
+procedure_cycle_2.
+H1:    loop__1__i >= valid_msg_index__first .
+H2:    loop__1__i <= valid_msg_index__last .
+H3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H4:    true .
+H5:    true .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H7:    true .
+H8:    true .
+H9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H10:   true .
+H11:   true .
+H12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H13:   true .
+H14:   true .
+H15:   loop__1__i >= valid_msg_index__first .
+H16:   loop__1__i <= valid_msg_index__last .
+H17:   loop__1__i >= valid_msg_index__first .
+H18:   loop__1__i <= valid_msg_index__last .
+H19:   (not (fld_fresh(element(shadow_outputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H20:   (not (fld_fresh(element(shadow_outputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H21:   loop__1__i >= valid_msg_index__first .
+H22:   loop__1__i <= valid_msg_index__last .
+H23:   fld_fresh(element(shadow_outputs, [loop__1__i])) or (fld_valid(element(
+           shadow_outputs, [loop__1__i])) and (not (fld_valid(element(
+           real_outputs, [loop__1__i]))))) .
+H24:   loop__1__i >= valid_msg_index__first .
+H25:   loop__1__i <= valid_msg_index__last .
+H26:   loop__1__i >= valid_msg_index__first .
+H27:   loop__1__i <= valid_msg_index__last .
+H28:   loop__1__i >= valid_msg_index__first .
+H29:   loop__1__i <= valid_msg_index__last .
+H30:   loop__1__i >= valid_msg_index__first .
+H31:   loop__1__i <= valid_msg_index__last .
+H32:   loop__1__i >= valid_msg_index__first .
+H33:   loop__1__i <= valid_msg_index__last .
+H34:   not (loop__1__i = valid_msg_index__last) .
+        ->
+C1:    loop__1__i + 1 >= valid_msg_index__first .
+C2:    loop__1__i + 1 <= valid_msg_index__last .
+C3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+C4:    true .
+C5:    true .
+C6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+C7:    true .
+C8:    true .
+C9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(update(
+           real_outputs, [loop__1__i], element(
+           shadow_outputs, [loop__1__i])), [i___1])), [
+           i___2]) >= word__first) and (element(fld_data(element(update(
+           real_outputs, [loop__1__i], element(
+           shadow_outputs, [loop__1__i])), [i___1])), [
+           i___2]) <= word__last))))) .
+C10:   true .
+C11:   true .
+C12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(update(update(
+           shadow_outputs, [loop__1__i], null_message), [
+           loop__1__i], upf_valid(element(update(
+           shadow_outputs, [loop__1__i], null_message), [
+           loop__1__i]), fld_valid(element(update(
+           real_outputs, [loop__1__i], element(
+           shadow_outputs, [loop__1__i])), [loop__1__i])))), [
+           i___1])), [i___2]) >= word__first) and (element(fld_data(element(update(update(
+           shadow_outputs, [loop__1__i], null_message), [
+           loop__1__i], upf_valid(element(update(
+           shadow_outputs, [loop__1__i], null_message), [
+           loop__1__i]), fld_valid(element(update(
+           real_outputs, [loop__1__i], element(
+           shadow_outputs, [loop__1__i])), [loop__1__i])))), [
+           i___1])), [i___2]) <= word__last))))) .
+C13:   true .
+C14:   true .
+C15:   loop__1__i + 1 >= valid_msg_index__first .
+C16:   loop__1__i + 1 <= valid_msg_index__last .
+C17:   loop__1__i + 1 >= valid_msg_index__first .
+C18:   loop__1__i + 1 <= valid_msg_index__last .
+ 
+
+procedure_cycle_3.
+H1:    loop__1__i >= valid_msg_index__first .
+H2:    loop__1__i <= valid_msg_index__last .
+H3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H4:    true .
+H5:    true .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H7:    true .
+H8:    true .
+H9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H10:   true .
+H11:   true .
+H12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H13:   true .
+H14:   true .
+H15:   loop__1__i >= valid_msg_index__first .
+H16:   loop__1__i <= valid_msg_index__last .
+H17:   loop__1__i >= valid_msg_index__first .
+H18:   loop__1__i <= valid_msg_index__last .
+H19:   (not (fld_fresh(element(shadow_outputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H20:   (not (fld_fresh(element(shadow_outputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H21:   loop__1__i >= valid_msg_index__first .
+H22:   loop__1__i <= valid_msg_index__last .
+H23:   not (fld_fresh(element(shadow_outputs, [loop__1__i])) or (
+           fld_valid(element(shadow_outputs, [loop__1__i])) and (not (
+           fld_valid(element(real_outputs, [loop__1__i])))))) .
+H24:   not (loop__1__i = valid_msg_index__last) .
+        ->
+C1:    loop__1__i + 1 >= valid_msg_index__first .
+C2:    loop__1__i + 1 <= valid_msg_index__last .
+C3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+C4:    true .
+C5:    true .
+C6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+C7:    true .
+C8:    true .
+C9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+C10:   true .
+C11:   true .
+C12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+C13:   true .
+C14:   true .
+C15:   loop__1__i + 1 >= valid_msg_index__first .
+C16:   loop__1__i + 1 <= valid_msg_index__last .
+C17:   loop__1__i + 1 >= valid_msg_index__first .
+C18:   loop__1__i + 1 <= valid_msg_index__last .
+ 
+
+For path(s) from assertion of line 539 to run-time check associated with statement of line 541:
+
+procedure_cycle_4.
+H1:    loop__1__i >= valid_msg_index__first .
+H2:    loop__1__i <= valid_msg_index__last .
+H3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H4:    true .
+H5:    true .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H7:    true .
+H8:    true .
+H9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H10:   true .
+H11:   true .
+H12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H13:   true .
+H14:   true .
+H15:   loop__1__i >= valid_msg_index__first .
+H16:   loop__1__i <= valid_msg_index__last .
+H17:   loop__1__i >= valid_msg_index__first .
+H18:   loop__1__i <= valid_msg_index__last .
+        ->
+C1:    (not (fld_fresh(element(shadow_inputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+C2:    (not (fld_fresh(element(shadow_inputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+C3:    loop__1__i >= valid_msg_index__first .
+C4:    loop__1__i <= valid_msg_index__last .
+ 
+
+For path(s) from assertion of line 539 to run-time check associated with statement of line 545:
+
+procedure_cycle_5.
+H1:    loop__1__i >= valid_msg_index__first .
+H2:    loop__1__i <= valid_msg_index__last .
+H3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H4:    true .
+H5:    true .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H7:    true .
+H8:    true .
+H9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H10:   true .
+H11:   true .
+H12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H13:   true .
+H14:   true .
+H15:   loop__1__i >= valid_msg_index__first .
+H16:   loop__1__i <= valid_msg_index__last .
+H17:   loop__1__i >= valid_msg_index__first .
+H18:   loop__1__i <= valid_msg_index__last .
+H19:   (not (fld_fresh(element(shadow_inputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H20:   (not (fld_fresh(element(shadow_inputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H21:   loop__1__i >= valid_msg_index__first .
+H22:   loop__1__i <= valid_msg_index__last .
+H23:   fld_fresh(element(shadow_inputs, [loop__1__i])) or (fld_valid(element(
+           shadow_inputs, [loop__1__i])) and (not (fld_valid(element(
+           real_inputs, [loop__1__i]))))) .
+        ->
+C1:    loop__1__i >= valid_msg_index__first .
+C2:    loop__1__i <= valid_msg_index__last .
+C3:    loop__1__i >= valid_msg_index__first .
+C4:    loop__1__i <= valid_msg_index__last .
+ 
+
+For path(s) from assertion of line 539 to run-time check associated with statement of line 547:
+
+procedure_cycle_6.
+H1:    loop__1__i >= valid_msg_index__first .
+H2:    loop__1__i <= valid_msg_index__last .
+H3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H4:    true .
+H5:    true .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H7:    true .
+H8:    true .
+H9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H10:   true .
+H11:   true .
+H12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H13:   true .
+H14:   true .
+H15:   loop__1__i >= valid_msg_index__first .
+H16:   loop__1__i <= valid_msg_index__last .
+H17:   loop__1__i >= valid_msg_index__first .
+H18:   loop__1__i <= valid_msg_index__last .
+H19:   (not (fld_fresh(element(shadow_inputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H20:   (not (fld_fresh(element(shadow_inputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H21:   loop__1__i >= valid_msg_index__first .
+H22:   loop__1__i <= valid_msg_index__last .
+H23:   fld_fresh(element(shadow_inputs, [loop__1__i])) or (fld_valid(element(
+           shadow_inputs, [loop__1__i])) and (not (fld_valid(element(
+           real_inputs, [loop__1__i]))))) .
+H24:   loop__1__i >= valid_msg_index__first .
+H25:   loop__1__i <= valid_msg_index__last .
+H26:   loop__1__i >= valid_msg_index__first .
+H27:   loop__1__i <= valid_msg_index__last .
+        ->
+C1:    loop__1__i >= valid_msg_index__first .
+C2:    loop__1__i <= valid_msg_index__last .
+ 
+
+For path(s) from assertion of line 539 to run-time check associated with statement of line 549:
+
+procedure_cycle_7.
+H1:    loop__1__i >= valid_msg_index__first .
+H2:    loop__1__i <= valid_msg_index__last .
+H3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H4:    true .
+H5:    true .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H7:    true .
+H8:    true .
+H9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H10:   true .
+H11:   true .
+H12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H13:   true .
+H14:   true .
+H15:   loop__1__i >= valid_msg_index__first .
+H16:   loop__1__i <= valid_msg_index__last .
+H17:   loop__1__i >= valid_msg_index__first .
+H18:   loop__1__i <= valid_msg_index__last .
+H19:   (not (fld_fresh(element(shadow_inputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H20:   (not (fld_fresh(element(shadow_inputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H21:   loop__1__i >= valid_msg_index__first .
+H22:   loop__1__i <= valid_msg_index__last .
+H23:   fld_fresh(element(shadow_inputs, [loop__1__i])) or (fld_valid(element(
+           shadow_inputs, [loop__1__i])) and (not (fld_valid(element(
+           real_inputs, [loop__1__i]))))) .
+H24:   loop__1__i >= valid_msg_index__first .
+H25:   loop__1__i <= valid_msg_index__last .
+H26:   loop__1__i >= valid_msg_index__first .
+H27:   loop__1__i <= valid_msg_index__last .
+H28:   loop__1__i >= valid_msg_index__first .
+H29:   loop__1__i <= valid_msg_index__last .
+        ->
+C1:    loop__1__i >= valid_msg_index__first .
+C2:    loop__1__i <= valid_msg_index__last .
+C3:    loop__1__i >= valid_msg_index__first .
+C4:    loop__1__i <= valid_msg_index__last .
+ 
+
+For path(s) from assertion of line 539 to assertion of line 551:
+
+procedure_cycle_8.
+H1:    loop__1__i >= valid_msg_index__first .
+H2:    loop__1__i <= valid_msg_index__last .
+H3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H4:    true .
+H5:    true .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H7:    true .
+H8:    true .
+H9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H10:   true .
+H11:   true .
+H12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H13:   true .
+H14:   true .
+H15:   loop__1__i >= valid_msg_index__first .
+H16:   loop__1__i <= valid_msg_index__last .
+H17:   loop__1__i >= valid_msg_index__first .
+H18:   loop__1__i <= valid_msg_index__last .
+H19:   (not (fld_fresh(element(shadow_inputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H20:   (not (fld_fresh(element(shadow_inputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H21:   loop__1__i >= valid_msg_index__first .
+H22:   loop__1__i <= valid_msg_index__last .
+H23:   fld_fresh(element(shadow_inputs, [loop__1__i])) or (fld_valid(element(
+           shadow_inputs, [loop__1__i])) and (not (fld_valid(element(
+           real_inputs, [loop__1__i]))))) .
+H24:   loop__1__i >= valid_msg_index__first .
+H25:   loop__1__i <= valid_msg_index__last .
+H26:   loop__1__i >= valid_msg_index__first .
+H27:   loop__1__i <= valid_msg_index__last .
+H28:   loop__1__i >= valid_msg_index__first .
+H29:   loop__1__i <= valid_msg_index__last .
+H30:   loop__1__i >= valid_msg_index__first .
+H31:   loop__1__i <= valid_msg_index__last .
+H32:   loop__1__i >= valid_msg_index__first .
+H33:   loop__1__i <= valid_msg_index__last .
+        ->
+C1:    loop__1__i >= valid_msg_index__first .
+C2:    loop__1__i <= valid_msg_index__last .
+C3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(update(
+           real_inputs, [loop__1__i], element(shadow_inputs, [
+           loop__1__i])), [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(update(real_inputs, [loop__1__i], element(
+           shadow_inputs, [loop__1__i])), [i___1])), [i___2]) <= 
+           word__last))))) .
+C4:    true .
+C5:    true .
+C6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(update(update(
+           shadow_inputs, [loop__1__i], null_message), [
+           loop__1__i], upf_valid(element(update(
+           shadow_inputs, [loop__1__i], null_message), [
+           loop__1__i]), fld_valid(element(update(
+           real_inputs, [loop__1__i], element(shadow_inputs, [
+           loop__1__i])), [loop__1__i])))), [i___1])), [
+           i___2]) >= word__first) and (element(fld_data(element(update(update(
+           shadow_inputs, [loop__1__i], null_message), [
+           loop__1__i], upf_valid(element(update(
+           shadow_inputs, [loop__1__i], null_message), [
+           loop__1__i]), fld_valid(element(update(
+           real_inputs, [loop__1__i], element(shadow_inputs, [
+           loop__1__i])), [loop__1__i])))), [i___1])), [
+           i___2]) <= word__last))))) .
+C7:    true .
+C8:    true .
+C9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+C10:   true .
+C11:   true .
+C12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+C13:   true .
+C14:   true .
+C15:   loop__1__i >= valid_msg_index__first .
+C16:   loop__1__i <= valid_msg_index__last .
+C17:   loop__1__i >= valid_msg_index__first .
+C18:   loop__1__i <= valid_msg_index__last .
+ 
+
+procedure_cycle_9.
+H1:    loop__1__i >= valid_msg_index__first .
+H2:    loop__1__i <= valid_msg_index__last .
+H3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H4:    true .
+H5:    true .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H7:    true .
+H8:    true .
+H9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H10:   true .
+H11:   true .
+H12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H13:   true .
+H14:   true .
+H15:   loop__1__i >= valid_msg_index__first .
+H16:   loop__1__i <= valid_msg_index__last .
+H17:   loop__1__i >= valid_msg_index__first .
+H18:   loop__1__i <= valid_msg_index__last .
+H19:   (not (fld_fresh(element(shadow_inputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H20:   (not (fld_fresh(element(shadow_inputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H21:   loop__1__i >= valid_msg_index__first .
+H22:   loop__1__i <= valid_msg_index__last .
+H23:   not (fld_fresh(element(shadow_inputs, [loop__1__i])) or (
+           fld_valid(element(shadow_inputs, [loop__1__i])) and (not (
+           fld_valid(element(real_inputs, [loop__1__i])))))) .
+        ->
+C1:    loop__1__i >= valid_msg_index__first .
+C2:    loop__1__i <= valid_msg_index__last .
+C3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+C4:    true .
+C5:    true .
+C6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+C7:    true .
+C8:    true .
+C9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+C10:   true .
+C11:   true .
+C12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+C13:   true .
+C14:   true .
+C15:   loop__1__i >= valid_msg_index__first .
+C16:   loop__1__i <= valid_msg_index__last .
+C17:   loop__1__i >= valid_msg_index__first .
+C18:   loop__1__i <= valid_msg_index__last .
+ 
+
+For path(s) from assertion of line 551 to run-time check associated with statement of line 553:
+
+procedure_cycle_10.
+H1:    loop__1__i >= valid_msg_index__first .
+H2:    loop__1__i <= valid_msg_index__last .
+H3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H4:    true .
+H5:    true .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H7:    true .
+H8:    true .
+H9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H10:   true .
+H11:   true .
+H12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H13:   true .
+H14:   true .
+H15:   loop__1__i >= valid_msg_index__first .
+H16:   loop__1__i <= valid_msg_index__last .
+H17:   loop__1__i >= valid_msg_index__first .
+H18:   loop__1__i <= valid_msg_index__last .
+        ->
+C1:    (not (fld_fresh(element(shadow_outputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+C2:    (not (fld_fresh(element(shadow_outputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+C3:    loop__1__i >= valid_msg_index__first .
+C4:    loop__1__i <= valid_msg_index__last .
+ 
+
+For path(s) from assertion of line 551 to run-time check associated with statement of line 557:
+
+procedure_cycle_11.
+H1:    loop__1__i >= valid_msg_index__first .
+H2:    loop__1__i <= valid_msg_index__last .
+H3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H4:    true .
+H5:    true .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H7:    true .
+H8:    true .
+H9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H10:   true .
+H11:   true .
+H12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H13:   true .
+H14:   true .
+H15:   loop__1__i >= valid_msg_index__first .
+H16:   loop__1__i <= valid_msg_index__last .
+H17:   loop__1__i >= valid_msg_index__first .
+H18:   loop__1__i <= valid_msg_index__last .
+H19:   (not (fld_fresh(element(shadow_outputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H20:   (not (fld_fresh(element(shadow_outputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H21:   loop__1__i >= valid_msg_index__first .
+H22:   loop__1__i <= valid_msg_index__last .
+H23:   fld_fresh(element(shadow_outputs, [loop__1__i])) or (fld_valid(element(
+           shadow_outputs, [loop__1__i])) and (not (fld_valid(element(
+           real_outputs, [loop__1__i]))))) .
+        ->
+C1:    loop__1__i >= valid_msg_index__first .
+C2:    loop__1__i <= valid_msg_index__last .
+C3:    loop__1__i >= valid_msg_index__first .
+C4:    loop__1__i <= valid_msg_index__last .
+ 
+
+For path(s) from assertion of line 551 to run-time check associated with statement of line 559:
+
+procedure_cycle_12.
+H1:    loop__1__i >= valid_msg_index__first .
+H2:    loop__1__i <= valid_msg_index__last .
+H3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H4:    true .
+H5:    true .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H7:    true .
+H8:    true .
+H9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H10:   true .
+H11:   true .
+H12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H13:   true .
+H14:   true .
+H15:   loop__1__i >= valid_msg_index__first .
+H16:   loop__1__i <= valid_msg_index__last .
+H17:   loop__1__i >= valid_msg_index__first .
+H18:   loop__1__i <= valid_msg_index__last .
+H19:   (not (fld_fresh(element(shadow_outputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H20:   (not (fld_fresh(element(shadow_outputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H21:   loop__1__i >= valid_msg_index__first .
+H22:   loop__1__i <= valid_msg_index__last .
+H23:   fld_fresh(element(shadow_outputs, [loop__1__i])) or (fld_valid(element(
+           shadow_outputs, [loop__1__i])) and (not (fld_valid(element(
+           real_outputs, [loop__1__i]))))) .
+H24:   loop__1__i >= valid_msg_index__first .
+H25:   loop__1__i <= valid_msg_index__last .
+H26:   loop__1__i >= valid_msg_index__first .
+H27:   loop__1__i <= valid_msg_index__last .
+        ->
+C1:    loop__1__i >= valid_msg_index__first .
+C2:    loop__1__i <= valid_msg_index__last .
+ 
+
+For path(s) from assertion of line 551 to run-time check associated with statement of line 560:
+
+procedure_cycle_13.
+H1:    loop__1__i >= valid_msg_index__first .
+H2:    loop__1__i <= valid_msg_index__last .
+H3:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H4:    true .
+H5:    true .
+H6:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_inputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H7:    true .
+H8:    true .
+H9:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H10:   true .
+H11:   true .
+H12:   for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           shadow_outputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(shadow_outputs, [i___1])), [
+           i___2]) <= word__last))))) .
+H13:   true .
+H14:   true .
+H15:   loop__1__i >= valid_msg_index__first .
+H16:   loop__1__i <= valid_msg_index__last .
+H17:   loop__1__i >= valid_msg_index__first .
+H18:   loop__1__i <= valid_msg_index__last .
+H19:   (not (fld_fresh(element(shadow_outputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H20:   (not (fld_fresh(element(shadow_outputs, [loop__1__i])))) -> ((
+           loop__1__i >= valid_msg_index__first) and (
+           loop__1__i <= valid_msg_index__last)) .
+H21:   loop__1__i >= valid_msg_index__first .
+H22:   loop__1__i <= valid_msg_index__last .
+H23:   fld_fresh(element(shadow_outputs, [loop__1__i])) or (fld_valid(element(
+           shadow_outputs, [loop__1__i])) and (not (fld_valid(element(
+           real_outputs, [loop__1__i]))))) .
+H24:   loop__1__i >= valid_msg_index__first .
+H25:   loop__1__i <= valid_msg_index__last .
+H26:   loop__1__i >= valid_msg_index__first .
+H27:   loop__1__i <= valid_msg_index__last .
+H28:   loop__1__i >= valid_msg_index__first .
+H29:   loop__1__i <= valid_msg_index__last .
+        ->
+C1:    loop__1__i >= valid_msg_index__first .
+C2:    loop__1__i <= valid_msg_index__last .
+C3:    loop__1__i >= valid_msg_index__first .
+C4:    loop__1__i <= valid_msg_index__last .
+ 
+
+For path(s) from assertion of line 551 to finish:
+
+procedure_cycle_14.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_15.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_cycle_16.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_17.
+*** true .          /* trivially true VC removed by Examiner */
+
+

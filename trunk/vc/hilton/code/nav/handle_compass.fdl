@@ -1,0 +1,50 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:44.10}
+
+                        {procedure nav.Handle_compass}
+
+
+title procedure handle_compass;
+
+  function round__(real) : integer;
+  type measuretypes__angle_degrees = integer;
+  type measuretypes__millirad = pending;
+  type sensor_status = (unknown, valid, failed, restarted);
+  const sensor_status__base__last : sensor_status = pending; 
+  const sensor_status__base__first : sensor_status = pending; 
+  const sensor_history__angle_degrees__base__last : integer = pending; 
+  const sensor_history__angle_degrees__base__first : integer = pending; 
+  const measuretypes__angle_degrees__base__last : integer = pending; 
+  const measuretypes__angle_degrees__base__first : integer = pending; 
+  const sensor_status__size : integer = pending; 
+  const sensor_status__last : sensor_status = pending; 
+  const sensor_status__first : sensor_status = pending; 
+  const sensor_history__angle_degrees__size : integer = pending; 
+  const sensor_history__angle_degrees__last : integer = pending; 
+  const sensor_history__angle_degrees__first : integer = pending; 
+  const measuretypes__angle_degrees__size : integer = pending; 
+  const measuretypes__angle_degrees__last : integer = pending; 
+  const measuretypes__angle_degrees__first : integer = pending; 
+  var compass_ss : sensor_status;
+  var restart : boolean;
+  var bearing_mr_xy : integer;
+  var bearing_mr_yz : integer;
+  var compass_valid1 : boolean;
+  var compass_valid2 : boolean;
+  function measuretypes__angle_ops__round_degree(integer) : integer;
+  var bearing_mr_yz__6 : integer;
+  var bearing_mr_xy__5 : integer;
+  var compass_valid2__6 : boolean;
+  var compass_valid1__5 : boolean;
+  var bearing_mr_yz__2 : integer;
+  var bearing_mr_xy__1 : integer;
+  var compass_valid2__2 : boolean;
+  var compass_valid1__1 : boolean;
+
+end;

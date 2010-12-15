@@ -1,0 +1,118 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.07
+
+                       procedure if_motor.Set_thrust
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 57:
+
+procedure_set_thrust_1.
+H1:    true .
+H2:    new_level >= power__first .
+H3:    new_level <= power__last .
+        ->
+C1:    new_level >= measuretypes__newton__first .
+C2:    new_level <= measuretypes__newton__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 57:
+
+procedure_set_thrust_2.
+H1:    true .
+H2:    new_level >= power__first .
+H3:    new_level <= power__last .
+H4:    new_level >= measuretypes__newton__first .
+H5:    new_level <= measuretypes__newton__last .
+H6:    dlo__1 >= bus__word__first .
+H7:    dlo__1 <= bus__word__last .
+H8:    dhi__1 >= bus__word__first .
+H9:    dhi__1 <= bus__word__last .
+        ->
+C1:    dhi__1 >= bus__word__first .
+C2:    dhi__1 <= bus__word__last .
+C3:    dlo__1 >= bus__word__first .
+C4:    dlo__1 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 60:
+
+procedure_set_thrust_3.
+H1:    true .
+H2:    new_level >= power__first .
+H3:    new_level <= power__last .
+H4:    new_level >= measuretypes__newton__first .
+H5:    new_level <= measuretypes__newton__last .
+H6:    dlo__1 >= bus__word__first .
+H7:    dlo__1 <= bus__word__last .
+H8:    dhi__1 >= bus__word__first .
+H9:    dhi__1 <= bus__word__last .
+H10:   dhi__1 >= bus__word__first .
+H11:   dhi__1 <= bus__word__last .
+H12:   dlo__1 >= bus__word__first .
+H13:   dlo__1 <= bus__word__last .
+H14:   dlo__1 >= bus__word__first .
+H15:   dlo__1 <= bus__word__last .
+        ->
+C1:    bus_id >= bc1553__lru_name__first .
+C2:    bus_id <= bc1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    1 >= bus__word_index__first .
+C6:    1 <= bus__word_index__last .
+C7:    dlo__1 >= bus__word__first .
+C8:    dlo__1 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 64:
+
+procedure_set_thrust_4.
+H1:    true .
+H2:    new_level >= power__first .
+H3:    new_level <= power__last .
+H4:    new_level >= measuretypes__newton__first .
+H5:    new_level <= measuretypes__newton__last .
+H6:    dlo__1 >= bus__word__first .
+H7:    dlo__1 <= bus__word__last .
+H8:    dhi__1 >= bus__word__first .
+H9:    dhi__1 <= bus__word__last .
+H10:   dhi__1 >= bus__word__first .
+H11:   dhi__1 <= bus__word__last .
+H12:   dlo__1 >= bus__word__first .
+H13:   dlo__1 <= bus__word__last .
+H14:   dlo__1 >= bus__word__first .
+H15:   dlo__1 <= bus__word__last .
+H16:   bus_id >= bc1553__lru_name__first .
+H17:   bus_id <= bc1553__lru_name__last .
+H18:   1 >= bus__lru_subaddress_index__first .
+H19:   1 <= bus__lru_subaddress_index__last .
+H20:   1 >= bus__word_index__first .
+H21:   1 <= bus__word_index__last .
+H22:   dlo__1 >= bus__word__first .
+H23:   dlo__1 <= bus__word__last .
+H24:   dhi__1 >= bus__word__first .
+H25:   dhi__1 <= bus__word__last .
+        ->
+C1:    bus_id >= bc1553__lru_name__first .
+C2:    bus_id <= bc1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    2 >= bus__word_index__first .
+C6:    2 <= bus__word_index__last .
+C7:    dhi__1 >= bus__word__first .
+C8:    dhi__1 <= bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_set_thrust_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+

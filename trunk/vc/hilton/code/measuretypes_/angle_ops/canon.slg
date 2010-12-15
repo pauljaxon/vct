@@ -1,0 +1,298 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:19
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function angle_ops.Canon
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_canon_1.  @@@@@@@@@@
+***  Proved C1:  orig_angle >= millirad__first
+     using hypothesis H2.
+***  Proved C2:  orig_angle <= millirad__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_canon_2.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+-S-  Applied substitution rule canon_rules(7).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+<S>  New C1:  canon_millirad__first + (orig_angle - canon_millirad__last) >= - 
+          7000
+-S-  Applied substitution rule canon_rules(8).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+<S>  New C2:  canon_millirad__first + (orig_angle - canon_millirad__last) <= 
+          7000
+-S-  Applied substitution rule canon_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New C3:  orig_angle - canon_millirad__last >= - 2147483648
+-S-  Applied substitution rule canon_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New C4:  orig_angle - canon_millirad__last <= 2147483647
+***  Proved C3:  orig_angle - canon_millirad__last >= - 2147483648
+     using hypothesis H8.
+-S-  Applied substitution rule canon_rules(12).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New C1:  orig_angle - canon_millirad__last >= - 3859
+<S>  New C2:  orig_angle - canon_millirad__last <= 10141
+-S-  Applied substitution rule canon_rules(13).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H8:  orig_angle > 3142
+<S>  New C4:  orig_angle <= 2147486789
+<S>  New C1:  orig_angle >= - 717
+<S>  New C2:  orig_angle <= 13283
+***  Proved C4:  orig_angle <= 2147486789
+     using hypothesis H3.
+***  Proved C1:  orig_angle >= - 717
+     using hypothesis H8.
+***  Proved C2:  orig_angle <= 13283
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_canon_3.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H3)
+          .
+-S-  Applied substitution rule canon_rules(7).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+<S>  New C1:  canon_millirad__last - (canon_millirad__first - orig_angle) >= - 
+          7000
+-S-  Applied substitution rule canon_rules(8).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+<S>  New C2:  canon_millirad__last - (canon_millirad__first - orig_angle) <= 
+          7000
+-S-  Applied substitution rule canon_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New C3:  canon_millirad__first - orig_angle >= - 2147483648
+-S-  Applied substitution rule canon_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New C4:  canon_millirad__first - orig_angle <= 2147483647
+***  Proved C3:  canon_millirad__first - orig_angle >= - 2147483648
+     using hypothesis H11.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  orig_angle <= canon_millirad__last
+-S-  Applied substitution rule canon_rules(12).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H11:  orig_angle < - 3141
+<S>  New C1:  canon_millirad__last - (- 3141 - orig_angle) >= - 7000
+<S>  New C2:  canon_millirad__last - (- 3141 - orig_angle) <= 7000
+<S>  New C4:  - 2147486788 <= orig_angle
+-S-  Applied substitution rule canon_rules(13).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H8:  orig_angle <= 3142
+<S>  New C1:  - 3141 - orig_angle <= 10142
+<S>  New C2:  - 3858 <= - 3141 - orig_angle
+%%%  Simplified C1 further, to give:
+     %%%  C1:  - 13283 <= orig_angle
+%%%  Simplified C2 further, to give:
+     %%%  C2:  orig_angle <= 717
+***  Proved C4:  - 2147486788 <= orig_angle
+     using hypothesis H2.
+***  Proved C1:  - 13283 <= orig_angle
+     using hypothesis H2.
+***  Proved C2:  orig_angle <= 717
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_canon_4.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H12).
+***  Proved C1:  true
+-S-  Applied substitution rule canon_rules(12).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H11:  - 3141 + (orig_angle - canon_millirad__last) >= millirad__first
+<S>  New H12:  - 3141 + (orig_angle - canon_millirad__last) <= millirad__last
+<S>  New C2:  orig_angle - canon_millirad__last >= 0
+<S>  New C3:  - 3141 + (orig_angle - canon_millirad__last) <= 
+          canon_millirad__last
+-S-  Applied substitution rule canon_rules(13).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H8:  orig_angle > 3142
+<S>  New H13:  orig_angle - 3142 >= measuretypes__millirad__base__first
+<S>  New H14:  orig_angle - 3142 <= measuretypes__millirad__base__last
+<S>  New H11:  - 3141 + (orig_angle - 3142) >= millirad__first
+<S>  New H12:  - 3141 + (orig_angle - 3142) <= millirad__last
+<S>  New C2:  orig_angle >= 3142
+<S>  New C3:  orig_angle - 3142 <= 6283
+***  Proved C2:  orig_angle >= 3142
+     using hypothesis H8.
+-S-  Applied substitution rule canon_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New H13:  orig_angle >= - 2147480506
+-S-  Applied substitution rule canon_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New H14:  orig_angle <= 2147486789
+-S-  Applied substitution rule canon_rules(7).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+<S>  New H11:  orig_angle - 3142 >= - 3859
+-S-  Applied substitution rule canon_rules(8).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+<S>  New H12:  orig_angle - 3142 <= 10141
+%%%  Simplified H11 further, to give:
+     %%%  H11:  orig_angle >= - 717
+%%%  Simplified H12 further, to give:
+     %%%  H12:  orig_angle <= 13283
+%%%  Simplified C3 further, to give:
+     %%%  C3:  orig_angle <= 9425
+***  Proved C3:  orig_angle <= 9425
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_canon_5.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H15).
+***  Proved C1:  true
+-S-  Applied substitution rule canon_rules(12).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H11:  orig_angle < - 3141
+<S>  New H14:  canon_millirad__last - (- 3141 - orig_angle) >= millirad__first
+<S>  New H15:  canon_millirad__last - (- 3141 - orig_angle) <= millirad__last
+<S>  New H16:  - 3141 - orig_angle >= measuretypes__millirad__base__first
+<S>  New H17:  - 3141 - orig_angle <= measuretypes__millirad__base__last
+<S>  New C2:  canon_millirad__last - (- 3141 - orig_angle) >= - 3141
+<S>  New C3:  canon_millirad__last - (- 3141 - orig_angle) <= 
+          canon_millirad__last
+-S-  Applied substitution rule canon_rules(13).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H8:  not orig_angle > 3142
+<S>  New H14:  3142 - (- 3141 - orig_angle) >= millirad__first
+<S>  New H15:  3142 - (- 3141 - orig_angle) <= millirad__last
+<S>  New C2:  - 3141 - orig_angle <= 6283
+<S>  New C3:  0 <= - 3141 - orig_angle
+***  Proved C3:  0 <= - 3141 - orig_angle
+     using hypothesis H11.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  orig_angle <= 3142
+-S-  Applied substitution rule canon_rules(4).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__first by:
+          - 2147483648.
+<S>  New H16:  orig_angle <= 2147480507
+-S-  Applied substitution rule canon_rules(5).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__base__last by:
+          2147483647.
+<S>  New H17:  - 2147486788 <= orig_angle
+-S-  Applied substitution rule canon_rules(7).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+<S>  New H14:  - 3141 - orig_angle <= 10142
+-S-  Applied substitution rule canon_rules(8).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+<S>  New H15:  - 3858 <= - 3141 - orig_angle
+%%%  Simplified H14 further, to give:
+     %%%  H14:  - 13283 <= orig_angle
+%%%  Simplified H15 further, to give:
+     %%%  H15:  orig_angle <= 717
+%%%  Simplified C2 further, to give:
+     %%%  C2:  - 9424 <= orig_angle
+***  Proved C2:  - 9424 <= orig_angle
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_canon_6.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H3)
+          .
+***  Proved C1:  true
+***  Proved C2:  orig_angle >= canon_millirad__first
+     using hypothesis H11.
+***  Proved C3:  orig_angle <= canon_millirad__last
+     using hypothesis H8.
+***  PROVED VC.
+

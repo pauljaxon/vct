@@ -1,0 +1,59 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:44.12}
+
+                       {procedure nav.Estimate_Height}
+
+
+title procedure estimate_height;
+
+  function round__(real) : integer;
+  type measuretypes__meter = integer;
+  type clock__millisecond = integer;
+  type confidence = (none, low, high);
+  type sensor_status = (unknown, valid, failed, restarted);
+  const sensor_status__base__last : sensor_status = pending; 
+  const sensor_status__base__first : sensor_status = pending; 
+  const meter__base__last : integer = pending; 
+  const meter__base__first : integer = pending; 
+  const confidence__base__last : confidence = pending; 
+  const confidence__base__first : confidence = pending; 
+  const sensor_history__meter__base__last : integer = pending; 
+  const sensor_history__meter__base__first : integer = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const measuretypes__meter__base__last : integer = pending; 
+  const measuretypes__meter__base__first : integer = pending; 
+  const sensor_status__size : integer = pending; 
+  const sensor_status__last : sensor_status = pending; 
+  const sensor_status__first : sensor_status = pending; 
+  const meter__size : integer = pending; 
+  const meter__last : integer = pending; 
+  const meter__first : integer = pending; 
+  const confidence__size : integer = pending; 
+  const confidence__last : confidence = pending; 
+  const confidence__first : confidence = pending; 
+  const sensor_history__meter__size : integer = pending; 
+  const sensor_history__meter__last : integer = pending; 
+  const sensor_history__meter__first : integer = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  const measuretypes__meter__size : integer = pending; 
+  const measuretypes__meter__last : integer = pending; 
+  const measuretypes__meter__first : integer = pending; 
+  var m : integer;
+  var barometer_ss : sensor_status;
+  var ins_ss : sensor_status;
+  var t : integer;
+  var t__2 : integer;
+  var m__2 : integer;
+  var t__1 : integer;
+  var m__1 : integer;
+
+end;

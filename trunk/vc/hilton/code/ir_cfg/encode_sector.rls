@@ -1,0 +1,33 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:41.88*/
+
+                       /*function ir_cfg.Encode_Sector*/
+
+
+rule_family encode_secto_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+encode_secto_rules(1): integer__size >= 0 may_be_deduced.
+encode_secto_rules(2): integer__first may_be_replaced_by -2147483648.
+encode_secto_rules(3): integer__last may_be_replaced_by 2147483647.
+encode_secto_rules(4): integer__base__first may_be_replaced_by -2147483648.
+encode_secto_rules(5): integer__base__last may_be_replaced_by 2147483647.
+encode_secto_rules(6): systemtypes__unsigned16__size >= 0 may_be_deduced.
+encode_secto_rules(7): systemtypes__unsigned16__first may_be_replaced_by 0.
+encode_secto_rules(8): systemtypes__unsigned16__last may_be_replaced_by 65535.
+encode_secto_rules(9): systemtypes__unsigned16__base__first may_be_replaced_by -2147483648.
+encode_secto_rules(10): systemtypes__unsigned16__base__last may_be_replaced_by 2147483647.
+encode_secto_rules(11): sector_range__size >= 0 may_be_deduced.
+encode_secto_rules(12): sector_range__first may_be_replaced_by -12.
+encode_secto_rules(13): sector_range__last may_be_replaced_by 12.
+encode_secto_rules(14): sector_range__base__first <= sector_range__base__last may_be_deduced.
+encode_secto_rules(15): sector_range__base__first <= sector_range__first may_be_deduced.
+encode_secto_rules(16): sector_range__base__last >= sector_range__last may_be_deduced.

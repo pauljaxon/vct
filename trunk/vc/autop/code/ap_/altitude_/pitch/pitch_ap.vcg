@@ -1,0 +1,327 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.66
+
+                          procedure Pitch.Pitch_AP
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 103:
+
+procedure_pitch_ap_1.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    mach >= instruments__machnumber__first .
+H7:    mach <= instruments__machnumber__last .
+H8:    climb_rate >= instruments__feetpermin__first .
+H9:    climb_rate <= instruments__feetpermin__last .
+H10:   the_pitch >= instruments__pitchangle__first .
+H11:   the_pitch <= instruments__pitchangle__last .
+        ->
+C1:    the_pitch >= instruments__pitchangle__first .
+C2:    the_pitch <= instruments__pitchangle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 103:
+
+procedure_pitch_ap_2.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    mach >= instruments__machnumber__first .
+H7:    mach <= instruments__machnumber__last .
+H8:    climb_rate >= instruments__feetpermin__first .
+H9:    climb_rate <= instruments__feetpermin__last .
+H10:   the_pitch >= instruments__pitchangle__first .
+H11:   the_pitch <= instruments__pitchangle__last .
+H12:   the_pitch >= instruments__pitchangle__first .
+H13:   the_pitch <= instruments__pitchangle__last .
+H14:   present_pitchrate__1 >= degrees__degreespersec__first .
+H15:   present_pitchrate__1 <= degrees__degreespersec__last .
+        ->
+C1:    present_pitchrate__1 >= degreespersec__first .
+C2:    present_pitchrate__1 <= degreespersec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 104:
+
+procedure_pitch_ap_3.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    mach >= instruments__machnumber__first .
+H7:    mach <= instruments__machnumber__last .
+H8:    climb_rate >= instruments__feetpermin__first .
+H9:    climb_rate <= instruments__feetpermin__last .
+H10:   the_pitch >= instruments__pitchangle__first .
+H11:   the_pitch <= instruments__pitchangle__last .
+H12:   the_pitch >= instruments__pitchangle__first .
+H13:   the_pitch <= instruments__pitchangle__last .
+H14:   present_pitchrate__1 >= degrees__degreespersec__first .
+H15:   present_pitchrate__1 <= degrees__degreespersec__last .
+H16:   present_pitchrate__1 >= degreespersec__first .
+H17:   present_pitchrate__1 <= degreespersec__last .
+        ->
+C1:    climb_rate >= instruments__feetpermin__first .
+C2:    climb_rate <= instruments__feetpermin__last .
+C3:    target_altitude >= instruments__feet__first .
+C4:    target_altitude <= instruments__feet__last .
+C5:    present_altitude >= instruments__feet__first .
+C6:    present_altitude <= instruments__feet__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 104:
+
+procedure_pitch_ap_4.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    mach >= instruments__machnumber__first .
+H7:    mach <= instruments__machnumber__last .
+H8:    climb_rate >= instruments__feetpermin__first .
+H9:    climb_rate <= instruments__feetpermin__last .
+H10:   the_pitch >= instruments__pitchangle__first .
+H11:   the_pitch <= instruments__pitchangle__last .
+H12:   the_pitch >= instruments__pitchangle__first .
+H13:   the_pitch <= instruments__pitchangle__last .
+H14:   present_pitchrate__1 >= degrees__degreespersec__first .
+H15:   present_pitchrate__1 <= degrees__degreespersec__last .
+H16:   present_pitchrate__1 >= degreespersec__first .
+H17:   present_pitchrate__1 <= degreespersec__last .
+H18:   climb_rate >= instruments__feetpermin__first .
+H19:   climb_rate <= instruments__feetpermin__last .
+H20:   target_altitude >= instruments__feet__first .
+H21:   target_altitude <= instruments__feet__last .
+H22:   present_altitude >= instruments__feet__first .
+H23:   present_altitude <= instruments__feet__last .
+H24:   target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+H25:   target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+        ->
+C1:    target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+C2:    target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 105:
+
+procedure_pitch_ap_5.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    mach >= instruments__machnumber__first .
+H7:    mach <= instruments__machnumber__last .
+H8:    climb_rate >= instruments__feetpermin__first .
+H9:    climb_rate <= instruments__feetpermin__last .
+H10:   the_pitch >= instruments__pitchangle__first .
+H11:   the_pitch <= instruments__pitchangle__last .
+H12:   the_pitch >= instruments__pitchangle__first .
+H13:   the_pitch <= instruments__pitchangle__last .
+H14:   present_pitchrate__1 >= degrees__degreespersec__first .
+H15:   present_pitchrate__1 <= degrees__degreespersec__last .
+H16:   present_pitchrate__1 >= degreespersec__first .
+H17:   present_pitchrate__1 <= degreespersec__last .
+H18:   climb_rate >= instruments__feetpermin__first .
+H19:   climb_rate <= instruments__feetpermin__last .
+H20:   target_altitude >= instruments__feet__first .
+H21:   target_altitude <= instruments__feet__last .
+H22:   present_altitude >= instruments__feet__first .
+H23:   present_altitude <= instruments__feet__last .
+H24:   target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+H25:   target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+H26:   target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+H27:   target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+H28:   present_pitchrate__1 >= degreespersec__first .
+H29:   present_pitchrate__1 <= degreespersec__last .
+H30:   target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+H31:   target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+        ->
+C1:    mach >= instruments__machnumber__first .
+C2:    mach <= instruments__machnumber__last .
+C3:    target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+C4:    target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+C5:    present_pitchrate__1 >= degreespersec__first .
+C6:    present_pitchrate__1 <= degreespersec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 105:
+
+procedure_pitch_ap_6.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    mach >= instruments__machnumber__first .
+H7:    mach <= instruments__machnumber__last .
+H8:    climb_rate >= instruments__feetpermin__first .
+H9:    climb_rate <= instruments__feetpermin__last .
+H10:   the_pitch >= instruments__pitchangle__first .
+H11:   the_pitch <= instruments__pitchangle__last .
+H12:   the_pitch >= instruments__pitchangle__first .
+H13:   the_pitch <= instruments__pitchangle__last .
+H14:   present_pitchrate__1 >= degrees__degreespersec__first .
+H15:   present_pitchrate__1 <= degrees__degreespersec__last .
+H16:   present_pitchrate__1 >= degreespersec__first .
+H17:   present_pitchrate__1 <= degreespersec__last .
+H18:   climb_rate >= instruments__feetpermin__first .
+H19:   climb_rate <= instruments__feetpermin__last .
+H20:   target_altitude >= instruments__feet__first .
+H21:   target_altitude <= instruments__feet__last .
+H22:   present_altitude >= instruments__feet__first .
+H23:   present_altitude <= instruments__feet__last .
+H24:   target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+H25:   target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+H26:   target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+H27:   target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+H28:   present_pitchrate__1 >= degreespersec__first .
+H29:   present_pitchrate__1 <= degreespersec__last .
+H30:   target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+H31:   target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+H32:   mach >= instruments__machnumber__first .
+H33:   mach <= instruments__machnumber__last .
+H34:   target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+H35:   target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+H36:   present_pitchrate__1 >= degreespersec__first .
+H37:   present_pitchrate__1 <= degreespersec__last .
+H38:   calc_elevator_move(present_pitchrate__1, target_rate(
+           present_altitude, target_altitude, climb_rate), 
+           mach) >= surfaces__controlangle__first .
+H39:   calc_elevator_move(present_pitchrate__1, target_rate(
+           present_altitude, target_altitude, climb_rate), 
+           mach) <= surfaces__controlangle__last .
+        ->
+C1:    calc_elevator_move(present_pitchrate__1, target_rate(
+           present_altitude, target_altitude, climb_rate), 
+           mach) >= surfaces__controlangle__first .
+C2:    calc_elevator_move(present_pitchrate__1, target_rate(
+           present_altitude, target_altitude, climb_rate), 
+           mach) <= surfaces__controlangle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 106:
+
+procedure_pitch_ap_7.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    mach >= instruments__machnumber__first .
+H7:    mach <= instruments__machnumber__last .
+H8:    climb_rate >= instruments__feetpermin__first .
+H9:    climb_rate <= instruments__feetpermin__last .
+H10:   the_pitch >= instruments__pitchangle__first .
+H11:   the_pitch <= instruments__pitchangle__last .
+H12:   the_pitch >= instruments__pitchangle__first .
+H13:   the_pitch <= instruments__pitchangle__last .
+H14:   present_pitchrate__1 >= degrees__degreespersec__first .
+H15:   present_pitchrate__1 <= degrees__degreespersec__last .
+H16:   present_pitchrate__1 >= degreespersec__first .
+H17:   present_pitchrate__1 <= degreespersec__last .
+H18:   climb_rate >= instruments__feetpermin__first .
+H19:   climb_rate <= instruments__feetpermin__last .
+H20:   target_altitude >= instruments__feet__first .
+H21:   target_altitude <= instruments__feet__last .
+H22:   present_altitude >= instruments__feet__first .
+H23:   present_altitude <= instruments__feet__last .
+H24:   target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+H25:   target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+H26:   target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+H27:   target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+H28:   present_pitchrate__1 >= degreespersec__first .
+H29:   present_pitchrate__1 <= degreespersec__last .
+H30:   target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+H31:   target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+H32:   mach >= instruments__machnumber__first .
+H33:   mach <= instruments__machnumber__last .
+H34:   target_rate(present_altitude, target_altitude, 
+           climb_rate) >= degreespersec__first .
+H35:   target_rate(present_altitude, target_altitude, 
+           climb_rate) <= degreespersec__last .
+H36:   present_pitchrate__1 >= degreespersec__first .
+H37:   present_pitchrate__1 <= degreespersec__last .
+H38:   calc_elevator_move(present_pitchrate__1, target_rate(
+           present_altitude, target_altitude, climb_rate), 
+           mach) >= surfaces__controlangle__first .
+H39:   calc_elevator_move(present_pitchrate__1, target_rate(
+           present_altitude, target_altitude, climb_rate), 
+           mach) <= surfaces__controlangle__last .
+H40:   calc_elevator_move(present_pitchrate__1, target_rate(
+           present_altitude, target_altitude, climb_rate), 
+           mach) >= surfaces__controlangle__first .
+H41:   calc_elevator_move(present_pitchrate__1, target_rate(
+           present_altitude, target_altitude, climb_rate), 
+           mach) <= surfaces__controlangle__last .
+H42:   calc_elevator_move(present_pitchrate__1, target_rate(
+           present_altitude, target_altitude, climb_rate), 
+           mach) >= surfaces__controlangle__first .
+H43:   calc_elevator_move(present_pitchrate__1, target_rate(
+           present_altitude, target_altitude, climb_rate), 
+           mach) <= surfaces__controlangle__last .
+        ->
+C1:    calc_elevator_move(present_pitchrate__1, target_rate(
+           present_altitude, target_altitude, climb_rate), 
+           mach) >= surfaces__controlangle__first .
+C2:    calc_elevator_move(present_pitchrate__1, target_rate(
+           present_altitude, target_altitude, climb_rate), 
+           mach) <= surfaces__controlangle__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_pitch_ap_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_pitch_ap_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_pitch_ap_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+

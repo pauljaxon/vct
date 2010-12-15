@@ -1,0 +1,113 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.56
+
+Line
+   1  
+   2  with Surfaces;
+   3  use type Surfaces.ControlAngle;
+   4  
+   5  package body Scale
+   6  is
+   7     subtype Machnumber is Instruments.Machnumber;
+   8     subtype Percent is Integer range 0..100;
+   9  
+  10     -- Return an inverse curve that is well behaved
+  11     function Inverse(Val      : Scaledata;
+  12                      Flatness : Integer)
+  13                     return Percent
+  14     --# pre (Val >= 0) and (Flatness > 0) and (Flatness <= 100);
+  15     is
+  16        Calc : Integer;
+  17        Ans : Percent;
+  18     begin
+  19        Calc := (100*Flatness) / (Flatness + Val);
+  20        Ans := Calc;
+  21        return Ans;
+  22     end Inverse;
+
++++        Flow analysis of subprogram Inverse performed: 
+           no errors found.
+
+  23  
+  24  
+  25     function Scale_Movement(Mach    : Instruments.Machnumber;
+  26                             Present : Scaledata;
+  27                             Target  : Scaledata;
+  28                             Max     : Surfaces.ControlAngle)
+  29                            return Surfaces.ControlAngle
+  30     is
+  31        Target_Angle : Surfaces.ControlAngle;
+  32        K1, K2, Gap : Integer;
+  33     begin
+  34        if Present = Target then
+  35           Target_Angle := 0;
+  36        else
+  37           -- Get the sign of the answer
+  38           if Present < Target then
+  39              -- Increase rate
+  40              Gap := Target - Present;
+  41           else
+  42              -- Decrease rate
+  43             Gap := Present - Target;
+  44           end if;
+  45           if Gap > 100 then
+  46             Gap := 100;
+  47           end if;
+  48           --# assert (Gap > 0) and (Gap <= 100);
+  49           -- Generate K1, K2 such that:
+  50           --   K1 >= 0,  K2 > 0, K1 <= K2
+  51           --   K1 ~= a.Gap
+  52           --   K2 ~= b.Mach
+  53           K1 := Inverse(Integer(Mach),20); -- tween 0 and 100
+  54           K2 := Inverse(Gap,20); -- tween 0 and 100
+  55           K2 := (1 + K2) + K1;  -- handle the scaling
+  56           -- And use them to scale Target_Angle
+  57           --# assert (K1 in Percent) and (K2 > 0) and (K1 <= K2);
+  58           Target_Angle := Surfaces.ControlAngle((Integer(Max) * K1) / K2);
+  59           if (Present > Target) then
+  60                Target_Angle := -Target_Angle;
+  61           end if;
+  62        end if;
+  63        return Target_Angle;
+  64     end Scale_Movement;
+
++++        Flow analysis of subprogram Scale_Movement 
+           performed: no errors found.
+
+  65  
+  66     function Heading_Offset(Present : Instruments.Headdegree;
+  67                             Target  : Instruments.Headdegree)
+  68                            return Instruments.Headdegree
+  69     is
+  70        V : Integer;
+  71        Ans : Instruments.Headdegree;
+  72     begin
+  73        V := (360 + Integer(Target)) - Integer(Present);
+  74        --# assert ((V >= 0) and (V < 720));
+  75        if (V >= 360) then
+  76          V := V - 360;
+  77        end if;
+  78        --# assert ((V >= 0) and (V < 360));
+  79        Ans := Instruments.Headdegree(V);
+  80        return Ans;
+  81     end Heading_Offset;
+
++++        Flow analysis of subprogram Heading_Offset 
+           performed: no errors found.
+
+  82  
+  83  end Scale;
+  84  
+  85  
+  86  
+  87  
+  88  
+
+
+--End of file--------------------------------------------------

@@ -1,0 +1,150 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:33
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure environment.Get_Object_Velocity
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_get_object_velocity_1.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> valid_handle__first <= fld_h(element(
+          object_array, [i___1])) and fld_h(element(object_array, [i___1])) <= 
+          valid_handle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> rcs__first <= fld_r(element(object_array, [
+          i___1])) and fld_r(element(object_array, [i___1])) <= rcs__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> kind__first <= fld_k(element(object_array, [
+          i___1])) and fld_k(element(object_array, [i___1])) <= kind__last)
+-S-  Applied substitution rule get_object_v_rules(43).
+     This was achieved by replacing all occurrences of valid_handle__first by:
+          1.
+<S>  New H5:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          valid_handle__last -> 1 <= fld_h(element(object_array, [i___1])) and 
+          fld_h(element(object_array, [i___1])) <= valid_handle__last)
+<S>  New H6:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          valid_handle__last -> rcs__first <= fld_r(element(object_array, [
+          i___1])) and fld_r(element(object_array, [i___1])) <= rcs__last)
+<S>  New H7:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          valid_handle__last -> kind__first <= fld_k(element(object_array, [
+          i___1])) and fld_k(element(object_array, [i___1])) <= kind__last)
+<S>  New H9:  not (h < 1 or h > valid_handle__last)
+<S>  New C1:  h >= 1
+-S-  Applied substitution rule get_object_v_rules(44).
+     This was achieved by replacing all occurrences of valid_handle__last by:
+          20.
+<S>  New H5:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> 1 <= fld_h(
+          element(object_array, [i___1])) and fld_h(element(object_array, [
+          i___1])) <= 20)
+<S>  New H6:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> rcs__first 
+          <= fld_r(element(object_array, [i___1])) and fld_r(element(
+          object_array, [i___1])) <= rcs__last)
+<S>  New H7:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> 
+          kind__first <= fld_k(element(object_array, [i___1])) and fld_k(
+          element(object_array, [i___1])) <= kind__last)
+<S>  New H9:  not (h < 1 or h > 20)
+<S>  New C2:  h <= 20
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  1 <= h and h <= 20
+>>>  Hypothesis H9 has now been split into two, giving:
+     >>>  H9:  1 <= h
+     >>>  H10:  h <= 20
+-S-  Applied substitution rule get_object_v_rules(7).
+     This was achieved by replacing all occurrences of handle__first by:
+          0.
+<S>  New H2:  h >= 0
+-S-  Applied substitution rule get_object_v_rules(8).
+     This was achieved by replacing all occurrences of handle__last by:
+          20.
+<S>  New H3:  h <= 20
+-S-  Applied substitution rule get_object_v_rules(13).
+     This was achieved by replacing all occurrences of kind__first by:
+          aircraft.
+<S>  New H7:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> aircraft 
+          <= fld_k(element(object_array, [i___1])) and fld_k(element(
+          object_array, [i___1])) <= kind__last)
+-S-  Applied substitution rule get_object_v_rules(14).
+     This was achieved by replacing all occurrences of kind__last by:
+          cloud.
+<S>  New H7:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> aircraft 
+          <= fld_k(element(object_array, [i___1])) and fld_k(element(
+          object_array, [i___1])) <= cloud)
+-S-  Applied substitution rule get_object_v_rules(38).
+     This was achieved by replacing all occurrences of rcs__first by:
+          0.
+<S>  New H6:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> 0 <= fld_r(
+          element(object_array, [i___1])) and fld_r(element(object_array, [
+          i___1])) <= rcs__last)
+-S-  Applied substitution rule get_object_v_rules(39).
+     This was achieved by replacing all occurrences of rcs__last by:
+          1000.
+<S>  New H6:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 20 -> 0 <= fld_r(
+          element(object_array, [i___1])) and fld_r(element(object_array, [
+          i___1])) <= 1000)
+***  Proved C1:  h >= 1
+     using hypothesis H9.
+***  Proved C2:  h <= 20
+     using hypothesis H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_object_velocity_2.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> valid_handle__first <= fld_h(element(
+          object_array, [i___1])) and fld_h(element(object_array, [i___1])) <= 
+          valid_handle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> rcs__first <= fld_r(element(object_array, [
+          i___1])) and fld_r(element(object_array, [i___1])) <= rcs__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  for_all(i___1 : integer, valid_handle__first <= i___1 and i___1 
+          <= valid_handle__last -> kind__first <= fld_k(element(object_array, [
+          i___1])) and fld_k(element(object_array, [i___1])) <= kind__last)
+***  Proved C1:  h >= valid_handle__first
+     using hypothesis H10.
+***  Proved C2:  h <= valid_handle__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_object_velocity_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_object_velocity_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_object_velocity_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_object_velocity_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_get_object_velocity_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

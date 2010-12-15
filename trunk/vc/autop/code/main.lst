@@ -1,0 +1,77 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.95
+
+Line
+   1  with AP;
+   2  --# inherit Surfaces, Instruments, AP;
+   3  --# main_program;
+   4  procedure Main
+   5     --# global in out AP.State;
+   6     --#           out Surfaces.Elevators,
+   7     --#               Surfaces.Ailerons,
+   8     --#               Surfaces.Rudder;
+   9     --#        in     Instruments.Altitude,
+  10     --#               Instruments.Bank,
+  11     --#               Instruments.Heading,
+  12     --#               Instruments.Heading_Bug,
+  13     --#               Instruments.Mach,
+  14     --#               Instruments.Pitch,
+  15     --#               Instruments.Rate_Of_Climb,
+  16     --#               Instruments.Slip;
+  17     --# derives AP.State
+  18     --#          from *,
+  19     --#               Instruments.Altitude,
+  20     --#               Instruments.Bank,
+  21     --#               Instruments.Pitch,
+  22     --#               Instruments.Slip &
+  23     --#  Surfaces.Elevators
+  24     --#          from
+  25     --#               AP.State,
+  26     --#               Instruments.Altitude,
+  27     --#               Instruments.Bank,
+  28     --#               Instruments.Mach,
+  29     --#               Instruments.Pitch,
+  30     --#               Instruments.Rate_Of_Climb,
+  31     --#               Instruments.Slip
+  32     --#          &
+  33     --#  Surfaces.Ailerons
+  34     --#          from
+  35     --#               AP.State,
+  36     --#               Instruments.Altitude,
+  37     --#               Instruments.Bank,
+  38     --#               Instruments.Heading,
+  39     --#               Instruments.Heading_Bug,
+  40     --#               Instruments.Mach,
+  41     --#               Instruments.Pitch,
+  42     --#               Instruments.Slip  &
+  43     --#  Surfaces.Rudder
+  44     --#          from AP.State,
+  45     --#               Instruments.Altitude,
+  46     --#               Instruments.Bank,
+  47     --#               Instruments.Mach,
+  48     --#               Instruments.Pitch,
+  49     --#               Instruments.Slip
+  50     --#  ;
+  51  is
+  52  begin
+  53  
+  54     loop
+  55        AP.Control;
+
+--- (  1)  Warning           :402: Default assertion planted to cut loop.
+
+  56     end loop;
+  57  end Main;
+
++++        Flow analysis of subprogram Main performed: no 
+           errors found.
+
+
+
+--End of file--------------------------------------------------

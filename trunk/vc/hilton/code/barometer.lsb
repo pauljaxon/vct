@@ -1,0 +1,226 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.19
+
+Line
+   1  -- Barometer simulator implementation
+   2  --
+   3  -- $Log: barometer.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.6  2003/08/06 20:41:33  adi
+   9  -- Use bit_machine
+  10  --
+  11  -- Revision 1.5  2003/02/19 19:04:56  adi
+  12  -- Details for Command proc
+  13  --
+  14  -- Revision 1.4  2003/02/12 23:29:06  adi
+  15  -- Corrected
+  16  --
+  17  -- Revision 1.3  2003/02/12 23:11:05  adi
+  18  -- Added init routine
+  19  --
+  20  -- Revision 1.2  2003/02/11 20:49:48  adi
+  21  -- Updated BIT package to use standard IBIT stuff
+  22  --
+  23  -- Revision 1.1  2003/02/10 20:06:45  adi
+  24  -- Initial revision
+  25  --
+  26  --
+  27  with Clock_Utils,SystemTypes;
+  28  with Bus,RT1553,IBIT,Bit_Machine;
+  29  package body Barometer
+  30    --# own State is
+  31    --#     Last_Altitude,
+  32    --#     Last_Time,
+  33    --#     Last_Velocity,
+  34    --#     BIT_State;
+  35  is
+  36     subtype Pos_Meter is MeasureTypes.Pos_Meter;
+  37  
+  38     Last_Altitude : Meter := 0;
+  39     Last_Time     : Clock.Millisecond := Clock.Millisecond'First;
+  40     Last_Velocity : Meter_Per_Sec := 0;
+  41     Bit_State : Bit_Machine.Machine := Bit_Machine.Initial_Machine;
+  42  
+  43     -- Work out the current height.
+  44     -- Note that it can't be < 0, so forget
+  45     -- firing this thing from Death Valley.
+  46     procedure Extrapolate_Height(Height : out Pos_Meter)
+  47       --# global in     Last_Altitude, Last_Velocity, Last_Time;
+  48       --#        in out Clock.Time;
+  49       --# derives Clock.Time from * &
+  50       --#         Height from Clock.Time, Last_Altitude,
+  51       --#         Last_Velocity, Last_Time;
+  52     is
+  53        Time_Now,T_Delta : Clock.Millisecond;
+  54        Time_Valid : Boolean;
+  55        H_Delta,Temp_Height : Meter;
+  56        VMS : Clock.Millisecond;
+  57     begin
+  58        Clock.Read(T => Time_Now,
+  59                   Valid => Time_Valid);
+  60        if not Time_Valid then
+  61          -- Can't extrapolate
+  62          Height := 0;
+  63        else
+  64           -- How many seconds change
+  65           T_Delta := Clock_Utils.Delta_Time(Last_Time,Time_Now);
+  66           if Last_Velocity < 0 then
+  67              VMS := Clock.Millisecond(-Last_Velocity);
+  68              H_Delta := -Meter((VMS * T_Delta)/1000);
+  69           else
+  70              VMS := Clock.Millisecond(Last_Velocity);
+  71              H_Delta := Meter((VMS * T_Delta)/1000);
+  72           end if;
+  73           Temp_Height := Last_Altitude + H_Delta;
+  74           if Temp_Height < 0 then
+  75              Height := 0;
+  76           else
+  77              Height := Temp_Height;
+  78           end if;
+  79        end if;
+  80     end Extrapolate_Height;
+
++++        Flow analysis of subprogram Extrapolate_Height 
+           performed: no errors found.
+
+  81  
+  82     --------- Public subprograms
+  83  
+  84     -- Cycle the reading of data from the bus
+  85     -- and writing of data to the bus
+  86     procedure Cycle
+  87       --# global in Last_Altitude, Last_Time, Last_Velocity;
+  88       --#        in out BIT_State;
+  89       --#        in out Clock.Time;
+  90       --#        in Bus.Outputs;
+  91       --#        in out Bus.Inputs;
+  92       --# derives
+  93       --#        BIT_State
+  94       --#          from *, Bus.Outputs &
+  95       --#        Bus.Inputs from *, Clock.Time, Last_Altitude, Last_Time,
+  96       --#        Last_Velocity, BIT_State &
+  97       --#        Clock.Time from *;
+  98     is
+  99        Altitude : Pos_Meter;
+ 100        Datum : Bus.Word;
+ 101     begin
+ 102        Extrapolate_Height(Altitude);
+ 103        -- Write the altitude hi info to T1 word 1
+ 104        Rt1553.Write_Word(Data => Bus.Word(Altitude / 256),
+ 105                          Idx  => 1,
+ 106                          Subaddress_Idx => 1,
+ 107                          Src => RT1553.Barometer);
+ 108        -- Write the altitude low info to T1 word 2
+ 109        Rt1553.Write_Word(Data => Bus.Word(Altitude mod 256),
+ 110                          Idx  => 2,
+ 111                          Subaddress_Idx => 1,
+ 112                          Src => RT1553.Barometer);
+ 113        -- Write the BIT phase to T1 word 3
+ 114        Rt1553.Write_Word(Data => IBIT.Phase_Lookup(BIT_Machine.Phase(Bit_State)),
+ 115                         Idx => 3,
+ 116                         Subaddress_Idx => 1,
+ 117                         Src => RT1553.Barometer);
+ 118        -- Read the BIT info off R1
+ 119        Rt1553.Read_Word(Src => Rt1553.Barometer,
+ 120                         Idx => 1,
+ 121                         Subaddress_Idx => 1,
+ 122                         Data => Datum);
+ 123        BIT_Machine.Change_State(Word => Datum,
+ 124                                 State => Bit_state);
+ 125        -- And cycle the BIT
+ 126        BIT_Machine.Step(Bit_State);
+ 127     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+ 128  
+ 129     -- Set the current altitude profile and
+ 130     -- vertical velocity
+ 131     procedure Set_Altitude_Profile(Height : in Meter;
+ 132                                    DZ     : in Meter_Per_Sec)
+ 133     --# global    out Last_Altitude, Last_Time, Last_Velocity;
+ 134     --#        in out Clock.Time;
+ 135     --# derives Clock.Time from * &
+ 136     --#         Last_Altitude from Height &
+ 137     --#         Last_Time     from Clock.Time &
+ 138     --#         Last_Velocity    from DZ, Clock.Time;
+ 139     is
+ 140        Time_Valid : Boolean;
+ 141     begin
+ 142        Last_Altitude := Height;
+ 143        Last_Velocity := DZ;
+ 144        Clock.Read(Last_Time,Time_Valid);
+ 145        if not Time_Valid then
+ 146           Last_Velocity := 0;
+ 147        end if;
+ 148     end Set_Altitude_Profile;
+
++++        Flow analysis of subprogram Set_Altitude_Profile 
+           performed: no errors found.
+
+ 149  
+ 150     -- Read the current altitude
+ 151     procedure Read_Altitude(Height : out Meter)
+ 152       --# global in     Last_Altitude, Last_Time, Last_Velocity;
+ 153       --#        in out Clock.Time;
+ 154       --# derives Clock.Time from * &
+ 155       --#         Height from Last_Altitude, Last_Time, Last_Velocity,
+ 156       --#         Clock.Time;
+ 157     is
+ 158     begin
+ 159        Extrapolate_Height(Height);
+ 160     end Read_Altitude;
+
++++        Flow analysis of subprogram Read_Altitude 
+           performed: no errors found.
+
+ 161  
+ 162     procedure Fail_Next_Bit
+ 163       --# global in out BIT_State;
+ 164       --# derives BIT_State from *;
+ 165     is begin
+ 166        BIT_Machine.Fail_Next(Bit_State);
+ 167     end Fail_Next_Bit;
+
++++        Flow analysis of subprogram Fail_Next_Bit 
+           performed: no errors found.
+
+ 168  
+ 169     procedure Init
+ 170       --# global out Last_Altitude, Last_Time, Last_Velocity, BIT_State;
+ 171       --#        in out Bus.Inputs;
+ 172       --# derives Last_Altitude, Last_Time, Last_Velocity, BIT_State from &
+ 173       --#        Bus.Inputs from *;
+ 174     is begin
+ 175        -- Initialise the bus message 1T
+ 176        RT1553.Set_Message_Valid(Subaddress_Idx => 1,
+ 177                                 Src => RT1553.Barometer);
+ 178        -- Initialise the variables
+ 179        Last_Altitude := 0;
+ 180        Last_Time     := Clock.Millisecond'First;
+ 181        Last_Velocity := 0;
+ 182        BIT_Machine.Create(Ticks_To_Complete => 10,
+ 183                           State => Bit_State);
+ 184     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 185  
+ 186     procedure Command is separate;
+ 187  end Barometer;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

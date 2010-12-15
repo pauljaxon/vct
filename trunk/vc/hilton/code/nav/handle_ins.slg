@@ -1,0 +1,523 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:44  SIMPLIFIED 25-NOV-2009, 14:19:20
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure nav.Handle_Ins
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_1.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= ins_ss
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  sensor_status__first <= valid
+-S-  Applied substitution rule handle_ins_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= ins_ss
+<S>  New C1:  true
+-S-  Applied substitution rule handle_ins_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  ins_ss <= restarted
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_2.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= ins_ss
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  sensor_status__first <= valid
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+-S-  Applied substitution rule handle_ins_rules(9).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__first by:
+          - 200000.
+<S>  New C1:  fld_x(position__1) >= - 200000
+-S-  Applied substitution rule handle_ins_rules(10).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__last by:
+          200000.
+<S>  New C2:  fld_x(position__1) <= 200000
+-S-  Applied substitution rule handle_ins_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H6:  fld_z(position__1) >= - 200000
+<S>  New H8:  fld_y(position__1) >= - 200000
+<S>  New H10:  fld_x(position__1) >= - 200000
+-S-  Applied substitution rule handle_ins_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H7:  fld_z(position__1) <= 200000
+<S>  New H9:  fld_y(position__1) <= 200000
+<S>  New H11:  fld_x(position__1) <= 200000
+-S-  Applied substitution rule handle_ins_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= ins_ss
+<S>  New H15:  true
+-S-  Applied substitution rule handle_ins_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  ins_ss <= restarted
+<S>  New H16:  true
+***  Proved C1:  fld_x(position__1) >= - 200000
+     using hypothesis H10.
+***  Proved C2:  fld_x(position__1) <= 200000
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_3.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= ins_ss
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  sensor_status__first <= valid
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H11).
+-S-  Applied substitution rule handle_ins_rules(9).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__first by:
+          - 200000.
+<S>  New H23:  fld_x(position__1) >= - 200000
+<S>  New C1:  fld_y(position__1) >= - 200000
+-S-  Applied substitution rule handle_ins_rules(10).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__last by:
+          200000.
+<S>  New H24:  fld_x(position__1) <= 200000
+<S>  New C2:  fld_y(position__1) <= 200000
+-S-  Applied substitution rule handle_ins_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H6:  fld_z(position__1) >= - 200000
+<S>  New H8:  fld_y(position__1) >= - 200000
+<S>  New H10:  fld_x(position__1) >= - 200000
+-S-  Applied substitution rule handle_ins_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H7:  fld_z(position__1) <= 200000
+<S>  New H9:  fld_y(position__1) <= 200000
+<S>  New H11:  fld_x(position__1) <= 200000
+-S-  Applied substitution rule handle_ins_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= ins_ss
+<S>  New H15:  true
+-S-  Applied substitution rule handle_ins_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  ins_ss <= restarted
+<S>  New H16:  true
+***  Proved C1:  fld_y(position__1) >= - 200000
+     using hypothesis H8.
+***  Proved C2:  fld_y(position__1) <= 200000
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_4.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= ins_ss
+%%%  Simplified H15 on reading formula in, to give:
+     %%%  H15:  sensor_status__first <= valid
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H11).
+-S-  Applied substitution rule handle_ins_rules(9).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__first by:
+          - 200000.
+<S>  New H23:  fld_x(position__1) >= - 200000
+<S>  New H31:  fld_y(position__1) >= - 200000
+<S>  New C1:  fld_z(position__1) >= - 200000
+-S-  Applied substitution rule handle_ins_rules(10).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__last by:
+          200000.
+<S>  New H24:  fld_x(position__1) <= 200000
+<S>  New H32:  fld_y(position__1) <= 200000
+<S>  New C2:  fld_z(position__1) <= 200000
+-S-  Applied substitution rule handle_ins_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H6:  fld_z(position__1) >= - 200000
+<S>  New H8:  fld_y(position__1) >= - 200000
+<S>  New H10:  fld_x(position__1) >= - 200000
+-S-  Applied substitution rule handle_ins_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H7:  fld_z(position__1) <= 200000
+<S>  New H9:  fld_y(position__1) <= 200000
+<S>  New H11:  fld_x(position__1) <= 200000
+-S-  Applied substitution rule handle_ins_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= ins_ss
+<S>  New H15:  true
+-S-  Applied substitution rule handle_ins_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  ins_ss <= restarted
+<S>  New H16:  true
+***  Proved C1:  fld_z(position__1) >= - 200000
+     using hypothesis H6.
+***  Proved C2:  fld_z(position__1) <= 200000
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_5.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= ins_ss
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  sensor_status__first <= restarted
+-S-  Applied substitution rule handle_ins_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= ins_ss
+<S>  New C1:  true
+-S-  Applied substitution rule handle_ins_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  ins_ss <= restarted
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_6.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= ins_ss
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H12).
+-S-  Applied substitution rule handle_ins_rules(9).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__first by:
+          - 200000.
+<S>  New C1:  fld_x(position__5) >= - 200000
+-S-  Applied substitution rule handle_ins_rules(10).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__last by:
+          200000.
+<S>  New C2:  fld_x(position__5) <= 200000
+-S-  Applied substitution rule handle_ins_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H7:  fld_z(position__5) >= - 200000
+<S>  New H9:  fld_y(position__5) >= - 200000
+<S>  New H11:  fld_x(position__5) >= - 200000
+-S-  Applied substitution rule handle_ins_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H8:  fld_z(position__5) <= 200000
+<S>  New H10:  fld_y(position__5) <= 200000
+<S>  New H12:  fld_x(position__5) <= 200000
+-S-  Applied substitution rule handle_ins_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= ins_ss
+-S-  Applied substitution rule handle_ins_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  ins_ss <= restarted
+***  Proved C1:  fld_x(position__5) >= - 200000
+     using hypothesis H11.
+***  Proved C2:  fld_x(position__5) <= 200000
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_7.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= ins_ss
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H12).
+-S-  Applied substitution rule handle_ins_rules(9).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__first by:
+          - 200000.
+<S>  New H22:  fld_x(position__5) >= - 200000
+<S>  New C1:  fld_y(position__5) >= - 200000
+-S-  Applied substitution rule handle_ins_rules(10).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__last by:
+          200000.
+<S>  New H23:  fld_x(position__5) <= 200000
+<S>  New C2:  fld_y(position__5) <= 200000
+-S-  Applied substitution rule handle_ins_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H7:  fld_z(position__5) >= - 200000
+<S>  New H9:  fld_y(position__5) >= - 200000
+<S>  New H11:  fld_x(position__5) >= - 200000
+-S-  Applied substitution rule handle_ins_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H8:  fld_z(position__5) <= 200000
+<S>  New H10:  fld_y(position__5) <= 200000
+<S>  New H12:  fld_x(position__5) <= 200000
+-S-  Applied substitution rule handle_ins_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= ins_ss
+-S-  Applied substitution rule handle_ins_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  ins_ss <= restarted
+***  Proved C1:  fld_y(position__5) >= - 200000
+     using hypothesis H9.
+***  Proved C2:  fld_y(position__5) <= 200000
+     using hypothesis H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_8.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= ins_ss
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H12).
+-S-  Applied substitution rule handle_ins_rules(9).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__first by:
+          - 200000.
+<S>  New H22:  fld_x(position__5) >= - 200000
+<S>  New H30:  fld_y(position__5) >= - 200000
+<S>  New C1:  fld_z(position__5) >= - 200000
+-S-  Applied substitution rule handle_ins_rules(10).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter__last by:
+          200000.
+<S>  New H23:  fld_x(position__5) <= 200000
+<S>  New H31:  fld_y(position__5) <= 200000
+<S>  New C2:  fld_z(position__5) <= 200000
+-S-  Applied substitution rule handle_ins_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H7:  fld_z(position__5) >= - 200000
+<S>  New H9:  fld_y(position__5) >= - 200000
+<S>  New H11:  fld_x(position__5) >= - 200000
+-S-  Applied substitution rule handle_ins_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H8:  fld_z(position__5) <= 200000
+<S>  New H10:  fld_y(position__5) <= 200000
+<S>  New H12:  fld_x(position__5) <= 200000
+-S-  Applied substitution rule handle_ins_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= ins_ss
+-S-  Applied substitution rule handle_ins_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  ins_ss <= restarted
+***  Proved C1:  fld_z(position__5) >= - 200000
+     using hypothesis H7.
+***  Proved C2:  fld_z(position__5) <= 200000
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_9.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= ins_ss
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  sensor_status__first <= failed
+-S-  Applied substitution rule handle_ins_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= ins_ss
+<S>  New C1:  true
+-S-  Applied substitution rule handle_ins_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  ins_ss <= restarted
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_12.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_13.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_ins_14.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

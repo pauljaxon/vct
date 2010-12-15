@@ -1,0 +1,83 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:42  SIMPLIFIED 25-NOV-2009, 14:19:12
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure steer.Read_Deflection
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_read_deflection_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fin__first <= for_fin
+***  Proved C1:  fin__first <= for_fin
+     using hypothesis H2.
+***  Proved C2:  for_fin <= fin__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_deflection_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H3).
+***  Proved C1:  this_angle__1 >= angle__first
+     using hypothesis H9.
+***  Proved C2:  this_angle__1 <= angle__last
+     using hypothesis H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_deflection_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_deflection_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_deflection_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

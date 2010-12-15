@@ -1,0 +1,47 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 26-NOV-2009 09:54:53.83*/
+
+                       /*function yaw.Calc_Rudder_Move*/
+
+
+rule_family calc_rudder__rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+calc_rudder__rules(1): integer__size >= 0 may_be_deduced.
+calc_rudder__rules(2): integer__first may_be_replaced_by -2147483648.
+calc_rudder__rules(3): integer__last may_be_replaced_by 2147483647.
+calc_rudder__rules(4): integer__base__first may_be_replaced_by -2147483648.
+calc_rudder__rules(5): integer__base__last may_be_replaced_by 2147483647.
+calc_rudder__rules(6): degrees__degreespersec__size >= 0 may_be_deduced.
+calc_rudder__rules(7): degrees__degreespersec__first may_be_replaced_by -180.
+calc_rudder__rules(8): degrees__degreespersec__last may_be_replaced_by 180.
+calc_rudder__rules(9): degrees__degreespersec__base__first may_be_replaced_by -32768.
+calc_rudder__rules(10): degrees__degreespersec__base__last may_be_replaced_by 32767.
+calc_rudder__rules(11): instruments__machnumber__size >= 0 may_be_deduced.
+calc_rudder__rules(12): instruments__machnumber__first may_be_replaced_by 0.
+calc_rudder__rules(13): instruments__machnumber__last may_be_replaced_by 100.
+calc_rudder__rules(14): instruments__machnumber__base__first may_be_replaced_by -128.
+calc_rudder__rules(15): instruments__machnumber__base__last may_be_replaced_by 127.
+calc_rudder__rules(16): surfaces__controlangle__size >= 0 may_be_deduced.
+calc_rudder__rules(17): surfaces__controlangle__first may_be_replaced_by -45.
+calc_rudder__rules(18): surfaces__controlangle__last may_be_replaced_by 45.
+calc_rudder__rules(19): surfaces__controlangle__base__first may_be_replaced_by -128.
+calc_rudder__rules(20): surfaces__controlangle__base__last may_be_replaced_by 127.
+calc_rudder__rules(21): scale__scaledata__size >= 0 may_be_deduced.
+calc_rudder__rules(22): scale__scaledata__first may_be_replaced_by -100.
+calc_rudder__rules(23): scale__scaledata__last may_be_replaced_by 100.
+calc_rudder__rules(24): scale__scaledata__base__first may_be_replaced_by -2147483648.
+calc_rudder__rules(25): scale__scaledata__base__last may_be_replaced_by 2147483647.
+calc_rudder__rules(26): degreespersec__size >= 0 may_be_deduced.
+calc_rudder__rules(27): degreespersec__first may_be_replaced_by -180.
+calc_rudder__rules(28): degreespersec__last may_be_replaced_by 180.
+calc_rudder__rules(29): degreespersec__base__first may_be_replaced_by -32768.
+calc_rudder__rules(30): degreespersec__base__last may_be_replaced_by 32767.

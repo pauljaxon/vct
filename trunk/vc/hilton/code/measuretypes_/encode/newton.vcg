@@ -1,0 +1,253 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.62
+
+                          procedure encode.Newton
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 36:
+
+procedure_newton_1.
+H1:    true .
+H2:    n >= measuretypes__newton__first .
+H3:    n <= measuretypes__newton__last .
+        ->
+C1:    n >= measuretypes__newton__first .
+C2:    n <= measuretypes__newton__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 38:
+
+procedure_newton_2.
+H1:    true .
+H2:    n >= measuretypes__newton__first .
+H3:    n <= measuretypes__newton__last .
+H4:    n >= measuretypes__newton__first .
+H5:    n <= measuretypes__newton__last .
+H6:    n >= measuretypes__newton__first .
+H7:    n <= measuretypes__newton__last .
+H8:    n < 0 .
+H9:    n >= measuretypes__newton__first .
+H10:   n <= measuretypes__newton__last .
+        ->
+C1:     -n >= measuretypes__newton__first .
+C2:     -n <= measuretypes__newton__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 43:
+
+procedure_newton_3.
+H1:    true .
+H2:    n >= measuretypes__newton__first .
+H3:    n <= measuretypes__newton__last .
+H4:    n >= measuretypes__newton__first .
+H5:    n <= measuretypes__newton__last .
+H6:    n >= measuretypes__newton__first .
+H7:    n <= measuretypes__newton__last .
+H8:    n < 0 .
+H9:    n >= measuretypes__newton__first .
+H10:   n <= measuretypes__newton__last .
+H11:    -n >= measuretypes__newton__first .
+H12:    -n <= measuretypes__newton__last .
+H13:    -n >= measuretypes__newton__first .
+H14:    -n <= measuretypes__newton__last .
+        ->
+C1:    ( -n) mod word_max >= bus__word__first .
+C2:    ( -n) mod word_max <= bus__word__last .
+C3:    ( -n) mod word_max >= bus__word__first .
+C4:    ( -n) mod word_max <= bus__word__last .
+C5:    ( -n) mod word_max >= measuretypes__newton__base__first .
+C6:    ( -n) mod word_max <= measuretypes__newton__base__last .
+C7:    word_max <> 0 .
+ 
+
+procedure_newton_4.
+H1:    true .
+H2:    n >= measuretypes__newton__first .
+H3:    n <= measuretypes__newton__last .
+H4:    n >= measuretypes__newton__first .
+H5:    n <= measuretypes__newton__last .
+H6:    n >= measuretypes__newton__first .
+H7:    n <= measuretypes__newton__last .
+H8:    not (n < 0) .
+H9:    n >= measuretypes__newton__first .
+H10:   n <= measuretypes__newton__last .
+        ->
+C1:    n mod word_max >= bus__word__first .
+C2:    n mod word_max <= bus__word__last .
+C3:    n mod word_max >= bus__word__first .
+C4:    n mod word_max <= bus__word__last .
+C5:    n mod word_max >= measuretypes__newton__base__first .
+C6:    n mod word_max <= measuretypes__newton__base__last .
+C7:    word_max <> 0 .
+ 
+
+For path(s) from start to run-time check associated with statement of line 44:
+
+procedure_newton_5.
+H1:    true .
+H2:    n >= measuretypes__newton__first .
+H3:    n <= measuretypes__newton__last .
+H4:    n >= measuretypes__newton__first .
+H5:    n <= measuretypes__newton__last .
+H6:    n >= measuretypes__newton__first .
+H7:    n <= measuretypes__newton__last .
+H8:    n < 0 .
+H9:    n >= measuretypes__newton__first .
+H10:   n <= measuretypes__newton__last .
+H11:    -n >= measuretypes__newton__first .
+H12:    -n <= measuretypes__newton__last .
+H13:    -n >= measuretypes__newton__first .
+H14:    -n <= measuretypes__newton__last .
+H15:   ( -n) mod word_max >= bus__word__first .
+H16:   ( -n) mod word_max <= bus__word__last .
+H17:   ( -n) mod word_max >= bus__word__first .
+H18:   ( -n) mod word_max <= bus__word__last .
+H19:   ( -n) mod word_max >= measuretypes__newton__base__first .
+H20:   ( -n) mod word_max <= measuretypes__newton__base__last .
+H21:   word_max <> 0 .
+H22:    -n >= measuretypes__newton__first .
+H23:    -n <= measuretypes__newton__last .
+        ->
+C1:    ( -n) div word_max >= bus__word__first .
+C2:    ( -n) div word_max <= bus__word__last .
+C3:    ( -n) div word_max >= bus__word__first .
+C4:    ( -n) div word_max <= bus__word__last .
+C5:    ( -n) div word_max >= measuretypes__newton__base__first .
+C6:    ( -n) div word_max <= measuretypes__newton__base__last .
+C7:    word_max <> 0 .
+ 
+
+procedure_newton_6.
+H1:    true .
+H2:    n >= measuretypes__newton__first .
+H3:    n <= measuretypes__newton__last .
+H4:    n >= measuretypes__newton__first .
+H5:    n <= measuretypes__newton__last .
+H6:    n >= measuretypes__newton__first .
+H7:    n <= measuretypes__newton__last .
+H8:    not (n < 0) .
+H9:    n >= measuretypes__newton__first .
+H10:   n <= measuretypes__newton__last .
+H11:   n mod word_max >= bus__word__first .
+H12:   n mod word_max <= bus__word__last .
+H13:   n mod word_max >= bus__word__first .
+H14:   n mod word_max <= bus__word__last .
+H15:   n mod word_max >= measuretypes__newton__base__first .
+H16:   n mod word_max <= measuretypes__newton__base__last .
+H17:   word_max <> 0 .
+H18:   n >= measuretypes__newton__first .
+H19:   n <= measuretypes__newton__last .
+        ->
+C1:    n div word_max >= bus__word__first .
+C2:    n div word_max <= bus__word__last .
+C3:    n div word_max >= bus__word__first .
+C4:    n div word_max <= bus__word__last .
+C5:    n div word_max >= measuretypes__newton__base__first .
+C6:    n div word_max <= measuretypes__newton__base__last .
+C7:    word_max <> 0 .
+ 
+
+For path(s) from start to run-time check associated with statement of line 46:
+
+procedure_newton_7.
+H1:    true .
+H2:    n >= measuretypes__newton__first .
+H3:    n <= measuretypes__newton__last .
+H4:    n >= measuretypes__newton__first .
+H5:    n <= measuretypes__newton__last .
+H6:    n >= measuretypes__newton__first .
+H7:    n <= measuretypes__newton__last .
+H8:    n < 0 .
+H9:    n >= measuretypes__newton__first .
+H10:   n <= measuretypes__newton__last .
+H11:    -n >= measuretypes__newton__first .
+H12:    -n <= measuretypes__newton__last .
+H13:    -n >= measuretypes__newton__first .
+H14:    -n <= measuretypes__newton__last .
+H15:   ( -n) mod word_max >= bus__word__first .
+H16:   ( -n) mod word_max <= bus__word__last .
+H17:   ( -n) mod word_max >= bus__word__first .
+H18:   ( -n) mod word_max <= bus__word__last .
+H19:   ( -n) mod word_max >= measuretypes__newton__base__first .
+H20:   ( -n) mod word_max <= measuretypes__newton__base__last .
+H21:   word_max <> 0 .
+H22:    -n >= measuretypes__newton__first .
+H23:    -n <= measuretypes__newton__last .
+H24:   ( -n) div word_max >= bus__word__first .
+H25:   ( -n) div word_max <= bus__word__last .
+H26:   ( -n) div word_max >= bus__word__first .
+H27:   ( -n) div word_max <= bus__word__last .
+H28:   ( -n) div word_max >= measuretypes__newton__base__first .
+H29:   ( -n) div word_max <= measuretypes__newton__base__last .
+H30:   word_max <> 0 .
+H31:   true .
+H32:   true .
+H33:   ( -n) div word_max >= bus__word__first .
+H34:   ( -n) div word_max <= bus__word__last .
+        ->
+C1:    ( -n) div word_max + 32768 >= bus__word__first .
+C2:    ( -n) div word_max + 32768 <= bus__word__last .
+ 
+
+procedure_newton_8.
+H1:    true .
+H2:    n >= measuretypes__newton__first .
+H3:    n <= measuretypes__newton__last .
+H4:    n >= measuretypes__newton__first .
+H5:    n <= measuretypes__newton__last .
+H6:    n >= measuretypes__newton__first .
+H7:    n <= measuretypes__newton__last .
+H8:    not (n < 0) .
+H9:    n >= measuretypes__newton__first .
+H10:   n <= measuretypes__newton__last .
+H11:   n mod word_max >= bus__word__first .
+H12:   n mod word_max <= bus__word__last .
+H13:   n mod word_max >= bus__word__first .
+H14:   n mod word_max <= bus__word__last .
+H15:   n mod word_max >= measuretypes__newton__base__first .
+H16:   n mod word_max <= measuretypes__newton__base__last .
+H17:   word_max <> 0 .
+H18:   n >= measuretypes__newton__first .
+H19:   n <= measuretypes__newton__last .
+H20:   n div word_max >= bus__word__first .
+H21:   n div word_max <= bus__word__last .
+H22:   n div word_max >= bus__word__first .
+H23:   n div word_max <= bus__word__last .
+H24:   n div word_max >= measuretypes__newton__base__first .
+H25:   n div word_max <= measuretypes__newton__base__last .
+H26:   word_max <> 0 .
+H27:   true .
+H28:   false .
+H29:   n div word_max >= bus__word__first .
+H30:   n div word_max <= bus__word__last .
+        ->
+C1:    n div word_max + 32768 >= bus__word__first .
+C2:    n div word_max + 32768 <= bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_newton_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_newton_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_newton_11.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_newton_12.
+*** true .          /* trivially true VC removed by Examiner */
+
+

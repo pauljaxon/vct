@@ -1,0 +1,255 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.56
+
+Line
+   1  -- Fuel simulator implementation
+   2  --
+   3  -- $Log: fuel.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/08/17 11:57:19  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with Clock_Utils,SystemTypes;
+  13  with Bus,RT1553,IBIT,Bit_Machine;
+  14  package body Fuel
+  15    --# own State is
+  16    --#     Last_Level,
+  17    --#     Last_Rate,
+  18    --#     Last_Time,
+  19    --#     BIT_State;
+  20  is
+  21     subtype Kilo is Measuretypes.Kilo;
+  22     subtype Gram_Per_Sec is Measuretypes.Gram_Per_Sec;
+  23  
+  24     Last_level : Measuretypes.Kilo := 0;
+  25     Last_Rate  : Measuretypes.Gram_Per_Sec := 0;
+  26     Last_Time  : Clock.Millisecond := Clock.Millisecond'First;
+  27     Bit_State  : Bit_Machine.Machine := Bit_Machine.Initial_Machine;
+  28  
+  29     Bus_Id : constant Rt1553.Lru_Name := Rt1553.Fuel;
+  30  
+  31     -- Work out the current level.
+  32     procedure Extrapolate_level(Level : out measuretypes.kilo)
+  33       --# global in     Last_level, Last_Rate, Last_Time;
+  34       --#        in out Clock.Time;
+  35       --# derives Clock.Time from * &
+  36       --#         Level from Clock.Time, Last_level,
+  37       --#         Last_Rate, Last_Time;
+  38     is
+  39        Time_Now,T_Delta : Clock.Millisecond;
+  40        Time_Valid : Boolean;
+  41  
+  42        -- Extrapolate mass loss from burn rate
+  43        procedure Extrapolate_Mass(O : in Kilo;
+  44                                   V : in gram_Per_Sec;
+  45                                   N : out Kilo)
+  46          --# global in t_delta;
+  47          --# derives N from O, V, t_delta;
+  48        is
+  49           M_Delta : Kilo;
+  50           VMS : Clock.Millisecond;
+  51        begin
+  52           if v < 0 then
+  53              VMS := Clock.Millisecond(-v);
+  54              -- Rate in grammes/sec, mass in kilos
+  55              M_Delta := -Kilo((VMS * T_Delta)/1_000_000);
+  56           else
+  57              VMS := Clock.Millisecond(v);
+  58              M_Delta := Kilo((VMS * T_Delta)/1_000_000);
+  59           end if;
+  60           -- Note that mass goes *down* wot
+  61           N := O - M_Delta;
+  62        end Extrapolate_mass;
+
++++        Flow analysis of subprogram Extrapolate_Mass 
+           performed: no errors found.
+
+  63     begin
+  64        Clock.Read(T => Time_Now,
+  65                   Valid => Time_Valid);
+  66        if not Time_Valid then
+  67          -- Can't extrapolate
+  68           Level := 0;
+  69        else
+  70           -- How many seconds change
+  71           T_Delta := Clock_Utils.Delta_Time(Last_Time,Time_Now);
+  72           Extrapolate_mass(Last_level,
+  73                                 Last_Rate,
+  74                                 Level);
+  75        end if;
+  76     end Extrapolate_level;
+
++++        Flow analysis of subprogram Extrapolate_level 
+           performed: no errors found.
+
+  77  
+  78     --------- Public subprograms
+  79  
+  80     -- Cycle the reading of data from the bus
+  81     -- and writing of data to the bus
+  82     procedure Cycle
+  83       --# global in Last_level, Last_Time, Last_Rate;
+  84       --#        in out BIT_State;
+  85       --#        in out Clock.Time;
+  86       --#        in Bus.Outputs;
+  87       --#        in out Bus.Inputs;
+  88       --# derives
+  89       --#        BIT_State
+  90       --#          from *, Bus.Outputs &
+  91       --#        Bus.Inputs from *, Clock.Time,
+  92       --#        Last_level, Last_Time,
+  93       --#        Last_Rate, BIT_State &
+  94       --#        Clock.Time from *;
+  95     is
+  96        Level : Measuretypes.Kilo;
+  97        Datum : Bus.Word;
+  98  
+  99        procedure Write_Mass(M : in Kilo;
+ 100                             I : in Bus.Word_Index)
+ 101          --# global in out Bus.Inputs;
+ 102          --# derives Bus.Inputs from
+ 103          --#   *, M, I;
+ 104        is
+ 105        begin
+ 106           Rt1553.Write_Word(Data => Bus.Word(M),
+ 107                             Idx  => I,
+ 108                             Subaddress_Idx => 1,
+ 109                             Src => Bus_id);
+ 110        end Write_Mass;
+
++++        Flow analysis of subprogram Write_Mass 
+           performed: no errors found.
+
+ 111     begin
+ 112        Extrapolate_level(level);
+ 113        -- Write the mass level info to T1 word 1
+ 114        Write_Mass(M => Level,
+ 115                   I => 1);
+ 116        -- Write the BIT phase to T1 word 2
+ 117        Rt1553.Write_Word(Data =>
+ 118                            IBIT.Phase_Lookup(BIT_Machine.Phase(Bit_State)),
+ 119                         Idx => 2,
+ 120                         Subaddress_Idx => 1,
+ 121                         Src => Bus_id);
+ 122        -- Read the BIT info off R1
+ 123        Rt1553.Read_Word(Src => Bus_id,
+ 124                         Idx => 1,
+ 125                         Subaddress_Idx => 1,
+ 126                         Data => Datum);
+ 127        BIT_Machine.Change_State(Word => Datum,
+ 128                                 State => Bit_state);
+ 129        -- And cycle the BIT
+ 130        BIT_Machine.Step(Bit_State);
+ 131     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+ 132  
+ 133     -- Set the current level
+ 134     procedure Set_Level(level : in Measuretypes.Kilo)
+ 135     --# global    out Last_level, last_time;
+ 136     --#        in out Clock.Time;
+ 137     --# derives Clock.Time from * &
+ 138     --#         Last_level from level, Clock.Time &
+ 139     --#         Last_Time     from Clock.Time;
+ 140     is
+ 141        Time_Valid : Boolean;
+ 142     begin
+ 143        Last_level := level;
+ 144        Clock.Read(Last_Time,Time_Valid);
+ 145        if not Time_Valid then
+ 146           Last_level := 0;
+ 147        end if;
+ 148     end Set_level;
+
++++        Flow analysis of subprogram Set_Level performed: 
+           no errors found.
+
+ 149  
+ 150     -- Set the current burn rate
+ 151     procedure Set_rate(rate : in Measuretypes.gram_Per_Sec)
+ 152     --# global    out last_time, last_rate;
+ 153     --#        in out Clock.Time;
+ 154     --# derives Clock.Time from * &
+ 155     --#         Last_Time     from Clock.Time &
+ 156     --#         Last_rate from rate, Clock.Time;
+ 157     is
+ 158        Time_Valid : Boolean;
+ 159     begin
+ 160        Last_Rate := Rate;
+ 161        Clock.Read(Last_Time,Time_Valid);
+ 162        if not Time_Valid then
+ 163           Last_rate := 0;
+ 164        end if;
+ 165     end Set_rate;
+
++++        Flow analysis of subprogram Set_Rate performed: 
+           no errors found.
+
+ 166  
+ 167     -- Read the current level
+ 168     procedure Read_Level(Level : out Measuretypes.kilo)
+ 169       --# global in     Last_level, Last_Time, Last_rate;
+ 170       --#        in out Clock.Time;
+ 171       --# derives Clock.Time from * &
+ 172       --#         level from last_level, Last_Time, last_rate,
+ 173       --#         Clock.Time;
+ 174     is
+ 175     begin
+ 176        Extrapolate_level(level);
+ 177     end Read_Level;
+
++++        Flow analysis of subprogram Read_Level 
+           performed: no errors found.
+
+ 178  
+ 179     procedure Fail_Next_Bit
+ 180       --# global in out BIT_State;
+ 181       --# derives BIT_State from *;
+ 182     is begin
+ 183        BIT_Machine.Fail_Next(Bit_State);
+ 184     end Fail_Next_Bit;
+
++++        Flow analysis of subprogram Fail_Next_Bit 
+           performed: no errors found.
+
+ 185  
+ 186     procedure Init
+ 187       --# global out Last_level, Last_Time, Last_Rate, BIT_State;
+ 188       --#        in out Bus.Inputs;
+ 189       --# derives Last_level, Last_Time, last_rate, BIT_State from &
+ 190       --#        Bus.Inputs from *;
+ 191     is begin
+ 192        -- Initialise the bus message 1T
+ 193        RT1553.Set_Message_Valid(Subaddress_Idx => 1,
+ 194                                 Src => Bus_id);
+ 195        -- Initialise the variables
+ 196        Last_level := 0;
+ 197        Last_Time     := Clock.Millisecond'First;
+ 198        Last_Rate := 0;
+ 199        BIT_Machine.Create(Ticks_To_Complete => 25,
+ 200                           State => Bit_State);
+ 201     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 202  
+ 203     procedure Command is separate;
+ 204  end Fuel;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

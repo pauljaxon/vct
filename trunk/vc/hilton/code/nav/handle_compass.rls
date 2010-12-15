@@ -1,0 +1,83 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:44.10*/
+
+                        /*procedure nav.Handle_compass*/
+
+
+rule_family handle_compa_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+handle_compa_rules(1): measuretypes__angle_degrees__size >= 0 may_be_deduced.
+handle_compa_rules(2): measuretypes__angle_degrees__first may_be_replaced_by 0.
+handle_compa_rules(3): measuretypes__angle_degrees__last may_be_replaced_by 359.
+handle_compa_rules(4): measuretypes__angle_degrees__base__first <= 
+     measuretypes__angle_degrees__base__last may_be_deduced.
+handle_compa_rules(5): measuretypes__angle_degrees__base__first <= 
+     measuretypes__angle_degrees__first may_be_deduced.
+handle_compa_rules(6): measuretypes__angle_degrees__base__last >= 
+     measuretypes__angle_degrees__last may_be_deduced.
+handle_compa_rules(7): sensor_history__angle_degrees__size >= 0 may_be_deduced.
+handle_compa_rules(8): sensor_history__angle_degrees__first may_be_replaced_by 0.
+handle_compa_rules(9): sensor_history__angle_degrees__last may_be_replaced_by 359.
+handle_compa_rules(10): sensor_history__angle_degrees__base__first <= 
+     sensor_history__angle_degrees__base__last may_be_deduced.
+handle_compa_rules(11): sensor_history__angle_degrees__base__first <= 
+     sensor_history__angle_degrees__first may_be_deduced.
+handle_compa_rules(12): sensor_history__angle_degrees__base__last >= 
+     sensor_history__angle_degrees__last may_be_deduced.
+handle_compa_rules(13): sensor_status__size >= 0 may_be_deduced.
+handle_compa_rules(14): sensor_status__first may_be_replaced_by unknown.
+handle_compa_rules(15): sensor_status__last may_be_replaced_by restarted.
+handle_compa_rules(16): sensor_status__base__first may_be_replaced_by unknown.
+handle_compa_rules(17): sensor_status__base__last may_be_replaced_by restarted.
+handle_compa_rules(18): sensor_status__pos(sensor_status__first) may_be_replaced_by 0.
+handle_compa_rules(19): sensor_status__pos(unknown) may_be_replaced_by 0.
+handle_compa_rules(20): sensor_status__val(0) may_be_replaced_by 
+     unknown.
+handle_compa_rules(21): sensor_status__pos(valid) may_be_replaced_by 1.
+handle_compa_rules(22): sensor_status__val(1) may_be_replaced_by 
+     valid.
+handle_compa_rules(23): sensor_status__pos(failed) may_be_replaced_by 2.
+handle_compa_rules(24): sensor_status__val(2) may_be_replaced_by 
+     failed.
+handle_compa_rules(25): sensor_status__pos(restarted) may_be_replaced_by 3.
+handle_compa_rules(26): sensor_status__val(3) may_be_replaced_by 
+     restarted.
+handle_compa_rules(27): sensor_status__pos(sensor_status__last) may_be_replaced_by 3.
+handle_compa_rules(28): sensor_status__pos(succ(X)) may_be_replaced_by 
+     sensor_status__pos(X) + 1
+     if [X <=restarted, X <> restarted].
+handle_compa_rules(29): sensor_status__pos(pred(X)) may_be_replaced_by 
+     sensor_status__pos(X) - 1
+     if [X >=unknown, X <> unknown].
+handle_compa_rules(30): sensor_status__pos(X) >= 0 may_be_deduced_from
+     [unknown <= X, X <= restarted].
+handle_compa_rules(31): sensor_status__pos(X) <= 3 may_be_deduced_from
+     [unknown <= X, X <= restarted].
+handle_compa_rules(32): sensor_status__val(X) >= unknown may_be_deduced_from
+     [0 <= X, X <= 3].
+handle_compa_rules(33): sensor_status__val(X) <= restarted may_be_deduced_from
+     [0 <= X, X <= 3].
+handle_compa_rules(34): succ(sensor_status__val(X)) may_be_replaced_by 
+     sensor_status__val(X+1)
+     if [0 <= X, X < 3].
+handle_compa_rules(35): pred(sensor_status__val(X)) may_be_replaced_by 
+     sensor_status__val(X-1)
+     if [0 < X, X <= 3].
+handle_compa_rules(36): sensor_status__pos(sensor_status__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 3].
+handle_compa_rules(37): sensor_status__val(sensor_status__pos(X)) may_be_replaced_by X
+     if [unknown <= X, X <= restarted].
+handle_compa_rules(38): sensor_status__pos(X) <= sensor_status__pos(Y) & X <= Y are_interchangeable 
+     if [unknown <= X, X <= restarted, unknown <= Y, Y <= 
+     restarted].
+handle_compa_rules(39): sensor_status__val(X) <= sensor_status__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 3, 0 <= Y, Y <= 3].

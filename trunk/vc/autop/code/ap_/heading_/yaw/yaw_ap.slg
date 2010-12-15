@@ -1,0 +1,163 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:06
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure yaw.Yaw_AP
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_yaw_ap_1.  @@@@@@@@@@
+***  Proved C1:  slip >= instruments__slipangle__first
+     using hypothesis H4.
+***  Proved C2:  slip <= instruments__slipangle__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_yaw_ap_2.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+-S-  Applied substitution rule yaw_ap_rules(22).
+     This was achieved by replacing all occurrences of degreespersec__first by:
+          - 180.
+<S>  New C1:  present_sliprate__1 >= - 180
+-S-  Applied substitution rule yaw_ap_rules(23).
+     This was achieved by replacing all occurrences of degreespersec__last by:
+          180.
+<S>  New C2:  present_sliprate__1 <= 180
+-S-  Applied substitution rule yaw_ap_rules(2).
+     This was achieved by replacing all occurrences of 
+          degrees__degreespersec__first by:
+          - 180.
+<S>  New H8:  present_sliprate__1 >= - 180
+-S-  Applied substitution rule yaw_ap_rules(3).
+     This was achieved by replacing all occurrences of 
+          degrees__degreespersec__last by:
+          180.
+<S>  New H9:  present_sliprate__1 <= 180
+-S-  Applied substitution rule yaw_ap_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__first by:
+          0.
+<S>  New H2:  mach >= 0
+-S-  Applied substitution rule yaw_ap_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__machnumber__last by:
+          100.
+<S>  New H3:  mach <= 100
+-S-  Applied substitution rule yaw_ap_rules(12).
+     This was achieved by replacing all occurrences of 
+          instruments__slipangle__first by:
+          - 25.
+<S>  New H4:  slip >= - 25
+-S-  Applied substitution rule yaw_ap_rules(13).
+     This was achieved by replacing all occurrences of 
+          instruments__slipangle__last by:
+          25.
+<S>  New H5:  slip <= 25
+***  Proved C1:  present_sliprate__1 >= - 180
+     using hypothesis H8.
+***  Proved C2:  present_sliprate__1 <= 180
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_yaw_ap_3.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C1:  mach >= instruments__machnumber__first
+     using hypothesis H2.
+***  Proved C2:  mach <= instruments__machnumber__last
+     using hypothesis H3.
+***  Proved C3:  present_sliprate__1 >= degreespersec__first
+     using hypothesis H10.
+***  Proved C4:  present_sliprate__1 <= degreespersec__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_yaw_ap_4.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C1:  calc_rudder_move(present_sliprate__1, mach) >= 
+          surfaces__controlangle__first
+     using hypothesis H18.
+***  Proved C2:  calc_rudder_move(present_sliprate__1, mach) <= 
+          surfaces__controlangle__last
+     using hypothesis H19.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_yaw_ap_5.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H19).
+***  Proved C1:  calc_rudder_move(present_sliprate__1, mach) >= 
+          surfaces__controlangle__first
+     using hypothesis H18.
+***  Proved C2:  calc_rudder_move(present_sliprate__1, mach) <= 
+          surfaces__controlangle__last
+     using hypothesis H19.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_yaw_ap_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_yaw_ap_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_yaw_ap_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

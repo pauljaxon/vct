@@ -1,0 +1,599 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.24
+
+Line
+   1  -- Navigation tracking of missile
+   2  --
+   3  -- $Log: nav.adb,v $
+   4  -- Revision 1.2  2004/12/17 16:08:53  adi
+   5  -- Fixing errors in compass; renamed Angle to Angle_Degrees for clarity
+   6  --
+   7  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   8  -- Added from tarfile
+   9  --
+  10  --
+  11  -- Revision 1.2  2003/09/07 20:11:50  adi
+  12  -- Added Restart param to Maintain
+  13  --
+  14  -- Revision 1.1  2003/09/01 19:50:09  adi
+  15  -- Initial revision
+  16  --
+  17  --
+  18  
+  19  with
+  20    if_barometer,
+  21    if_compass,
+  22    If_Ins,
+  23    If_airspeed,
+  24    Measuretypes.Angle_Ops,
+  25    Measuretypes.Angle_Ops.Trig,
+  26    Sensor_History,
+  27    Systemtypes, Systemtypes.Maths,
+  28    cartesian;
+  29  package body Nav
+  30    --# own Location_State is head_xy, head_yz, dx, dy, dz, airspeed &
+  31    --#     sensor_state is barometer_ss, compass_ss,
+  32    --#        ins_ss, airspeed_ss;
+  33  is
+  34     subtype Integer32 is Systemtypes.Integer32;
+  35  
+  36     type Sensor_Status is (Unknown, Valid, Failed, Restarted);
+  37  
+  38     Dx, Dy, Dz,
+  39       Head_Xy, Head_Yz,
+  40       Airspeed : Sensor_History.Measure_History := Sensor_History.Blank_History;
+  41     Barometer_SS : Sensor_Status := unknown;
+  42     Compass_SS   : Sensor_Status := Unknown;
+  43     Ins_SS       : Sensor_Status := unknown;
+  44     Airspeed_SS  : Sensor_Status := unknown;
+  45  
+  46     ---------------  Sensor updates  -----------------
+  47  
+  48     -- Handle an airspeed update
+  49     procedure Handle_Airspeed(Restart : in Boolean)
+  50       --# global in if_airspeed.state;
+  51       --#    in out airspeed_ss;
+  52       --#    in out airspeed, clock.time;
+  53       --# derives
+  54       --#  airspeed_ss
+  55       --#  from *,
+  56       --#       restart,
+  57       --#       if_airspeed.state &
+  58       --#  airspeed
+  59       --#  from *,
+  60       --#       clock.time,
+  61       --#       if_airspeed.state,
+  62       --#       airspeed_ss,
+  63       --#       restart &
+  64       --#  clock.time
+  65       --#  from *,
+  66       --#       if_airspeed.state,
+  67       --#       airspeed_ss,
+  68       --#       restart;
+  69     is
+  70        speed_Now : Meter_Per_sec;
+  71        sensor_Valid : Boolean;
+  72     begin
+  73        if Restart then
+  74           If_Airspeed.Get_Speed(Speed => Speed_Now,
+  75                                 Valid => sensor_Valid);
+  76           if sensor_Valid then
+  77              airspeed_ss := valid;
+  78              Sensor_History.Update_Speed_Reading(Item => airspeed,
+  79                                                  Data => speed_Now);
+  80           else
+  81              -- Not a valid sensor yet but restarting
+  82              Airspeed_Ss := Restarted;
+  83           end if;
+  84        elsif Airspeed_Ss = Valid or Airspeed_ss = restarted then
+  85           If_airspeed.Get_speed(Speed => Speed_Now,
+  86                                 Valid => sensor_Valid);
+  87           if sensor_Valid then
+  88              Sensor_History.Update_Speed_Reading(Item => airspeed,
+  89                                                  Data => speed_Now);
+  90           else
+  91              -- Whoops, gone invalid
+  92              airspeed_Ss := Failed;
+  93           end if;
+  94        else
+  95           -- Not restarting, sensor not valid so ignore
+  96           null;
+  97        end if;
+  98     end Handle_airspeed;
+
++++        Flow analysis of subprogram Handle_Airspeed 
+           performed: no errors found.
+
+  99  
+ 100     -- Handle a barometer update
+ 101     procedure Handle_Barometer(Restart : in Boolean)
+ 102       --# global in if_barometer.state;
+ 103       --#    in out barometer_ss;
+ 104       --#    in out dz, clock.time;
+ 105       --# derives
+ 106       --#  barometer_ss
+ 107       --#  from *,
+ 108       --#       restart,
+ 109       --#       if_barometer.state &
+ 110       --#  dz
+ 111       --#  from *,
+ 112       --#       clock.time,
+ 113       --#       if_barometer.state,
+ 114       --#       barometer_ss,
+ 115       --#       restart &
+ 116       --#  clock.time
+ 117       --#  from *,
+ 118       --#       if_barometer.state,
+ 119       --#       barometer_ss,
+ 120       --#       restart;
+ 121     is
+ 122        Height_Now : Meter;
+ 123        Baro_Valid : Boolean;
+ 124     begin
+ 125        if Restart then
+ 126           If_Barometer.Get_Height(Height => Height_Now,
+ 127                                   Valid => Baro_Valid);
+ 128           if Baro_Valid then
+ 129              Barometer_ss := valid;
+ 130              Sensor_History.Update_Meter_Reading(Item => Dz,
+ 131                                                  Data => Height_Now);
+ 132           else
+ 133              -- Not a valid barometer yet but restarting
+ 134              Barometer_Ss := Restarted;
+ 135           end if;
+ 136        elsif Barometer_Ss = Valid or Barometer_Ss = restarted then
+ 137           If_Barometer.Get_Height(Height => Height_Now,
+ 138                                   Valid => Baro_Valid);
+ 139           if Baro_Valid then
+ 140              Sensor_History.Update_Meter_Reading(Item => Dz,
+ 141                                                  Data => Height_Now);
+ 142           else
+ 143              -- Whoops, gone invalid
+ 144              Barometer_Ss := Failed;
+ 145           end if;
+ 146        else
+ 147           -- Not restarting, barometer not valid so ignore
+ 148           null;
+ 149        end if;
+ 150     end Handle_Barometer;
+
++++        Flow analysis of subprogram Handle_Barometer 
+           performed: no errors found.
+
+ 151  
+ 152     -- Handle an INS update
+ 153     procedure Handle_Ins(Restart : in Boolean)
+ 154       --# global
+ 155       --#    in if_ins.state;
+ 156       --#    in out ins_ss;
+ 157       --#    in out dx, dy, dz, clock.time;
+ 158       --# derives
+ 159       --#  ins_ss
+ 160       --#  from *,
+ 161       --#       restart,
+ 162       --#       if_ins.state &
+ 163       --#  dx, dy, dz
+ 164       --#  from *,
+ 165       --#       if_ins.state,
+ 166       --#       clock.time,
+ 167       --#       ins_ss,
+ 168       --#       restart &
+ 169       --#  clock.time
+ 170       --#  from *,
+ 171       --#       if_ins.state,
+ 172       --#       ins_ss,
+ 173       --#       restart;
+ 174     is
+ 175        Position : Cartesian.Position;
+ 176        ins_Valid : Boolean;
+ 177     begin
+ 178        if Restart then
+ 179           If_Ins.Get_Location(Position => Position,
+ 180                               Valid => Ins_Valid);
+ 181           if ins_Valid then
+ 182              ins_ss := valid;
+ 183              Sensor_History.Update_Meter_Reading(Item => Dx,
+ 184                                                  Data => Position.x);
+ 185              Sensor_History.Update_Meter_Reading(Item => Dy,
+ 186                                                  Data => Position.y);
+ 187              Sensor_History.Update_Meter_Reading(Item => Dz,
+ 188                                                  Data => Position.z);
+ 189           else
+ 190              -- Not a valid ins but restarting
+ 191              Ins_Ss := Restarted;
+ 192           end if;
+ 193        elsif ins_Ss = Valid or ins_Ss = restarted then
+ 194           If_Ins.Get_location(Position => Position,
+ 195                               Valid => Ins_Valid);
+ 196           if ins_Valid then
+ 197              Sensor_History.Update_Meter_Reading(Item => Dx,
+ 198                             Data => Position.X);
+ 199              Sensor_History.Update_Meter_Reading(Item => Dy,
+ 200                                                  Data => Position.Y);
+ 201              Sensor_History.Update_Meter_Reading(Item => Dz,
+ 202                                                  Data => Position.Z);
+ 203           else
+ 204              -- Whoops, gone invalid
+ 205              Ins_Ss := Failed;
+ 206           end if;
+ 207        else
+ 208           -- Not restarting, device not valid so ignore
+ 209           null;
+ 210        end if;
+ 211     end Handle_Ins;
+
++++        Flow analysis of subprogram Handle_Ins 
+           performed: no errors found.
+
+ 212  
+ 213     -- Handle a compass update
+ 214     procedure Handle_compass(Restart : in Boolean)
+ 215       --# global
+ 216       --#    in if_compass.state;
+ 217       --#    in out compass_ss;
+ 218       --#    in out head_xy, head_yz, clock.time;
+ 219       --# derives
+ 220       --#  compass_ss
+ 221       --#  from *,
+ 222       --#       restart,
+ 223       --#       if_compass.state &
+ 224       --#  head_xy, head_yz
+ 225       --#  from *,
+ 226       --#       if_compass.state,
+ 227       --#       clock.time,
+ 228       --#       compass_ss,
+ 229       --#       restart &
+ 230       --#  clock.time
+ 231       --#  from *,
+ 232       --#       if_compass.state,
+ 233       --#       compass_ss,
+ 234       --#       restart;
+ 235     is
+ 236        Bearing_Mr_Xy, Bearing_Mr_yz : Measuretypes.Millirad;
+ 237        Bearing_Deg : Measuretypes.Angle_Degrees;
+ 238        Compass_Valid1, Compass_valid2 : Boolean;
+ 239     begin
+ 240        if Restart then
+ 241           If_compass.Get_XY(Angle => Bearing_Mr_xy,
+ 242                             Valid => Compass_Valid1);
+ 243           If_compass.Get_YZ(Angle => Bearing_Mr_yz,
+ 244                             Valid => compass_Valid2);
+ 245           if Compass_Valid1 and Compass_valid2 then
+ 246              compass_ss := valid;
+ 247              Bearing_Deg := Measuretypes.Angle_Ops.Round_Degree(Bearing_Mr_xy);
+ 248              Sensor_History.Update_Angle_Reading(Item => Head_xy,
+ 249                                                  Data => Bearing_deg);
+ 250              Bearing_Deg := Measuretypes.Angle_Ops.Round_Degree(Bearing_Mr_yz);
+ 251              Sensor_History.Update_Angle_Reading(Item => Head_yz,
+ 252                                                  Data => Bearing_deg);
+ 253           else
+ 254              -- Not a valid ins but restarting
+ 255              Compass_Ss := Restarted;
+ 256           end if;
+ 257        elsif compass_Ss = Valid or compass_Ss = restarted then
+ 258           If_compass.Get_XY(Angle => Bearing_Mr_xy,
+ 259                             Valid => Compass_Valid1);
+ 260           If_compass.Get_YZ(Angle => Bearing_Mr_yz,
+ 261                             Valid => compass_Valid2);
+ 262           if Compass_Valid1 and Compass_valid2 then
+ 263              compass_ss := valid;
+ 264              Bearing_Deg := Measuretypes.Angle_Ops.Round_Degree(Bearing_Mr_xy);
+ 265              Sensor_History.Update_Angle_Reading(Item => Head_xy,
+ 266                                                  Data => Bearing_deg);
+ 267              Bearing_Deg := Measuretypes.Angle_Ops.Round_Degree(Bearing_Mr_yz);
+ 268              Sensor_History.Update_Angle_Reading(Item => Head_yz,
+ 269                                                  Data => Bearing_deg);
+ 270           else
+ 271              -- Whoops, gone invalid
+ 272              compass_Ss := Failed;
+ 273           end if;
+ 274        else
+ 275           -- Not restarting, device not valid so ignore
+ 276           null;
+ 277        end if;
+ 278     end Handle_Compass;
+
++++        Flow analysis of subprogram Handle_compass 
+           performed: no errors found.
+
+ 279  
+ 280     ------------------ Public subroutines  --------------------
+ 281  
+ 282     procedure Estimate_Height(M : out Meter;
+ 283                               C : out confidence)
+ 284     --# global in dz, barometer_ss, ins_ss;
+ 285     --# derives m,c from barometer_ss, ins_ss, dz;
+ 286     is
+ 287        T : Clock.Millisecond;
+ 288     begin
+ 289        case Barometer_Ss is
+ 290           when Unknown | Failed | Restarted =>
+ 291              -- Try a backup
+ 292              if Ins_Ss = Valid then
+ 293                 -- Secondary sensor valid
+ 294                 Sensor_History.Get_Recent_Meter(Item => Dz,
+ 295                                                 Recent => M,
+ 296                                                 Timestamp => T);
+ 297                 if (T = 0) then
+ 298                    -- Invalid reading
+ 299                    C := None;
+ 300                 else
+ 301                    C := Low;
+ 302                 end if;
+ 303              else
+ 304                 M := 0;
+ 305                 C := None;
+ 306              end if;
+ 307           when Valid =>
+ 308              Sensor_History.Get_Recent_Meter(Item => Dz,
+ 309                                              Recent => M,
+ 310                                              Timestamp => T);
+ 311              -- Primary sensor valid
+ 312              if T = 0 then
+ 313                 -- invalid reading
+ 314                 C := None;
+ 315              else
+ 316                 C := High;
+ 317              end if;
+ 318        end case;
+ 319     end Estimate_Height;
+
++++        Flow analysis of subprogram Estimate_Height 
+           performed: no errors found.
+
+ 320  
+ 321     procedure Estimate_Origin_Offset(M : out Meter;
+ 322                                      C : out confidence)
+ 323       --# global in dx, dy, ins_ss, compass_ss, airspeed_ss;
+ 324       --# derives m,c from dx, dy, ins_ss, compass_ss, airspeed_ss;
+ 325     is
+ 326        Edx, Edy : Meter;
+ 327        I_tmp : Integer32;
+ 328        T1, T2 : Clock.Millisecond;
+ 329     begin
+ 330        case Ins_Ss is
+ 331           when Unknown | Failed | Restarted =>
+ 332              if Compass_Ss = Valid and Airspeed_Ss = Valid then
+ 333                 -- Add estimation here eventually
+ 334                 M := 0;
+ 335                 C := none;
+ 336              else
+ 337                 -- Can't estimate
+ 338                 M := 0;
+ 339                 C := none;
+ 340              end if;
+ 341           when Valid =>
+ 342              Sensor_History.Get_Recent_Meter(Item => dx,
+ 343                                              Recent => edx,
+ 344                                              Timestamp => T1);
+ 345              Sensor_History.Get_Recent_Meter(Item => dy,
+ 346                                              Recent => edy,
+ 347                                              Timestamp => T2);
+ 348              -- Primary sensor valid
+ 349              if T1 = 0 or T2 = 0 then
+ 350                 -- invalid reading
+ 351                 M := 0;
+ 352                 C := None;
+ 353              else
+ 354                 I_Tmp := (Integer32(Edx) * Integer32(Edx)) +
+ 355                   (Integer32(Edy) * Integer32(Edy));
+ 356                 I_Tmp := Systemtypes.Maths.Sqrt(I_tmp);
+ 357                 M := Meter(I_Tmp);
+ 358                 C := High;
+ 359              end if;
+ 360        end case;
+ 361     end Estimate_Origin_Offset;
+
++++        Flow analysis of subprogram 
+           Estimate_Origin_Offset performed: no errors found.
+
+ 362  
+ 363     procedure Estimate_Heading(A : out Angle_Degrees;
+ 364                                C : out Confidence)
+ 365     --# global in dx, dy, head_xy, compass_ss, ins_ss;
+ 366     --# derives a,c from dx, dy, head_xy, compass_ss, ins_ss;
+ 367     is
+ 368        T1, T2 : Clock.Millisecond;
+ 369        Edx,Edy : Meter;
+ 370     begin
+ 371        case Compass_Ss is
+ 372           when Unknown | Failed | Restarted =>
+ 373              if Ins_Ss = Valid then
+ 374                 -- Read the dx and dy given by Ins
+ 375                 Sensor_History.Get_Recent_Meter(Item => Dx,
+ 376                                                 Recent => Edx,
+ 377                                                 Timestamp => T1);
+ 378                 Sensor_History.Get_Recent_Meter(Item => Dy,
+ 379                                                 Recent => Edy,
+ 380                                                 Timestamp => T2);
+ 381                 if T1 = 0 or T2 = 0 then
+ 382                    -- invalid
+ 383                    A := 0;
+ 384                    C := None;
+ 385                 else
+ 386                    A := Measuretypes.Angle_Ops.Trig.Arctan2(X => eDx,
+ 387                                                             Y => eDy);
+ 388                    C := Low;
+ 389                 end if;
+ 390              else
+ 391                 A := 0;
+ 392                 C := None;
+ 393              end if;
+ 394           when Valid =>
+ 395              Sensor_History.Get_Recent_Angle(Item => Head_Xy,
+ 396                                              Recent => A,
+ 397                                              Timestamp => T1);
+ 398              if T1 = 0 then
+ 399                 C := None;
+ 400              else
+ 401                 C := High;
+ 402              end if;
+ 403        end case;
+ 404     end Estimate_Heading;
+
++++        Flow analysis of subprogram Estimate_Heading 
+           performed: no errors found.
+
+ 405  
+ 406     procedure Estimate_Speed(S : out Meter_Per_Sec;
+ 407                              C : out Confidence)
+ 408       --# global in dx, dy, airspeed, airspeed_ss, compass_ss, ins_ss;
+ 409       --#   in out clock.time;
+ 410     --# derives s,c from dx, dy, airspeed, airspeed_ss, ins_ss,
+ 411     --#  compass_ss, clock.time &
+ 412       --#  clock.time from *, airspeed_ss;
+ 413     is
+ 414        T1 : Clock.Millisecond;
+ 415        I_Tmp : Integer32;
+ 416        M : Meter;
+ 417        C_Tmp : Confidence;
+ 418        Time_Valid : Boolean;
+ 419     begin
+ 420        case airspeed_Ss is
+ 421           when Unknown | Failed | Restarted =>
+ 422              Estimate_Origin_Offset(M => m,
+ 423                                     C => C_Tmp);
+ 424              Clock.Read(T => T1,
+ 425                         Valid => Time_Valid);
+ 426              if Time_Valid and C_tmp /= None then
+ 427                 I_Tmp := Integer32(M);
+ 428                 -- Estimate speed by distance over time
+ 429                 I_Tmp := (I_Tmp * 1_000) / Integer32(T1);
+ 430                 S := Meter_Per_Sec(I_Tmp);
+ 431                 C := Low;
+ 432              else
+ 433                 s := 0;
+ 434                 C := None;
+ 435              end if;
+ 436           when Valid =>
+ 437              Sensor_History.Get_Recent_speed(Item => airspeed,
+ 438                                              Recent => s,
+ 439                                              Timestamp => T1);
+ 440              if T1 = 0 then
+ 441                 C := None;
+ 442              else
+ 443                 C := High;
+ 444              end if;
+ 445        end case;
+ 446     end Estimate_Speed;
+
++++        Flow analysis of subprogram Estimate_Speed 
+           performed: no errors found.
+
+ 447  
+ 448  
+ 449     procedure Maintain(Restart : in Boolean)
+ 450       --# global
+ 451       --#  in
+ 452       --#    if_barometer.State,
+ 453       --#    if_compass.state,
+ 454       --#    if_airspeed.state,
+ 455       --#    if_ins.state;
+ 456       --#  in out
+ 457       --#    dx, dy, dz, airspeed, head_xy, head_yz,
+ 458       --#    barometer_ss, ins_ss,
+ 459       --#    compass_ss, airspeed_ss,
+ 460       --#    clock.time;
+ 461       --# derives
+ 462       --#  dx, dy
+ 463       --# from
+ 464       --#     *,
+ 465       --#     restart,
+ 466       --#     barometer_ss,
+ 467       --#     compass_ss,
+ 468       --#     ins_ss,
+ 469       --#     airspeed_ss,
+ 470       --#     if_barometer.state,
+ 471       --#     if_compass.state,
+ 472       --#     if_airspeed.state,
+ 473       --#     clock.time,
+ 474       --#     if_ins.state &
+ 475       --# dz
+ 476       --# from
+ 477       --#     *,
+ 478       --#     restart,
+ 479       --#     barometer_ss,
+ 480       --#     compass_ss,
+ 481       --#     ins_ss,
+ 482       --#     airspeed_ss,
+ 483       --#     if_barometer.state,
+ 484       --#     if_compass.state,
+ 485       --#     if_airspeed.state,
+ 486       --#     clock.time,
+ 487       --#     if_ins.state &
+ 488       --#  head_xy,
+ 489       --#  head_yz
+ 490       --#  from
+ 491       --#     *,
+ 492       --#     restart,
+ 493       --#     barometer_ss,
+ 494       --#     compass_ss,
+ 495       --#     airspeed_ss,
+ 496       --#     if_barometer.state,
+ 497       --#     if_compass.state,
+ 498       --#     if_airspeed.state,
+ 499       --#     clock.time &
+ 500       --#  airspeed
+ 501       --#  from
+ 502       --#     *,
+ 503       --#     restart,
+ 504       --#     airspeed_ss,
+ 505       --#     if_airspeed.state,
+ 506       --#     clock.time &
+ 507       --#  barometer_ss
+ 508       --#  from
+ 509       --#     *,
+ 510       --#     restart,
+ 511       --#     if_barometer.state &
+ 512       --#  ins_ss
+ 513       --#  from
+ 514       --#     *,
+ 515       --#     restart,
+ 516       --#     if_ins.state &
+ 517       --#  compass_ss
+ 518       --#  from
+ 519       --#     *,
+ 520       --#     restart,
+ 521       --#     if_compass.state &
+ 522       --#  airspeed_ss
+ 523       --#  from
+ 524       --#     *,
+ 525       --#     restart,
+ 526       --#     if_airspeed.state &
+ 527       --#  clock.time from
+ 528       --#     *,
+ 529       --#     restart,
+ 530       --#     barometer_ss,
+ 531       --#     airspeed_ss,
+ 532       --#     ins_ss,
+ 533       --#     compass_ss,
+ 534       --#     if_barometer.state,
+ 535       --#     if_compass.state,
+ 536       --#     if_airspeed.state,
+ 537       --#     if_ins.state
+ 538       --#  ;
+ 539     is
+ 540     begin
+ 541        Handle_Airspeed(Restart);
+ 542        Handle_Barometer(Restart);
+ 543        Handle_Compass(Restart);
+ 544        Handle_Ins(Restart);
+ 545     end Maintain;
+
++++        Flow analysis of subprogram Maintain performed: 
+           no errors found.
+
+ 546  
+ 547     procedure Command is separate;
+ 548  end Nav;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

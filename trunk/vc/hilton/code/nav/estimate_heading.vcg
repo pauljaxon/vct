@@ -1,0 +1,425 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.18
+
+                       procedure nav.Estimate_Heading
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 375:
+
+procedure_estimate_heading_1.
+H1:    true .
+H2:    compass_ss >= sensor_status__first .
+H3:    compass_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (compass_ss = unknown) or ((compass_ss = failed) or (
+           compass_ss = restarted)) .
+H7:    ins_ss = valid .
+H8:    edx__1 >= sensor_history__meter__first .
+H9:    edx__1 <= sensor_history__meter__last .
+H10:   t1__1 >= clock__millisecond__first .
+H11:   t1__1 <= clock__millisecond__last .
+        ->
+C1:    t1__1 >= clock__millisecond__first .
+C2:    t1__1 <= clock__millisecond__last .
+C3:    edx__1 >= meter__first .
+C4:    edx__1 <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 378:
+
+procedure_estimate_heading_2.
+H1:    true .
+H2:    compass_ss >= sensor_status__first .
+H3:    compass_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (compass_ss = unknown) or ((compass_ss = failed) or (
+           compass_ss = restarted)) .
+H7:    ins_ss = valid .
+H8:    edx__1 >= sensor_history__meter__first .
+H9:    edx__1 <= sensor_history__meter__last .
+H10:   t1__1 >= clock__millisecond__first .
+H11:   t1__1 <= clock__millisecond__last .
+H12:   t1__1 >= clock__millisecond__first .
+H13:   t1__1 <= clock__millisecond__last .
+H14:   edx__1 >= meter__first .
+H15:   edx__1 <= meter__last .
+H16:   edy__2 >= sensor_history__meter__first .
+H17:   edy__2 <= sensor_history__meter__last .
+H18:   t2__2 >= clock__millisecond__first .
+H19:   t2__2 <= clock__millisecond__last .
+        ->
+C1:    t2__2 >= clock__millisecond__first .
+C2:    t2__2 <= clock__millisecond__last .
+C3:    edy__2 >= meter__first .
+C4:    edy__2 <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 383:
+
+procedure_estimate_heading_3.
+H1:    true .
+H2:    compass_ss >= sensor_status__first .
+H3:    compass_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (compass_ss = unknown) or ((compass_ss = failed) or (
+           compass_ss = restarted)) .
+H7:    ins_ss = valid .
+H8:    edx__1 >= sensor_history__meter__first .
+H9:    edx__1 <= sensor_history__meter__last .
+H10:   t1__1 >= clock__millisecond__first .
+H11:   t1__1 <= clock__millisecond__last .
+H12:   t1__1 >= clock__millisecond__first .
+H13:   t1__1 <= clock__millisecond__last .
+H14:   edx__1 >= meter__first .
+H15:   edx__1 <= meter__last .
+H16:   edy__2 >= sensor_history__meter__first .
+H17:   edy__2 <= sensor_history__meter__last .
+H18:   t2__2 >= clock__millisecond__first .
+H19:   t2__2 <= clock__millisecond__last .
+H20:   t2__2 >= clock__millisecond__first .
+H21:   t2__2 <= clock__millisecond__last .
+H22:   edy__2 >= meter__first .
+H23:   edy__2 <= meter__last .
+H24:   t1__1 >= clock__millisecond__first .
+H25:   t1__1 <= clock__millisecond__last .
+H26:   t2__2 >= clock__millisecond__first .
+H27:   t2__2 <= clock__millisecond__last .
+H28:   (t1__1 = 0) or (t2__2 = 0) .
+        ->
+C1:    0 >= angle_degrees__first .
+C2:    0 <= angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 384:
+
+procedure_estimate_heading_4.
+H1:    true .
+H2:    compass_ss >= sensor_status__first .
+H3:    compass_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (compass_ss = unknown) or ((compass_ss = failed) or (
+           compass_ss = restarted)) .
+H7:    ins_ss = valid .
+H8:    edx__1 >= sensor_history__meter__first .
+H9:    edx__1 <= sensor_history__meter__last .
+H10:   t1__1 >= clock__millisecond__first .
+H11:   t1__1 <= clock__millisecond__last .
+H12:   t1__1 >= clock__millisecond__first .
+H13:   t1__1 <= clock__millisecond__last .
+H14:   edx__1 >= meter__first .
+H15:   edx__1 <= meter__last .
+H16:   edy__2 >= sensor_history__meter__first .
+H17:   edy__2 <= sensor_history__meter__last .
+H18:   t2__2 >= clock__millisecond__first .
+H19:   t2__2 <= clock__millisecond__last .
+H20:   t2__2 >= clock__millisecond__first .
+H21:   t2__2 <= clock__millisecond__last .
+H22:   edy__2 >= meter__first .
+H23:   edy__2 <= meter__last .
+H24:   t1__1 >= clock__millisecond__first .
+H25:   t1__1 <= clock__millisecond__last .
+H26:   t2__2 >= clock__millisecond__first .
+H27:   t2__2 <= clock__millisecond__last .
+H28:   (t1__1 = 0) or (t2__2 = 0) .
+H29:   0 >= angle_degrees__first .
+H30:   0 <= angle_degrees__last .
+        ->
+C1:    none >= confidence__first .
+C2:    none <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 386:
+
+procedure_estimate_heading_5.
+H1:    true .
+H2:    compass_ss >= sensor_status__first .
+H3:    compass_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (compass_ss = unknown) or ((compass_ss = failed) or (
+           compass_ss = restarted)) .
+H7:    ins_ss = valid .
+H8:    edx__1 >= sensor_history__meter__first .
+H9:    edx__1 <= sensor_history__meter__last .
+H10:   t1__1 >= clock__millisecond__first .
+H11:   t1__1 <= clock__millisecond__last .
+H12:   t1__1 >= clock__millisecond__first .
+H13:   t1__1 <= clock__millisecond__last .
+H14:   edx__1 >= meter__first .
+H15:   edx__1 <= meter__last .
+H16:   edy__2 >= sensor_history__meter__first .
+H17:   edy__2 <= sensor_history__meter__last .
+H18:   t2__2 >= clock__millisecond__first .
+H19:   t2__2 <= clock__millisecond__last .
+H20:   t2__2 >= clock__millisecond__first .
+H21:   t2__2 <= clock__millisecond__last .
+H22:   edy__2 >= meter__first .
+H23:   edy__2 <= meter__last .
+H24:   t1__1 >= clock__millisecond__first .
+H25:   t1__1 <= clock__millisecond__last .
+H26:   t2__2 >= clock__millisecond__first .
+H27:   t2__2 <= clock__millisecond__last .
+H28:   not ((t1__1 = 0) or (t2__2 = 0)) .
+H29:   edx__1 >= meter__first .
+H30:   edx__1 <= meter__last .
+H31:   edy__2 >= meter__first .
+H32:   edy__2 <= meter__last .
+        ->
+C1:    edy__2 >= measuretypes__meter__first .
+C2:    edy__2 <= measuretypes__meter__last .
+C3:    edx__1 >= measuretypes__meter__first .
+C4:    edx__1 <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 386:
+
+procedure_estimate_heading_6.
+H1:    true .
+H2:    compass_ss >= sensor_status__first .
+H3:    compass_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (compass_ss = unknown) or ((compass_ss = failed) or (
+           compass_ss = restarted)) .
+H7:    ins_ss = valid .
+H8:    edx__1 >= sensor_history__meter__first .
+H9:    edx__1 <= sensor_history__meter__last .
+H10:   t1__1 >= clock__millisecond__first .
+H11:   t1__1 <= clock__millisecond__last .
+H12:   t1__1 >= clock__millisecond__first .
+H13:   t1__1 <= clock__millisecond__last .
+H14:   edx__1 >= meter__first .
+H15:   edx__1 <= meter__last .
+H16:   edy__2 >= sensor_history__meter__first .
+H17:   edy__2 <= sensor_history__meter__last .
+H18:   t2__2 >= clock__millisecond__first .
+H19:   t2__2 <= clock__millisecond__last .
+H20:   t2__2 >= clock__millisecond__first .
+H21:   t2__2 <= clock__millisecond__last .
+H22:   edy__2 >= meter__first .
+H23:   edy__2 <= meter__last .
+H24:   t1__1 >= clock__millisecond__first .
+H25:   t1__1 <= clock__millisecond__last .
+H26:   t2__2 >= clock__millisecond__first .
+H27:   t2__2 <= clock__millisecond__last .
+H28:   not ((t1__1 = 0) or (t2__2 = 0)) .
+H29:   edx__1 >= meter__first .
+H30:   edx__1 <= meter__last .
+H31:   edy__2 >= meter__first .
+H32:   edy__2 <= meter__last .
+H33:   edy__2 >= measuretypes__meter__first .
+H34:   edy__2 <= measuretypes__meter__last .
+H35:   edx__1 >= measuretypes__meter__first .
+H36:   edx__1 <= measuretypes__meter__last .
+H37:   measuretypes__angle_ops__trig__arctan2(edx__1, edy__2) >= 
+           measuretypes__angle_degrees__first .
+H38:   measuretypes__angle_ops__trig__arctan2(edx__1, edy__2) <= 
+           measuretypes__angle_degrees__last .
+        ->
+C1:    measuretypes__angle_ops__trig__arctan2(edx__1, edy__2) >= 
+           angle_degrees__first .
+C2:    measuretypes__angle_ops__trig__arctan2(edx__1, edy__2) <= 
+           angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 388:
+
+procedure_estimate_heading_7.
+H1:    true .
+H2:    compass_ss >= sensor_status__first .
+H3:    compass_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (compass_ss = unknown) or ((compass_ss = failed) or (
+           compass_ss = restarted)) .
+H7:    ins_ss = valid .
+H8:    edx__1 >= sensor_history__meter__first .
+H9:    edx__1 <= sensor_history__meter__last .
+H10:   t1__1 >= clock__millisecond__first .
+H11:   t1__1 <= clock__millisecond__last .
+H12:   t1__1 >= clock__millisecond__first .
+H13:   t1__1 <= clock__millisecond__last .
+H14:   edx__1 >= meter__first .
+H15:   edx__1 <= meter__last .
+H16:   edy__2 >= sensor_history__meter__first .
+H17:   edy__2 <= sensor_history__meter__last .
+H18:   t2__2 >= clock__millisecond__first .
+H19:   t2__2 <= clock__millisecond__last .
+H20:   t2__2 >= clock__millisecond__first .
+H21:   t2__2 <= clock__millisecond__last .
+H22:   edy__2 >= meter__first .
+H23:   edy__2 <= meter__last .
+H24:   t1__1 >= clock__millisecond__first .
+H25:   t1__1 <= clock__millisecond__last .
+H26:   t2__2 >= clock__millisecond__first .
+H27:   t2__2 <= clock__millisecond__last .
+H28:   not ((t1__1 = 0) or (t2__2 = 0)) .
+H29:   edx__1 >= meter__first .
+H30:   edx__1 <= meter__last .
+H31:   edy__2 >= meter__first .
+H32:   edy__2 <= meter__last .
+H33:   edy__2 >= measuretypes__meter__first .
+H34:   edy__2 <= measuretypes__meter__last .
+H35:   edx__1 >= measuretypes__meter__first .
+H36:   edx__1 <= measuretypes__meter__last .
+H37:   measuretypes__angle_ops__trig__arctan2(edx__1, edy__2) >= 
+           measuretypes__angle_degrees__first .
+H38:   measuretypes__angle_ops__trig__arctan2(edx__1, edy__2) <= 
+           measuretypes__angle_degrees__last .
+H39:   measuretypes__angle_ops__trig__arctan2(edx__1, edy__2) >= 
+           angle_degrees__first .
+H40:   measuretypes__angle_ops__trig__arctan2(edx__1, edy__2) <= 
+           angle_degrees__last .
+        ->
+C1:    low >= confidence__first .
+C2:    low <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 391:
+
+procedure_estimate_heading_8.
+H1:    true .
+H2:    compass_ss >= sensor_status__first .
+H3:    compass_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (compass_ss = unknown) or ((compass_ss = failed) or (
+           compass_ss = restarted)) .
+H7:    not (ins_ss = valid) .
+        ->
+C1:    0 >= angle_degrees__first .
+C2:    0 <= angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 392:
+
+procedure_estimate_heading_9.
+H1:    true .
+H2:    compass_ss >= sensor_status__first .
+H3:    compass_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    (compass_ss = unknown) or ((compass_ss = failed) or (
+           compass_ss = restarted)) .
+H7:    not (ins_ss = valid) .
+H8:    0 >= angle_degrees__first .
+H9:    0 <= angle_degrees__last .
+        ->
+C1:    none >= confidence__first .
+C2:    none <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 395:
+
+procedure_estimate_heading_10.
+H1:    true .
+H2:    compass_ss >= sensor_status__first .
+H3:    compass_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    compass_ss = valid .
+H7:    a__3 >= sensor_history__angle_degrees__first .
+H8:    a__3 <= sensor_history__angle_degrees__last .
+H9:    t1__3 >= clock__millisecond__first .
+H10:   t1__3 <= clock__millisecond__last .
+        ->
+C1:    t1__3 >= clock__millisecond__first .
+C2:    t1__3 <= clock__millisecond__last .
+C3:    a__3 >= angle_degrees__first .
+C4:    a__3 <= angle_degrees__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 399:
+
+procedure_estimate_heading_11.
+H1:    true .
+H2:    compass_ss >= sensor_status__first .
+H3:    compass_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    compass_ss = valid .
+H7:    a__3 >= sensor_history__angle_degrees__first .
+H8:    a__3 <= sensor_history__angle_degrees__last .
+H9:    t1__3 >= clock__millisecond__first .
+H10:   t1__3 <= clock__millisecond__last .
+H11:   t1__3 >= clock__millisecond__first .
+H12:   t1__3 <= clock__millisecond__last .
+H13:   a__3 >= angle_degrees__first .
+H14:   a__3 <= angle_degrees__last .
+H15:   t1__3 >= clock__millisecond__first .
+H16:   t1__3 <= clock__millisecond__last .
+H17:   t1__3 = 0 .
+        ->
+C1:    none >= confidence__first .
+C2:    none <= confidence__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 401:
+
+procedure_estimate_heading_12.
+H1:    true .
+H2:    compass_ss >= sensor_status__first .
+H3:    compass_ss <= sensor_status__last .
+H4:    ins_ss >= sensor_status__first .
+H5:    ins_ss <= sensor_status__last .
+H6:    compass_ss = valid .
+H7:    a__3 >= sensor_history__angle_degrees__first .
+H8:    a__3 <= sensor_history__angle_degrees__last .
+H9:    t1__3 >= clock__millisecond__first .
+H10:   t1__3 <= clock__millisecond__last .
+H11:   t1__3 >= clock__millisecond__first .
+H12:   t1__3 <= clock__millisecond__last .
+H13:   a__3 >= angle_degrees__first .
+H14:   a__3 <= angle_degrees__last .
+H15:   t1__3 >= clock__millisecond__first .
+H16:   t1__3 <= clock__millisecond__last .
+H17:   not (t1__3 = 0) .
+        ->
+C1:    high >= confidence__first .
+C2:    high <= confidence__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_estimate_heading_13.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_heading_14.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_heading_15.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_heading_16.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_heading_17.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_estimate_heading_18.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_estimate_heading_19.
+*** true .          /* trivially true VC removed by Examiner */
+
+

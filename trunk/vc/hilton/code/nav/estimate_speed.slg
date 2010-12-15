@@ -1,0 +1,760 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:44  SIMPLIFIED 25-NOV-2009, 14:19:21
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure nav.Estimate_Speed
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= airspeed_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= compass_ss
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  sensor_status__first <= ins_ss
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  confidence__first <= c_tmp__1
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  confidence__first <= c_tmp__1
+***  Proved C1:  confidence__first <= c_tmp__1
+     using hypothesis H11.
+***  Proved C2:  c_tmp__1 <= confidence__last
+     using hypothesis H12.
+***  Proved C3:  m__1 >= meter__first
+     using hypothesis H9.
+***  Proved C4:  m__1 <= meter__last
+     using hypothesis H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= airspeed_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= compass_ss
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  sensor_status__first <= ins_ss
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  confidence__first <= c_tmp__1
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+***  Proved C1:  t1__2 >= clock__millisecond__first
+     using hypothesis H17.
+***  Proved C2:  t1__2 <= clock__millisecond__last
+     using hypothesis H18.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= airspeed_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= compass_ss
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  sensor_status__first <= ins_ss
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  confidence__first <= c_tmp__1
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H10).
+-S-  Applied substitution rule estimate_spe_rules(62).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  m__1 >= - 2147483648
+<S>  New C3:  m__1 >= - 2147483648
+-S-  Applied substitution rule estimate_spe_rules(63).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  m__1 <= 2147483647
+<S>  New C4:  m__1 <= 2147483647
+-S-  Applied substitution rule estimate_spe_rules(17).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H17:  t1__2 >= 0
+-S-  Applied substitution rule estimate_spe_rules(18).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H18:  t1__2 <= 8640000
+-S-  Applied substitution rule estimate_spe_rules(27).
+     This was achieved by replacing all occurrences of confidence__first by:
+          none.
+<S>  New H11:  none <= c_tmp__1
+-S-  Applied substitution rule estimate_spe_rules(28).
+     This was achieved by replacing all occurrences of confidence__last by:
+          high.
+<S>  New H12:  c_tmp__1 <= high
+-S-  Applied substitution rule estimate_spe_rules(52).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H9:  m__1 >= - 200000
+-S-  Applied substitution rule estimate_spe_rules(53).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H10:  m__1 <= 200000
+-S-  Applied substitution rule estimate_spe_rules(67).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H2:  unknown <= airspeed_ss
+<S>  New H4:  unknown <= compass_ss
+<S>  New H6:  unknown <= ins_ss
+-S-  Applied substitution rule estimate_spe_rules(68).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H3:  airspeed_ss <= restarted
+<S>  New H5:  compass_ss <= restarted
+<S>  New H7:  ins_ss <= restarted
+%%%  Hypotheses H11 & H26 together imply that
+          none < c_tmp__1.
+     H11 & H26 have therefore been deleted and a new H11 added to this effect.
+***  Proved C1:  m__1 >= - 2147483648
+     using hypothesis H9.
+***  Proved C3:  m__1 >= - 2147483648
+     using hypothesis H9.
+***  Proved C2:  m__1 <= 2147483647
+     using hypothesis H10.
+***  Proved C4:  m__1 <= 2147483647
+     using hypothesis H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= airspeed_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= compass_ss
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  sensor_status__first <= ins_ss
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  confidence__first <= c_tmp__1
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H30).
+-S-  Applied substitution rule estimate_spe_rules(62).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H29:  m__1 >= - 2147483648
+<S>  New C1:  m__1 * 1000 div t1__2 >= - 2147483648
+<S>  New C4:  t1__2 >= - 2147483648
+-S-  Applied substitution rule estimate_spe_rules(63).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H30:  m__1 <= 2147483647
+<S>  New C2:  m__1 * 1000 div t1__2 <= 2147483647
+<S>  New C5:  t1__2 <= 2147483647
+-S-  Applied substitution rule estimate_spe_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C6:  m__1 * 1000 >= - 2147483648
+-S-  Applied substitution rule estimate_spe_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C7:  m__1 * 1000 <= 2147483647
+-S-  Applied substitution rule estimate_spe_rules(17).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H17:  t1__2 >= 0
+-S-  Applied substitution rule estimate_spe_rules(18).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H18:  t1__2 <= 8640000
+-S-  Applied substitution rule estimate_spe_rules(27).
+     This was achieved by replacing all occurrences of confidence__first by:
+          none.
+<S>  New H11:  none <= c_tmp__1
+-S-  Applied substitution rule estimate_spe_rules(28).
+     This was achieved by replacing all occurrences of confidence__last by:
+          high.
+<S>  New H12:  c_tmp__1 <= high
+-S-  Applied substitution rule estimate_spe_rules(52).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H9:  m__1 >= - 200000
+-S-  Applied substitution rule estimate_spe_rules(53).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H10:  m__1 <= 200000
+-S-  Applied substitution rule estimate_spe_rules(67).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H2:  unknown <= airspeed_ss
+<S>  New H4:  unknown <= compass_ss
+<S>  New H6:  unknown <= ins_ss
+-S-  Applied substitution rule estimate_spe_rules(68).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H3:  airspeed_ss <= restarted
+<S>  New H5:  compass_ss <= restarted
+<S>  New H7:  ins_ss <= restarted
+%%%  Hypotheses H11 & H26 together imply that
+          none < c_tmp__1.
+     H11 & H26 have therefore been deleted and a new H11 added to this effect.
+***  Proved C4:  t1__2 >= - 2147483648
+     using hypothesis H17.
+***  Proved C5:  t1__2 <= 2147483647
+     using hypothesis H18.
+***  Proved C6:  m__1 * 1000 >= - 2147483648
+     using hypothesis H9.
+***  Proved C7:  m__1 * 1000 <= 2147483647
+     using hypothesis H10.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H33 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H36 (true-hypothesis).
+---  Eliminated hypothesis H29 (redundant, given H9).
+---  Eliminated hypothesis H30 (redundant, given H10).
+---  Eliminated hypothesis H25, which only specifies a value for time_valid__2.
+     This is not referred to anywhere else in the VC.
+     +++  New H37:  long_integer__size >= 0
+     +++  New H38:  measuretypes__meter__size >= 0
+     +++  New H39:  measuretypes__meter_per_sec__size >= 0
+     +++  New H40:  clock__millisecond__size >= 0
+     +++  New H41:  sensor_history__meter_per_sec__size >= 0
+     +++  New H42:  confidence__size >= 0
+     +++  New H43:  meter__size >= 0
+     +++  New H44:  meter_per_sec__size >= 0
+     +++  New H45:  integer32__size >= 0
+     +++  New H46:  sensor_status__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= airspeed_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= compass_ss
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  sensor_status__first <= ins_ss
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  confidence__first <= c_tmp__1
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H37).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H38).
+-S-  Applied substitution rule estimate_spe_rules(57).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New C1:  m__1 * 1000 div t1__2 >= - 5000
+<S>  New C3:  m__1 * 1000 div t1__2 >= - 5000
+-S-  Applied substitution rule estimate_spe_rules(58).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New C2:  m__1 * 1000 div t1__2 <= 5000
+<S>  New C4:  m__1 * 1000 div t1__2 <= 5000
+-S-  Applied substitution rule estimate_spe_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H42:  m__1 * 1000 >= - 2147483648
+-S-  Applied substitution rule estimate_spe_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H43:  m__1 * 1000 <= 2147483647
+-S-  Applied substitution rule estimate_spe_rules(17).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H17:  t1__2 >= 0
+-S-  Applied substitution rule estimate_spe_rules(18).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H18:  t1__2 <= 8640000
+-S-  Applied substitution rule estimate_spe_rules(27).
+     This was achieved by replacing all occurrences of confidence__first by:
+          none.
+<S>  New H11:  none <= c_tmp__1
+-S-  Applied substitution rule estimate_spe_rules(28).
+     This was achieved by replacing all occurrences of confidence__last by:
+          high.
+<S>  New H12:  c_tmp__1 <= high
+-S-  Applied substitution rule estimate_spe_rules(52).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H9:  m__1 >= - 200000
+-S-  Applied substitution rule estimate_spe_rules(53).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H10:  m__1 <= 200000
+-S-  Applied substitution rule estimate_spe_rules(62).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H29:  m__1 >= - 2147483648
+<S>  New H37:  m__1 * 1000 div t1__2 >= - 2147483648
+<S>  New H40:  t1__2 >= - 2147483648
+-S-  Applied substitution rule estimate_spe_rules(63).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H30:  m__1 <= 2147483647
+<S>  New H38:  m__1 * 1000 div t1__2 <= 2147483647
+<S>  New H41:  t1__2 <= 2147483647
+-S-  Applied substitution rule estimate_spe_rules(67).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H2:  unknown <= airspeed_ss
+<S>  New H4:  unknown <= compass_ss
+<S>  New H6:  unknown <= ins_ss
+-S-  Applied substitution rule estimate_spe_rules(68).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H3:  airspeed_ss <= restarted
+<S>  New H5:  compass_ss <= restarted
+<S>  New H7:  ins_ss <= restarted
+%%%  Hypotheses H11 & H26 together imply that
+          none < c_tmp__1.
+     H11 & H26 have therefore been deleted and a new H11 added to this effect.
+%%%  Hypotheses H17 & H39 together imply that
+          0 < t1__2.
+     H17 & H39 have therefore been deleted and a new H17 added to this effect.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H33 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H36 (true-hypothesis).
+---  Eliminated hypothesis H44 (true-hypothesis).
+---  Eliminated hypothesis H45 (true-hypothesis).
+---  Eliminated hypothesis H29 (redundant, given H9).
+---  Eliminated hypothesis H30 (redundant, given H10).
+---  Eliminated hypothesis H40 (redundant, given H17).
+---  Eliminated hypothesis H41 (redundant, given H18).
+---  Eliminated hypothesis H42 (redundant, given H9).
+---  Eliminated hypothesis H43 (redundant, given H10).
+---  Eliminated hypothesis H25, which only specifies a value for time_valid__2.
+     This is not referred to anywhere else in the VC.
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+     +++  New H46:  long_integer__size >= 0
+     +++  New H47:  measuretypes__meter__size >= 0
+     +++  New H48:  measuretypes__meter_per_sec__size >= 0
+     +++  New H49:  clock__millisecond__size >= 0
+     +++  New H50:  sensor_history__meter_per_sec__size >= 0
+     +++  New H51:  confidence__size >= 0
+     +++  New H52:  meter__size >= 0
+     +++  New H53:  meter_per_sec__size >= 0
+     +++  New H54:  integer32__size >= 0
+     +++  New H55:  sensor_status__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_6.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= airspeed_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= compass_ss
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  sensor_status__first <= ins_ss
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  confidence__first <= c_tmp__1
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H37).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H38).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H46).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H47).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  confidence__first <= low
+-S-  Applied substitution rule estimate_spe_rules(27).
+     This was achieved by replacing all occurrences of confidence__first by:
+          none.
+<S>  New H11:  none <= c_tmp__1
+<S>  New C1:  true
+-S-  Applied substitution rule estimate_spe_rules(28).
+     This was achieved by replacing all occurrences of confidence__last by:
+          high.
+<S>  New H12:  c_tmp__1 <= high
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_7.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= airspeed_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= compass_ss
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  sensor_status__first <= ins_ss
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  confidence__first <= c_tmp__1
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H12).
+-S-  Applied substitution rule estimate_spe_rules(57).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New C1:  true
+-S-  Applied substitution rule estimate_spe_rules(58).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_8.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= airspeed_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= compass_ss
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  sensor_status__first <= ins_ss
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  confidence__first <= c_tmp__1
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H12).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  confidence__first <= none
+-S-  Applied substitution rule estimate_spe_rules(27).
+     This was achieved by replacing all occurrences of confidence__first by:
+          none.
+<S>  New H11:  none <= c_tmp__1
+<S>  New C1:  true
+-S-  Applied substitution rule estimate_spe_rules(28).
+     This was achieved by replacing all occurrences of confidence__last by:
+          high.
+<S>  New H12:  c_tmp__1 <= high
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_9.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= airspeed_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= compass_ss
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  sensor_status__first <= ins_ss
+***  Proved C1:  t1__3 >= clock__millisecond__first
+     using hypothesis H11.
+***  Proved C2:  t1__3 <= clock__millisecond__last
+     using hypothesis H12.
+-S-  Applied substitution rule estimate_spe_rules(57).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New C3:  s__3 >= - 5000
+-S-  Applied substitution rule estimate_spe_rules(58).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New C4:  s__3 <= 5000
+-S-  Applied substitution rule estimate_spe_rules(17).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H11:  t1__3 >= 0
+-S-  Applied substitution rule estimate_spe_rules(18).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H12:  t1__3 <= 8640000
+-S-  Applied substitution rule estimate_spe_rules(22).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter_per_sec__first by:
+          - 5000.
+<S>  New H9:  s__3 >= - 5000
+-S-  Applied substitution rule estimate_spe_rules(23).
+     This was achieved by replacing all occurrences of 
+          sensor_history__meter_per_sec__last by:
+          5000.
+<S>  New H10:  s__3 <= 5000
+-S-  Applied substitution rule estimate_spe_rules(67).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H2:  unknown <= airspeed_ss
+<S>  New H4:  unknown <= compass_ss
+<S>  New H6:  unknown <= ins_ss
+-S-  Applied substitution rule estimate_spe_rules(68).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H3:  airspeed_ss <= restarted
+<S>  New H5:  compass_ss <= restarted
+<S>  New H7:  ins_ss <= restarted
+***  Proved C3:  s__3 >= - 5000
+     using hypothesis H9.
+***  Proved C4:  s__3 <= 5000
+     using hypothesis H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_10.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= airspeed_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= compass_ss
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  sensor_status__first <= ins_ss
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H12).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  confidence__first <= none
+-S-  Applied substitution rule estimate_spe_rules(27).
+     This was achieved by replacing all occurrences of confidence__first by:
+          none.
+<S>  New C1:  true
+-S-  Applied substitution rule estimate_spe_rules(28).
+     This was achieved by replacing all occurrences of confidence__last by:
+          high.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_11.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  sensor_status__first <= airspeed_ss
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  sensor_status__first <= compass_ss
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  sensor_status__first <= ins_ss
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H12).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  confidence__first <= high
+-S-  Applied substitution rule estimate_spe_rules(27).
+     This was achieved by replacing all occurrences of confidence__first by:
+          none.
+<S>  New C1:  true
+-S-  Applied substitution rule estimate_spe_rules(28).
+     This was achieved by replacing all occurrences of confidence__last by:
+          high.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_12.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_13.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_14.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_15.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_16.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_estimate_speed_17.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

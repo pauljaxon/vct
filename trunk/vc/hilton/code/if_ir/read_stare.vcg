@@ -1,0 +1,154 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.29
+
+                         procedure if_ir.Read_stare
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 145:
+
+procedure_read_stare_1.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   fld_fresh_answer(last_stare) .
+        ->
+C1:    fld_sx(last_stare) >= ir_cfg__sector_range__first .
+C2:    fld_sx(last_stare) <= ir_cfg__sector_range__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 146:
+
+procedure_read_stare_2.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   fld_fresh_answer(last_stare) .
+H11:   fld_sx(last_stare) >= ir_cfg__sector_range__first .
+H12:   fld_sx(last_stare) <= ir_cfg__sector_range__last .
+        ->
+C1:    fld_sx(last_stare) >= ir_cfg__sector_range__first .
+C2:    fld_sx(last_stare) <= ir_cfg__sector_range__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 147:
+
+procedure_read_stare_3.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   fld_fresh_answer(last_stare) .
+H11:   fld_sx(last_stare) >= ir_cfg__sector_range__first .
+H12:   fld_sx(last_stare) <= ir_cfg__sector_range__last .
+H13:   fld_sx(last_stare) >= ir_cfg__sector_range__first .
+H14:   fld_sx(last_stare) <= ir_cfg__sector_range__last .
+        ->
+C1:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+C2:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 149:
+
+procedure_read_stare_4.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   not (fld_fresh_answer(last_stare)) .
+        ->
+C1:    0 >= ir_cfg__sector_range__first .
+C2:    0 <= ir_cfg__sector_range__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 150:
+
+procedure_read_stare_5.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   not (fld_fresh_answer(last_stare)) .
+H11:   0 >= ir_cfg__sector_range__first .
+H12:   0 <= ir_cfg__sector_range__last .
+        ->
+C1:    0 >= ir_cfg__sector_range__first .
+C2:    0 <= ir_cfg__sector_range__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 151:
+
+procedure_read_stare_6.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   not (fld_fresh_answer(last_stare)) .
+H11:   0 >= ir_cfg__sector_range__first .
+H12:   0 <= ir_cfg__sector_range__last .
+H13:   0 >= ir_cfg__sector_range__first .
+H14:   0 <= ir_cfg__sector_range__last .
+        ->
+C1:    0 >= measuretypes__kelvin__first .
+C2:    0 <= measuretypes__kelvin__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_stare_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_stare_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_read_stare_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_stare_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+

@@ -1,0 +1,94 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:42.24}
+
+                           {procedure if_ir.stare}
+
+
+title procedure stare;
+
+  function round__(real) : integer;
+  type state_types__infrared = (state_types__ir_inactive, 
+     state_types__ir_stare, state_types__ir_sweep);
+  type measuretypes__kelvin = integer;
+  type bus__word_index = integer;
+  type bus__all_msg_index = integer;
+  type bc1553__lru_name = (bc1553__barometer, bc1553__asi, 
+     bc1553__ins, bc1553__compass, bc1553__fuel, bc1553__fuze, 
+     bc1553__radar, bc1553__infrared, bc1553__fins, bc1553__motor, 
+     bc1553__destruct, bc1553__warhead);
+  type ir_cfg__sector_range = integer;
+  type state_types__ir_to_word = array [state_types__infrared] of integer;
+  const state_types__ir_values : state_types__ir_to_word = pending;
+  const bus_id : bc1553__lru_name = pending;
+  const sector__base__last : integer = pending; 
+  const sector__base__first : integer = pending; 
+  const ir_cfg__sector_range__base__last : integer = pending; 
+  const ir_cfg__sector_range__base__first : integer = pending; 
+  const bc1553__lru_name__base__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__base__first : bc1553__lru_name = pending; 
+  const bus__lru_subaddress_index__base__last : integer = pending; 
+  const bus__lru_subaddress_index__base__first : integer = pending; 
+  const bus__all_msg_index__base__last : integer = pending; 
+  const bus__all_msg_index__base__first : integer = pending; 
+  const bus__word__base__last : integer = pending; 
+  const bus__word__base__first : integer = pending; 
+  const bus__word_index__base__last : integer = pending; 
+  const bus__word_index__base__first : integer = pending; 
+  const measuretypes__kelvin__base__last : integer = pending; 
+  const measuretypes__kelvin__base__first : integer = pending; 
+  const state_types__infrared__base__last : state_types__infrared = pending; 
+  const state_types__infrared__base__first : 
+     state_types__infrared = pending; 
+  const state_types__word__base__last : integer = pending; 
+  const state_types__word__base__first : integer = pending; 
+  const systemtypes__unsigned16__base__last : integer = pending; 
+  const systemtypes__unsigned16__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const sector__size : integer = pending; 
+  const sector__last : integer = pending; 
+  const sector__first : integer = pending; 
+  const ir_cfg__sector_range__size : integer = pending; 
+  const ir_cfg__sector_range__last : integer = pending; 
+  const ir_cfg__sector_range__first : integer = pending; 
+  const bc1553__lru_name__size : integer = pending; 
+  const bc1553__lru_name__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__first : bc1553__lru_name = pending; 
+  const bus__lru_subaddress_index__size : integer = pending; 
+  const bus__lru_subaddress_index__last : integer = pending; 
+  const bus__lru_subaddress_index__first : integer = pending; 
+  const bus__all_msg_index__size : integer = pending; 
+  const bus__all_msg_index__last : integer = pending; 
+  const bus__all_msg_index__first : integer = pending; 
+  const bus__word__size : integer = pending; 
+  const bus__word__last : integer = pending; 
+  const bus__word__first : integer = pending; 
+  const bus__word_index__size : integer = pending; 
+  const bus__word_index__last : integer = pending; 
+  const bus__word_index__first : integer = pending; 
+  const measuretypes__kelvin__size : integer = pending; 
+  const measuretypes__kelvin__last : integer = pending; 
+  const measuretypes__kelvin__first : integer = pending; 
+  const state_types__infrared__size : integer = pending; 
+  const state_types__infrared__last : state_types__infrared = pending; 
+  const state_types__infrared__first : state_types__infrared = pending; 
+  const state_types__word__size : integer = pending; 
+  const state_types__word__last : integer = pending; 
+  const state_types__word__first : integer = pending; 
+  const systemtypes__unsigned16__size : integer = pending; 
+  const systemtypes__unsigned16__last : integer = pending; 
+  const systemtypes__unsigned16__first : integer = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+  var sx : integer;
+  var sy : integer;
+  function ir_cfg__encode_sector(integer) : integer;
+
+end;

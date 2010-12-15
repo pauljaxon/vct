@@ -1,0 +1,69 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:43.41}
+
+                      {procedure if_warhead.Ibit_Start}
+
+
+title procedure ibit_start;
+
+  function round__(real) : integer;
+  type bus__word_index = integer;
+  type bus__all_msg_index = integer;
+  type bc1553__lru_name = (bc1553__barometer, bc1553__asi, 
+     bc1553__ins, bc1553__compass, bc1553__fuel, bc1553__fuze, 
+     bc1553__radar, bc1553__infrared, bc1553__fins, bc1553__motor, 
+     bc1553__destruct, bc1553__warhead);
+  type ibit__phase = (ibit__off, ibit__request_start, 
+     ibit__in_progress, ibit__request_stop, ibit__pass, 
+     ibit__fail, ibit__timeout);
+  type ibit__phase_table = array [ibit__phase] of integer;
+  const ibit__phase_lookup : ibit__phase_table = pending;
+  const bus_id : bc1553__lru_name = pending;
+  const ibit__phase__base__last : ibit__phase = pending; 
+  const ibit__phase__base__first : ibit__phase = pending; 
+  const bc1553__lru_name__base__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__base__first : bc1553__lru_name = pending; 
+  const bus__lru_subaddress_index__base__last : integer = pending; 
+  const bus__lru_subaddress_index__base__first : integer = pending; 
+  const bus__all_msg_index__base__last : integer = pending; 
+  const bus__all_msg_index__base__first : integer = pending; 
+  const bus__word__base__last : integer = pending; 
+  const bus__word__base__first : integer = pending; 
+  const bus__word_index__base__last : integer = pending; 
+  const bus__word_index__base__first : integer = pending; 
+  const systemtypes__byte__base__last : integer = pending; 
+  const systemtypes__byte__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const ibit__phase__size : integer = pending; 
+  const ibit__phase__last : ibit__phase = pending; 
+  const ibit__phase__first : ibit__phase = pending; 
+  const bc1553__lru_name__size : integer = pending; 
+  const bc1553__lru_name__last : bc1553__lru_name = pending; 
+  const bc1553__lru_name__first : bc1553__lru_name = pending; 
+  const bus__lru_subaddress_index__size : integer = pending; 
+  const bus__lru_subaddress_index__last : integer = pending; 
+  const bus__lru_subaddress_index__first : integer = pending; 
+  const bus__all_msg_index__size : integer = pending; 
+  const bus__all_msg_index__last : integer = pending; 
+  const bus__all_msg_index__first : integer = pending; 
+  const bus__word__size : integer = pending; 
+  const bus__word__last : integer = pending; 
+  const bus__word__first : integer = pending; 
+  const bus__word_index__size : integer = pending; 
+  const bus__word_index__last : integer = pending; 
+  const bus__word_index__first : integer = pending; 
+  const systemtypes__byte__size : integer = pending; 
+  const systemtypes__byte__last : integer = pending; 
+  const systemtypes__byte__first : integer = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+
+end;

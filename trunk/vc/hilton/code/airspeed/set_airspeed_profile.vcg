@@ -1,0 +1,132 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.87
+
+                  procedure airspeed.Set_Airspeed_Profile
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 117:
+
+procedure_set_airspeed_profile_1.
+H1:    true .
+H2:    speed >= meter_per_sec__first .
+H3:    speed <= meter_per_sec__last .
+H4:    accel >= cm_per_sec_2__first .
+H5:    accel <= cm_per_sec_2__last .
+        ->
+C1:    speed >= meter_per_sec__first .
+C2:    speed <= meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 118:
+
+procedure_set_airspeed_profile_2.
+H1:    true .
+H2:    speed >= meter_per_sec__first .
+H3:    speed <= meter_per_sec__last .
+H4:    accel >= cm_per_sec_2__first .
+H5:    accel <= cm_per_sec_2__last .
+H6:    speed >= meter_per_sec__first .
+H7:    speed <= meter_per_sec__last .
+        ->
+C1:    accel >= cm_per_sec_2__first .
+C2:    accel <= cm_per_sec_2__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 119:
+
+procedure_set_airspeed_profile_3.
+H1:    true .
+H2:    speed >= meter_per_sec__first .
+H3:    speed <= meter_per_sec__last .
+H4:    accel >= cm_per_sec_2__first .
+H5:    accel <= cm_per_sec_2__last .
+H6:    speed >= meter_per_sec__first .
+H7:    speed <= meter_per_sec__last .
+H8:    accel >= cm_per_sec_2__first .
+H9:    accel <= cm_per_sec_2__last .
+H10:   last_time__1 >= clock__millisecond__first .
+H11:   last_time__1 <= clock__millisecond__last .
+H12:   true .
+        ->
+C1:    last_time__1 >= clock__millisecond__first .
+C2:    last_time__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 121:
+
+procedure_set_airspeed_profile_4.
+H1:    true .
+H2:    speed >= meter_per_sec__first .
+H3:    speed <= meter_per_sec__last .
+H4:    accel >= cm_per_sec_2__first .
+H5:    accel <= cm_per_sec_2__last .
+H6:    speed >= meter_per_sec__first .
+H7:    speed <= meter_per_sec__last .
+H8:    accel >= cm_per_sec_2__first .
+H9:    accel <= cm_per_sec_2__last .
+H10:   last_time__1 >= clock__millisecond__first .
+H11:   last_time__1 <= clock__millisecond__last .
+H12:   true .
+H13:   last_time__1 >= clock__millisecond__first .
+H14:   last_time__1 <= clock__millisecond__last .
+H15:   true .
+H16:   not time_valid__1 .
+        ->
+C1:    0 >= meter_per_sec__first .
+C2:    0 <= meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 122:
+
+procedure_set_airspeed_profile_5.
+H1:    true .
+H2:    speed >= meter_per_sec__first .
+H3:    speed <= meter_per_sec__last .
+H4:    accel >= cm_per_sec_2__first .
+H5:    accel <= cm_per_sec_2__last .
+H6:    speed >= meter_per_sec__first .
+H7:    speed <= meter_per_sec__last .
+H8:    accel >= cm_per_sec_2__first .
+H9:    accel <= cm_per_sec_2__last .
+H10:   last_time__1 >= clock__millisecond__first .
+H11:   last_time__1 <= clock__millisecond__last .
+H12:   true .
+H13:   last_time__1 >= clock__millisecond__first .
+H14:   last_time__1 <= clock__millisecond__last .
+H15:   true .
+H16:   not time_valid__1 .
+H17:   0 >= meter_per_sec__first .
+H18:   0 <= meter_per_sec__last .
+        ->
+C1:    0 >= cm_per_sec_2__first .
+C2:    0 <= cm_per_sec_2__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_set_airspeed_profile_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_airspeed_profile_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_set_airspeed_profile_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_airspeed_profile_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+

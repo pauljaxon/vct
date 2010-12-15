@@ -1,0 +1,398 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:06
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function roll.Target_Rate
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_target_rate_1.  @@@@@@@@@@
+***  Proved C1:  target_heading >= instruments__headdegree__first
+     using hypothesis H4.
+***  Proved C2:  target_heading <= instruments__headdegree__last
+     using hypothesis H5.
+***  Proved C3:  present_heading >= instruments__headdegree__first
+     using hypothesis H2.
+***  Proved C4:  present_heading <= instruments__headdegree__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_2.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+***  Proved C1:  target_ror(present_heading, target_heading) >= 
+          instruments__bankangle__first
+     using hypothesis H12.
+***  Proved C2:  target_ror(present_heading, target_heading) <= 
+          instruments__bankangle__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_3.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule target_rate_rules(19).
+     This was achieved by replacing all occurrences of degreespersec__first by:
+          - 180.
+<S>  New C1:  (target_ror(present_heading, target_heading) - bank) div 5 >= - 
+          180
+<S>  New C6:  bank >= - 180
+<S>  New C8:  target_ror(present_heading, target_heading) >= - 180
+-S-  Applied substitution rule target_rate_rules(20).
+     This was achieved by replacing all occurrences of degreespersec__last by:
+          180.
+<S>  New C2:  (target_ror(present_heading, target_heading) - bank) div 5 <= 180
+<S>  New C7:  bank <= 180
+<S>  New C9:  target_ror(present_heading, target_heading) <= 180
+-S-  Applied substitution rule target_rate_rules(6).
+     This was achieved by replacing all occurrences of 
+          degrees__degreespersec__base__first by:
+          - 32768.
+<S>  New C4:  target_ror(present_heading, target_heading) - bank >= - 32768
+-S-  Applied substitution rule target_rate_rules(7).
+     This was achieved by replacing all occurrences of 
+          degrees__degreespersec__base__last by:
+          32767.
+<S>  New C5:  target_ror(present_heading, target_heading) - bank <= 32767
+-S-  Applied substitution rule target_rate_rules(9).
+     This was achieved by replacing all occurrences of 
+          instruments__bankangle__first by:
+          - 45.
+<S>  New H6:  bank >= - 45
+<S>  New H12:  target_ror(present_heading, target_heading) >= - 45
+-S-  Applied substitution rule target_rate_rules(10).
+     This was achieved by replacing all occurrences of 
+          instruments__bankangle__last by:
+          45.
+<S>  New H7:  bank <= 45
+<S>  New H13:  target_ror(present_heading, target_heading) <= 45
+-S-  Applied substitution rule target_rate_rules(14).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__first by:
+          0.
+<S>  New H2:  present_heading >= 0
+<S>  New H4:  target_heading >= 0
+-S-  Applied substitution rule target_rate_rules(15).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__last by:
+          359.
+<S>  New H3:  present_heading <= 359
+<S>  New H5:  target_heading <= 359
+***  Proved C6:  bank >= - 180
+     using hypothesis H6.
+***  Proved C8:  target_ror(present_heading, target_heading) >= - 180
+     using hypothesis H12.
+***  Proved C7:  bank <= 180
+     using hypothesis H7.
+***  Proved C9:  target_ror(present_heading, target_heading) <= 180
+     using hypothesis H13.
+***  Proved C4:  target_ror(present_heading, target_heading) - bank >= - 32768
+     using hypotheses H7 & H12.
+***  Proved C5:  target_ror(present_heading, target_heading) - bank <= 32767
+     using hypotheses H6 & H13.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+***  Proved C1:  (target_ror(present_heading, target_heading) - bank) div 5 >= 
+          - 180
+     using hypotheses H7 & H12.
+***  Proved C2:  (target_ror(present_heading, target_heading) - bank) div 5 <= 
+          180
+     using hypotheses H6 & H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_4.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  true
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+***  Proved C2:  10 <= degreespersec__last
+     using hypotheses H19 & H29.
+-S-  Applied substitution rule target_rate_rules(19).
+     This was achieved by replacing all occurrences of degreespersec__first by:
+          - 180.
+<S>  New H18:  (target_ror(present_heading, target_heading) - bank) div 5 >= - 
+          180
+<S>  New H23:  bank >= - 180
+<S>  New H25:  target_ror(present_heading, target_heading) >= - 180
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_5.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  true
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  - 10 >= system__min_int
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  - 10 <= system__max_int
+-S-  Applied substitution rule target_rate_rules(1).
+     This was achieved by replacing all occurrences of system__min_int by:
+          - 2147483648.
+<S>  New C1:  true
+-S-  Applied substitution rule target_rate_rules(2).
+     This was achieved by replacing all occurrences of system__max_int by:
+          2147483647.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_6.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  true
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H32 on reading formula in, to give:
+     %%%  H32:  - 10 >= system__min_int
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  - 10 <= system__max_int
+%%%  Simplified H34 on reading formula in, to give:
+     %%%  H34:  (target_ror(present_heading, target_heading) - bank) div 5 < - 
+          10
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  - 10 >= degreespersec__first
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  - 10 <= degreespersec__last
+***  Proved C1:  - 10 >= degreespersec__first
+     using hypotheses H18 & H34.
+-S-  Applied substitution rule target_rate_rules(20).
+     This was achieved by replacing all occurrences of degreespersec__last by:
+          180.
+<S>  New H19:  (target_ror(present_heading, target_heading) - bank) div 5 <= 180
+<S>  New H24:  bank <= 180
+<S>  New H26:  target_ror(present_heading, target_heading) <= 180
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_7.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  true
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H31).
+***  Proved C1:  true
+***  Proved C2:  10 >= degreespersec__first
+     using hypothesis H30.
+***  Proved C3:  10 <= degreespersec__last
+     using hypothesis H31.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_8.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  true
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H32 on reading formula in, to give:
+     %%%  H32:  - 10 >= system__min_int
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  - 10 <= system__max_int
+%%%  Simplified H34 on reading formula in, to give:
+     %%%  H34:  (target_ror(present_heading, target_heading) - bank) div 5 < - 
+          10
+%%%  Simplified H35 on reading formula in, to give:
+     %%%  H35:  - 10 >= degreespersec__first
+%%%  Simplified H36 on reading formula in, to give:
+     %%%  H36:  - 10 <= degreespersec__last
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H35).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H36).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  - 10 >= degreespersec__first
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  - 10 <= degreespersec__last
+***  Proved C1:  true
+***  Proved C2:  - 10 >= degreespersec__first
+     using hypothesis H35.
+***  Proved C3:  - 10 <= degreespersec__last
+     using hypothesis H36.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_rate_9.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  true
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified H32 on reading formula in, to give:
+     %%%  H32:  - 10 >= system__min_int
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  - 10 <= system__max_int
+%%%  Simplified H34 on reading formula in, to give:
+     %%%  H34:  not (target_ror(present_heading, target_heading) - bank) div 5 
+          < - 10
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H19).
+***  Proved C1:  true
+***  Proved C2:  (target_ror(present_heading, target_heading) - bank) div 5 >= 
+          degreespersec__first
+     using hypothesis H18.
+***  Proved C3:  (target_ror(present_heading, target_heading) - bank) div 5 <= 
+          degreespersec__last
+     using hypothesis H19.
+***  PROVED VC.
+

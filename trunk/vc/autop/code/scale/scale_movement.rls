@@ -1,0 +1,42 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 26-NOV-2009 09:54:53.53*/
+
+                       /*function Scale.Scale_Movement*/
+
+
+rule_family scale_moveme_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+scale_moveme_rules(1): integer__size >= 0 may_be_deduced.
+scale_moveme_rules(2): integer__first may_be_replaced_by -2147483648.
+scale_moveme_rules(3): integer__last may_be_replaced_by 2147483647.
+scale_moveme_rules(4): integer__base__first may_be_replaced_by -2147483648.
+scale_moveme_rules(5): integer__base__last may_be_replaced_by 2147483647.
+scale_moveme_rules(6): instruments__machnumber__size >= 0 may_be_deduced.
+scale_moveme_rules(7): instruments__machnumber__first may_be_replaced_by 0.
+scale_moveme_rules(8): instruments__machnumber__last may_be_replaced_by 100.
+scale_moveme_rules(9): instruments__machnumber__base__first may_be_replaced_by -128.
+scale_moveme_rules(10): instruments__machnumber__base__last may_be_replaced_by 127.
+scale_moveme_rules(11): surfaces__controlangle__size >= 0 may_be_deduced.
+scale_moveme_rules(12): surfaces__controlangle__first may_be_replaced_by -45.
+scale_moveme_rules(13): surfaces__controlangle__last may_be_replaced_by 45.
+scale_moveme_rules(14): surfaces__controlangle__base__first may_be_replaced_by -128.
+scale_moveme_rules(15): surfaces__controlangle__base__last may_be_replaced_by 127.
+scale_moveme_rules(16): scaledata__size >= 0 may_be_deduced.
+scale_moveme_rules(17): scaledata__first may_be_replaced_by -100.
+scale_moveme_rules(18): scaledata__last may_be_replaced_by 100.
+scale_moveme_rules(19): scaledata__base__first may_be_replaced_by -2147483648.
+scale_moveme_rules(20): scaledata__base__last may_be_replaced_by 2147483647.
+scale_moveme_rules(21): percent__size >= 0 may_be_deduced.
+scale_moveme_rules(22): percent__first may_be_replaced_by 0.
+scale_moveme_rules(23): percent__last may_be_replaced_by 100.
+scale_moveme_rules(24): percent__base__first may_be_replaced_by -2147483648.
+scale_moveme_rules(25): percent__base__last may_be_replaced_by 2147483647.

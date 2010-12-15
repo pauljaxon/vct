@@ -1,0 +1,120 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.83
+
+                       function yaw.Calc_Rudder_Move
+
+
+
+
+For path(s) from start to precondition check associated with statement of line 25:
+
+function_calc_rudder_move_1.
+H1:    true .
+H2:    present_sliprate >= degreespersec__first .
+H3:    present_sliprate <= degreespersec__last .
+H4:    mach >= instruments__machnumber__first .
+H5:    mach <= instruments__machnumber__last .
+        ->
+C1:    20 > 0 .
+C2:    20 >= surfaces__controlangle__first .
+C3:    20 <= surfaces__controlangle__last .
+C4:    20 >= surfaces__controlangle__first .
+C5:    20 <= surfaces__controlangle__last .
+C6:    0 >= scale__scaledata__first .
+C7:    0 <= scale__scaledata__last .
+C8:    present_sliprate div 2 >= scale__scaledata__first .
+C9:    present_sliprate div 2 <= scale__scaledata__last .
+C10:   present_sliprate div 2 >= scale__scaledata__first .
+C11:   present_sliprate div 2 <= scale__scaledata__last .
+C12:   present_sliprate div 2 >= degrees__degreespersec__base__first .
+C13:   present_sliprate div 2 <= degrees__degreespersec__base__last .
+C14:   2 <> 0 .
+C15:   mach >= instruments__machnumber__first .
+C16:   mach <= instruments__machnumber__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 25:
+
+function_calc_rudder_move_2.
+H1:    true .
+H2:    present_sliprate >= degreespersec__first .
+H3:    present_sliprate <= degreespersec__last .
+H4:    mach >= instruments__machnumber__first .
+H5:    mach <= instruments__machnumber__last .
+H6:    20 > 0 .
+H7:    20 >= surfaces__controlangle__first .
+H8:    20 <= surfaces__controlangle__last .
+H9:    20 >= surfaces__controlangle__first .
+H10:   20 <= surfaces__controlangle__last .
+H11:   0 >= scale__scaledata__first .
+H12:   0 <= scale__scaledata__last .
+H13:   present_sliprate div 2 >= scale__scaledata__first .
+H14:   present_sliprate div 2 <= scale__scaledata__last .
+H15:   present_sliprate div 2 >= scale__scaledata__first .
+H16:   present_sliprate div 2 <= scale__scaledata__last .
+H17:   present_sliprate div 2 >= degrees__degreespersec__base__first .
+H18:   present_sliprate div 2 <= degrees__degreespersec__base__last .
+H19:   2 <> 0 .
+H20:   mach >= instruments__machnumber__first .
+H21:   mach <= instruments__machnumber__last .
+H22:   scale__scale_movement(mach, present_sliprate div 2, 0, 20) >= 
+           surfaces__controlangle__first .
+H23:   scale__scale_movement(mach, present_sliprate div 2, 0, 20) <= 
+           surfaces__controlangle__last .
+        ->
+C1:    scale__scale_movement(mach, present_sliprate div 2, 0, 20) >= 
+           surfaces__controlangle__first .
+C2:    scale__scale_movement(mach, present_sliprate div 2, 0, 20) <= 
+           surfaces__controlangle__last .
+ 
+
+For path(s) from start to finish:
+
+function_calc_rudder_move_3.
+H1:    true .
+H2:    present_sliprate >= degreespersec__first .
+H3:    present_sliprate <= degreespersec__last .
+H4:    mach >= instruments__machnumber__first .
+H5:    mach <= instruments__machnumber__last .
+H6:    20 > 0 .
+H7:    20 >= surfaces__controlangle__first .
+H8:    20 <= surfaces__controlangle__last .
+H9:    20 >= surfaces__controlangle__first .
+H10:   20 <= surfaces__controlangle__last .
+H11:   0 >= scale__scaledata__first .
+H12:   0 <= scale__scaledata__last .
+H13:   present_sliprate div 2 >= scale__scaledata__first .
+H14:   present_sliprate div 2 <= scale__scaledata__last .
+H15:   present_sliprate div 2 >= scale__scaledata__first .
+H16:   present_sliprate div 2 <= scale__scaledata__last .
+H17:   present_sliprate div 2 >= degrees__degreespersec__base__first .
+H18:   present_sliprate div 2 <= degrees__degreespersec__base__last .
+H19:   2 <> 0 .
+H20:   mach >= instruments__machnumber__first .
+H21:   mach <= instruments__machnumber__last .
+H22:   scale__scale_movement(mach, present_sliprate div 2, 0, 20) >= 
+           surfaces__controlangle__first .
+H23:   scale__scale_movement(mach, present_sliprate div 2, 0, 20) <= 
+           surfaces__controlangle__last .
+H24:   scale__scale_movement(mach, present_sliprate div 2, 0, 20) >= 
+           surfaces__controlangle__first .
+H25:   scale__scale_movement(mach, present_sliprate div 2, 0, 20) <= 
+           surfaces__controlangle__last .
+H26:   scale__scale_movement(mach, present_sliprate div 2, 0, 20) >= 
+           surfaces__controlangle__first .
+H27:   scale__scale_movement(mach, present_sliprate div 2, 0, 20) <= 
+           surfaces__controlangle__last .
+        ->
+C1:    true .
+C2:    scale__scale_movement(mach, present_sliprate div 2, 0, 20) >= 
+           surfaces__controlangle__first .
+C3:    scale__scale_movement(mach, present_sliprate div 2, 0, 20) <= 
+           surfaces__controlangle__last .
+ 
+

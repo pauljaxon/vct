@@ -1,0 +1,39 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.12
+
+                         function angle_ops.Negate
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 88:
+
+function_negate_1.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+        ->
+C1:     -orig_angle >= measuretypes__millirad__base__first .
+C2:     -orig_angle <= measuretypes__millirad__base__last .
+ 
+
+For path(s) from start to finish:
+
+function_negate_2.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:     -orig_angle >= measuretypes__millirad__base__first .
+H5:     -orig_angle <= measuretypes__millirad__base__last .
+        ->
+C1:    true .
+C2:     -orig_angle >= measuretypes__millirad__first .
+C3:     -orig_angle <= measuretypes__millirad__last .
+ 
+

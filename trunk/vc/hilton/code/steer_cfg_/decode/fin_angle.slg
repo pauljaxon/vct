@@ -1,0 +1,161 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:41
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function decode.Fin_Angle
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_fin_angle_1.  @@@@@@@@@@
+-S-  Applied substitution rule fin_angle_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New C1:  b >= - 2147483648
+-S-  Applied substitution rule fin_angle_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New C2:  b <= 2147483647
+-S-  Applied substitution rule fin_angle_rules(7).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  b >= 0
+-S-  Applied substitution rule fin_angle_rules(8).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  b <= 65535
+***  Proved C1:  b >= - 2147483648
+     using hypothesis H2.
+***  Proved C2:  b <= 2147483647
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fin_angle_2.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+-S-  Applied substitution rule fin_angle_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H4:  b >= - 2147483648
+<S>  New C1:  steer_cfg__fin_angle__first + b >= - 2147483648
+<S>  New C3:  steer_cfg__fin_angle__first >= - 2147483648
+-S-  Applied substitution rule fin_angle_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H5:  b <= 2147483647
+<S>  New C2:  steer_cfg__fin_angle__first + b <= 2147483647
+<S>  New C4:  steer_cfg__fin_angle__first <= 2147483647
+-S-  Applied substitution rule fin_angle_rules(12).
+     This was achieved by replacing all occurrences of 
+          steer_cfg__fin_angle__first by:
+          - 57.
+<S>  New C1:  b >= - 2147483591
+<S>  New C3:  true
+<S>  New C2:  b <= 2147483704
+<S>  New C4:  true
+***  Proved C3:  true
+***  Proved C2:  b <= 2147483704
+     using hypothesis H5.
+***  Proved C4:  true
+-S-  Applied substitution rule fin_angle_rules(7).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  b >= 0
+-S-  Applied substitution rule fin_angle_rules(8).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  b <= 65535
+***  Proved C1:  b >= - 2147483591
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fin_angle_3.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+-S-  Applied substitution rule fin_angle_rules(12).
+     This was achieved by replacing all occurrences of 
+          steer_cfg__fin_angle__first by:
+          - 57.
+<S>  New H8:  - 57 + b >= integer__first
+<S>  New H9:  - 57 + b <= integer__last
+<S>  New H10:  - 57 >= integer__first
+<S>  New H11:  - 57 <= integer__last
+<S>  New C1:  b >= 0
+<S>  New C2:  - 57 + b <= steer_cfg__fin_angle__last
+-S-  Applied substitution rule fin_angle_rules(13).
+     This was achieved by replacing all occurrences of 
+          steer_cfg__fin_angle__last by:
+          57.
+<S>  New C2:  b <= 114
+-S-  Applied substitution rule fin_angle_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H4:  b >= - 2147483648
+<S>  New H8:  b >= - 2147483591
+<S>  New H10:  true
+-S-  Applied substitution rule fin_angle_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H5:  b <= 2147483647
+<S>  New H9:  b <= 2147483704
+<S>  New H11:  true
+-S-  Applied substitution rule fin_angle_rules(7).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  b >= 0
+-S-  Applied substitution rule fin_angle_rules(8).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  b <= 65535
+***  Proved C1:  b >= 0
+     using hypothesis H2.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H4 (redundant, given H2).
+---  Eliminated hypothesis H5 (redundant, given H3).
+---  Eliminated hypothesis H8 (redundant, given H2).
+---  Eliminated hypothesis H9 (redundant, given H3).
+     +++  New H14:  integer__size >= 0
+     +++  New H15:  bus__word__size >= 0
+     +++  New H16:  steer_cfg__fin_angle__size >= 0
+     +++  New H17:  steer_cfg__fin_angle__base__first <= 
+          steer_cfg__fin_angle__base__last
+     +++  New H18:  steer_cfg__fin_angle__base__first <= - 57
+     +++  New H19:  steer_cfg__fin_angle__base__last >= 57
+
+
+@@@@@@@@@@  VC: function_fin_angle_4.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+***  Proved C1:  true
+***  Proved C2:  steer_cfg__fin_angle__first + b >= steer_cfg__fin_angle__first
+     using hypothesis H14.
+***  Proved C3:  steer_cfg__fin_angle__first + b <= steer_cfg__fin_angle__last
+     using hypothesis H15.
+***  PROVED VC.
+

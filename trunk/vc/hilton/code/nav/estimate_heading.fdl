@@ -1,0 +1,81 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:44.18}
+
+                       {procedure nav.Estimate_Heading}
+
+
+title procedure estimate_heading;
+
+  function round__(real) : integer;
+  type measuretypes__meter = integer;
+  type measuretypes__angle_degrees = integer;
+  type clock__millisecond = integer;
+  type confidence = (none, low, high);
+  type sensor_status = (unknown, valid, failed, restarted);
+  const sensor_status__base__last : sensor_status = pending; 
+  const sensor_status__base__first : sensor_status = pending; 
+  const angle_degrees__base__last : integer = pending; 
+  const angle_degrees__base__first : integer = pending; 
+  const meter__base__last : integer = pending; 
+  const meter__base__first : integer = pending; 
+  const confidence__base__last : confidence = pending; 
+  const confidence__base__first : confidence = pending; 
+  const sensor_history__angle_degrees__base__last : integer = pending; 
+  const sensor_history__angle_degrees__base__first : integer = pending; 
+  const sensor_history__meter__base__last : integer = pending; 
+  const sensor_history__meter__base__first : integer = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const measuretypes__angle_degrees__base__last : integer = pending; 
+  const measuretypes__angle_degrees__base__first : integer = pending; 
+  const measuretypes__meter__base__last : integer = pending; 
+  const measuretypes__meter__base__first : integer = pending; 
+  const sensor_status__size : integer = pending; 
+  const sensor_status__last : sensor_status = pending; 
+  const sensor_status__first : sensor_status = pending; 
+  const angle_degrees__size : integer = pending; 
+  const angle_degrees__last : integer = pending; 
+  const angle_degrees__first : integer = pending; 
+  const meter__size : integer = pending; 
+  const meter__last : integer = pending; 
+  const meter__first : integer = pending; 
+  const confidence__size : integer = pending; 
+  const confidence__last : confidence = pending; 
+  const confidence__first : confidence = pending; 
+  const sensor_history__angle_degrees__size : integer = pending; 
+  const sensor_history__angle_degrees__last : integer = pending; 
+  const sensor_history__angle_degrees__first : integer = pending; 
+  const sensor_history__meter__size : integer = pending; 
+  const sensor_history__meter__last : integer = pending; 
+  const sensor_history__meter__first : integer = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  const measuretypes__angle_degrees__size : integer = pending; 
+  const measuretypes__angle_degrees__last : integer = pending; 
+  const measuretypes__angle_degrees__first : integer = pending; 
+  const measuretypes__meter__size : integer = pending; 
+  const measuretypes__meter__last : integer = pending; 
+  const measuretypes__meter__first : integer = pending; 
+  var a : integer;
+  var compass_ss : sensor_status;
+  var ins_ss : sensor_status;
+  var t1 : integer;
+  var t2 : integer;
+  var edx : integer;
+  var edy : integer;
+  function measuretypes__angle_ops__trig__arctan2(integer, integer) : integer;
+  var t1__3 : integer;
+  var a__3 : integer;
+  var t2__2 : integer;
+  var edy__2 : integer;
+  var t1__1 : integer;
+  var edx__1 : integer;
+
+end;

@@ -1,0 +1,178 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:41
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function decode.Fin
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_fin_1.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  steer_cfg__fin__first <= steer_cfg__port
+-S-  Applied substitution rule fin_rules(12).
+     This was achieved by replacing all occurrences of steer_cfg__fin__first by:
+          steer_cfg__port.
+<S>  New C1:  true
+-S-  Applied substitution rule fin_rules(13).
+     This was achieved by replacing all occurrences of steer_cfg__fin__last by:
+          steer_cfg__bottom.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fin_2.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  steer_cfg__fin__first <= steer_cfg__starboard
+-S-  Applied substitution rule fin_rules(12).
+     This was achieved by replacing all occurrences of steer_cfg__fin__first by:
+          steer_cfg__port.
+<S>  New C1:  true
+-S-  Applied substitution rule fin_rules(13).
+     This was achieved by replacing all occurrences of steer_cfg__fin__last by:
+          steer_cfg__bottom.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fin_3.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  steer_cfg__fin__first <= steer_cfg__top
+-S-  Applied substitution rule fin_rules(12).
+     This was achieved by replacing all occurrences of steer_cfg__fin__first by:
+          steer_cfg__port.
+<S>  New C1:  true
+-S-  Applied substitution rule fin_rules(13).
+     This was achieved by replacing all occurrences of steer_cfg__fin__last by:
+          steer_cfg__bottom.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fin_4.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  steer_cfg__fin__first <= steer_cfg__bottom
+-S-  Applied substitution rule fin_rules(12).
+     This was achieved by replacing all occurrences of steer_cfg__fin__first by:
+          steer_cfg__port.
+<S>  New C1:  true
+-S-  Applied substitution rule fin_rules(13).
+     This was achieved by replacing all occurrences of steer_cfg__fin__last by:
+          steer_cfg__bottom.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fin_5.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  steer_cfg__fin__first <= steer_cfg__port
+-S-  Applied substitution rule fin_rules(12).
+     This was achieved by replacing all occurrences of steer_cfg__fin__first by:
+          steer_cfg__port.
+<S>  New C1:  true
+-S-  Applied substitution rule fin_rules(13).
+     This was achieved by replacing all occurrences of steer_cfg__fin__last by:
+          steer_cfg__bottom.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fin_6.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  steer_cfg__fin__first <= steer_cfg__port
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  steer_cfg__fin__first <= steer_cfg__port
+***  Proved C1:  true
+***  Proved C2:  steer_cfg__fin__first <= steer_cfg__port
+     using hypothesis H5.
+***  Proved C3:  steer_cfg__port <= steer_cfg__fin__last
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fin_7.  @@@@@@@@@@
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  steer_cfg__fin__first <= steer_cfg__starboard
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  steer_cfg__fin__first <= steer_cfg__starboard
+***  Proved C1:  true
+***  Proved C2:  steer_cfg__fin__first <= steer_cfg__starboard
+     using hypothesis H6.
+***  Proved C3:  steer_cfg__starboard <= steer_cfg__fin__last
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fin_8.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  steer_cfg__fin__first <= steer_cfg__top
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  steer_cfg__fin__first <= steer_cfg__top
+***  Proved C1:  true
+***  Proved C2:  steer_cfg__fin__first <= steer_cfg__top
+     using hypothesis H7.
+***  Proved C3:  steer_cfg__top <= steer_cfg__fin__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fin_9.  @@@@@@@@@@
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  steer_cfg__fin__first <= steer_cfg__bottom
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  steer_cfg__fin__first <= steer_cfg__bottom
+***  Proved C1:  true
+***  Proved C2:  steer_cfg__fin__first <= steer_cfg__bottom
+     using hypothesis H8.
+***  Proved C3:  steer_cfg__bottom <= steer_cfg__fin__last
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fin_10.  @@@@@@@@@@
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  steer_cfg__fin__first <= steer_cfg__port
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  steer_cfg__fin__first <= steer_cfg__port
+***  Proved C1:  true
+***  Proved C2:  steer_cfg__fin__first <= steer_cfg__port
+     using hypothesis H8.
+***  Proved C3:  steer_cfg__port <= steer_cfg__fin__last
+     using hypothesis H9.
+***  PROVED VC.
+

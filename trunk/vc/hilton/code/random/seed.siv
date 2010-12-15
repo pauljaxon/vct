@@ -1,0 +1,37 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:23
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function random.Seed
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 34:
+
+function_seed_1.
+H1:    v >= 0 .
+H2:    v <= 63001 .
+H3:    value__size >= 0 .
+H4:    value__base__first <= value__base__last .
+H5:    seed_range__size >= 0 .
+H6:    value__base__first <= 0 .
+H7:    value__base__last >= 63001 .
+       ->
+C1:    v <= 971 .
+
+
+For path(s) from start to finish:
+
+function_seed_2.
+*** true .          /* all conclusions proved */
+
+

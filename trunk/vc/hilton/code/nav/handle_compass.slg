@@ -1,0 +1,419 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:44  SIMPLIFIED 25-NOV-2009, 14:19:20
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure nav.Handle_compass
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_1.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= compass_ss
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  sensor_status__first <= valid
+-S-  Applied substitution rule handle_compa_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= compass_ss
+<S>  New C1:  true
+-S-  Applied substitution rule handle_compa_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  compass_ss <= restarted
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_2.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= compass_ss
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  sensor_status__first <= valid
+***  Proved C1:  measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 
+          measuretypes__angle_degrees__first
+     using hypothesis H15.
+***  Proved C2:  measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 
+          measuretypes__angle_degrees__last
+     using hypothesis H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_3.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= compass_ss
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  sensor_status__first <= valid
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H16).
+-S-  Applied substitution rule handle_compa_rules(8).
+     This was achieved by replacing all occurrences of 
+          sensor_history__angle_degrees__first by:
+          0.
+<S>  New C1:  measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 0
+-S-  Applied substitution rule handle_compa_rules(9).
+     This was achieved by replacing all occurrences of 
+          sensor_history__angle_degrees__last by:
+          359.
+<S>  New C2:  measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 359
+-S-  Applied substitution rule handle_compa_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__first by:
+          0.
+<S>  New H15:  measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 0
+-S-  Applied substitution rule handle_compa_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__last by:
+          359.
+<S>  New H16:  measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 359
+-S-  Applied substitution rule handle_compa_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= compass_ss
+<S>  New H12:  true
+-S-  Applied substitution rule handle_compa_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  compass_ss <= restarted
+<S>  New H13:  true
+***  Proved C1:  measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 0
+     using hypothesis H15.
+***  Proved C2:  measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 359
+     using hypothesis H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_4.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= compass_ss
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  sensor_status__first <= valid
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H16).
+***  Proved C1:  measuretypes__angle_ops__round_degree(bearing_mr_yz__2) >= 
+          measuretypes__angle_degrees__first
+     using hypothesis H24.
+***  Proved C2:  measuretypes__angle_ops__round_degree(bearing_mr_yz__2) <= 
+          measuretypes__angle_degrees__last
+     using hypothesis H25.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_5.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= compass_ss
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  sensor_status__first <= valid
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H25).
+-S-  Applied substitution rule handle_compa_rules(8).
+     This was achieved by replacing all occurrences of 
+          sensor_history__angle_degrees__first by:
+          0.
+<S>  New H21:  measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 0
+<S>  New C1:  measuretypes__angle_ops__round_degree(bearing_mr_yz__2) >= 0
+-S-  Applied substitution rule handle_compa_rules(9).
+     This was achieved by replacing all occurrences of 
+          sensor_history__angle_degrees__last by:
+          359.
+<S>  New H22:  measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 359
+<S>  New C2:  measuretypes__angle_ops__round_degree(bearing_mr_yz__2) <= 359
+-S-  Applied substitution rule handle_compa_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__first by:
+          0.
+<S>  New H15:  measuretypes__angle_ops__round_degree(bearing_mr_xy__1) >= 0
+<S>  New H24:  measuretypes__angle_ops__round_degree(bearing_mr_yz__2) >= 0
+-S-  Applied substitution rule handle_compa_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__last by:
+          359.
+<S>  New H16:  measuretypes__angle_ops__round_degree(bearing_mr_xy__1) <= 359
+<S>  New H25:  measuretypes__angle_ops__round_degree(bearing_mr_yz__2) <= 359
+-S-  Applied substitution rule handle_compa_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= compass_ss
+<S>  New H12:  true
+-S-  Applied substitution rule handle_compa_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  compass_ss <= restarted
+<S>  New H13:  true
+***  Proved C1:  measuretypes__angle_ops__round_degree(bearing_mr_yz__2) >= 0
+     using hypothesis H24.
+***  Proved C2:  measuretypes__angle_ops__round_degree(bearing_mr_yz__2) <= 359
+     using hypothesis H25.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_6.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= compass_ss
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  sensor_status__first <= restarted
+-S-  Applied substitution rule handle_compa_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= compass_ss
+<S>  New C1:  true
+-S-  Applied substitution rule handle_compa_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  compass_ss <= restarted
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_7.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= compass_ss
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  sensor_status__first <= valid
+-S-  Applied substitution rule handle_compa_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= compass_ss
+<S>  New C1:  true
+-S-  Applied substitution rule handle_compa_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  compass_ss <= restarted
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_8.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= compass_ss
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  sensor_status__first <= valid
+***  Proved C1:  measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 
+          measuretypes__angle_degrees__first
+     using hypothesis H16.
+***  Proved C2:  measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 
+          measuretypes__angle_degrees__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_9.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= compass_ss
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  sensor_status__first <= valid
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H17).
+-S-  Applied substitution rule handle_compa_rules(8).
+     This was achieved by replacing all occurrences of 
+          sensor_history__angle_degrees__first by:
+          0.
+<S>  New C1:  measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 0
+-S-  Applied substitution rule handle_compa_rules(9).
+     This was achieved by replacing all occurrences of 
+          sensor_history__angle_degrees__last by:
+          359.
+<S>  New C2:  measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 359
+-S-  Applied substitution rule handle_compa_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__first by:
+          0.
+<S>  New H16:  measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 0
+-S-  Applied substitution rule handle_compa_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__last by:
+          359.
+<S>  New H17:  measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 359
+-S-  Applied substitution rule handle_compa_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= compass_ss
+<S>  New H13:  true
+-S-  Applied substitution rule handle_compa_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  compass_ss <= restarted
+<S>  New H14:  true
+***  Proved C1:  measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 0
+     using hypothesis H16.
+***  Proved C2:  measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 359
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_10.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= compass_ss
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  sensor_status__first <= valid
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H17).
+***  Proved C1:  measuretypes__angle_ops__round_degree(bearing_mr_yz__6) >= 
+          measuretypes__angle_degrees__first
+     using hypothesis H25.
+***  Proved C2:  measuretypes__angle_ops__round_degree(bearing_mr_yz__6) <= 
+          measuretypes__angle_degrees__last
+     using hypothesis H26.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_11.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= compass_ss
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  sensor_status__first <= valid
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H26).
+-S-  Applied substitution rule handle_compa_rules(8).
+     This was achieved by replacing all occurrences of 
+          sensor_history__angle_degrees__first by:
+          0.
+<S>  New H22:  measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 0
+<S>  New C1:  measuretypes__angle_ops__round_degree(bearing_mr_yz__6) >= 0
+-S-  Applied substitution rule handle_compa_rules(9).
+     This was achieved by replacing all occurrences of 
+          sensor_history__angle_degrees__last by:
+          359.
+<S>  New H23:  measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 359
+<S>  New C2:  measuretypes__angle_ops__round_degree(bearing_mr_yz__6) <= 359
+-S-  Applied substitution rule handle_compa_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__first by:
+          0.
+<S>  New H16:  measuretypes__angle_ops__round_degree(bearing_mr_xy__5) >= 0
+<S>  New H25:  measuretypes__angle_ops__round_degree(bearing_mr_yz__6) >= 0
+-S-  Applied substitution rule handle_compa_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__last by:
+          359.
+<S>  New H17:  measuretypes__angle_ops__round_degree(bearing_mr_xy__5) <= 359
+<S>  New H26:  measuretypes__angle_ops__round_degree(bearing_mr_yz__6) <= 359
+-S-  Applied substitution rule handle_compa_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= compass_ss
+<S>  New H13:  true
+-S-  Applied substitution rule handle_compa_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  compass_ss <= restarted
+<S>  New H14:  true
+***  Proved C1:  measuretypes__angle_ops__round_degree(bearing_mr_yz__6) >= 0
+     using hypothesis H25.
+***  Proved C2:  measuretypes__angle_ops__round_degree(bearing_mr_yz__6) <= 359
+     using hypothesis H26.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_12.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  sensor_status__first <= compass_ss
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  sensor_status__first <= failed
+-S-  Applied substitution rule handle_compa_rules(14).
+     This was achieved by replacing all occurrences of sensor_status__first by:
+          unknown.
+<S>  New H3:  unknown <= compass_ss
+<S>  New C1:  true
+-S-  Applied substitution rule handle_compa_rules(15).
+     This was achieved by replacing all occurrences of sensor_status__last by:
+          restarted.
+<S>  New H4:  compass_ss <= restarted
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_13.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_14.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_15.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_16.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_handle_compass_17.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

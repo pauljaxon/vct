@@ -1,0 +1,351 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.20
+
+Line
+   1  -- Infra-red implementation
+   2  --
+   3  -- $Log: ir.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/08/27 20:46:10  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with SystemTypes,State_Types,Measuretypes.encode;
+  13  with Bus,RT1553,IBIT,Bit_Machine;
+  14  package body Ir
+  15    --# own State is
+  16    --#     detect_points,
+  17    --#     rand_seed,
+  18    --#     BIT_State;
+  19  is
+  20     subtype Integer32 is Systemtypes.Integer32;
+  21  
+  22     type cell is record
+  23        Temp : Kelvin;
+  24     end record;
+  25  
+  26     Zero_cell : constant cell :=
+  27       cell'(Temp => 0);
+  28  
+  29     type Sector_Slice is array(Sector) of cell;
+  30     type Sector_Array is array(Sector) of Sector_slice;
+  31  
+  32     Detect_Points : Sector_Array :=
+  33       Sector_Array'(others => Sector_Slice'(others => Zero_cell));
+  34     Rand_Seed : Random.Number := Random.Null_seed;
+  35     Bit_State  : Bit_Machine.Machine := Bit_Machine.Initial_Machine;
+  36  
+  37     Bus_Id : constant Rt1553.Lru_Name := Rt1553.Infrared;
+  38  
+  39     --------- Public subprograms
+  40  
+  41      procedure Set_cell_Return(Sx, Sy : in Sector;
+  42                                T : in Kelvin)
+  43     --# global in out detect_points;
+  44     --# derives detect_points from *, Sx, Sy, T;
+  45      is begin
+  46         Detect_Points(Sx)(Sy) :=
+  47           cell'(Temp => t);
+  48      end Set_cell_Return;
+
++++        Flow analysis of subprogram Set_cell_Return 
+           performed: no errors found.
+
+  49  
+  50       -- Read what's at a bearing
+  51     procedure Read_Location(Sx, Sy : in Sector;
+  52                             T : out Kelvin)
+  53     --# global in detect_points;
+  54     --# derives t from detect_points, Sx, Sy;
+  55     is begin
+  56        t := Detect_Points(Sx)(Sy).temp;
+  57     end Read_Location;
+
++++        Flow analysis of subprogram Read_Location 
+           performed: no errors found.
+
+  58  
+  59     procedure Do_Stare(Sx, Sy : in Sector)
+  60       --# global in detect_points;
+  61       --#        in out rand_seed;
+  62       --#        in out bus.inputs;
+  63       --#   derives bus.inputs from
+  64       --#    *, Sx, Sy, detect_points, rand_seed &
+  65       --#    rand_seed from *;
+  66     is
+  67        Datum : Bus.Word;
+  68        Temp : Kelvin;
+  69        V : Random.Value;
+  70     begin
+  71        Random.Get(N => Rand_Seed,
+  72                   V => V);
+  73        -- Write out Stare results to T2 word 1, 2
+  74        --   in order:  "Stare", temperature
+  75        Rt1553.Write_Word(Data =>
+  76                            State_Types.Ir_Values(State_Types.Ir_Stare),
+  77                         Idx => 1,
+  78                         Subaddress_Idx => 2,
+  79                          Src => Bus_id);
+  80        -- Work out the temp
+  81       temp := Detect_Points(Sx)(Sy).temp;
+  82        -- Random fluctuation in distance by up to 10K
+  83        Temp := temp + kelvin(V mod 10);
+  84        Datum := Measuretypes.Encode.kelvin(Temp);
+  85        Rt1553.Write_Word(Data => Datum,
+  86                          Idx => 2,
+  87                          Subaddress_Idx => 2,
+  88                          Src => Bus_Id);
+  89     end Do_Stare;
+
++++        Flow analysis of subprogram Do_Stare performed: 
+           no errors found.
+
+  90  
+  91     -- Sweep grid between Xs and Ys.
+  92     -- Send a 4x4 bit grid showing the found/not found in the quarters
+  93     procedure Do_Sweep(x_Start, x_End : in Sector;
+  94                        Y_Start, Y_End : in Sector)
+  95       --# global in detect_points;
+  96       --#        in out bus.inputs;
+  97       --# derives bus.inputs from
+  98       --#    *, x_start, x_end,
+  99       --#       y_start, y_end, detect_points;
+ 100     is
+ 101        Bit_data : Bus.Word;
+ 102        Detect : Measuretypes.Bit4_Array;
+ 103  
+ 104        procedure Derive_Grid
+ 105          --# global out detect;
+ 106          --#         in detect_points, x_start, x_end, y_start, y_end;
+ 107          --# derives detect from detect_points,
+ 108          --#       x_start, x_end, y_start, y_end;
+ 109        is
+ 110          Actual_X, Actual_Y : Measuretypes.bit4_Range;
+ 111          Dx,Ddx, Dy, ddy : integer32;
+ 112        begin
+ 113           Detect :=
+ 114             Measuretypes.Bit4_Array'(others =>
+ 115                                        Measuretypes.Bit4_Slice'(others =>
+ 116                                                                   False));
+ 117           Dx := Integer32(X_End) - Integer32(X_Start);
+ 118           Dy := Integer32(Y_End) - Integer32(Y_Start);
+ 119           for X in Sector range X_Start .. X_End loop
+ 120              --# assert x >= x_start and x <= x_end;
+ 121              Ddx := Integer32(X) - Integer32(X_Start);
+ 122              Actual_X := Measuretypes.bit4_Range((4 * ddx)/(Dx+1));
+ 123              for Y in Sector range Y_Start .. Y_End loop
+ 124                 --# assert x >= x_start and x <= x_end and
+ 125                 --#        y >= y_start and y <= y_end;
+ 126                 Ddy := Integer32(Y) - Integer32(Y_Start);
+ 127                 Actual_y := Measuretypes.bit4_Range((4 * ddy)/(Dy+1));
+ 128                 if Detect_Points(X)(Y).temp > 0 then
+ 129                    -- Detection
+ 130                    Detect(Actual_X)(Actual_Y) := True;
+ 131                 end if;
+ 132              end loop;
+ 133           end loop;
+ 134        end Derive_Grid;
+
++++        Flow analysis of subprogram Derive_Grid 
+           performed: no errors found.
+
+ 135  
+ 136     begin
+ 137        Derive_Grid;
+ 138        -- Write out Detect in 1 word
+ 139        Rt1553.Write_Word(Data =>
+ 140                            State_Types.Ir_Values(State_Types.Ir_Sweep),
+ 141                         Idx => 1,
+ 142                         Subaddress_Idx => 2,
+ 143                          Src => Bus_id);
+ 144        Bit_data := Measuretypes.Encode.Bit4_array(Detect);
+ 145        Rt1553.Write_Word(Data => Bit_data,
+ 146                          Idx => 2,
+ 147                          Subaddress_Idx => 2,
+ 148                          Src => Bus_Id);
+ 149     end Do_Sweep;
+
++++        Flow analysis of subprogram Do_Sweep performed: 
+           no errors found.
+
+ 150  
+ 151     -- Read a sector value from a bus word
+ 152     procedure Read_Sector(Idx : in Bus.Word_Index;
+ 153                           Subaddress_Idx : in Bus.Lru_subaddress_Index;
+ 154                           S : out Sector)
+ 155       --# global in bus.outputs;
+ 156       --# derives s from idx, subaddress_idx, bus.outputs;
+ 157     is
+ 158        S_Datum : Bus.Word;
+ 159     begin
+ 160        Rt1553.Read_Word(Src => Bus_Id,
+ 161                         Idx => idx,
+ 162                         Subaddress_Idx => Subaddress_idx,
+ 163                         Data => S_Datum);
+ 164        S := Ir_Cfg.Decode_Sector(S_Datum);
+ 165     end Read_Sector;
+
++++        Flow analysis of subprogram Read_Sector 
+           performed: no errors found.
+
+ 166  
+ 167        -- Cycle the reading of data from the bus
+ 168     -- and writing of data to the bus
+ 169     procedure Cycle
+ 170       --# global in detect_points;
+ 171       --#        in out rand_seed;
+ 172       --#        in out BIT_State;
+ 173       --#        in Bus.Outputs;
+ 174       --#        in out Bus.Inputs;
+ 175       --# derives
+ 176       --#        BIT_State
+ 177       --#          from *, Bus.Outputs &
+ 178       --#        rand_seed
+ 179       --#          from *, bus.outputs &
+ 180       --#        Bus.Inputs
+ 181       --#          from *,
+ 182       --#               bus.outputs,
+ 183       --#               detect_points,
+ 184       --#               rand_seed,
+ 185       --#               BIT_State;
+ 186     is
+ 187        Datum : Bus.Word;
+ 188        Remote_Command : State_Types.Infrared;
+ 189        Sx1, Sx2, Sy1, Sy2, Tmp_s : Sector;
+ 190  
+ 191     begin
+ 192        -- Read the BIT info off R1 word 1
+ 193        Rt1553.Read_Word(Src => Bus_id,
+ 194                         Idx => 1,
+ 195                         Subaddress_Idx => 1,
+ 196                         Data => Datum);
+ 197        BIT_Machine.Change_State(Word => Datum,
+ 198                                 State => Bit_state);
+ 199        -- See if R2 is updated
+ 200        Remote_Command := State_Types.ir_Inactive;
+ 201        Sx1 := Sector'First; Sx2 := Sector'Last;
+ 202        Sy1 := Sector'First; Sy2 := Sector'Last;
+ 203        if Rt1553.Is_Valid(Src => Bus_Id,
+ 204                           Subaddress_Idx => 2) and then
+ 205          Rt1553.Is_Fresh(Src => Bus_Id,
+ 206                          Subaddress_Idx => 2) then
+ 207           -- Read in the ir command
+ 208           Rt1553.Read_Word(Src => Bus_Id,
+ 209                            Idx => 1,
+ 210                            Subaddress_Idx => 2,
+ 211                            Data => Datum);
+ 212           Remote_Command := State_Types.Ir_Action(Datum);
+ 213           case Remote_Command is
+ 214              when State_Types.ir_Inactive =>
+ 215                 null;
+ 216              when State_Types.Ir_Stare =>
+ 217                 -- Do a stare on a specific sector
+ 218                 Read_Sector(Idx => 2,
+ 219                             Subaddress_Idx => 2,
+ 220                             S => Sx1);
+ 221                 Sx2 := Sx1;
+ 222                 Read_Sector(Idx => 4,
+ 223                             Subaddress_Idx => 2,
+ 224                             S => Sy1);
+ 225                 Sy2 := Sy1;
+ 226              when State_Types.Ir_Sweep =>
+ 227                 -- Sweep between two sectors
+ 228                 Read_Sector(Idx => 2,
+ 229                             Subaddress_Idx => 2,
+ 230                             S => Sx1);
+ 231                 Read_Sector(Idx => 3,
+ 232                             Subaddress_Idx => 2,
+ 233                             S => Sx2);
+ 234                 Read_Sector(Idx => 4,
+ 235                             Subaddress_Idx => 2,
+ 236                             S => Sy1);
+ 237                 Read_Sector(Idx => 5,
+ 238                             Subaddress_Idx => 2,
+ 239                             S => Sy2);
+ 240                 -- Ensure S1 <= S2
+ 241                 if (Sx1 > Sx2) then
+ 242                   Tmp_S := Sx1; Sx1 := Sx2; Sx2 := Tmp_S;
+ 243                 end if;
+ 244                 if (Sy1 > Sy2) then
+ 245                   Tmp_S := Sy1; Sy1 := Sy2; Sy2 := Tmp_S;
+ 246                 end if;
+ 247           end case;
+ 248        end if;
+ 249        --# assert Sx1 <= Sx2 and Sy1 <= Sy2;
+ 250        -- And cycle the BIT
+ 251        BIT_Machine.Step(Bit_State);
+ 252  
+ 253        -- Write the BIT phase to T1 word 1
+ 254        Rt1553.Write_Word(Data =>
+ 255                            IBIT.Phase_Lookup(BIT_Machine.Phase(Bit_State)),
+ 256                         Idx => 1,
+ 257                         Subaddress_Idx => 1,
+ 258                         Src => Bus_id);
+ 259  
+ 260        -- Write out the results of a stare or sweep
+ 261        case Remote_Command is
+ 262           when State_Types.ir_Inactive =>
+ 263              null;
+ 264           when State_Types.Ir_Stare =>
+ 265              -- Do a stare on S1
+ 266              Do_Stare(Sx1,Sy1);
+ 267           when State_Types.Ir_Sweep =>
+ 268              -- Sweep between S1 and S2;
+ 269              Do_Sweep(Sx1,Sx2,Sy1,Sy2);
+ 270        end case;
+ 271     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+ 272  
+ 273     procedure Fail_Next_Bit
+ 274       --# global in out BIT_State;
+ 275       --# derives BIT_State from *;
+ 276     is begin
+ 277        BIT_Machine.Fail_Next(Bit_State);
+ 278     end Fail_Next_Bit;
+
++++        Flow analysis of subprogram Fail_Next_Bit 
+           performed: no errors found.
+
+ 279  
+ 280     procedure Init
+ 281       --# global out detect_points, rand_seed, BIT_State;
+ 282       --#        in out Bus.Inputs;
+ 283       --# derives detect_points, rand_seed, BIT_State from &
+ 284       --#        Bus.Inputs from *;
+ 285     is begin
+ 286        -- Initialise the bus message 1T and 2T
+ 287        RT1553.Set_Message_Valid(Subaddress_Idx => 1,
+ 288                                 Src => Bus_id);
+ 289        RT1553.Set_Message_Valid(Subaddress_Idx => 2,
+ 290                                 Src => Bus_id);
+ 291        -- Initialise the variables
+ 292        Detect_Points := Sector_Array'(others =>
+ 293                                         Sector_Slice'(others => Zero_cell));
+ 294        Rand_Seed := Random.Seed(45);
+ 295        BIT_Machine.Create(Ticks_To_Complete => 65,
+ 296                           State => Bit_State);
+ 297     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 298  
+ 299     procedure Command is separate;
+ 300  end ir;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

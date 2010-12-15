@@ -1,0 +1,127 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:22
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function decode.Meter_Per_Sec
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_meter_per_sec_1.  @@@@@@@@@@
+-S-  Applied substitution rule meter_per_se_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New C1:  - (b - 32768) >= - 5000
+<S>  New C3:  b >= 27768
+-S-  Applied substitution rule meter_per_se_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New C2:  - (b - 32768) <= 5000
+<S>  New C4:  b <= 37768
+-S-  Applied substitution rule meter_per_se_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C5:  b >= - 2147450880
+-S-  Applied substitution rule meter_per_se_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C6:  b <= 2147516415
+***  Proved C3:  b >= 27768
+     using hypothesis H4.
+***  Proved C5:  b >= - 2147450880
+     using hypothesis H4.
+-S-  Applied substitution rule meter_per_se_rules(12).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  b >= 0
+-S-  Applied substitution rule meter_per_se_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  b <= 65535
+***  Proved C2:  - (b - 32768) <= 5000
+     via its standard form, which is:
+     Std.Fm C2:  b > 27767
+     using hypothesis H4.
+***  Proved C6:  b <= 2147516415
+     using hypothesis H3.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H2 (redundant, given H4).
+---  Eliminated conclusion C4, which is a duplicate of C1.
+     +++  New H5:  integer__size >= 0
+     +++  New H6:  measuretypes__meter_per_sec__size >= 0
+     +++  New H7:  bus__word__size >= 0
+
+
+@@@@@@@@@@  VC: function_meter_per_sec_2.  @@@@@@@@@@
+-S-  Applied substitution rule meter_per_se_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New C1:  b >= - 5000
+<S>  New C3:  b >= - 5000
+-S-  Applied substitution rule meter_per_se_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New C2:  b <= 5000
+<S>  New C4:  b <= 5000
+>>>  Restructured hypothesis H4 into:
+     >>>  H4:  b < 32768
+-S-  Applied substitution rule meter_per_se_rules(12).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  b >= 0
+-S-  Applied substitution rule meter_per_se_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  b <= 65535
+***  Proved C1:  b >= - 5000
+     using hypothesis H2.
+***  Proved C3:  b >= - 5000
+     using hypothesis H2.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H3 (redundant, given H4).
+---  Eliminated conclusion C4, which is a duplicate of C2.
+     +++  New H5:  integer__size >= 0
+     +++  New H6:  measuretypes__meter_per_sec__size >= 0
+     +++  New H7:  bus__word__size >= 0
+
+
+@@@@@@@@@@  VC: function_meter_per_sec_3.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H6)
+          .
+***  Proved C1:  true
+***  Proved C2:  - (b - 32768) >= measuretypes__meter_per_sec__first
+     using hypothesis H5.
+***  Proved C3:  - (b - 32768) <= measuretypes__meter_per_sec__last
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_per_sec_4.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H6)
+          .
+***  Proved C1:  true
+***  Proved C2:  b >= measuretypes__meter_per_sec__first
+     using hypothesis H5.
+***  Proved C3:  b <= measuretypes__meter_per_sec__last
+     using hypothesis H6.
+***  PROVED VC.
+

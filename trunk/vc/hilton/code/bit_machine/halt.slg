@@ -1,0 +1,43 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:41
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure bit_machine.Halt
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_halt_1.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  ibit__phase__first <= fld_current_phase(state)
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  ibit__phase__first <= ibit__off
+-S-  Applied substitution rule halt_rules(12).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H7:  ibit__off <= fld_current_phase(state)
+<S>  New C1:  true
+-S-  Applied substitution rule halt_rules(13).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H8:  fld_current_phase(state) <= ibit__timeout
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_halt_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

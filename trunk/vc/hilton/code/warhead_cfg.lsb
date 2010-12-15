@@ -1,0 +1,87 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.21
+
+Line
+   1  -- Warhead configuration body
+   2  --
+   3  -- $Log: warhead_cfg.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/09/01 18:26:48  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  package body Warhead_Cfg
+  13  is
+  14     function Code_To_State(C : Systemtypes.Unsigned16)
+  15                           return State
+  16     is
+  17        Ans : State;
+  18     begin
+  19        if C = State_To_Code(Inactive) then
+  20           ans := Inactive;
+  21        elsif C = State_To_Code(Awake) then
+  22           ans := Awake;
+  23        elsif C = State_To_Code(Armed) then
+  24           ans := Armed;
+  25        elsif C = State_To_Code(Final) then
+  26           ans := Final;
+  27        elsif C = State_To_Code(detonated) then
+  28           ans := Detonated;
+  29        else
+  30           Ans := Inactive;
+  31        end if;
+  32        return Ans;
+  33     end Code_To_State;
+
++++        Flow analysis of subprogram Code_To_State 
+           performed: no errors found.
+
+  34  
+  35     function Transition(Old_state : State;
+  36                         New_Code  : Systemtypes.Unsigned16)
+  37                        return State
+  38     is
+  39        Ans : State := inactive;
+  40     begin
+  41        case Old_State is
+  42           when Inactive =>
+  43              if Code_To_State(New_Code) = Awake then
+  44                 Ans := Awake;
+  45              end if;
+  46           when Awake =>
+  47              if Code_To_State(New_Code) = Armed then
+  48                 Ans := Armed;
+  49              end if;
+  50           when Armed =>
+  51              if Code_To_State(New_Code) = Final then
+  52                 Ans := Final;
+  53              end if;
+  54           when Final =>
+  55              if Code_To_State(New_Code) = Detonated then
+  56                 Ans := Detonated;
+  57              end if;
+  58           when Detonated =>
+  59              Ans := Inactive;
+  60        end case;
+  61        return Ans;
+  62     end Transition;
+
++++        Flow analysis of subprogram Transition 
+           performed: no errors found.
+
+  63  
+  64  end Warhead_Cfg;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

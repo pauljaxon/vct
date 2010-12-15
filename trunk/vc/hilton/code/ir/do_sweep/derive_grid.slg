@@ -1,0 +1,2117 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:41  SIMPLIFIED 25-NOV-2009, 14:19:05
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure ir.Do_Sweep.Derive_Grid
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  x_end - x_start >= - 2147483648
+<S>  New C3:  x_start >= - 2147483648
+<S>  New C5:  x_end >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  x_end - x_start <= 2147483647
+<S>  New C4:  x_start <= 2147483647
+<S>  New C6:  x_end <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H3:  x_start >= - 12
+<S>  New H5:  x_end >= - 12
+<S>  New H7:  y_start >= - 12
+<S>  New H9:  y_end >= - 12
+<S>  New H2:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H4:  x_start <= 12
+<S>  New H6:  x_end <= 12
+<S>  New H8:  y_start <= 12
+<S>  New H10:  y_end <= 12
+<S>  New H2:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+***  Proved C1:  x_end - x_start >= - 2147483648
+     using hypotheses H4 & H5.
+***  Proved C3:  x_start >= - 2147483648
+     using hypothesis H3.
+***  Proved C5:  x_end >= - 2147483648
+     using hypothesis H5.
+***  Proved C2:  x_end - x_start <= 2147483647
+     using hypotheses H3 & H6.
+***  Proved C4:  x_start <= 2147483647
+     using hypothesis H4.
+***  Proved C6:  x_end <= 2147483647
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H11:  x_end - x_start >= - 2147483648
+<S>  New H13:  x_start >= - 2147483648
+<S>  New H15:  x_end >= - 2147483648
+<S>  New C1:  y_end - y_start >= - 2147483648
+<S>  New C3:  y_start >= - 2147483648
+<S>  New C5:  y_end >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H12:  x_end - x_start <= 2147483647
+<S>  New H14:  x_start <= 2147483647
+<S>  New H16:  x_end <= 2147483647
+<S>  New C2:  y_end - y_start <= 2147483647
+<S>  New C4:  y_start <= 2147483647
+<S>  New C6:  y_end <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H3:  x_start >= - 12
+<S>  New H5:  x_end >= - 12
+<S>  New H7:  y_start >= - 12
+<S>  New H9:  y_end >= - 12
+<S>  New H2:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H4:  x_start <= 12
+<S>  New H6:  x_end <= 12
+<S>  New H8:  y_start <= 12
+<S>  New H10:  y_end <= 12
+<S>  New H2:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+***  Proved C1:  y_end - y_start >= - 2147483648
+     using hypotheses H8 & H9.
+***  Proved C3:  y_start >= - 2147483648
+     using hypothesis H7.
+***  Proved C5:  y_end >= - 2147483648
+     using hypothesis H9.
+***  Proved C2:  y_end - y_start <= 2147483647
+     using hypotheses H7 & H10.
+***  Proved C4:  y_start <= 2147483647
+     using hypothesis H8.
+***  Proved C6:  y_end <= 2147483647
+     using hypothesis H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(24).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__first by:
+          - 12.
+<S>  New C1:  x_end >= - 12
+<S>  New C3:  x_start >= - 12
+-S-  Applied substitution rule derive_grid_rules(25).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__last by:
+          12.
+<S>  New C2:  x_end <= 12
+<S>  New C4:  x_start <= 12
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H3:  x_start >= - 12
+<S>  New H5:  x_end >= - 12
+<S>  New H7:  y_start >= - 12
+<S>  New H9:  y_end >= - 12
+<S>  New H2:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H4:  x_start <= 12
+<S>  New H6:  x_end <= 12
+<S>  New H8:  y_start <= 12
+<S>  New H10:  y_end <= 12
+<S>  New H2:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H11:  x_end - x_start >= - 2147483648
+<S>  New H13:  x_start >= - 2147483648
+<S>  New H15:  x_end >= - 2147483648
+<S>  New H17:  y_end - y_start >= - 2147483648
+<S>  New H19:  y_start >= - 2147483648
+<S>  New H21:  y_end >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H12:  x_end - x_start <= 2147483647
+<S>  New H14:  x_start <= 2147483647
+<S>  New H16:  x_end <= 2147483647
+<S>  New H18:  y_end - y_start <= 2147483647
+<S>  New H20:  y_start <= 2147483647
+<S>  New H22:  y_end <= 2147483647
+***  Proved C1:  x_end >= - 12
+     using hypothesis H5.
+***  Proved C3:  x_start >= - 12
+     using hypothesis H3.
+***  Proved C2:  x_end <= 12
+     using hypothesis H6.
+***  Proved C4:  x_start <= 12
+     using hypothesis H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+***  Proved C1:  x_start <= x_end -> x_end >= sector__first and x_end <= 
+          sector__last
+     using hypotheses H5 & H6.
+***  Proved C2:  x_start <= x_end -> x_start >= sector__first and x_start <= 
+          sector__last
+     using hypotheses H3 & H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+%%%  Simplified C14 on reading formula in, to give:
+     %%%  C14:  true
+***  Proved C1:  true
+***  Proved C2:  x_start <= x_end
+     using hypothesis H29.
+***  Proved C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+     using hypothesis H2.
+***  Proved C4:  x_start >= sector__first
+     using hypothesis H3.
+***  Proved C5:  x_start <= sector__last
+     using hypothesis H4.
+***  Proved C6:  x_end >= sector__first
+     using hypothesis H5.
+***  Proved C7:  x_end <= sector__last
+     using hypothesis H6.
+***  Proved C8:  y_start >= sector__first
+     using hypothesis H7.
+***  Proved C9:  y_start <= sector__last
+     using hypothesis H8.
+***  Proved C10:  y_end >= sector__first
+     using hypothesis H9.
+***  Proved C11:  y_end <= sector__last
+     using hypothesis H10.
+***  Proved C12:  x_start >= sector__first
+     using hypothesis H3.
+***  Proved C13:  x_start <= sector__last
+     using hypothesis H4.
+***  Proved C14:  true
+***  Proved C15:  x_start <= x_end
+     using hypothesis H29.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_6.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H27).
+%%%  Simplified H32 on reading formula in, to give:
+     %%%  H32:  dx <> - 1
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+***  Proved C1:  loop__1__x + 1 >= x_start
+     using hypothesis H1.
+***  Proved C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+     using hypothesis H3.
+***  Proved C4:  x_start >= sector__first
+     using hypothesis H4.
+***  Proved C5:  x_start <= sector__last
+     using hypothesis H5.
+***  Proved C6:  x_end >= sector__first
+     using hypothesis H6.
+***  Proved C7:  x_end <= sector__last
+     using hypothesis H7.
+***  Proved C8:  y_start >= sector__first
+     using hypothesis H8.
+***  Proved C9:  y_start <= sector__last
+     using hypothesis H9.
+***  Proved C10:  y_end >= sector__first
+     using hypothesis H10.
+***  Proved C11:  y_end <= sector__last
+     using hypothesis H11.
+***  Proved C12:  loop__1__x + 1 >= sector__first
+     using hypothesis H12.
+***  Proved C14:  loop__1__x + 1 >= x_start
+     using hypothesis H1.
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          kelvin__first <= fld_temp(element(element(detect_points, [i___1]), [
+          i___2])) and fld_temp(element(element(detect_points, [i___1]), [i___2]
+          )) <= kelvin__last))
+<S>  New H5:  x_start <= 12
+<S>  New H7:  x_end <= 12
+<S>  New H9:  y_start <= 12
+<S>  New H11:  y_end <= 12
+<S>  New H13:  loop__1__x <= 12
+<S>  New H41:  y_start <= y_end -> y_end >= sector__first and y_end <= 12
+<S>  New H42:  y_start <= y_end -> y_start >= sector__first and y_start <= 12
+<S>  New C13:  loop__1__x <= 11
+***  Proved C13:  loop__1__x <= 11
+     using hypotheses H2, H7 & H44.
+>>>  Restructured hypothesis H43 into:
+     >>>  H43:  y_end < y_start
+>>>  Restructured hypothesis H44 into:
+     >>>  H44:  loop__1__x <> x_end
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H30:  4 * (loop__1__x - x_start) div (dx + 1) >= - 2147483648
+<S>  New H33:  dx >= - 2147483649
+<S>  New H35:  4 * (loop__1__x - x_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H31:  4 * (loop__1__x - x_start) div (dx + 1) <= 2147483647
+<S>  New H34:  dx <= 2147483646
+<S>  New H36:  4 * (loop__1__x - x_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H26:  4 * (loop__1__x - x_start) div (dx + 1) >= 0
+-S-  Applied substitution rule derive_grid_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H27:  4 * (loop__1__x - x_start) div (dx + 1) <= 3
+-S-  Applied substitution rule derive_grid_rules(24).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__first by:
+          - 12.
+<S>  New H37:  y_end >= - 12
+<S>  New H39:  y_start >= - 12
+-S-  Applied substitution rule derive_grid_rules(25).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__last by:
+          12.
+<S>  New H38:  y_end <= 12
+<S>  New H40:  y_start <= 12
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H4:  x_start >= - 12
+<S>  New H6:  x_end >= - 12
+<S>  New H8:  y_start >= - 12
+<S>  New H10:  y_end >= - 12
+<S>  New H12:  loop__1__x >= - 12
+<S>  New H41:  y_start <= y_end -> y_end >= - 12 and y_end <= 12
+<S>  New H42:  y_start <= y_end -> y_start >= - 12 and y_start <= 12
+<S>  New H3:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H16:  loop__1__x - x_start >= - 2147483648
+<S>  New H18:  x_start >= - 2147483648
+<S>  New H20:  loop__1__x >= - 2147483648
+<S>  New H22:  dx >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H17:  loop__1__x - x_start <= 2147483647
+<S>  New H19:  x_start <= 2147483647
+<S>  New H21:  loop__1__x <= 2147483647
+<S>  New H23:  dx <= 2147483647
+%%%  Hypotheses H2 & H44 together imply that
+          loop__1__x < x_end.
+     H2 & H44 have therefore been deleted and a new H2 added to this effect.
+***  Proved C2:  loop__1__x + 1 <= x_end
+     via its standard form, which is:
+     Std.Fm C2:  - loop__1__x + x_end > 0
+     using hypothesis H2.
+***  Proved C15:  loop__1__x + 1 <= x_end
+     via its standard form, which is:
+     Std.Fm C15:  - loop__1__x + x_end > 0
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_7.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  dy <> - 1
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H33).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+***  Proved C1:  loop__1__x + 1 >= x_start
+     using hypothesis H1.
+***  Proved C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+     using hypothesis H5.
+***  Proved C4:  x_start >= sector__first
+     using hypothesis H6.
+***  Proved C5:  x_start <= sector__last
+     using hypothesis H7.
+***  Proved C6:  x_end >= sector__first
+     using hypothesis H8.
+***  Proved C7:  x_end <= sector__last
+     using hypothesis H9.
+***  Proved C8:  y_start >= sector__first
+     using hypothesis H10.
+***  Proved C9:  y_start <= sector__last
+     using hypothesis H11.
+***  Proved C10:  y_end >= sector__first
+     using hypothesis H12.
+***  Proved C11:  y_end <= sector__last
+     using hypothesis H13.
+***  Proved C12:  loop__1__x + 1 >= sector__first
+     using hypothesis H18.
+***  Proved C14:  loop__1__x + 1 >= x_start
+     using hypothesis H1.
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          kelvin__first <= fld_temp(element(element(detect_points, [i___1]), [
+          i___2])) and fld_temp(element(element(detect_points, [i___1]), [i___2]
+          )) <= kelvin__last))
+<S>  New H7:  x_start <= 12
+<S>  New H9:  x_end <= 12
+<S>  New H11:  y_start <= 12
+<S>  New H13:  y_end <= 12
+<S>  New H15:  loop__2__y <= 12
+<S>  New H19:  loop__1__x <= 12
+<S>  New C13:  loop__1__x <= 11
+***  Proved C13:  loop__1__x <= 11
+     using hypotheses H2, H9 & H53.
+>>>  Restructured hypothesis H53 into:
+     >>>  H53:  loop__1__x <> x_end
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H36:  4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648
+<S>  New H39:  dy >= - 2147483649
+<S>  New H41:  4 * (loop__2__y - y_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H37:  4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647
+<S>  New H40:  dy <= 2147483646
+<S>  New H42:  4 * (loop__2__y - y_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H32:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+<S>  New H50:  actual_x >= 0
+-S-  Applied substitution rule derive_grid_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H33:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+<S>  New H51:  actual_x <= 3
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H6:  x_start >= - 12
+<S>  New H8:  x_end >= - 12
+<S>  New H10:  y_start >= - 12
+<S>  New H12:  y_end >= - 12
+<S>  New H14:  loop__2__y >= - 12
+<S>  New H18:  loop__1__x >= - 12
+<S>  New H5:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H22:  loop__2__y - y_start >= - 2147483648
+<S>  New H24:  y_start >= - 2147483648
+<S>  New H26:  loop__2__y >= - 2147483648
+<S>  New H28:  dy >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H23:  loop__2__y - y_start <= 2147483647
+<S>  New H25:  y_start <= 2147483647
+<S>  New H27:  loop__2__y <= 2147483647
+<S>  New H29:  dy <= 2147483647
+%%%  Hypotheses H2 & H53 together imply that
+          loop__1__x < x_end.
+     H2 & H53 have therefore been deleted and a new H2 added to this effect.
+***  Proved C2:  loop__1__x + 1 <= x_end
+     via its standard form, which is:
+     Std.Fm C2:  - loop__1__x + x_end > 0
+     using hypothesis H2.
+***  Proved C15:  loop__1__x + 1 <= x_end
+     via its standard form, which is:
+     Std.Fm C15:  - loop__1__x + x_end > 0
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_8.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  dy <> - 1
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+***  Proved C1:  loop__1__x + 1 >= x_start
+     using hypothesis H1.
+***  Proved C3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+     using hypothesis H5.
+***  Proved C4:  x_start >= sector__first
+     using hypothesis H6.
+***  Proved C5:  x_start <= sector__last
+     using hypothesis H7.
+***  Proved C6:  x_end >= sector__first
+     using hypothesis H8.
+***  Proved C7:  x_end <= sector__last
+     using hypothesis H9.
+***  Proved C8:  y_start >= sector__first
+     using hypothesis H10.
+***  Proved C9:  y_start <= sector__last
+     using hypothesis H11.
+***  Proved C10:  y_end >= sector__first
+     using hypothesis H12.
+***  Proved C11:  y_end <= sector__last
+     using hypothesis H13.
+***  Proved C12:  loop__1__x + 1 >= sector__first
+     using hypothesis H18.
+***  Proved C14:  loop__1__x + 1 >= x_start
+     using hypothesis H1.
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          kelvin__first <= fld_temp(element(element(detect_points, [i___1]), [
+          i___2])) and fld_temp(element(element(detect_points, [i___1]), [i___2]
+          )) <= kelvin__last))
+<S>  New H7:  x_start <= 12
+<S>  New H9:  x_end <= 12
+<S>  New H11:  y_start <= 12
+<S>  New H13:  y_end <= 12
+<S>  New H15:  loop__2__y <= 12
+<S>  New H19:  loop__1__x <= 12
+<S>  New C13:  loop__1__x <= 11
+***  Proved C13:  loop__1__x <= 11
+     using hypotheses H2, H9 & H49.
+>>>  Restructured hypothesis H47 into:
+     >>>  H47:  fld_temp(element(element(detect_points, [loop__1__x]), [
+          loop__2__y])) <= 0
+>>>  Restructured hypothesis H49 into:
+     >>>  H49:  loop__1__x <> x_end
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H36:  4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648
+<S>  New H39:  dy >= - 2147483649
+<S>  New H41:  4 * (loop__2__y - y_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H37:  4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647
+<S>  New H40:  dy <= 2147483646
+<S>  New H42:  4 * (loop__2__y - y_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H32:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+-S-  Applied substitution rule derive_grid_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H33:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H6:  x_start >= - 12
+<S>  New H8:  x_end >= - 12
+<S>  New H10:  y_start >= - 12
+<S>  New H12:  y_end >= - 12
+<S>  New H14:  loop__2__y >= - 12
+<S>  New H18:  loop__1__x >= - 12
+<S>  New H5:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H22:  loop__2__y - y_start >= - 2147483648
+<S>  New H24:  y_start >= - 2147483648
+<S>  New H26:  loop__2__y >= - 2147483648
+<S>  New H28:  dy >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H23:  loop__2__y - y_start <= 2147483647
+<S>  New H25:  y_start <= 2147483647
+<S>  New H27:  loop__2__y <= 2147483647
+<S>  New H29:  dy <= 2147483647
+%%%  Hypotheses H2 & H49 together imply that
+          loop__1__x < x_end.
+     H2 & H49 have therefore been deleted and a new H2 added to this effect.
+***  Proved C2:  loop__1__x + 1 <= x_end
+     via its standard form, which is:
+     Std.Fm C2:  - loop__1__x + x_end > 0
+     using hypothesis H2.
+***  Proved C15:  loop__1__x + 1 <= x_end
+     via its standard form, which is:
+     Std.Fm C15:  - loop__1__x + x_end > 0
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_9.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H2)
+          .
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  loop__1__x - x_start >= - 2147483648
+<S>  New C3:  x_start >= - 2147483648
+<S>  New C5:  loop__1__x >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  loop__1__x - x_start <= 2147483647
+<S>  New C4:  x_start <= 2147483647
+<S>  New C6:  loop__1__x <= 2147483647
+***  Proved C1:  loop__1__x - x_start >= - 2147483648
+     using hypothesis H1.
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H4:  x_start >= - 12
+<S>  New H6:  x_end >= - 12
+<S>  New H8:  y_start >= - 12
+<S>  New H10:  y_end >= - 12
+<S>  New H12:  loop__1__x >= - 12
+<S>  New H3:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H5:  x_start <= 12
+<S>  New H7:  x_end <= 12
+<S>  New H9:  y_start <= 12
+<S>  New H11:  y_end <= 12
+<S>  New H13:  loop__1__x <= 12
+<S>  New H3:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+***  Proved C3:  x_start >= - 2147483648
+     using hypothesis H4.
+***  Proved C5:  loop__1__x >= - 2147483648
+     using hypothesis H12.
+***  Proved C2:  loop__1__x - x_start <= 2147483647
+     using hypotheses H4 & H13.
+***  Proved C4:  x_start <= 2147483647
+     using hypothesis H5.
+***  Proved C6:  loop__1__x <= 2147483647
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_10.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H17).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  dx <> - 1
+-S-  Applied substitution rule derive_grid_rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New C1:  4 * (loop__1__x - x_start) div (dx + 1) >= 0
+<S>  New C3:  4 * (loop__1__x - x_start) div (dx + 1) >= 0
+-S-  Applied substitution rule derive_grid_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New C2:  4 * (loop__1__x - x_start) div (dx + 1) <= 3
+<S>  New C4:  4 * (loop__1__x - x_start) div (dx + 1) <= 3
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C5:  4 * (loop__1__x - x_start) div (dx + 1) >= - 2147483648
+<S>  New C8:  dx >= - 2147483649
+<S>  New C10:  4 * (loop__1__x - x_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C6:  4 * (loop__1__x - x_start) div (dx + 1) <= 2147483647
+<S>  New C9:  dx <= 2147483646
+<S>  New C11:  4 * (loop__1__x - x_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H4:  x_start >= - 12
+<S>  New H6:  x_end >= - 12
+<S>  New H8:  y_start >= - 12
+<S>  New H10:  y_end >= - 12
+<S>  New H12:  loop__1__x >= - 12
+<S>  New H3:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H5:  x_start <= 12
+<S>  New H7:  x_end <= 12
+<S>  New H9:  y_start <= 12
+<S>  New H11:  y_end <= 12
+<S>  New H13:  loop__1__x <= 12
+<S>  New H3:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H16:  loop__1__x - x_start >= - 2147483648
+<S>  New H18:  x_start >= - 2147483648
+<S>  New H20:  loop__1__x >= - 2147483648
+<S>  New H22:  dx >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H17:  loop__1__x - x_start <= 2147483647
+<S>  New H19:  x_start <= 2147483647
+<S>  New H21:  loop__1__x <= 2147483647
+<S>  New H23:  dx <= 2147483647
+***  Proved C8:  dx >= - 2147483649
+     using hypothesis H22.
+***  Proved C10:  4 * (loop__1__x - x_start) >= - 2147483648
+     via its standard form, which is:
+     Std.Fm C10:  4 * loop__1__x - 4 * x_start > - 2147483649
+     using hypothesis H1.
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H16 (redundant, given H1).
+---  Eliminated hypothesis H18 (redundant, given H4).
+---  Eliminated hypothesis H19 (redundant, given H5).
+---  Eliminated hypothesis H20 (redundant, given H12).
+---  Eliminated hypothesis H21 (redundant, given H13).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C11:  4 * (loop__1__x - x_start) <= 2147483647
+     using hypotheses H4 & H13.
+     +++  New H26:  long_integer__size >= 0
+     +++  New H27:  measuretypes__kelvin__size >= 0
+     +++  New H28:  measuretypes__bit_range__size >= 0
+     +++  New H29:  measuretypes__bit_range__base__first <= 
+          measuretypes__bit_range__base__last
+     +++  New H30:  measuretypes__bit4_range__size >= 0
+     +++  New H31:  measuretypes__bit4_range__base__first <= 
+          measuretypes__bit4_range__base__last
+     +++  New H32:  ir_cfg__sector_range__size >= 0
+     +++  New H33:  ir_cfg__sector_range__base__first <= 
+          ir_cfg__sector_range__base__last
+     +++  New H34:  kelvin__size >= 0
+     +++  New H35:  sector__size >= 0
+     +++  New H36:  sector__base__first <= sector__base__last
+     +++  New H37:  integer32__size >= 0
+     +++  New H38:  cell__size >= 0
+     +++  New H39:  measuretypes__bit_range__base__first <= 0
+     +++  New H40:  measuretypes__bit_range__base__last >= 255
+     +++  New H41:  measuretypes__bit4_range__base__first <= 0
+     +++  New H42:  measuretypes__bit4_range__base__last >= 3
+     +++  New H43:  ir_cfg__sector_range__base__first <= - 12
+     +++  New H44:  ir_cfg__sector_range__base__last >= 12
+     +++  New H45:  sector__base__first <= - 12
+     +++  New H46:  sector__base__last >= 12
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_11.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H27).
+%%%  Simplified H32 on reading formula in, to give:
+     %%%  H32:  dx <> - 1
+-S-  Applied substitution rule derive_grid_rules(24).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__first by:
+          - 12.
+<S>  New C1:  y_end >= - 12
+<S>  New C3:  y_start >= - 12
+-S-  Applied substitution rule derive_grid_rules(25).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__last by:
+          12.
+<S>  New C2:  y_end <= 12
+<S>  New C4:  y_start <= 12
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H30:  4 * (loop__1__x - x_start) div (dx + 1) >= - 2147483648
+<S>  New H33:  dx >= - 2147483649
+<S>  New H35:  4 * (loop__1__x - x_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H31:  4 * (loop__1__x - x_start) div (dx + 1) <= 2147483647
+<S>  New H34:  dx <= 2147483646
+<S>  New H36:  4 * (loop__1__x - x_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H26:  4 * (loop__1__x - x_start) div (dx + 1) >= 0
+-S-  Applied substitution rule derive_grid_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H27:  4 * (loop__1__x - x_start) div (dx + 1) <= 3
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H4:  x_start >= - 12
+<S>  New H6:  x_end >= - 12
+<S>  New H8:  y_start >= - 12
+<S>  New H10:  y_end >= - 12
+<S>  New H12:  loop__1__x >= - 12
+<S>  New H3:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H5:  x_start <= 12
+<S>  New H7:  x_end <= 12
+<S>  New H9:  y_start <= 12
+<S>  New H11:  y_end <= 12
+<S>  New H13:  loop__1__x <= 12
+<S>  New H3:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H16:  loop__1__x - x_start >= - 2147483648
+<S>  New H18:  x_start >= - 2147483648
+<S>  New H20:  loop__1__x >= - 2147483648
+<S>  New H22:  dx >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H17:  loop__1__x - x_start <= 2147483647
+<S>  New H19:  x_start <= 2147483647
+<S>  New H21:  loop__1__x <= 2147483647
+<S>  New H23:  dx <= 2147483647
+***  Proved C1:  y_end >= - 12
+     using hypothesis H10.
+***  Proved C3:  y_start >= - 12
+     using hypothesis H8.
+***  Proved C2:  y_end <= 12
+     using hypothesis H11.
+***  Proved C4:  y_start <= 12
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_12.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H27).
+%%%  Simplified H32 on reading formula in, to give:
+     %%%  H32:  dx <> - 1
+***  Proved C1:  y_start <= y_end -> y_end >= sector__first and y_end <= 
+          sector__last
+     using hypotheses H10 & H11.
+***  Proved C2:  y_start <= y_end -> y_start >= sector__first and y_start <= 
+          sector__last
+     using hypotheses H8 & H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_13.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H26).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H27).
+%%%  Simplified H32 on reading formula in, to give:
+     %%%  H32:  dx <> - 1
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+%%%  Simplified C16 on reading formula in, to give:
+     %%%  C16:  true
+***  Proved C1:  loop__1__x >= x_start
+     using hypothesis H1.
+***  Proved C2:  loop__1__x <= x_end
+     using hypothesis H2.
+***  Proved C3:  true
+***  Proved C4:  y_start <= y_end
+     using hypothesis H43.
+***  Proved C5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+     using hypothesis H3.
+***  Proved C6:  x_start >= sector__first
+     using hypothesis H4.
+***  Proved C7:  x_start <= sector__last
+     using hypothesis H5.
+***  Proved C8:  x_end >= sector__first
+     using hypothesis H6.
+***  Proved C9:  x_end <= sector__last
+     using hypothesis H7.
+***  Proved C10:  y_start >= sector__first
+     using hypothesis H8.
+***  Proved C11:  y_start <= sector__last
+     using hypothesis H9.
+***  Proved C12:  y_end >= sector__first
+     using hypothesis H10.
+***  Proved C13:  y_end <= sector__last
+     using hypothesis H11.
+***  Proved C14:  y_start >= sector__first
+     using hypothesis H8.
+***  Proved C15:  y_start <= sector__last
+     using hypothesis H9.
+***  Proved C16:  true
+***  Proved C17:  y_start <= y_end
+     using hypothesis H43.
+***  Proved C18:  loop__1__x >= sector__first
+     using hypothesis H12.
+***  Proved C19:  loop__1__x <= sector__last
+     using hypothesis H13.
+***  Proved C20:  loop__1__x >= x_start
+     using hypothesis H1.
+***  Proved C21:  loop__1__x <= x_end
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_14.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  dy <> - 1
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H33).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+***  Proved C1:  loop__1__x >= x_start
+     using hypothesis H1.
+***  Proved C2:  loop__1__x <= x_end
+     using hypothesis H2.
+***  Proved C3:  loop__2__y + 1 >= y_start
+     using hypothesis H3.
+***  Proved C5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+     using hypothesis H5.
+***  Proved C6:  x_start >= sector__first
+     using hypothesis H6.
+***  Proved C7:  x_start <= sector__last
+     using hypothesis H7.
+***  Proved C8:  x_end >= sector__first
+     using hypothesis H8.
+***  Proved C9:  x_end <= sector__last
+     using hypothesis H9.
+***  Proved C10:  y_start >= sector__first
+     using hypothesis H10.
+***  Proved C11:  y_start <= sector__last
+     using hypothesis H11.
+***  Proved C12:  y_end >= sector__first
+     using hypothesis H12.
+***  Proved C13:  y_end <= sector__last
+     using hypothesis H13.
+***  Proved C14:  loop__2__y + 1 >= sector__first
+     using hypothesis H14.
+***  Proved C16:  loop__2__y + 1 >= y_start
+     using hypothesis H3.
+***  Proved C18:  loop__1__x >= sector__first
+     using hypothesis H18.
+***  Proved C19:  loop__1__x <= sector__last
+     using hypothesis H19.
+***  Proved C20:  loop__1__x >= x_start
+     using hypothesis H1.
+***  Proved C21:  loop__1__x <= x_end
+     using hypothesis H2.
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          kelvin__first <= fld_temp(element(element(detect_points, [i___1]), [
+          i___2])) and fld_temp(element(element(detect_points, [i___1]), [i___2]
+          )) <= kelvin__last))
+<S>  New H7:  x_start <= 12
+<S>  New H9:  x_end <= 12
+<S>  New H11:  y_start <= 12
+<S>  New H13:  y_end <= 12
+<S>  New H15:  loop__2__y <= 12
+<S>  New H19:  loop__1__x <= 12
+<S>  New C15:  loop__2__y <= 11
+***  Proved C15:  loop__2__y <= 11
+     using hypotheses H4, H13 & H52.
+>>>  Restructured hypothesis H52 into:
+     >>>  H52:  loop__2__y <> y_end
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H36:  4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648
+<S>  New H39:  dy >= - 2147483649
+<S>  New H41:  4 * (loop__2__y - y_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H37:  4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647
+<S>  New H40:  dy <= 2147483646
+<S>  New H42:  4 * (loop__2__y - y_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H32:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+<S>  New H50:  actual_x >= 0
+-S-  Applied substitution rule derive_grid_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H33:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+<S>  New H51:  actual_x <= 3
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H6:  x_start >= - 12
+<S>  New H8:  x_end >= - 12
+<S>  New H10:  y_start >= - 12
+<S>  New H12:  y_end >= - 12
+<S>  New H14:  loop__2__y >= - 12
+<S>  New H18:  loop__1__x >= - 12
+<S>  New H5:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H22:  loop__2__y - y_start >= - 2147483648
+<S>  New H24:  y_start >= - 2147483648
+<S>  New H26:  loop__2__y >= - 2147483648
+<S>  New H28:  dy >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H23:  loop__2__y - y_start <= 2147483647
+<S>  New H25:  y_start <= 2147483647
+<S>  New H27:  loop__2__y <= 2147483647
+<S>  New H29:  dy <= 2147483647
+%%%  Hypotheses H4 & H52 together imply that
+          loop__2__y < y_end.
+     H4 & H52 have therefore been deleted and a new H4 added to this effect.
+***  Proved C4:  loop__2__y + 1 <= y_end
+     via its standard form, which is:
+     Std.Fm C4:  - loop__2__y + y_end > 0
+     using hypothesis H4.
+***  Proved C17:  loop__2__y + 1 <= y_end
+     via its standard form, which is:
+     Std.Fm C17:  - loop__2__y + y_end > 0
+     using hypothesis H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_15.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  dy <> - 1
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+***  Proved C1:  loop__1__x >= x_start
+     using hypothesis H1.
+***  Proved C2:  loop__1__x <= x_end
+     using hypothesis H2.
+***  Proved C3:  loop__2__y + 1 >= y_start
+     using hypothesis H3.
+***  Proved C5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+     using hypothesis H5.
+***  Proved C6:  x_start >= sector__first
+     using hypothesis H6.
+***  Proved C7:  x_start <= sector__last
+     using hypothesis H7.
+***  Proved C8:  x_end >= sector__first
+     using hypothesis H8.
+***  Proved C9:  x_end <= sector__last
+     using hypothesis H9.
+***  Proved C10:  y_start >= sector__first
+     using hypothesis H10.
+***  Proved C11:  y_start <= sector__last
+     using hypothesis H11.
+***  Proved C12:  y_end >= sector__first
+     using hypothesis H12.
+***  Proved C13:  y_end <= sector__last
+     using hypothesis H13.
+***  Proved C14:  loop__2__y + 1 >= sector__first
+     using hypothesis H14.
+***  Proved C16:  loop__2__y + 1 >= y_start
+     using hypothesis H3.
+***  Proved C18:  loop__1__x >= sector__first
+     using hypothesis H18.
+***  Proved C19:  loop__1__x <= sector__last
+     using hypothesis H19.
+***  Proved C20:  loop__1__x >= x_start
+     using hypothesis H1.
+***  Proved C21:  loop__1__x <= x_end
+     using hypothesis H2.
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          kelvin__first <= fld_temp(element(element(detect_points, [i___1]), [
+          i___2])) and fld_temp(element(element(detect_points, [i___1]), [i___2]
+          )) <= kelvin__last))
+<S>  New H7:  x_start <= 12
+<S>  New H9:  x_end <= 12
+<S>  New H11:  y_start <= 12
+<S>  New H13:  y_end <= 12
+<S>  New H15:  loop__2__y <= 12
+<S>  New H19:  loop__1__x <= 12
+<S>  New C15:  loop__2__y <= 11
+***  Proved C15:  loop__2__y <= 11
+     using hypotheses H4, H13 & H48.
+>>>  Restructured hypothesis H47 into:
+     >>>  H47:  fld_temp(element(element(detect_points, [loop__1__x]), [
+          loop__2__y])) <= 0
+>>>  Restructured hypothesis H48 into:
+     >>>  H48:  loop__2__y <> y_end
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H36:  4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648
+<S>  New H39:  dy >= - 2147483649
+<S>  New H41:  4 * (loop__2__y - y_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H37:  4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647
+<S>  New H40:  dy <= 2147483646
+<S>  New H42:  4 * (loop__2__y - y_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H32:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+-S-  Applied substitution rule derive_grid_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H33:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 12 
+          -> for_all(i___1 : integer, sector__first <= i___1 and i___1 <= 12 -> 
+          0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) and 
+          fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H6:  x_start >= - 12
+<S>  New H8:  x_end >= - 12
+<S>  New H10:  y_start >= - 12
+<S>  New H12:  y_end >= - 12
+<S>  New H14:  loop__2__y >= - 12
+<S>  New H18:  loop__1__x >= - 12
+<S>  New H5:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H22:  loop__2__y - y_start >= - 2147483648
+<S>  New H24:  y_start >= - 2147483648
+<S>  New H26:  loop__2__y >= - 2147483648
+<S>  New H28:  dy >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H23:  loop__2__y - y_start <= 2147483647
+<S>  New H25:  y_start <= 2147483647
+<S>  New H27:  loop__2__y <= 2147483647
+<S>  New H29:  dy <= 2147483647
+%%%  Hypotheses H4 & H48 together imply that
+          loop__2__y < y_end.
+     H4 & H48 have therefore been deleted and a new H4 added to this effect.
+***  Proved C4:  loop__2__y + 1 <= y_end
+     via its standard form, which is:
+     Std.Fm C4:  - loop__2__y + y_end > 0
+     using hypothesis H4.
+***  Proved C17:  loop__2__y + 1 <= y_end
+     via its standard form, which is:
+     Std.Fm C17:  - loop__2__y + y_end > 0
+     using hypothesis H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_16.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H2)
+          .
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  loop__2__y - y_start >= - 2147483648
+<S>  New C3:  y_start >= - 2147483648
+<S>  New C5:  loop__2__y >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  loop__2__y - y_start <= 2147483647
+<S>  New C4:  y_start <= 2147483647
+<S>  New C6:  loop__2__y <= 2147483647
+***  Proved C1:  loop__2__y - y_start >= - 2147483648
+     using hypothesis H3.
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H6:  x_start >= - 12
+<S>  New H8:  x_end >= - 12
+<S>  New H10:  y_start >= - 12
+<S>  New H12:  y_end >= - 12
+<S>  New H14:  loop__2__y >= - 12
+<S>  New H18:  loop__1__x >= - 12
+<S>  New H5:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H7:  x_start <= 12
+<S>  New H9:  x_end <= 12
+<S>  New H11:  y_start <= 12
+<S>  New H13:  y_end <= 12
+<S>  New H15:  loop__2__y <= 12
+<S>  New H19:  loop__1__x <= 12
+<S>  New H5:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+***  Proved C3:  y_start >= - 2147483648
+     using hypothesis H10.
+***  Proved C5:  loop__2__y >= - 2147483648
+     using hypothesis H14.
+***  Proved C2:  loop__2__y - y_start <= 2147483647
+     using hypotheses H10 & H15.
+***  Proved C4:  y_start <= 2147483647
+     using hypothesis H11.
+***  Proved C6:  loop__2__y <= 2147483647
+     using hypothesis H15.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_17.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  dy <> - 1
+-S-  Applied substitution rule derive_grid_rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New C1:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+<S>  New C3:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+-S-  Applied substitution rule derive_grid_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New C2:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+<S>  New C4:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C5:  4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648
+<S>  New C8:  dy >= - 2147483649
+<S>  New C10:  4 * (loop__2__y - y_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C6:  4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647
+<S>  New C9:  dy <= 2147483646
+<S>  New C11:  4 * (loop__2__y - y_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H6:  x_start >= - 12
+<S>  New H8:  x_end >= - 12
+<S>  New H10:  y_start >= - 12
+<S>  New H12:  y_end >= - 12
+<S>  New H14:  loop__2__y >= - 12
+<S>  New H18:  loop__1__x >= - 12
+<S>  New H5:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H7:  x_start <= 12
+<S>  New H9:  x_end <= 12
+<S>  New H11:  y_start <= 12
+<S>  New H13:  y_end <= 12
+<S>  New H15:  loop__2__y <= 12
+<S>  New H19:  loop__1__x <= 12
+<S>  New H5:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H22:  loop__2__y - y_start >= - 2147483648
+<S>  New H24:  y_start >= - 2147483648
+<S>  New H26:  loop__2__y >= - 2147483648
+<S>  New H28:  dy >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H23:  loop__2__y - y_start <= 2147483647
+<S>  New H25:  y_start <= 2147483647
+<S>  New H27:  loop__2__y <= 2147483647
+<S>  New H29:  dy <= 2147483647
+***  Proved C8:  dy >= - 2147483649
+     using hypothesis H28.
+***  Proved C10:  4 * (loop__2__y - y_start) >= - 2147483648
+     via its standard form, which is:
+     Std.Fm C10:  4 * loop__2__y - 4 * y_start > - 2147483649
+     using hypothesis H3.
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H22 (redundant, given H3).
+---  Eliminated hypothesis H24 (redundant, given H10).
+---  Eliminated hypothesis H25 (redundant, given H11).
+---  Eliminated hypothesis H26 (redundant, given H14).
+---  Eliminated hypothesis H27 (redundant, given H15).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C11:  4 * (loop__2__y - y_start) <= 2147483647
+     using hypotheses H10 & H15.
+     +++  New H32:  long_integer__size >= 0
+     +++  New H33:  measuretypes__kelvin__size >= 0
+     +++  New H34:  measuretypes__bit_range__size >= 0
+     +++  New H35:  measuretypes__bit_range__base__first <= 
+          measuretypes__bit_range__base__last
+     +++  New H36:  measuretypes__bit4_range__size >= 0
+     +++  New H37:  measuretypes__bit4_range__base__first <= 
+          measuretypes__bit4_range__base__last
+     +++  New H38:  ir_cfg__sector_range__size >= 0
+     +++  New H39:  ir_cfg__sector_range__base__first <= 
+          ir_cfg__sector_range__base__last
+     +++  New H40:  kelvin__size >= 0
+     +++  New H41:  sector__size >= 0
+     +++  New H42:  sector__base__first <= sector__base__last
+     +++  New H43:  integer32__size >= 0
+     +++  New H44:  cell__size >= 0
+     +++  New H45:  measuretypes__bit_range__base__first <= 0
+     +++  New H46:  measuretypes__bit_range__base__last >= 255
+     +++  New H47:  measuretypes__bit4_range__base__first <= 0
+     +++  New H48:  measuretypes__bit4_range__base__last >= 3
+     +++  New H49:  ir_cfg__sector_range__base__first <= - 12
+     +++  New H50:  ir_cfg__sector_range__base__last >= 12
+     +++  New H51:  sector__base__first <= - 12
+     +++  New H52:  sector__base__last >= 12
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_18.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  dy <> - 1
+***  Proved C1:  loop__2__y >= sector__first
+     using hypothesis H14.
+***  Proved C2:  loop__2__y <= sector__last
+     using hypothesis H15.
+***  Proved C3:  loop__1__x >= sector__first
+     using hypothesis H18.
+***  Proved C4:  loop__1__x <= sector__last
+     using hypothesis H19.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_19.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> kelvin__first <= fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) and fld_temp(element(element(
+          detect_points, [i___1]), [i___2])) <= kelvin__last))
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H32).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H33).
+%%%  Simplified H38 on reading formula in, to give:
+     %%%  H38:  dy <> - 1
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+***  Proved C1:  4 * (loop__2__y - y_start) div (dy + 1) >= 
+          measuretypes__bit4_range__first
+     using hypothesis H32.
+***  Proved C2:  4 * (loop__2__y - y_start) div (dy + 1) <= 
+          measuretypes__bit4_range__last
+     using hypothesis H33.
+-S-  Applied substitution rule derive_grid_rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__first by:
+          0.
+<S>  New H32:  4 * (loop__2__y - y_start) div (dy + 1) >= 0
+<S>  New C3:  actual_x >= 0
+-S-  Applied substitution rule derive_grid_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__bit4_range__last by:
+          3.
+<S>  New H33:  4 * (loop__2__y - y_start) div (dy + 1) <= 3
+<S>  New C4:  actual_x <= 3
+-S-  Applied substitution rule derive_grid_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H36:  4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648
+<S>  New H39:  dy >= - 2147483649
+<S>  New H41:  4 * (loop__2__y - y_start) >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H37:  4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647
+<S>  New H40:  dy <= 2147483646
+<S>  New H42:  4 * (loop__2__y - y_start) <= 2147483647
+-S-  Applied substitution rule derive_grid_rules(30).
+     This was achieved by replacing all occurrences of kelvin__first by:
+          0.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= kelvin__last))
+-S-  Applied substitution rule derive_grid_rules(31).
+     This was achieved by replacing all occurrences of kelvin__last by:
+          6000.
+<S>  New H5:  for_all(i___2 : integer, sector__first <= i___2 and i___2 <= 
+          sector__last -> for_all(i___1 : integer, sector__first <= i___1 and 
+          i___1 <= sector__last -> 0 <= fld_temp(element(element(detect_points, 
+          [i___1]), [i___2])) and fld_temp(element(element(detect_points, [
+          i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(35).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H6:  x_start >= - 12
+<S>  New H8:  x_end >= - 12
+<S>  New H10:  y_start >= - 12
+<S>  New H12:  y_end >= - 12
+<S>  New H14:  loop__2__y >= - 12
+<S>  New H18:  loop__1__x >= - 12
+<S>  New H5:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= sector__last 
+          -> for_all(i___1 : integer, - 12 <= i___1 and i___1 <= sector__last 
+          -> 0 <= fld_temp(element(element(detect_points, [i___1]), [i___2])) 
+          and fld_temp(element(element(detect_points, [i___1]), [i___2])) <= 
+          6000))
+-S-  Applied substitution rule derive_grid_rules(36).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H7:  x_start <= 12
+<S>  New H9:  x_end <= 12
+<S>  New H11:  y_start <= 12
+<S>  New H13:  y_end <= 12
+<S>  New H15:  loop__2__y <= 12
+<S>  New H19:  loop__1__x <= 12
+<S>  New H5:  for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(
+          i___1 : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) and fld_temp(
+          element(element(detect_points, [i___1]), [i___2])) <= 6000))
+-S-  Applied substitution rule derive_grid_rules(41).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H22:  loop__2__y - y_start >= - 2147483648
+<S>  New H24:  y_start >= - 2147483648
+<S>  New H26:  loop__2__y >= - 2147483648
+<S>  New H28:  dy >= - 2147483648
+-S-  Applied substitution rule derive_grid_rules(42).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H23:  loop__2__y - y_start <= 2147483647
+<S>  New H25:  y_start <= 2147483647
+<S>  New H27:  loop__2__y <= 2147483647
+<S>  New H29:  dy <= 2147483647
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H43 (true-hypothesis).
+---  Eliminated hypothesis H44 (true-hypothesis).
+---  Eliminated hypothesis H45 (true-hypothesis).
+---  Eliminated hypothesis H46 (true-hypothesis).
+---  Eliminated hypothesis H22 (redundant, given H3).
+---  Eliminated hypothesis H23 (redundant, given H42).
+---  Eliminated hypothesis H24 (redundant, given H10).
+---  Eliminated hypothesis H25 (redundant, given H11).
+---  Eliminated hypothesis H26 (redundant, given H14).
+---  Eliminated hypothesis H27 (redundant, given H15).
+---  Eliminated hypothesis H29 (redundant, given H40).
+---  Eliminated hypothesis H36 (redundant, given H32).
+---  Eliminated hypothesis H37 (redundant, given H33).
+---  Eliminated hypothesis H39 (redundant, given H28).
+---  Eliminated hypothesis H41 (redundant, given H3).
+     +++  New H48:  long_integer__size >= 0
+     +++  New H49:  measuretypes__kelvin__size >= 0
+     +++  New H50:  measuretypes__bit_range__size >= 0
+     +++  New H51:  measuretypes__bit_range__base__first <= 
+          measuretypes__bit_range__base__last
+     +++  New H52:  measuretypes__bit4_range__size >= 0
+     +++  New H53:  measuretypes__bit4_range__base__first <= 
+          measuretypes__bit4_range__base__last
+     +++  New H54:  ir_cfg__sector_range__size >= 0
+     +++  New H55:  ir_cfg__sector_range__base__first <= 
+          ir_cfg__sector_range__base__last
+     +++  New H56:  kelvin__size >= 0
+     +++  New H57:  sector__size >= 0
+     +++  New H58:  sector__base__first <= sector__base__last
+     +++  New H59:  integer32__size >= 0
+     +++  New H60:  cell__size >= 0
+     +++  New H61:  measuretypes__bit_range__base__first <= 0
+     +++  New H62:  measuretypes__bit_range__base__last >= 255
+     +++  New H63:  measuretypes__bit4_range__base__first <= 0
+     +++  New H64:  measuretypes__bit4_range__base__last >= 3
+     +++  New H65:  ir_cfg__sector_range__base__first <= - 12
+     +++  New H66:  ir_cfg__sector_range__base__last >= 12
+     +++  New H67:  sector__base__first <= - 12
+     +++  New H68:  sector__base__last >= 12
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_20.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_21.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_22.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_derive_grid_23.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

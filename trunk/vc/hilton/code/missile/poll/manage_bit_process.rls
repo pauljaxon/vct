@@ -1,0 +1,214 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:44.40*/
+
+                 /*procedure missile.Poll.Manage_Bit_Process*/
+
+
+rule_family manage_bit_p_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+manage_bit_p_rules(1): bc1553__lru_name__size >= 0 may_be_deduced.
+manage_bit_p_rules(2): bc1553__lru_name__first may_be_replaced_by bc1553__barometer.
+manage_bit_p_rules(3): bc1553__lru_name__last may_be_replaced_by bc1553__warhead.
+manage_bit_p_rules(4): bc1553__lru_name__base__first may_be_replaced_by bc1553__barometer.
+manage_bit_p_rules(5): bc1553__lru_name__base__last may_be_replaced_by bc1553__warhead.
+manage_bit_p_rules(6): bc1553__lru_name__pos(bc1553__lru_name__first) may_be_replaced_by 0.
+manage_bit_p_rules(7): bc1553__lru_name__pos(bc1553__barometer) may_be_replaced_by 0.
+manage_bit_p_rules(8): bc1553__lru_name__val(0) may_be_replaced_by 
+     bc1553__barometer.
+manage_bit_p_rules(9): bc1553__lru_name__pos(bc1553__asi) may_be_replaced_by 1.
+manage_bit_p_rules(10): bc1553__lru_name__val(1) may_be_replaced_by 
+     bc1553__asi.
+manage_bit_p_rules(11): bc1553__lru_name__pos(bc1553__ins) may_be_replaced_by 2.
+manage_bit_p_rules(12): bc1553__lru_name__val(2) may_be_replaced_by 
+     bc1553__ins.
+manage_bit_p_rules(13): bc1553__lru_name__pos(bc1553__compass) may_be_replaced_by 3.
+manage_bit_p_rules(14): bc1553__lru_name__val(3) may_be_replaced_by 
+     bc1553__compass.
+manage_bit_p_rules(15): bc1553__lru_name__pos(bc1553__fuel) may_be_replaced_by 4.
+manage_bit_p_rules(16): bc1553__lru_name__val(4) may_be_replaced_by 
+     bc1553__fuel.
+manage_bit_p_rules(17): bc1553__lru_name__pos(bc1553__fuze) may_be_replaced_by 5.
+manage_bit_p_rules(18): bc1553__lru_name__val(5) may_be_replaced_by 
+     bc1553__fuze.
+manage_bit_p_rules(19): bc1553__lru_name__pos(bc1553__radar) may_be_replaced_by 6.
+manage_bit_p_rules(20): bc1553__lru_name__val(6) may_be_replaced_by 
+     bc1553__radar.
+manage_bit_p_rules(21): bc1553__lru_name__pos(bc1553__infrared) may_be_replaced_by 7.
+manage_bit_p_rules(22): bc1553__lru_name__val(7) may_be_replaced_by 
+     bc1553__infrared.
+manage_bit_p_rules(23): bc1553__lru_name__pos(bc1553__fins) may_be_replaced_by 8.
+manage_bit_p_rules(24): bc1553__lru_name__val(8) may_be_replaced_by 
+     bc1553__fins.
+manage_bit_p_rules(25): bc1553__lru_name__pos(bc1553__motor) may_be_replaced_by 9.
+manage_bit_p_rules(26): bc1553__lru_name__val(9) may_be_replaced_by 
+     bc1553__motor.
+manage_bit_p_rules(27): bc1553__lru_name__pos(bc1553__destruct) may_be_replaced_by 10.
+manage_bit_p_rules(28): bc1553__lru_name__val(10) may_be_replaced_by 
+     bc1553__destruct.
+manage_bit_p_rules(29): bc1553__lru_name__pos(bc1553__warhead) may_be_replaced_by 11.
+manage_bit_p_rules(30): bc1553__lru_name__val(11) may_be_replaced_by 
+     bc1553__warhead.
+manage_bit_p_rules(31): bc1553__lru_name__pos(bc1553__lru_name__last) may_be_replaced_by 11.
+manage_bit_p_rules(32): bc1553__lru_name__pos(succ(X)) may_be_replaced_by 
+     bc1553__lru_name__pos(X) + 1
+     if [X <=bc1553__warhead, X <> bc1553__warhead].
+manage_bit_p_rules(33): bc1553__lru_name__pos(pred(X)) may_be_replaced_by 
+     bc1553__lru_name__pos(X) - 1
+     if [X >=bc1553__barometer, X <> bc1553__barometer].
+manage_bit_p_rules(34): bc1553__lru_name__pos(X) >= 0 may_be_deduced_from
+     [bc1553__barometer <= X, X <= bc1553__warhead].
+manage_bit_p_rules(35): bc1553__lru_name__pos(X) <= 11 may_be_deduced_from
+     [bc1553__barometer <= X, X <= bc1553__warhead].
+manage_bit_p_rules(36): bc1553__lru_name__val(X) >= 
+     bc1553__barometer may_be_deduced_from
+     [0 <= X, X <= 11].
+manage_bit_p_rules(37): bc1553__lru_name__val(X) <= 
+     bc1553__warhead may_be_deduced_from
+     [0 <= X, X <= 11].
+manage_bit_p_rules(38): succ(bc1553__lru_name__val(X)) may_be_replaced_by 
+     bc1553__lru_name__val(X+1)
+     if [0 <= X, X < 11].
+manage_bit_p_rules(39): pred(bc1553__lru_name__val(X)) may_be_replaced_by 
+     bc1553__lru_name__val(X-1)
+     if [0 < X, X <= 11].
+manage_bit_p_rules(40): bc1553__lru_name__pos(bc1553__lru_name__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 11].
+manage_bit_p_rules(41): bc1553__lru_name__val(bc1553__lru_name__pos(X)) may_be_replaced_by X
+     if [bc1553__barometer <= X, X <= bc1553__warhead].
+manage_bit_p_rules(42): bc1553__lru_name__pos(X) <= 
+     bc1553__lru_name__pos(Y) & X <= Y are_interchangeable 
+     if [bc1553__barometer <= X, X <= bc1553__warhead, 
+     bc1553__barometer <= Y, Y <= bc1553__warhead].
+manage_bit_p_rules(43): bc1553__lru_name__val(X) <= 
+     bc1553__lru_name__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 11, 0 <= Y, Y <= 11].
+manage_bit_p_rules(44): ibit__phase__size >= 0 may_be_deduced.
+manage_bit_p_rules(45): ibit__phase__first may_be_replaced_by ibit__off.
+manage_bit_p_rules(46): ibit__phase__last may_be_replaced_by ibit__timeout.
+manage_bit_p_rules(47): ibit__phase__base__first may_be_replaced_by ibit__off.
+manage_bit_p_rules(48): ibit__phase__base__last may_be_replaced_by ibit__timeout.
+manage_bit_p_rules(49): ibit__phase__pos(ibit__phase__first) may_be_replaced_by 0.
+manage_bit_p_rules(50): ibit__phase__pos(ibit__off) may_be_replaced_by 0.
+manage_bit_p_rules(51): ibit__phase__val(0) may_be_replaced_by 
+     ibit__off.
+manage_bit_p_rules(52): ibit__phase__pos(ibit__request_start) may_be_replaced_by 1.
+manage_bit_p_rules(53): ibit__phase__val(1) may_be_replaced_by 
+     ibit__request_start.
+manage_bit_p_rules(54): ibit__phase__pos(ibit__in_progress) may_be_replaced_by 2.
+manage_bit_p_rules(55): ibit__phase__val(2) may_be_replaced_by 
+     ibit__in_progress.
+manage_bit_p_rules(56): ibit__phase__pos(ibit__request_stop) may_be_replaced_by 3.
+manage_bit_p_rules(57): ibit__phase__val(3) may_be_replaced_by 
+     ibit__request_stop.
+manage_bit_p_rules(58): ibit__phase__pos(ibit__pass) may_be_replaced_by 4.
+manage_bit_p_rules(59): ibit__phase__val(4) may_be_replaced_by 
+     ibit__pass.
+manage_bit_p_rules(60): ibit__phase__pos(ibit__fail) may_be_replaced_by 5.
+manage_bit_p_rules(61): ibit__phase__val(5) may_be_replaced_by 
+     ibit__fail.
+manage_bit_p_rules(62): ibit__phase__pos(ibit__timeout) may_be_replaced_by 6.
+manage_bit_p_rules(63): ibit__phase__val(6) may_be_replaced_by 
+     ibit__timeout.
+manage_bit_p_rules(64): ibit__phase__pos(ibit__phase__last) may_be_replaced_by 6.
+manage_bit_p_rules(65): ibit__phase__pos(succ(X)) may_be_replaced_by 
+     ibit__phase__pos(X) + 1
+     if [X <=ibit__timeout, X <> ibit__timeout].
+manage_bit_p_rules(66): ibit__phase__pos(pred(X)) may_be_replaced_by 
+     ibit__phase__pos(X) - 1
+     if [X >=ibit__off, X <> ibit__off].
+manage_bit_p_rules(67): ibit__phase__pos(X) >= 0 may_be_deduced_from
+     [ibit__off <= X, X <= ibit__timeout].
+manage_bit_p_rules(68): ibit__phase__pos(X) <= 6 may_be_deduced_from
+     [ibit__off <= X, X <= ibit__timeout].
+manage_bit_p_rules(69): ibit__phase__val(X) >= ibit__off may_be_deduced_from
+     [0 <= X, X <= 6].
+manage_bit_p_rules(70): ibit__phase__val(X) <= ibit__timeout may_be_deduced_from
+     [0 <= X, X <= 6].
+manage_bit_p_rules(71): succ(ibit__phase__val(X)) may_be_replaced_by 
+     ibit__phase__val(X+1)
+     if [0 <= X, X < 6].
+manage_bit_p_rules(72): pred(ibit__phase__val(X)) may_be_replaced_by 
+     ibit__phase__val(X-1)
+     if [0 < X, X <= 6].
+manage_bit_p_rules(73): ibit__phase__pos(ibit__phase__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 6].
+manage_bit_p_rules(74): ibit__phase__val(ibit__phase__pos(X)) may_be_replaced_by X
+     if [ibit__off <= X, X <= ibit__timeout].
+manage_bit_p_rules(75): ibit__phase__pos(X) <= ibit__phase__pos(Y) & X <= Y are_interchangeable 
+     if [ibit__off <= X, X <= ibit__timeout, ibit__off <= Y, Y <= 
+     ibit__timeout].
+manage_bit_p_rules(76): ibit__phase__val(X) <= ibit__phase__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 6, 0 <= Y, Y <= 6].
+manage_bit_p_rules(77): phase_stage__size >= 0 may_be_deduced.
+manage_bit_p_rules(78): phase_stage__first may_be_replaced_by off.
+manage_bit_p_rules(79): phase_stage__last may_be_replaced_by shutdown.
+manage_bit_p_rules(80): phase_stage__base__first may_be_replaced_by off.
+manage_bit_p_rules(81): phase_stage__base__last may_be_replaced_by shutdown.
+manage_bit_p_rules(82): phase_stage__pos(phase_stage__first) may_be_replaced_by 0.
+manage_bit_p_rules(83): phase_stage__pos(off) may_be_replaced_by 0.
+manage_bit_p_rules(84): phase_stage__val(0) may_be_replaced_by 
+     off.
+manage_bit_p_rules(85): phase_stage__pos(bit) may_be_replaced_by 1.
+manage_bit_p_rules(86): phase_stage__val(1) may_be_replaced_by 
+     bit.
+manage_bit_p_rules(87): phase_stage__pos(boost) may_be_replaced_by 2.
+manage_bit_p_rules(88): phase_stage__val(2) may_be_replaced_by 
+     boost.
+manage_bit_p_rules(89): phase_stage__pos(locating) may_be_replaced_by 3.
+manage_bit_p_rules(90): phase_stage__val(3) may_be_replaced_by 
+     locating.
+manage_bit_p_rules(91): phase_stage__pos(homing) may_be_replaced_by 4.
+manage_bit_p_rules(92): phase_stage__val(4) may_be_replaced_by 
+     homing.
+manage_bit_p_rules(93): phase_stage__pos(shutdown) may_be_replaced_by 5.
+manage_bit_p_rules(94): phase_stage__val(5) may_be_replaced_by 
+     shutdown.
+manage_bit_p_rules(95): phase_stage__pos(phase_stage__last) may_be_replaced_by 5.
+manage_bit_p_rules(96): phase_stage__pos(succ(X)) may_be_replaced_by 
+     phase_stage__pos(X) + 1
+     if [X <=shutdown, X <> shutdown].
+manage_bit_p_rules(97): phase_stage__pos(pred(X)) may_be_replaced_by 
+     phase_stage__pos(X) - 1
+     if [X >=off, X <> off].
+manage_bit_p_rules(98): phase_stage__pos(X) >= 0 may_be_deduced_from
+     [off <= X, X <= shutdown].
+manage_bit_p_rules(99): phase_stage__pos(X) <= 5 may_be_deduced_from
+     [off <= X, X <= shutdown].
+manage_bit_p_rules(100): phase_stage__val(X) >= off may_be_deduced_from
+     [0 <= X, X <= 5].
+manage_bit_p_rules(101): phase_stage__val(X) <= shutdown may_be_deduced_from
+     [0 <= X, X <= 5].
+manage_bit_p_rules(102): succ(phase_stage__val(X)) may_be_replaced_by 
+     phase_stage__val(X+1)
+     if [0 <= X, X < 5].
+manage_bit_p_rules(103): pred(phase_stage__val(X)) may_be_replaced_by 
+     phase_stage__val(X-1)
+     if [0 < X, X <= 5].
+manage_bit_p_rules(104): phase_stage__pos(phase_stage__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 5].
+manage_bit_p_rules(105): phase_stage__val(phase_stage__pos(X)) may_be_replaced_by X
+     if [off <= X, X <= shutdown].
+manage_bit_p_rules(106): phase_stage__pos(X) <= phase_stage__pos(Y) & X <= Y are_interchangeable 
+     if [off <= X, X <= shutdown, off <= Y, Y <= shutdown].
+manage_bit_p_rules(107): phase_stage__val(X) <= phase_stage__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 5, 0 <= Y, Y <= 5].
+manage_bit_p_rules(108): component_status__size >= 0 may_be_deduced.
+manage_bit_p_rules(109): A = B may_be_deduced_from
+     [goal(checktype(A,component_status)),
+      goal(checktype(B,component_status)),
+      fld_bit_phase(A) = fld_bit_phase(B)].
+manage_bit_p_rules(110): state_record__size >= 0 may_be_deduced.
+manage_bit_p_rules(111): A = B may_be_deduced_from
+     [goal(checktype(A,state_record)),
+      goal(checktype(B,state_record)),
+      fld_phase(A) = fld_phase(B),
+      fld_components(A) = fld_components(B)].

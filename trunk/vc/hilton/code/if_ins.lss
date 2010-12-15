@@ -1,0 +1,79 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.24
+
+Line
+   1  -- MCU interface to the INS over the bus
+   2  --
+   3  -- $Log: if_ins.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/10 21:05:04  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.1  2003/08/10 22:06:47  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with SystemTypes,
+  16    MeasureTypes,
+  17    Ibit,
+  18    Cartesian;
+  19  use type MeasureTypes.Meter_Per_sec;
+  20  use type Measuretypes.Meter;
+  21  --# inherit SystemTypes, MeasureTypes, Bus, Ibit,
+  22  --# bc1553, cartesian;
+  23  package If_Ins
+  24    --# own State;
+  25    --# initializes State;
+  26  is
+  27     function Get_Ibit_State return Ibit.Phase;
+  28     --# global state;
+  29  
+  30     -- Find out the current location and its validity
+  31     procedure Get_Location(Position : out Cartesian.position;
+  32                          Valid  : out Boolean);
+  33     --# global in State;
+  34     --# derives position, Valid from State;
+  35  
+  36     -- Kick off a ins IBIT
+  37     procedure Ibit_Start;
+  38     --# global in out Bus.Outputs, State;
+  39     --# derives Bus.Outputs from * &
+  40     --#         State from *;
+  41  
+  42     -- Stop a ins IBIT
+  43     procedure Ibit_Stop;
+  44     --# global in out Bus.Outputs, State;
+  45     --# derives Bus.Outputs from * &
+  46     --#         State from *;
+  47  
+  48     -- Poll the bus
+  49     procedure Poll;
+  50     --# global in out State;
+  51     --#        in Bus.Inputs;
+  52     --# derives State from *, Bus.Inputs;
+  53  
+  54     -- Initialise
+  55     procedure Init;
+  56     --# global out State;
+  57     --#        in out Bus.Outputs;
+  58     --# derives State from &
+  59     --#         Bus.Outputs from *;
+  60  
+  61     -- test point
+  62     procedure Command;
+  63     --# derives;
+  64  end If_Ins;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

@@ -1,0 +1,94 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:39  SIMPLIFIED 25-NOV-2009, 14:18:47
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure airspeed.Cycle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 82:
+
+procedure_cycle_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 84:
+
+procedure_cycle_2.
+H1:    last_speed >= - 5000 .
+H2:    last_speed <= 5000 .
+H3:    last_time >= 0 .
+H4:    last_time <= 8640000 .
+H5:    last_accel >= - 30000 .
+H6:    last_accel <= 30000 .
+H7:    speed__1 >= - 5000 .
+H8:    speed__1 <= 5000 .
+H9:    integer__size >= 0 .
+H10:   systemtypes__byte__size >= 0 .
+H11:   measuretypes__meter_per_sec__size >= 0 .
+H12:   measuretypes__cm_per_sec_2__size >= 0 .
+H13:   clock__millisecond__size >= 0 .
+H14:   bus__word_index__size >= 0 .
+H15:   bus__word_index__base__first <= bus__word_index__base__last .
+H16:   bus__word__size >= 0 .
+H17:   bus__all_msg_index__size >= 0 .
+H18:   bus__lru_subaddress_index__size >= 0 .
+H19:   rt1553__lru_name__size >= 0 .
+H20:   ibit__phase__size >= 0 .
+H21:   meter_per_sec__size >= 0 .
+H22:   cm_per_sec_2__size >= 0 .
+H23:   bus__word_index__base__first <= 1 .
+H24:   bus__word_index__base__last >= 31 .
+       ->
+C1:    speed__1 >= 0 .
+
+
+For path(s) from start to run-time check associated with statement of line 90:
+
+procedure_cycle_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 95:
+
+procedure_cycle_4.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 95:
+
+procedure_cycle_5.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 99:
+
+procedure_cycle_6.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to finish:
+
+procedure_cycle_7.
+*** true .          /* all conclusions proved */
+
+
+For checks of refinement integrity: 
+
+procedure_cycle_8.
+*** true .          /* all conclusions proved */
+
+
+procedure_cycle_9.
+*** true .          /* all conclusions proved */
+
+

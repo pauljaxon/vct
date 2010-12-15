@@ -1,0 +1,463 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.44
+
+                         procedure if_warhead.Poll
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 104:
+
+procedure_poll_1.
+H1:    true .
+H2:    last_state >= stage__first .
+H3:    last_state <= stage__last .
+H4:    true .
+H5:    ibit_request >= ibit__phase__first .
+H6:    ibit_request <= ibit__phase__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    bus_id >= bc1553__lru_name__first .
+C4:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 104:
+
+procedure_poll_2.
+H1:    true .
+H2:    last_state >= stage__first .
+H3:    last_state <= stage__last .
+H4:    true .
+H5:    ibit_request >= ibit__phase__first .
+H6:    ibit_request <= ibit__phase__last .
+H7:    1 >= bus__lru_subaddress_index__first .
+H8:    1 <= bus__lru_subaddress_index__last .
+H9:    bus_id >= bc1553__lru_name__first .
+H10:   bus_id <= bc1553__lru_name__last .
+H11:   true .
+        ->
+C1:    bc1553__is_valid(bus_id, 1, bus__inputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+C2:    bc1553__is_valid(bus_id, 1, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+ 
+
+For path(s) from start to run-time check associated with statement of line 109:
+
+procedure_poll_3.
+H1:    true .
+H2:    last_state >= stage__first .
+H3:    last_state <= stage__last .
+H4:    true .
+H5:    ibit_request >= ibit__phase__first .
+H6:    ibit_request <= ibit__phase__last .
+H7:    1 >= bus__lru_subaddress_index__first .
+H8:    1 <= bus__lru_subaddress_index__last .
+H9:    bus_id >= bc1553__lru_name__first .
+H10:   bus_id <= bc1553__lru_name__last .
+H11:   true .
+H12:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H13:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H14:   bc1553__is_valid(bus_id, 1, bus__inputs) -> true .
+H15:   bc1553__is_valid(bus_id, 1, bus__inputs) .
+H16:   bc1553__is_fresh(bus_id, 1, bus__inputs) .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 109:
+
+procedure_poll_4.
+H1:    true .
+H2:    last_state >= stage__first .
+H3:    last_state <= stage__last .
+H4:    true .
+H5:    ibit_request >= ibit__phase__first .
+H6:    ibit_request <= ibit__phase__last .
+H7:    1 >= bus__lru_subaddress_index__first .
+H8:    1 <= bus__lru_subaddress_index__last .
+H9:    bus_id >= bc1553__lru_name__first .
+H10:   bus_id <= bc1553__lru_name__last .
+H11:   true .
+H12:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H13:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H14:   bc1553__is_valid(bus_id, 1, bus__inputs) -> true .
+H15:   bc1553__is_valid(bus_id, 1, bus__inputs) .
+H16:   bc1553__is_fresh(bus_id, 1, bus__inputs) .
+H17:   1 >= bus__lru_subaddress_index__first .
+H18:   1 <= bus__lru_subaddress_index__last .
+H19:   1 >= bus__word_index__first .
+H20:   1 <= bus__word_index__last .
+H21:   bus_id >= bc1553__lru_name__first .
+H22:   bus_id <= bc1553__lru_name__last .
+H23:   word__1 >= bus__word__first .
+H24:   word__1 <= bus__word__last .
+        ->
+C1:    word__1 >= bus__word__first .
+C2:    word__1 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 113:
+
+procedure_poll_5.
+H1:    true .
+H2:    last_state >= stage__first .
+H3:    last_state <= stage__last .
+H4:    true .
+H5:    ibit_request >= ibit__phase__first .
+H6:    ibit_request <= ibit__phase__last .
+H7:    1 >= bus__lru_subaddress_index__first .
+H8:    1 <= bus__lru_subaddress_index__last .
+H9:    bus_id >= bc1553__lru_name__first .
+H10:   bus_id <= bc1553__lru_name__last .
+H11:   true .
+H12:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H13:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H14:   bc1553__is_valid(bus_id, 1, bus__inputs) -> true .
+H15:   bc1553__is_valid(bus_id, 1, bus__inputs) .
+H16:   bc1553__is_fresh(bus_id, 1, bus__inputs) .
+H17:   1 >= bus__lru_subaddress_index__first .
+H18:   1 <= bus__lru_subaddress_index__last .
+H19:   1 >= bus__word_index__first .
+H20:   1 <= bus__word_index__last .
+H21:   bus_id >= bc1553__lru_name__first .
+H22:   bus_id <= bc1553__lru_name__last .
+H23:   word__1 >= bus__word__first .
+H24:   word__1 <= bus__word__last .
+H25:   word__1 >= bus__word__first .
+H26:   word__1 <= bus__word__last .
+H27:   word__1 >= bus__word__first .
+H28:   word__1 <= bus__word__last .
+        ->
+C1:    word__1 >= systemtypes__unsigned16__first .
+C2:    word__1 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 113:
+
+procedure_poll_6.
+H1:    true .
+H2:    last_state >= stage__first .
+H3:    last_state <= stage__last .
+H4:    true .
+H5:    ibit_request >= ibit__phase__first .
+H6:    ibit_request <= ibit__phase__last .
+H7:    1 >= bus__lru_subaddress_index__first .
+H8:    1 <= bus__lru_subaddress_index__last .
+H9:    bus_id >= bc1553__lru_name__first .
+H10:   bus_id <= bc1553__lru_name__last .
+H11:   true .
+H12:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H13:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H14:   bc1553__is_valid(bus_id, 1, bus__inputs) -> true .
+H15:   bc1553__is_valid(bus_id, 1, bus__inputs) .
+H16:   bc1553__is_fresh(bus_id, 1, bus__inputs) .
+H17:   1 >= bus__lru_subaddress_index__first .
+H18:   1 <= bus__lru_subaddress_index__last .
+H19:   1 >= bus__word_index__first .
+H20:   1 <= bus__word_index__last .
+H21:   bus_id >= bc1553__lru_name__first .
+H22:   bus_id <= bc1553__lru_name__last .
+H23:   word__1 >= bus__word__first .
+H24:   word__1 <= bus__word__last .
+H25:   word__1 >= bus__word__first .
+H26:   word__1 <= bus__word__last .
+H27:   word__1 >= bus__word__first .
+H28:   word__1 <= bus__word__last .
+H29:   word__1 >= systemtypes__unsigned16__first .
+H30:   word__1 <= systemtypes__unsigned16__last .
+H31:   warhead_cfg__code_to_state(word__1) >= 
+           warhead_cfg__state__first .
+H32:   warhead_cfg__code_to_state(word__1) <= 
+           warhead_cfg__state__last .
+        ->
+C1:    warhead_cfg__code_to_state(word__1) >= stage__first .
+C2:    warhead_cfg__code_to_state(word__1) <= stage__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 116:
+
+procedure_poll_7.
+H1:    true .
+H2:    last_state >= stage__first .
+H3:    last_state <= stage__last .
+H4:    true .
+H5:    ibit_request >= ibit__phase__first .
+H6:    ibit_request <= ibit__phase__last .
+H7:    1 >= bus__lru_subaddress_index__first .
+H8:    1 <= bus__lru_subaddress_index__last .
+H9:    bus_id >= bc1553__lru_name__first .
+H10:   bus_id <= bc1553__lru_name__last .
+H11:   true .
+H12:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H13:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H14:   bc1553__is_valid(bus_id, 1, bus__inputs) -> true .
+H15:   bc1553__is_valid(bus_id, 1, bus__inputs) .
+H16:   bc1553__is_fresh(bus_id, 1, bus__inputs) .
+H17:   1 >= bus__lru_subaddress_index__first .
+H18:   1 <= bus__lru_subaddress_index__last .
+H19:   1 >= bus__word_index__first .
+H20:   1 <= bus__word_index__last .
+H21:   bus_id >= bc1553__lru_name__first .
+H22:   bus_id <= bc1553__lru_name__last .
+H23:   word__1 >= bus__word__first .
+H24:   word__1 <= bus__word__last .
+H25:   word__1 >= bus__word__first .
+H26:   word__1 <= bus__word__last .
+H27:   word__1 >= bus__word__first .
+H28:   word__1 <= bus__word__last .
+H29:   word__1 >= systemtypes__unsigned16__first .
+H30:   word__1 <= systemtypes__unsigned16__last .
+H31:   warhead_cfg__code_to_state(word__1) >= 
+           warhead_cfg__state__first .
+H32:   warhead_cfg__code_to_state(word__1) <= 
+           warhead_cfg__state__last .
+H33:   warhead_cfg__code_to_state(word__1) >= stage__first .
+H34:   warhead_cfg__code_to_state(word__1) <= stage__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    2 >= bus__word_index__first .
+C4:    2 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 116:
+
+procedure_poll_8.
+H1:    true .
+H2:    last_state >= stage__first .
+H3:    last_state <= stage__last .
+H4:    true .
+H5:    ibit_request >= ibit__phase__first .
+H6:    ibit_request <= ibit__phase__last .
+H7:    1 >= bus__lru_subaddress_index__first .
+H8:    1 <= bus__lru_subaddress_index__last .
+H9:    bus_id >= bc1553__lru_name__first .
+H10:   bus_id <= bc1553__lru_name__last .
+H11:   true .
+H12:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H13:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H14:   bc1553__is_valid(bus_id, 1, bus__inputs) -> true .
+H15:   bc1553__is_valid(bus_id, 1, bus__inputs) .
+H16:   bc1553__is_fresh(bus_id, 1, bus__inputs) .
+H17:   1 >= bus__lru_subaddress_index__first .
+H18:   1 <= bus__lru_subaddress_index__last .
+H19:   1 >= bus__word_index__first .
+H20:   1 <= bus__word_index__last .
+H21:   bus_id >= bc1553__lru_name__first .
+H22:   bus_id <= bc1553__lru_name__last .
+H23:   word__1 >= bus__word__first .
+H24:   word__1 <= bus__word__last .
+H25:   word__1 >= bus__word__first .
+H26:   word__1 <= bus__word__last .
+H27:   word__1 >= bus__word__first .
+H28:   word__1 <= bus__word__last .
+H29:   word__1 >= systemtypes__unsigned16__first .
+H30:   word__1 <= systemtypes__unsigned16__last .
+H31:   warhead_cfg__code_to_state(word__1) >= 
+           warhead_cfg__state__first .
+H32:   warhead_cfg__code_to_state(word__1) <= 
+           warhead_cfg__state__last .
+H33:   warhead_cfg__code_to_state(word__1) >= stage__first .
+H34:   warhead_cfg__code_to_state(word__1) <= stage__last .
+H35:   1 >= bus__lru_subaddress_index__first .
+H36:   1 <= bus__lru_subaddress_index__last .
+H37:   2 >= bus__word_index__first .
+H38:   2 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__2 >= bus__word__first .
+H42:   word__2 <= bus__word__last .
+        ->
+C1:    word__2 >= bus__word__first .
+C2:    word__2 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 122:
+
+procedure_poll_9.
+H1:    true .
+H2:    last_state >= stage__first .
+H3:    last_state <= stage__last .
+H4:    true .
+H5:    ibit_request >= ibit__phase__first .
+H6:    ibit_request <= ibit__phase__last .
+H7:    1 >= bus__lru_subaddress_index__first .
+H8:    1 <= bus__lru_subaddress_index__last .
+H9:    bus_id >= bc1553__lru_name__first .
+H10:   bus_id <= bc1553__lru_name__last .
+H11:   true .
+H12:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H13:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H14:   bc1553__is_valid(bus_id, 1, bus__inputs) -> true .
+H15:   bc1553__is_valid(bus_id, 1, bus__inputs) .
+H16:   bc1553__is_fresh(bus_id, 1, bus__inputs) .
+H17:   1 >= bus__lru_subaddress_index__first .
+H18:   1 <= bus__lru_subaddress_index__last .
+H19:   1 >= bus__word_index__first .
+H20:   1 <= bus__word_index__last .
+H21:   bus_id >= bc1553__lru_name__first .
+H22:   bus_id <= bc1553__lru_name__last .
+H23:   word__1 >= bus__word__first .
+H24:   word__1 <= bus__word__last .
+H25:   word__1 >= bus__word__first .
+H26:   word__1 <= bus__word__last .
+H27:   word__1 >= bus__word__first .
+H28:   word__1 <= bus__word__last .
+H29:   word__1 >= systemtypes__unsigned16__first .
+H30:   word__1 <= systemtypes__unsigned16__last .
+H31:   warhead_cfg__code_to_state(word__1) >= 
+           warhead_cfg__state__first .
+H32:   warhead_cfg__code_to_state(word__1) <= 
+           warhead_cfg__state__last .
+H33:   warhead_cfg__code_to_state(word__1) >= stage__first .
+H34:   warhead_cfg__code_to_state(word__1) <= stage__last .
+H35:   1 >= bus__lru_subaddress_index__first .
+H36:   1 <= bus__lru_subaddress_index__last .
+H37:   2 >= bus__word_index__first .
+H38:   2 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__2 >= bus__word__first .
+H42:   word__2 <= bus__word__last .
+H43:   word__2 >= bus__word__first .
+H44:   word__2 <= bus__word__last .
+H45:   word__2 >= bus__word__first .
+H46:   word__2 <= bus__word__last .
+        ->
+C1:    ibit_request >= ibit__phase__first .
+C2:    ibit_request <= ibit__phase__last .
+C3:    word__2 >= systemtypes__unsigned16__first .
+C4:    word__2 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 122:
+
+procedure_poll_10.
+H1:    true .
+H2:    last_state >= stage__first .
+H3:    last_state <= stage__last .
+H4:    true .
+H5:    ibit_request >= ibit__phase__first .
+H6:    ibit_request <= ibit__phase__last .
+H7:    1 >= bus__lru_subaddress_index__first .
+H8:    1 <= bus__lru_subaddress_index__last .
+H9:    bus_id >= bc1553__lru_name__first .
+H10:   bus_id <= bc1553__lru_name__last .
+H11:   true .
+H12:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H13:   bc1553__is_valid(bus_id, 1, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H14:   bc1553__is_valid(bus_id, 1, bus__inputs) -> true .
+H15:   bc1553__is_valid(bus_id, 1, bus__inputs) .
+H16:   bc1553__is_fresh(bus_id, 1, bus__inputs) .
+H17:   1 >= bus__lru_subaddress_index__first .
+H18:   1 <= bus__lru_subaddress_index__last .
+H19:   1 >= bus__word_index__first .
+H20:   1 <= bus__word_index__last .
+H21:   bus_id >= bc1553__lru_name__first .
+H22:   bus_id <= bc1553__lru_name__last .
+H23:   word__1 >= bus__word__first .
+H24:   word__1 <= bus__word__last .
+H25:   word__1 >= bus__word__first .
+H26:   word__1 <= bus__word__last .
+H27:   word__1 >= bus__word__first .
+H28:   word__1 <= bus__word__last .
+H29:   word__1 >= systemtypes__unsigned16__first .
+H30:   word__1 <= systemtypes__unsigned16__last .
+H31:   warhead_cfg__code_to_state(word__1) >= 
+           warhead_cfg__state__first .
+H32:   warhead_cfg__code_to_state(word__1) <= 
+           warhead_cfg__state__last .
+H33:   warhead_cfg__code_to_state(word__1) >= stage__first .
+H34:   warhead_cfg__code_to_state(word__1) <= stage__last .
+H35:   1 >= bus__lru_subaddress_index__first .
+H36:   1 <= bus__lru_subaddress_index__last .
+H37:   2 >= bus__word_index__first .
+H38:   2 <= bus__word_index__last .
+H39:   bus_id >= bc1553__lru_name__first .
+H40:   bus_id <= bc1553__lru_name__last .
+H41:   word__2 >= bus__word__first .
+H42:   word__2 <= bus__word__last .
+H43:   word__2 >= bus__word__first .
+H44:   word__2 <= bus__word__last .
+H45:   word__2 >= bus__word__first .
+H46:   word__2 <= bus__word__last .
+H47:   ibit_request >= ibit__phase__first .
+H48:   ibit_request <= ibit__phase__last .
+H49:   word__2 >= systemtypes__unsigned16__first .
+H50:   word__2 <= systemtypes__unsigned16__last .
+H51:   ibit_request__3 >= ibit__phase__first .
+H52:   ibit_request__3 <= ibit__phase__last .
+        ->
+C1:    ibit_request__3 >= ibit__phase__first .
+C2:    ibit_request__3 <= ibit__phase__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_poll_11.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_poll_12.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_poll_13.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_poll_14.
+*** true .          /* trivially true VC removed by Examiner */
+
+

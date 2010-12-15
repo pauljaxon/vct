@@ -1,0 +1,42 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:40.06*/
+
+          /*procedure ins.Extrapolate_Position.Extrapolate_Dimension*/
+
+
+rule_family extrapolate__rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+extrapolate__rules(1): measuretypes__meter__size >= 0 may_be_deduced.
+extrapolate__rules(2): measuretypes__meter__first may_be_replaced_by -200000.
+extrapolate__rules(3): measuretypes__meter__last may_be_replaced_by 200000.
+extrapolate__rules(4): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+extrapolate__rules(5): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+extrapolate__rules(6): measuretypes__meter_per_sec__size >= 0 may_be_deduced.
+extrapolate__rules(7): measuretypes__meter_per_sec__first may_be_replaced_by -5000.
+extrapolate__rules(8): measuretypes__meter_per_sec__last may_be_replaced_by 5000.
+extrapolate__rules(9): measuretypes__meter_per_sec__base__first may_be_replaced_by -2147483648.
+extrapolate__rules(10): measuretypes__meter_per_sec__base__last may_be_replaced_by 2147483647.
+extrapolate__rules(11): clock__millisecond__size >= 0 may_be_deduced.
+extrapolate__rules(12): clock__millisecond__first may_be_replaced_by 0.
+extrapolate__rules(13): clock__millisecond__last may_be_replaced_by 8640000.
+extrapolate__rules(14): clock__millisecond__base__first may_be_replaced_by -2147483648.
+extrapolate__rules(15): clock__millisecond__base__last may_be_replaced_by 2147483647.
+extrapolate__rules(16): meter__size >= 0 may_be_deduced.
+extrapolate__rules(17): meter__first may_be_replaced_by -200000.
+extrapolate__rules(18): meter__last may_be_replaced_by 200000.
+extrapolate__rules(19): meter__base__first may_be_replaced_by -2147483648.
+extrapolate__rules(20): meter__base__last may_be_replaced_by 2147483647.
+extrapolate__rules(21): meter_per_sec__size >= 0 may_be_deduced.
+extrapolate__rules(22): meter_per_sec__first may_be_replaced_by -5000.
+extrapolate__rules(23): meter_per_sec__last may_be_replaced_by 5000.
+extrapolate__rules(24): meter_per_sec__base__first may_be_replaced_by -2147483648.
+extrapolate__rules(25): meter_per_sec__base__last may_be_replaced_by 2147483647.

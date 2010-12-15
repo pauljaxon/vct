@@ -1,0 +1,94 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:54
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function radar_cfg.decode_Sector
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_decode_sector_1.  @@@@@@@@@@
+-S-  Applied substitution rule decode_secto_rules(17).
+     This was achieved by replacing all occurrences of sector_range__first by:
+          - 20.
+<S>  New C1:  b >= 0
+<S>  New C2:  - 20 + b <= sector_range__last
+<S>  New C3:  - 20 + b >= long_integer__base__first
+<S>  New C4:  - 20 + b <= long_integer__base__last
+<S>  New C7:  - 20 >= integer32__first
+<S>  New C8:  - 20 <= integer32__last
+-S-  Applied substitution rule decode_secto_rules(18).
+     This was achieved by replacing all occurrences of sector_range__last by:
+          20.
+<S>  New C2:  b <= 40
+-S-  Applied substitution rule decode_secto_rules(9).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  b >= - 2147483628
+-S-  Applied substitution rule decode_secto_rules(10).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  b <= 2147483667
+-S-  Applied substitution rule decode_secto_rules(23).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C5:  b >= - 2147483648
+<S>  New C7:  true
+-S-  Applied substitution rule decode_secto_rules(24).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C6:  b <= 2147483647
+<S>  New C8:  true
+***  Proved C7:  true
+***  Proved C8:  true
+-S-  Applied substitution rule decode_secto_rules(12).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__first by:
+          0.
+<S>  New H2:  b >= 0
+-S-  Applied substitution rule decode_secto_rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__last by:
+          65535.
+<S>  New H3:  b <= 65535
+***  Proved C1:  b >= 0
+     using hypothesis H2.
+***  Proved C3:  b >= - 2147483628
+     using hypothesis H2.
+***  Proved C4:  b <= 2147483667
+     using hypothesis H3.
+***  Proved C5:  b >= - 2147483648
+     using hypothesis H2.
+***  Proved C6:  b <= 2147483647
+     using hypothesis H3.
+---  Eliminated hypothesis H1 (true-hypothesis).
+     +++  New H4:  integer__size >= 0
+     +++  New H5:  long_integer__size >= 0
+     +++  New H6:  systemtypes__unsigned16__size >= 0
+     +++  New H7:  sector_range__size >= 0
+     +++  New H8:  sector_range__base__first <= sector_range__base__last
+     +++  New H9:  integer32__size >= 0
+     +++  New H10:  sector_range__base__first <= - 20
+     +++  New H11:  sector_range__base__last >= 20
+
+
+@@@@@@@@@@  VC: function_decode_sector_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  Proved C2:  sector_range__first + b >= sector_range__first
+     using hypothesis H4.
+***  Proved C3:  sector_range__first + b <= sector_range__last
+     using hypothesis H5.
+***  PROVED VC.
+

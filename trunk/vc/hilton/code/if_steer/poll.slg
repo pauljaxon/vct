@@ -1,0 +1,746 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:42  SIMPLIFIED 25-NOV-2009, 14:19:14
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure if_steer.Poll
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_poll_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  ibit__phase__first <= ibit_request
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  bc1553__lru_name__first <= bus_id
+-S-  Applied substitution rule poll_rules(29).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New C1:  true
+-S-  Applied substitution rule poll_rules(30).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New C2:  true
+-S-  Applied substitution rule poll_rules(34).
+     This was achieved by replacing all occurrences of bc1553__lru_name__first 
+          by:
+          bc1553__barometer.
+<S>  New C3:  bc1553__barometer <= bus_id
+-S-  Applied substitution rule poll_rules(1).
+     This was achieved by replacing all occurrences of bus_id by:
+          bc1553__fins.
+<S>  New C4:  bc1553__fins <= bc1553__lru_name__last
+<S>  New C3:  true
+-S-  Applied substitution rule poll_rules(35).
+     This was achieved by replacing all occurrences of bc1553__lru_name__last 
+          by:
+          bc1553__warhead.
+<S>  New C4:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  ibit__phase__first <= ibit_request
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  bc1553__lru_name__first <= bus_id
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  bc1553__is_valid(bus_id, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bus_id and bus_id <= bc1553__lru_name__last
+***  Proved C1:  bc1553__is_valid(bus_id, 1, bus__inputs) -> 1 >= 
+          bus__lru_subaddress_index__first and 1 <= 
+          bus__lru_subaddress_index__last
+     using hypotheses H6 & H7.
+***  Proved C2:  bc1553__is_valid(bus_id, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bus_id and bus_id <= bc1553__lru_name__last
+     using hypotheses H8 & H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  ibit__phase__first <= ibit_request
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  bc1553__lru_name__first <= bus_id
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  bc1553__is_valid(bus_id, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bus_id and bus_id <= bc1553__lru_name__last
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= steer_cfg__port
+-S-  Applied substitution rule poll_rules(13).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New C1:  true
+-S-  Applied substitution rule poll_rules(14).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New C2:  true
+-S-  Applied substitution rule poll_rules(143).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> angle__first <= element(last_fins, [i___1]) and 
+          element(last_fins, [i___1]) <= angle__last)
+<S>  New C3:  true
+-S-  Applied substitution rule poll_rules(144).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> angle__first <= element(last_fins, [
+          i___1]) and element(last_fins, [i___1]) <= angle__last)
+<S>  New C4:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  ibit__phase__first <= ibit_request
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  bc1553__lru_name__first <= bus_id
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  bc1553__is_valid(bus_id, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bus_id and bus_id <= bc1553__lru_name__last
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  fin__first <= steer_cfg__port
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__1, [i___1]) and 
+          element(last_fins__1, [i___1]) <= angle__last)
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= steer_cfg__starboard
+***  Proved C1:  2 >= bus__word_index__first
+     using hypothesis H16.
+***  Proved C3:  fin__first <= steer_cfg__starboard
+     using hypothesis H18.
+-S-  Applied substitution rule poll_rules(14).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H17:  true
+<S>  New C2:  true
+-S-  Applied substitution rule poll_rules(144).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(last_fins, [i___1]) and 
+          element(last_fins, [i___1]) <= angle__last)
+<S>  New H19:  true
+<S>  New H20:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(last_fins__1, [i___1]) 
+          and element(last_fins__1, [i___1]) <= angle__last)
+<S>  New C4:  true
+***  Proved C2:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  ibit__phase__first <= ibit_request
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  bc1553__lru_name__first <= bus_id
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  bc1553__is_valid(bus_id, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bus_id and bus_id <= bc1553__lru_name__last
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  fin__first <= steer_cfg__port
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__1, [i___1]) and 
+          element(last_fins__1, [i___1]) <= angle__last)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  fin__first <= steer_cfg__starboard
+%%%  Simplified H25 on reading formula in, to give:
+     %%%  H25:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__2, [i___1]) and 
+          element(last_fins__2, [i___1]) <= angle__last)
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= steer_cfg__top
+***  Proved C1:  3 >= bus__word_index__first
+     using hypothesis H16.
+***  Proved C3:  fin__first <= steer_cfg__top
+     using hypothesis H18.
+-S-  Applied substitution rule poll_rules(14).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H17:  true
+<S>  New H22:  true
+<S>  New C2:  true
+-S-  Applied substitution rule poll_rules(144).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(last_fins, [i___1]) and 
+          element(last_fins, [i___1]) <= angle__last)
+<S>  New H19:  true
+<S>  New H20:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(last_fins__1, [i___1]) 
+          and element(last_fins__1, [i___1]) <= angle__last)
+<S>  New H24:  true
+<S>  New H25:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(last_fins__2, [i___1]) 
+          and element(last_fins__2, [i___1]) <= angle__last)
+<S>  New C4:  true
+***  Proved C2:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_6.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  ibit__phase__first <= ibit_request
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  bc1553__lru_name__first <= bus_id
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  bc1553__is_valid(bus_id, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bus_id and bus_id <= bc1553__lru_name__last
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  fin__first <= steer_cfg__port
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__1, [i___1]) and 
+          element(last_fins__1, [i___1]) <= angle__last)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  fin__first <= steer_cfg__starboard
+%%%  Simplified H25 on reading formula in, to give:
+     %%%  H25:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__2, [i___1]) and 
+          element(last_fins__2, [i___1]) <= angle__last)
+%%%  Simplified H28 on reading formula in, to give:
+     %%%  H28:  fin__first <= steer_cfg__top
+%%%  Simplified H30 on reading formula in, to give:
+     %%%  H30:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__3, [i___1]) and 
+          element(last_fins__3, [i___1]) <= angle__last)
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= steer_cfg__bottom
+***  Proved C1:  4 >= bus__word_index__first
+     using hypothesis H16.
+***  Proved C3:  fin__first <= steer_cfg__bottom
+     using hypothesis H18.
+-S-  Applied substitution rule poll_rules(14).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H17:  true
+<S>  New H22:  true
+<S>  New H27:  true
+<S>  New C2:  true
+-S-  Applied substitution rule poll_rules(144).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(last_fins, [i___1]) and 
+          element(last_fins, [i___1]) <= angle__last)
+<S>  New H19:  true
+<S>  New H20:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(last_fins__1, [i___1]) 
+          and element(last_fins__1, [i___1]) <= angle__last)
+<S>  New H24:  true
+<S>  New H25:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(last_fins__2, [i___1]) 
+          and element(last_fins__2, [i___1]) <= angle__last)
+<S>  New H29:  true
+<S>  New H30:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          steer_cfg__bottom -> angle__first <= element(last_fins__3, [i___1]) 
+          and element(last_fins__3, [i___1]) <= angle__last)
+<S>  New C4:  true
+***  Proved C2:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_7.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  ibit__phase__first <= ibit_request
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  bc1553__lru_name__first <= bus_id
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  bc1553__is_valid(bus_id, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bus_id and bus_id <= bc1553__lru_name__last
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  fin__first <= steer_cfg__port
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__1, [i___1]) and 
+          element(last_fins__1, [i___1]) <= angle__last)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  fin__first <= steer_cfg__starboard
+%%%  Simplified H25 on reading formula in, to give:
+     %%%  H25:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__2, [i___1]) and 
+          element(last_fins__2, [i___1]) <= angle__last)
+%%%  Simplified H28 on reading formula in, to give:
+     %%%  H28:  fin__first <= steer_cfg__top
+%%%  Simplified H30 on reading formula in, to give:
+     %%%  H30:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__3, [i___1]) and 
+          element(last_fins__3, [i___1]) <= angle__last)
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  fin__first <= steer_cfg__bottom
+%%%  Simplified H35 on reading formula in, to give:
+     %%%  H35:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__4, [i___1]) and 
+          element(last_fins__4, [i___1]) <= angle__last)
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  bc1553__lru_name__first <= bus_id
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H6.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H7.
+***  Proved C3:  5 >= bus__word_index__first
+     using hypothesis H16.
+***  Proved C5:  bc1553__lru_name__first <= bus_id
+     using hypothesis H8.
+***  Proved C6:  bus_id <= bc1553__lru_name__last
+     using hypothesis H9.
+-S-  Applied substitution rule poll_rules(14).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H17:  true
+<S>  New H22:  true
+<S>  New H27:  true
+<S>  New H32:  true
+<S>  New C4:  true
+***  Proved C4:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_8.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  ibit__phase__first <= ibit_request
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  bc1553__lru_name__first <= bus_id
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  bc1553__is_valid(bus_id, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bus_id and bus_id <= bc1553__lru_name__last
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  fin__first <= steer_cfg__port
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__1, [i___1]) and 
+          element(last_fins__1, [i___1]) <= angle__last)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  fin__first <= steer_cfg__starboard
+%%%  Simplified H25 on reading formula in, to give:
+     %%%  H25:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__2, [i___1]) and 
+          element(last_fins__2, [i___1]) <= angle__last)
+%%%  Simplified H28 on reading formula in, to give:
+     %%%  H28:  fin__first <= steer_cfg__top
+%%%  Simplified H30 on reading formula in, to give:
+     %%%  H30:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__3, [i___1]) and 
+          element(last_fins__3, [i___1]) <= angle__last)
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  fin__first <= steer_cfg__bottom
+%%%  Simplified H35 on reading formula in, to give:
+     %%%  H35:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__4, [i___1]) and 
+          element(last_fins__4, [i___1]) <= angle__last)
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as H9)
+          .
+***  Proved C1:  datum__5 >= bus__word__first
+     using hypothesis H42.
+***  Proved C2:  datum__5 <= bus__word__last
+     using hypothesis H43.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_9.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  ibit__phase__first <= ibit_request
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  bc1553__lru_name__first <= bus_id
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  bc1553__is_valid(bus_id, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bus_id and bus_id <= bc1553__lru_name__last
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  fin__first <= steer_cfg__port
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__1, [i___1]) and 
+          element(last_fins__1, [i___1]) <= angle__last)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  fin__first <= steer_cfg__starboard
+%%%  Simplified H25 on reading formula in, to give:
+     %%%  H25:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__2, [i___1]) and 
+          element(last_fins__2, [i___1]) <= angle__last)
+%%%  Simplified H28 on reading formula in, to give:
+     %%%  H28:  fin__first <= steer_cfg__top
+%%%  Simplified H30 on reading formula in, to give:
+     %%%  H30:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__3, [i___1]) and 
+          element(last_fins__3, [i___1]) <= angle__last)
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  fin__first <= steer_cfg__bottom
+%%%  Simplified H35 on reading formula in, to give:
+     %%%  H35:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__4, [i___1]) and 
+          element(last_fins__4, [i___1]) <= angle__last)
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H43).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H43).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  ibit__phase__first <= ibit_request
+***  Proved C1:  ibit__phase__first <= ibit_request
+     using hypothesis H4.
+***  Proved C2:  ibit_request <= ibit__phase__last
+     using hypothesis H5.
+-S-  Applied substitution rule poll_rules(8).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__first by:
+          0.
+<S>  New C3:  datum__5 >= 0
+-S-  Applied substitution rule poll_rules(9).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__last by:
+          65535.
+<S>  New C4:  datum__5 <= 65535
++++  Using "A->B, A |- B" on hypotheses H11 & H14 yields a new hypothesis:
+     +++  H48:  1 >= bus__lru_subaddress_index__first and 1 <= 
+          bus__lru_subaddress_index__last
++++  Using "A->B, A |- B" on hypotheses H12 & H14 yields a new hypothesis:
+     +++  H49:  bc1553__lru_name__first <= bus_id and bus_id <= 
+          bc1553__lru_name__last
+-S-  Applied substitution rule poll_rules(1).
+     This was achieved by replacing all occurrences of bus_id by:
+          bc1553__fins.
+<S>  New H8:  bc1553__lru_name__first <= bc1553__fins
+<S>  New H9:  bc1553__fins <= bc1553__lru_name__last
+<S>  New H11:  bc1553__is_valid(bc1553__fins, 1, bus__inputs) -> 1 >= 
+          bus__lru_subaddress_index__first and 1 <= 
+          bus__lru_subaddress_index__last
+<S>  New H12:  bc1553__is_valid(bc1553__fins, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bc1553__fins and bc1553__fins <= 
+          bc1553__lru_name__last
+<S>  New H14:  bc1553__is_valid(bc1553__fins, 1, bus__inputs)
+<S>  New H15:  bc1553__is_fresh(bc1553__fins, 1, bus__inputs)
+<S>  New H49:  bc1553__lru_name__first <= bc1553__fins and bc1553__fins <= 
+          bc1553__lru_name__last
+-S-  Applied substitution rule poll_rules(13).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H16:  true
+<S>  New H21:  true
+<S>  New H26:  true
+<S>  New H31:  true
+<S>  New H38:  true
+-S-  Applied substitution rule poll_rules(14).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H17:  true
+<S>  New H22:  true
+<S>  New H27:  true
+<S>  New H32:  true
+<S>  New H39:  true
+-S-  Applied substitution rule poll_rules(19).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H42:  datum__5 >= 0
+-S-  Applied substitution rule poll_rules(20).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H43:  datum__5 <= 65535
+-S-  Applied substitution rule poll_rules(29).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H6:  true
+<S>  New H48:  1 <= bus__lru_subaddress_index__last
+<S>  New H11:  bc1553__is_valid(bc1553__fins, 1, bus__inputs) -> 1 <= 
+          bus__lru_subaddress_index__last
+-S-  Applied substitution rule poll_rules(30).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H7:  true
+<S>  New H48:  true
+<S>  New H11:  true
+-S-  Applied substitution rule poll_rules(34).
+     This was achieved by replacing all occurrences of bc1553__lru_name__first 
+          by:
+          bc1553__barometer.
+<S>  New H8:  true
+<S>  New H12:  bc1553__is_valid(bc1553__fins, 1, bus__inputs) -> bc1553__fins 
+          <= bc1553__lru_name__last
+<S>  New H49:  bc1553__fins <= bc1553__lru_name__last
+-S-  Applied substitution rule poll_rules(35).
+     This was achieved by replacing all occurrences of bc1553__lru_name__last 
+          by:
+          bc1553__warhead.
+<S>  New H9:  true
+<S>  New H12:  true
+<S>  New H49:  true
+-S-  Applied substitution rule poll_rules(110).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H4:  ibit__off <= ibit_request
+-S-  Applied substitution rule poll_rules(111).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H5:  ibit_request <= ibit__timeout
+-S-  Applied substitution rule poll_rules(143).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> angle__first <= element(last_fins, [i___1]) and 
+          element(last_fins, [i___1]) <= angle__last)
+<S>  New H18:  true
+<S>  New H20:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> angle__first <= element(last_fins__1, [i___1]) 
+          and element(last_fins__1, [i___1]) <= angle__last)
+<S>  New H23:  true
+<S>  New H25:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> angle__first <= element(last_fins__2, [i___1]) 
+          and element(last_fins__2, [i___1]) <= angle__last)
+<S>  New H28:  true
+<S>  New H30:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> angle__first <= element(last_fins__3, [i___1]) 
+          and element(last_fins__3, [i___1]) <= angle__last)
+<S>  New H33:  true
+<S>  New H35:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> angle__first <= element(last_fins__4, [i___1]) 
+          and element(last_fins__4, [i___1]) <= angle__last)
+-S-  Applied substitution rule poll_rules(144).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H19:  true
+<S>  New H24:  true
+<S>  New H29:  true
+<S>  New H34:  true
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> angle__first <= element(last_fins, [
+          i___1]) and element(last_fins, [i___1]) <= angle__last)
+<S>  New H20:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> angle__first <= element(last_fins__1, [
+          i___1]) and element(last_fins__1, [i___1]) <= angle__last)
+<S>  New H25:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> angle__first <= element(last_fins__2, [
+          i___1]) and element(last_fins__2, [i___1]) <= angle__last)
+<S>  New H30:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> angle__first <= element(last_fins__3, [
+          i___1]) and element(last_fins__3, [i___1]) <= angle__last)
+<S>  New H35:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> angle__first <= element(last_fins__4, [
+          i___1]) and element(last_fins__4, [i___1]) <= angle__last)
+-S-  Applied substitution rule poll_rules(148).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(last_fins, [i___1]) and 
+          element(last_fins, [i___1]) <= angle__last)
+<S>  New H20:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(last_fins__1, [i___1]) 
+          and element(last_fins__1, [i___1]) <= angle__last)
+<S>  New H25:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(last_fins__2, [i___1]) 
+          and element(last_fins__2, [i___1]) <= angle__last)
+<S>  New H30:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(last_fins__3, [i___1]) 
+          and element(last_fins__3, [i___1]) <= angle__last)
+<S>  New H35:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(last_fins__4, [i___1]) 
+          and element(last_fins__4, [i___1]) <= angle__last)
+-S-  Applied substitution rule poll_rules(149).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H2:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(last_fins, [i___1]) and 
+          element(last_fins, [i___1]) <= 57)
+<S>  New H20:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(last_fins__1, [i___1]) 
+          and element(last_fins__1, [i___1]) <= 57)
+<S>  New H25:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(last_fins__2, [i___1]) 
+          and element(last_fins__2, [i___1]) <= 57)
+<S>  New H30:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(last_fins__3, [i___1]) 
+          and element(last_fins__3, [i___1]) <= 57)
+<S>  New H35:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(last_fins__4, [i___1]) 
+          and element(last_fins__4, [i___1]) <= 57)
+***  Proved C3:  datum__5 >= 0
+     using hypothesis H42.
+***  Proved C4:  datum__5 <= 65535
+     using hypothesis H43.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_10.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(last_fins, [i___1]) and element(
+          last_fins, [i___1]) <= angle__last)
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  ibit__phase__first <= ibit_request
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  bc1553__lru_name__first <= bus_id
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  bc1553__is_valid(bus_id, 1, bus__inputs) -> 
+          bc1553__lru_name__first <= bus_id and bus_id <= bc1553__lru_name__last
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  true
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  fin__first <= steer_cfg__port
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__1, [i___1]) and 
+          element(last_fins__1, [i___1]) <= angle__last)
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  fin__first <= steer_cfg__starboard
+%%%  Simplified H25 on reading formula in, to give:
+     %%%  H25:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__2, [i___1]) and 
+          element(last_fins__2, [i___1]) <= angle__last)
+%%%  Simplified H28 on reading formula in, to give:
+     %%%  H28:  fin__first <= steer_cfg__top
+%%%  Simplified H30 on reading formula in, to give:
+     %%%  H30:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__3, [i___1]) and 
+          element(last_fins__3, [i___1]) <= angle__last)
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  fin__first <= steer_cfg__bottom
+%%%  Simplified H35 on reading formula in, to give:
+     %%%  H35:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 
+          <= fin__last -> angle__first <= element(last_fins__4, [i___1]) and 
+          element(last_fins__4, [i___1]) <= angle__last)
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H43).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H43).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified H52 on reading formula in, to give:
+     %%%  H52:  ibit__phase__first <= ibit_request__6
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  ibit__phase__first <= ibit_request__6
+***  Proved C1:  ibit__phase__first <= ibit_request__6
+     using hypothesis H52.
+***  Proved C2:  ibit_request__6 <= ibit__phase__last
+     using hypothesis H53.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_12.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_13.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_poll_14.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

@@ -1,0 +1,495 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:42  SIMPLIFIED 25-NOV-2009, 14:19:10
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure if_ir.stare
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_stare_1.  @@@@@@@@@@
+-S-  Applied substitution rule stare_rules(45).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kelvin__first by:
+          0.
+<S>  New C1:  true
+-S-  Applied substitution rule stare_rules(46).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kelvin__last by:
+          6000.
+<S>  New C2:  true
+-S-  Applied substitution rule stare_rules(120).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New C3:  sy >= - 12
+<S>  New C5:  sx >= - 12
+-S-  Applied substitution rule stare_rules(121).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New C4:  sy <= 12
+<S>  New C6:  sx <= 12
+***  Proved C1:  true
+***  Proved C2:  true
+-S-  Applied substitution rule stare_rules(114).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__first by:
+          - 12.
+<S>  New H2:  sx >= - 12
+<S>  New H4:  sy >= - 12
+-S-  Applied substitution rule stare_rules(115).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__last by:
+          12.
+<S>  New H3:  sx <= 12
+<S>  New H5:  sy <= 12
+***  Proved C3:  sy >= - 12
+     using hypothesis H4.
+***  Proved C5:  sx >= - 12
+     using hypothesis H2.
+***  Proved C4:  sy <= 12
+     using hypothesis H5.
+***  Proved C6:  sx <= 12
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_stare_2.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  bc1553__lru_name__first <= bus_id
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  state_types__infrared__first <= state_types__ir_stare
+-S-  Applied substitution rule stare_rules(71).
+     This was achieved by replacing all occurrences of bc1553__lru_name__first 
+          by:
+          bc1553__barometer.
+<S>  New C1:  bc1553__barometer <= bus_id
+-S-  Applied substitution rule stare_rules(3).
+     This was achieved by replacing all occurrences of bus_id by:
+          bc1553__infrared.
+<S>  New C2:  bc1553__infrared <= bc1553__lru_name__last
+<S>  New C1:  true
+-S-  Applied substitution rule stare_rules(72).
+     This was achieved by replacing all occurrences of bc1553__lru_name__last 
+          by:
+          bc1553__warhead.
+<S>  New C2:  true
+-S-  Applied substitution rule stare_rules(66).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New C3:  true
+-S-  Applied substitution rule stare_rules(67).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New C4:  true
+-S-  Applied substitution rule stare_rules(50).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New C5:  true
+-S-  Applied substitution rule stare_rules(51).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New C6:  true
+-S-  Applied substitution rule stare_rules(56).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C7:  element(state_types__ir_values, [state_types__ir_stare]) >= 0
+-S-  Applied substitution rule stare_rules(57).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C8:  element(state_types__ir_values, [state_types__ir_stare]) <= 65535
+-S-  Applied substitution rule stare_rules(20).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__first by:
+          state_types__ir_inactive.
+<S>  New C9:  true
+-S-  Applied substitution rule stare_rules(21).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__last by:
+          state_types__ir_sweep.
+<S>  New C10:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  Proved C5:  true
+***  Proved C6:  true
+***  Proved C9:  true
+***  Proved C10:  true
+-S-  Applied substitution rule stare_rules(45).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kelvin__first by:
+          0.
+<S>  New H6:  true
+-S-  Applied substitution rule stare_rules(46).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kelvin__last by:
+          6000.
+<S>  New H7:  true
+-S-  Applied substitution rule stare_rules(114).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__first by:
+          - 12.
+<S>  New H2:  sx >= - 12
+<S>  New H4:  sy >= - 12
+-S-  Applied substitution rule stare_rules(115).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__last by:
+          12.
+<S>  New H3:  sx <= 12
+<S>  New H5:  sy <= 12
+-S-  Applied substitution rule stare_rules(120).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H8:  sy >= - 12
+<S>  New H10:  sx >= - 12
+-S-  Applied substitution rule stare_rules(121).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H9:  sy <= 12
+<S>  New H11:  sx <= 12
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H10 (duplicate of H2).
+---  Eliminated hypothesis H8 (duplicate of H4).
+---  Eliminated hypothesis H11 (duplicate of H3).
+---  Eliminated hypothesis H9 (duplicate of H5).
+***  Proved C7:  element(state_types__ir_values, [state_types__ir_stare]) >= 0
+***  Proved C8:  element(state_types__ir_values, [state_types__ir_stare]) <= 
+          65535
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_stare_3.  @@@@@@@@@@
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  bc1553__lru_name__first <= bus_id
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  state_types__infrared__first <= state_types__ir_stare
+***  Proved C1:  sx >= ir_cfg__sector_range__first
+     using hypothesis H2.
+***  Proved C2:  sx <= ir_cfg__sector_range__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_stare_4.  @@@@@@@@@@
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  bc1553__lru_name__first <= bus_id
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  state_types__infrared__first <= state_types__ir_stare
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H3)
+          .
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  bc1553__lru_name__first <= bus_id
+***  Proved C1:  bc1553__lru_name__first <= bus_id
+     using hypothesis H12.
+***  Proved C2:  bus_id <= bc1553__lru_name__last
+     using hypothesis H13.
+***  Proved C3:  2 >= bus__lru_subaddress_index__first
+     using hypothesis H14.
+***  Proved C4:  2 <= bus__lru_subaddress_index__last
+     using hypothesis H15.
+***  Proved C5:  2 >= bus__word_index__first
+     using hypothesis H16.
+-S-  Applied substitution rule stare_rules(51).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H17:  true
+<S>  New C6:  true
+-S-  Applied substitution rule stare_rules(56).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H18:  element(state_types__ir_values, [state_types__ir_stare]) >= 0
+<S>  New C7:  ir_cfg__encode_sector(sx) >= 0
+-S-  Applied substitution rule stare_rules(57).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H19:  element(state_types__ir_values, [state_types__ir_stare]) <= 65535
+<S>  New C8:  ir_cfg__encode_sector(sx) <= 65535
+***  Proved C6:  true
+-S-  Applied substitution rule stare_rules(3).
+     This was achieved by replacing all occurrences of bus_id by:
+          bc1553__infrared.
+<S>  New H12:  bc1553__lru_name__first <= bc1553__infrared
+<S>  New H13:  bc1553__infrared <= bc1553__lru_name__last
+-S-  Applied substitution rule stare_rules(10).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__first by:
+          0.
+<S>  New H24:  ir_cfg__encode_sector(sx) >= 0
+-S-  Applied substitution rule stare_rules(11).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__last by:
+          65535.
+<S>  New H25:  ir_cfg__encode_sector(sx) <= 65535
+-S-  Applied substitution rule stare_rules(20).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__first by:
+          state_types__ir_inactive.
+<S>  New H20:  true
+-S-  Applied substitution rule stare_rules(21).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__last by:
+          state_types__ir_sweep.
+<S>  New H21:  true
+-S-  Applied substitution rule stare_rules(45).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kelvin__first by:
+          0.
+<S>  New H6:  true
+-S-  Applied substitution rule stare_rules(46).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kelvin__last by:
+          6000.
+<S>  New H7:  true
+-S-  Applied substitution rule stare_rules(50).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H16:  true
+-S-  Applied substitution rule stare_rules(66).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H14:  true
+-S-  Applied substitution rule stare_rules(67).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H15:  true
+-S-  Applied substitution rule stare_rules(71).
+     This was achieved by replacing all occurrences of bc1553__lru_name__first 
+          by:
+          bc1553__barometer.
+<S>  New H12:  true
+-S-  Applied substitution rule stare_rules(72).
+     This was achieved by replacing all occurrences of bc1553__lru_name__last 
+          by:
+          bc1553__warhead.
+<S>  New H13:  true
+-S-  Applied substitution rule stare_rules(114).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__first by:
+          - 12.
+<S>  New H2:  sx >= - 12
+<S>  New H4:  sy >= - 12
+-S-  Applied substitution rule stare_rules(115).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__last by:
+          12.
+<S>  New H3:  sx <= 12
+<S>  New H5:  sy <= 12
+-S-  Applied substitution rule stare_rules(120).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H8:  sy >= - 12
+<S>  New H10:  sx >= - 12
+-S-  Applied substitution rule stare_rules(121).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H9:  sy <= 12
+<S>  New H11:  sx <= 12
+***  Proved C7:  ir_cfg__encode_sector(sx) >= 0
+     using hypothesis H24.
+***  Proved C8:  ir_cfg__encode_sector(sx) <= 65535
+     using hypothesis H25.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_stare_5.  @@@@@@@@@@
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  bc1553__lru_name__first <= bus_id
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  state_types__infrared__first <= state_types__ir_stare
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H15).
+***  Proved C1:  sy >= ir_cfg__sector_range__first
+     using hypothesis H4.
+***  Proved C2:  sy <= ir_cfg__sector_range__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_stare_6.  @@@@@@@@@@
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  bc1553__lru_name__first <= bus_id
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  state_types__infrared__first <= state_types__ir_stare
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  bc1553__lru_name__first <= bus_id
+***  Proved C1:  bc1553__lru_name__first <= bus_id
+     using hypothesis H12.
+***  Proved C2:  bus_id <= bc1553__lru_name__last
+     using hypothesis H13.
+***  Proved C3:  2 >= bus__lru_subaddress_index__first
+     using hypothesis H14.
+***  Proved C4:  2 <= bus__lru_subaddress_index__last
+     using hypothesis H15.
+***  Proved C5:  4 >= bus__word_index__first
+     using hypothesis H16.
+-S-  Applied substitution rule stare_rules(51).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H17:  true
+<S>  New H31:  true
+<S>  New C6:  true
+-S-  Applied substitution rule stare_rules(56).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H18:  element(state_types__ir_values, [state_types__ir_stare]) >= 0
+<S>  New H32:  ir_cfg__encode_sector(sx) >= 0
+<S>  New C7:  ir_cfg__encode_sector(sy) >= 0
+-S-  Applied substitution rule stare_rules(57).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H19:  element(state_types__ir_values, [state_types__ir_stare]) <= 65535
+<S>  New H33:  ir_cfg__encode_sector(sx) <= 65535
+<S>  New C8:  ir_cfg__encode_sector(sy) <= 65535
+***  Proved C6:  true
+-S-  Applied substitution rule stare_rules(3).
+     This was achieved by replacing all occurrences of bus_id by:
+          bc1553__infrared.
+<S>  New H12:  bc1553__lru_name__first <= bc1553__infrared
+<S>  New H13:  bc1553__infrared <= bc1553__lru_name__last
+-S-  Applied substitution rule stare_rules(10).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__first by:
+          0.
+<S>  New H24:  ir_cfg__encode_sector(sx) >= 0
+<S>  New H36:  ir_cfg__encode_sector(sy) >= 0
+-S-  Applied substitution rule stare_rules(11).
+     This was achieved by replacing all occurrences of 
+          systemtypes__unsigned16__last by:
+          65535.
+<S>  New H25:  ir_cfg__encode_sector(sx) <= 65535
+<S>  New H37:  ir_cfg__encode_sector(sy) <= 65535
+-S-  Applied substitution rule stare_rules(20).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__first by:
+          state_types__ir_inactive.
+<S>  New H20:  true
+-S-  Applied substitution rule stare_rules(21).
+     This was achieved by replacing all occurrences of 
+          state_types__infrared__last by:
+          state_types__ir_sweep.
+<S>  New H21:  true
+-S-  Applied substitution rule stare_rules(45).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kelvin__first by:
+          0.
+<S>  New H6:  true
+-S-  Applied substitution rule stare_rules(46).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kelvin__last by:
+          6000.
+<S>  New H7:  true
+-S-  Applied substitution rule stare_rules(50).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H16:  true
+<S>  New H30:  true
+-S-  Applied substitution rule stare_rules(66).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H14:  true
+-S-  Applied substitution rule stare_rules(67).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H15:  true
+-S-  Applied substitution rule stare_rules(71).
+     This was achieved by replacing all occurrences of bc1553__lru_name__first 
+          by:
+          bc1553__barometer.
+<S>  New H12:  true
+-S-  Applied substitution rule stare_rules(72).
+     This was achieved by replacing all occurrences of bc1553__lru_name__last 
+          by:
+          bc1553__warhead.
+<S>  New H13:  true
+-S-  Applied substitution rule stare_rules(114).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__first by:
+          - 12.
+<S>  New H2:  sx >= - 12
+<S>  New H4:  sy >= - 12
+-S-  Applied substitution rule stare_rules(115).
+     This was achieved by replacing all occurrences of 
+          ir_cfg__sector_range__last by:
+          12.
+<S>  New H3:  sx <= 12
+<S>  New H5:  sy <= 12
+-S-  Applied substitution rule stare_rules(120).
+     This was achieved by replacing all occurrences of sector__first by:
+          - 12.
+<S>  New H8:  sy >= - 12
+<S>  New H10:  sx >= - 12
+-S-  Applied substitution rule stare_rules(121).
+     This was achieved by replacing all occurrences of sector__last by:
+          12.
+<S>  New H9:  sy <= 12
+<S>  New H11:  sx <= 12
+***  Proved C7:  ir_cfg__encode_sector(sy) >= 0
+     using hypothesis H36.
+***  Proved C8:  ir_cfg__encode_sector(sy) <= 65535
+     using hypothesis H37.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_stare_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_stare_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_stare_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

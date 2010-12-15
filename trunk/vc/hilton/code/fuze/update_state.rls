@@ -1,0 +1,87 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:40.68*/
+
+                        /*procedure Fuze.Update_State*/
+
+
+rule_family update_state_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+update_state_rules(1): clock__millisecond__first <= element(max_state_time, [I]) may_be_deduced_from [state_types__unarmed <= I, I <= state_types__timed_out].
+update_state_rules(2): element(max_state_time, [I]) <= 
+     clock__millisecond__last may_be_deduced_from [state_types__unarmed <= I, I <= state_types__timed_out].
+update_state_rules(3): state_types__fuze__first <= element(state_change, [I]) may_be_deduced_from [state_types__unarmed <= I, I <= state_types__timed_out].
+update_state_rules(4): element(state_change, [I]) <= 
+     state_types__fuze__last may_be_deduced_from [state_types__unarmed <= I, I <= state_types__timed_out].
+update_state_rules(5): state_types__fuze__size >= 0 may_be_deduced.
+update_state_rules(6): state_types__fuze__first may_be_replaced_by state_types__unarmed.
+update_state_rules(7): state_types__fuze__last may_be_replaced_by state_types__timed_out.
+update_state_rules(8): state_types__fuze__base__first may_be_replaced_by state_types__unarmed.
+update_state_rules(9): state_types__fuze__base__last may_be_replaced_by state_types__timed_out.
+update_state_rules(10): state_types__fuze__pos(state_types__fuze__first) may_be_replaced_by 0.
+update_state_rules(11): state_types__fuze__pos(
+     state_types__unarmed) may_be_replaced_by 0.
+update_state_rules(12): state_types__fuze__val(0) may_be_replaced_by 
+     state_types__unarmed.
+update_state_rules(13): state_types__fuze__pos(
+     state_types__arming) may_be_replaced_by 1.
+update_state_rules(14): state_types__fuze__val(1) may_be_replaced_by 
+     state_types__arming.
+update_state_rules(15): state_types__fuze__pos(state_types__live) may_be_replaced_by 2.
+update_state_rules(16): state_types__fuze__val(2) may_be_replaced_by 
+     state_types__live.
+update_state_rules(17): state_types__fuze__pos(
+     state_types__triggering) may_be_replaced_by 3.
+update_state_rules(18): state_types__fuze__val(3) may_be_replaced_by 
+     state_types__triggering.
+update_state_rules(19): state_types__fuze__pos(
+     state_types__timed_out) may_be_replaced_by 4.
+update_state_rules(20): state_types__fuze__val(4) may_be_replaced_by 
+     state_types__timed_out.
+update_state_rules(21): state_types__fuze__pos(state_types__fuze__last) may_be_replaced_by 4.
+update_state_rules(22): state_types__fuze__pos(succ(X)) may_be_replaced_by 
+     state_types__fuze__pos(X) + 1
+     if [X <=state_types__timed_out, X <> state_types__timed_out].
+update_state_rules(23): state_types__fuze__pos(pred(X)) may_be_replaced_by 
+     state_types__fuze__pos(X) - 1
+     if [X >=state_types__unarmed, X <> state_types__unarmed].
+update_state_rules(24): state_types__fuze__pos(X) >= 0 may_be_deduced_from
+     [state_types__unarmed <= X, X <= state_types__timed_out].
+update_state_rules(25): state_types__fuze__pos(X) <= 4 may_be_deduced_from
+     [state_types__unarmed <= X, X <= state_types__timed_out].
+update_state_rules(26): state_types__fuze__val(X) >= 
+     state_types__unarmed may_be_deduced_from
+     [0 <= X, X <= 4].
+update_state_rules(27): state_types__fuze__val(X) <= 
+     state_types__timed_out may_be_deduced_from
+     [0 <= X, X <= 4].
+update_state_rules(28): succ(state_types__fuze__val(X)) may_be_replaced_by 
+     state_types__fuze__val(X+1)
+     if [0 <= X, X < 4].
+update_state_rules(29): pred(state_types__fuze__val(X)) may_be_replaced_by 
+     state_types__fuze__val(X-1)
+     if [0 < X, X <= 4].
+update_state_rules(30): state_types__fuze__pos(state_types__fuze__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 4].
+update_state_rules(31): state_types__fuze__val(state_types__fuze__pos(X)) may_be_replaced_by X
+     if [state_types__unarmed <= X, X <= state_types__timed_out].
+update_state_rules(32): state_types__fuze__pos(X) <= 
+     state_types__fuze__pos(Y) & X <= Y are_interchangeable 
+     if [state_types__unarmed <= X, X <= state_types__timed_out, 
+     state_types__unarmed <= Y, Y <= state_types__timed_out].
+update_state_rules(33): state_types__fuze__val(X) <= 
+     state_types__fuze__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 4, 0 <= Y, Y <= 4].
+update_state_rules(34): clock__millisecond__size >= 0 may_be_deduced.
+update_state_rules(35): clock__millisecond__first may_be_replaced_by 0.
+update_state_rules(36): clock__millisecond__last may_be_replaced_by 8640000.
+update_state_rules(37): clock__millisecond__base__first may_be_replaced_by -2147483648.
+update_state_rules(38): clock__millisecond__base__last may_be_replaced_by 2147483647.

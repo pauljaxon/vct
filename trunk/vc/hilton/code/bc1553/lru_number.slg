@@ -1,0 +1,62 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:39
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function bc1553.Lru_Number
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_lru_number_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  lru_name__first <= l
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  lru_name__first <= l
+***  Proved C1:  lru_name__first <= l
+     using hypothesis H2.
+***  Proved C2:  l <= lru_name__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_lru_number_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  lru_name__first <= l
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+***  Proved C1:  true
+-S-  Applied substitution rule lru_number_rules(4).
+     This was achieved by replacing all occurrences of bus__lru_index__first by:
+          1.
+<S>  New C2:  element(lru_names, [l]) >= 1
+-S-  Applied substitution rule lru_number_rules(5).
+     This was achieved by replacing all occurrences of bus__lru_index__last by:
+          12.
+<S>  New C3:  element(lru_names, [l]) <= 12
+-S-  Applied substitution rule lru_number_rules(10).
+     This was achieved by replacing all occurrences of lru_name__first by:
+          barometer.
+<S>  New H2:  barometer <= l
+-S-  Applied substitution rule lru_number_rules(11).
+     This was achieved by replacing all occurrences of lru_name__last by:
+          warhead.
+<S>  New H3:  l <= warhead
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H4 (true-hypothesis).
+---  Eliminated hypothesis H5 (true-hypothesis).
+***  Proved C2:  element(lru_names, [l]) >= 1
+     using hypotheses H2 & H3.
+***  Proved C3:  element(lru_names, [l]) <= 12
+     using hypotheses H2 & H3.
+***  PROVED VC.
+

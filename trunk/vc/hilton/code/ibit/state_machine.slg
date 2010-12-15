@@ -1,0 +1,188 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:41
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure ibit.State_Machine
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_state_machine_1.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  phase__first <= current_phase
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  phase__first <= in_progress
+***  Proved C1:  phase__first <= in_progress
+     using hypotheses H4 & H6.
+-S-  Applied substitution rule state_machin_rules(20).
+     This was achieved by replacing all occurrences of phase__last by:
+          timeout.
+<S>  New H5:  current_phase <= timeout
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_2.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  phase__first <= current_phase
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  phase__first <= in_progress
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  phase__first <= in_progress
+***  Proved C1:  phase__first <= in_progress
+     using hypothesis H7.
+***  Proved C2:  in_progress <= phase__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_3.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  phase__first <= current_phase
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  phase__first <= pass
+***  Proved C1:  phase__first <= pass
+     using hypotheses H4 & H6.
+-S-  Applied substitution rule state_machin_rules(20).
+     This was achieved by replacing all occurrences of phase__last by:
+          timeout.
+<S>  New H5:  current_phase <= timeout
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_4.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  phase__first <= current_phase
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  phase__first <= pass
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  phase__first <= pass
+***  Proved C1:  phase__first <= pass
+     using hypothesis H7.
+***  Proved C2:  pass <= phase__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_5.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  phase__first <= current_phase
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  phase__first <= pass
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  phase__first <= fail
+***  Proved C1:  phase__first <= fail
+     using hypotheses H4 & H6.
+-S-  Applied substitution rule state_machin_rules(20).
+     This was achieved by replacing all occurrences of phase__last by:
+          timeout.
+<S>  New H5:  current_phase <= timeout
+<S>  New H8:  true
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_6.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  phase__first <= current_phase
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  phase__first <= pass
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  phase__first <= fail
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  phase__first <= fail
+***  Proved C1:  phase__first <= fail
+     using hypothesis H10.
+***  Proved C2:  fail <= phase__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_7.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  phase__first <= current_phase
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  phase__first <= off
+***  Proved C2:  off <= phase__last
+     using hypotheses H5 & H6.
+-S-  Applied substitution rule state_machin_rules(19).
+     This was achieved by replacing all occurrences of phase__first by:
+          off.
+<S>  New H4:  off <= current_phase
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_8.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  phase__first <= current_phase
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  phase__first <= off
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  phase__first <= off
+***  Proved C1:  phase__first <= off
+     using hypothesis H7.
+***  Proved C2:  off <= phase__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_12.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_13.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_14.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_15.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_16.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_state_machine_17.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

@@ -1,0 +1,225 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:41.05*/
+
+                          /*procedure Radar.Do_Ping*/
+
+
+rule_family do_ping_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+do_ping_rules(1): state_types__word__first <= element(state_types__radar_values, [I]) may_be_deduced_from [state_types__rad_inactive <= I, I <= state_types__sweep].
+do_ping_rules(2): element(state_types__radar_values, [I]) <= 
+     state_types__word__last may_be_deduced_from [state_types__rad_inactive <= I, I <= state_types__sweep].
+do_ping_rules(3): radar_cfg__max_detect_range may_be_replaced_by 50000.
+do_ping_rules(4): bus_id may_be_replaced_by rt1553__radar.
+do_ping_rules(5): integer__size >= 0 may_be_deduced.
+do_ping_rules(6): integer__first may_be_replaced_by -2147483648.
+do_ping_rules(7): integer__last may_be_replaced_by 2147483647.
+do_ping_rules(8): integer__base__first may_be_replaced_by -2147483648.
+do_ping_rules(9): integer__base__last may_be_replaced_by 2147483647.
+do_ping_rules(10): state_types__word__size >= 0 may_be_deduced.
+do_ping_rules(11): state_types__word__first may_be_replaced_by 0.
+do_ping_rules(12): state_types__word__last may_be_replaced_by 65535.
+do_ping_rules(13): state_types__word__base__first may_be_replaced_by -2147483648.
+do_ping_rules(14): state_types__word__base__last may_be_replaced_by 2147483647.
+do_ping_rules(15): state_types__radar__size >= 0 may_be_deduced.
+do_ping_rules(16): state_types__radar__first may_be_replaced_by state_types__rad_inactive.
+do_ping_rules(17): state_types__radar__last may_be_replaced_by state_types__sweep.
+do_ping_rules(18): state_types__radar__base__first may_be_replaced_by state_types__rad_inactive.
+do_ping_rules(19): state_types__radar__base__last may_be_replaced_by state_types__sweep.
+do_ping_rules(20): state_types__radar__pos(state_types__radar__first) may_be_replaced_by 0.
+do_ping_rules(21): state_types__radar__pos(
+     state_types__rad_inactive) may_be_replaced_by 0.
+do_ping_rules(22): state_types__radar__val(0) may_be_replaced_by 
+     state_types__rad_inactive.
+do_ping_rules(23): state_types__radar__pos(state_types__ping) may_be_replaced_by 1.
+do_ping_rules(24): state_types__radar__val(1) may_be_replaced_by 
+     state_types__ping.
+do_ping_rules(25): state_types__radar__pos(state_types__sweep) may_be_replaced_by 2.
+do_ping_rules(26): state_types__radar__val(2) may_be_replaced_by 
+     state_types__sweep.
+do_ping_rules(27): state_types__radar__pos(state_types__radar__last) may_be_replaced_by 2.
+do_ping_rules(28): state_types__radar__pos(succ(X)) may_be_replaced_by 
+     state_types__radar__pos(X) + 1
+     if [X <=state_types__sweep, X <> state_types__sweep].
+do_ping_rules(29): state_types__radar__pos(pred(X)) may_be_replaced_by 
+     state_types__radar__pos(X) - 1
+     if [X >=state_types__rad_inactive, X <> 
+     state_types__rad_inactive].
+do_ping_rules(30): state_types__radar__pos(X) >= 0 may_be_deduced_from
+     [state_types__rad_inactive <= X, X <= state_types__sweep].
+do_ping_rules(31): state_types__radar__pos(X) <= 2 may_be_deduced_from
+     [state_types__rad_inactive <= X, X <= state_types__sweep].
+do_ping_rules(32): state_types__radar__val(X) >= 
+     state_types__rad_inactive may_be_deduced_from
+     [0 <= X, X <= 2].
+do_ping_rules(33): state_types__radar__val(X) <= 
+     state_types__sweep may_be_deduced_from
+     [0 <= X, X <= 2].
+do_ping_rules(34): succ(state_types__radar__val(X)) may_be_replaced_by 
+     state_types__radar__val(X+1)
+     if [0 <= X, X < 2].
+do_ping_rules(35): pred(state_types__radar__val(X)) may_be_replaced_by 
+     state_types__radar__val(X-1)
+     if [0 < X, X <= 2].
+do_ping_rules(36): state_types__radar__pos(state_types__radar__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 2].
+do_ping_rules(37): state_types__radar__val(state_types__radar__pos(X)) may_be_replaced_by X
+     if [state_types__rad_inactive <= X, X <= state_types__sweep].
+do_ping_rules(38): state_types__radar__pos(X) <= 
+     state_types__radar__pos(Y) & X <= Y are_interchangeable 
+     if [state_types__rad_inactive <= X, X <= state_types__sweep, 
+     state_types__rad_inactive <= Y, Y <= state_types__sweep].
+do_ping_rules(39): state_types__radar__val(X) <= 
+     state_types__radar__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 2, 0 <= Y, Y <= 2].
+do_ping_rules(40): measuretypes__meter__size >= 0 may_be_deduced.
+do_ping_rules(41): measuretypes__meter__first may_be_replaced_by -200000.
+do_ping_rules(42): measuretypes__meter__last may_be_replaced_by 200000.
+do_ping_rules(43): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+do_ping_rules(44): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+do_ping_rules(45): measuretypes__meter_per_sec__size >= 0 may_be_deduced.
+do_ping_rules(46): measuretypes__meter_per_sec__first may_be_replaced_by -5000.
+do_ping_rules(47): measuretypes__meter_per_sec__last may_be_replaced_by 5000.
+do_ping_rules(48): measuretypes__meter_per_sec__base__first may_be_replaced_by -2147483648.
+do_ping_rules(49): measuretypes__meter_per_sec__base__last may_be_replaced_by 2147483647.
+do_ping_rules(50): random__value__size >= 0 may_be_deduced.
+do_ping_rules(51): random__value__first may_be_replaced_by 0.
+do_ping_rules(52): random__value__last may_be_replaced_by 63001.
+do_ping_rules(53): random__value__base__first <= random__value__base__last may_be_deduced.
+do_ping_rules(54): random__value__base__first <= random__value__first may_be_deduced.
+do_ping_rules(55): random__value__base__last >= random__value__last may_be_deduced.
+do_ping_rules(56): bus__word_index__size >= 0 may_be_deduced.
+do_ping_rules(57): bus__word_index__first may_be_replaced_by 1.
+do_ping_rules(58): bus__word_index__last may_be_replaced_by 31.
+do_ping_rules(59): bus__word_index__base__first <= 
+     bus__word_index__base__last may_be_deduced.
+do_ping_rules(60): bus__word_index__base__first <= 
+     bus__word_index__first may_be_deduced.
+do_ping_rules(61): bus__word_index__base__last >= bus__word_index__last may_be_deduced.
+do_ping_rules(62): bus__word__size >= 0 may_be_deduced.
+do_ping_rules(63): bus__word__first may_be_replaced_by 0.
+do_ping_rules(64): bus__word__last may_be_replaced_by 65535.
+do_ping_rules(65): bus__word__base__first may_be_replaced_by -2147483648.
+do_ping_rules(66): bus__word__base__last may_be_replaced_by 2147483647.
+do_ping_rules(67): bus__all_msg_index__size >= 0 may_be_deduced.
+do_ping_rules(68): bus__all_msg_index__first may_be_replaced_by 0.
+do_ping_rules(69): bus__all_msg_index__last may_be_replaced_by 63.
+do_ping_rules(70): bus__all_msg_index__base__first may_be_replaced_by -32768.
+do_ping_rules(71): bus__all_msg_index__base__last may_be_replaced_by 32767.
+do_ping_rules(72): bus__lru_subaddress_index__size >= 0 may_be_deduced.
+do_ping_rules(73): bus__lru_subaddress_index__first may_be_replaced_by 1.
+do_ping_rules(74): bus__lru_subaddress_index__last may_be_replaced_by 8.
+do_ping_rules(75): bus__lru_subaddress_index__base__first may_be_replaced_by -32768.
+do_ping_rules(76): bus__lru_subaddress_index__base__last may_be_replaced_by 32767.
+do_ping_rules(77): rt1553__lru_name__size >= 0 may_be_deduced.
+do_ping_rules(78): rt1553__lru_name__first may_be_replaced_by rt1553__barometer.
+do_ping_rules(79): rt1553__lru_name__last may_be_replaced_by rt1553__warhead.
+do_ping_rules(80): rt1553__lru_name__base__first may_be_replaced_by rt1553__barometer.
+do_ping_rules(81): rt1553__lru_name__base__last may_be_replaced_by rt1553__warhead.
+do_ping_rules(82): rt1553__lru_name__pos(rt1553__lru_name__first) may_be_replaced_by 0.
+do_ping_rules(83): rt1553__lru_name__pos(rt1553__barometer) may_be_replaced_by 0.
+do_ping_rules(84): rt1553__lru_name__val(0) may_be_replaced_by 
+     rt1553__barometer.
+do_ping_rules(85): rt1553__lru_name__pos(rt1553__asi) may_be_replaced_by 1.
+do_ping_rules(86): rt1553__lru_name__val(1) may_be_replaced_by 
+     rt1553__asi.
+do_ping_rules(87): rt1553__lru_name__pos(rt1553__ins) may_be_replaced_by 2.
+do_ping_rules(88): rt1553__lru_name__val(2) may_be_replaced_by 
+     rt1553__ins.
+do_ping_rules(89): rt1553__lru_name__pos(rt1553__compass) may_be_replaced_by 3.
+do_ping_rules(90): rt1553__lru_name__val(3) may_be_replaced_by 
+     rt1553__compass.
+do_ping_rules(91): rt1553__lru_name__pos(rt1553__fuel) may_be_replaced_by 4.
+do_ping_rules(92): rt1553__lru_name__val(4) may_be_replaced_by 
+     rt1553__fuel.
+do_ping_rules(93): rt1553__lru_name__pos(rt1553__fuze) may_be_replaced_by 5.
+do_ping_rules(94): rt1553__lru_name__val(5) may_be_replaced_by 
+     rt1553__fuze.
+do_ping_rules(95): rt1553__lru_name__pos(rt1553__radar) may_be_replaced_by 6.
+do_ping_rules(96): rt1553__lru_name__val(6) may_be_replaced_by 
+     rt1553__radar.
+do_ping_rules(97): rt1553__lru_name__pos(rt1553__infrared) may_be_replaced_by 7.
+do_ping_rules(98): rt1553__lru_name__val(7) may_be_replaced_by 
+     rt1553__infrared.
+do_ping_rules(99): rt1553__lru_name__pos(rt1553__fins) may_be_replaced_by 8.
+do_ping_rules(100): rt1553__lru_name__val(8) may_be_replaced_by 
+     rt1553__fins.
+do_ping_rules(101): rt1553__lru_name__pos(rt1553__motor) may_be_replaced_by 9.
+do_ping_rules(102): rt1553__lru_name__val(9) may_be_replaced_by 
+     rt1553__motor.
+do_ping_rules(103): rt1553__lru_name__pos(rt1553__destruct) may_be_replaced_by 10.
+do_ping_rules(104): rt1553__lru_name__val(10) may_be_replaced_by 
+     rt1553__destruct.
+do_ping_rules(105): rt1553__lru_name__pos(rt1553__warhead) may_be_replaced_by 11.
+do_ping_rules(106): rt1553__lru_name__val(11) may_be_replaced_by 
+     rt1553__warhead.
+do_ping_rules(107): rt1553__lru_name__pos(rt1553__lru_name__last) may_be_replaced_by 11.
+do_ping_rules(108): rt1553__lru_name__pos(succ(X)) may_be_replaced_by 
+     rt1553__lru_name__pos(X) + 1
+     if [X <=rt1553__warhead, X <> rt1553__warhead].
+do_ping_rules(109): rt1553__lru_name__pos(pred(X)) may_be_replaced_by 
+     rt1553__lru_name__pos(X) - 1
+     if [X >=rt1553__barometer, X <> rt1553__barometer].
+do_ping_rules(110): rt1553__lru_name__pos(X) >= 0 may_be_deduced_from
+     [rt1553__barometer <= X, X <= rt1553__warhead].
+do_ping_rules(111): rt1553__lru_name__pos(X) <= 11 may_be_deduced_from
+     [rt1553__barometer <= X, X <= rt1553__warhead].
+do_ping_rules(112): rt1553__lru_name__val(X) >= rt1553__barometer may_be_deduced_from
+     [0 <= X, X <= 11].
+do_ping_rules(113): rt1553__lru_name__val(X) <= rt1553__warhead may_be_deduced_from
+     [0 <= X, X <= 11].
+do_ping_rules(114): succ(rt1553__lru_name__val(X)) may_be_replaced_by 
+     rt1553__lru_name__val(X+1)
+     if [0 <= X, X < 11].
+do_ping_rules(115): pred(rt1553__lru_name__val(X)) may_be_replaced_by 
+     rt1553__lru_name__val(X-1)
+     if [0 < X, X <= 11].
+do_ping_rules(116): rt1553__lru_name__pos(rt1553__lru_name__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 11].
+do_ping_rules(117): rt1553__lru_name__val(rt1553__lru_name__pos(X)) may_be_replaced_by X
+     if [rt1553__barometer <= X, X <= rt1553__warhead].
+do_ping_rules(118): rt1553__lru_name__pos(X) <= rt1553__lru_name__pos(Y) & X <= Y are_interchangeable 
+     if [rt1553__barometer <= X, X <= rt1553__warhead, 
+     rt1553__barometer <= Y, Y <= rt1553__warhead].
+do_ping_rules(119): rt1553__lru_name__val(X) <= rt1553__lru_name__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 11, 0 <= Y, Y <= 11].
+do_ping_rules(120): radar_cfg__sector_range__size >= 0 may_be_deduced.
+do_ping_rules(121): radar_cfg__sector_range__first may_be_replaced_by -20.
+do_ping_rules(122): radar_cfg__sector_range__last may_be_replaced_by 20.
+do_ping_rules(123): radar_cfg__sector_range__base__first <= 
+     radar_cfg__sector_range__base__last may_be_deduced.
+do_ping_rules(124): radar_cfg__sector_range__base__first <= 
+     radar_cfg__sector_range__first may_be_deduced.
+do_ping_rules(125): radar_cfg__sector_range__base__last >= 
+     radar_cfg__sector_range__last may_be_deduced.
+do_ping_rules(126): meter__size >= 0 may_be_deduced.
+do_ping_rules(127): meter__first may_be_replaced_by -200000.
+do_ping_rules(128): meter__last may_be_replaced_by 200000.
+do_ping_rules(129): meter__base__first may_be_replaced_by -2147483648.
+do_ping_rules(130): meter__base__last may_be_replaced_by 2147483647.
+do_ping_rules(131): meter_per_sec__size >= 0 may_be_deduced.
+do_ping_rules(132): meter_per_sec__first may_be_replaced_by -5000.
+do_ping_rules(133): meter_per_sec__last may_be_replaced_by 5000.
+do_ping_rules(134): meter_per_sec__base__first may_be_replaced_by -2147483648.
+do_ping_rules(135): meter_per_sec__base__last may_be_replaced_by 2147483647.
+do_ping_rules(136): sector__size >= 0 may_be_deduced.
+do_ping_rules(137): sector__first may_be_replaced_by -20.
+do_ping_rules(138): sector__last may_be_replaced_by 20.
+do_ping_rules(139): sector__base__first <= sector__base__last may_be_deduced.
+do_ping_rules(140): sector__base__first <= sector__first may_be_deduced.
+do_ping_rules(141): sector__base__last >= sector__last may_be_deduced.
+do_ping_rules(142): ping__size >= 0 may_be_deduced.
+do_ping_rules(143): A = B may_be_deduced_from
+     [goal(checktype(A,ping)),
+      goal(checktype(B,ping)),
+      fld_distance(A) = fld_distance(B),
+      fld_rel_vel(A) = fld_rel_vel(B)].

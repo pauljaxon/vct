@@ -1,0 +1,37 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:39.39*/
+
+                          /*procedure compass.Set_YZ*/
+
+
+rule_family set_yz_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+set_yz_rules(1): measuretypes__angle_degrees__size >= 0 may_be_deduced.
+set_yz_rules(2): measuretypes__angle_degrees__first may_be_replaced_by 0.
+set_yz_rules(3): measuretypes__angle_degrees__last may_be_replaced_by 359.
+set_yz_rules(4): measuretypes__angle_degrees__base__first <= 
+     measuretypes__angle_degrees__base__last may_be_deduced.
+set_yz_rules(5): measuretypes__angle_degrees__base__first <= 
+     measuretypes__angle_degrees__first may_be_deduced.
+set_yz_rules(6): measuretypes__angle_degrees__base__last >= 
+     measuretypes__angle_degrees__last may_be_deduced.
+set_yz_rules(7): clock__millisecond__size >= 0 may_be_deduced.
+set_yz_rules(8): clock__millisecond__first may_be_replaced_by 0.
+set_yz_rules(9): clock__millisecond__last may_be_replaced_by 8640000.
+set_yz_rules(10): clock__millisecond__base__first may_be_replaced_by -2147483648.
+set_yz_rules(11): clock__millisecond__base__last may_be_replaced_by 2147483647.
+set_yz_rules(12): angle_degrees__size >= 0 may_be_deduced.
+set_yz_rules(13): angle_degrees__first may_be_replaced_by 0.
+set_yz_rules(14): angle_degrees__last may_be_replaced_by 359.
+set_yz_rules(15): angle_degrees__base__first <= angle_degrees__base__last may_be_deduced.
+set_yz_rules(16): angle_degrees__base__first <= angle_degrees__first may_be_deduced.
+set_yz_rules(17): angle_degrees__base__last >= angle_degrees__last may_be_deduced.

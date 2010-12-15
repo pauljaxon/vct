@@ -1,0 +1,176 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.21
+
+                   function angle_ops.Degree_To_Millirad
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 173:
+
+function_degree_to_millirad_1.
+H1:    true .
+H2:    orig_degree >= measuretypes__angle_degrees__first .
+H3:    orig_degree <= measuretypes__angle_degrees__last .
+        ->
+C1:    measuretypes__angle_full * orig_degree >= 
+           systemtypes__integer32__first .
+C2:    measuretypes__angle_full * orig_degree <= 
+           systemtypes__integer32__last .
+C3:    orig_degree >= systemtypes__integer32__first .
+C4:    orig_degree <= systemtypes__integer32__last .
+C5:    measuretypes__angle_full >= systemtypes__integer32__first .
+C6:    measuretypes__angle_full <= systemtypes__integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 175:
+
+function_degree_to_millirad_2.
+H1:    true .
+H2:    orig_degree >= measuretypes__angle_degrees__first .
+H3:    orig_degree <= measuretypes__angle_degrees__last .
+H4:    measuretypes__angle_full * orig_degree >= 
+           systemtypes__integer32__first .
+H5:    measuretypes__angle_full * orig_degree <= 
+           systemtypes__integer32__last .
+H6:    orig_degree >= systemtypes__integer32__first .
+H7:    orig_degree <= systemtypes__integer32__last .
+H8:    measuretypes__angle_full >= systemtypes__integer32__first .
+H9:    measuretypes__angle_full <= systemtypes__integer32__last .
+H10:   measuretypes__angle_full * orig_degree >= 
+           systemtypes__integer32__first .
+H11:   measuretypes__angle_full * orig_degree <= 
+           systemtypes__integer32__last .
+        ->
+C1:    measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) >= 
+           systemtypes__integer32__first .
+C2:    measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) <= 
+           systemtypes__integer32__last .
+C3:    measuretypes__angle_degrees__last + 1 <> 0 .
+C4:    measuretypes__angle_degrees__last + 1 >= 
+           systemtypes__integer32__first .
+C5:    measuretypes__angle_degrees__last + 1 <= 
+           systemtypes__integer32__last .
+C6:    measuretypes__angle_degrees__last + 1 >= 
+           measuretypes__angle_degrees__base__first .
+C7:    measuretypes__angle_degrees__last + 1 <= 
+           measuretypes__angle_degrees__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 177:
+
+function_degree_to_millirad_3.
+H1:    true .
+H2:    orig_degree >= measuretypes__angle_degrees__first .
+H3:    orig_degree <= measuretypes__angle_degrees__last .
+H4:    measuretypes__angle_full * orig_degree >= 
+           systemtypes__integer32__first .
+H5:    measuretypes__angle_full * orig_degree <= 
+           systemtypes__integer32__last .
+H6:    orig_degree >= systemtypes__integer32__first .
+H7:    orig_degree <= systemtypes__integer32__last .
+H8:    measuretypes__angle_full >= systemtypes__integer32__first .
+H9:    measuretypes__angle_full <= systemtypes__integer32__last .
+H10:   measuretypes__angle_full * orig_degree >= 
+           systemtypes__integer32__first .
+H11:   measuretypes__angle_full * orig_degree <= 
+           systemtypes__integer32__last .
+H12:   measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) >= 
+           systemtypes__integer32__first .
+H13:   measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) <= 
+           systemtypes__integer32__last .
+H14:   measuretypes__angle_degrees__last + 1 <> 0 .
+H15:   measuretypes__angle_degrees__last + 1 >= 
+           systemtypes__integer32__first .
+H16:   measuretypes__angle_degrees__last + 1 <= 
+           systemtypes__integer32__last .
+H17:   measuretypes__angle_degrees__last + 1 >= 
+           measuretypes__angle_degrees__base__first .
+H18:   measuretypes__angle_degrees__last + 1 <= 
+           measuretypes__angle_degrees__base__last .
+H19:   measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) >= 
+           systemtypes__integer32__first .
+H20:   measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) <= 
+           systemtypes__integer32__last .
+        ->
+C1:    measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) >= 
+           systemtypes__integer32__first .
+C2:    measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) <= 
+           systemtypes__integer32__last .
+ 
+
+For path(s) from start to finish:
+
+function_degree_to_millirad_4.
+H1:    true .
+H2:    orig_degree >= measuretypes__angle_degrees__first .
+H3:    orig_degree <= measuretypes__angle_degrees__last .
+H4:    measuretypes__angle_full * orig_degree >= 
+           systemtypes__integer32__first .
+H5:    measuretypes__angle_full * orig_degree <= 
+           systemtypes__integer32__last .
+H6:    orig_degree >= systemtypes__integer32__first .
+H7:    orig_degree <= systemtypes__integer32__last .
+H8:    measuretypes__angle_full >= systemtypes__integer32__first .
+H9:    measuretypes__angle_full <= systemtypes__integer32__last .
+H10:   measuretypes__angle_full * orig_degree >= 
+           systemtypes__integer32__first .
+H11:   measuretypes__angle_full * orig_degree <= 
+           systemtypes__integer32__last .
+H12:   measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) >= 
+           systemtypes__integer32__first .
+H13:   measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) <= 
+           systemtypes__integer32__last .
+H14:   measuretypes__angle_degrees__last + 1 <> 0 .
+H15:   measuretypes__angle_degrees__last + 1 >= 
+           systemtypes__integer32__first .
+H16:   measuretypes__angle_degrees__last + 1 <= 
+           systemtypes__integer32__last .
+H17:   measuretypes__angle_degrees__last + 1 >= 
+           measuretypes__angle_degrees__base__first .
+H18:   measuretypes__angle_degrees__last + 1 <= 
+           measuretypes__angle_degrees__base__last .
+H19:   measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) >= 
+           systemtypes__integer32__first .
+H20:   measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) <= 
+           systemtypes__integer32__last .
+H21:   measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) >= 
+           systemtypes__integer32__first .
+H22:   measuretypes__angle_full * orig_degree div (
+           measuretypes__angle_degrees__last + 1) <= 
+           systemtypes__integer32__last .
+H23:   int_to_millirad(measuretypes__angle_full * 
+           orig_degree div (measuretypes__angle_degrees__last + 1)) >= 
+           measuretypes__millirad__first .
+H24:   int_to_millirad(measuretypes__angle_full * 
+           orig_degree div (measuretypes__angle_degrees__last + 1)) <= 
+           measuretypes__millirad__last .
+        ->
+C1:    true .
+C2:    int_to_millirad(measuretypes__angle_full * 
+           orig_degree div (measuretypes__angle_degrees__last + 1)) >= 
+           measuretypes__millirad__first .
+C3:    int_to_millirad(measuretypes__angle_full * 
+           orig_degree div (measuretypes__angle_degrees__last + 1)) <= 
+           measuretypes__millirad__last .
+ 
+

@@ -1,0 +1,42 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.04
+
+                          procedure watchdog.Reset
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 31:
+
+procedure_reset_1.
+H1:    true .
+H2:    last_check__1 >= clock__millisecond__first .
+H3:    last_check__1 <= clock__millisecond__last .
+H4:    true .
+        ->
+C1:    last_check__1 >= clock__millisecond__first .
+C2:    last_check__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_reset_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_reset_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_reset_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+

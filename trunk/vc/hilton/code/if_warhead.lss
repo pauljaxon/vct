@@ -1,0 +1,80 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.36
+
+Line
+   1  -- MCU interface to the warhead over the bus
+   2  --
+   3  -- $Log: if_warhead.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/11 19:57:01  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.1  2003/09/01 18:26:31  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with SystemTypes,Ibit, Warhead_Cfg;
+  16  --# inherit SystemTypes, Bus, Ibit, bc1553, warhead_cfg;
+  17  package If_Warhead
+  18    --# own State;
+  19    --# initializes State;
+  20  is
+  21     subtype Stage is Warhead_Cfg.State;
+  22  
+  23     function Get_Ibit_State return Ibit.Phase;
+  24     --# global state;
+  25  
+  26     -- Find out the current state
+  27     procedure Get_Stage(Action_Stage : out Stage;
+  28                         Valid  : out Boolean);
+  29     --# global in State;
+  30     --# derives action_stage, Valid from State;
+  31  
+  32     -- Command a new stage
+  33     procedure Set_Stage(New_Stage : in Stage);
+  34     --# global in out Bus.Outputs;
+  35     --# derives Bus.Outputs from *, new_stage;
+  36  
+  37     -- Kick off a warhead IBIT
+  38     procedure Ibit_Start;
+  39     --# global in out Bus.Outputs, State;
+  40     --# derives Bus.Outputs from * &
+  41     --#         State from *;
+  42  
+  43     -- Stop a warhead IBIT
+  44     procedure Ibit_Stop;
+  45     --# global in out Bus.Outputs, State;
+  46     --# derives Bus.Outputs from * &
+  47     --#         State from *;
+  48  
+  49     -- Poll the bus
+  50     procedure Poll;
+  51     --# global in out State;
+  52     --#        in Bus.Inputs;
+  53     --# derives State from *, Bus.Inputs;
+  54  
+  55     -- Initialise
+  56     procedure Init;
+  57     --# global out State;
+  58     --#        in out Bus.Outputs;
+  59     --# derives State from &
+  60     --#         Bus.Outputs from *;
+  61  
+  62     -- test point
+  63     procedure Command;
+  64     --# derives;
+  65  end If_Warhead;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

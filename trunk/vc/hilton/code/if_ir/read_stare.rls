@@ -1,0 +1,46 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:42.29*/
+
+                         /*procedure if_ir.Read_stare*/
+
+
+rule_family read_stare_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+read_stare_rules(1): measuretypes__kelvin__size >= 0 may_be_deduced.
+read_stare_rules(2): measuretypes__kelvin__first may_be_replaced_by 0.
+read_stare_rules(3): measuretypes__kelvin__last may_be_replaced_by 6000.
+read_stare_rules(4): measuretypes__kelvin__base__first may_be_replaced_by -2147483648.
+read_stare_rules(5): measuretypes__kelvin__base__last may_be_replaced_by 2147483647.
+read_stare_rules(6): ir_cfg__sector_range__size >= 0 may_be_deduced.
+read_stare_rules(7): ir_cfg__sector_range__first may_be_replaced_by -12.
+read_stare_rules(8): ir_cfg__sector_range__last may_be_replaced_by 12.
+read_stare_rules(9): ir_cfg__sector_range__base__first <= 
+     ir_cfg__sector_range__base__last may_be_deduced.
+read_stare_rules(10): ir_cfg__sector_range__base__first <= 
+     ir_cfg__sector_range__first may_be_deduced.
+read_stare_rules(11): ir_cfg__sector_range__base__last >= 
+     ir_cfg__sector_range__last may_be_deduced.
+read_stare_rules(12): sector__size >= 0 may_be_deduced.
+read_stare_rules(13): sector__first may_be_replaced_by -12.
+read_stare_rules(14): sector__last may_be_replaced_by 12.
+read_stare_rules(15): sector__base__first <= sector__base__last may_be_deduced.
+read_stare_rules(16): sector__base__first <= sector__first may_be_deduced.
+read_stare_rules(17): sector__base__last >= sector__last may_be_deduced.
+read_stare_rules(18): stare_request__size >= 0 may_be_deduced.
+read_stare_rules(19): A = B may_be_deduced_from
+     [goal(checktype(A,stare_request)),
+      goal(checktype(B,stare_request)),
+      fld_sx(A) = fld_sx(B),
+      fld_sy(A) = fld_sy(B),
+      fld_fresh_request(A) = fld_fresh_request(B),
+      fld_fresh_answer(A) = fld_fresh_answer(B),
+      fld_temp(A) = fld_temp(B)].

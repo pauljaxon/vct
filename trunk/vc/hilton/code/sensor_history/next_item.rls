@@ -1,0 +1,22 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:43.86*/
+
+                     /*function sensor_history.Next_Item*/
+
+
+rule_family next_item_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+next_item_rules(1): history_count__size >= 0 may_be_deduced.
+next_item_rules(2): history_count__first may_be_replaced_by 1.
+next_item_rules(3): history_count__last may_be_replaced_by 4.
+next_item_rules(4): history_count__base__first may_be_replaced_by -2147483648.
+next_item_rules(5): history_count__base__last may_be_replaced_by 2147483647.

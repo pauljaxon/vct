@@ -1,0 +1,243 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.79
+
+                  function drag.Relative_Drag_At_Altitude
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 38:
+
+function_relative_drag_at_altitude_1.
+H1:    altitude >= 0 .
+H2:    altitude <= 25000 .
+H3:    altitude >= pos_meter__first .
+H4:    altitude <= pos_meter__last .
+        ->
+C1:    (50000 - altitude) div 250 >= integer32__first .
+C2:    (50000 - altitude) div 250 <= integer32__last .
+C3:    250 <> 0 .
+C4:    50000 - altitude >= long_integer__base__first .
+C5:    50000 - altitude <= long_integer__base__last .
+C6:    altitude >= integer32__first .
+C7:    altitude <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 41:
+
+function_relative_drag_at_altitude_2.
+H1:    altitude >= 0 .
+H2:    altitude <= 25000 .
+H3:    altitude >= pos_meter__first .
+H4:    altitude <= pos_meter__last .
+H5:    (50000 - altitude) div 250 >= integer32__first .
+H6:    (50000 - altitude) div 250 <= integer32__last .
+H7:    250 <> 0 .
+H8:    50000 - altitude >= long_integer__base__first .
+H9:    50000 - altitude <= long_integer__base__last .
+H10:   altitude >= integer32__first .
+H11:   altitude <= integer32__last .
+H12:   (50000 - altitude) div 250 >= integer32__first .
+H13:   (50000 - altitude) div 250 <= integer32__last .
+H14:   (50000 - altitude) div 250 < 100 .
+        ->
+C1:    100 >= integer32__first .
+C2:    100 <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 43:
+
+function_relative_drag_at_altitude_3.
+H1:    altitude >= 0 .
+H2:    altitude <= 25000 .
+H3:    altitude >= pos_meter__first .
+H4:    altitude <= pos_meter__last .
+H5:    (50000 - altitude) div 250 >= integer32__first .
+H6:    (50000 - altitude) div 250 <= integer32__last .
+H7:    250 <> 0 .
+H8:    50000 - altitude >= long_integer__base__first .
+H9:    50000 - altitude <= long_integer__base__last .
+H10:   altitude >= integer32__first .
+H11:   altitude <= integer32__last .
+H12:   (50000 - altitude) div 250 >= integer32__first .
+H13:   (50000 - altitude) div 250 <= integer32__last .
+H14:   not ((50000 - altitude) div 250 < 100) .
+H15:   (50000 - altitude) div 250 >= integer32__first .
+H16:   (50000 - altitude) div 250 <= integer32__last .
+H17:   (50000 - altitude) div 250 > 200 .
+        ->
+C1:    200 >= integer32__first .
+C2:    200 <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 47:
+
+function_relative_drag_at_altitude_4.
+H1:    altitude >= 0 .
+H2:    altitude <= 25000 .
+H3:    altitude >= pos_meter__first .
+H4:    altitude <= pos_meter__last .
+H5:    (50000 - altitude) div 250 >= integer32__first .
+H6:    (50000 - altitude) div 250 <= integer32__last .
+H7:    250 <> 0 .
+H8:    50000 - altitude >= long_integer__base__first .
+H9:    50000 - altitude <= long_integer__base__last .
+H10:   altitude >= integer32__first .
+H11:   altitude <= integer32__last .
+H12:   (50000 - altitude) div 250 >= integer32__first .
+H13:   (50000 - altitude) div 250 <= integer32__last .
+H14:   (50000 - altitude) div 250 < 100 .
+H15:   100 >= integer32__first .
+H16:   100 <= integer32__last .
+H17:   100 >= integer32__first .
+H18:   100 <= integer32__last .
+        ->
+C1:    100 - 100 >= long_integer__base__first .
+C2:    100 - 100 <= long_integer__base__last .
+ 
+
+function_relative_drag_at_altitude_5.
+H1:    altitude >= 0 .
+H2:    altitude <= 25000 .
+H3:    altitude >= pos_meter__first .
+H4:    altitude <= pos_meter__last .
+H5:    (50000 - altitude) div 250 >= integer32__first .
+H6:    (50000 - altitude) div 250 <= integer32__last .
+H7:    250 <> 0 .
+H8:    50000 - altitude >= long_integer__base__first .
+H9:    50000 - altitude <= long_integer__base__last .
+H10:   altitude >= integer32__first .
+H11:   altitude <= integer32__last .
+H12:   (50000 - altitude) div 250 >= integer32__first .
+H13:   (50000 - altitude) div 250 <= integer32__last .
+H14:   not ((50000 - altitude) div 250 < 100) .
+H15:   (50000 - altitude) div 250 >= integer32__first .
+H16:   (50000 - altitude) div 250 <= integer32__last .
+H17:   (50000 - altitude) div 250 > 200 .
+H18:   200 >= integer32__first .
+H19:   200 <= integer32__last .
+H20:   200 >= integer32__first .
+H21:   200 <= integer32__last .
+        ->
+C1:    200 - 100 >= long_integer__base__first .
+C2:    200 - 100 <= long_integer__base__last .
+ 
+
+function_relative_drag_at_altitude_6.
+H1:    altitude >= 0 .
+H2:    altitude <= 25000 .
+H3:    altitude >= pos_meter__first .
+H4:    altitude <= pos_meter__last .
+H5:    (50000 - altitude) div 250 >= integer32__first .
+H6:    (50000 - altitude) div 250 <= integer32__last .
+H7:    250 <> 0 .
+H8:    50000 - altitude >= long_integer__base__first .
+H9:    50000 - altitude <= long_integer__base__last .
+H10:   altitude >= integer32__first .
+H11:   altitude <= integer32__last .
+H12:   (50000 - altitude) div 250 >= integer32__first .
+H13:   (50000 - altitude) div 250 <= integer32__last .
+H14:   not ((50000 - altitude) div 250 < 100) .
+H15:   (50000 - altitude) div 250 >= integer32__first .
+H16:   (50000 - altitude) div 250 <= integer32__last .
+H17:   not ((50000 - altitude) div 250 > 200) .
+H18:   (50000 - altitude) div 250 >= integer32__first .
+H19:   (50000 - altitude) div 250 <= integer32__last .
+        ->
+C1:    (50000 - altitude) div 250 - 100 >= long_integer__base__first .
+C2:    (50000 - altitude) div 250 - 100 <= long_integer__base__last .
+ 
+
+For path(s) from start to finish:
+
+function_relative_drag_at_altitude_7.
+H1:    altitude >= 0 .
+H2:    altitude <= 25000 .
+H3:    altitude >= pos_meter__first .
+H4:    altitude <= pos_meter__last .
+H5:    (50000 - altitude) div 250 >= integer32__first .
+H6:    (50000 - altitude) div 250 <= integer32__last .
+H7:    250 <> 0 .
+H8:    50000 - altitude >= long_integer__base__first .
+H9:    50000 - altitude <= long_integer__base__last .
+H10:   altitude >= integer32__first .
+H11:   altitude <= integer32__last .
+H12:   (50000 - altitude) div 250 >= integer32__first .
+H13:   (50000 - altitude) div 250 <= integer32__last .
+H14:   (50000 - altitude) div 250 < 100 .
+H15:   100 >= integer32__first .
+H16:   100 <= integer32__last .
+H17:   100 >= integer32__first .
+H18:   100 <= integer32__last .
+H19:   100 - 100 >= long_integer__base__first .
+H20:   100 - 100 <= long_integer__base__last .
+        ->
+C1:    true .
+C2:    100 - 100 >= percent__first .
+C3:    100 - 100 <= percent__last .
+ 
+
+function_relative_drag_at_altitude_8.
+H1:    altitude >= 0 .
+H2:    altitude <= 25000 .
+H3:    altitude >= pos_meter__first .
+H4:    altitude <= pos_meter__last .
+H5:    (50000 - altitude) div 250 >= integer32__first .
+H6:    (50000 - altitude) div 250 <= integer32__last .
+H7:    250 <> 0 .
+H8:    50000 - altitude >= long_integer__base__first .
+H9:    50000 - altitude <= long_integer__base__last .
+H10:   altitude >= integer32__first .
+H11:   altitude <= integer32__last .
+H12:   (50000 - altitude) div 250 >= integer32__first .
+H13:   (50000 - altitude) div 250 <= integer32__last .
+H14:   not ((50000 - altitude) div 250 < 100) .
+H15:   (50000 - altitude) div 250 >= integer32__first .
+H16:   (50000 - altitude) div 250 <= integer32__last .
+H17:   (50000 - altitude) div 250 > 200 .
+H18:   200 >= integer32__first .
+H19:   200 <= integer32__last .
+H20:   200 >= integer32__first .
+H21:   200 <= integer32__last .
+H22:   200 - 100 >= long_integer__base__first .
+H23:   200 - 100 <= long_integer__base__last .
+        ->
+C1:    true .
+C2:    200 - 100 >= percent__first .
+C3:    200 - 100 <= percent__last .
+ 
+
+function_relative_drag_at_altitude_9.
+H1:    altitude >= 0 .
+H2:    altitude <= 25000 .
+H3:    altitude >= pos_meter__first .
+H4:    altitude <= pos_meter__last .
+H5:    (50000 - altitude) div 250 >= integer32__first .
+H6:    (50000 - altitude) div 250 <= integer32__last .
+H7:    250 <> 0 .
+H8:    50000 - altitude >= long_integer__base__first .
+H9:    50000 - altitude <= long_integer__base__last .
+H10:   altitude >= integer32__first .
+H11:   altitude <= integer32__last .
+H12:   (50000 - altitude) div 250 >= integer32__first .
+H13:   (50000 - altitude) div 250 <= integer32__last .
+H14:   not ((50000 - altitude) div 250 < 100) .
+H15:   (50000 - altitude) div 250 >= integer32__first .
+H16:   (50000 - altitude) div 250 <= integer32__last .
+H17:   not ((50000 - altitude) div 250 > 200) .
+H18:   (50000 - altitude) div 250 >= integer32__first .
+H19:   (50000 - altitude) div 250 <= integer32__last .
+H20:   (50000 - altitude) div 250 - 100 >= long_integer__base__first .
+H21:   (50000 - altitude) div 250 - 100 <= long_integer__base__last .
+        ->
+C1:    true .
+C2:    (50000 - altitude) div 250 - 100 >= percent__first .
+C3:    (50000 - altitude) div 250 - 100 <= percent__last .
+ 
+

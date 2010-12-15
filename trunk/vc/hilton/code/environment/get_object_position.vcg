@@ -1,0 +1,93 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.70
+
+                 procedure environment.Get_Object_Position
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 141:
+
+procedure_get_object_position_1.
+H1:    true .
+H2:    h >= handle__first .
+H3:    h <= handle__last .
+H4:    true .
+H5:    for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_h(element(
+           object_array, [i___1])) >= valid_handle__first) and (fld_h(element(
+           object_array, [i___1])) <= valid_handle__last))) .
+H6:    for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_r(element(
+           object_array, [i___1])) >= rcs__first) and (fld_r(element(
+           object_array, [i___1])) <= rcs__last))) .
+H7:    for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_k(element(
+           object_array, [i___1])) >= kind__first) and (fld_k(element(
+           object_array, [i___1])) <= kind__last))) .
+H8:    true .
+H9:    not ((h < valid_handle__first) or (h > valid_handle__last)) .
+        ->
+C1:    h >= valid_handle__first .
+C2:    h <= valid_handle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 142:
+
+procedure_get_object_position_2.
+H1:    true .
+H2:    h >= handle__first .
+H3:    h <= handle__last .
+H4:    true .
+H5:    for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_h(element(
+           object_array, [i___1])) >= valid_handle__first) and (fld_h(element(
+           object_array, [i___1])) <= valid_handle__last))) .
+H6:    for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_r(element(
+           object_array, [i___1])) >= rcs__first) and (fld_r(element(
+           object_array, [i___1])) <= rcs__last))) .
+H7:    for_all(i___1: handle, ((i___1 >= valid_handle__first) and (
+           i___1 <= valid_handle__last)) -> ((fld_k(element(
+           object_array, [i___1])) >= kind__first) and (fld_k(element(
+           object_array, [i___1])) <= kind__last))) .
+H8:    true .
+H9:    not ((h < valid_handle__first) or (h > valid_handle__last)) .
+H10:   h >= valid_handle__first .
+H11:   h <= valid_handle__last .
+H12:   element(item_valid, [h]) .
+        ->
+C1:    h >= valid_handle__first .
+C2:    h <= valid_handle__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_get_object_position_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_get_object_position_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_get_object_position_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_get_object_position_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_get_object_position_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+

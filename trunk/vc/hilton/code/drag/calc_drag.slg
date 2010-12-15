@@ -1,0 +1,3935 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:33
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure drag.Calc_Drag
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_1.  @@@@@@@@@@
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  speed >= - 2147483648
+<S>  New C3:  speed >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  speed <= 2147483647
+<S>  New C4:  speed <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  speed < 307
+-S-  Applied substitution rule calc_drag_rules(2).
+     This was achieved by replacing all occurrences of lin_quad_boundary by:
+          100.
+<S>  New H9:  speed < 100
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+***  Proved C1:  speed >= - 2147483648
+     using hypothesis H4.
+***  Proved C3:  speed >= - 2147483648
+     using hypothesis H4.
+***  Proved C2:  speed <= 2147483647
+     using hypothesis H8.
+***  Proved C4:  speed <= 2147483647
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_2.  @@@@@@@@@@
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  speed * speed div lin_quad_boundary >= - 2147483648
+<S>  New C4:  lin_quad_boundary >= - 2147483648
+<S>  New C8:  speed >= - 2147483648
+<S>  New C10:  speed >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  speed * speed div lin_quad_boundary <= 2147483647
+<S>  New C5:  lin_quad_boundary <= 2147483647
+<S>  New C9:  speed <= 2147483647
+<S>  New C11:  speed <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(2).
+     This was achieved by replacing all occurrences of lin_quad_boundary by:
+          100.
+<S>  New H9:  not speed < 100
+<S>  New C3:  true
+<S>  New C1:  speed * speed div 100 >= - 2147483648
+<S>  New C4:  true
+<S>  New C2:  speed * speed div 100 <= 2147483647
+<S>  New C5:  true
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C6:  speed * speed >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C7:  speed * speed <= 2147483647
+***  Proved C8:  speed >= - 2147483648
+     using hypothesis H9.
+***  Proved C10:  speed >= - 2147483648
+     using hypothesis H9.
+***  Proved C3:  true
+***  Proved C4:  true
+***  Proved C5:  true
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  100 <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  speed < 307
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+***  Proved C9:  speed <= 2147483647
+     using hypothesis H8.
+***  Proved C11:  speed <= 2147483647
+     using hypothesis H8.
+***  Proved C6:  speed * speed >= - 2147483648
+     using hypothesis H4.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H4 (redundant, given H9).
+---  Eliminated hypothesis H5 (redundant, given H8).
+***  Proved C1:  speed * speed div 100 >= - 2147483648
+     using hypothesis H4.
+***  Proved C2:  speed * speed div 100 <= 2147483647
+     using hypotheses H8 & H9.
+***  Proved C7:  speed * speed <= 2147483647
+     using hypotheses H8 & H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_3.  @@@@@@@@@@
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  speed - constants__mach1_sea >= - 2147483648
+<S>  New C3:  speed - constants__mach1_sea >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  speed - constants__mach1_sea <= 2147483647
+<S>  New C4:  speed - constants__mach1_sea <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New C5:  speed - constants__mach1_sea >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New C6:  speed - constants__mach1_sea <= 2147483647
+***  Proved C1:  speed - constants__mach1_sea >= - 2147483648
+     using hypothesis H8.
+***  Proved C3:  speed - constants__mach1_sea >= - 2147483648
+     using hypothesis H8.
+***  Proved C5:  speed - constants__mach1_sea >= - 2147483648
+     using hypothesis H8.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+<S>  New C2:  speed <= 2147483954
+<S>  New C4:  speed <= 2147483954
+<S>  New C6:  speed <= 2147483954
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  speed < 400
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+***  Proved C2:  speed <= 2147483954
+     using hypothesis H9.
+***  Proved C4:  speed <= 2147483954
+     using hypothesis H9.
+***  Proved C6:  speed <= 2147483954
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_4.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  true
+***  Proved C5:  true
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H10:  speed - constants__mach1_sea >= - 2147483648
+<S>  New C1:  drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000 >= - 
+          2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H11:  speed - constants__mach1_sea <= 2147483647
+<S>  New C2:  drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000 <= 
+          2147483647
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  (speed - constants__mach1_sea) * ((speed - constants__mach1_sea) 
+          * (speed - constants__mach1_sea)) div 2000 >= - 2147483648
+<S>  New C6:  (speed - constants__mach1_sea) * ((speed - constants__mach1_sea) 
+          * (speed - constants__mach1_sea)) >= - 2147483648
+<S>  New C8:  (speed - constants__mach1_sea) * (speed - constants__mach1_sea) 
+          >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  (speed - constants__mach1_sea) * ((speed - constants__mach1_sea) 
+          * (speed - constants__mach1_sea)) div 2000 <= 2147483647
+<S>  New C7:  (speed - constants__mach1_sea) * ((speed - constants__mach1_sea) 
+          * (speed - constants__mach1_sea)) <= 2147483647
+<S>  New C9:  (speed - constants__mach1_sea) * (speed - constants__mach1_sea) 
+          <= 2147483647
+***  Proved C6:  (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) >= - 
+          2147483648
+     using hypothesis H8.
+***  Proved C8:  (speed - constants__mach1_sea) * (speed - constants__mach1_sea)
+           >= - 2147483648
+     using hypothesis H8.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+<S>  New H10:  speed >= - 2147483341
+<S>  New H11:  speed <= 2147483954
+<S>  New H14:  speed - 307 >= measuretypes__meter_per_sec__base__first
+<S>  New H15:  speed - 307 <= measuretypes__meter_per_sec__base__last
+<S>  New C1:  drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000 >= - 2147483648
+<S>  New C2:  drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000 <= 2147483647
+<S>  New C3:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= - 
+          2147483648
+<S>  New C4:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 
+          2147483647
+<S>  New C7:  (speed - 307) * ((speed - 307) * (speed - 307)) <= 2147483647
+<S>  New C9:  (speed - 307) * (speed - 307) <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  speed < 400
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New C1:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= - 
+          2147484590
+<S>  New C2:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 
+          2147482705
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H14:  speed >= - 2147483341
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H15:  speed <= 2147483954
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H14 (duplicate of H10).
+---  Eliminated hypothesis H15 (duplicate of H11).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H5 (redundant, given H9).
+---  Eliminated hypothesis H10 (redundant, given H8).
+---  Eliminated hypothesis H11 (redundant, given H9).
+***  Proved C3:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= - 
+          2147483648
+     using hypothesis H8.
+***  Proved C4:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 
+          2147483647
+     using hypotheses H9, H8 & H9.
+***  Proved C7:  (speed - 307) * ((speed - 307) * (speed - 307)) <= 2147483647
+     using hypotheses H9, H8 & H9.
+***  Proved C9:  (speed - 307) * (speed - 307) <= 2147483647
+     using hypotheses H8 & H9.
+***  Proved C1:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= - 
+          2147484590
+     using hypothesis H8.
+***  Proved C2:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 
+          2147482705
+     using hypotheses H9, H8 & H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_5.  @@@@@@@@@@
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  postsonic_boundary - transonic_boundary >= - 2147483648
+<S>  New C3:  postsonic_boundary - transonic_boundary >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  postsonic_boundary - transonic_boundary <= 2147483647
+<S>  New C4:  postsonic_boundary - transonic_boundary <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New C5:  postsonic_boundary - transonic_boundary >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New C6:  postsonic_boundary - transonic_boundary <= 2147483647
+***  Proved C1:  postsonic_boundary - transonic_boundary >= - 2147483648
+     using hypotheses H9 & H10.
+***  Proved C3:  postsonic_boundary - transonic_boundary >= - 2147483648
+     using hypotheses H9 & H10.
+***  Proved C5:  postsonic_boundary - transonic_boundary >= - 2147483648
+     using hypotheses H9 & H10.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  transonic_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  400 <= speed
+<S>  New C2:  postsonic_boundary <= 2147484047
+<S>  New C4:  postsonic_boundary <= 2147484047
+<S>  New C6:  postsonic_boundary <= 2147484047
+-S-  Applied substitution rule calc_drag_rules(4).
+     This was achieved by replacing all occurrences of postsonic_boundary by:
+          450.
+<S>  New H10:  speed < 450
+<S>  New C2:  true
+<S>  New C4:  true
+<S>  New C6:  true
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+***  Proved C2:  true
+***  Proved C4:  true
+***  Proved C6:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_6.  @@@@@@@@@@
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H11:  postsonic_boundary - transonic_boundary >= - 2147483648
+<S>  New C1:  drag_at_transonic - drag_at_mach1 >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H12:  postsonic_boundary - transonic_boundary <= 2147483647
+<S>  New C2:  drag_at_transonic - drag_at_mach1 <= 2147483647
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  transonic_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  400 <= speed
+<S>  New H11:  postsonic_boundary >= - 2147483248
+<S>  New H12:  postsonic_boundary <= 2147484047
+<S>  New H15:  postsonic_boundary - 400 >= 
+          measuretypes__meter_per_sec__base__first
+<S>  New H16:  postsonic_boundary - 400 <= 
+          measuretypes__meter_per_sec__base__last
+-S-  Applied substitution rule calc_drag_rules(4).
+     This was achieved by replacing all occurrences of postsonic_boundary by:
+          450.
+<S>  New H10:  speed < 450
+<S>  New H11:  true
+<S>  New H12:  true
+<S>  New H15:  50 >= measuretypes__meter_per_sec__base__first
+<S>  New H16:  50 <= measuretypes__meter_per_sec__base__last
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New C1:  drag_at_transonic >= - 2147482706
+<S>  New C2:  drag_at_transonic <= 2147484589
+-S-  Applied substitution rule calc_drag_rules(6).
+     This was achieved by replacing all occurrences of drag_at_transonic by:
+          1344.
+<S>  New C1:  true
+<S>  New C2:  true
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H15:  true
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H16:  true
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_7.  @@@@@@@@@@
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H18).
+***  Proved C5:  postsonic_boundary - transonic_boundary <> 0
+     using hypotheses H9 & H10.
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H11:  postsonic_boundary - transonic_boundary >= - 2147483648
+<S>  New H17:  drag_at_transonic - drag_at_mach1 >= - 2147483648
+<S>  New C1:  drag_at_mach1 + (postsonic_boundary - speed) * (drag_at_transonic 
+          - drag_at_mach1) div (postsonic_boundary - transonic_boundary) >= - 
+          2147483648
+<S>  New C8:  postsonic_boundary - speed >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H12:  postsonic_boundary - transonic_boundary <= 2147483647
+<S>  New H18:  drag_at_transonic - drag_at_mach1 <= 2147483647
+<S>  New C2:  drag_at_mach1 + (postsonic_boundary - speed) * (drag_at_transonic 
+          - drag_at_mach1) div (postsonic_boundary - transonic_boundary) <= 
+          2147483647
+<S>  New C9:  postsonic_boundary - speed <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  (postsonic_boundary - speed) * (drag_at_transonic - drag_at_mach1)
+           div (postsonic_boundary - transonic_boundary) >= - 2147483648
+<S>  New C6:  (postsonic_boundary - speed) * (drag_at_transonic - drag_at_mach1)
+           >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  (postsonic_boundary - speed) * (drag_at_transonic - drag_at_mach1)
+           div (postsonic_boundary - transonic_boundary) <= 2147483647
+<S>  New C7:  (postsonic_boundary - speed) * (drag_at_transonic - drag_at_mach1)
+           <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H15:  postsonic_boundary - transonic_boundary >= - 2147483648
+<S>  New C10:  postsonic_boundary - speed >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H16:  postsonic_boundary - transonic_boundary <= 2147483647
+<S>  New C11:  postsonic_boundary - speed <= 2147483647
+***  Proved C8:  postsonic_boundary - speed >= - 2147483648
+     using hypothesis H10.
+***  Proved C9:  postsonic_boundary - speed <= 2147483647
+     using hypotheses H9 & H12.
+***  Proved C10:  postsonic_boundary - speed >= - 2147483648
+     using hypothesis H10.
+***  Proved C11:  postsonic_boundary - speed <= 2147483647
+     using hypotheses H9 & H12.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  transonic_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  400 <= speed
+<S>  New H11:  postsonic_boundary >= - 2147483248
+<S>  New H12:  postsonic_boundary <= 2147484047
+<S>  New H15:  postsonic_boundary >= - 2147483248
+<S>  New H16:  postsonic_boundary <= 2147484047
+<S>  New C1:  drag_at_mach1 + (postsonic_boundary - speed) * (drag_at_transonic 
+          - drag_at_mach1) div (postsonic_boundary - 400) >= - 2147483648
+<S>  New C2:  drag_at_mach1 + (postsonic_boundary - speed) * (drag_at_transonic 
+          - drag_at_mach1) div (postsonic_boundary - 400) <= 2147483647
+<S>  New C3:  (postsonic_boundary - speed) * (drag_at_transonic - drag_at_mach1)
+           div (postsonic_boundary - 400) >= - 2147483648
+<S>  New C4:  (postsonic_boundary - speed) * (drag_at_transonic - drag_at_mach1)
+           div (postsonic_boundary - 400) <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(4).
+     This was achieved by replacing all occurrences of postsonic_boundary by:
+          450.
+<S>  New H10:  speed < 450
+<S>  New H11:  true
+<S>  New H12:  true
+<S>  New H15:  true
+<S>  New H16:  true
+<S>  New C6:  (450 - speed) * (drag_at_transonic - drag_at_mach1) >= - 
+          2147483648
+<S>  New C7:  (450 - speed) * (drag_at_transonic - drag_at_mach1) <= 2147483647
+<S>  New C1:  drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50 >= - 2147483648
+<S>  New C2:  drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50 <= 2147483647
+<S>  New C3:  (450 - speed) * (drag_at_transonic - drag_at_mach1) div 50 >= - 
+          2147483648
+<S>  New C4:  (450 - speed) * (drag_at_transonic - drag_at_mach1) div 50 <= 
+          2147483647
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New H17:  drag_at_transonic >= - 2147482706
+<S>  New H18:  drag_at_transonic <= 2147484589
+<S>  New C6:  (450 - speed) * (drag_at_transonic - 942) >= - 2147483648
+<S>  New C7:  (450 - speed) * (drag_at_transonic - 942) <= 2147483647
+<S>  New C1:  (450 - speed) * (drag_at_transonic - 942) div 50 >= - 2147484590
+<S>  New C2:  (450 - speed) * (drag_at_transonic - 942) div 50 <= 2147482705
+<S>  New C3:  (450 - speed) * (drag_at_transonic - 942) div 50 >= - 2147483648
+<S>  New C4:  (450 - speed) * (drag_at_transonic - 942) div 50 <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(6).
+     This was achieved by replacing all occurrences of drag_at_transonic by:
+          1344.
+<S>  New H17:  true
+<S>  New H18:  true
+<S>  New C6:  (450 - speed) * 402 >= - 2147483648
+<S>  New C7:  (450 - speed) * 402 <= 2147483647
+<S>  New C1:  (450 - speed) * 402 div 50 >= - 2147484590
+<S>  New C2:  (450 - speed) * 402 div 50 <= 2147482705
+<S>  New C3:  (450 - speed) * 402 div 50 >= - 2147483648
+<S>  New C4:  (450 - speed) * 402 div 50 <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+***  Proved C6:  (450 - speed) * 402 >= - 2147483648
+     via its standard form, which is:
+     Std.Fm C6:  180900 - 402 * speed >= - 2147483648
+     using hypothesis H5.
+***  Proved C7:  (450 - speed) * 402 <= 2147483647
+     via its standard form, which is:
+     Std.Fm C7:  402 * speed > - 2147302748
+     using hypothesis H4.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H5 (redundant, given H10).
+---  Eliminated hypothesis H8 (redundant, given H9).
+***  Proved C1:  (450 - speed) * 402 div 50 >= - 2147484590
+     using hypothesis H10.
+***  Proved C2:  (450 - speed) * 402 div 50 <= 2147482705
+     using hypothesis H9.
+***  Proved C3:  (450 - speed) * 402 div 50 >= - 2147483648
+     using hypothesis H10.
+***  Proved C4:  (450 - speed) * 402 div 50 <= 2147483647
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_8.  @@@@@@@@@@
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  speed - postsonic_boundary >= - 2147483648
+<S>  New C3:  speed - postsonic_boundary >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  speed - postsonic_boundary <= 2147483647
+<S>  New C4:  speed - postsonic_boundary <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New C5:  speed - postsonic_boundary >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New C6:  speed - postsonic_boundary <= 2147483647
+***  Proved C1:  speed - postsonic_boundary >= - 2147483648
+     using hypothesis H10.
+***  Proved C3:  speed - postsonic_boundary >= - 2147483648
+     using hypothesis H10.
+***  Proved C5:  speed - postsonic_boundary >= - 2147483648
+     using hypothesis H10.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  transonic_boundary <= speed
+>>>  Restructured hypothesis H10 into:
+     >>>  H10:  postsonic_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  400 <= speed
+-S-  Applied substitution rule calc_drag_rules(4).
+     This was achieved by replacing all occurrences of postsonic_boundary by:
+          450.
+<S>  New H10:  450 <= speed
+<S>  New C2:  speed <= 2147484097
+<S>  New C4:  speed <= 2147484097
+<S>  New C6:  speed <= 2147484097
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+***  Proved C2:  speed <= 2147484097
+     using hypothesis H5.
+***  Proved C4:  speed <= 2147484097
+     using hypothesis H5.
+***  Proved C6:  speed <= 2147484097
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_9.  @@@@@@@@@@
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H12).
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H11:  speed - postsonic_boundary >= - 2147483648
+<S>  New C1:  drag_at_mach1 + (speed - postsonic_boundary) >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H12:  speed - postsonic_boundary <= 2147483647
+<S>  New C2:  drag_at_mach1 + (speed - postsonic_boundary) <= 2147483647
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  transonic_boundary <= speed
+>>>  Restructured hypothesis H10 into:
+     >>>  H10:  postsonic_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  400 <= speed
+-S-  Applied substitution rule calc_drag_rules(4).
+     This was achieved by replacing all occurrences of postsonic_boundary by:
+          450.
+<S>  New H10:  450 <= speed
+<S>  New H11:  speed >= - 2147483198
+<S>  New H12:  speed <= 2147484097
+<S>  New H15:  speed - 450 >= measuretypes__meter_per_sec__base__first
+<S>  New H16:  speed - 450 <= measuretypes__meter_per_sec__base__last
+<S>  New C1:  drag_at_mach1 + (speed - 450) >= - 2147483648
+<S>  New C2:  drag_at_mach1 + (speed - 450) <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New C1:  speed - 450 >= - 2147484590
+<S>  New C2:  speed - 450 <= 2147482705
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H15:  speed >= - 2147483198
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H16:  speed <= 2147484097
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+%%%  Simplified C1 further, to give:
+     %%%  C1:  speed >= - 2147484140
+%%%  Simplified C2 further, to give:
+     %%%  C2:  speed <= 2147483155
+***  Proved C1:  speed >= - 2147484140
+     using hypothesis H8.
+***  Proved C2:  speed <= 2147483155
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_10.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C3:  altitude >= pos_meter__first
+     using hypothesis H6.
+***  Proved C4:  altitude <= pos_meter__last
+     using hypothesis H7.
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  speed < 307
+-S-  Applied substitution rule calc_drag_rules(2).
+     This was achieved by replacing all occurrences of lin_quad_boundary by:
+          100.
+<S>  New H9:  speed < 100
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H10:  speed >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H11:  speed <= 2147483647
+***  Proved C1:  altitude >= 0
+     using hypothesis H6.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H5 (redundant, given H8).
+---  Eliminated hypothesis H8 (redundant, given H9).
+---  Eliminated hypothesis H10 (redundant, given H4).
+---  Eliminated hypothesis H11 (redundant, given H9).
+     +++  New H16:  long_integer__size >= 0
+     +++  New H17:  measuretypes__meter__size >= 0
+     +++  New H18:  measuretypes__meter_per_sec__size >= 0
+     +++  New H19:  measuretypes__newton__size >= 0
+     +++  New H20:  drag_coefficient__size >= 0
+     +++  New H21:  drag_coefficient__base__first <= 
+          drag_coefficient__base__last
+     +++  New H22:  pos_meter__size >= 0
+     +++  New H23:  pos_meter_per_sec__size >= 0
+     +++  New H24:  integer32__size >= 0
+     +++  New H25:  percent__size >= 0
+     +++  New H26:  drag_coefficient__base__first <= 1
+     +++  New H27:  drag_coefficient__base__last >= 1000
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_11.  @@@@@@@@@@
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+***  Proved C3:  altitude >= pos_meter__first
+     using hypothesis H6.
+***  Proved C4:  altitude <= pos_meter__last
+     using hypothesis H7.
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  lin_quad_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  speed < 307
+-S-  Applied substitution rule calc_drag_rules(2).
+     This was achieved by replacing all occurrences of lin_quad_boundary by:
+          100.
+<S>  New H9:  100 <= speed
+<S>  New H10:  speed * speed div 100 >= integer32__first
+<S>  New H11:  speed * speed div 100 <= integer32__last
+<S>  New H12:  true
+<S>  New H13:  100 >= integer32__first
+<S>  New H14:  100 <= integer32__last
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H15:  speed * speed >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H16:  speed * speed <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H17:  speed >= - 2147483648
+<S>  New H10:  speed * speed div 100 >= - 2147483648
+<S>  New H13:  true
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H18:  speed <= 2147483647
+<S>  New H11:  speed * speed div 100 <= 2147483647
+<S>  New H14:  true
+***  Proved C1:  altitude >= 0
+     using hypothesis H6.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H4 (redundant, given H9).
+---  Eliminated hypothesis H5 (redundant, given H8).
+---  Eliminated hypothesis H17 (redundant, given H9).
+---  Eliminated hypothesis H18 (redundant, given H8).
+     +++  New H23:  long_integer__size >= 0
+     +++  New H24:  measuretypes__meter__size >= 0
+     +++  New H25:  measuretypes__meter_per_sec__size >= 0
+     +++  New H26:  measuretypes__newton__size >= 0
+     +++  New H27:  drag_coefficient__size >= 0
+     +++  New H28:  drag_coefficient__base__first <= 
+          drag_coefficient__base__last
+     +++  New H29:  pos_meter__size >= 0
+     +++  New H30:  pos_meter_per_sec__size >= 0
+     +++  New H31:  integer32__size >= 0
+     +++  New H32:  percent__size >= 0
+     +++  New H33:  drag_coefficient__base__first <= 1
+     +++  New H34:  drag_coefficient__base__last >= 1000
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_12.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  true
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+***  Proved C3:  altitude >= pos_meter__first
+     using hypothesis H6.
+***  Proved C4:  altitude <= pos_meter__last
+     using hypothesis H7.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+<S>  New H10:  speed - 307 >= integer32__first
+<S>  New H11:  speed - 307 <= integer32__last
+<S>  New H14:  speed - 307 >= measuretypes__meter_per_sec__base__first
+<S>  New H15:  speed - 307 <= measuretypes__meter_per_sec__base__last
+<S>  New H18:  drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000 >= integer32__first
+<S>  New H19:  drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000 <= integer32__last
+<S>  New H20:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= 
+          long_integer__base__first
+<S>  New H21:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 
+          long_integer__base__last
+<S>  New H23:  (speed - 307) * ((speed - 307) * (speed - 307)) >= 
+          long_integer__base__first
+<S>  New H24:  (speed - 307) * ((speed - 307) * (speed - 307)) <= 
+          long_integer__base__last
+<S>  New H25:  (speed - 307) * (speed - 307) >= long_integer__base__first
+<S>  New H26:  (speed - 307) * (speed - 307) <= long_integer__base__last
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  speed < 400
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New H18:  942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 
+          >= integer32__first
+<S>  New H19:  942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 
+          <= integer32__last
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H20:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= - 
+          2147483648
+<S>  New H23:  (speed - 307) * ((speed - 307) * (speed - 307)) >= - 2147483648
+<S>  New H25:  (speed - 307) * (speed - 307) >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H21:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 
+          2147483647
+<S>  New H24:  (speed - 307) * ((speed - 307) * (speed - 307)) <= 2147483647
+<S>  New H26:  (speed - 307) * (speed - 307) <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H14:  speed >= - 2147483341
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H15:  speed <= 2147483954
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H10:  speed >= - 2147483341
+<S>  New H18:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= - 
+          2147484590
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H11:  speed <= 2147483954
+<S>  New H19:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 
+          2147482705
+***  Proved C1:  altitude >= 0
+     using hypothesis H6.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H14 (duplicate of H10).
+---  Eliminated hypothesis H15 (duplicate of H11).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H5 (redundant, given H9).
+---  Eliminated hypothesis H10 (redundant, given H8).
+---  Eliminated hypothesis H11 (redundant, given H9).
+     +++  New H29:  long_integer__size >= 0
+     +++  New H30:  measuretypes__meter__size >= 0
+     +++  New H31:  measuretypes__meter_per_sec__size >= 0
+     +++  New H32:  measuretypes__newton__size >= 0
+     +++  New H33:  drag_coefficient__size >= 0
+     +++  New H34:  drag_coefficient__base__first <= 
+          drag_coefficient__base__last
+     +++  New H35:  pos_meter__size >= 0
+     +++  New H36:  pos_meter_per_sec__size >= 0
+     +++  New H37:  integer32__size >= 0
+     +++  New H38:  percent__size >= 0
+     +++  New H39:  drag_coefficient__base__first <= 1
+     +++  New H40:  drag_coefficient__base__last >= 1000
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_13.  @@@@@@@@@@
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H24).
+***  Proved C3:  altitude >= pos_meter__first
+     using hypothesis H6.
+***  Proved C4:  altitude <= pos_meter__last
+     using hypothesis H7.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  transonic_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  400 <= speed
+<S>  New H11:  postsonic_boundary - 400 >= integer32__first
+<S>  New H12:  postsonic_boundary - 400 <= integer32__last
+<S>  New H15:  postsonic_boundary - 400 >= 
+          measuretypes__meter_per_sec__base__first
+<S>  New H16:  postsonic_boundary - 400 <= 
+          measuretypes__meter_per_sec__base__last
+<S>  New H23:  drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400) >= 
+          integer32__first
+<S>  New H24:  drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400) <= 
+          integer32__last
+<S>  New H25:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) div (postsonic_boundary - 400) >= 
+          long_integer__base__first
+<S>  New H26:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) div (postsonic_boundary - 400) <= 
+          long_integer__base__last
+<S>  New H27:  postsonic_boundary <> 400
+-S-  Applied substitution rule calc_drag_rules(4).
+     This was achieved by replacing all occurrences of postsonic_boundary by:
+          450.
+<S>  New H10:  speed < 450
+<S>  New H28:  (450 - speed) * (drag_at_transonic - drag_at_mach1) >= 
+          long_integer__base__first
+<S>  New H29:  (450 - speed) * (drag_at_transonic - drag_at_mach1) <= 
+          long_integer__base__last
+<S>  New H30:  450 - speed >= integer32__first
+<S>  New H31:  450 - speed <= integer32__last
+<S>  New H32:  450 - speed >= measuretypes__meter_per_sec__base__first
+<S>  New H33:  450 - speed <= measuretypes__meter_per_sec__base__last
+<S>  New H11:  50 >= integer32__first
+<S>  New H12:  50 <= integer32__last
+<S>  New H15:  50 >= measuretypes__meter_per_sec__base__first
+<S>  New H16:  50 <= measuretypes__meter_per_sec__base__last
+<S>  New H23:  drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50 >= integer32__first
+<S>  New H24:  drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50 <= integer32__last
+<S>  New H25:  (450 - speed) * (drag_at_transonic - drag_at_mach1) div 50 >= 
+          long_integer__base__first
+<S>  New H26:  (450 - speed) * (drag_at_transonic - drag_at_mach1) div 50 <= 
+          long_integer__base__last
+<S>  New H27:  true
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New H17:  drag_at_transonic - 942 >= integer32__first
+<S>  New H18:  drag_at_transonic - 942 <= integer32__last
+<S>  New H28:  (450 - speed) * (drag_at_transonic - 942) >= 
+          long_integer__base__first
+<S>  New H29:  (450 - speed) * (drag_at_transonic - 942) <= 
+          long_integer__base__last
+<S>  New H23:  942 + (450 - speed) * (drag_at_transonic - 942) div 50 >= 
+          integer32__first
+<S>  New H24:  942 + (450 - speed) * (drag_at_transonic - 942) div 50 <= 
+          integer32__last
+<S>  New H25:  (450 - speed) * (drag_at_transonic - 942) div 50 >= 
+          long_integer__base__first
+<S>  New H26:  (450 - speed) * (drag_at_transonic - 942) div 50 <= 
+          long_integer__base__last
+-S-  Applied substitution rule calc_drag_rules(6).
+     This was achieved by replacing all occurrences of drag_at_transonic by:
+          1344.
+<S>  New H17:  402 >= integer32__first
+<S>  New H18:  402 <= integer32__last
+<S>  New H28:  (450 - speed) * 402 >= long_integer__base__first
+<S>  New H29:  (450 - speed) * 402 <= long_integer__base__last
+<S>  New H23:  942 + (450 - speed) * 402 div 50 >= integer32__first
+<S>  New H24:  942 + (450 - speed) * 402 div 50 <= integer32__last
+<S>  New H25:  (450 - speed) * 402 div 50 >= long_integer__base__first
+<S>  New H26:  (450 - speed) * 402 div 50 <= long_integer__base__last
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H28:  (450 - speed) * 402 >= - 2147483648
+<S>  New H25:  (450 - speed) * 402 div 50 >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H29:  (450 - speed) * 402 <= 2147483647
+<S>  New H26:  (450 - speed) * 402 div 50 <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H32:  speed <= 2147484098
+<S>  New H15:  true
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H33:  - 2147483197 <= speed
+<S>  New H16:  true
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H30:  speed <= 2147484098
+<S>  New H11:  true
+<S>  New H17:  true
+<S>  New H23:  (450 - speed) * 402 div 50 >= - 2147484590
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H31:  - 2147483197 <= speed
+<S>  New H12:  true
+<S>  New H18:  true
+<S>  New H24:  (450 - speed) * 402 div 50 <= 2147482705
+***  Proved C1:  altitude >= 0
+     using hypothesis H6.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H32 (duplicate of H30).
+---  Eliminated hypothesis H33 (duplicate of H31).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H5 (redundant, given H10).
+---  Eliminated hypothesis H8 (redundant, given H9).
+---  Eliminated hypothesis H23 (redundant, given H25).
+---  Eliminated hypothesis H26 (redundant, given H24).
+---  Eliminated hypothesis H28 (redundant, given H10).
+---  Eliminated hypothesis H29 (redundant, given H9).
+---  Eliminated hypothesis H30 (redundant, given H10).
+---  Eliminated hypothesis H31 (redundant, given H9).
+     +++  New H36:  long_integer__size >= 0
+     +++  New H37:  measuretypes__meter__size >= 0
+     +++  New H38:  measuretypes__meter_per_sec__size >= 0
+     +++  New H39:  measuretypes__newton__size >= 0
+     +++  New H40:  drag_coefficient__size >= 0
+     +++  New H41:  drag_coefficient__base__first <= 
+          drag_coefficient__base__last
+     +++  New H42:  pos_meter__size >= 0
+     +++  New H43:  pos_meter_per_sec__size >= 0
+     +++  New H44:  integer32__size >= 0
+     +++  New H45:  percent__size >= 0
+     +++  New H46:  drag_coefficient__base__first <= 1
+     +++  New H47:  drag_coefficient__base__last >= 1000
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_14.  @@@@@@@@@@
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H20).
+***  Proved C3:  altitude >= pos_meter__first
+     using hypothesis H6.
+***  Proved C4:  altitude <= pos_meter__last
+     using hypothesis H7.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  transonic_boundary <= speed
+>>>  Restructured hypothesis H10 into:
+     >>>  H10:  postsonic_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  400 <= speed
+-S-  Applied substitution rule calc_drag_rules(4).
+     This was achieved by replacing all occurrences of postsonic_boundary by:
+          450.
+<S>  New H10:  450 <= speed
+<S>  New H11:  speed - 450 >= integer32__first
+<S>  New H12:  speed - 450 <= integer32__last
+<S>  New H15:  speed - 450 >= measuretypes__meter_per_sec__base__first
+<S>  New H16:  speed - 450 <= measuretypes__meter_per_sec__base__last
+<S>  New H19:  drag_at_mach1 + (speed - 450) >= integer32__first
+<S>  New H20:  drag_at_mach1 + (speed - 450) <= integer32__last
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New H19:  942 + (speed - 450) >= integer32__first
+<S>  New H20:  942 + (speed - 450) <= integer32__last
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H15:  speed >= - 2147483198
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H16:  speed <= 2147484097
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H11:  speed >= - 2147483198
+<S>  New H19:  speed - 450 >= - 2147484590
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H12:  speed <= 2147484097
+<S>  New H20:  speed - 450 <= 2147482705
+%%%  Simplified H19 further, to give:
+     %%%  H19:  speed >= - 2147484140
+%%%  Simplified H20 further, to give:
+     %%%  H20:  speed <= 2147483155
+***  Proved C1:  altitude >= 0
+     using hypothesis H6.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H15 (duplicate of H11).
+---  Eliminated hypothesis H16 (duplicate of H12).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H8 (redundant, given H9).
+---  Eliminated hypothesis H9 (redundant, given H10).
+---  Eliminated hypothesis H11 (redundant, given H10).
+---  Eliminated hypothesis H12 (redundant, given H5).
+---  Eliminated hypothesis H19 (redundant, given H10).
+---  Eliminated hypothesis H20 (redundant, given H5).
+     +++  New H23:  long_integer__size >= 0
+     +++  New H24:  measuretypes__meter__size >= 0
+     +++  New H25:  measuretypes__meter_per_sec__size >= 0
+     +++  New H26:  measuretypes__newton__size >= 0
+     +++  New H27:  drag_coefficient__size >= 0
+     +++  New H28:  drag_coefficient__base__first <= 
+          drag_coefficient__base__last
+     +++  New H29:  pos_meter__size >= 0
+     +++  New H30:  pos_meter_per_sec__size >= 0
+     +++  New H31:  integer32__size >= 0
+     +++  New H32:  percent__size >= 0
+     +++  New H33:  drag_coefficient__base__first <= 1
+     +++  New H34:  drag_coefficient__base__last >= 1000
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_15.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H10:  speed >= - 2147483648
+<S>  New C1:  speed * relative_drag_at_altitude(altitude) div 100 >= - 
+          2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H11:  speed <= 2147483647
+<S>  New C2:  speed * relative_drag_at_altitude(altitude) div 100 <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C4:  speed * relative_drag_at_altitude(altitude) >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C5:  speed * relative_drag_at_altitude(altitude) <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  speed < 307
+-S-  Applied substitution rule calc_drag_rules(2).
+     This was achieved by replacing all occurrences of lin_quad_boundary by:
+          100.
+<S>  New H9:  speed < 100
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(49).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H20:  relative_drag_at_altitude(altitude) >= 0
+-S-  Applied substitution rule calc_drag_rules(50).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H21:  relative_drag_at_altitude(altitude) <= 100
+***  Proved C4:  speed * relative_drag_at_altitude(altitude) >= - 2147483648
+     using hypotheses H4 & H20.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H16 (duplicate of H6).
+---  Eliminated hypothesis H5 (redundant, given H8).
+---  Eliminated hypothesis H7 (redundant, given H17).
+---  Eliminated hypothesis H8 (redundant, given H9).
+---  Eliminated hypothesis H10 (redundant, given H4).
+---  Eliminated hypothesis H11 (redundant, given H9).
+***  Proved C1:  speed * relative_drag_at_altitude(altitude) div 100 >= - 
+          2147483648
+     using hypotheses H4 & H20.
+***  Proved C2:  speed * relative_drag_at_altitude(altitude) div 100 <= 
+          2147483647
+     using hypotheses H9 & H21.
+***  Proved C5:  speed * relative_drag_at_altitude(altitude) <= 2147483647
+     using hypotheses H9 & H21.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_16.  @@@@@@@@@@
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H10:  speed * speed div lin_quad_boundary >= - 2147483648
+<S>  New H13:  lin_quad_boundary >= - 2147483648
+<S>  New H17:  speed >= - 2147483648
+<S>  New C1:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) div 100 >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H11:  speed * speed div lin_quad_boundary <= 2147483647
+<S>  New H14:  lin_quad_boundary <= 2147483647
+<S>  New H18:  speed <= 2147483647
+<S>  New C2:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) div 100 <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H15:  speed * speed >= - 2147483648
+<S>  New C4:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H16:  speed * speed <= 2147483647
+<S>  New C5:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) <= 2147483647
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  lin_quad_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  speed < 307
+-S-  Applied substitution rule calc_drag_rules(2).
+     This was achieved by replacing all occurrences of lin_quad_boundary by:
+          100.
+<S>  New H9:  100 <= speed
+<S>  New H10:  speed * speed div 100 >= - 2147483648
+<S>  New H11:  speed * speed div 100 <= 2147483647
+<S>  New H12:  true
+<S>  New H13:  true
+<S>  New H14:  true
+<S>  New C1:  speed * speed div 100 * relative_drag_at_altitude(altitude) div 
+          100 >= - 2147483648
+<S>  New C2:  speed * speed div 100 * relative_drag_at_altitude(altitude) div 
+          100 <= 2147483647
+<S>  New C4:  speed * speed div 100 * relative_drag_at_altitude(altitude) >= - 
+          2147483648
+<S>  New C5:  speed * speed div 100 * relative_drag_at_altitude(altitude) <= 
+          2147483647
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(49).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H27:  relative_drag_at_altitude(altitude) >= 0
+-S-  Applied substitution rule calc_drag_rules(50).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H28:  relative_drag_at_altitude(altitude) <= 100
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H23 (duplicate of H6).
+---  Eliminated hypothesis H4 (redundant, given H9).
+---  Eliminated hypothesis H5 (redundant, given H8).
+---  Eliminated hypothesis H7 (redundant, given H24).
+---  Eliminated hypothesis H17 (redundant, given H9).
+---  Eliminated hypothesis H18 (redundant, given H8).
+***  Proved C1:  speed * speed div 100 * relative_drag_at_altitude(altitude) 
+          div 100 >= - 2147483648
+     using hypotheses H9 & H27.
+***  Proved C2:  speed * speed div 100 * relative_drag_at_altitude(altitude) 
+          div 100 <= 2147483647
+     using hypotheses H8, H9 & H28.
+***  Proved C4:  speed * speed div 100 * relative_drag_at_altitude(altitude) >= 
+          - 2147483648
+     using hypotheses H9 & H27.
+***  Proved C5:  speed * speed div 100 * relative_drag_at_altitude(altitude) <= 
+          2147483647
+     using hypotheses H8, H9 & H28.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_17.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  true
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H10:  speed - constants__mach1_sea >= - 2147483648
+<S>  New H18:  drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000 >= - 
+          2147483648
+<S>  New C1:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) div 100 >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H11:  speed - constants__mach1_sea <= 2147483647
+<S>  New H19:  drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000 <= 
+          2147483647
+<S>  New C2:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) div 100 <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H20:  (speed - constants__mach1_sea) * ((speed - constants__mach1_sea) 
+          * (speed - constants__mach1_sea)) div 2000 >= - 2147483648
+<S>  New H23:  (speed - constants__mach1_sea) * ((speed - constants__mach1_sea) 
+          * (speed - constants__mach1_sea)) >= - 2147483648
+<S>  New H25:  (speed - constants__mach1_sea) * (speed - constants__mach1_sea) 
+          >= - 2147483648
+<S>  New C4:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H21:  (speed - constants__mach1_sea) * ((speed - constants__mach1_sea) 
+          * (speed - constants__mach1_sea)) div 2000 <= 2147483647
+<S>  New H24:  (speed - constants__mach1_sea) * ((speed - constants__mach1_sea) 
+          * (speed - constants__mach1_sea)) <= 2147483647
+<S>  New H26:  (speed - constants__mach1_sea) * (speed - constants__mach1_sea) 
+          <= 2147483647
+<S>  New C5:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) <= 2147483647
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+<S>  New H10:  speed >= - 2147483341
+<S>  New H11:  speed <= 2147483954
+<S>  New H14:  speed - 307 >= measuretypes__meter_per_sec__base__first
+<S>  New H15:  speed - 307 <= measuretypes__meter_per_sec__base__last
+<S>  New H18:  drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000 >= - 2147483648
+<S>  New H19:  drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000 <= 2147483647
+<S>  New H20:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= - 
+          2147483648
+<S>  New H21:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 
+          2147483647
+<S>  New H23:  (speed - 307) * ((speed - 307) * (speed - 307)) >= - 2147483648
+<S>  New H24:  (speed - 307) * ((speed - 307) * (speed - 307)) <= 2147483647
+<S>  New H25:  (speed - 307) * (speed - 307) >= - 2147483648
+<S>  New H26:  (speed - 307) * (speed - 307) <= 2147483647
+<S>  New C1:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) div 100 >= - 
+          2147483648
+<S>  New C2:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) div 100 <= 2147483647
+<S>  New C4:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) >= - 2147483648
+<S>  New C5:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  speed < 400
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New H18:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= - 
+          2147484590
+<S>  New H19:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 
+          2147482705
+<S>  New C1:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) div 100 >= - 2147483648
+<S>  New C2:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) div 100 <= 2147483647
+<S>  New C4:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) >= - 2147483648
+<S>  New C5:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H14:  speed >= - 2147483341
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H15:  speed <= 2147483954
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(49).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H33:  relative_drag_at_altitude(altitude) >= 0
+-S-  Applied substitution rule calc_drag_rules(50).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H34:  relative_drag_at_altitude(altitude) <= 100
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H14 (duplicate of H10).
+---  Eliminated hypothesis H15 (duplicate of H11).
+---  Eliminated hypothesis H29 (duplicate of H6).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H5 (redundant, given H9).
+---  Eliminated hypothesis H7 (redundant, given H30).
+---  Eliminated hypothesis H10 (redundant, given H8).
+---  Eliminated hypothesis H11 (redundant, given H9).
+***  Proved C1:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 
+          2000) * relative_drag_at_altitude(altitude) div 100 >= - 2147483648
+     using hypotheses H8, H8 & H33.
+***  Proved C2:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 
+          2000) * relative_drag_at_altitude(altitude) div 100 <= 2147483647
+     using hypotheses H9, H8, H9 & H34.
+***  Proved C4:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 
+          2000) * relative_drag_at_altitude(altitude) >= - 2147483648
+     using hypotheses H8, H8 & H33.
+***  Proved C5:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 
+          2000) * relative_drag_at_altitude(altitude) <= 2147483647
+     using hypotheses H9, H8, H9 & H34.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_18.  @@@@@@@@@@
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H11:  postsonic_boundary - transonic_boundary >= - 2147483648
+<S>  New H17:  drag_at_transonic - drag_at_mach1 >= - 2147483648
+<S>  New H23:  drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary) >= - 2147483648
+<S>  New H30:  postsonic_boundary - speed >= - 2147483648
+<S>  New C1:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) div 100 >= 
+          - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H12:  postsonic_boundary - transonic_boundary <= 2147483647
+<S>  New H18:  drag_at_transonic - drag_at_mach1 <= 2147483647
+<S>  New H24:  drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary) <= 2147483647
+<S>  New H31:  postsonic_boundary - speed <= 2147483647
+<S>  New C2:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) div 100 <= 
+          2147483647
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H25:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) div (postsonic_boundary - transonic_boundary) >= - 
+          2147483648
+<S>  New H28:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) >= - 2147483648
+<S>  New C4:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) >= - 
+          2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H26:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) div (postsonic_boundary - transonic_boundary) <= 
+          2147483647
+<S>  New H29:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) <= 2147483647
+<S>  New C5:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) <= 
+          2147483647
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  transonic_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  400 <= speed
+<S>  New H11:  postsonic_boundary >= - 2147483248
+<S>  New H12:  postsonic_boundary <= 2147484047
+<S>  New H15:  postsonic_boundary - 400 >= 
+          measuretypes__meter_per_sec__base__first
+<S>  New H16:  postsonic_boundary - 400 <= 
+          measuretypes__meter_per_sec__base__last
+<S>  New H23:  drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400) >= 
+          - 2147483648
+<S>  New H24:  drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400) <= 
+          2147483647
+<S>  New H25:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) div (postsonic_boundary - 400) >= - 2147483648
+<S>  New H26:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) div (postsonic_boundary - 400) <= 2147483647
+<S>  New H27:  postsonic_boundary <> 400
+<S>  New C1:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) div 100 >= - 2147483648
+<S>  New C2:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) div 100 <= 2147483647
+<S>  New C4:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) >= - 2147483648
+<S>  New C5:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(4).
+     This was achieved by replacing all occurrences of postsonic_boundary by:
+          450.
+<S>  New H10:  speed < 450
+<S>  New H28:  (450 - speed) * (drag_at_transonic - drag_at_mach1) >= - 
+          2147483648
+<S>  New H29:  (450 - speed) * (drag_at_transonic - drag_at_mach1) <= 2147483647
+<S>  New H30:  speed <= 2147484098
+<S>  New H31:  - 2147483197 <= speed
+<S>  New H32:  450 - speed >= measuretypes__meter_per_sec__base__first
+<S>  New H33:  450 - speed <= measuretypes__meter_per_sec__base__last
+<S>  New H11:  true
+<S>  New H12:  true
+<S>  New H15:  50 >= measuretypes__meter_per_sec__base__first
+<S>  New H16:  50 <= measuretypes__meter_per_sec__base__last
+<S>  New H23:  drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50 >= - 2147483648
+<S>  New H24:  drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50 <= 2147483647
+<S>  New H25:  (450 - speed) * (drag_at_transonic - drag_at_mach1) div 50 >= - 
+          2147483648
+<S>  New H26:  (450 - speed) * (drag_at_transonic - drag_at_mach1) div 50 <= 
+          2147483647
+<S>  New H27:  true
+<S>  New C1:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) div 100 
+          >= - 2147483648
+<S>  New C2:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) div 100 
+          <= 2147483647
+<S>  New C4:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) >= - 
+          2147483648
+<S>  New C5:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) <= 
+          2147483647
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New H17:  drag_at_transonic >= - 2147482706
+<S>  New H18:  drag_at_transonic <= 2147484589
+<S>  New H28:  (450 - speed) * (drag_at_transonic - 942) >= - 2147483648
+<S>  New H29:  (450 - speed) * (drag_at_transonic - 942) <= 2147483647
+<S>  New H23:  (450 - speed) * (drag_at_transonic - 942) div 50 >= - 2147484590
+<S>  New H24:  (450 - speed) * (drag_at_transonic - 942) div 50 <= 2147482705
+<S>  New H25:  (450 - speed) * (drag_at_transonic - 942) div 50 >= - 2147483648
+<S>  New H26:  (450 - speed) * (drag_at_transonic - 942) div 50 <= 2147483647
+<S>  New C1:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) div 100 >= - 2147483648
+<S>  New C2:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) div 100 <= 2147483647
+<S>  New C4:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) >= - 2147483648
+<S>  New C5:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(6).
+     This was achieved by replacing all occurrences of drag_at_transonic by:
+          1344.
+<S>  New H17:  true
+<S>  New H18:  true
+<S>  New H28:  (450 - speed) * 402 >= - 2147483648
+<S>  New H29:  (450 - speed) * 402 <= 2147483647
+<S>  New H23:  (450 - speed) * 402 div 50 >= - 2147484590
+<S>  New H24:  (450 - speed) * 402 div 50 <= 2147482705
+<S>  New H25:  (450 - speed) * 402 div 50 >= - 2147483648
+<S>  New H26:  (450 - speed) * 402 div 50 <= 2147483647
+<S>  New C1:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 >= - 2147483648
+<S>  New C2:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 <= 2147483647
+<S>  New C4:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) >= - 2147483648
+<S>  New C5:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H32:  speed <= 2147484098
+<S>  New H15:  true
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H33:  - 2147483197 <= speed
+<S>  New H16:  true
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(49).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H40:  relative_drag_at_altitude(altitude) >= 0
+-S-  Applied substitution rule calc_drag_rules(50).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H41:  relative_drag_at_altitude(altitude) <= 100
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H38 (true-hypothesis).
+---  Eliminated hypothesis H39 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H32 (duplicate of H30).
+---  Eliminated hypothesis H33 (duplicate of H31).
+---  Eliminated hypothesis H36 (duplicate of H6).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H5 (redundant, given H10).
+---  Eliminated hypothesis H7 (redundant, given H37).
+---  Eliminated hypothesis H8 (redundant, given H9).
+---  Eliminated hypothesis H23 (redundant, given H25).
+---  Eliminated hypothesis H26 (redundant, given H24).
+---  Eliminated hypothesis H28 (redundant, given H10).
+---  Eliminated hypothesis H29 (redundant, given H9).
+---  Eliminated hypothesis H30 (redundant, given H10).
+---  Eliminated hypothesis H31 (redundant, given H9).
+***  Proved C1:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 >= - 2147483648
+     using hypotheses H10 & H40.
+***  Proved C2:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 <= 2147483647
+     using hypotheses H9 & H41.
+***  Proved C4:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) >= - 2147483648
+     using hypotheses H10 & H40.
+***  Proved C5:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) <= 2147483647
+     using hypotheses H9 & H41.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_19.  @@@@@@@@@@
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C3:  true
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H11:  speed - postsonic_boundary >= - 2147483648
+<S>  New H19:  drag_at_mach1 + (speed - postsonic_boundary) >= - 2147483648
+<S>  New C1:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) div 100 >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H12:  speed - postsonic_boundary <= 2147483647
+<S>  New H20:  drag_at_mach1 + (speed - postsonic_boundary) <= 2147483647
+<S>  New C2:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) div 100 <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C4:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C5:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) <= 2147483647
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  transonic_boundary <= speed
+>>>  Restructured hypothesis H10 into:
+     >>>  H10:  postsonic_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  400 <= speed
+-S-  Applied substitution rule calc_drag_rules(4).
+     This was achieved by replacing all occurrences of postsonic_boundary by:
+          450.
+<S>  New H10:  450 <= speed
+<S>  New H11:  speed >= - 2147483198
+<S>  New H12:  speed <= 2147484097
+<S>  New H15:  speed - 450 >= measuretypes__meter_per_sec__base__first
+<S>  New H16:  speed - 450 <= measuretypes__meter_per_sec__base__last
+<S>  New H19:  drag_at_mach1 + (speed - 450) >= - 2147483648
+<S>  New H20:  drag_at_mach1 + (speed - 450) <= 2147483647
+<S>  New C1:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) div 100 >= - 2147483648
+<S>  New C2:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) div 100 <= 2147483647
+<S>  New C4:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) >= - 2147483648
+<S>  New C5:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New H19:  speed - 450 >= - 2147484590
+<S>  New H20:  speed - 450 <= 2147482705
+<S>  New C1:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 
+          100 >= - 2147483648
+<S>  New C2:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 
+          100 <= 2147483647
+<S>  New C4:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) >= - 
+          2147483648
+<S>  New C5:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) <= 
+          2147483647
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H15:  speed >= - 2147483198
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H16:  speed <= 2147484097
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(49).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H27:  relative_drag_at_altitude(altitude) >= 0
+-S-  Applied substitution rule calc_drag_rules(50).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H28:  relative_drag_at_altitude(altitude) <= 100
+%%%  Simplified H19 further, to give:
+     %%%  H19:  speed >= - 2147484140
+%%%  Simplified H20 further, to give:
+     %%%  H20:  speed <= 2147483155
+***  Proved C4:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) >= 
+          - 2147483648
+     using hypotheses H8 & H27.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H15 (duplicate of H11).
+---  Eliminated hypothesis H16 (duplicate of H12).
+---  Eliminated hypothesis H23 (duplicate of H6).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H7 (redundant, given H24).
+---  Eliminated hypothesis H8 (redundant, given H9).
+---  Eliminated hypothesis H9 (redundant, given H10).
+---  Eliminated hypothesis H11 (redundant, given H10).
+---  Eliminated hypothesis H12 (redundant, given H5).
+---  Eliminated hypothesis H19 (redundant, given H10).
+---  Eliminated hypothesis H20 (redundant, given H5).
+***  Proved C1:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) 
+          div 100 >= - 2147483648
+     using hypotheses H8 & H27.
+***  Proved C2:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) 
+          div 100 <= 2147483647
+     using hypotheses H5 & H28.
+***  Proved C5:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) <= 
+          2147483647
+     using hypotheses H5 & H28.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_20.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified H24 on reading formula in, to give:
+     %%%  H24:  true
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H23).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C7:  true
+-S-  Applied substitution rule calc_drag_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New C1:  speed * relative_drag_at_altitude(altitude) div 100 * profile div 
+          2 >= - 1000000
+<S>  New C3:  speed * relative_drag_at_altitude(altitude) div 100 * profile div 
+          2 >= - 1000000
+-S-  Applied substitution rule calc_drag_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New C2:  speed * relative_drag_at_altitude(altitude) div 100 * profile div 
+          2 <= 1000000
+<S>  New C4:  speed * relative_drag_at_altitude(altitude) div 100 * profile div 
+          2 <= 1000000
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H25:  speed * relative_drag_at_altitude(altitude) >= - 2147483648
+<S>  New C5:  speed * relative_drag_at_altitude(altitude) div 100 * profile div 
+          2 >= - 2147483648
+<S>  New C8:  speed * relative_drag_at_altitude(altitude) div 100 * profile >= 
+          - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H26:  speed * relative_drag_at_altitude(altitude) <= 2147483647
+<S>  New C6:  speed * relative_drag_at_altitude(altitude) div 100 * profile div 
+          2 <= 2147483647
+<S>  New C9:  speed * relative_drag_at_altitude(altitude) div 100 * profile <= 
+          2147483647
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H10:  speed >= - 2147483648
+<S>  New H22:  speed * relative_drag_at_altitude(altitude) div 100 >= - 
+          2147483648
+<S>  New C10:  profile >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H11:  speed <= 2147483647
+<S>  New H23:  speed * relative_drag_at_altitude(altitude) div 100 <= 2147483647
+<S>  New C11:  profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  speed < 307
+-S-  Applied substitution rule calc_drag_rules(2).
+     This was achieved by replacing all occurrences of lin_quad_boundary by:
+          100.
+<S>  New H9:  speed < 100
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(49).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H20:  relative_drag_at_altitude(altitude) >= 0
+-S-  Applied substitution rule calc_drag_rules(50).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H21:  relative_drag_at_altitude(altitude) <= 100
+***  Proved C10:  profile >= - 2147483648
+     using hypothesis H2.
+***  Proved C11:  profile <= 2147483647
+     using hypothesis H3.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H16 (duplicate of H6).
+---  Eliminated hypothesis H5 (redundant, given H8).
+---  Eliminated hypothesis H7 (redundant, given H17).
+---  Eliminated hypothesis H8 (redundant, given H9).
+---  Eliminated hypothesis H10 (redundant, given H4).
+---  Eliminated hypothesis H11 (redundant, given H9).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  speed * relative_drag_at_altitude(altitude) div 100 * profile 
+          div 2 >= - 1000000
+     using hypotheses H4, H20 & H2.
+***  Proved C2:  speed * relative_drag_at_altitude(altitude) div 100 * profile 
+          div 2 <= 1000000
+     using hypotheses H9, H21 & H3.
+***  Proved C5:  speed * relative_drag_at_altitude(altitude) div 100 * profile 
+          div 2 >= - 2147483648
+     using hypotheses H4, H20 & H2.
+***  Proved C8:  speed * relative_drag_at_altitude(altitude) div 100 * profile 
+          >= - 2147483648
+     using hypotheses H4, H20 & H2.
+***  Proved C6:  speed * relative_drag_at_altitude(altitude) div 100 * profile 
+          div 2 <= 2147483647
+     using hypotheses H9, H21 & H3.
+***  Proved C9:  speed * relative_drag_at_altitude(altitude) div 100 * profile 
+          <= 2147483647
+     using hypotheses H9, H21 & H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_21.  @@@@@@@@@@
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified H31 on reading formula in, to give:
+     %%%  H31:  true
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H30).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C7:  true
+-S-  Applied substitution rule calc_drag_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New C1:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 >= - 1000000
+<S>  New C3:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 >= - 1000000
+-S-  Applied substitution rule calc_drag_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New C2:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 <= 1000000
+<S>  New C4:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 <= 1000000
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H15:  speed * speed >= - 2147483648
+<S>  New H32:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) >= - 2147483648
+<S>  New C5:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 >= - 2147483648
+<S>  New C8:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) div 100 * profile >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H16:  speed * speed <= 2147483647
+<S>  New H33:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) <= 2147483647
+<S>  New C6:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 <= 2147483647
+<S>  New C9:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) div 100 * profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H10:  speed * speed div lin_quad_boundary >= - 2147483648
+<S>  New H13:  lin_quad_boundary >= - 2147483648
+<S>  New H17:  speed >= - 2147483648
+<S>  New H29:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) div 100 >= - 2147483648
+<S>  New C10:  profile >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H11:  speed * speed div lin_quad_boundary <= 2147483647
+<S>  New H14:  lin_quad_boundary <= 2147483647
+<S>  New H18:  speed <= 2147483647
+<S>  New H30:  speed * speed div lin_quad_boundary * relative_drag_at_altitude(
+          altitude) div 100 <= 2147483647
+<S>  New C11:  profile <= 2147483647
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  lin_quad_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  speed < 307
+-S-  Applied substitution rule calc_drag_rules(2).
+     This was achieved by replacing all occurrences of lin_quad_boundary by:
+          100.
+<S>  New H9:  100 <= speed
+<S>  New H10:  speed * speed div 100 >= - 2147483648
+<S>  New H11:  speed * speed div 100 <= 2147483647
+<S>  New H12:  true
+<S>  New H13:  true
+<S>  New H14:  true
+<S>  New H29:  speed * speed div 100 * relative_drag_at_altitude(altitude) div 
+          100 >= - 2147483648
+<S>  New H30:  speed * speed div 100 * relative_drag_at_altitude(altitude) div 
+          100 <= 2147483647
+<S>  New H32:  speed * speed div 100 * relative_drag_at_altitude(altitude) >= - 
+          2147483648
+<S>  New H33:  speed * speed div 100 * relative_drag_at_altitude(altitude) <= 
+          2147483647
+<S>  New C1:  speed * speed div 100 * relative_drag_at_altitude(altitude) div 
+          100 * profile div 2 >= - 1000000
+<S>  New C3:  speed * speed div 100 * relative_drag_at_altitude(altitude) div 
+          100 * profile div 2 >= - 1000000
+<S>  New C2:  speed * speed div 100 * relative_drag_at_altitude(altitude) div 
+          100 * profile div 2 <= 1000000
+<S>  New C4:  speed * speed div 100 * relative_drag_at_altitude(altitude) div 
+          100 * profile div 2 <= 1000000
+<S>  New C5:  speed * speed div 100 * relative_drag_at_altitude(altitude) div 
+          100 * profile div 2 >= - 2147483648
+<S>  New C8:  speed * speed div 100 * relative_drag_at_altitude(altitude) div 
+          100 * profile >= - 2147483648
+<S>  New C6:  speed * speed div 100 * relative_drag_at_altitude(altitude) div 
+          100 * profile div 2 <= 2147483647
+<S>  New C9:  speed * speed div 100 * relative_drag_at_altitude(altitude) div 
+          100 * profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(49).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H27:  relative_drag_at_altitude(altitude) >= 0
+-S-  Applied substitution rule calc_drag_rules(50).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H28:  relative_drag_at_altitude(altitude) <= 100
+***  Proved C10:  profile >= - 2147483648
+     using hypothesis H2.
+***  Proved C11:  profile <= 2147483647
+     using hypothesis H3.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H23 (duplicate of H6).
+---  Eliminated hypothesis H4 (redundant, given H9).
+---  Eliminated hypothesis H5 (redundant, given H8).
+---  Eliminated hypothesis H7 (redundant, given H24).
+---  Eliminated hypothesis H17 (redundant, given H9).
+---  Eliminated hypothesis H18 (redundant, given H8).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  speed * speed div 100 * relative_drag_at_altitude(altitude) 
+          div 100 * profile div 2 >= - 1000000
+     using hypotheses H9, H27 & H2.
+***  Proved C2:  speed * speed div 100 * relative_drag_at_altitude(altitude) 
+          div 100 * profile div 2 <= 1000000
+     using hypotheses H8, H9, H28 & H3.
+***  Proved C5:  speed * speed div 100 * relative_drag_at_altitude(altitude) 
+          div 100 * profile div 2 >= - 2147483648
+     using hypotheses H9, H27 & H2.
+***  Proved C8:  speed * speed div 100 * relative_drag_at_altitude(altitude) 
+          div 100 * profile >= - 2147483648
+     using hypotheses H9, H27 & H2.
+***  Proved C6:  speed * speed div 100 * relative_drag_at_altitude(altitude) 
+          div 100 * profile div 2 <= 2147483647
+     using hypotheses H8, H9, H28 & H3.
+***  Proved C9:  speed * speed div 100 * relative_drag_at_altitude(altitude) 
+          div 100 * profile <= 2147483647
+     using hypotheses H8, H9, H28 & H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_22.  @@@@@@@@@@
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  true
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified H37 on reading formula in, to give:
+     %%%  H37:  true
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H35).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H36).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C7:  true
+-S-  Applied substitution rule calc_drag_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New C1:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          1000000
+<S>  New C3:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          1000000
+-S-  Applied substitution rule calc_drag_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New C2:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 1000000
+<S>  New C4:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 1000000
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H20:  (speed - constants__mach1_sea) * ((speed - constants__mach1_sea) 
+          * (speed - constants__mach1_sea)) div 2000 >= - 2147483648
+<S>  New H23:  (speed - constants__mach1_sea) * ((speed - constants__mach1_sea) 
+          * (speed - constants__mach1_sea)) >= - 2147483648
+<S>  New H25:  (speed - constants__mach1_sea) * (speed - constants__mach1_sea) 
+          >= - 2147483648
+<S>  New H38:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) >= - 2147483648
+<S>  New C5:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          2147483648
+<S>  New C8:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) div 100 * profile >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H21:  (speed - constants__mach1_sea) * ((speed - constants__mach1_sea) 
+          * (speed - constants__mach1_sea)) div 2000 <= 2147483647
+<S>  New H24:  (speed - constants__mach1_sea) * ((speed - constants__mach1_sea) 
+          * (speed - constants__mach1_sea)) <= 2147483647
+<S>  New H26:  (speed - constants__mach1_sea) * (speed - constants__mach1_sea) 
+          <= 2147483647
+<S>  New H39:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) <= 2147483647
+<S>  New C6:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 
+          2147483647
+<S>  New C9:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) div 100 * profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H10:  speed - constants__mach1_sea >= - 2147483648
+<S>  New H18:  drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000 >= - 
+          2147483648
+<S>  New H35:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) div 100 >= - 2147483648
+<S>  New C10:  profile >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H11:  speed - constants__mach1_sea <= 2147483647
+<S>  New H19:  drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000 <= 
+          2147483647
+<S>  New H36:  (drag_at_mach1 + (speed - constants__mach1_sea) * ((speed - 
+          constants__mach1_sea) * (speed - constants__mach1_sea)) div 2000) * 
+          relative_drag_at_altitude(altitude) div 100 <= 2147483647
+<S>  New C11:  profile <= 2147483647
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+<S>  New H10:  speed >= - 2147483341
+<S>  New H11:  speed <= 2147483954
+<S>  New H14:  speed - 307 >= measuretypes__meter_per_sec__base__first
+<S>  New H15:  speed - 307 <= measuretypes__meter_per_sec__base__last
+<S>  New H18:  drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000 >= - 2147483648
+<S>  New H19:  drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000 <= 2147483647
+<S>  New H20:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= - 
+          2147483648
+<S>  New H21:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 
+          2147483647
+<S>  New H23:  (speed - 307) * ((speed - 307) * (speed - 307)) >= - 2147483648
+<S>  New H24:  (speed - 307) * ((speed - 307) * (speed - 307)) <= 2147483647
+<S>  New H25:  (speed - 307) * (speed - 307) >= - 2147483648
+<S>  New H26:  (speed - 307) * (speed - 307) <= 2147483647
+<S>  New H35:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) div 100 >= - 
+          2147483648
+<S>  New H36:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) div 100 <= 2147483647
+<S>  New H38:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) >= - 2147483648
+<S>  New H39:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) <= 2147483647
+<S>  New C1:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) div 100 * profile div 
+          2 >= - 1000000
+<S>  New C3:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) div 100 * profile div 
+          2 >= - 1000000
+<S>  New C2:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) div 100 * profile div 
+          2 <= 1000000
+<S>  New C4:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) div 100 * profile div 
+          2 <= 1000000
+<S>  New C5:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) div 100 * profile div 
+          2 >= - 2147483648
+<S>  New C8:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) div 100 * profile >= 
+          - 2147483648
+<S>  New C6:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) div 100 * profile div 
+          2 <= 2147483647
+<S>  New C9:  (drag_at_mach1 + (speed - 307) * ((speed - 307) * (speed - 307)) 
+          div 2000) * relative_drag_at_altitude(altitude) div 100 * profile <= 
+          2147483647
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  speed < 400
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New H18:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 >= - 
+          2147484590
+<S>  New H19:  (speed - 307) * ((speed - 307) * (speed - 307)) div 2000 <= 
+          2147482705
+<S>  New H35:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) div 100 >= - 2147483648
+<S>  New H36:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) div 100 <= 2147483647
+<S>  New H38:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) >= - 2147483648
+<S>  New H39:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) <= 2147483647
+<S>  New C1:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          1000000
+<S>  New C3:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          1000000
+<S>  New C2:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 
+          1000000
+<S>  New C4:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 
+          1000000
+<S>  New C5:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          2147483648
+<S>  New C8:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) div 100 * profile >= - 
+          2147483648
+<S>  New C6:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 
+          2147483647
+<S>  New C9:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 2000) 
+          * relative_drag_at_altitude(altitude) div 100 * profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H14:  speed >= - 2147483341
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H15:  speed <= 2147483954
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(49).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H33:  relative_drag_at_altitude(altitude) >= 0
+-S-  Applied substitution rule calc_drag_rules(50).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H34:  relative_drag_at_altitude(altitude) <= 100
+***  Proved C10:  profile >= - 2147483648
+     using hypothesis H2.
+***  Proved C11:  profile <= 2147483647
+     using hypothesis H3.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H37 (true-hypothesis).
+---  Eliminated hypothesis H40 (true-hypothesis).
+---  Eliminated hypothesis H41 (true-hypothesis).
+---  Eliminated hypothesis H14 (duplicate of H10).
+---  Eliminated hypothesis H15 (duplicate of H11).
+---  Eliminated hypothesis H29 (duplicate of H6).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H5 (redundant, given H9).
+---  Eliminated hypothesis H7 (redundant, given H30).
+---  Eliminated hypothesis H10 (redundant, given H8).
+---  Eliminated hypothesis H11 (redundant, given H9).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 
+          2000) * relative_drag_at_altitude(altitude) div 100 * profile div 2 
+          >= - 1000000
+     using hypotheses H8, H8, H33 & H2.
+***  Proved C2:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 
+          2000) * relative_drag_at_altitude(altitude) div 100 * profile div 2 
+          <= 1000000
+     using hypotheses H9, H8, H9, H34 & H3.
+***  Proved C5:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 
+          2000) * relative_drag_at_altitude(altitude) div 100 * profile div 2 
+          >= - 2147483648
+     using hypotheses H8, H8, H33 & H2.
+***  Proved C8:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 
+          2000) * relative_drag_at_altitude(altitude) div 100 * profile >= - 
+          2147483648
+     using hypotheses H8, H8, H33 & H2.
+***  Proved C6:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 
+          2000) * relative_drag_at_altitude(altitude) div 100 * profile div 2 
+          <= 2147483647
+     using hypotheses H9, H8, H9, H34 & H3.
+***  Proved C9:  (942 + (speed - 307) * ((speed - 307) * (speed - 307)) div 
+          2000) * relative_drag_at_altitude(altitude) div 100 * profile <= 
+          2147483647
+     using hypotheses H9, H8, H9, H34 & H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_23.  @@@@@@@@@@
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified H44 on reading formula in, to give:
+     %%%  H44:  true
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H43).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C7:  true
+-S-  Applied substitution rule calc_drag_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New C1:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) div 100 * 
+          profile div 2 >= - 1000000
+<S>  New C3:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) div 100 * 
+          profile div 2 >= - 1000000
+-S-  Applied substitution rule calc_drag_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New C2:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) div 100 * 
+          profile div 2 <= 1000000
+<S>  New C4:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) div 100 * 
+          profile div 2 <= 1000000
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H25:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) div (postsonic_boundary - transonic_boundary) >= - 
+          2147483648
+<S>  New H28:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) >= - 2147483648
+<S>  New H45:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) >= - 
+          2147483648
+<S>  New C5:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) div 100 * 
+          profile div 2 >= - 2147483648
+<S>  New C8:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) div 100 * 
+          profile >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H26:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) div (postsonic_boundary - transonic_boundary) <= 
+          2147483647
+<S>  New H29:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) <= 2147483647
+<S>  New H46:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) <= 
+          2147483647
+<S>  New C6:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) div 100 * 
+          profile div 2 <= 2147483647
+<S>  New C9:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) div 100 * 
+          profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H11:  postsonic_boundary - transonic_boundary >= - 2147483648
+<S>  New H17:  drag_at_transonic - drag_at_mach1 >= - 2147483648
+<S>  New H23:  drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary) >= - 2147483648
+<S>  New H30:  postsonic_boundary - speed >= - 2147483648
+<S>  New H42:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) div 100 >= 
+          - 2147483648
+<S>  New C10:  profile >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H12:  postsonic_boundary - transonic_boundary <= 2147483647
+<S>  New H18:  drag_at_transonic - drag_at_mach1 <= 2147483647
+<S>  New H24:  drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary) <= 2147483647
+<S>  New H31:  postsonic_boundary - speed <= 2147483647
+<S>  New H43:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 
+          transonic_boundary)) * relative_drag_at_altitude(altitude) div 100 <= 
+          2147483647
+<S>  New C11:  profile <= 2147483647
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  transonic_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  400 <= speed
+<S>  New H11:  postsonic_boundary >= - 2147483248
+<S>  New H12:  postsonic_boundary <= 2147484047
+<S>  New H15:  postsonic_boundary - 400 >= 
+          measuretypes__meter_per_sec__base__first
+<S>  New H16:  postsonic_boundary - 400 <= 
+          measuretypes__meter_per_sec__base__last
+<S>  New H23:  drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400) >= 
+          - 2147483648
+<S>  New H24:  drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400) <= 
+          2147483647
+<S>  New H25:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) div (postsonic_boundary - 400) >= - 2147483648
+<S>  New H26:  (postsonic_boundary - speed) * (drag_at_transonic - 
+          drag_at_mach1) div (postsonic_boundary - 400) <= 2147483647
+<S>  New H27:  postsonic_boundary <> 400
+<S>  New H42:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) div 100 >= - 2147483648
+<S>  New H43:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) div 100 <= 2147483647
+<S>  New H45:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) >= - 2147483648
+<S>  New H46:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) <= 2147483647
+<S>  New C1:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          1000000
+<S>  New C3:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          1000000
+<S>  New C2:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 1000000
+<S>  New C4:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 1000000
+<S>  New C5:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          2147483648
+<S>  New C8:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile >= - 2147483648
+<S>  New C6:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 
+          2147483647
+<S>  New C9:  (drag_at_mach1 + (postsonic_boundary - speed) * (
+          drag_at_transonic - drag_at_mach1) div (postsonic_boundary - 400)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(4).
+     This was achieved by replacing all occurrences of postsonic_boundary by:
+          450.
+<S>  New H10:  speed < 450
+<S>  New H28:  (450 - speed) * (drag_at_transonic - drag_at_mach1) >= - 
+          2147483648
+<S>  New H29:  (450 - speed) * (drag_at_transonic - drag_at_mach1) <= 2147483647
+<S>  New H30:  speed <= 2147484098
+<S>  New H31:  - 2147483197 <= speed
+<S>  New H32:  450 - speed >= measuretypes__meter_per_sec__base__first
+<S>  New H33:  450 - speed <= measuretypes__meter_per_sec__base__last
+<S>  New H11:  true
+<S>  New H12:  true
+<S>  New H15:  50 >= measuretypes__meter_per_sec__base__first
+<S>  New H16:  50 <= measuretypes__meter_per_sec__base__last
+<S>  New H23:  drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50 >= - 2147483648
+<S>  New H24:  drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50 <= 2147483647
+<S>  New H25:  (450 - speed) * (drag_at_transonic - drag_at_mach1) div 50 >= - 
+          2147483648
+<S>  New H26:  (450 - speed) * (drag_at_transonic - drag_at_mach1) div 50 <= 
+          2147483647
+<S>  New H27:  true
+<S>  New H42:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) div 100 
+          >= - 2147483648
+<S>  New H43:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) div 100 
+          <= 2147483647
+<S>  New H45:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) >= - 
+          2147483648
+<S>  New H46:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) <= 
+          2147483647
+<S>  New C1:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) div 100 
+          * profile div 2 >= - 1000000
+<S>  New C3:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) div 100 
+          * profile div 2 >= - 1000000
+<S>  New C2:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) div 100 
+          * profile div 2 <= 1000000
+<S>  New C4:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) div 100 
+          * profile div 2 <= 1000000
+<S>  New C5:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) div 100 
+          * profile div 2 >= - 2147483648
+<S>  New C8:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) div 100 
+          * profile >= - 2147483648
+<S>  New C6:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) div 100 
+          * profile div 2 <= 2147483647
+<S>  New C9:  (drag_at_mach1 + (450 - speed) * (drag_at_transonic - 
+          drag_at_mach1) div 50) * relative_drag_at_altitude(altitude) div 100 
+          * profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New H17:  drag_at_transonic >= - 2147482706
+<S>  New H18:  drag_at_transonic <= 2147484589
+<S>  New H28:  (450 - speed) * (drag_at_transonic - 942) >= - 2147483648
+<S>  New H29:  (450 - speed) * (drag_at_transonic - 942) <= 2147483647
+<S>  New H23:  (450 - speed) * (drag_at_transonic - 942) div 50 >= - 2147484590
+<S>  New H24:  (450 - speed) * (drag_at_transonic - 942) div 50 <= 2147482705
+<S>  New H25:  (450 - speed) * (drag_at_transonic - 942) div 50 >= - 2147483648
+<S>  New H26:  (450 - speed) * (drag_at_transonic - 942) div 50 <= 2147483647
+<S>  New H42:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) div 100 >= - 2147483648
+<S>  New H43:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) div 100 <= 2147483647
+<S>  New H45:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) >= - 2147483648
+<S>  New H46:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) <= 2147483647
+<S>  New C1:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          1000000
+<S>  New C3:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          1000000
+<S>  New C2:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 1000000
+<S>  New C4:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 1000000
+<S>  New C5:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          2147483648
+<S>  New C8:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) div 100 * profile >= - 2147483648
+<S>  New C6:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 
+          2147483647
+<S>  New C9:  (942 + (450 - speed) * (drag_at_transonic - 942) div 50) * 
+          relative_drag_at_altitude(altitude) div 100 * profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(6).
+     This was achieved by replacing all occurrences of drag_at_transonic by:
+          1344.
+<S>  New H17:  true
+<S>  New H18:  true
+<S>  New H28:  (450 - speed) * 402 >= - 2147483648
+<S>  New H29:  (450 - speed) * 402 <= 2147483647
+<S>  New H23:  (450 - speed) * 402 div 50 >= - 2147484590
+<S>  New H24:  (450 - speed) * 402 div 50 <= 2147482705
+<S>  New H25:  (450 - speed) * 402 div 50 >= - 2147483648
+<S>  New H26:  (450 - speed) * 402 div 50 <= 2147483647
+<S>  New H42:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 >= - 2147483648
+<S>  New H43:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 <= 2147483647
+<S>  New H45:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) >= - 2147483648
+<S>  New H46:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) <= 2147483647
+<S>  New C1:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 >= - 1000000
+<S>  New C3:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 >= - 1000000
+<S>  New C2:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 <= 1000000
+<S>  New C4:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 <= 1000000
+<S>  New C5:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 >= - 2147483648
+<S>  New C8:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile >= - 2147483648
+<S>  New C6:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 <= 2147483647
+<S>  New C9:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H32:  speed <= 2147484098
+<S>  New H15:  true
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H33:  - 2147483197 <= speed
+<S>  New H16:  true
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(49).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H40:  relative_drag_at_altitude(altitude) >= 0
+-S-  Applied substitution rule calc_drag_rules(50).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H41:  relative_drag_at_altitude(altitude) <= 100
+***  Proved C10:  profile >= - 2147483648
+     using hypothesis H2.
+***  Proved C11:  profile <= 2147483647
+     using hypothesis H3.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H38 (true-hypothesis).
+---  Eliminated hypothesis H39 (true-hypothesis).
+---  Eliminated hypothesis H44 (true-hypothesis).
+---  Eliminated hypothesis H47 (true-hypothesis).
+---  Eliminated hypothesis H48 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H32 (duplicate of H30).
+---  Eliminated hypothesis H33 (duplicate of H31).
+---  Eliminated hypothesis H36 (duplicate of H6).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H5 (redundant, given H10).
+---  Eliminated hypothesis H7 (redundant, given H37).
+---  Eliminated hypothesis H8 (redundant, given H9).
+---  Eliminated hypothesis H23 (redundant, given H25).
+---  Eliminated hypothesis H26 (redundant, given H24).
+---  Eliminated hypothesis H28 (redundant, given H10).
+---  Eliminated hypothesis H29 (redundant, given H9).
+---  Eliminated hypothesis H30 (redundant, given H10).
+---  Eliminated hypothesis H31 (redundant, given H9).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 >= - 1000000
+     using hypotheses H10, H40 & H2.
+***  Proved C2:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 <= 1000000
+     using hypotheses H9, H41 & H3.
+***  Proved C5:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 >= - 2147483648
+     using hypotheses H10, H40 & H2.
+***  Proved C8:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile >= - 2147483648
+     using hypotheses H10, H40 & H2.
+***  Proved C6:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 <= 2147483647
+     using hypotheses H9, H41 & H3.
+***  Proved C9:  (942 + (450 - speed) * 402 div 50) * relative_drag_at_altitude(
+          altitude) div 100 * profile <= 2147483647
+     using hypotheses H9, H41 & H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_24.  @@@@@@@@@@
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified H31 on reading formula in, to give:
+     %%%  H31:  true
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H30).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C7:  true
+-S-  Applied substitution rule calc_drag_rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New C1:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          1000000
+<S>  New C3:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          1000000
+-S-  Applied substitution rule calc_drag_rules(24).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New C2:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 1000000
+<S>  New C4:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 1000000
+-S-  Applied substitution rule calc_drag_rules(10).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H32:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) >= - 2147483648
+<S>  New C5:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 >= - 
+          2147483648
+<S>  New C8:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(11).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H33:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) <= 2147483647
+<S>  New C6:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile div 2 <= 
+          2147483647
+<S>  New C9:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) div 100 * profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(44).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H11:  speed - postsonic_boundary >= - 2147483648
+<S>  New H19:  drag_at_mach1 + (speed - postsonic_boundary) >= - 2147483648
+<S>  New H29:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) div 100 >= - 2147483648
+<S>  New C10:  profile >= - 2147483648
+-S-  Applied substitution rule calc_drag_rules(45).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H12:  speed - postsonic_boundary <= 2147483647
+<S>  New H20:  drag_at_mach1 + (speed - postsonic_boundary) <= 2147483647
+<S>  New H30:  (drag_at_mach1 + (speed - postsonic_boundary)) * 
+          relative_drag_at_altitude(altitude) div 100 <= 2147483647
+<S>  New C11:  profile <= 2147483647
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  constants__mach1_sea <= speed
+>>>  Restructured hypothesis H9 into:
+     >>>  H9:  transonic_boundary <= speed
+>>>  Restructured hypothesis H10 into:
+     >>>  H10:  postsonic_boundary <= speed
+-S-  Applied substitution rule calc_drag_rules(1).
+     This was achieved by replacing all occurrences of constants__mach1_sea by:
+          307.
+<S>  New H8:  307 <= speed
+-S-  Applied substitution rule calc_drag_rules(3).
+     This was achieved by replacing all occurrences of transonic_boundary by:
+          400.
+<S>  New H9:  400 <= speed
+-S-  Applied substitution rule calc_drag_rules(4).
+     This was achieved by replacing all occurrences of postsonic_boundary by:
+          450.
+<S>  New H10:  450 <= speed
+<S>  New H11:  speed >= - 2147483198
+<S>  New H12:  speed <= 2147484097
+<S>  New H15:  speed - 450 >= measuretypes__meter_per_sec__base__first
+<S>  New H16:  speed - 450 <= measuretypes__meter_per_sec__base__last
+<S>  New H19:  drag_at_mach1 + (speed - 450) >= - 2147483648
+<S>  New H20:  drag_at_mach1 + (speed - 450) <= 2147483647
+<S>  New H29:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) div 100 >= - 2147483648
+<S>  New H30:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) div 100 <= 2147483647
+<S>  New H32:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) >= - 2147483648
+<S>  New H33:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) <= 2147483647
+<S>  New C1:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 >= - 1000000
+<S>  New C3:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 >= - 1000000
+<S>  New C2:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 <= 1000000
+<S>  New C4:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 <= 1000000
+<S>  New C5:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 >= - 2147483648
+<S>  New C8:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) div 100 * profile >= - 2147483648
+<S>  New C6:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) div 100 * profile div 2 <= 2147483647
+<S>  New C9:  (drag_at_mach1 + (speed - 450)) * relative_drag_at_altitude(
+          altitude) div 100 * profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(5).
+     This was achieved by replacing all occurrences of drag_at_mach1 by:
+          942.
+<S>  New H19:  speed - 450 >= - 2147484590
+<S>  New H20:  speed - 450 <= 2147482705
+<S>  New H29:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 
+          100 >= - 2147483648
+<S>  New H30:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 
+          100 <= 2147483647
+<S>  New H32:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) >= - 
+          2147483648
+<S>  New H33:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) <= 
+          2147483647
+<S>  New C1:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 
+          100 * profile div 2 >= - 1000000
+<S>  New C3:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 
+          100 * profile div 2 >= - 1000000
+<S>  New C2:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 
+          100 * profile div 2 <= 1000000
+<S>  New C4:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 
+          100 * profile div 2 <= 1000000
+<S>  New C5:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 
+          100 * profile div 2 >= - 2147483648
+<S>  New C8:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 
+          100 * profile >= - 2147483648
+<S>  New C6:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 
+          100 * profile div 2 <= 2147483647
+<S>  New C9:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) div 
+          100 * profile <= 2147483647
+-S-  Applied substitution rule calc_drag_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H15:  speed >= - 2147483198
+-S-  Applied substitution rule calc_drag_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H16:  speed <= 2147484097
+-S-  Applied substitution rule calc_drag_rules(28).
+     This was achieved by replacing all occurrences of drag_coefficient__first 
+          by:
+          1.
+<S>  New H2:  profile >= 1
+-S-  Applied substitution rule calc_drag_rules(29).
+     This was achieved by replacing all occurrences of drag_coefficient__last 
+          by:
+          1000.
+<S>  New H3:  profile <= 1000
+-S-  Applied substitution rule calc_drag_rules(34).
+     This was achieved by replacing all occurrences of pos_meter__first by:
+          0.
+<S>  New H6:  altitude >= 0
+-S-  Applied substitution rule calc_drag_rules(35).
+     This was achieved by replacing all occurrences of pos_meter__last by:
+          200000.
+<S>  New H7:  altitude <= 200000
+-S-  Applied substitution rule calc_drag_rules(39).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__first 
+          by:
+          0.
+<S>  New H4:  speed >= 0
+-S-  Applied substitution rule calc_drag_rules(40).
+     This was achieved by replacing all occurrences of pos_meter_per_sec__last 
+          by:
+          5000.
+<S>  New H5:  speed <= 5000
+-S-  Applied substitution rule calc_drag_rules(49).
+     This was achieved by replacing all occurrences of percent__first by:
+          0.
+<S>  New H27:  relative_drag_at_altitude(altitude) >= 0
+-S-  Applied substitution rule calc_drag_rules(50).
+     This was achieved by replacing all occurrences of percent__last by:
+          100.
+<S>  New H28:  relative_drag_at_altitude(altitude) <= 100
+%%%  Simplified H19 further, to give:
+     %%%  H19:  speed >= - 2147484140
+%%%  Simplified H20 further, to give:
+     %%%  H20:  speed <= 2147483155
+***  Proved C10:  profile >= - 2147483648
+     using hypothesis H2.
+***  Proved C11:  profile <= 2147483647
+     using hypothesis H3.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H15 (duplicate of H11).
+---  Eliminated hypothesis H16 (duplicate of H12).
+---  Eliminated hypothesis H23 (duplicate of H6).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H7 (redundant, given H24).
+---  Eliminated hypothesis H8 (redundant, given H9).
+---  Eliminated hypothesis H9 (redundant, given H10).
+---  Eliminated hypothesis H11 (redundant, given H10).
+---  Eliminated hypothesis H12 (redundant, given H5).
+---  Eliminated hypothesis H19 (redundant, given H10).
+---  Eliminated hypothesis H20 (redundant, given H5).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) 
+          div 100 * profile div 2 >= - 1000000
+     using hypotheses H10, H27 & H2.
+***  Proved C5:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) 
+          div 100 * profile div 2 >= - 2147483648
+     using hypotheses H10, H27 & H2.
+***  Proved C8:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) 
+          div 100 * profile >= - 2147483648
+     using hypotheses H10, H27 & H2.
+***  Proved C6:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) 
+          div 100 * profile div 2 <= 2147483647
+     using hypotheses H5, H28 & H3.
+***  Proved C9:  (942 + (speed - 450)) * relative_drag_at_altitude(altitude) 
+          div 100 * profile <= 2147483647
+     using hypotheses H5, H28 & H3.
+     +++  New H36:  long_integer__size >= 0
+     +++  New H37:  measuretypes__meter__size >= 0
+     +++  New H38:  measuretypes__meter_per_sec__size >= 0
+     +++  New H39:  measuretypes__newton__size >= 0
+     +++  New H40:  drag_coefficient__size >= 0
+     +++  New H41:  drag_coefficient__base__first <= 
+          drag_coefficient__base__last
+     +++  New H42:  pos_meter__size >= 0
+     +++  New H43:  pos_meter_per_sec__size >= 0
+     +++  New H44:  integer32__size >= 0
+     +++  New H45:  percent__size >= 0
+     +++  New H46:  drag_coefficient__base__first <= 1
+     +++  New H47:  drag_coefficient__base__last >= 1000
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_25.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_26.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_27.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_28.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calc_drag_29.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

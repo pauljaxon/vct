@@ -1,0 +1,75 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.51
+
+Line
+   1  -- Self-destruct configuration body
+   2  --
+   3  -- $Log: destruct_cfg.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/09/01 19:13:11  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  package body Destruct_Cfg
+  13  is
+  14     function Code_To_State(C : Systemtypes.Unsigned16)
+  15                           return State
+  16     is
+  17        Ans : State;
+  18     begin
+  19        if C = State_To_Code(Inactive) then
+  20           ans := Inactive;
+  21        elsif C = State_To_Code(Armed) then
+  22           ans := Armed;
+  23        elsif C = State_To_Code(detonated) then
+  24           ans := Detonated;
+  25        else
+  26           Ans := Inactive;
+  27        end if;
+  28        return Ans;
+  29     end Code_To_State;
+
++++        Flow analysis of subprogram Code_To_State 
+           performed: no errors found.
+
+  30  
+  31     function Transition(Old_state : State;
+  32                         New_Code  : Systemtypes.Unsigned16)
+  33                        return State
+  34     is
+  35        Ans : State := inactive;
+  36     begin
+  37        case Old_State is
+  38           when Inactive =>
+  39              if Code_To_State(New_Code) = Armed then
+  40                 Ans := Armed;
+  41              end if;
+  42           when armed =>
+  43              if Code_To_State(New_Code) = Detonated then
+  44                 Ans := Detonated;
+  45              end if;
+  46           when Detonated =>
+  47              Ans := Inactive;
+  48        end case;
+  49        return Ans;
+  50     end Transition;
+
++++        Flow analysis of subprogram Transition 
+           performed: no errors found.
+
+  51  
+  52  end Destruct_Cfg;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

@@ -1,0 +1,35 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.93
+
+                        procedure bit_machine.Create
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 18:
+
+procedure_create_1.
+H1:    true .
+H2:    ticks_to_complete >= systemtypes__unsigned16__first .
+H3:    ticks_to_complete <= systemtypes__unsigned16__last .
+        ->
+C1:    ticks_to_complete >= systemtypes__unsigned16__first .
+C2:    ticks_to_complete <= systemtypes__unsigned16__last .
+C3:    0 >= systemtypes__unsigned16__first .
+C4:    0 <= systemtypes__unsigned16__last .
+C5:    ibit__off >= ibit__phase__first .
+C6:    ibit__off <= ibit__phase__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_create_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+

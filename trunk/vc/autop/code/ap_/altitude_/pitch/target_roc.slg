@@ -1,0 +1,244 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:05
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function Pitch.Target_ROC
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_target_roc_1.  @@@@@@@@@@
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C7:  true
+-S-  Applied substitution rule target_roc_rules(12).
+     This was achieved by replacing all occurrences of 
+          instruments__feetpermin__first by:
+          - 6000.
+<S>  New C1:  (target_altitude - present_altitude) div 10 >= - 6000
+<S>  New C3:  (target_altitude - present_altitude) div 10 >= - 6000
+-S-  Applied substitution rule target_roc_rules(13).
+     This was achieved by replacing all occurrences of 
+          instruments__feetpermin__last by:
+          6000.
+<S>  New C2:  (target_altitude - present_altitude) div 10 <= 6000
+<S>  New C4:  (target_altitude - present_altitude) div 10 <= 6000
+-S-  Applied substitution rule target_roc_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C5:  (target_altitude - present_altitude) div 10 >= - 2147483648
+-S-  Applied substitution rule target_roc_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C6:  (target_altitude - present_altitude) div 10 <= 2147483647
+-S-  Applied substitution rule target_roc_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New C8:  target_altitude - present_altitude >= - 2147483648
+-S-  Applied substitution rule target_roc_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New C9:  target_altitude - present_altitude <= 2147483647
+-S-  Applied substitution rule target_roc_rules(9).
+     This was achieved by replacing all occurrences of 
+          instruments__feet__base__first by:
+          - 2147483648.
+<S>  New C10:  target_altitude - present_altitude >= - 2147483648
+-S-  Applied substitution rule target_roc_rules(10).
+     This was achieved by replacing all occurrences of 
+          instruments__feet__base__last by:
+          2147483647.
+<S>  New C11:  target_altitude - present_altitude <= 2147483647
+-S-  Applied substitution rule target_roc_rules(7).
+     This was achieved by replacing all occurrences of instruments__feet__first 
+          by:
+          0.
+<S>  New H2:  present_altitude >= 0
+<S>  New H4:  target_altitude >= 0
+-S-  Applied substitution rule target_roc_rules(8).
+     This was achieved by replacing all occurrences of instruments__feet__last 
+          by:
+          50000.
+<S>  New H3:  present_altitude <= 50000
+<S>  New H5:  target_altitude <= 50000
+***  Proved C8:  target_altitude - present_altitude >= - 2147483648
+     using hypotheses H3 & H4.
+***  Proved C9:  target_altitude - present_altitude <= 2147483647
+     using hypotheses H2 & H5.
+***  Proved C10:  target_altitude - present_altitude >= - 2147483648
+     using hypotheses H3 & H4.
+***  Proved C11:  target_altitude - present_altitude <= 2147483647
+     using hypotheses H2 & H5.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  (target_altitude - present_altitude) div 10 >= - 6000
+     using hypotheses H3 & H4.
+***  Proved C2:  (target_altitude - present_altitude) div 10 <= 6000
+     using hypotheses H2 & H5.
+***  Proved C5:  (target_altitude - present_altitude) div 10 >= - 2147483648
+     using hypotheses H3 & H4.
+***  Proved C6:  (target_altitude - present_altitude) div 10 <= 2147483647
+     using hypotheses H2 & H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_roc_2.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  true
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H7)
+          .
+***  Proved C2:  floorfpm__last <= instruments__feetpermin__last
+     using hypotheses H7 & H19.
+-S-  Applied substitution rule target_roc_rules(18).
+     This was achieved by replacing all occurrences of floorfpm__last by:
+          1000.
+<S>  New H19:  (target_altitude - present_altitude) div 10 > 1000
+<S>  New C1:  1000 >= instruments__feetpermin__first
+-S-  Applied substitution rule target_roc_rules(12).
+     This was achieved by replacing all occurrences of 
+          instruments__feetpermin__first by:
+          - 6000.
+<S>  New H6:  (target_altitude - present_altitude) div 10 >= - 6000
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_roc_3.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  true
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+***  Proved C1:  floorfpm__first >= instruments__feetpermin__first
+     using hypotheses H6 & H22.
+-S-  Applied substitution rule target_roc_rules(17).
+     This was achieved by replacing all occurrences of floorfpm__first by:
+          - 1000.
+<S>  New H22:  (target_altitude - present_altitude) div 10 < - 1000
+<S>  New C2:  - 1000 <= instruments__feetpermin__last
+-S-  Applied substitution rule target_roc_rules(13).
+     This was achieved by replacing all occurrences of 
+          instruments__feetpermin__last by:
+          6000.
+<S>  New H7:  (target_altitude - present_altitude) div 10 <= 6000
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_roc_4.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  true
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H21).
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C1:  true
+***  Proved C3:  true
+-S-  Applied substitution rule target_roc_rules(18).
+     This was achieved by replacing all occurrences of floorfpm__last by:
+          1000.
+<S>  New H19:  (target_altitude - present_altitude) div 10 > 1000
+<S>  New H20:  1000 >= instruments__feetpermin__first
+<S>  New H21:  1000 <= instruments__feetpermin__last
+<S>  New C2:  1000 >= floorfpm__first
+-S-  Applied substitution rule target_roc_rules(17).
+     This was achieved by replacing all occurrences of floorfpm__first by:
+          - 1000.
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_roc_5.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  true
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H24).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+-S-  Applied substitution rule target_roc_rules(17).
+     This was achieved by replacing all occurrences of floorfpm__first by:
+          - 1000.
+<S>  New H22:  (target_altitude - present_altitude) div 10 < - 1000
+<S>  New H23:  - 1000 >= instruments__feetpermin__first
+<S>  New H24:  - 1000 <= instruments__feetpermin__last
+<S>  New C3:  - 1000 <= floorfpm__last
+-S-  Applied substitution rule target_roc_rules(18).
+     This was achieved by replacing all occurrences of floorfpm__last by:
+          1000.
+<S>  New H19:  not (target_altitude - present_altitude) div 10 > 1000
+<S>  New C3:  true
+***  Proved C3:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_target_roc_6.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  true
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H7)
+          .
+***  Proved C1:  true
+***  Proved C2:  (target_altitude - present_altitude) div 10 >= floorfpm__first
+     using hypothesis H22.
+***  Proved C3:  (target_altitude - present_altitude) div 10 <= floorfpm__last
+     using hypothesis H19.
+***  PROVED VC.
+

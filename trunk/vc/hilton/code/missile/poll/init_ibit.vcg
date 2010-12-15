@@ -1,0 +1,37 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.38
+
+                      procedure missile.Poll.Init_Ibit
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 164:
+
+procedure_init_ibit_1.
+H1:    true .
+H2:    for_all(i___1: bc1553__lru_name, ((i___1 >= 
+           bc1553__lru_name__first) and (i___1 <= 
+           bc1553__lru_name__last)) -> ((fld_bit_phase(element(
+           fld_components(state), [i___1])) >= ibit__phase__first) and (
+           fld_bit_phase(element(fld_components(state), [
+           i___1])) <= ibit__phase__last))) .
+H3:    fld_phase(state) >= phase_stage__first .
+H4:    fld_phase(state) <= phase_stage__last .
+        ->
+C1:    bit >= phase_stage__first .
+C2:    bit <= phase_stage__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_init_ibit_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+

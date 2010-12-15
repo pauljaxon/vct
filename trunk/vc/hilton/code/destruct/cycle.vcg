@@ -1,0 +1,1427 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.61
+
+                          procedure destruct.Cycle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 114:
+
+procedure_cycle_1.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    1 >= bus__word_index__first .
+C6:    1 <= bus__word_index__last .
+C7:    element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+C8:    element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+C9:    current_stage__1 >= destruct_cfg__state__first .
+C10:   current_stage__1 <= destruct_cfg__state__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 120:
+
+procedure_cycle_2.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    2 >= bus__word_index__first .
+C6:    2 <= bus__word_index__last .
+C7:    element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+C8:    element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+C9:    bit_machine__phase(bit_state) >= ibit__phase__first .
+C10:   bit_machine__phase(bit_state) <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 125:
+
+procedure_cycle_3.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    bus_id >= rt1553__lru_name__first .
+C4:    bus_id <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 125:
+
+procedure_cycle_4.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+        ->
+C1:    rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+C2:    rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+ 
+
+For path(s) from start to run-time check associated with statement of line 130:
+
+procedure_cycle_5.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H41:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= rt1553__lru_name__first .
+C6:    bus_id <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 130:
+
+procedure_cycle_6.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H41:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H42:   1 >= bus__lru_subaddress_index__first .
+H43:   1 <= bus__lru_subaddress_index__last .
+H44:   1 >= bus__word_index__first .
+H45:   1 <= bus__word_index__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   datum__4 >= bus__word__first .
+H49:   datum__4 <= bus__word__last .
+        ->
+C1:    datum__4 >= bus__word__first .
+C2:    datum__4 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 134:
+
+procedure_cycle_7.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H41:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H42:   1 >= bus__lru_subaddress_index__first .
+H43:   1 <= bus__lru_subaddress_index__last .
+H44:   1 >= bus__word_index__first .
+H45:   1 <= bus__word_index__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   datum__4 >= bus__word__first .
+H49:   datum__4 <= bus__word__last .
+H50:   datum__4 >= bus__word__first .
+H51:   datum__4 <= bus__word__last .
+H52:   datum__4 >= bus__word__first .
+H53:   datum__4 <= bus__word__last .
+        ->
+C1:    datum__4 >= systemtypes__unsigned16__first .
+C2:    datum__4 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 136:
+
+procedure_cycle_8.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H41:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H42:   1 >= bus__lru_subaddress_index__first .
+H43:   1 <= bus__lru_subaddress_index__last .
+H44:   1 >= bus__word_index__first .
+H45:   1 <= bus__word_index__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   datum__4 >= bus__word__first .
+H49:   datum__4 <= bus__word__last .
+H50:   datum__4 >= bus__word__first .
+H51:   datum__4 <= bus__word__last .
+H52:   datum__4 >= bus__word__first .
+H53:   datum__4 <= bus__word__last .
+H54:   datum__4 >= systemtypes__unsigned16__first .
+H55:   datum__4 <= systemtypes__unsigned16__last .
+H56:   destruct_cfg__code_to_state(datum__4) >= 
+           destruct_cfg__state__first .
+H57:   destruct_cfg__code_to_state(datum__4) <= 
+           destruct_cfg__state__last .
+H58:   destruct_cfg__code_to_state(datum__4) <> current_stage__1 .
+H59:   datum__4 >= bus__word__first .
+H60:   datum__4 <= bus__word__last .
+        ->
+C1:    datum__4 >= systemtypes__unsigned16__first .
+C2:    datum__4 <= systemtypes__unsigned16__last .
+C3:    current_stage__1 >= destruct_cfg__state__first .
+C4:    current_stage__1 <= destruct_cfg__state__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 136:
+
+procedure_cycle_9.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H41:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H42:   1 >= bus__lru_subaddress_index__first .
+H43:   1 <= bus__lru_subaddress_index__last .
+H44:   1 >= bus__word_index__first .
+H45:   1 <= bus__word_index__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   datum__4 >= bus__word__first .
+H49:   datum__4 <= bus__word__last .
+H50:   datum__4 >= bus__word__first .
+H51:   datum__4 <= bus__word__last .
+H52:   datum__4 >= bus__word__first .
+H53:   datum__4 <= bus__word__last .
+H54:   datum__4 >= systemtypes__unsigned16__first .
+H55:   datum__4 <= systemtypes__unsigned16__last .
+H56:   destruct_cfg__code_to_state(datum__4) >= 
+           destruct_cfg__state__first .
+H57:   destruct_cfg__code_to_state(datum__4) <= 
+           destruct_cfg__state__last .
+H58:   destruct_cfg__code_to_state(datum__4) <> current_stage__1 .
+H59:   datum__4 >= bus__word__first .
+H60:   datum__4 <= bus__word__last .
+H61:   datum__4 >= systemtypes__unsigned16__first .
+H62:   datum__4 <= systemtypes__unsigned16__last .
+H63:   current_stage__1 >= destruct_cfg__state__first .
+H64:   current_stage__1 <= destruct_cfg__state__last .
+H65:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           destruct_cfg__state__first .
+H66:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           destruct_cfg__state__last .
+        ->
+C1:    destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+C2:    destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 138:
+
+procedure_cycle_10.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H41:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H42:   1 >= bus__lru_subaddress_index__first .
+H43:   1 <= bus__lru_subaddress_index__last .
+H44:   1 >= bus__word_index__first .
+H45:   1 <= bus__word_index__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   datum__4 >= bus__word__first .
+H49:   datum__4 <= bus__word__last .
+H50:   datum__4 >= bus__word__first .
+H51:   datum__4 <= bus__word__last .
+H52:   datum__4 >= bus__word__first .
+H53:   datum__4 <= bus__word__last .
+H54:   datum__4 >= systemtypes__unsigned16__first .
+H55:   datum__4 <= systemtypes__unsigned16__last .
+H56:   destruct_cfg__code_to_state(datum__4) >= 
+           destruct_cfg__state__first .
+H57:   destruct_cfg__code_to_state(datum__4) <= 
+           destruct_cfg__state__last .
+H58:   destruct_cfg__code_to_state(datum__4) <> current_stage__1 .
+H59:   datum__4 >= bus__word__first .
+H60:   datum__4 <= bus__word__last .
+H61:   datum__4 >= systemtypes__unsigned16__first .
+H62:   datum__4 <= systemtypes__unsigned16__last .
+H63:   current_stage__1 >= destruct_cfg__state__first .
+H64:   current_stage__1 <= destruct_cfg__state__last .
+H65:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           destruct_cfg__state__first .
+H66:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           destruct_cfg__state__last .
+H67:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+H68:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+H69:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+H70:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+        ->
+C1:    destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+C2:    destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 142:
+
+procedure_cycle_11.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H41:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H42:   1 >= bus__lru_subaddress_index__first .
+H43:   1 <= bus__lru_subaddress_index__last .
+H44:   1 >= bus__word_index__first .
+H45:   1 <= bus__word_index__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   datum__4 >= bus__word__first .
+H49:   datum__4 <= bus__word__last .
+H50:   datum__4 >= bus__word__first .
+H51:   datum__4 <= bus__word__last .
+H52:   datum__4 >= bus__word__first .
+H53:   datum__4 <= bus__word__last .
+H54:   datum__4 >= systemtypes__unsigned16__first .
+H55:   datum__4 <= systemtypes__unsigned16__last .
+H56:   destruct_cfg__code_to_state(datum__4) >= 
+           destruct_cfg__state__first .
+H57:   destruct_cfg__code_to_state(datum__4) <= 
+           destruct_cfg__state__last .
+H58:   destruct_cfg__code_to_state(datum__4) <> current_stage__1 .
+H59:   datum__4 >= bus__word__first .
+H60:   datum__4 <= bus__word__last .
+H61:   datum__4 >= systemtypes__unsigned16__first .
+H62:   datum__4 <= systemtypes__unsigned16__last .
+H63:   current_stage__1 >= destruct_cfg__state__first .
+H64:   current_stage__1 <= destruct_cfg__state__last .
+H65:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           destruct_cfg__state__first .
+H66:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           destruct_cfg__state__last .
+H67:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+H68:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+H69:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+H70:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+H71:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+H72:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+H73:   current_stage__5 >= stage__first .
+H74:   current_stage__5 <= stage__last .
+H75:   stage_timer__5 >= clock__millisecond__first .
+H76:   stage_timer__5 <= clock__millisecond__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    2 >= bus__word_index__first .
+C4:    2 <= bus__word_index__last .
+C5:    bus_id >= rt1553__lru_name__first .
+C6:    bus_id <= rt1553__lru_name__last .
+ 
+
+procedure_cycle_12.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H41:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H42:   1 >= bus__lru_subaddress_index__first .
+H43:   1 <= bus__lru_subaddress_index__last .
+H44:   1 >= bus__word_index__first .
+H45:   1 <= bus__word_index__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   datum__4 >= bus__word__first .
+H49:   datum__4 <= bus__word__last .
+H50:   datum__4 >= bus__word__first .
+H51:   datum__4 <= bus__word__last .
+H52:   datum__4 >= bus__word__first .
+H53:   datum__4 <= bus__word__last .
+H54:   datum__4 >= systemtypes__unsigned16__first .
+H55:   datum__4 <= systemtypes__unsigned16__last .
+H56:   destruct_cfg__code_to_state(datum__4) >= 
+           destruct_cfg__state__first .
+H57:   destruct_cfg__code_to_state(datum__4) <= 
+           destruct_cfg__state__last .
+H58:   not (destruct_cfg__code_to_state(datum__4) <> current_stage__1) .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    2 >= bus__word_index__first .
+C4:    2 <= bus__word_index__last .
+C5:    bus_id >= rt1553__lru_name__first .
+C6:    bus_id <= rt1553__lru_name__last .
+ 
+
+procedure_cycle_13.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   not (rt1553__is_valid(bus_id, 1, bus__outputs) and 
+           rt1553__is_fresh(bus_id, 1, bus__outputs)) .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    2 >= bus__word_index__first .
+C4:    2 <= bus__word_index__last .
+C5:    bus_id >= rt1553__lru_name__first .
+C6:    bus_id <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 142:
+
+procedure_cycle_14.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H41:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H42:   1 >= bus__lru_subaddress_index__first .
+H43:   1 <= bus__lru_subaddress_index__last .
+H44:   1 >= bus__word_index__first .
+H45:   1 <= bus__word_index__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   datum__4 >= bus__word__first .
+H49:   datum__4 <= bus__word__last .
+H50:   datum__4 >= bus__word__first .
+H51:   datum__4 <= bus__word__last .
+H52:   datum__4 >= bus__word__first .
+H53:   datum__4 <= bus__word__last .
+H54:   datum__4 >= systemtypes__unsigned16__first .
+H55:   datum__4 <= systemtypes__unsigned16__last .
+H56:   destruct_cfg__code_to_state(datum__4) >= 
+           destruct_cfg__state__first .
+H57:   destruct_cfg__code_to_state(datum__4) <= 
+           destruct_cfg__state__last .
+H58:   destruct_cfg__code_to_state(datum__4) <> current_stage__1 .
+H59:   datum__4 >= bus__word__first .
+H60:   datum__4 <= bus__word__last .
+H61:   datum__4 >= systemtypes__unsigned16__first .
+H62:   datum__4 <= systemtypes__unsigned16__last .
+H63:   current_stage__1 >= destruct_cfg__state__first .
+H64:   current_stage__1 <= destruct_cfg__state__last .
+H65:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           destruct_cfg__state__first .
+H66:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           destruct_cfg__state__last .
+H67:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+H68:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+H69:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+H70:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+H71:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+H72:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+H73:   current_stage__5 >= stage__first .
+H74:   current_stage__5 <= stage__last .
+H75:   stage_timer__5 >= clock__millisecond__first .
+H76:   stage_timer__5 <= clock__millisecond__last .
+H77:   1 >= bus__lru_subaddress_index__first .
+H78:   1 <= bus__lru_subaddress_index__last .
+H79:   2 >= bus__word_index__first .
+H80:   2 <= bus__word_index__last .
+H81:   bus_id >= rt1553__lru_name__first .
+H82:   bus_id <= rt1553__lru_name__last .
+H83:   datum__6 >= bus__word__first .
+H84:   datum__6 <= bus__word__last .
+        ->
+C1:    datum__6 >= bus__word__first .
+C2:    datum__6 <= bus__word__last .
+ 
+
+procedure_cycle_15.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H41:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H42:   1 >= bus__lru_subaddress_index__first .
+H43:   1 <= bus__lru_subaddress_index__last .
+H44:   1 >= bus__word_index__first .
+H45:   1 <= bus__word_index__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   datum__4 >= bus__word__first .
+H49:   datum__4 <= bus__word__last .
+H50:   datum__4 >= bus__word__first .
+H51:   datum__4 <= bus__word__last .
+H52:   datum__4 >= bus__word__first .
+H53:   datum__4 <= bus__word__last .
+H54:   datum__4 >= systemtypes__unsigned16__first .
+H55:   datum__4 <= systemtypes__unsigned16__last .
+H56:   destruct_cfg__code_to_state(datum__4) >= 
+           destruct_cfg__state__first .
+H57:   destruct_cfg__code_to_state(datum__4) <= 
+           destruct_cfg__state__last .
+H58:   not (destruct_cfg__code_to_state(datum__4) <> current_stage__1) .
+H59:   1 >= bus__lru_subaddress_index__first .
+H60:   1 <= bus__lru_subaddress_index__last .
+H61:   2 >= bus__word_index__first .
+H62:   2 <= bus__word_index__last .
+H63:   bus_id >= rt1553__lru_name__first .
+H64:   bus_id <= rt1553__lru_name__last .
+H65:   datum__6 >= bus__word__first .
+H66:   datum__6 <= bus__word__last .
+        ->
+C1:    datum__6 >= bus__word__first .
+C2:    datum__6 <= bus__word__last .
+ 
+
+procedure_cycle_16.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   not (rt1553__is_valid(bus_id, 1, bus__outputs) and 
+           rt1553__is_fresh(bus_id, 1, bus__outputs)) .
+H41:   1 >= bus__lru_subaddress_index__first .
+H42:   1 <= bus__lru_subaddress_index__last .
+H43:   2 >= bus__word_index__first .
+H44:   2 <= bus__word_index__last .
+H45:   bus_id >= rt1553__lru_name__first .
+H46:   bus_id <= rt1553__lru_name__last .
+H47:   datum__6 >= bus__word__first .
+H48:   datum__6 <= bus__word__last .
+        ->
+C1:    datum__6 >= bus__word__first .
+C2:    datum__6 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 146:
+
+procedure_cycle_17.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H41:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H42:   1 >= bus__lru_subaddress_index__first .
+H43:   1 <= bus__lru_subaddress_index__last .
+H44:   1 >= bus__word_index__first .
+H45:   1 <= bus__word_index__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   datum__4 >= bus__word__first .
+H49:   datum__4 <= bus__word__last .
+H50:   datum__4 >= bus__word__first .
+H51:   datum__4 <= bus__word__last .
+H52:   datum__4 >= bus__word__first .
+H53:   datum__4 <= bus__word__last .
+H54:   datum__4 >= systemtypes__unsigned16__first .
+H55:   datum__4 <= systemtypes__unsigned16__last .
+H56:   destruct_cfg__code_to_state(datum__4) >= 
+           destruct_cfg__state__first .
+H57:   destruct_cfg__code_to_state(datum__4) <= 
+           destruct_cfg__state__last .
+H58:   destruct_cfg__code_to_state(datum__4) <> current_stage__1 .
+H59:   datum__4 >= bus__word__first .
+H60:   datum__4 <= bus__word__last .
+H61:   datum__4 >= systemtypes__unsigned16__first .
+H62:   datum__4 <= systemtypes__unsigned16__last .
+H63:   current_stage__1 >= destruct_cfg__state__first .
+H64:   current_stage__1 <= destruct_cfg__state__last .
+H65:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           destruct_cfg__state__first .
+H66:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           destruct_cfg__state__last .
+H67:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+H68:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+H69:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+H70:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+H71:   destruct_cfg__transition(current_stage__1, datum__4) >= 
+           stage__first .
+H72:   destruct_cfg__transition(current_stage__1, datum__4) <= 
+           stage__last .
+H73:   current_stage__5 >= stage__first .
+H74:   current_stage__5 <= stage__last .
+H75:   stage_timer__5 >= clock__millisecond__first .
+H76:   stage_timer__5 <= clock__millisecond__last .
+H77:   1 >= bus__lru_subaddress_index__first .
+H78:   1 <= bus__lru_subaddress_index__last .
+H79:   2 >= bus__word_index__first .
+H80:   2 <= bus__word_index__last .
+H81:   bus_id >= rt1553__lru_name__first .
+H82:   bus_id <= rt1553__lru_name__last .
+H83:   datum__6 >= bus__word__first .
+H84:   datum__6 <= bus__word__last .
+H85:   datum__6 >= bus__word__first .
+H86:   datum__6 <= bus__word__last .
+H87:   datum__6 >= bus__word__first .
+H88:   datum__6 <= bus__word__last .
+        ->
+C1:    datum__6 >= bus__word__first .
+C2:    datum__6 <= bus__word__last .
+ 
+
+procedure_cycle_18.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H41:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H42:   1 >= bus__lru_subaddress_index__first .
+H43:   1 <= bus__lru_subaddress_index__last .
+H44:   1 >= bus__word_index__first .
+H45:   1 <= bus__word_index__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   datum__4 >= bus__word__first .
+H49:   datum__4 <= bus__word__last .
+H50:   datum__4 >= bus__word__first .
+H51:   datum__4 <= bus__word__last .
+H52:   datum__4 >= bus__word__first .
+H53:   datum__4 <= bus__word__last .
+H54:   datum__4 >= systemtypes__unsigned16__first .
+H55:   datum__4 <= systemtypes__unsigned16__last .
+H56:   destruct_cfg__code_to_state(datum__4) >= 
+           destruct_cfg__state__first .
+H57:   destruct_cfg__code_to_state(datum__4) <= 
+           destruct_cfg__state__last .
+H58:   not (destruct_cfg__code_to_state(datum__4) <> current_stage__1) .
+H59:   1 >= bus__lru_subaddress_index__first .
+H60:   1 <= bus__lru_subaddress_index__last .
+H61:   2 >= bus__word_index__first .
+H62:   2 <= bus__word_index__last .
+H63:   bus_id >= rt1553__lru_name__first .
+H64:   bus_id <= rt1553__lru_name__last .
+H65:   datum__6 >= bus__word__first .
+H66:   datum__6 <= bus__word__last .
+H67:   datum__6 >= bus__word__first .
+H68:   datum__6 <= bus__word__last .
+H69:   datum__6 >= bus__word__first .
+H70:   datum__6 <= bus__word__last .
+        ->
+C1:    datum__6 >= bus__word__first .
+C2:    datum__6 <= bus__word__last .
+ 
+
+procedure_cycle_19.
+H1:    true .
+H2:    current_stage >= stage__first .
+H3:    current_stage <= stage__last .
+H4:    stage_timer >= clock__millisecond__first .
+H5:    stage_timer <= clock__millisecond__last .
+H6:    current_stage__1 >= stage__first .
+H7:    current_stage__1 <= stage__last .
+H8:    stage_timer__1 >= clock__millisecond__first .
+H9:    stage_timer__1 <= clock__millisecond__last .
+H10:   bus_id >= rt1553__lru_name__first .
+H11:   bus_id <= rt1553__lru_name__last .
+H12:   1 >= bus__lru_subaddress_index__first .
+H13:   1 <= bus__lru_subaddress_index__last .
+H14:   1 >= bus__word_index__first .
+H15:   1 <= bus__word_index__last .
+H16:   element(destruct_cfg__state_to_code, [current_stage__1]) >= 
+           bus__word__first .
+H17:   element(destruct_cfg__state_to_code, [current_stage__1]) <= 
+           bus__word__last .
+H18:   current_stage__1 >= destruct_cfg__state__first .
+H19:   current_stage__1 <= destruct_cfg__state__last .
+H20:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H21:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H22:   bus_id >= rt1553__lru_name__first .
+H23:   bus_id <= rt1553__lru_name__last .
+H24:   1 >= bus__lru_subaddress_index__first .
+H25:   1 <= bus__lru_subaddress_index__last .
+H26:   2 >= bus__word_index__first .
+H27:   2 <= bus__word_index__last .
+H28:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H29:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H30:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H31:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   bus_id >= rt1553__lru_name__first .
+H35:   bus_id <= rt1553__lru_name__last .
+H36:   true .
+H37:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H38:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H39:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H40:   not (rt1553__is_valid(bus_id, 1, bus__outputs) and 
+           rt1553__is_fresh(bus_id, 1, bus__outputs)) .
+H41:   1 >= bus__lru_subaddress_index__first .
+H42:   1 <= bus__lru_subaddress_index__last .
+H43:   2 >= bus__word_index__first .
+H44:   2 <= bus__word_index__last .
+H45:   bus_id >= rt1553__lru_name__first .
+H46:   bus_id <= rt1553__lru_name__last .
+H47:   datum__6 >= bus__word__first .
+H48:   datum__6 <= bus__word__last .
+H49:   datum__6 >= bus__word__first .
+H50:   datum__6 <= bus__word__last .
+H51:   datum__6 >= bus__word__first .
+H52:   datum__6 <= bus__word__last .
+        ->
+C1:    datum__6 >= bus__word__first .
+C2:    datum__6 <= bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_cycle_20.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_21.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_22.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_cycle_23.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_24.
+*** true .          /* trivially true VC removed by Examiner */
+
+

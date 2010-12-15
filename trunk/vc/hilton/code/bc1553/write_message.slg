@@ -1,0 +1,102 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:39
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure bc1553.Write_Message
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_write_message_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : integer, bus__word_index__first <= i___1 and 
+          i___1 <= bus__word_index__last -> bus__word__first <= element(
+          fld_data(data), [i___1]) and element(fld_data(data), [i___1]) <= 
+          bus__word__last)
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  lru_name__first <= dest
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  lru_name__first <= dest
+***  Proved C3:  subaddress_idx >= bus__lru_subaddress_index__first
+     using hypothesis H5.
+***  Proved C4:  subaddress_idx <= bus__lru_subaddress_index__last
+     using hypothesis H6.
+***  Proved C5:  lru_name__first <= dest
+     using hypothesis H7.
+***  Proved C6:  dest <= lru_name__last
+     using hypothesis H8.
+-S-  Applied substitution rule write_messag_rules(32).
+     This was achieved by replacing all occurrences of bus__lru_index__first by:
+          1.
+<S>  New C1:  element(lru_names, [dest]) >= 1
+-S-  Applied substitution rule write_messag_rules(33).
+     This was achieved by replacing all occurrences of bus__lru_index__last by:
+          12.
+<S>  New C2:  element(lru_names, [dest]) <= 12
+-S-  Applied substitution rule write_messag_rules(9).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H2:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          bus__word_index__last -> bus__word__first <= element(fld_data(data), [
+          i___1]) and element(fld_data(data), [i___1]) <= bus__word__last)
+-S-  Applied substitution rule write_messag_rules(10).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H2:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 31 -> 
+          bus__word__first <= element(fld_data(data), [i___1]) and element(
+          fld_data(data), [i___1]) <= bus__word__last)
+-S-  Applied substitution rule write_messag_rules(15).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 31 -> 0 <= 
+          element(fld_data(data), [i___1]) and element(fld_data(data), [i___1]) 
+          <= bus__word__last)
+-S-  Applied substitution rule write_messag_rules(16).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H2:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 31 -> 0 <= 
+          element(fld_data(data), [i___1]) and element(fld_data(data), [i___1]) 
+          <= 65535)
+-S-  Applied substitution rule write_messag_rules(27).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H5:  subaddress_idx >= 1
+-S-  Applied substitution rule write_messag_rules(28).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H6:  subaddress_idx <= 8
+-S-  Applied substitution rule write_messag_rules(38).
+     This was achieved by replacing all occurrences of lru_name__first by:
+          barometer.
+<S>  New H7:  barometer <= dest
+-S-  Applied substitution rule write_messag_rules(39).
+     This was achieved by replacing all occurrences of lru_name__last by:
+          warhead.
+<S>  New H8:  dest <= warhead
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H3 (true-hypothesis).
+---  Eliminated hypothesis H4 (true-hypothesis).
+***  Proved C1:  element(lru_names, [dest]) >= 1
+     using hypotheses H7 & H8.
+***  Proved C2:  element(lru_names, [dest]) <= 12
+     using hypotheses H7 & H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_write_message_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

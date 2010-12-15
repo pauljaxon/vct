@@ -1,0 +1,160 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.70
+
+Line
+   1  -- Bus encoding for measuretypes
+   2  --
+   3  -- $Log: measuretypes-encode.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.4  2003/09/01 18:24:21  adi
+   9  -- Added Newton
+  10  --
+  11  -- Revision 1.3  2003/08/27 20:42:29  adi
+  12  -- Added Kelvin
+  13  --
+  14  -- Revision 1.2  2003/08/25 13:32:45  adi
+  15  -- Added bit4_array
+  16  --
+  17  -- Revision 1.1  2003/08/24 19:14:59  adi
+  18  -- Initial revision
+  19  --
+  20  --
+  21  with systemTypes;
+  22  package body Measuretypes.encode is
+  23     Word_Max : constant := (1 + Bus.Word'Last);
+  24  
+  25     function Kelvin(K : Measuretypes.Kelvin) return Bus.Word
+  26     is begin
+  27        return Bus.Word(K);
+  28     end Kelvin;
+
++++        Flow analysis of subprogram Kelvin performed: no 
+           errors found.
+
+  29  
+  30     procedure Newton(N : in Measuretypes.Newton;
+  31                      Lo, Hi : out Bus.Word)
+  32     is
+  33        Tmp : Measuretypes.Newton;
+  34        Negative : Boolean;
+  35     begin
+  36        Tmp := N;
+  37        if (Tmp < 0) then
+  38           Tmp := -Tmp;
+  39           Negative := True;
+  40        else
+  41           Negative := False;
+  42        end if;
+  43        Lo := Bus.Word(Tmp mod Word_Max);
+  44        Hi := Bus.Word(Tmp / Word_Max);
+  45        if Negative then
+  46           Hi := Hi + 16#8000#;
+  47        end if;
+  48     end Newton;
+
++++        Flow analysis of subprogram Newton performed: no 
+           errors found.
+
+  49  
+  50     procedure Meter(M : in Measuretypes.Meter;
+  51                     Lo, Hi : out bus.Word)
+  52     is
+  53     begin
+  54        Lo := Bus.Word(M mod Word_max);
+  55        Hi := Bus.Word(M / Word_max);
+  56     end Meter;
+
++++        Flow analysis of subprogram Meter performed: no 
+           errors found.
+
+  57  
+  58     -- Encode in a single word, with restriction
+  59     function Meter_Single(M : Measuretypes.Meter;
+  60                           R : Measuretypes.Meter)
+  61       return Bus.word
+  62     is
+  63        Distance : Measuretypes.Meter;
+  64     begin
+  65        if m < 0 then
+  66           Distance := 0;
+  67        elsif m > R then
+  68           Distance := R;
+  69        else
+  70           Distance := M;
+  71        end if;
+  72        if distance > Measuretypes.Meter(Bus.Word'Last) then
+  73           distance := Measuretypes.Meter(Bus.Word'Last);
+  74        end if;
+  75        return Bus.Word(distance);
+  76     end Meter_Single;
+
++++        Flow analysis of subprogram Meter_Single 
+           performed: no errors found.
+
+  77  
+  78     procedure Meter_Per_Sec(V : in Measuretypes.Meter_Per_Sec;
+  79                             W : out bus.Word)
+  80     is
+  81        Negative : Boolean;
+  82        Vel : Measuretypes.Meter_Per_Sec;
+  83     begin
+  84        if V < 0 then
+  85           Negative := True;
+  86           Vel := -V;
+  87        else
+  88           Negative := False;
+  89           Vel := V;
+  90        end if;
+  91        w := Bus.Word(Vel);
+  92        if Negative then
+  93           w := w + 16#8000#;
+  94        end if;
+  95     end Meter_Per_Sec;
+
++++        Flow analysis of subprogram Meter_Per_Sec 
+           performed: no errors found.
+
+  96  
+  97     function Bit4_Array(A : in Measuretypes.Bit4_Array)
+  98                        return Bus.word
+  99     is
+ 100        Datum, Add_Bit : Bus.Word;
+ 101     begin
+ 102        Datum := 0;
+ 103        Add_Bit := 1;
+ 104        for Actual_X in Measuretypes.bit4_Range loop
+ 105           --# assert actual_x in measuretypes.bit4_range;
+ 106           for Actual_Y in Measuretypes.bit4_Range loop
+ 107           --# assert actual_x in measuretypes.bit4_range and
+ 108           --#        actual_y in measuretypes.bit4_range;
+ 109              if A(Actual_X)(Actual_Y) then
+ 110                 Datum := Datum + Add_Bit;
+ 111              end if;
+ 112              if Add_Bit <= 16#4000# then
+ 113                 Add_Bit := Add_Bit * 2;
+ 114              end if;
+ 115           end loop;
+ 116        end loop;
+ 117        return Datum;
+ 118     end Bit4_array;
+
++++        Flow analysis of subprogram Bit4_Array 
+           performed: no errors found.
+
+ 119  
+ 120  
+ 121  end Measuretypes.encode;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

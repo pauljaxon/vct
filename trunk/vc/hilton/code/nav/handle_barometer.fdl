@@ -1,0 +1,47 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:44.05}
+
+                       {procedure nav.Handle_Barometer}
+
+
+title procedure handle_barometer;
+
+  function round__(real) : integer;
+  type measuretypes__meter = integer;
+  type sensor_status = (unknown, valid, failed, restarted);
+  const sensor_status__base__last : sensor_status = pending; 
+  const sensor_status__base__first : sensor_status = pending; 
+  const meter__base__last : integer = pending; 
+  const meter__base__first : integer = pending; 
+  const sensor_history__meter__base__last : integer = pending; 
+  const sensor_history__meter__base__first : integer = pending; 
+  const measuretypes__meter__base__last : integer = pending; 
+  const measuretypes__meter__base__first : integer = pending; 
+  const sensor_status__size : integer = pending; 
+  const sensor_status__last : sensor_status = pending; 
+  const sensor_status__first : sensor_status = pending; 
+  const meter__size : integer = pending; 
+  const meter__last : integer = pending; 
+  const meter__first : integer = pending; 
+  const sensor_history__meter__size : integer = pending; 
+  const sensor_history__meter__last : integer = pending; 
+  const sensor_history__meter__first : integer = pending; 
+  const measuretypes__meter__size : integer = pending; 
+  const measuretypes__meter__last : integer = pending; 
+  const measuretypes__meter__first : integer = pending; 
+  var barometer_ss : sensor_status;
+  var restart : boolean;
+  var height_now : integer;
+  var baro_valid : boolean;
+  var baro_valid__3 : boolean;
+  var height_now__3 : integer;
+  var baro_valid__1 : boolean;
+  var height_now__1 : integer;
+
+end;

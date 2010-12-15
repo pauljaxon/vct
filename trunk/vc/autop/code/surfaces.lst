@@ -1,0 +1,31 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.43
+
+Line
+   1  package Surfaces
+   2    --# own out Elevators, out Ailerons, out Rudder;
+   3  is
+   4     type Controlangle is range -45 .. 45;
+   5     --# assert Controlangle'Base is Short_Short_Integer;
+   6  
+   7     procedure Move_Elevators(Position : in Controlangle);
+   8     --# global out Elevators;
+   9     --# derives Elevators from Position;
+  10  
+  11     procedure Move_Ailerons(Position : in Controlangle);
+  12     --# global out Ailerons;
+  13     --# derives Ailerons from Position;
+  14  
+  15     procedure Move_Rudder(Position : in Controlangle);
+  16     --# global out Rudder;
+  17     --# derives Rudder from Position;
+  18  end Surfaces;
+
+
+--End of file--------------------------------------------------

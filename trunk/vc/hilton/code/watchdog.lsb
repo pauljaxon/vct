@@ -1,0 +1,89 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.07
+
+Line
+   1  -- Watchdog timer implementation
+   2  --
+   3  -- $Log: watchdog.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/02/09 19:48:16  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with Clock;
+  13  use type Clock.Millisecond;
+  14  package body Watchdog
+  15    --# own State is Last_Check, Last_Valid;
+  16  is
+  17     -- Watchdog timeout at 750ms
+  18     Max_Delay : constant Clock.Millisecond := 750;
+  19  
+  20     Last_Check : Clock.Millisecond := 0;
+  21     Last_Valid : Boolean := False;
+  22  
+  23     -- The public procedure
+  24     procedure Reset
+  25       --# global    out Last_Check, Last_Valid;
+  26       --#        in out Clock.Time;
+  27       --# derives Last_Check, Last_Valid, Clock.Time
+  28       --#    from Clock.Time;
+  29     is
+  30     begin
+  31        Clock.Read(Last_Check,Last_Valid);
+  32     end Reset;
+
++++        Flow analysis of subprogram Reset performed: no 
+           errors found.
+
+  33  
+  34     procedure Check_Timeout(V : out Timer_Check)
+  35       --# global in     Last_Check, Last_Valid;
+  36       --#        in out Clock.Time;
+  37       --# derives Clock.Time from * &
+  38       --#    V from Last_Check,Last_Valid,Clock.Time;
+  39     is
+  40        Valid : Boolean;
+  41        T : Clock.Millisecond;
+  42        Gap: Clock.Millisecond;
+  43     begin
+  44        Clock.Read(T,Valid);
+  45        if (not Valid) or (not Last_Valid) then
+  46           -- Watchdog not got valid data, assume invalid
+  47           V := Invalid;
+  48        else
+  49           -- Both readings were valid, so compute the gap
+  50           if T >= Last_Check then
+  51              Gap := T - Last_Check;
+  52           else
+  53              -- T < Last_Check, implying clock wraparound
+  54              Gap := (Clock.Millisecond'Last - Last_Check);
+  55              Gap := Gap + T;
+  56           end if;
+  57           if Gap > Max_Delay then
+  58              V := Timeout;
+  59           else
+  60              V := OK;
+  61           end if;
+  62        end if;
+  63     end Check_Timeout;
+
++++        Flow analysis of subprogram Check_Timeout 
+           performed: no errors found.
+
+  64  
+  65  
+  66  end Watchdog;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

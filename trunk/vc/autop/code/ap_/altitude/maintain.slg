@@ -1,0 +1,201 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:06
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure Altitude.Maintain
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_maintain_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  ap__controls__switch__first <= switch_pressed
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  ap__controls__switch__first <= switch_pressed_before
+***  Proved C1:  present_altitude >= instruments__feet__first
+     using hypothesis H4.
+***  Proved C2:  present_altitude <= instruments__feet__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_maintain_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  ap__controls__switch__first <= switch_pressed
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  ap__controls__switch__first <= switch_pressed_before
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H5)
+          .
+***  Proved C1:  the_pitch >= instruments__pitchangle__first
+     using hypothesis H10.
+***  Proved C2:  the_pitch <= instruments__pitchangle__last
+     using hypothesis H11.
+***  Proved C3:  climb_rate >= instruments__feetpermin__first
+     using hypothesis H8.
+***  Proved C4:  climb_rate <= instruments__feetpermin__last
+     using hypothesis H9.
+***  Proved C5:  mach >= instruments__machnumber__first
+     using hypothesis H6.
+***  Proved C6:  mach <= instruments__machnumber__last
+     using hypothesis H7.
+***  Proved C7:  present_altitude >= instruments__feet__first
+     using hypothesis H4.
+***  Proved C8:  present_altitude <= instruments__feet__last
+     using hypothesis H5.
+***  Proved C9:  present_altitude >= instruments__feet__first
+     using hypothesis H4.
+***  Proved C10:  present_altitude <= instruments__feet__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_maintain_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  ap__controls__switch__first <= switch_pressed
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  ap__controls__switch__first <= switch_pressed_before
+***  Proved C1:  the_pitch >= instruments__pitchangle__first
+     using hypothesis H10.
+***  Proved C2:  the_pitch <= instruments__pitchangle__last
+     using hypothesis H11.
+***  Proved C3:  climb_rate >= instruments__feetpermin__first
+     using hypothesis H8.
+***  Proved C4:  climb_rate <= instruments__feetpermin__last
+     using hypothesis H9.
+***  Proved C5:  mach >= instruments__machnumber__first
+     using hypothesis H6.
+***  Proved C6:  mach <= instruments__machnumber__last
+     using hypothesis H7.
+***  Proved C7:  target_altitude >= instruments__feet__first
+     using hypothesis H12.
+***  Proved C8:  target_altitude <= instruments__feet__last
+     using hypothesis H13.
+***  Proved C9:  present_altitude >= instruments__feet__first
+     using hypothesis H4.
+***  Proved C10:  present_altitude <= instruments__feet__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_maintain_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  ap__controls__switch__first <= switch_pressed
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  ap__controls__switch__first <= switch_pressed_before
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  ap__controls__switch__first <= switch_pressed
+***  Proved C1:  ap__controls__switch__first <= switch_pressed
+     using hypothesis H2.
+***  Proved C2:  switch_pressed <= ap__controls__switch__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_maintain_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  ap__controls__switch__first <= switch_pressed
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  ap__controls__switch__first <= switch_pressed_before
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  ap__controls__switch__first <= switch_pressed
+***  Proved C1:  ap__controls__switch__first <= switch_pressed
+     using hypothesis H2.
+***  Proved C2:  switch_pressed <= ap__controls__switch__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_maintain_6.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  ap__controls__switch__first <= switch_pressed
+%%%  Simplified H14 on reading formula in, to give:
+     %%%  H14:  ap__controls__switch__first <= switch_pressed_before
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  ap__controls__switch__first <= switch_pressed
+***  Proved C1:  ap__controls__switch__first <= switch_pressed
+     using hypothesis H2.
+***  Proved C2:  switch_pressed <= ap__controls__switch__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_maintain_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_maintain_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_maintain_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_maintain_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_maintain_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

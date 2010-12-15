@@ -1,0 +1,93 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:41.46
+
+                            procedure Radar.Init
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 315:
+
+procedure_init_1.
+H1:    true .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 317:
+
+procedure_init_2.
+H1:    true .
+H2:    bus_id >= rt1553__lru_name__first .
+H3:    bus_id <= rt1553__lru_name__last .
+H4:    1 >= bus__lru_subaddress_index__first .
+H5:    1 <= bus__lru_subaddress_index__last .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    2 >= bus__lru_subaddress_index__first .
+C4:    2 <= bus__lru_subaddress_index__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 322:
+
+procedure_init_3.
+H1:    true .
+H2:    bus_id >= rt1553__lru_name__first .
+H3:    bus_id <= rt1553__lru_name__last .
+H4:    1 >= bus__lru_subaddress_index__first .
+H5:    1 <= bus__lru_subaddress_index__last .
+H6:    bus_id >= rt1553__lru_name__first .
+H7:    bus_id <= rt1553__lru_name__last .
+H8:    2 >= bus__lru_subaddress_index__first .
+H9:    2 <= bus__lru_subaddress_index__last .
+        ->
+C1:    45 >= random__value__first .
+C2:    45 <= random__value__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 323:
+
+procedure_init_4.
+H1:    true .
+H2:    bus_id >= rt1553__lru_name__first .
+H3:    bus_id <= rt1553__lru_name__last .
+H4:    1 >= bus__lru_subaddress_index__first .
+H5:    1 <= bus__lru_subaddress_index__last .
+H6:    bus_id >= rt1553__lru_name__first .
+H7:    bus_id <= rt1553__lru_name__last .
+H8:    2 >= bus__lru_subaddress_index__first .
+H9:    2 <= bus__lru_subaddress_index__last .
+H10:   45 >= random__value__first .
+H11:   45 <= random__value__last .
+H12:   true .
+        ->
+C1:    65 >= systemtypes__unsigned16__first .
+C2:    65 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_init_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_init_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_init_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+

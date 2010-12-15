@@ -1,0 +1,66 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.36
+
+                         procedure bc1553.Read_Word
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 110:
+
+procedure_read_word_1.
+H1:    true .
+H2:    src >= lru_name__first .
+H3:    src <= lru_name__last .
+H4:    idx >= bus__word_index__first .
+H5:    idx <= bus__word_index__last .
+H6:    subaddress_idx >= bus__lru_subaddress_index__first .
+H7:    subaddress_idx <= bus__lru_subaddress_index__last .
+        ->
+C1:    subaddress_idx >= bus__lru_subaddress_index__first .
+C2:    subaddress_idx <= bus__lru_subaddress_index__last .
+C3:    idx >= bus__word_index__first .
+C4:    idx <= bus__word_index__last .
+C5:    element(lru_names, [src]) >= bus__lru_index__first .
+C6:    element(lru_names, [src]) <= bus__lru_index__last .
+C7:    src >= lru_name__first .
+C8:    src <= lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 110:
+
+procedure_read_word_2.
+H1:    true .
+H2:    src >= lru_name__first .
+H3:    src <= lru_name__last .
+H4:    idx >= bus__word_index__first .
+H5:    idx <= bus__word_index__last .
+H6:    subaddress_idx >= bus__lru_subaddress_index__first .
+H7:    subaddress_idx <= bus__lru_subaddress_index__last .
+H8:    subaddress_idx >= bus__lru_subaddress_index__first .
+H9:    subaddress_idx <= bus__lru_subaddress_index__last .
+H10:   idx >= bus__word_index__first .
+H11:   idx <= bus__word_index__last .
+H12:   element(lru_names, [src]) >= bus__lru_index__first .
+H13:   element(lru_names, [src]) <= bus__lru_index__last .
+H14:   src >= lru_name__first .
+H15:   src <= lru_name__last .
+H16:   data__1 >= bus__word__first .
+H17:   data__1 <= bus__word__last .
+        ->
+C1:    data__1 >= bus__word__first .
+C2:    data__1 <= bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_word_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+

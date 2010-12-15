@@ -1,0 +1,358 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:51
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure fuel.Cycle
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_cycle_1.  @@@@@@@@@@
+***  Proved C1:  level__1 >= measuretypes__kilo__first
+     using hypothesis H8.
+***  Proved C2:  level__1 <= measuretypes__kilo__last
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_2.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+-S-  Applied substitution rule cycle_rules(30).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New C1:  true
+-S-  Applied substitution rule cycle_rules(31).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New C2:  true
+-S-  Applied substitution rule cycle_rules(127).
+     This was achieved by replacing all occurrences of kilo__first by:
+          0.
+<S>  New C3:  level__1 >= 0
+-S-  Applied substitution rule cycle_rules(128).
+     This was achieved by replacing all occurrences of kilo__last by:
+          20000.
+<S>  New C4:  level__1 <= 20000
+***  Proved C1:  true
+***  Proved C2:  true
+-S-  Applied substitution rule cycle_rules(15).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kilo__first by:
+          0.
+<S>  New H2:  last_level >= 0
+<S>  New H8:  level__1 >= 0
+-S-  Applied substitution rule cycle_rules(16).
+     This was achieved by replacing all occurrences of measuretypes__kilo__last 
+          by:
+          20000.
+<S>  New H3:  last_level <= 20000
+<S>  New H9:  level__1 <= 20000
+-S-  Applied substitution rule cycle_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__gram_per_sec__first by:
+          0.
+<S>  New H6:  last_rate >= 0
+-S-  Applied substitution rule cycle_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__gram_per_sec__last by:
+          30000.
+<S>  New H7:  last_rate <= 30000
+-S-  Applied substitution rule cycle_rules(25).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  last_time >= 0
+-S-  Applied substitution rule cycle_rules(26).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  last_time <= 8640000
+***  Proved C3:  level__1 >= 0
+     using hypothesis H8.
+***  Proved C4:  level__1 <= 20000
+     using hypothesis H9.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_3.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  rt1553__lru_name__first <= bus_id
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  ibit__phase__first <= bit_machine__phase(bit_state)
+***  Proved C5:  2 >= bus__word_index__first
+     using hypothesis H14.
+***  Proved C9:  ibit__phase__first <= bit_machine__phase(bit_state)
+     using hypothesis H18.
+***  Proved C10:  bit_machine__phase(bit_state) <= ibit__phase__last
+     using hypothesis H19.
+-S-  Applied substitution rule cycle_rules(51).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New C1:  rt1553__barometer <= bus_id
+-S-  Applied substitution rule cycle_rules(3).
+     This was achieved by replacing all occurrences of bus_id by:
+          rt1553__fuel.
+<S>  New C2:  rt1553__fuel <= rt1553__lru_name__last
+<S>  New C1:  true
+-S-  Applied substitution rule cycle_rules(52).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New C2:  true
+-S-  Applied substitution rule cycle_rules(46).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New C3:  true
+-S-  Applied substitution rule cycle_rules(47).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New C4:  true
+-S-  Applied substitution rule cycle_rules(31).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H15:  true
+<S>  New C6:  true
+-S-  Applied substitution rule cycle_rules(36).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C7:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) >= 0
+-S-  Applied substitution rule cycle_rules(37).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C8:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) <= 
+          65535
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  Proved C6:  true
+-S-  Applied substitution rule cycle_rules(15).
+     This was achieved by replacing all occurrences of 
+          measuretypes__kilo__first by:
+          0.
+<S>  New H2:  last_level >= 0
+<S>  New H8:  level__1 >= 0
+-S-  Applied substitution rule cycle_rules(16).
+     This was achieved by replacing all occurrences of measuretypes__kilo__last 
+          by:
+          20000.
+<S>  New H3:  last_level <= 20000
+<S>  New H9:  level__1 <= 20000
+-S-  Applied substitution rule cycle_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__gram_per_sec__first by:
+          0.
+<S>  New H6:  last_rate >= 0
+-S-  Applied substitution rule cycle_rules(21).
+     This was achieved by replacing all occurrences of 
+          measuretypes__gram_per_sec__last by:
+          30000.
+<S>  New H7:  last_rate <= 30000
+-S-  Applied substitution rule cycle_rules(25).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H4:  last_time >= 0
+-S-  Applied substitution rule cycle_rules(26).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H5:  last_time <= 8640000
+-S-  Applied substitution rule cycle_rules(30).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H14:  true
+-S-  Applied substitution rule cycle_rules(94).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H18:  ibit__off <= bit_machine__phase(bit_state)
+-S-  Applied substitution rule cycle_rules(95).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H19:  bit_machine__phase(bit_state) <= ibit__timeout
+-S-  Applied substitution rule cycle_rules(127).
+     This was achieved by replacing all occurrences of kilo__first by:
+          0.
+<S>  New H16:  level__1 >= 0
+-S-  Applied substitution rule cycle_rules(128).
+     This was achieved by replacing all occurrences of kilo__last by:
+          20000.
+<S>  New H17:  level__1 <= 20000
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H16 (duplicate of H8).
+---  Eliminated hypothesis H17 (duplicate of H9).
+***  Proved C7:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) 
+          >= 0
+     using hypotheses H18 & H19.
+***  Proved C8:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) 
+          <= 65535
+     using hypotheses H18 & H19.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_4.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H19).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  rt1553__lru_name__first <= bus_id
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H22.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H23.
+***  Proved C3:  1 >= bus__word_index__first
+     using hypothesis H14.
+***  Proved C4:  1 <= bus__word_index__last
+     using hypothesis H15.
+***  Proved C5:  rt1553__lru_name__first <= bus_id
+     using hypothesis H20.
+***  Proved C6:  bus_id <= rt1553__lru_name__last
+     using hypothesis H21.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_5.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H21).
+***  Proved C1:  datum__4 >= bus__word__first
+     using hypothesis H36.
+***  Proved C2:  datum__4 <= bus__word__last
+     using hypothesis H37.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_6.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified H20 on reading formula in, to give:
+     %%%  H20:  rt1553__lru_name__first <= bus_id
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H23).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H38 has been replaced by "true".  (It is already present, as 
+          H36).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H37).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H36).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H37).
+***  Proved C1:  datum__4 >= bus__word__first
+     using hypothesis H36.
+***  Proved C2:  datum__4 <= bus__word__last
+     using hypothesis H37.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

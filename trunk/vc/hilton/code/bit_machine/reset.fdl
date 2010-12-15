@@ -1,0 +1,43 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:39.02}
+
+                        {procedure bit_machine.Reset}
+
+
+title procedure reset;
+
+  function round__(real) : integer;
+  type ibit__phase = (ibit__off, ibit__request_start, 
+     ibit__in_progress, ibit__request_stop, ibit__pass, 
+     ibit__fail, ibit__timeout);
+  type machine = record
+        current_phase : ibit__phase;
+        ticks : integer;
+        fail_bit : boolean;
+        ticks_to_complete : integer
+     end;
+  const ibit__phase__base__last : ibit__phase = pending; 
+  const ibit__phase__base__first : ibit__phase = pending; 
+  const systemtypes__unsigned16__base__last : integer = pending; 
+  const systemtypes__unsigned16__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const machine__size : integer = pending; 
+  const ibit__phase__size : integer = pending; 
+  const ibit__phase__last : ibit__phase = pending; 
+  const ibit__phase__first : ibit__phase = pending; 
+  const systemtypes__unsigned16__size : integer = pending; 
+  const systemtypes__unsigned16__last : integer = pending; 
+  const systemtypes__unsigned16__first : integer = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+  var state : machine;
+
+end;

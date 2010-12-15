@@ -1,0 +1,371 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:36.98
+
+                      function State_Types.Fuze_Action
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 23:
+
+function_fuze_action_1.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+        ->
+C1:    unarmed >= fuze__first .
+C2:    unarmed <= fuze__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 24:
+
+function_fuze_action_2.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    val = element(fuze_values, [unarmed]) .
+        ->
+C1:    unarmed >= fuze__first .
+C2:    unarmed <= fuze__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 25:
+
+function_fuze_action_3.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+        ->
+C1:    arming >= fuze__first .
+C2:    arming <= fuze__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 26:
+
+function_fuze_action_4.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    val = element(fuze_values, [arming]) .
+        ->
+C1:    arming >= fuze__first .
+C2:    arming <= fuze__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 27:
+
+function_fuze_action_5.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    not (val = element(fuze_values, [arming])) .
+        ->
+C1:    live >= fuze__first .
+C2:    live <= fuze__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 28:
+
+function_fuze_action_6.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    not (val = element(fuze_values, [arming])) .
+H10:   live >= fuze__first .
+H11:   live <= fuze__last .
+H12:   val = element(fuze_values, [live]) .
+        ->
+C1:    live >= fuze__first .
+C2:    live <= fuze__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 29:
+
+function_fuze_action_7.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    not (val = element(fuze_values, [arming])) .
+H10:   live >= fuze__first .
+H11:   live <= fuze__last .
+H12:   not (val = element(fuze_values, [live])) .
+        ->
+C1:    triggering >= fuze__first .
+C2:    triggering <= fuze__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 30:
+
+function_fuze_action_8.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    not (val = element(fuze_values, [arming])) .
+H10:   live >= fuze__first .
+H11:   live <= fuze__last .
+H12:   not (val = element(fuze_values, [live])) .
+H13:   triggering >= fuze__first .
+H14:   triggering <= fuze__last .
+H15:   val = element(fuze_values, [triggering]) .
+        ->
+C1:    triggering >= fuze__first .
+C2:    triggering <= fuze__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 31:
+
+function_fuze_action_9.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    not (val = element(fuze_values, [arming])) .
+H10:   live >= fuze__first .
+H11:   live <= fuze__last .
+H12:   not (val = element(fuze_values, [live])) .
+H13:   triggering >= fuze__first .
+H14:   triggering <= fuze__last .
+H15:   not (val = element(fuze_values, [triggering])) .
+        ->
+C1:    timed_out >= fuze__first .
+C2:    timed_out <= fuze__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 32:
+
+function_fuze_action_10.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    not (val = element(fuze_values, [arming])) .
+H10:   live >= fuze__first .
+H11:   live <= fuze__last .
+H12:   not (val = element(fuze_values, [live])) .
+H13:   triggering >= fuze__first .
+H14:   triggering <= fuze__last .
+H15:   not (val = element(fuze_values, [triggering])) .
+H16:   timed_out >= fuze__first .
+H17:   timed_out <= fuze__last .
+H18:   val = element(fuze_values, [timed_out]) .
+        ->
+C1:    timed_out >= fuze__first .
+C2:    timed_out <= fuze__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 35:
+
+function_fuze_action_11.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    not (val = element(fuze_values, [arming])) .
+H10:   live >= fuze__first .
+H11:   live <= fuze__last .
+H12:   not (val = element(fuze_values, [live])) .
+H13:   triggering >= fuze__first .
+H14:   triggering <= fuze__last .
+H15:   not (val = element(fuze_values, [triggering])) .
+H16:   timed_out >= fuze__first .
+H17:   timed_out <= fuze__last .
+H18:   not (val = element(fuze_values, [timed_out])) .
+        ->
+C1:    unarmed >= fuze__first .
+C2:    unarmed <= fuze__last .
+ 
+
+For path(s) from start to finish:
+
+function_fuze_action_12.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    val = element(fuze_values, [unarmed]) .
+H7:    unarmed >= fuze__first .
+H8:    unarmed <= fuze__last .
+H9:    unarmed >= fuze__first .
+H10:   unarmed <= fuze__last .
+        ->
+C1:    true .
+C2:    unarmed >= fuze__first .
+C3:    unarmed <= fuze__last .
+ 
+
+function_fuze_action_13.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    val = element(fuze_values, [arming]) .
+H10:   arming >= fuze__first .
+H11:   arming <= fuze__last .
+H12:   arming >= fuze__first .
+H13:   arming <= fuze__last .
+        ->
+C1:    true .
+C2:    arming >= fuze__first .
+C3:    arming <= fuze__last .
+ 
+
+function_fuze_action_14.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    not (val = element(fuze_values, [arming])) .
+H10:   live >= fuze__first .
+H11:   live <= fuze__last .
+H12:   val = element(fuze_values, [live]) .
+H13:   live >= fuze__first .
+H14:   live <= fuze__last .
+H15:   live >= fuze__first .
+H16:   live <= fuze__last .
+        ->
+C1:    true .
+C2:    live >= fuze__first .
+C3:    live <= fuze__last .
+ 
+
+function_fuze_action_15.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    not (val = element(fuze_values, [arming])) .
+H10:   live >= fuze__first .
+H11:   live <= fuze__last .
+H12:   not (val = element(fuze_values, [live])) .
+H13:   triggering >= fuze__first .
+H14:   triggering <= fuze__last .
+H15:   val = element(fuze_values, [triggering]) .
+H16:   triggering >= fuze__first .
+H17:   triggering <= fuze__last .
+H18:   triggering >= fuze__first .
+H19:   triggering <= fuze__last .
+        ->
+C1:    true .
+C2:    triggering >= fuze__first .
+C3:    triggering <= fuze__last .
+ 
+
+function_fuze_action_16.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    not (val = element(fuze_values, [arming])) .
+H10:   live >= fuze__first .
+H11:   live <= fuze__last .
+H12:   not (val = element(fuze_values, [live])) .
+H13:   triggering >= fuze__first .
+H14:   triggering <= fuze__last .
+H15:   not (val = element(fuze_values, [triggering])) .
+H16:   timed_out >= fuze__first .
+H17:   timed_out <= fuze__last .
+H18:   val = element(fuze_values, [timed_out]) .
+H19:   timed_out >= fuze__first .
+H20:   timed_out <= fuze__last .
+H21:   timed_out >= fuze__first .
+H22:   timed_out <= fuze__last .
+        ->
+C1:    true .
+C2:    timed_out >= fuze__first .
+C3:    timed_out <= fuze__last .
+ 
+
+function_fuze_action_17.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    unarmed >= fuze__first .
+H5:    unarmed <= fuze__last .
+H6:    not (val = element(fuze_values, [unarmed])) .
+H7:    arming >= fuze__first .
+H8:    arming <= fuze__last .
+H9:    not (val = element(fuze_values, [arming])) .
+H10:   live >= fuze__first .
+H11:   live <= fuze__last .
+H12:   not (val = element(fuze_values, [live])) .
+H13:   triggering >= fuze__first .
+H14:   triggering <= fuze__last .
+H15:   not (val = element(fuze_values, [triggering])) .
+H16:   timed_out >= fuze__first .
+H17:   timed_out <= fuze__last .
+H18:   not (val = element(fuze_values, [timed_out])) .
+H19:   unarmed >= fuze__first .
+H20:   unarmed <= fuze__last .
+H21:   unarmed >= fuze__first .
+H22:   unarmed <= fuze__last .
+        ->
+C1:    true .
+C2:    unarmed >= fuze__first .
+C3:    unarmed <= fuze__last .
+ 
+

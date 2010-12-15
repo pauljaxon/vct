@@ -1,0 +1,36 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:39.06}
+
+                      {procedure watchdog.Check_Timeout}
+
+
+title procedure check_timeout;
+
+  function round__(real) : integer;
+  type clock__millisecond = integer;
+  type timer_check = (timeout, ok, invalid);
+  const max_delay : integer = pending;
+  const timer_check__base__last : timer_check = pending; 
+  const timer_check__base__first : timer_check = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const timer_check__size : integer = pending; 
+  const timer_check__last : timer_check = pending; 
+  const timer_check__first : timer_check = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  var last_check : integer;
+  var last_valid : boolean;
+  var valid : boolean;
+  var t : integer;
+  var valid__1 : boolean;
+  var t__1 : integer;
+
+end;

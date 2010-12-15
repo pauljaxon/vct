@@ -1,0 +1,703 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:20
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function angle_ops.Millirad_To_Word
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_millirad_to_word_1.  @@@@@@@@@@
+-S-  Applied substitution rule millirad_to__rules(27).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New C1:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(28).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New C2:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(22).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+***  Proved C1:  orig_angle >= - 7000
+     using hypothesis H2.
+***  Proved C2:  orig_angle <= 7000
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_millirad_to_word_2.  @@@@@@@@@@
+-S-  Applied substitution rule millirad_to__rules(12).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New C1:  canon(orig_angle) >= - 2147483648
+<S>  New C3:  canon(orig_angle) >= - 2147483648
+-S-  Applied substitution rule millirad_to__rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New C2:  canon(orig_angle) <= 2147483647
+<S>  New C4:  canon(orig_angle) <= 2147483647
+-S-  Applied substitution rule millirad_to__rules(22).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(27).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H4:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(28).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H5:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(32).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H6:  canon(orig_angle) >= - 3141
+-S-  Applied substitution rule millirad_to__rules(33).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H7:  canon(orig_angle) <= 3142
+***  Proved C1:  canon(orig_angle) >= - 2147483648
+     using hypothesis H6.
+***  Proved C3:  canon(orig_angle) >= - 2147483648
+     using hypothesis H6.
+***  Proved C2:  canon(orig_angle) <= 2147483647
+     using hypothesis H7.
+***  Proved C4:  canon(orig_angle) <= 2147483647
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_millirad_to_word_3.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H9)
+          .
+-S-  Applied substitution rule millirad_to__rules(12).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H8:  canon(orig_angle) >= - 2147483648
+<S>  New C1:  - canon(orig_angle) >= - 2147483648
+-S-  Applied substitution rule millirad_to__rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H9:  canon(orig_angle) <= 2147483647
+<S>  New C2:  - canon(orig_angle) <= 2147483647
+-S-  Applied substitution rule millirad_to__rules(22).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(27).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H4:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(28).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H5:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(32).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H6:  canon(orig_angle) >= - 3141
+-S-  Applied substitution rule millirad_to__rules(33).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H7:  canon(orig_angle) <= 3142
+***  Proved C2:  - canon(orig_angle) <= 2147483647
+     via its standard form, which is:
+     Std.Fm C2:  canon(orig_angle) > - 2147483648
+     using hypothesis H6.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H4 (duplicate of H2).
+---  Eliminated hypothesis H5 (duplicate of H3).
+---  Eliminated hypothesis H7 (redundant, given H14).
+---  Eliminated hypothesis H8 (redundant, given H6).
+---  Eliminated hypothesis H9 (redundant, given H14).
+***  Proved C1:  - canon(orig_angle) >= - 2147483648
+     using hypothesis H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_millirad_to_word_4.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+-S-  Applied substitution rule millirad_to__rules(17).
+     This was achieved by replacing all occurrences of systemtypes__word__first 
+          by:
+          0.
+<S>  New C1:  - canon(orig_angle) >= 0
+<S>  New C3:  - canon(orig_angle) >= 0
+-S-  Applied substitution rule millirad_to__rules(18).
+     This was achieved by replacing all occurrences of systemtypes__word__last 
+          by:
+          65535.
+<S>  New C2:  - canon(orig_angle) <= 65535
+<S>  New C4:  - canon(orig_angle) <= 65535
+-S-  Applied substitution rule millirad_to__rules(12).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H8:  canon(orig_angle) >= - 2147483648
+<S>  New H17:  - canon(orig_angle) >= - 2147483648
+-S-  Applied substitution rule millirad_to__rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H9:  canon(orig_angle) <= 2147483647
+<S>  New H18:  - canon(orig_angle) <= 2147483647
+-S-  Applied substitution rule millirad_to__rules(22).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(27).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H4:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(28).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H5:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(32).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H6:  canon(orig_angle) >= - 3141
+-S-  Applied substitution rule millirad_to__rules(33).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H7:  canon(orig_angle) <= 3142
+***  Proved C2:  - canon(orig_angle) <= 65535
+     via its standard form, which is:
+     Std.Fm C2:  canon(orig_angle) > - 65536
+     using hypothesis H6.
+***  Proved C4:  - canon(orig_angle) <= 65535
+     via its standard form, which is:
+     Std.Fm C4:  canon(orig_angle) > - 65536
+     using hypothesis H6.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H4 (duplicate of H2).
+---  Eliminated hypothesis H5 (duplicate of H3).
+---  Eliminated hypothesis H7 (redundant, given H14).
+---  Eliminated hypothesis H8 (redundant, given H6).
+---  Eliminated hypothesis H9 (redundant, given H14).
+---  Eliminated hypothesis H17 (redundant, given H14).
+---  Eliminated hypothesis H18 (redundant, given H6).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+***  Proved C1:  - canon(orig_angle) >= 0
+     using hypothesis H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_millirad_to_word_5.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H9)
+          .
+-S-  Applied substitution rule millirad_to__rules(17).
+     This was achieved by replacing all occurrences of systemtypes__word__first 
+          by:
+          0.
+<S>  New C1:  canon(orig_angle) >= 0
+<S>  New C3:  canon(orig_angle) >= 0
+-S-  Applied substitution rule millirad_to__rules(18).
+     This was achieved by replacing all occurrences of systemtypes__word__last 
+          by:
+          65535.
+<S>  New C2:  canon(orig_angle) <= 65535
+<S>  New C4:  canon(orig_angle) <= 65535
+***  Proved C1:  canon(orig_angle) >= 0
+     using hypothesis H14.
+***  Proved C3:  canon(orig_angle) >= 0
+     using hypothesis H14.
+>>>  Restructured hypothesis H14 into:
+     >>>  H14:  0 <= canon(orig_angle)
+-S-  Applied substitution rule millirad_to__rules(12).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H8:  canon(orig_angle) >= - 2147483648
+-S-  Applied substitution rule millirad_to__rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H9:  canon(orig_angle) <= 2147483647
+-S-  Applied substitution rule millirad_to__rules(22).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(27).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H4:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(28).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H5:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(32).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H6:  canon(orig_angle) >= - 3141
+-S-  Applied substitution rule millirad_to__rules(33).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H7:  canon(orig_angle) <= 3142
+***  Proved C2:  canon(orig_angle) <= 65535
+     using hypothesis H7.
+***  Proved C4:  canon(orig_angle) <= 65535
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_millirad_to_word_6.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H22).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  - canon(orig_angle) + 32768 >= systemtypes__word__first
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  - canon(orig_angle) + 32768 <= systemtypes__word__last
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  32768 >= integer__base__first
+%%%  Simplified C4 on reading formula in, to give:
+     %%%  C4:  32768 <= integer__base__last
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  true
+***  Proved C1:  - canon(orig_angle) + 32768 >= systemtypes__word__first
+     using hypothesis H21.
+***  Proved C5:  true
+-S-  Applied substitution rule millirad_to__rules(18).
+     This was achieved by replacing all occurrences of systemtypes__word__last 
+          by:
+          65535.
+<S>  New H22:  - canon(orig_angle) <= 65535
+<S>  New C2:  - canon(orig_angle) <= 32767
+-S-  Applied substitution rule millirad_to__rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C3:  true
+-S-  Applied substitution rule millirad_to__rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C4:  true
+***  Proved C3:  true
+***  Proved C4:  true
+-S-  Applied substitution rule millirad_to__rules(12).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H8:  canon(orig_angle) >= - 2147483648
+<S>  New H17:  - canon(orig_angle) >= - 2147483648
+-S-  Applied substitution rule millirad_to__rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H9:  canon(orig_angle) <= 2147483647
+<S>  New H18:  - canon(orig_angle) <= 2147483647
+-S-  Applied substitution rule millirad_to__rules(17).
+     This was achieved by replacing all occurrences of systemtypes__word__first 
+          by:
+          0.
+<S>  New H21:  - canon(orig_angle) >= 0
+-S-  Applied substitution rule millirad_to__rules(22).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(27).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H4:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(28).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H5:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(32).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H6:  canon(orig_angle) >= - 3141
+-S-  Applied substitution rule millirad_to__rules(33).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H7:  canon(orig_angle) <= 3142
+***  Proved C2:  - canon(orig_angle) <= 32767
+     via its standard form, which is:
+     Std.Fm C2:  canon(orig_angle) > - 32768
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_millirad_to_word_7.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H18).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  canon(orig_angle) + 32768 >= systemtypes__word__first
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  canon(orig_angle) + 32768 <= systemtypes__word__last
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  32768 >= integer__base__first
+%%%  Simplified C4 on reading formula in, to give:
+     %%%  C4:  32768 <= integer__base__last
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  true
+***  Proved C1:  canon(orig_angle) + 32768 >= systemtypes__word__first
+     using hypothesis H17.
+***  Proved C5:  true
+-S-  Applied substitution rule millirad_to__rules(18).
+     This was achieved by replacing all occurrences of systemtypes__word__last 
+          by:
+          65535.
+<S>  New H18:  canon(orig_angle) <= 65535
+<S>  New C2:  canon(orig_angle) <= 32767
+-S-  Applied substitution rule millirad_to__rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C3:  true
+-S-  Applied substitution rule millirad_to__rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C4:  true
+***  Proved C3:  true
+***  Proved C4:  true
+>>>  Restructured hypothesis H14 into:
+     >>>  H14:  0 <= canon(orig_angle)
+-S-  Applied substitution rule millirad_to__rules(12).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__first by:
+          - 2147483648.
+<S>  New H8:  canon(orig_angle) >= - 2147483648
+-S-  Applied substitution rule millirad_to__rules(13).
+     This was achieved by replacing all occurrences of 
+          systemtypes__integer32__last by:
+          2147483647.
+<S>  New H9:  canon(orig_angle) <= 2147483647
+-S-  Applied substitution rule millirad_to__rules(17).
+     This was achieved by replacing all occurrences of systemtypes__word__first 
+          by:
+          0.
+<S>  New H17:  canon(orig_angle) >= 0
+-S-  Applied substitution rule millirad_to__rules(22).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__first by:
+          - 7000.
+<S>  New H2:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(23).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad__last by:
+          7000.
+<S>  New H3:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(27).
+     This was achieved by replacing all occurrences of millirad__first by:
+          - 7000.
+<S>  New H4:  orig_angle >= - 7000
+-S-  Applied substitution rule millirad_to__rules(28).
+     This was achieved by replacing all occurrences of millirad__last by:
+          7000.
+<S>  New H5:  orig_angle <= 7000
+-S-  Applied substitution rule millirad_to__rules(32).
+     This was achieved by replacing all occurrences of canon_millirad__first by:
+          - 3141.
+<S>  New H6:  canon(orig_angle) >= - 3141
+-S-  Applied substitution rule millirad_to__rules(33).
+     This was achieved by replacing all occurrences of canon_millirad__last by:
+          3142.
+<S>  New H7:  canon(orig_angle) <= 3142
+***  Proved C2:  canon(orig_angle) <= 32767
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_millirad_to_word_8.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H22).
+%%%  Simplified H29 on reading formula in, to give:
+     %%%  H29:  - canon(orig_angle) + 32768 >= systemtypes__word__first
+%%%  Simplified H30 on reading formula in, to give:
+     %%%  H30:  - canon(orig_angle) + 32768 <= systemtypes__word__last
+%%%  Simplified H31 on reading formula in, to give:
+     %%%  H31:  32768 >= integer__base__first
+%%%  Simplified H32 on reading formula in, to give:
+     %%%  H32:  32768 <= integer__base__last
+%%%  Simplified H33 on reading formula in, to give:
+     %%%  H33:  true
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H30).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  - canon(orig_angle) + 32768 >= systemtypes__word__first
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  - canon(orig_angle) + 32768 <= systemtypes__word__last
+***  Proved C1:  true
+***  Proved C2:  - canon(orig_angle) + 32768 >= systemtypes__word__first
+     using hypothesis H29.
+***  Proved C3:  - canon(orig_angle) + 32768 <= systemtypes__word__last
+     using hypothesis H30.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_millirad_to_word_9.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H18).
+%%%  Simplified H25 on reading formula in, to give:
+     %%%  H25:  canon(orig_angle) + 32768 >= systemtypes__word__first
+%%%  Simplified H26 on reading formula in, to give:
+     %%%  H26:  canon(orig_angle) + 32768 <= systemtypes__word__last
+%%%  Simplified H27 on reading formula in, to give:
+     %%%  H27:  32768 >= integer__base__first
+%%%  Simplified H28 on reading formula in, to give:
+     %%%  H28:  32768 <= integer__base__last
+%%%  Simplified H29 on reading formula in, to give:
+     %%%  H29:  true
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H26).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  canon(orig_angle) + 32768 >= systemtypes__word__first
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  canon(orig_angle) + 32768 <= systemtypes__word__last
+***  Proved C1:  true
+***  Proved C2:  canon(orig_angle) + 32768 >= systemtypes__word__first
+     using hypothesis H25.
+***  Proved C3:  canon(orig_angle) + 32768 <= systemtypes__word__last
+     using hypothesis H26.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_millirad_to_word_10.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H22).
+%%%  Simplified H26 on reading formula in, to give:
+     %%%  H26:  false
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H22).
+***  Proved C1:  true
+***  Proved C2:  - canon(orig_angle) >= systemtypes__word__first
+     using hypothesis H21.
+***  Proved C3:  - canon(orig_angle) <= systemtypes__word__last
+     using hypothesis H22.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_millirad_to_word_11.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H18).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  true
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H18).
+***  Proved C1:  true
+***  Proved C2:  canon(orig_angle) >= systemtypes__word__first
+     using hypothesis H17.
+***  Proved C3:  canon(orig_angle) <= systemtypes__word__last
+     using hypothesis H18.
+***  PROVED VC.
+

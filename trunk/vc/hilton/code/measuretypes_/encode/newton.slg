@@ -1,0 +1,594 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:21
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure encode.Newton
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_newton_1.  @@@@@@@@@@
+***  Proved C1:  n >= measuretypes__newton__first
+     using hypothesis H2.
+***  Proved C2:  n <= measuretypes__newton__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_newton_2.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+-S-  Applied substitution rule newton_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New H2:  n >= - 1000000
+<S>  New C1:  - n >= - 1000000
+-S-  Applied substitution rule newton_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New H3:  n <= 1000000
+<S>  New C2:  - n <= 1000000
+***  Proved C1:  - n >= - 1000000
+     via its standard form, which is:
+     Std.Fm C1:  - n > - 1000001
+     using hypothesis H3.
+***  Proved C2:  - n <= 1000000
+     via its standard form, which is:
+     Std.Fm C2:  n > - 1000001
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_newton_3.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+-S-  Applied substitution rule newton_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C1:  - n mod word_max >= 0
+<S>  New C3:  - n mod word_max >= 0
+-S-  Applied substitution rule newton_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C2:  - n mod word_max <= 65535
+<S>  New C4:  - n mod word_max <= 65535
+-S-  Applied substitution rule newton_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__first by:
+          - 2147483648.
+<S>  New C5:  - n mod word_max >= - 2147483648
+-S-  Applied substitution rule newton_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__last by:
+          2147483647.
+<S>  New C6:  - n mod word_max <= 2147483647
+-S-  Applied substitution rule newton_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New C7:  true
+<S>  New C1:  - n mod 65536 >= 0
+<S>  New C3:  - n mod 65536 >= 0
+<S>  New C2:  - n mod 65536 <= 65535
+<S>  New C4:  - n mod 65536 <= 65535
+<S>  New C5:  - n mod 65536 >= - 2147483648
+<S>  New C6:  - n mod 65536 <= 2147483647
+-S-  Applied substitution rule newton_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New H2:  n >= - 1000000
+<S>  New H11:  - n >= - 1000000
+-S-  Applied substitution rule newton_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New H3:  n <= 1000000
+<S>  New H12:  - n <= 1000000
+***  Proved C7:  true
+***  Proved C1:  - n mod 65536 >= 0
+***  Proved C3:  - n mod 65536 >= 0
+***  Proved C2:  - n mod 65536 <= 65535
+***  Proved C4:  - n mod 65536 <= 65535
+***  Proved C5:  - n mod 65536 >= - 2147483648
+***  Proved C6:  - n mod 65536 <= 2147483647
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_newton_4.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+-S-  Applied substitution rule newton_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C1:  n mod word_max >= 0
+<S>  New C3:  n mod word_max >= 0
+-S-  Applied substitution rule newton_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C2:  n mod word_max <= 65535
+<S>  New C4:  n mod word_max <= 65535
+-S-  Applied substitution rule newton_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__first by:
+          - 2147483648.
+<S>  New C5:  n mod word_max >= - 2147483648
+-S-  Applied substitution rule newton_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__last by:
+          2147483647.
+<S>  New C6:  n mod word_max <= 2147483647
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  0 <= n
+-S-  Applied substitution rule newton_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New C7:  true
+<S>  New C1:  n mod 65536 >= 0
+<S>  New C3:  n mod 65536 >= 0
+<S>  New C2:  n mod 65536 <= 65535
+<S>  New C4:  n mod 65536 <= 65535
+<S>  New C5:  n mod 65536 >= - 2147483648
+<S>  New C6:  n mod 65536 <= 2147483647
+-S-  Applied substitution rule newton_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New H2:  n >= - 1000000
+-S-  Applied substitution rule newton_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New H3:  n <= 1000000
+***  Proved C7:  true
+***  Proved C1:  n mod 65536 >= 0
+***  Proved C3:  n mod 65536 >= 0
+***  Proved C2:  n mod 65536 <= 65535
+***  Proved C4:  n mod 65536 <= 65535
+***  Proved C5:  n mod 65536 >= - 2147483648
+***  Proved C6:  n mod 65536 <= 2147483647
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_newton_5.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H12).
+***  Proved C7:  word_max <> 0
+     using hypothesis H21.
+-S-  Applied substitution rule newton_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H15:  - n mod word_max >= 0
+<S>  New C1:  - n div word_max >= 0
+<S>  New C3:  - n div word_max >= 0
+-S-  Applied substitution rule newton_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H16:  - n mod word_max <= 65535
+<S>  New C2:  - n div word_max <= 65535
+<S>  New C4:  - n div word_max <= 65535
+-S-  Applied substitution rule newton_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__first by:
+          - 2147483648.
+<S>  New H19:  - n mod word_max >= - 2147483648
+<S>  New C5:  - n div word_max >= - 2147483648
+-S-  Applied substitution rule newton_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__last by:
+          2147483647.
+<S>  New H20:  - n mod word_max <= 2147483647
+<S>  New C6:  - n div word_max <= 2147483647
+-S-  Applied substitution rule newton_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New H15:  - n mod 65536 >= 0
+<S>  New H16:  - n mod 65536 <= 65535
+<S>  New H19:  - n mod 65536 >= - 2147483648
+<S>  New H20:  - n mod 65536 <= 2147483647
+<S>  New H21:  true
+<S>  New C1:  - n div 65536 >= 0
+<S>  New C3:  - n div 65536 >= 0
+<S>  New C2:  - n div 65536 <= 65535
+<S>  New C4:  - n div 65536 <= 65535
+<S>  New C5:  - n div 65536 >= - 2147483648
+<S>  New C6:  - n div 65536 <= 2147483647
+-S-  Applied substitution rule newton_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New H2:  n >= - 1000000
+<S>  New H11:  - n >= - 1000000
+-S-  Applied substitution rule newton_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New H3:  n <= 1000000
+<S>  New H12:  - n <= 1000000
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H4 (true-hypothesis).
+---  Eliminated hypothesis H5 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H12 (duplicate of H2).
+---  Eliminated hypothesis H11 (duplicate of H3).
+---  Eliminated hypothesis H3 (redundant, given H8).
+---  Eliminated hypothesis H19 (redundant, given H15).
+---  Eliminated hypothesis H20 (redundant, given H16).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  - n div 65536 >= 0
+     using hypothesis H8.
+***  Proved C2:  - n div 65536 <= 65535
+     using hypothesis H12.
+***  Proved C5:  - n div 65536 >= - 2147483648
+     using hypothesis H11.
+***  Proved C6:  - n div 65536 <= 2147483647
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_newton_6.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+***  Proved C7:  word_max <> 0
+     using hypothesis H17.
+-S-  Applied substitution rule newton_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H11:  n mod word_max >= 0
+<S>  New C1:  n div word_max >= 0
+<S>  New C3:  n div word_max >= 0
+-S-  Applied substitution rule newton_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H12:  n mod word_max <= 65535
+<S>  New C2:  n div word_max <= 65535
+<S>  New C4:  n div word_max <= 65535
+-S-  Applied substitution rule newton_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__first by:
+          - 2147483648.
+<S>  New H15:  n mod word_max >= - 2147483648
+<S>  New C5:  n div word_max >= - 2147483648
+-S-  Applied substitution rule newton_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__last by:
+          2147483647.
+<S>  New H16:  n mod word_max <= 2147483647
+<S>  New C6:  n div word_max <= 2147483647
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  0 <= n
+-S-  Applied substitution rule newton_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New H11:  n mod 65536 >= 0
+<S>  New H12:  n mod 65536 <= 65535
+<S>  New H15:  n mod 65536 >= - 2147483648
+<S>  New H16:  n mod 65536 <= 2147483647
+<S>  New H17:  true
+<S>  New C1:  n div 65536 >= 0
+<S>  New C3:  n div 65536 >= 0
+<S>  New C2:  n div 65536 <= 65535
+<S>  New C4:  n div 65536 <= 65535
+<S>  New C5:  n div 65536 >= - 2147483648
+<S>  New C6:  n div 65536 <= 2147483647
+-S-  Applied substitution rule newton_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New H2:  n >= - 1000000
+-S-  Applied substitution rule newton_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New H3:  n <= 1000000
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H4 (true-hypothesis).
+---  Eliminated hypothesis H5 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H2 (redundant, given H8).
+---  Eliminated hypothesis H15 (redundant, given H11).
+---  Eliminated hypothesis H16 (redundant, given H12).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  n div 65536 >= 0
+     using hypothesis H8.
+***  Proved C2:  n div 65536 <= 65535
+     using hypothesis H3.
+***  Proved C5:  n div 65536 >= - 2147483648
+     using hypothesis H8.
+***  Proved C6:  n div 65536 <= 2147483647
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_newton_7.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H25).
+***  Proved C1:  - n div word_max + 32768 >= bus__word__first
+     using hypothesis H24.
+-S-  Applied substitution rule newton_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H16:  - n mod word_max <= 65535
+<S>  New H25:  - n div word_max <= 65535
+<S>  New C2:  - n div word_max <= 32767
+-S-  Applied substitution rule newton_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New H15:  - n mod 65536 >= bus__word__first
+<S>  New H16:  - n mod 65536 <= 65535
+<S>  New H19:  - n mod 65536 >= measuretypes__newton__base__first
+<S>  New H20:  - n mod 65536 <= measuretypes__newton__base__last
+<S>  New H21:  true
+<S>  New H24:  - n div 65536 >= bus__word__first
+<S>  New H25:  - n div 65536 <= 65535
+<S>  New H28:  - n div 65536 >= measuretypes__newton__base__first
+<S>  New H29:  - n div 65536 <= measuretypes__newton__base__last
+<S>  New C2:  - n div 65536 <= 32767
+-S-  Applied substitution rule newton_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New H2:  n >= - 1000000
+<S>  New H11:  - n >= - 1000000
+-S-  Applied substitution rule newton_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New H3:  n <= 1000000
+<S>  New H12:  - n <= 1000000
+-S-  Applied substitution rule newton_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__first by:
+          - 2147483648.
+<S>  New H19:  - n mod 65536 >= - 2147483648
+<S>  New H28:  - n div 65536 >= - 2147483648
+-S-  Applied substitution rule newton_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__last by:
+          2147483647.
+<S>  New H20:  - n mod 65536 <= 2147483647
+<S>  New H29:  - n div 65536 <= 2147483647
+-S-  Applied substitution rule newton_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H15:  - n mod 65536 >= 0
+<S>  New H24:  - n div 65536 >= 0
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H4 (true-hypothesis).
+---  Eliminated hypothesis H5 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H33 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H12 (duplicate of H2).
+---  Eliminated hypothesis H11 (duplicate of H3).
+---  Eliminated hypothesis H3 (redundant, given H8).
+---  Eliminated hypothesis H19 (redundant, given H15).
+---  Eliminated hypothesis H20 (redundant, given H16).
+---  Eliminated hypothesis H28 (redundant, given H24).
+---  Eliminated hypothesis H29 (redundant, given H25).
+***  Proved C2:  - n div 65536 <= 32767
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_newton_8.  @@@@@@@@@@
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H21).
+***  Proved C1:  n div word_max + 32768 >= bus__word__first
+     using hypothesis H20.
+-S-  Applied substitution rule newton_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H12:  n mod word_max <= 65535
+<S>  New H21:  n div word_max <= 65535
+<S>  New C2:  n div word_max <= 32767
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  0 <= n
+-S-  Applied substitution rule newton_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New H11:  n mod 65536 >= bus__word__first
+<S>  New H12:  n mod 65536 <= 65535
+<S>  New H15:  n mod 65536 >= measuretypes__newton__base__first
+<S>  New H16:  n mod 65536 <= measuretypes__newton__base__last
+<S>  New H17:  true
+<S>  New H20:  n div 65536 >= bus__word__first
+<S>  New H21:  n div 65536 <= 65535
+<S>  New H24:  n div 65536 >= measuretypes__newton__base__first
+<S>  New H25:  n div 65536 <= measuretypes__newton__base__last
+<S>  New C2:  n div 65536 <= 32767
+-S-  Applied substitution rule newton_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New H2:  n >= - 1000000
+-S-  Applied substitution rule newton_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New H3:  n <= 1000000
+-S-  Applied substitution rule newton_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__first by:
+          - 2147483648.
+<S>  New H15:  n mod 65536 >= - 2147483648
+<S>  New H24:  n div 65536 >= - 2147483648
+-S-  Applied substitution rule newton_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__last by:
+          2147483647.
+<S>  New H16:  n mod 65536 <= 2147483647
+<S>  New H25:  n div 65536 <= 2147483647
+-S-  Applied substitution rule newton_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H11:  n mod 65536 >= 0
+<S>  New H20:  n div 65536 >= 0
+###  Established a contradiction [false-hypothesis] using hypothesis H28.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_newton_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_newton_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_newton_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_newton_12.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

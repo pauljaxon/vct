@@ -1,0 +1,32 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.27*/
+
+                           /*function random.Poly1*/
+
+
+rule_family poly1_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+poly1_rules(1): long_integer__size >= 0 may_be_deduced.
+poly1_rules(2): long_integer__first may_be_replaced_by -2147483648.
+poly1_rules(3): long_integer__last may_be_replaced_by 2147483647.
+poly1_rules(4): long_integer__base__first may_be_replaced_by -2147483648.
+poly1_rules(5): long_integer__base__last may_be_replaced_by 2147483647.
+poly1_rules(6): seed_range__size >= 0 may_be_deduced.
+poly1_rules(7): seed_range__first may_be_replaced_by 0.
+poly1_rules(8): seed_range__last may_be_replaced_by 971.
+poly1_rules(9): seed_range__base__first may_be_replaced_by -2147483648.
+poly1_rules(10): seed_range__base__last may_be_replaced_by 2147483647.
+poly1_rules(11): uint32__size >= 0 may_be_deduced.
+poly1_rules(12): uint32__first may_be_replaced_by 0.
+poly1_rules(13): uint32__last may_be_replaced_by 2147483647.
+poly1_rules(14): uint32__base__first may_be_replaced_by -2147483648.
+poly1_rules(15): uint32__base__last may_be_replaced_by 2147483647.

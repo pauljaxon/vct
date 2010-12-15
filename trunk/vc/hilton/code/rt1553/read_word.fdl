@@ -1,0 +1,64 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:38.46}
+
+                         {procedure rt1553.Read_Word}
+
+
+title procedure read_word;
+
+  function round__(real) : integer;
+  type bus__word_index = integer;
+  type bus__all_msg_index = integer;
+  type bus__lru_index = integer;
+  type lru_name = (barometer, asi, ins, compass, fuel, fuze, 
+     radar, infrared, fins, motor, destruct, warhead);
+  type lru_table = array [lru_name] of integer;
+  const lru_names : lru_table = pending;
+  const lru_name__base__last : lru_name = pending; 
+  const lru_name__base__first : lru_name = pending; 
+  const bus__lru_index__base__last : integer = pending; 
+  const bus__lru_index__base__first : integer = pending; 
+  const bus__lru_subaddress_index__base__last : integer = pending; 
+  const bus__lru_subaddress_index__base__first : integer = pending; 
+  const bus__all_msg_index__base__last : integer = pending; 
+  const bus__all_msg_index__base__first : integer = pending; 
+  const bus__word__base__last : integer = pending; 
+  const bus__word__base__first : integer = pending; 
+  const bus__word_index__base__last : integer = pending; 
+  const bus__word_index__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const lru_name__size : integer = pending; 
+  const lru_name__last : lru_name = pending; 
+  const lru_name__first : lru_name = pending; 
+  const bus__lru_index__size : integer = pending; 
+  const bus__lru_index__last : integer = pending; 
+  const bus__lru_index__first : integer = pending; 
+  const bus__lru_subaddress_index__size : integer = pending; 
+  const bus__lru_subaddress_index__last : integer = pending; 
+  const bus__lru_subaddress_index__first : integer = pending; 
+  const bus__all_msg_index__size : integer = pending; 
+  const bus__all_msg_index__last : integer = pending; 
+  const bus__all_msg_index__first : integer = pending; 
+  const bus__word__size : integer = pending; 
+  const bus__word__last : integer = pending; 
+  const bus__word__first : integer = pending; 
+  const bus__word_index__size : integer = pending; 
+  const bus__word_index__last : integer = pending; 
+  const bus__word_index__first : integer = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+  var src : lru_name;
+  var idx : integer;
+  var subaddress_idx : integer;
+  var data : integer;
+  var data__1 : integer;
+
+end;

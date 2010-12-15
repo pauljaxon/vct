@@ -1,0 +1,81 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.25
+
+                        procedure warhead.Set_Stage
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 85:
+
+procedure_set_stage_1.
+H1:    true .
+H2:    new_stage >= stage__first .
+H3:    new_stage <= stage__last .
+        ->
+C1:    new_stage >= stage__first .
+C2:    new_stage <= stage__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 86:
+
+procedure_set_stage_2.
+H1:    true .
+H2:    new_stage >= stage__first .
+H3:    new_stage <= stage__last .
+H4:    new_stage >= stage__first .
+H5:    new_stage <= stage__last .
+H6:    stage_timer__1 >= clock__millisecond__first .
+H7:    stage_timer__1 <= clock__millisecond__last .
+H8:    true .
+        ->
+C1:    stage_timer__1 >= clock__millisecond__first .
+C2:    stage_timer__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 89:
+
+procedure_set_stage_3.
+H1:    true .
+H2:    new_stage >= stage__first .
+H3:    new_stage <= stage__last .
+H4:    new_stage >= stage__first .
+H5:    new_stage <= stage__last .
+H6:    stage_timer__1 >= clock__millisecond__first .
+H7:    stage_timer__1 <= clock__millisecond__last .
+H8:    true .
+H9:    stage_timer__1 >= clock__millisecond__first .
+H10:   stage_timer__1 <= clock__millisecond__last .
+H11:   true .
+H12:   not time_valid__1 .
+        ->
+C1:    new_stage >= stage__first .
+C2:    new_stage <= stage__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_set_stage_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_stage_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_set_stage_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_set_stage_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+

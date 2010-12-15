@@ -1,0 +1,625 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.47
+
+                procedure flying_object.Extrapolate_Position
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 38:
+
+procedure_extrapolate_position_1.
+H1:    true .
+H2:    t >= clock__millisecond__first .
+H3:    t <= clock__millisecond__last .
+H4:    fld_t(e) >= clock__millisecond__first .
+H5:    fld_t(e) <= clock__millisecond__last .
+H6:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H11:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H12:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H17:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H18:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H22:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H23:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+        ->
+C1:    t - fld_t(e) >= integer32__first .
+C2:    t - fld_t(e) <= integer32__last .
+C3:    fld_t(e) >= integer32__first .
+C4:    fld_t(e) <= integer32__last .
+C5:    t >= integer32__first .
+C6:    t <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 39:
+
+procedure_extrapolate_position_2.
+H1:    true .
+H2:    t >= clock__millisecond__first .
+H3:    t <= clock__millisecond__last .
+H4:    fld_t(e) >= clock__millisecond__first .
+H5:    fld_t(e) <= clock__millisecond__last .
+H6:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H11:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H12:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H17:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H18:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H22:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H23:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+H24:   t - fld_t(e) >= integer32__first .
+H25:   t - fld_t(e) <= integer32__last .
+H26:   fld_t(e) >= integer32__first .
+H27:   fld_t(e) <= integer32__last .
+H28:   t >= integer32__first .
+H29:   t <= integer32__last .
+H30:   t - fld_t(e) >= integer32__first .
+H31:   t - fld_t(e) <= integer32__last .
+        ->
+C1:    (t - fld_t(e)) * (t - fld_t(e)) >= integer32__first .
+C2:    (t - fld_t(e)) * (t - fld_t(e)) <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 41:
+
+procedure_extrapolate_position_3.
+H1:    true .
+H2:    t >= clock__millisecond__first .
+H3:    t <= clock__millisecond__last .
+H4:    fld_t(e) >= clock__millisecond__first .
+H5:    fld_t(e) <= clock__millisecond__last .
+H6:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H11:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H12:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H17:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H18:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H22:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H23:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+H24:   t - fld_t(e) >= integer32__first .
+H25:   t - fld_t(e) <= integer32__last .
+H26:   fld_t(e) >= integer32__first .
+H27:   fld_t(e) <= integer32__last .
+H28:   t >= integer32__first .
+H29:   t <= integer32__last .
+H30:   t - fld_t(e) >= integer32__first .
+H31:   t - fld_t(e) <= integer32__last .
+H32:   (t - fld_t(e)) * (t - fld_t(e)) >= integer32__first .
+H33:   (t - fld_t(e)) * (t - fld_t(e)) <= integer32__last .
+        ->
+C1:    fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+C2:    fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+C3:    fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+C4:    fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 41:
+
+procedure_extrapolate_position_4.
+H1:    true .
+H2:    t >= clock__millisecond__first .
+H3:    t <= clock__millisecond__last .
+H4:    fld_t(e) >= clock__millisecond__first .
+H5:    fld_t(e) <= clock__millisecond__last .
+H6:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H11:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H12:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H17:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H18:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H22:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H23:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+H24:   t - fld_t(e) >= integer32__first .
+H25:   t - fld_t(e) <= integer32__last .
+H26:   fld_t(e) >= integer32__first .
+H27:   fld_t(e) <= integer32__last .
+H28:   t >= integer32__first .
+H29:   t <= integer32__last .
+H30:   t - fld_t(e) >= integer32__first .
+H31:   t - fld_t(e) <= integer32__last .
+H32:   (t - fld_t(e)) * (t - fld_t(e)) >= integer32__first .
+H33:   (t - fld_t(e)) * (t - fld_t(e)) <= integer32__last .
+H34:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H35:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H36:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H37:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H38:   d_distance__1 >= measuretypes__meter__first .
+H39:   d_distance__1 <= measuretypes__meter__last .
+        ->
+C1:    d_distance__1 >= measuretypes__meter__first .
+C2:    d_distance__1 <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 44:
+
+procedure_extrapolate_position_5.
+H1:    true .
+H2:    t >= clock__millisecond__first .
+H3:    t <= clock__millisecond__last .
+H4:    fld_t(e) >= clock__millisecond__first .
+H5:    fld_t(e) <= clock__millisecond__last .
+H6:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H11:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H12:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H17:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H18:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H22:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H23:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+H24:   t - fld_t(e) >= integer32__first .
+H25:   t - fld_t(e) <= integer32__last .
+H26:   fld_t(e) >= integer32__first .
+H27:   fld_t(e) <= integer32__last .
+H28:   t >= integer32__first .
+H29:   t <= integer32__last .
+H30:   t - fld_t(e) >= integer32__first .
+H31:   t - fld_t(e) <= integer32__last .
+H32:   (t - fld_t(e)) * (t - fld_t(e)) >= integer32__first .
+H33:   (t - fld_t(e)) * (t - fld_t(e)) <= integer32__last .
+H34:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H35:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H36:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H37:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H38:   d_distance__1 >= measuretypes__meter__first .
+H39:   d_distance__1 <= measuretypes__meter__last .
+H40:   d_distance__1 >= measuretypes__meter__first .
+H41:   d_distance__1 <= measuretypes__meter__last .
+H42:   d_distance__1 >= measuretypes__meter__first .
+H43:   d_distance__1 <= measuretypes__meter__last .
+        ->
+C1:    d_distance__1 + fld_x(fld_p(e)) >= measuretypes__meter__first .
+C2:    d_distance__1 + fld_x(fld_p(e)) <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 45:
+
+procedure_extrapolate_position_6.
+H1:    true .
+H2:    t >= clock__millisecond__first .
+H3:    t <= clock__millisecond__last .
+H4:    fld_t(e) >= clock__millisecond__first .
+H5:    fld_t(e) <= clock__millisecond__last .
+H6:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H11:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H12:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H17:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H18:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H22:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H23:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+H24:   t - fld_t(e) >= integer32__first .
+H25:   t - fld_t(e) <= integer32__last .
+H26:   fld_t(e) >= integer32__first .
+H27:   fld_t(e) <= integer32__last .
+H28:   t >= integer32__first .
+H29:   t <= integer32__last .
+H30:   t - fld_t(e) >= integer32__first .
+H31:   t - fld_t(e) <= integer32__last .
+H32:   (t - fld_t(e)) * (t - fld_t(e)) >= integer32__first .
+H33:   (t - fld_t(e)) * (t - fld_t(e)) <= integer32__last .
+H34:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H35:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H36:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H37:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H38:   d_distance__1 >= measuretypes__meter__first .
+H39:   d_distance__1 <= measuretypes__meter__last .
+H40:   d_distance__1 >= measuretypes__meter__first .
+H41:   d_distance__1 <= measuretypes__meter__last .
+H42:   d_distance__1 >= measuretypes__meter__first .
+H43:   d_distance__1 <= measuretypes__meter__last .
+H44:   d_distance__1 + fld_x(fld_p(e)) >= measuretypes__meter__first .
+H45:   d_distance__1 + fld_x(fld_p(e)) <= measuretypes__meter__last .
+        ->
+C1:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+C2:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+C3:    fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+C4:    fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 45:
+
+procedure_extrapolate_position_7.
+H1:    true .
+H2:    t >= clock__millisecond__first .
+H3:    t <= clock__millisecond__last .
+H4:    fld_t(e) >= clock__millisecond__first .
+H5:    fld_t(e) <= clock__millisecond__last .
+H6:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H11:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H12:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H17:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H18:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H22:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H23:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+H24:   t - fld_t(e) >= integer32__first .
+H25:   t - fld_t(e) <= integer32__last .
+H26:   fld_t(e) >= integer32__first .
+H27:   fld_t(e) <= integer32__last .
+H28:   t >= integer32__first .
+H29:   t <= integer32__last .
+H30:   t - fld_t(e) >= integer32__first .
+H31:   t - fld_t(e) <= integer32__last .
+H32:   (t - fld_t(e)) * (t - fld_t(e)) >= integer32__first .
+H33:   (t - fld_t(e)) * (t - fld_t(e)) <= integer32__last .
+H34:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H35:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H36:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H37:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H38:   d_distance__1 >= measuretypes__meter__first .
+H39:   d_distance__1 <= measuretypes__meter__last .
+H40:   d_distance__1 >= measuretypes__meter__first .
+H41:   d_distance__1 <= measuretypes__meter__last .
+H42:   d_distance__1 >= measuretypes__meter__first .
+H43:   d_distance__1 <= measuretypes__meter__last .
+H44:   d_distance__1 + fld_x(fld_p(e)) >= measuretypes__meter__first .
+H45:   d_distance__1 + fld_x(fld_p(e)) <= measuretypes__meter__last .
+H46:   fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H47:   fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H48:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H49:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H50:   d_distance__2 >= measuretypes__meter__first .
+H51:   d_distance__2 <= measuretypes__meter__last .
+        ->
+C1:    d_distance__2 >= measuretypes__meter__first .
+C2:    d_distance__2 <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 48:
+
+procedure_extrapolate_position_8.
+H1:    true .
+H2:    t >= clock__millisecond__first .
+H3:    t <= clock__millisecond__last .
+H4:    fld_t(e) >= clock__millisecond__first .
+H5:    fld_t(e) <= clock__millisecond__last .
+H6:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H11:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H12:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H17:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H18:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H22:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H23:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+H24:   t - fld_t(e) >= integer32__first .
+H25:   t - fld_t(e) <= integer32__last .
+H26:   fld_t(e) >= integer32__first .
+H27:   fld_t(e) <= integer32__last .
+H28:   t >= integer32__first .
+H29:   t <= integer32__last .
+H30:   t - fld_t(e) >= integer32__first .
+H31:   t - fld_t(e) <= integer32__last .
+H32:   (t - fld_t(e)) * (t - fld_t(e)) >= integer32__first .
+H33:   (t - fld_t(e)) * (t - fld_t(e)) <= integer32__last .
+H34:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H35:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H36:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H37:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H38:   d_distance__1 >= measuretypes__meter__first .
+H39:   d_distance__1 <= measuretypes__meter__last .
+H40:   d_distance__1 >= measuretypes__meter__first .
+H41:   d_distance__1 <= measuretypes__meter__last .
+H42:   d_distance__1 >= measuretypes__meter__first .
+H43:   d_distance__1 <= measuretypes__meter__last .
+H44:   d_distance__1 + fld_x(fld_p(e)) >= measuretypes__meter__first .
+H45:   d_distance__1 + fld_x(fld_p(e)) <= measuretypes__meter__last .
+H46:   fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H47:   fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H48:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H49:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H50:   d_distance__2 >= measuretypes__meter__first .
+H51:   d_distance__2 <= measuretypes__meter__last .
+H52:   d_distance__2 >= measuretypes__meter__first .
+H53:   d_distance__2 <= measuretypes__meter__last .
+H54:   d_distance__2 >= measuretypes__meter__first .
+H55:   d_distance__2 <= measuretypes__meter__last .
+        ->
+C1:    d_distance__2 + fld_y(fld_p(e)) >= measuretypes__meter__first .
+C2:    d_distance__2 + fld_y(fld_p(e)) <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 49:
+
+procedure_extrapolate_position_9.
+H1:    true .
+H2:    t >= clock__millisecond__first .
+H3:    t <= clock__millisecond__last .
+H4:    fld_t(e) >= clock__millisecond__first .
+H5:    fld_t(e) <= clock__millisecond__last .
+H6:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H11:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H12:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H17:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H18:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H22:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H23:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+H24:   t - fld_t(e) >= integer32__first .
+H25:   t - fld_t(e) <= integer32__last .
+H26:   fld_t(e) >= integer32__first .
+H27:   fld_t(e) <= integer32__last .
+H28:   t >= integer32__first .
+H29:   t <= integer32__last .
+H30:   t - fld_t(e) >= integer32__first .
+H31:   t - fld_t(e) <= integer32__last .
+H32:   (t - fld_t(e)) * (t - fld_t(e)) >= integer32__first .
+H33:   (t - fld_t(e)) * (t - fld_t(e)) <= integer32__last .
+H34:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H35:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H36:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H37:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H38:   d_distance__1 >= measuretypes__meter__first .
+H39:   d_distance__1 <= measuretypes__meter__last .
+H40:   d_distance__1 >= measuretypes__meter__first .
+H41:   d_distance__1 <= measuretypes__meter__last .
+H42:   d_distance__1 >= measuretypes__meter__first .
+H43:   d_distance__1 <= measuretypes__meter__last .
+H44:   d_distance__1 + fld_x(fld_p(e)) >= measuretypes__meter__first .
+H45:   d_distance__1 + fld_x(fld_p(e)) <= measuretypes__meter__last .
+H46:   fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H47:   fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H48:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H49:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H50:   d_distance__2 >= measuretypes__meter__first .
+H51:   d_distance__2 <= measuretypes__meter__last .
+H52:   d_distance__2 >= measuretypes__meter__first .
+H53:   d_distance__2 <= measuretypes__meter__last .
+H54:   d_distance__2 >= measuretypes__meter__first .
+H55:   d_distance__2 <= measuretypes__meter__last .
+H56:   d_distance__2 + fld_y(fld_p(e)) >= measuretypes__meter__first .
+H57:   d_distance__2 + fld_y(fld_p(e)) <= measuretypes__meter__last .
+        ->
+C1:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+C2:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+C3:    fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+C4:    fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 49:
+
+procedure_extrapolate_position_10.
+H1:    true .
+H2:    t >= clock__millisecond__first .
+H3:    t <= clock__millisecond__last .
+H4:    fld_t(e) >= clock__millisecond__first .
+H5:    fld_t(e) <= clock__millisecond__last .
+H6:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H11:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H12:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H17:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H18:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H22:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H23:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+H24:   t - fld_t(e) >= integer32__first .
+H25:   t - fld_t(e) <= integer32__last .
+H26:   fld_t(e) >= integer32__first .
+H27:   fld_t(e) <= integer32__last .
+H28:   t >= integer32__first .
+H29:   t <= integer32__last .
+H30:   t - fld_t(e) >= integer32__first .
+H31:   t - fld_t(e) <= integer32__last .
+H32:   (t - fld_t(e)) * (t - fld_t(e)) >= integer32__first .
+H33:   (t - fld_t(e)) * (t - fld_t(e)) <= integer32__last .
+H34:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H35:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H36:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H37:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H38:   d_distance__1 >= measuretypes__meter__first .
+H39:   d_distance__1 <= measuretypes__meter__last .
+H40:   d_distance__1 >= measuretypes__meter__first .
+H41:   d_distance__1 <= measuretypes__meter__last .
+H42:   d_distance__1 >= measuretypes__meter__first .
+H43:   d_distance__1 <= measuretypes__meter__last .
+H44:   d_distance__1 + fld_x(fld_p(e)) >= measuretypes__meter__first .
+H45:   d_distance__1 + fld_x(fld_p(e)) <= measuretypes__meter__last .
+H46:   fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H47:   fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H48:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H49:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H50:   d_distance__2 >= measuretypes__meter__first .
+H51:   d_distance__2 <= measuretypes__meter__last .
+H52:   d_distance__2 >= measuretypes__meter__first .
+H53:   d_distance__2 <= measuretypes__meter__last .
+H54:   d_distance__2 >= measuretypes__meter__first .
+H55:   d_distance__2 <= measuretypes__meter__last .
+H56:   d_distance__2 + fld_y(fld_p(e)) >= measuretypes__meter__first .
+H57:   d_distance__2 + fld_y(fld_p(e)) <= measuretypes__meter__last .
+H58:   fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H59:   fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H60:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H61:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H62:   d_distance__3 >= measuretypes__meter__first .
+H63:   d_distance__3 <= measuretypes__meter__last .
+        ->
+C1:    d_distance__3 >= measuretypes__meter__first .
+C2:    d_distance__3 <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 52:
+
+procedure_extrapolate_position_11.
+H1:    true .
+H2:    t >= clock__millisecond__first .
+H3:    t <= clock__millisecond__last .
+H4:    fld_t(e) >= clock__millisecond__first .
+H5:    fld_t(e) <= clock__millisecond__last .
+H6:    fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H7:    fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H8:    fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H9:    fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H10:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H11:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H12:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H13:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H14:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H15:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H16:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H17:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H18:   fld_z(fld_p(e)) >= measuretypes__meter__first .
+H19:   fld_z(fld_p(e)) <= measuretypes__meter__last .
+H20:   fld_y(fld_p(e)) >= measuretypes__meter__first .
+H21:   fld_y(fld_p(e)) <= measuretypes__meter__last .
+H22:   fld_x(fld_p(e)) >= measuretypes__meter__first .
+H23:   fld_x(fld_p(e)) <= measuretypes__meter__last .
+H24:   t - fld_t(e) >= integer32__first .
+H25:   t - fld_t(e) <= integer32__last .
+H26:   fld_t(e) >= integer32__first .
+H27:   fld_t(e) <= integer32__last .
+H28:   t >= integer32__first .
+H29:   t <= integer32__last .
+H30:   t - fld_t(e) >= integer32__first .
+H31:   t - fld_t(e) <= integer32__last .
+H32:   (t - fld_t(e)) * (t - fld_t(e)) >= integer32__first .
+H33:   (t - fld_t(e)) * (t - fld_t(e)) <= integer32__last .
+H34:   fld_ax(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H35:   fld_ax(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H36:   fld_vx(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H37:   fld_vx(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H38:   d_distance__1 >= measuretypes__meter__first .
+H39:   d_distance__1 <= measuretypes__meter__last .
+H40:   d_distance__1 >= measuretypes__meter__first .
+H41:   d_distance__1 <= measuretypes__meter__last .
+H42:   d_distance__1 >= measuretypes__meter__first .
+H43:   d_distance__1 <= measuretypes__meter__last .
+H44:   d_distance__1 + fld_x(fld_p(e)) >= measuretypes__meter__first .
+H45:   d_distance__1 + fld_x(fld_p(e)) <= measuretypes__meter__last .
+H46:   fld_ay(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H47:   fld_ay(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H48:   fld_vy(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H49:   fld_vy(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H50:   d_distance__2 >= measuretypes__meter__first .
+H51:   d_distance__2 <= measuretypes__meter__last .
+H52:   d_distance__2 >= measuretypes__meter__first .
+H53:   d_distance__2 <= measuretypes__meter__last .
+H54:   d_distance__2 >= measuretypes__meter__first .
+H55:   d_distance__2 <= measuretypes__meter__last .
+H56:   d_distance__2 + fld_y(fld_p(e)) >= measuretypes__meter__first .
+H57:   d_distance__2 + fld_y(fld_p(e)) <= measuretypes__meter__last .
+H58:   fld_az(fld_a(e)) >= measuretypes__cm_per_sec_2__first .
+H59:   fld_az(fld_a(e)) <= measuretypes__cm_per_sec_2__last .
+H60:   fld_vz(fld_v(e)) >= measuretypes__meter_per_sec__first .
+H61:   fld_vz(fld_v(e)) <= measuretypes__meter_per_sec__last .
+H62:   d_distance__3 >= measuretypes__meter__first .
+H63:   d_distance__3 <= measuretypes__meter__last .
+H64:   d_distance__3 >= measuretypes__meter__first .
+H65:   d_distance__3 <= measuretypes__meter__last .
+H66:   d_distance__3 >= measuretypes__meter__first .
+H67:   d_distance__3 <= measuretypes__meter__last .
+        ->
+C1:    d_distance__3 + fld_z(fld_p(e)) >= measuretypes__meter__first .
+C2:    d_distance__3 + fld_z(fld_p(e)) <= measuretypes__meter__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_extrapolate_position_12.
+*** true .          /* trivially true VC removed by Examiner */
+
+

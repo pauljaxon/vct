@@ -1,0 +1,88 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.34
+
+Line
+   1  -- Sample random package
+   2  -- $Log: random.adb,v $
+   3  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   4  -- Added from tarfile
+   5  --
+   6  --
+   7  -- Revision 1.1  2003/08/20 20:28:28  adi
+   8  -- Initial revision
+   9  --
+  10  --
+  11  package body Random is
+  12     subtype uint32 is Long_integer range 0..2**31-1;
+  13  
+  14     function Poly1(S : Seed_range) return uint32
+  15     is
+  16        n : uint32;
+  17     begin
+  18        -- Computes 43 + 37s + 19s^2 + s^3
+  19        n := 43 + uint32(S)*(37 + uint32(S)*(19 + uint32(S)));
+  20        return n;
+  21     end Poly1;
+
++++        Flow analysis of subprogram Poly1 performed: no 
+           errors found.
+
+  22  
+  23     function Poly2(s : Seed_range) return uint32
+  24     is
+  25        n : uint32;
+  26     begin
+  27        -- Computes 813 + 101s + 67s^2 + 2s^3
+  28        n := 813 + uint32(S)*(101 + uint32(S)*(67 + 2*uint32(S)));
+  29        return n;
+  30     end Poly2;
+
++++        Flow analysis of subprogram Poly2 performed: no 
+           errors found.
+
+  31  
+  32     function Seed(V : Value) return Number
+  33     is begin
+  34        return Number'(S => Seed_range(V) mod Max_seed,
+  35                       Last_V => V);
+  36     end Seed;
+
++++        Flow analysis of subprogram Seed performed: no 
+           errors found.
+
+  37  
+  38     procedure Get(N : in out Number;
+  39                   V : out Value)
+  40     is
+  41        D_S : Seed_Range;
+  42        Tmp, P_1, P_2, P_3, P_4 : Uint32;
+  43     begin
+  44        D_S := Seed_Range(N.Last_V mod Max_Seed);
+  45        P_1 := Poly1(N.S) mod Max_seed;
+  46        P_2 := Poly1(D_s) mod Max_seed;
+  47        P_3 := Poly2(N.S) mod Max_seed;
+  48        P_4 := Poly2(D_s) mod Max_seed;
+  49  
+  50        tmp := (P_1 * P_2);
+  51        N.S := Seed_Range(Tmp mod Max_seed);
+  52        tmp := (P_3 * P_4);
+  53        N.Last_V := Value(tmp mod Max_Val);
+  54        V := N.Last_V;
+  55     end Get;
+
++++        Flow analysis of subprogram Get performed: no 
+           errors found.
+
+  56  
+  57  end Random;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

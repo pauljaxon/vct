@@ -1,0 +1,186 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.30
+
+Line
+   1  -- MCU interface to the barometer, implementation
+   2  --
+   3  -- $Log: if_barometer.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.4  2003/09/10 20:09:10  adi
+   9  -- Added IBIT state accessor
+  10  --
+  11  -- Revision 1.3  2003/02/19 19:11:48  adi
+  12  -- Added Command stub
+  13  --
+  14  -- Revision 1.2  2003/02/12 23:23:03  adi
+  15  -- Added Init procedure
+  16  --
+  17  -- Revision 1.1  2003/02/11 20:37:18  adi
+  18  -- Initial revision
+  19  --
+  20  --
+  21  with Bc1553, bus;
+  22  package body If_Barometer
+  23    --# own State is Last_Height, Last_Valid, Ibit_Request;
+  24  is
+  25     Last_Height : MeasureTypes.Meter := 0;
+  26     Last_Valid  : Boolean := False;
+  27     Ibit_Request : IBIT.Phase := IBIT.Off;
+  28  
+  29     -- Find out the current IBIT state
+  30     function Get_Ibit_State return Ibit.Phase
+  31       --# global ibit_request;
+  32     is begin
+  33        return Ibit_Request;
+  34     end Get_Ibit_State;
+
++++        Flow analysis of subprogram Get_IBIT_State 
+           performed: no errors found.
+
+  35  
+  36     -- Find out the current height and its validity
+  37     procedure Get_Height(Height : out MeasureTypes.Meter;
+  38                          Valid  : out Boolean)
+  39     --# global in Last_Height, Last_Valid;
+  40     --# derives Height from Last_Height, Last_Valid &
+  41     --#        Valid from Last_Valid;
+  42     is
+  43     begin
+  44        Valid := Last_Valid;
+  45        if Last_Valid then
+  46           Height := Last_Height;
+  47        else
+  48           Height := 0;
+  49        end if;
+  50     end Get_Height;
+
++++        Flow analysis of subprogram Get_Height 
+           performed: no errors found.
+
+  51  
+  52     -- Kick off a barometer IBIT
+  53     procedure Ibit_Start
+  54       --# global in out Bus.Outputs;
+  55       --#        out    Ibit_Request;
+  56     --# derives Bus.Outputs from * &
+  57     --#         Ibit_Request from ;
+  58     is
+  59        Code : SystemTypes.Byte;
+  60     begin
+  61        Ibit_Request := IBIT.Request_Start;
+  62        Code := IBIT.Phase_Lookup(Ibit_Request);
+  63        -- Send it out on 1R at word 1
+  64        BC1553.Write_Word(Data => Code,
+  65                          Idx =>  1,
+  66                          Subaddress_Idx => 1,
+  67                          Dest => BC1553.Barometer);
+  68     end Ibit_Start;
+
++++        Flow analysis of subprogram Ibit_Start 
+           performed: no errors found.
+
+  69  
+  70     -- Stop a barometer IBIT
+  71     procedure Ibit_Stop
+  72     --# global in out Bus.Outputs;
+  73     --#    out Ibit_Request;
+  74     --# derives Bus.Outputs from * &
+  75     --#         Ibit_Request from ;
+  76     is
+  77        Code : SystemTypes.Byte;
+  78     begin
+  79        Ibit_Request := IBIT.Request_Stop;
+  80        Code := IBIT.Phase_Lookup(Ibit_Request);
+  81        -- Send it out on 1R at word 1
+  82        BC1553.Write_Word(Data => Code,
+  83                          Idx =>  1,
+  84                          Subaddress_Idx => 1,
+  85                          Dest => BC1553.Barometer);
+  86     end Ibit_Stop;
+
++++        Flow analysis of subprogram Ibit_Stop performed: 
+           no errors found.
+
+  87  
+  88     -- Poll the bus and update states
+  89     procedure Poll
+  90     --# global in out Last_Height, Last_Valid, Ibit_Request;
+  91     --#        in Bus.Inputs;
+  92     --# derives Last_Height, Last_Valid,
+  93     --#         Ibit_Request from *, Bus.Inputs;
+  94     is
+  95        Word : Bus.Word;
+  96     begin
+  97        -- Check 1T
+  98        if BC1553.Is_Valid(Src => Bc1553.Barometer,
+  99                           Subaddress_Idx => 1) and then
+ 100          BC1553.Is_Fresh(Src => Bc1553.Barometer,
+ 101                          Subaddress_Idx => 1) then
+ 102           -- 1T word 1 - hi part of altitude
+ 103           BC1553.Read_Word(Src => BC1553.Barometer,
+ 104                            Idx => 1,
+ 105                            Subaddress_Idx => 1,
+ 106                            Data => Word);
+ 107           Last_Height := 256 * MeasureTypes.Meter(Word);
+ 108           -- 1T word 2 - lo part of altitude
+ 109           BC1553.Read_Word(Src => BC1553.Barometer,
+ 110                            Idx => 2,
+ 111                            Subaddress_Idx => 1,
+ 112                            Data => Word);
+ 113           Last_Height := Last_Height + MeasureTypes.Meter(Word);
+ 114           -- And now height is valid
+ 115           Last_Valid := True;
+ 116           -- 1T word 3 - BIT
+ 117           BC1553.Read_Word(Src => BC1553.Barometer,
+ 118                            Idx => 3,
+ 119                            Subaddress_Idx => 1,
+ 120                            Data => Word);
+ 121           -- Use the standard state machine to transform
+ 122           -- our IBIT phase
+ 123           IBIT.State_Machine(Bus_Data => Word,
+ 124                              Current_Phase => IBIT_Request);
+ 125        else
+ 126           -- Nothing to do
+ 127           null;
+ 128        end if;
+ 129     end Poll;
+
++++        Flow analysis of subprogram Poll performed: no 
+           errors found.
+
+ 130  
+ 131     -- Initialise
+ 132     procedure Init
+ 133     --# global out Last_Height, Last_Valid, Ibit_Request;
+ 134     --#        in out Bus.Outputs;
+ 135     --# derives Last_Height, Last_Valid, Ibit_Request from &
+ 136     --#         Bus.Outputs from *;
+ 137     is begin
+ 138        Last_Height := 0;
+ 139        Last_Valid := False;
+ 140        Ibit_Request := IBIT.Off;
+ 141        BC1553.Set_Message_Valid(Dest => BC1553.Barometer,
+ 142                                 Subaddress_Idx => 1);
+ 143     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 144  
+ 145     -- Test point
+ 146     procedure Command is separate;
+ 147  end If_Barometer;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

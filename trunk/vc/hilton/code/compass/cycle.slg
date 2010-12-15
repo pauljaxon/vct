@@ -1,0 +1,696 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:39  SIMPLIFIED 25-NOV-2009, 14:18:44
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure compass.Cycle
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_cycle_1.  @@@@@@@@@@
+***  Proved C1:  last_dxy >= measuretypes__millirad_per_sec__first
+     using hypothesis H4.
+***  Proved C2:  last_dxy <= measuretypes__millirad_per_sec__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_2.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+-S-  Applied substitution rule cycle_rules(36).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C1:  measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 0
+-S-  Applied substitution rule cycle_rules(37).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C2:  measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 65535
+-S-  Applied substitution rule cycle_rules(9).
+     This was achieved by replacing all occurrences of systemtypes__word__first 
+          by:
+          0.
+<S>  New H11:  measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 0
+-S-  Applied substitution rule cycle_rules(10).
+     This was achieved by replacing all occurrences of systemtypes__word__last 
+          by:
+          65535.
+<S>  New H12:  measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 65535
+-S-  Applied substitution rule cycle_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad_per_sec__first by:
+          - 2000.
+<S>  New H4:  last_dxy >= - 2000
+<S>  New H6:  last_dyz >= - 2000
+-S-  Applied substitution rule cycle_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad_per_sec__last by:
+          2000.
+<S>  New H5:  last_dxy <= 2000
+<S>  New H7:  last_dyz <= 2000
+-S-  Applied substitution rule cycle_rules(25).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  last_time >= 0
+-S-  Applied substitution rule cycle_rules(26).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  last_time <= 8640000
+***  Proved C1:  measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 0
+     using hypothesis H11.
+***  Proved C2:  measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+          65535
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_3.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  rt1553__lru_name__first <= rt1553__compass
+***  Proved C7:  measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 
+          bus__word__first
+     using hypothesis H13.
+***  Proved C8:  measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 
+          bus__word__last
+     using hypothesis H14.
+-S-  Applied substitution rule cycle_rules(51).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New C1:  true
+-S-  Applied substitution rule cycle_rules(52).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New C2:  true
+-S-  Applied substitution rule cycle_rules(46).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New C3:  true
+-S-  Applied substitution rule cycle_rules(47).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New C4:  true
+-S-  Applied substitution rule cycle_rules(30).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New C5:  true
+-S-  Applied substitution rule cycle_rules(31).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New C6:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C3:  true
+***  Proved C4:  true
+***  Proved C5:  true
+***  Proved C6:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_4.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified H17 on reading formula in, to give:
+     %%%  H17:  rt1553__lru_name__first <= rt1553__compass
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H14).
+***  Proved C1:  last_dyz >= measuretypes__millirad_per_sec__first
+     using hypothesis H6.
+***  Proved C2:  last_dyz <= measuretypes__millirad_per_sec__last
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_5.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified H17 on reading formula in, to give:
+     %%%  H17:  rt1553__lru_name__first <= rt1553__compass
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H7)
+          .
+-S-  Applied substitution rule cycle_rules(36).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H13:  measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 0
+<S>  New C1:  measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 0
+-S-  Applied substitution rule cycle_rules(37).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H14:  measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 65535
+<S>  New C2:  measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 65535
+-S-  Applied substitution rule cycle_rules(9).
+     This was achieved by replacing all occurrences of systemtypes__word__first 
+          by:
+          0.
+<S>  New H11:  measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 0
+<S>  New H28:  measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 0
+-S-  Applied substitution rule cycle_rules(10).
+     This was achieved by replacing all occurrences of systemtypes__word__last 
+          by:
+          65535.
+<S>  New H12:  measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 65535
+<S>  New H29:  measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 65535
+-S-  Applied substitution rule cycle_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad_per_sec__first by:
+          - 2000.
+<S>  New H4:  last_dxy >= - 2000
+<S>  New H6:  last_dyz >= - 2000
+-S-  Applied substitution rule cycle_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad_per_sec__last by:
+          2000.
+<S>  New H5:  last_dxy <= 2000
+<S>  New H7:  last_dyz <= 2000
+-S-  Applied substitution rule cycle_rules(25).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  last_time >= 0
+-S-  Applied substitution rule cycle_rules(26).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  last_time <= 8640000
+-S-  Applied substitution rule cycle_rules(30).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H21:  true
+-S-  Applied substitution rule cycle_rules(31).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H22:  true
+-S-  Applied substitution rule cycle_rules(46).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H19:  true
+-S-  Applied substitution rule cycle_rules(47).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H20:  true
+-S-  Applied substitution rule cycle_rules(51).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New H17:  true
+-S-  Applied substitution rule cycle_rules(52).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New H18:  true
+***  Proved C1:  measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 0
+     using hypothesis H28.
+***  Proved C2:  measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+          65535
+     using hypothesis H29.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_6.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified H17 on reading formula in, to give:
+     %%%  H17:  rt1553__lru_name__first <= rt1553__compass
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H31).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  rt1553__lru_name__first <= rt1553__compass
+***  Proved C1:  rt1553__lru_name__first <= rt1553__compass
+     using hypothesis H17.
+***  Proved C2:  rt1553__compass <= rt1553__lru_name__last
+     using hypothesis H18.
+***  Proved C3:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H19.
+***  Proved C4:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H20.
+***  Proved C5:  2 >= bus__word_index__first
+     using hypothesis H21.
+***  Proved C7:  measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 
+          bus__word__first
+     using hypothesis H30.
+***  Proved C8:  measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 
+          bus__word__last
+     using hypothesis H31.
+-S-  Applied substitution rule cycle_rules(31).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H22:  true
+<S>  New C6:  true
+***  Proved C6:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_7.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified H17 on reading formula in, to give:
+     %%%  H17:  rt1553__lru_name__first <= rt1553__compass
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H31).
+%%%  Simplified H42 on reading formula in, to give:
+     %%%  H42:  ibit__phase__first <= bit_machine__phase(bit_state)
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  rt1553__lru_name__first <= rt1553__compass
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  ibit__phase__first <= bit_machine__phase(bit_state)
+***  Proved C1:  rt1553__lru_name__first <= rt1553__compass
+     using hypothesis H17.
+***  Proved C2:  rt1553__compass <= rt1553__lru_name__last
+     using hypothesis H18.
+***  Proved C3:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H19.
+***  Proved C4:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H20.
+***  Proved C5:  3 >= bus__word_index__first
+     using hypothesis H21.
+***  Proved C9:  ibit__phase__first <= bit_machine__phase(bit_state)
+     using hypothesis H42.
+***  Proved C10:  bit_machine__phase(bit_state) <= ibit__phase__last
+     using hypothesis H43.
+-S-  Applied substitution rule cycle_rules(31).
+     This was achieved by replacing all occurrences of bus__word_index__last by:
+          31.
+<S>  New H22:  true
+<S>  New H39:  true
+<S>  New C6:  true
+-S-  Applied substitution rule cycle_rules(36).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H13:  measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 0
+<S>  New H30:  measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 0
+<S>  New C7:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) >= 0
+-S-  Applied substitution rule cycle_rules(37).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H14:  measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 65535
+<S>  New H31:  measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 65535
+<S>  New C8:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) <= 
+          65535
+***  Proved C6:  true
+-S-  Applied substitution rule cycle_rules(9).
+     This was achieved by replacing all occurrences of systemtypes__word__first 
+          by:
+          0.
+<S>  New H11:  measuretypes__angle_ops__millirad_to_word(this_angle__1) >= 0
+<S>  New H28:  measuretypes__angle_ops__millirad_to_word(this_angle__3) >= 0
+-S-  Applied substitution rule cycle_rules(10).
+     This was achieved by replacing all occurrences of systemtypes__word__last 
+          by:
+          65535.
+<S>  New H12:  measuretypes__angle_ops__millirad_to_word(this_angle__1) <= 65535
+<S>  New H29:  measuretypes__angle_ops__millirad_to_word(this_angle__3) <= 65535
+-S-  Applied substitution rule cycle_rules(19).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad_per_sec__first by:
+          - 2000.
+<S>  New H4:  last_dxy >= - 2000
+<S>  New H6:  last_dyz >= - 2000
+-S-  Applied substitution rule cycle_rules(20).
+     This was achieved by replacing all occurrences of 
+          measuretypes__millirad_per_sec__last by:
+          2000.
+<S>  New H5:  last_dxy <= 2000
+<S>  New H7:  last_dyz <= 2000
+-S-  Applied substitution rule cycle_rules(25).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  last_time >= 0
+-S-  Applied substitution rule cycle_rules(26).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  last_time <= 8640000
+-S-  Applied substitution rule cycle_rules(30).
+     This was achieved by replacing all occurrences of bus__word_index__first 
+          by:
+          1.
+<S>  New H21:  true
+<S>  New H38:  true
+-S-  Applied substitution rule cycle_rules(46).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__first by:
+          1.
+<S>  New H19:  true
+-S-  Applied substitution rule cycle_rules(47).
+     This was achieved by replacing all occurrences of 
+          bus__lru_subaddress_index__last by:
+          8.
+<S>  New H20:  true
+-S-  Applied substitution rule cycle_rules(51).
+     This was achieved by replacing all occurrences of rt1553__lru_name__first 
+          by:
+          rt1553__barometer.
+<S>  New H17:  true
+-S-  Applied substitution rule cycle_rules(52).
+     This was achieved by replacing all occurrences of rt1553__lru_name__last 
+          by:
+          rt1553__warhead.
+<S>  New H18:  true
+-S-  Applied substitution rule cycle_rules(94).
+     This was achieved by replacing all occurrences of ibit__phase__first by:
+          ibit__off.
+<S>  New H42:  ibit__off <= bit_machine__phase(bit_state)
+-S-  Applied substitution rule cycle_rules(95).
+     This was achieved by replacing all occurrences of ibit__phase__last by:
+          ibit__timeout.
+<S>  New H43:  bit_machine__phase(bit_state) <= ibit__timeout
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H33 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H35 (true-hypothesis).
+---  Eliminated hypothesis H36 (true-hypothesis).
+---  Eliminated hypothesis H37 (true-hypothesis).
+---  Eliminated hypothesis H39 (true-hypothesis).
+---  Eliminated hypothesis H40 (true-hypothesis).
+---  Eliminated hypothesis H41 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H38 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H13 (duplicate of H11).
+---  Eliminated hypothesis H30 (duplicate of H28).
+---  Eliminated hypothesis H14 (duplicate of H12).
+---  Eliminated hypothesis H31 (duplicate of H29).
+***  Proved C7:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) 
+          >= 0
+     using hypotheses H42 & H43.
+***  Proved C8:  element(ibit__phase_lookup, [bit_machine__phase(bit_state)]) 
+          <= 65535
+     using hypotheses H42 & H43.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_8.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified H17 on reading formula in, to give:
+     %%%  H17:  rt1553__lru_name__first <= rt1553__compass
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H31).
+%%%  Simplified H42 on reading formula in, to give:
+     %%%  H42:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H43).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  rt1553__lru_name__first <= rt1553__compass
+***  Proved C1:  1 >= bus__lru_subaddress_index__first
+     using hypothesis H19.
+***  Proved C2:  1 <= bus__lru_subaddress_index__last
+     using hypothesis H20.
+***  Proved C3:  1 >= bus__word_index__first
+     using hypothesis H21.
+***  Proved C4:  1 <= bus__word_index__last
+     using hypothesis H22.
+***  Proved C5:  rt1553__lru_name__first <= rt1553__compass
+     using hypothesis H17.
+***  Proved C6:  rt1553__compass <= rt1553__lru_name__last
+     using hypothesis H18.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_9.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified H17 on reading formula in, to give:
+     %%%  H17:  rt1553__lru_name__first <= rt1553__compass
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H31).
+%%%  Simplified H42 on reading formula in, to give:
+     %%%  H42:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H43).
+---  Hypothesis H54 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H55 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H56 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H57 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H58 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H18).
+***  Proved C1:  datum__6 >= bus__word__first
+     using hypothesis H60.
+***  Proved C2:  datum__6 <= bus__word__last
+     using hypothesis H61.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_10.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified H17 on reading formula in, to give:
+     %%%  H17:  rt1553__lru_name__first <= rt1553__compass
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H31).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H35 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H31).
+%%%  Simplified H42 on reading formula in, to give:
+     %%%  H42:  ibit__phase__first <= bit_machine__phase(bit_state)
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H52 has been replaced by "true".  (It is already present, as 
+          H42).
+---  Hypothesis H53 has been replaced by "true".  (It is already present, as 
+          H43).
+---  Hypothesis H54 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H55 has been replaced by "true".  (It is already present, as 
+          H20).
+---  Hypothesis H56 has been replaced by "true".  (It is already present, as 
+          H21).
+---  Hypothesis H57 has been replaced by "true".  (It is already present, as 
+          H22).
+---  Hypothesis H58 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H60).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H61).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H60).
+---  Hypothesis H65 has been replaced by "true".  (It is already present, as 
+          H61).
+***  Proved C1:  datum__6 >= bus__word__first
+     using hypothesis H60.
+***  Proved C2:  datum__6 <= bus__word__last
+     using hypothesis H61.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_12.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_13.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

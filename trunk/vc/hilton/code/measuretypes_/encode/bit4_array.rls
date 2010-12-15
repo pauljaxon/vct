@@ -1,0 +1,45 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:38.68*/
+
+                         /*function encode.Bit4_Array*/
+
+
+rule_family bit4_array_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+bit4_array_rules(1): integer__size >= 0 may_be_deduced.
+bit4_array_rules(2): integer__first may_be_replaced_by -2147483648.
+bit4_array_rules(3): integer__last may_be_replaced_by 2147483647.
+bit4_array_rules(4): integer__base__first may_be_replaced_by -2147483648.
+bit4_array_rules(5): integer__base__last may_be_replaced_by 2147483647.
+bit4_array_rules(6): measuretypes__bit_range__size >= 0 may_be_deduced.
+bit4_array_rules(7): measuretypes__bit_range__first may_be_replaced_by 0.
+bit4_array_rules(8): measuretypes__bit_range__last may_be_replaced_by 255.
+bit4_array_rules(9): measuretypes__bit_range__base__first <= 
+     measuretypes__bit_range__base__last may_be_deduced.
+bit4_array_rules(10): measuretypes__bit_range__base__first <= 
+     measuretypes__bit_range__first may_be_deduced.
+bit4_array_rules(11): measuretypes__bit_range__base__last >= 
+     measuretypes__bit_range__last may_be_deduced.
+bit4_array_rules(12): measuretypes__bit4_range__size >= 0 may_be_deduced.
+bit4_array_rules(13): measuretypes__bit4_range__first may_be_replaced_by 0.
+bit4_array_rules(14): measuretypes__bit4_range__last may_be_replaced_by 3.
+bit4_array_rules(15): measuretypes__bit4_range__base__first <= 
+     measuretypes__bit4_range__base__last may_be_deduced.
+bit4_array_rules(16): measuretypes__bit4_range__base__first <= 
+     measuretypes__bit4_range__first may_be_deduced.
+bit4_array_rules(17): measuretypes__bit4_range__base__last >= 
+     measuretypes__bit4_range__last may_be_deduced.
+bit4_array_rules(18): bus__word__size >= 0 may_be_deduced.
+bit4_array_rules(19): bus__word__first may_be_replaced_by 0.
+bit4_array_rules(20): bus__word__last may_be_replaced_by 65535.
+bit4_array_rules(21): bus__word__base__first may_be_replaced_by -2147483648.
+bit4_array_rules(22): bus__word__base__last may_be_replaced_by 2147483647.

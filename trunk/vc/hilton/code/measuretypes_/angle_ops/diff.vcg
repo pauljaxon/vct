@@ -1,0 +1,126 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.13
+
+                          function angle_ops.Diff
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 96:
+
+function_diff_1.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+        ->
+C1:    right >= measuretypes__millirad__first .
+C2:    right <= measuretypes__millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 96:
+
+function_diff_2.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    right >= measuretypes__millirad__first .
+H7:    right <= measuretypes__millirad__last .
+H8:    negate(right) >= measuretypes__millirad__first .
+H9:    negate(right) <= measuretypes__millirad__last .
+        ->
+C1:    negate(right) >= millirad__first .
+C2:    negate(right) <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 97:
+
+function_diff_3.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    right >= measuretypes__millirad__first .
+H7:    right <= measuretypes__millirad__last .
+H8:    negate(right) >= measuretypes__millirad__first .
+H9:    negate(right) <= measuretypes__millirad__last .
+H10:   negate(right) >= millirad__first .
+H11:   negate(right) <= millirad__last .
+H12:   negate(right) >= millirad__first .
+H13:   negate(right) <= millirad__last .
+        ->
+C1:    negate(right) >= measuretypes__millirad__first .
+C2:    negate(right) <= measuretypes__millirad__last .
+C3:    left >= measuretypes__millirad__first .
+C4:    left <= measuretypes__millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 97:
+
+function_diff_4.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    right >= measuretypes__millirad__first .
+H7:    right <= measuretypes__millirad__last .
+H8:    negate(right) >= measuretypes__millirad__first .
+H9:    negate(right) <= measuretypes__millirad__last .
+H10:   negate(right) >= millirad__first .
+H11:   negate(right) <= millirad__last .
+H12:   negate(right) >= millirad__first .
+H13:   negate(right) <= millirad__last .
+H14:   negate(right) >= measuretypes__millirad__first .
+H15:   negate(right) <= measuretypes__millirad__last .
+H16:   left >= measuretypes__millirad__first .
+H17:   left <= measuretypes__millirad__last .
+H18:   sum(left, negate(right)) >= measuretypes__millirad__first .
+H19:   sum(left, negate(right)) <= measuretypes__millirad__last .
+        ->
+C1:    sum(left, negate(right)) >= millirad__first .
+C2:    sum(left, negate(right)) <= millirad__last .
+ 
+
+For path(s) from start to finish:
+
+function_diff_5.
+H1:    true .
+H2:    left >= measuretypes__millirad__first .
+H3:    left <= measuretypes__millirad__last .
+H4:    right >= measuretypes__millirad__first .
+H5:    right <= measuretypes__millirad__last .
+H6:    right >= measuretypes__millirad__first .
+H7:    right <= measuretypes__millirad__last .
+H8:    negate(right) >= measuretypes__millirad__first .
+H9:    negate(right) <= measuretypes__millirad__last .
+H10:   negate(right) >= millirad__first .
+H11:   negate(right) <= millirad__last .
+H12:   negate(right) >= millirad__first .
+H13:   negate(right) <= millirad__last .
+H14:   negate(right) >= measuretypes__millirad__first .
+H15:   negate(right) <= measuretypes__millirad__last .
+H16:   left >= measuretypes__millirad__first .
+H17:   left <= measuretypes__millirad__last .
+H18:   sum(left, negate(right)) >= measuretypes__millirad__first .
+H19:   sum(left, negate(right)) <= measuretypes__millirad__last .
+H20:   sum(left, negate(right)) >= millirad__first .
+H21:   sum(left, negate(right)) <= millirad__last .
+H22:   sum(left, negate(right)) >= millirad__first .
+H23:   sum(left, negate(right)) <= millirad__last .
+        ->
+C1:    true .
+C2:    sum(left, negate(right)) >= measuretypes__millirad__first .
+C3:    sum(left, negate(right)) <= measuretypes__millirad__last .
+ 
+

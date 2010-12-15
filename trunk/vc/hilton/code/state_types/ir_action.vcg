@@ -1,0 +1,212 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.02
+
+                       function State_Types.ir_Action
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 61:
+
+function_ir_action_1.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+        ->
+C1:    ir_inactive >= infrared__first .
+C2:    ir_inactive <= infrared__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 62:
+
+function_ir_action_2.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    ir_inactive >= infrared__first .
+H5:    ir_inactive <= infrared__last .
+H6:    val = element(ir_values, [ir_inactive]) .
+        ->
+C1:    ir_inactive >= infrared__first .
+C2:    ir_inactive <= infrared__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 63:
+
+function_ir_action_3.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    ir_inactive >= infrared__first .
+H5:    ir_inactive <= infrared__last .
+H6:    not (val = element(ir_values, [ir_inactive])) .
+        ->
+C1:    ir_stare >= infrared__first .
+C2:    ir_stare <= infrared__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 64:
+
+function_ir_action_4.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    ir_inactive >= infrared__first .
+H5:    ir_inactive <= infrared__last .
+H6:    not (val = element(ir_values, [ir_inactive])) .
+H7:    ir_stare >= infrared__first .
+H8:    ir_stare <= infrared__last .
+H9:    val = element(ir_values, [ir_stare]) .
+        ->
+C1:    ir_stare >= infrared__first .
+C2:    ir_stare <= infrared__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 65:
+
+function_ir_action_5.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    ir_inactive >= infrared__first .
+H5:    ir_inactive <= infrared__last .
+H6:    not (val = element(ir_values, [ir_inactive])) .
+H7:    ir_stare >= infrared__first .
+H8:    ir_stare <= infrared__last .
+H9:    not (val = element(ir_values, [ir_stare])) .
+        ->
+C1:    ir_sweep >= infrared__first .
+C2:    ir_sweep <= infrared__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 66:
+
+function_ir_action_6.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    ir_inactive >= infrared__first .
+H5:    ir_inactive <= infrared__last .
+H6:    not (val = element(ir_values, [ir_inactive])) .
+H7:    ir_stare >= infrared__first .
+H8:    ir_stare <= infrared__last .
+H9:    not (val = element(ir_values, [ir_stare])) .
+H10:   ir_sweep >= infrared__first .
+H11:   ir_sweep <= infrared__last .
+H12:   val = element(ir_values, [ir_sweep]) .
+        ->
+C1:    ir_sweep >= infrared__first .
+C2:    ir_sweep <= infrared__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 69:
+
+function_ir_action_7.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    ir_inactive >= infrared__first .
+H5:    ir_inactive <= infrared__last .
+H6:    not (val = element(ir_values, [ir_inactive])) .
+H7:    ir_stare >= infrared__first .
+H8:    ir_stare <= infrared__last .
+H9:    not (val = element(ir_values, [ir_stare])) .
+H10:   ir_sweep >= infrared__first .
+H11:   ir_sweep <= infrared__last .
+H12:   not (val = element(ir_values, [ir_sweep])) .
+        ->
+C1:    ir_inactive >= infrared__first .
+C2:    ir_inactive <= infrared__last .
+ 
+
+For path(s) from start to finish:
+
+function_ir_action_8.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    ir_inactive >= infrared__first .
+H5:    ir_inactive <= infrared__last .
+H6:    val = element(ir_values, [ir_inactive]) .
+H7:    ir_inactive >= infrared__first .
+H8:    ir_inactive <= infrared__last .
+H9:    ir_inactive >= infrared__first .
+H10:   ir_inactive <= infrared__last .
+        ->
+C1:    true .
+C2:    ir_inactive >= infrared__first .
+C3:    ir_inactive <= infrared__last .
+ 
+
+function_ir_action_9.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    ir_inactive >= infrared__first .
+H5:    ir_inactive <= infrared__last .
+H6:    not (val = element(ir_values, [ir_inactive])) .
+H7:    ir_stare >= infrared__first .
+H8:    ir_stare <= infrared__last .
+H9:    val = element(ir_values, [ir_stare]) .
+H10:   ir_stare >= infrared__first .
+H11:   ir_stare <= infrared__last .
+H12:   ir_stare >= infrared__first .
+H13:   ir_stare <= infrared__last .
+        ->
+C1:    true .
+C2:    ir_stare >= infrared__first .
+C3:    ir_stare <= infrared__last .
+ 
+
+function_ir_action_10.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    ir_inactive >= infrared__first .
+H5:    ir_inactive <= infrared__last .
+H6:    not (val = element(ir_values, [ir_inactive])) .
+H7:    ir_stare >= infrared__first .
+H8:    ir_stare <= infrared__last .
+H9:    not (val = element(ir_values, [ir_stare])) .
+H10:   ir_sweep >= infrared__first .
+H11:   ir_sweep <= infrared__last .
+H12:   val = element(ir_values, [ir_sweep]) .
+H13:   ir_sweep >= infrared__first .
+H14:   ir_sweep <= infrared__last .
+H15:   ir_sweep >= infrared__first .
+H16:   ir_sweep <= infrared__last .
+        ->
+C1:    true .
+C2:    ir_sweep >= infrared__first .
+C3:    ir_sweep <= infrared__last .
+ 
+
+function_ir_action_11.
+H1:    true .
+H2:    val >= word__first .
+H3:    val <= word__last .
+H4:    ir_inactive >= infrared__first .
+H5:    ir_inactive <= infrared__last .
+H6:    not (val = element(ir_values, [ir_inactive])) .
+H7:    ir_stare >= infrared__first .
+H8:    ir_stare <= infrared__last .
+H9:    not (val = element(ir_values, [ir_stare])) .
+H10:   ir_sweep >= infrared__first .
+H11:   ir_sweep <= infrared__last .
+H12:   not (val = element(ir_values, [ir_sweep])) .
+H13:   ir_inactive >= infrared__first .
+H14:   ir_inactive <= infrared__last .
+H15:   ir_inactive >= infrared__first .
+H16:   ir_inactive <= infrared__last .
+        ->
+C1:    true .
+C2:    ir_inactive >= infrared__first .
+C3:    ir_inactive <= infrared__last .
+ 
+

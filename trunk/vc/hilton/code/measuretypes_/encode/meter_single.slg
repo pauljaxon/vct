@@ -1,0 +1,537 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:21
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function encode.Meter_Single
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_meter_single_1.  @@@@@@@@@@
+***  Proved C1:  0 >= measuretypes__meter__first
+     using hypotheses H2 & H6.
+-S-  Applied substitution rule meter_single_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  m <= 200000
+<S>  New H5:  r <= 200000
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_2.  @@@@@@@@@@
+***  Proved C1:  r >= measuretypes__meter__first
+     using hypothesis H4.
+***  Proved C2:  r <= measuretypes__meter__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_3.  @@@@@@@@@@
+***  Proved C1:  m >= measuretypes__meter__first
+     using hypothesis H2.
+***  Proved C2:  m <= measuretypes__meter__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_4.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+-S-  Applied substitution rule meter_single_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C1:  65535 >= measuretypes__meter__first
+<S>  New C2:  65535 <= measuretypes__meter__last
+-S-  Applied substitution rule meter_single_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  m >= - 200000
+<S>  New H4:  r >= - 200000
+<S>  New H7:  true
+<S>  New C1:  true
+-S-  Applied substitution rule meter_single_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  m <= 200000
+<S>  New H5:  r <= 200000
+<S>  New H8:  true
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_5.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+-S-  Applied substitution rule meter_single_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C1:  65535 >= measuretypes__meter__first
+<S>  New C2:  65535 <= measuretypes__meter__last
+-S-  Applied substitution rule meter_single_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  m >= - 200000
+<S>  New H4:  r >= - 200000
+<S>  New C1:  true
+-S-  Applied substitution rule meter_single_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  m <= 200000
+<S>  New H5:  r <= 200000
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_6.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+-S-  Applied substitution rule meter_single_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New C1:  65535 >= measuretypes__meter__first
+<S>  New C2:  65535 <= measuretypes__meter__last
+-S-  Applied substitution rule meter_single_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  m >= - 200000
+<S>  New H4:  r >= - 200000
+<S>  New C1:  true
+-S-  Applied substitution rule meter_single_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  m <= 200000
+<S>  New H5:  r <= 200000
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_7.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+***  Proved C1:  bus__word__last >= measuretypes__meter__first
+     using hypothesis H11.
+***  Proved C2:  bus__word__last <= measuretypes__meter__last
+     using hypothesis H12.
+***  Proved C3:  bus__word__last >= measuretypes__meter__first
+     using hypothesis H11.
+***  Proved C4:  bus__word__last <= measuretypes__meter__last
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_8.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+***  Proved C1:  bus__word__last >= measuretypes__meter__first
+     using hypothesis H12.
+***  Proved C2:  bus__word__last <= measuretypes__meter__last
+     using hypothesis H13.
+***  Proved C3:  bus__word__last >= measuretypes__meter__first
+     using hypothesis H12.
+***  Proved C4:  bus__word__last <= measuretypes__meter__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_9.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+***  Proved C1:  bus__word__last >= measuretypes__meter__first
+     using hypothesis H12.
+***  Proved C2:  bus__word__last <= measuretypes__meter__last
+     using hypothesis H13.
+***  Proved C3:  bus__word__last >= measuretypes__meter__first
+     using hypothesis H12.
+***  Proved C4:  bus__word__last <= measuretypes__meter__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_10.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+***  Proved C2:  true
+-S-  Applied substitution rule meter_single_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H11:  65535 >= measuretypes__meter__first
+<S>  New H12:  65535 <= measuretypes__meter__last
+<S>  New H13:  false
+<S>  New C1:  65535 >= bus__word__first
+-S-  Applied substitution rule meter_single_rules(12).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_11.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+***  Proved C2:  true
+-S-  Applied substitution rule meter_single_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H12:  65535 >= measuretypes__meter__first
+<S>  New H13:  65535 <= measuretypes__meter__last
+<S>  New H14:  r > 65535
+<S>  New C1:  65535 >= bus__word__first
+-S-  Applied substitution rule meter_single_rules(12).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_12.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+***  Proved C2:  true
+-S-  Applied substitution rule meter_single_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H12:  65535 >= measuretypes__meter__first
+<S>  New H13:  65535 <= measuretypes__meter__last
+<S>  New H14:  m > 65535
+<S>  New C1:  65535 >= bus__word__first
+-S-  Applied substitution rule meter_single_rules(12).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_13.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+***  Proved C2:  0 <= bus__word__last
+     using hypothesis H13.
+-S-  Applied substitution rule meter_single_rules(12).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_14.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H5)
+          .
+***  Proved C2:  r <= bus__word__last
+     using hypothesis H14.
+-S-  Applied substitution rule meter_single_rules(12).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C1:  r >= 0
+>>>  Restructured hypothesis H6 into:
+     >>>  H6:  0 <= m
+>>>  Restructured hypothesis H14 into:
+     >>>  H14:  r <= bus__word__last
+-S-  Applied substitution rule meter_single_rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  m >= - 200000
+<S>  New H4:  r >= - 200000
+<S>  New H12:  bus__word__last >= - 200000
+-S-  Applied substitution rule meter_single_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  m <= 200000
+<S>  New H5:  r <= 200000
+<S>  New H13:  bus__word__last <= 200000
+-S-  Applied substitution rule meter_single_rules(13).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H14:  r <= 65535
+<S>  New H12:  true
+<S>  New H13:  true
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H2 (redundant, given H6).
+---  Eliminated hypothesis H5 (redundant, given H14).
+     +++  New H17:  integer__size >= 0
+     +++  New H18:  measuretypes__meter__size >= 0
+     +++  New H19:  bus__word__size >= 0
+
+
+@@@@@@@@@@  VC: function_meter_single_15.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H3)
+          .
+***  Proved C2:  m <= bus__word__last
+     using hypothesis H14.
+-S-  Applied substitution rule meter_single_rules(12).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New C1:  m >= 0
+***  Proved C1:  m >= 0
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_16.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  true
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C1:  true
+***  Proved C2:  bus__word__last >= bus__word__first
+     using hypothesis H20.
+***  Proved C3:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_17.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  true
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C1:  true
+***  Proved C2:  bus__word__last >= bus__word__first
+     using hypothesis H21.
+***  Proved C3:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_18.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  true
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  true
+***  Proved C1:  true
+***  Proved C2:  bus__word__last >= bus__word__first
+     using hypothesis H21.
+***  Proved C3:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_19.  @@@@@@@@@@
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H8)
+          .
+***  Proved C1:  true
+***  Proved C2:  0 >= bus__word__first
+     using hypothesis H16.
+***  Proved C3:  0 <= bus__word__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_20.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H5)
+          .
+***  Proved C1:  true
+***  Proved C2:  r >= bus__word__first
+     using hypothesis H17.
+***  Proved C3:  r <= bus__word__last
+     using hypothesis H18.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_meter_single_21.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H3)
+          .
+***  Proved C1:  true
+***  Proved C2:  m >= bus__word__first
+     using hypothesis H17.
+***  Proved C3:  m <= bus__word__last
+     using hypothesis H18.
+***  PROVED VC.
+

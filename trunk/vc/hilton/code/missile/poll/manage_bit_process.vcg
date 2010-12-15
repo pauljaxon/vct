@@ -1,0 +1,74 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.40
+
+                 procedure missile.Poll.Manage_Bit_Process
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 254:
+
+procedure_manage_bit_process_1.
+H1:    true .
+H2:    for_all(i___1: bc1553__lru_name, ((i___1 >= 
+           bc1553__lru_name__first) and (i___1 <= 
+           bc1553__lru_name__last)) -> ((fld_bit_phase(element(
+           fld_components(state), [i___1])) >= ibit__phase__first) and (
+           fld_bit_phase(element(fld_components(state), [
+           i___1])) <= ibit__phase__last))) .
+H3:    fld_phase(state) >= phase_stage__first .
+H4:    fld_phase(state) <= phase_stage__last .
+H5:    true .
+H6:    true .
+H7:    true .
+H8:    ibit_complete__1 .
+H9:    true .
+H10:   ibit_passed__1 .
+        ->
+C1:    boost >= phase_stage__first .
+C2:    boost <= phase_stage__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 258:
+
+procedure_manage_bit_process_2.
+H1:    true .
+H2:    for_all(i___1: bc1553__lru_name, ((i___1 >= 
+           bc1553__lru_name__first) and (i___1 <= 
+           bc1553__lru_name__last)) -> ((fld_bit_phase(element(
+           fld_components(state), [i___1])) >= ibit__phase__first) and (
+           fld_bit_phase(element(fld_components(state), [
+           i___1])) <= ibit__phase__last))) .
+H3:    fld_phase(state) >= phase_stage__first .
+H4:    fld_phase(state) <= phase_stage__last .
+H5:    true .
+H6:    true .
+H7:    true .
+H8:    ibit_complete__1 .
+H9:    true .
+H10:   not ibit_passed__1 .
+        ->
+C1:    shutdown >= phase_stage__first .
+C2:    shutdown <= phase_stage__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_manage_bit_process_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_manage_bit_process_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_manage_bit_process_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+

@@ -1,0 +1,268 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.59
+
+                    procedure steer.Cycle.Read_Fin_Angle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 273:
+
+procedure_read_fin_angle_1.
+H1:    true .
+H2:    f >= fin__first .
+H3:    f <= fin__last .
+H4:    i >= bus__word_index__first .
+H5:    i <= bus__word_index__last .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H7:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H8:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    i >= bus__word_index__first .
+C4:    i <= bus__word_index__last .
+C5:    bus_id >= rt1553__lru_name__first .
+C6:    bus_id <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 273:
+
+procedure_read_fin_angle_2.
+H1:    true .
+H2:    f >= fin__first .
+H3:    f <= fin__last .
+H4:    i >= bus__word_index__first .
+H5:    i <= bus__word_index__last .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H7:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H8:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H9:    1 >= bus__lru_subaddress_index__first .
+H10:   1 <= bus__lru_subaddress_index__last .
+H11:   i >= bus__word_index__first .
+H12:   i <= bus__word_index__last .
+H13:   bus_id >= rt1553__lru_name__first .
+H14:   bus_id <= rt1553__lru_name__last .
+H15:   b__1 >= bus__word__first .
+H16:   b__1 <= bus__word__last .
+        ->
+C1:    b__1 >= bus__word__first .
+C2:    b__1 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 277:
+
+procedure_read_fin_angle_3.
+H1:    true .
+H2:    f >= fin__first .
+H3:    f <= fin__last .
+H4:    i >= bus__word_index__first .
+H5:    i <= bus__word_index__last .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H7:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H8:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H9:    1 >= bus__lru_subaddress_index__first .
+H10:   1 <= bus__lru_subaddress_index__last .
+H11:   i >= bus__word_index__first .
+H12:   i <= bus__word_index__last .
+H13:   bus_id >= rt1553__lru_name__first .
+H14:   bus_id <= rt1553__lru_name__last .
+H15:   b__1 >= bus__word__first .
+H16:   b__1 <= bus__word__last .
+H17:   b__1 >= bus__word__first .
+H18:   b__1 <= bus__word__last .
+H19:   b__1 >= bus__word__first .
+H20:   b__1 <= bus__word__last .
+        ->
+C1:    b__1 >= bus__word__first .
+C2:    b__1 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 277:
+
+procedure_read_fin_angle_4.
+H1:    true .
+H2:    f >= fin__first .
+H3:    f <= fin__last .
+H4:    i >= bus__word_index__first .
+H5:    i <= bus__word_index__last .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H7:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H8:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H9:    1 >= bus__lru_subaddress_index__first .
+H10:   1 <= bus__lru_subaddress_index__last .
+H11:   i >= bus__word_index__first .
+H12:   i <= bus__word_index__last .
+H13:   bus_id >= rt1553__lru_name__first .
+H14:   bus_id <= rt1553__lru_name__last .
+H15:   b__1 >= bus__word__first .
+H16:   b__1 <= bus__word__last .
+H17:   b__1 >= bus__word__first .
+H18:   b__1 <= bus__word__last .
+H19:   b__1 >= bus__word__first .
+H20:   b__1 <= bus__word__last .
+H21:   b__1 >= bus__word__first .
+H22:   b__1 <= bus__word__last .
+H23:   steer_cfg__decode__fin_angle(b__1) >= 
+           steer_cfg__fin_angle__first .
+H24:   steer_cfg__decode__fin_angle(b__1) <= 
+           steer_cfg__fin_angle__last .
+        ->
+C1:    steer_cfg__decode__fin_angle(b__1) >= angle__first .
+C2:    steer_cfg__decode__fin_angle(b__1) <= angle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 278:
+
+procedure_read_fin_angle_5.
+H1:    true .
+H2:    f >= fin__first .
+H3:    f <= fin__last .
+H4:    i >= bus__word_index__first .
+H5:    i <= bus__word_index__last .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H7:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H8:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H9:    1 >= bus__lru_subaddress_index__first .
+H10:   1 <= bus__lru_subaddress_index__last .
+H11:   i >= bus__word_index__first .
+H12:   i <= bus__word_index__last .
+H13:   bus_id >= rt1553__lru_name__first .
+H14:   bus_id <= rt1553__lru_name__last .
+H15:   b__1 >= bus__word__first .
+H16:   b__1 <= bus__word__last .
+H17:   b__1 >= bus__word__first .
+H18:   b__1 <= bus__word__last .
+H19:   b__1 >= bus__word__first .
+H20:   b__1 <= bus__word__last .
+H21:   b__1 >= bus__word__first .
+H22:   b__1 <= bus__word__last .
+H23:   steer_cfg__decode__fin_angle(b__1) >= 
+           steer_cfg__fin_angle__first .
+H24:   steer_cfg__decode__fin_angle(b__1) <= 
+           steer_cfg__fin_angle__last .
+H25:   steer_cfg__decode__fin_angle(b__1) >= angle__first .
+H26:   steer_cfg__decode__fin_angle(b__1) <= angle__last .
+H27:   steer_cfg__decode__fin_angle(b__1) >= angle__first .
+H28:   steer_cfg__decode__fin_angle(b__1) <= angle__last .
+        ->
+C1:    f >= fin__first .
+C2:    f <= fin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 280:
+
+procedure_read_fin_angle_6.
+H1:    true .
+H2:    f >= fin__first .
+H3:    f <= fin__last .
+H4:    i >= bus__word_index__first .
+H5:    i <= bus__word_index__last .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H7:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H8:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H9:    1 >= bus__lru_subaddress_index__first .
+H10:   1 <= bus__lru_subaddress_index__last .
+H11:   i >= bus__word_index__first .
+H12:   i <= bus__word_index__last .
+H13:   bus_id >= rt1553__lru_name__first .
+H14:   bus_id <= rt1553__lru_name__last .
+H15:   b__1 >= bus__word__first .
+H16:   b__1 <= bus__word__last .
+H17:   b__1 >= bus__word__first .
+H18:   b__1 <= bus__word__last .
+H19:   b__1 >= bus__word__first .
+H20:   b__1 <= bus__word__last .
+H21:   b__1 >= bus__word__first .
+H22:   b__1 <= bus__word__last .
+H23:   steer_cfg__decode__fin_angle(b__1) >= 
+           steer_cfg__fin_angle__first .
+H24:   steer_cfg__decode__fin_angle(b__1) <= 
+           steer_cfg__fin_angle__last .
+H25:   steer_cfg__decode__fin_angle(b__1) >= angle__first .
+H26:   steer_cfg__decode__fin_angle(b__1) <= angle__last .
+H27:   steer_cfg__decode__fin_angle(b__1) >= angle__first .
+H28:   steer_cfg__decode__fin_angle(b__1) <= angle__last .
+H29:   f >= fin__first .
+H30:   f <= fin__last .
+H31:   steer_cfg__decode__fin_angle(b__1) <> element(
+           current_angles, [f]) .
+H32:   steer_cfg__decode__fin_angle(b__1) >= angle__first .
+H33:   steer_cfg__decode__fin_angle(b__1) <= angle__last .
+        ->
+C1:    steer_cfg__decode__fin_angle(b__1) >= angle__first .
+C2:    steer_cfg__decode__fin_angle(b__1) <= angle__last .
+C3:    f >= fin__first .
+C4:    f <= fin__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_fin_angle_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_fin_angle_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+

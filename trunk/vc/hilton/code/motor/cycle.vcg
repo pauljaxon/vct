@@ -1,0 +1,2167 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.95
+
+                           procedure motor.Cycle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 200:
+
+procedure_cycle_1.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+        ->
+C1:    p__1 >= power__first .
+C2:    p__1 <= power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 201:
+
+procedure_cycle_2.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+        ->
+C1:    p__1 >= measuretypes__newton__first .
+C2:    p__1 <= measuretypes__newton__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 201:
+
+procedure_cycle_3.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+        ->
+C1:    dhi__2 >= bus__word__first .
+C2:    dhi__2 <= bus__word__last .
+C3:    dlo__2 >= bus__word__first .
+C4:    dlo__2 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 204:
+
+procedure_cycle_4.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    1 >= bus__word_index__first .
+C6:    1 <= bus__word_index__last .
+C7:    dlo__2 >= bus__word__first .
+C8:    dlo__2 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 208:
+
+procedure_cycle_5.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    2 >= bus__word_index__first .
+C6:    2 <= bus__word_index__last .
+C7:    dhi__2 >= bus__word__first .
+C8:    dhi__2 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 214:
+
+procedure_cycle_6.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    3 >= bus__word_index__first .
+C6:    3 <= bus__word_index__last .
+C7:    element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+C8:    element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+C9:    bit_machine__phase(bit_state) >= ibit__phase__first .
+C10:   bit_machine__phase(bit_state) <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 221:
+
+procedure_cycle_7.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    bus_id >= rt1553__lru_name__first .
+C4:    bus_id <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 221:
+
+procedure_cycle_8.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+        ->
+C1:    rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+C2:    rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+ 
+
+For path(s) from start to run-time check associated with statement of line 226:
+
+procedure_cycle_9.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= rt1553__lru_name__first .
+C6:    bus_id <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 226:
+
+procedure_cycle_10.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H66:   1 >= bus__lru_subaddress_index__first .
+H67:   1 <= bus__lru_subaddress_index__last .
+H68:   1 >= bus__word_index__first .
+H69:   1 <= bus__word_index__last .
+H70:   bus_id >= rt1553__lru_name__first .
+H71:   bus_id <= rt1553__lru_name__last .
+H72:   dlo__6 >= bus__word__first .
+H73:   dlo__6 <= bus__word__last .
+        ->
+C1:    dlo__6 >= bus__word__first .
+C2:    dlo__6 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 230:
+
+procedure_cycle_11.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H66:   1 >= bus__lru_subaddress_index__first .
+H67:   1 <= bus__lru_subaddress_index__last .
+H68:   1 >= bus__word_index__first .
+H69:   1 <= bus__word_index__last .
+H70:   bus_id >= rt1553__lru_name__first .
+H71:   bus_id <= rt1553__lru_name__last .
+H72:   dlo__6 >= bus__word__first .
+H73:   dlo__6 <= bus__word__last .
+H74:   dlo__6 >= bus__word__first .
+H75:   dlo__6 <= bus__word__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    2 >= bus__word_index__first .
+C4:    2 <= bus__word_index__last .
+C5:    bus_id >= rt1553__lru_name__first .
+C6:    bus_id <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 230:
+
+procedure_cycle_12.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H66:   1 >= bus__lru_subaddress_index__first .
+H67:   1 <= bus__lru_subaddress_index__last .
+H68:   1 >= bus__word_index__first .
+H69:   1 <= bus__word_index__last .
+H70:   bus_id >= rt1553__lru_name__first .
+H71:   bus_id <= rt1553__lru_name__last .
+H72:   dlo__6 >= bus__word__first .
+H73:   dlo__6 <= bus__word__last .
+H74:   dlo__6 >= bus__word__first .
+H75:   dlo__6 <= bus__word__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   2 >= bus__word_index__first .
+H79:   2 <= bus__word_index__last .
+H80:   bus_id >= rt1553__lru_name__first .
+H81:   bus_id <= rt1553__lru_name__last .
+H82:   dhi__7 >= bus__word__first .
+H83:   dhi__7 <= bus__word__last .
+        ->
+C1:    dhi__7 >= bus__word__first .
+C2:    dhi__7 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 234:
+
+procedure_cycle_13.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H66:   1 >= bus__lru_subaddress_index__first .
+H67:   1 <= bus__lru_subaddress_index__last .
+H68:   1 >= bus__word_index__first .
+H69:   1 <= bus__word_index__last .
+H70:   bus_id >= rt1553__lru_name__first .
+H71:   bus_id <= rt1553__lru_name__last .
+H72:   dlo__6 >= bus__word__first .
+H73:   dlo__6 <= bus__word__last .
+H74:   dlo__6 >= bus__word__first .
+H75:   dlo__6 <= bus__word__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   2 >= bus__word_index__first .
+H79:   2 <= bus__word_index__last .
+H80:   bus_id >= rt1553__lru_name__first .
+H81:   bus_id <= rt1553__lru_name__last .
+H82:   dhi__7 >= bus__word__first .
+H83:   dhi__7 <= bus__word__last .
+H84:   dhi__7 >= bus__word__first .
+H85:   dhi__7 <= bus__word__last .
+H86:   dlo__6 >= bus__word__first .
+H87:   dlo__6 <= bus__word__last .
+H88:   dhi__7 >= bus__word__first .
+H89:   dhi__7 <= bus__word__last .
+        ->
+C1:    dhi__7 >= bus__word__first .
+C2:    dhi__7 <= bus__word__last .
+C3:    dlo__6 >= bus__word__first .
+C4:    dlo__6 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 234:
+
+procedure_cycle_14.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H66:   1 >= bus__lru_subaddress_index__first .
+H67:   1 <= bus__lru_subaddress_index__last .
+H68:   1 >= bus__word_index__first .
+H69:   1 <= bus__word_index__last .
+H70:   bus_id >= rt1553__lru_name__first .
+H71:   bus_id <= rt1553__lru_name__last .
+H72:   dlo__6 >= bus__word__first .
+H73:   dlo__6 <= bus__word__last .
+H74:   dlo__6 >= bus__word__first .
+H75:   dlo__6 <= bus__word__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   2 >= bus__word_index__first .
+H79:   2 <= bus__word_index__last .
+H80:   bus_id >= rt1553__lru_name__first .
+H81:   bus_id <= rt1553__lru_name__last .
+H82:   dhi__7 >= bus__word__first .
+H83:   dhi__7 <= bus__word__last .
+H84:   dhi__7 >= bus__word__first .
+H85:   dhi__7 <= bus__word__last .
+H86:   dlo__6 >= bus__word__first .
+H87:   dlo__6 <= bus__word__last .
+H88:   dhi__7 >= bus__word__first .
+H89:   dhi__7 <= bus__word__last .
+H90:   dhi__7 >= bus__word__first .
+H91:   dhi__7 <= bus__word__last .
+H92:   dlo__6 >= bus__word__first .
+H93:   dlo__6 <= bus__word__last .
+H94:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           measuretypes__newton__first .
+H95:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           measuretypes__newton__last .
+        ->
+C1:    measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+C2:    measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 236:
+
+procedure_cycle_15.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H66:   1 >= bus__lru_subaddress_index__first .
+H67:   1 <= bus__lru_subaddress_index__last .
+H68:   1 >= bus__word_index__first .
+H69:   1 <= bus__word_index__last .
+H70:   bus_id >= rt1553__lru_name__first .
+H71:   bus_id <= rt1553__lru_name__last .
+H72:   dlo__6 >= bus__word__first .
+H73:   dlo__6 <= bus__word__last .
+H74:   dlo__6 >= bus__word__first .
+H75:   dlo__6 <= bus__word__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   2 >= bus__word_index__first .
+H79:   2 <= bus__word_index__last .
+H80:   bus_id >= rt1553__lru_name__first .
+H81:   bus_id <= rt1553__lru_name__last .
+H82:   dhi__7 >= bus__word__first .
+H83:   dhi__7 <= bus__word__last .
+H84:   dhi__7 >= bus__word__first .
+H85:   dhi__7 <= bus__word__last .
+H86:   dlo__6 >= bus__word__first .
+H87:   dlo__6 <= bus__word__last .
+H88:   dhi__7 >= bus__word__first .
+H89:   dhi__7 <= bus__word__last .
+H90:   dhi__7 >= bus__word__first .
+H91:   dhi__7 <= bus__word__last .
+H92:   dlo__6 >= bus__word__first .
+H93:   dlo__6 <= bus__word__last .
+H94:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           measuretypes__newton__first .
+H95:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           measuretypes__newton__last .
+H96:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H97:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H98:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H99:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H100:  measuretypes__decode__newton(dlo__6, dhi__7) <> 
+           current_thrust .
+H101:  measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H102:  measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+        ->
+C1:    measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+C2:    measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 241:
+
+procedure_cycle_16.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H66:   1 >= bus__lru_subaddress_index__first .
+H67:   1 <= bus__lru_subaddress_index__last .
+H68:   1 >= bus__word_index__first .
+H69:   1 <= bus__word_index__last .
+H70:   bus_id >= rt1553__lru_name__first .
+H71:   bus_id <= rt1553__lru_name__last .
+H72:   dlo__6 >= bus__word__first .
+H73:   dlo__6 <= bus__word__last .
+H74:   dlo__6 >= bus__word__first .
+H75:   dlo__6 <= bus__word__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   2 >= bus__word_index__first .
+H79:   2 <= bus__word_index__last .
+H80:   bus_id >= rt1553__lru_name__first .
+H81:   bus_id <= rt1553__lru_name__last .
+H82:   dhi__7 >= bus__word__first .
+H83:   dhi__7 <= bus__word__last .
+H84:   dhi__7 >= bus__word__first .
+H85:   dhi__7 <= bus__word__last .
+H86:   dlo__6 >= bus__word__first .
+H87:   dlo__6 <= bus__word__last .
+H88:   dhi__7 >= bus__word__first .
+H89:   dhi__7 <= bus__word__last .
+H90:   dhi__7 >= bus__word__first .
+H91:   dhi__7 <= bus__word__last .
+H92:   dlo__6 >= bus__word__first .
+H93:   dlo__6 <= bus__word__last .
+H94:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           measuretypes__newton__first .
+H95:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           measuretypes__newton__last .
+H96:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H97:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H98:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H99:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H100:  measuretypes__decode__newton(dlo__6, dhi__7) <> 
+           current_thrust .
+H101:  measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H102:  measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H103:  measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H104:  measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H105:  current_thrust__8 >= power__first .
+H106:  current_thrust__8 <= power__last .
+H107:  commanded_thrust__8 >= power__first .
+H108:  commanded_thrust__8 <= power__last .
+H109:  command_time__8 >= clock__millisecond__first .
+H110:  command_time__8 <= clock__millisecond__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    3 >= bus__word_index__first .
+C4:    3 <= bus__word_index__last .
+C5:    bus_id >= rt1553__lru_name__first .
+C6:    bus_id <= rt1553__lru_name__last .
+ 
+
+procedure_cycle_17.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H66:   1 >= bus__lru_subaddress_index__first .
+H67:   1 <= bus__lru_subaddress_index__last .
+H68:   1 >= bus__word_index__first .
+H69:   1 <= bus__word_index__last .
+H70:   bus_id >= rt1553__lru_name__first .
+H71:   bus_id <= rt1553__lru_name__last .
+H72:   dlo__6 >= bus__word__first .
+H73:   dlo__6 <= bus__word__last .
+H74:   dlo__6 >= bus__word__first .
+H75:   dlo__6 <= bus__word__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   2 >= bus__word_index__first .
+H79:   2 <= bus__word_index__last .
+H80:   bus_id >= rt1553__lru_name__first .
+H81:   bus_id <= rt1553__lru_name__last .
+H82:   dhi__7 >= bus__word__first .
+H83:   dhi__7 <= bus__word__last .
+H84:   dhi__7 >= bus__word__first .
+H85:   dhi__7 <= bus__word__last .
+H86:   dlo__6 >= bus__word__first .
+H87:   dlo__6 <= bus__word__last .
+H88:   dhi__7 >= bus__word__first .
+H89:   dhi__7 <= bus__word__last .
+H90:   dhi__7 >= bus__word__first .
+H91:   dhi__7 <= bus__word__last .
+H92:   dlo__6 >= bus__word__first .
+H93:   dlo__6 <= bus__word__last .
+H94:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           measuretypes__newton__first .
+H95:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           measuretypes__newton__last .
+H96:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H97:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H98:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H99:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H100:  not (measuretypes__decode__newton(dlo__6, dhi__7) <> 
+           current_thrust) .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    3 >= bus__word_index__first .
+C4:    3 <= bus__word_index__last .
+C5:    bus_id >= rt1553__lru_name__first .
+C6:    bus_id <= rt1553__lru_name__last .
+ 
+
+procedure_cycle_18.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   not (rt1553__is_valid(bus_id, 1, bus__outputs) and 
+           rt1553__is_fresh(bus_id, 1, bus__outputs)) .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    3 >= bus__word_index__first .
+C4:    3 <= bus__word_index__last .
+C5:    bus_id >= rt1553__lru_name__first .
+C6:    bus_id <= rt1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 241:
+
+procedure_cycle_19.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H66:   1 >= bus__lru_subaddress_index__first .
+H67:   1 <= bus__lru_subaddress_index__last .
+H68:   1 >= bus__word_index__first .
+H69:   1 <= bus__word_index__last .
+H70:   bus_id >= rt1553__lru_name__first .
+H71:   bus_id <= rt1553__lru_name__last .
+H72:   dlo__6 >= bus__word__first .
+H73:   dlo__6 <= bus__word__last .
+H74:   dlo__6 >= bus__word__first .
+H75:   dlo__6 <= bus__word__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   2 >= bus__word_index__first .
+H79:   2 <= bus__word_index__last .
+H80:   bus_id >= rt1553__lru_name__first .
+H81:   bus_id <= rt1553__lru_name__last .
+H82:   dhi__7 >= bus__word__first .
+H83:   dhi__7 <= bus__word__last .
+H84:   dhi__7 >= bus__word__first .
+H85:   dhi__7 <= bus__word__last .
+H86:   dlo__6 >= bus__word__first .
+H87:   dlo__6 <= bus__word__last .
+H88:   dhi__7 >= bus__word__first .
+H89:   dhi__7 <= bus__word__last .
+H90:   dhi__7 >= bus__word__first .
+H91:   dhi__7 <= bus__word__last .
+H92:   dlo__6 >= bus__word__first .
+H93:   dlo__6 <= bus__word__last .
+H94:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           measuretypes__newton__first .
+H95:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           measuretypes__newton__last .
+H96:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H97:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H98:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H99:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H100:  measuretypes__decode__newton(dlo__6, dhi__7) <> 
+           current_thrust .
+H101:  measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H102:  measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H103:  measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H104:  measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H105:  current_thrust__8 >= power__first .
+H106:  current_thrust__8 <= power__last .
+H107:  commanded_thrust__8 >= power__first .
+H108:  commanded_thrust__8 <= power__last .
+H109:  command_time__8 >= clock__millisecond__first .
+H110:  command_time__8 <= clock__millisecond__last .
+H111:  1 >= bus__lru_subaddress_index__first .
+H112:  1 <= bus__lru_subaddress_index__last .
+H113:  3 >= bus__word_index__first .
+H114:  3 <= bus__word_index__last .
+H115:  bus_id >= rt1553__lru_name__first .
+H116:  bus_id <= rt1553__lru_name__last .
+H117:  datum__9 >= bus__word__first .
+H118:  datum__9 <= bus__word__last .
+        ->
+C1:    datum__9 >= bus__word__first .
+C2:    datum__9 <= bus__word__last .
+ 
+
+procedure_cycle_20.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H66:   1 >= bus__lru_subaddress_index__first .
+H67:   1 <= bus__lru_subaddress_index__last .
+H68:   1 >= bus__word_index__first .
+H69:   1 <= bus__word_index__last .
+H70:   bus_id >= rt1553__lru_name__first .
+H71:   bus_id <= rt1553__lru_name__last .
+H72:   dlo__6 >= bus__word__first .
+H73:   dlo__6 <= bus__word__last .
+H74:   dlo__6 >= bus__word__first .
+H75:   dlo__6 <= bus__word__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   2 >= bus__word_index__first .
+H79:   2 <= bus__word_index__last .
+H80:   bus_id >= rt1553__lru_name__first .
+H81:   bus_id <= rt1553__lru_name__last .
+H82:   dhi__7 >= bus__word__first .
+H83:   dhi__7 <= bus__word__last .
+H84:   dhi__7 >= bus__word__first .
+H85:   dhi__7 <= bus__word__last .
+H86:   dlo__6 >= bus__word__first .
+H87:   dlo__6 <= bus__word__last .
+H88:   dhi__7 >= bus__word__first .
+H89:   dhi__7 <= bus__word__last .
+H90:   dhi__7 >= bus__word__first .
+H91:   dhi__7 <= bus__word__last .
+H92:   dlo__6 >= bus__word__first .
+H93:   dlo__6 <= bus__word__last .
+H94:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           measuretypes__newton__first .
+H95:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           measuretypes__newton__last .
+H96:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H97:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H98:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H99:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H100:  not (measuretypes__decode__newton(dlo__6, dhi__7) <> 
+           current_thrust) .
+H101:  1 >= bus__lru_subaddress_index__first .
+H102:  1 <= bus__lru_subaddress_index__last .
+H103:  3 >= bus__word_index__first .
+H104:  3 <= bus__word_index__last .
+H105:  bus_id >= rt1553__lru_name__first .
+H106:  bus_id <= rt1553__lru_name__last .
+H107:  datum__9 >= bus__word__first .
+H108:  datum__9 <= bus__word__last .
+        ->
+C1:    datum__9 >= bus__word__first .
+C2:    datum__9 <= bus__word__last .
+ 
+
+procedure_cycle_21.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   not (rt1553__is_valid(bus_id, 1, bus__outputs) and 
+           rt1553__is_fresh(bus_id, 1, bus__outputs)) .
+H65:   1 >= bus__lru_subaddress_index__first .
+H66:   1 <= bus__lru_subaddress_index__last .
+H67:   3 >= bus__word_index__first .
+H68:   3 <= bus__word_index__last .
+H69:   bus_id >= rt1553__lru_name__first .
+H70:   bus_id <= rt1553__lru_name__last .
+H71:   datum__9 >= bus__word__first .
+H72:   datum__9 <= bus__word__last .
+        ->
+C1:    datum__9 >= bus__word__first .
+C2:    datum__9 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 245:
+
+procedure_cycle_22.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H66:   1 >= bus__lru_subaddress_index__first .
+H67:   1 <= bus__lru_subaddress_index__last .
+H68:   1 >= bus__word_index__first .
+H69:   1 <= bus__word_index__last .
+H70:   bus_id >= rt1553__lru_name__first .
+H71:   bus_id <= rt1553__lru_name__last .
+H72:   dlo__6 >= bus__word__first .
+H73:   dlo__6 <= bus__word__last .
+H74:   dlo__6 >= bus__word__first .
+H75:   dlo__6 <= bus__word__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   2 >= bus__word_index__first .
+H79:   2 <= bus__word_index__last .
+H80:   bus_id >= rt1553__lru_name__first .
+H81:   bus_id <= rt1553__lru_name__last .
+H82:   dhi__7 >= bus__word__first .
+H83:   dhi__7 <= bus__word__last .
+H84:   dhi__7 >= bus__word__first .
+H85:   dhi__7 <= bus__word__last .
+H86:   dlo__6 >= bus__word__first .
+H87:   dlo__6 <= bus__word__last .
+H88:   dhi__7 >= bus__word__first .
+H89:   dhi__7 <= bus__word__last .
+H90:   dhi__7 >= bus__word__first .
+H91:   dhi__7 <= bus__word__last .
+H92:   dlo__6 >= bus__word__first .
+H93:   dlo__6 <= bus__word__last .
+H94:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           measuretypes__newton__first .
+H95:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           measuretypes__newton__last .
+H96:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H97:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H98:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H99:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H100:  measuretypes__decode__newton(dlo__6, dhi__7) <> 
+           current_thrust .
+H101:  measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H102:  measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H103:  measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H104:  measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H105:  current_thrust__8 >= power__first .
+H106:  current_thrust__8 <= power__last .
+H107:  commanded_thrust__8 >= power__first .
+H108:  commanded_thrust__8 <= power__last .
+H109:  command_time__8 >= clock__millisecond__first .
+H110:  command_time__8 <= clock__millisecond__last .
+H111:  1 >= bus__lru_subaddress_index__first .
+H112:  1 <= bus__lru_subaddress_index__last .
+H113:  3 >= bus__word_index__first .
+H114:  3 <= bus__word_index__last .
+H115:  bus_id >= rt1553__lru_name__first .
+H116:  bus_id <= rt1553__lru_name__last .
+H117:  datum__9 >= bus__word__first .
+H118:  datum__9 <= bus__word__last .
+H119:  datum__9 >= bus__word__first .
+H120:  datum__9 <= bus__word__last .
+H121:  datum__9 >= bus__word__first .
+H122:  datum__9 <= bus__word__last .
+        ->
+C1:    datum__9 >= bus__word__first .
+C2:    datum__9 <= bus__word__last .
+ 
+
+procedure_cycle_23.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   rt1553__is_valid(bus_id, 1, bus__outputs) .
+H65:   rt1553__is_fresh(bus_id, 1, bus__outputs) .
+H66:   1 >= bus__lru_subaddress_index__first .
+H67:   1 <= bus__lru_subaddress_index__last .
+H68:   1 >= bus__word_index__first .
+H69:   1 <= bus__word_index__last .
+H70:   bus_id >= rt1553__lru_name__first .
+H71:   bus_id <= rt1553__lru_name__last .
+H72:   dlo__6 >= bus__word__first .
+H73:   dlo__6 <= bus__word__last .
+H74:   dlo__6 >= bus__word__first .
+H75:   dlo__6 <= bus__word__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   2 >= bus__word_index__first .
+H79:   2 <= bus__word_index__last .
+H80:   bus_id >= rt1553__lru_name__first .
+H81:   bus_id <= rt1553__lru_name__last .
+H82:   dhi__7 >= bus__word__first .
+H83:   dhi__7 <= bus__word__last .
+H84:   dhi__7 >= bus__word__first .
+H85:   dhi__7 <= bus__word__last .
+H86:   dlo__6 >= bus__word__first .
+H87:   dlo__6 <= bus__word__last .
+H88:   dhi__7 >= bus__word__first .
+H89:   dhi__7 <= bus__word__last .
+H90:   dhi__7 >= bus__word__first .
+H91:   dhi__7 <= bus__word__last .
+H92:   dlo__6 >= bus__word__first .
+H93:   dlo__6 <= bus__word__last .
+H94:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           measuretypes__newton__first .
+H95:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           measuretypes__newton__last .
+H96:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H97:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H98:   measuretypes__decode__newton(dlo__6, dhi__7) >= 
+           power__first .
+H99:   measuretypes__decode__newton(dlo__6, dhi__7) <= 
+           power__last .
+H100:  not (measuretypes__decode__newton(dlo__6, dhi__7) <> 
+           current_thrust) .
+H101:  1 >= bus__lru_subaddress_index__first .
+H102:  1 <= bus__lru_subaddress_index__last .
+H103:  3 >= bus__word_index__first .
+H104:  3 <= bus__word_index__last .
+H105:  bus_id >= rt1553__lru_name__first .
+H106:  bus_id <= rt1553__lru_name__last .
+H107:  datum__9 >= bus__word__first .
+H108:  datum__9 <= bus__word__last .
+H109:  datum__9 >= bus__word__first .
+H110:  datum__9 <= bus__word__last .
+H111:  datum__9 >= bus__word__first .
+H112:  datum__9 <= bus__word__last .
+        ->
+C1:    datum__9 >= bus__word__first .
+C2:    datum__9 <= bus__word__last .
+ 
+
+procedure_cycle_24.
+H1:    true .
+H2:    current_thrust >= power__first .
+H3:    current_thrust <= power__last .
+H4:    commanded_thrust >= power__first .
+H5:    commanded_thrust <= power__last .
+H6:    command_time >= clock__millisecond__first .
+H7:    command_time <= clock__millisecond__last .
+H8:    p__1 >= power__first .
+H9:    p__1 <= power__last .
+H10:   p__1 >= power__first .
+H11:   p__1 <= power__last .
+H12:   p__1 >= power__first .
+H13:   p__1 <= power__last .
+H14:   p__1 >= measuretypes__newton__first .
+H15:   p__1 <= measuretypes__newton__last .
+H16:   dlo__2 >= bus__word__first .
+H17:   dlo__2 <= bus__word__last .
+H18:   dhi__2 >= bus__word__first .
+H19:   dhi__2 <= bus__word__last .
+H20:   dhi__2 >= bus__word__first .
+H21:   dhi__2 <= bus__word__last .
+H22:   dlo__2 >= bus__word__first .
+H23:   dlo__2 <= bus__word__last .
+H24:   dlo__2 >= bus__word__first .
+H25:   dlo__2 <= bus__word__last .
+H26:   bus_id >= rt1553__lru_name__first .
+H27:   bus_id <= rt1553__lru_name__last .
+H28:   1 >= bus__lru_subaddress_index__first .
+H29:   1 <= bus__lru_subaddress_index__last .
+H30:   1 >= bus__word_index__first .
+H31:   1 <= bus__word_index__last .
+H32:   dlo__2 >= bus__word__first .
+H33:   dlo__2 <= bus__word__last .
+H34:   dhi__2 >= bus__word__first .
+H35:   dhi__2 <= bus__word__last .
+H36:   bus_id >= rt1553__lru_name__first .
+H37:   bus_id <= rt1553__lru_name__last .
+H38:   1 >= bus__lru_subaddress_index__first .
+H39:   1 <= bus__lru_subaddress_index__last .
+H40:   2 >= bus__word_index__first .
+H41:   2 <= bus__word_index__last .
+H42:   dhi__2 >= bus__word__first .
+H43:   dhi__2 <= bus__word__last .
+H44:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H45:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H46:   bus_id >= rt1553__lru_name__first .
+H47:   bus_id <= rt1553__lru_name__last .
+H48:   1 >= bus__lru_subaddress_index__first .
+H49:   1 <= bus__lru_subaddress_index__last .
+H50:   3 >= bus__word_index__first .
+H51:   3 <= bus__word_index__last .
+H52:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) >= bus__word__first .
+H53:   element(ibit__phase_lookup, [bit_machine__phase(
+           bit_state)]) <= bus__word__last .
+H54:   bit_machine__phase(bit_state) >= ibit__phase__first .
+H55:   bit_machine__phase(bit_state) <= ibit__phase__last .
+H56:   1 >= bus__lru_subaddress_index__first .
+H57:   1 <= bus__lru_subaddress_index__last .
+H58:   bus_id >= rt1553__lru_name__first .
+H59:   bus_id <= rt1553__lru_name__last .
+H60:   true .
+H61:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((1 >= 
+           bus__lru_subaddress_index__first) and (1 <= 
+           bus__lru_subaddress_index__last)) .
+H62:   rt1553__is_valid(bus_id, 1, bus__outputs) -> ((
+           bus_id >= rt1553__lru_name__first) and (bus_id <= 
+           rt1553__lru_name__last)) .
+H63:   rt1553__is_valid(bus_id, 1, bus__outputs) -> true .
+H64:   not (rt1553__is_valid(bus_id, 1, bus__outputs) and 
+           rt1553__is_fresh(bus_id, 1, bus__outputs)) .
+H65:   1 >= bus__lru_subaddress_index__first .
+H66:   1 <= bus__lru_subaddress_index__last .
+H67:   3 >= bus__word_index__first .
+H68:   3 <= bus__word_index__last .
+H69:   bus_id >= rt1553__lru_name__first .
+H70:   bus_id <= rt1553__lru_name__last .
+H71:   datum__9 >= bus__word__first .
+H72:   datum__9 <= bus__word__last .
+H73:   datum__9 >= bus__word__first .
+H74:   datum__9 <= bus__word__last .
+H75:   datum__9 >= bus__word__first .
+H76:   datum__9 <= bus__word__last .
+        ->
+C1:    datum__9 >= bus__word__first .
+C2:    datum__9 <= bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_cycle_25.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_26.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_27.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_cycle_28.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_29.
+*** true .          /* trivially true VC removed by Examiner */
+
+

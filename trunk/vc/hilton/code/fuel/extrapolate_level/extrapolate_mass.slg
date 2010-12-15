@@ -1,0 +1,453 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:50
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure fuel.Extrapolate_level.Extrapolate_Mass
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_mass_1.  @@@@@@@@@@
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  t_delta >= 0
+<S>  New C1:  - v >= 0
+<S>  New C3:  - v >= 0
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  t_delta <= 8640000
+<S>  New C2:  - v <= 8640000
+<S>  New C4:  - v <= 8640000
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__gram_per_sec__base__first by:
+          - 2147483648.
+<S>  New C5:  - v >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__gram_per_sec__base__last by:
+          2147483647.
+<S>  New C6:  - v <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of kilo__first by:
+          0.
+<S>  New H2:  o >= 0
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of kilo__last by:
+          20000.
+<S>  New H3:  o <= 20000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of gram_per_sec__first by:
+          0.
+<S>  New H4:  v >= 0
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of gram_per_sec__last by:
+          30000.
+<S>  New H5:  v <= 30000
+***  Proved C2:  - v <= 8640000
+     via its standard form, which is:
+     Std.Fm C2:  v > - 8640001
+     using hypothesis H4.
+***  Proved C4:  - v <= 8640000
+     via its standard form, which is:
+     Std.Fm C4:  v > - 8640001
+     using hypothesis H4.
+***  Proved C6:  - v <= 2147483647
+     via its standard form, which is:
+     Std.Fm C6:  v > - 2147483648
+     using hypothesis H4.
+###  Established a contradiction [P-and-not-P] among the following hypotheses:
+          H4 & H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_mass_2.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C7:  true
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of kilo__first by:
+          0.
+<S>  New H2:  o >= 0
+<S>  New C1:  - (- v * t_delta div 1000000) >= 0
+<S>  New C3:  - v * t_delta div 1000000 >= 0
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of kilo__last by:
+          20000.
+<S>  New H3:  o <= 20000
+<S>  New C2:  - (- v * t_delta div 1000000) <= 20000
+<S>  New C4:  - v * t_delta div 1000000 <= 20000
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__first by:
+          - 2147483648.
+<S>  New C5:  - v * t_delta div 1000000 >= - 2147483648
+<S>  New C8:  - v * t_delta >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(15).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__last by:
+          2147483647.
+<S>  New C6:  - v * t_delta div 1000000 <= 2147483647
+<S>  New C9:  - v * t_delta <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__gram_per_sec__base__first by:
+          - 2147483648.
+<S>  New H13:  - v >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__gram_per_sec__base__last by:
+          2147483647.
+<S>  New H14:  - v <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  t_delta >= 0
+<S>  New H9:  - v >= 0
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  t_delta <= 8640000
+<S>  New H10:  - v <= 8640000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of gram_per_sec__first by:
+          0.
+<S>  New H4:  v >= 0
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of gram_per_sec__last by:
+          30000.
+<S>  New H5:  v <= 30000
+***  Proved C8:  - v * t_delta >= - 2147483648
+     using hypotheses H6 & H9.
+###  Established a contradiction [P-and-not-P] among the following hypotheses:
+          H4 & H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_mass_3.  @@@@@@@@@@
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  t_delta >= 0
+<S>  New C1:  v >= 0
+<S>  New C3:  v >= 0
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  t_delta <= 8640000
+<S>  New C2:  v <= 8640000
+<S>  New C4:  v <= 8640000
+***  Proved C1:  v >= 0
+     using hypothesis H8.
+***  Proved C3:  v >= 0
+     using hypothesis H8.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  0 <= v
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of kilo__first by:
+          0.
+<S>  New H2:  o >= 0
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of kilo__last by:
+          20000.
+<S>  New H3:  o <= 20000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of gram_per_sec__first by:
+          0.
+<S>  New H4:  v >= 0
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of gram_per_sec__last by:
+          30000.
+<S>  New H5:  v <= 30000
+***  Proved C2:  v <= 8640000
+     using hypothesis H5.
+***  Proved C4:  v <= 8640000
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_mass_4.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C7:  true
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of kilo__first by:
+          0.
+<S>  New H2:  o >= 0
+<S>  New C1:  v * t_delta div 1000000 >= 0
+<S>  New C3:  v * t_delta div 1000000 >= 0
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of kilo__last by:
+          20000.
+<S>  New H3:  o <= 20000
+<S>  New C2:  v * t_delta div 1000000 <= 20000
+<S>  New C4:  v * t_delta div 1000000 <= 20000
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__first by:
+          - 2147483648.
+<S>  New C5:  v * t_delta div 1000000 >= - 2147483648
+<S>  New C8:  v * t_delta >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(15).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__last by:
+          2147483647.
+<S>  New C6:  v * t_delta div 1000000 <= 2147483647
+<S>  New C9:  v * t_delta <= 2147483647
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  0 <= v
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  t_delta >= 0
+<S>  New H9:  v >= 0
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  t_delta <= 8640000
+<S>  New H10:  v <= 8640000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of gram_per_sec__first by:
+          0.
+<S>  New H4:  v >= 0
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of gram_per_sec__last by:
+          30000.
+<S>  New H5:  v <= 30000
+***  Proved C8:  v * t_delta >= - 2147483648
+     using hypotheses H6 & H9.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H9 (duplicate of H4).
+---  Eliminated hypothesis H8 (duplicate of H4).
+---  Eliminated hypothesis H10 (redundant, given H5).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  v * t_delta div 1000000 >= 0
+     using hypotheses H6 & H9.
+***  Proved C5:  v * t_delta div 1000000 >= - 2147483648
+     using hypotheses H6 & H9.
+***  Proved C6:  v * t_delta div 1000000 <= 2147483647
+     using hypotheses H5 & H7.
+     +++  New H15:  measuretypes__kilo__size >= 0
+     +++  New H16:  measuretypes__gram_per_sec__size >= 0
+     +++  New H17:  clock__millisecond__size >= 0
+     +++  New H18:  kilo__size >= 0
+     +++  New H19:  gram_per_sec__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_mass_5.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  true
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of kilo__first by:
+          0.
+<S>  New H2:  o >= 0
+<S>  New H17:  - (- v * t_delta div 1000000) >= 0
+<S>  New H19:  - v * t_delta div 1000000 >= 0
+<S>  New C1:  o - - (- v * t_delta div 1000000) >= 0
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of kilo__last by:
+          20000.
+<S>  New H3:  o <= 20000
+<S>  New H18:  - (- v * t_delta div 1000000) <= 20000
+<S>  New H20:  - v * t_delta div 1000000 <= 20000
+<S>  New C2:  o - - (- v * t_delta div 1000000) <= 20000
+***  Proved C2:  o - - (- v * t_delta div 1000000) <= 20000
+     using hypotheses H3 & H17.
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__gram_per_sec__base__first by:
+          - 2147483648.
+<S>  New H13:  - v >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__gram_per_sec__base__last by:
+          2147483647.
+<S>  New H14:  - v <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  t_delta >= 0
+<S>  New H9:  - v >= 0
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  t_delta <= 8640000
+<S>  New H10:  - v <= 8640000
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__first by:
+          - 2147483648.
+<S>  New H21:  - v * t_delta div 1000000 >= - 2147483648
+<S>  New H24:  - v * t_delta >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(15).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__last by:
+          2147483647.
+<S>  New H22:  - v * t_delta div 1000000 <= 2147483647
+<S>  New H25:  - v * t_delta <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of gram_per_sec__first by:
+          0.
+<S>  New H4:  v >= 0
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of gram_per_sec__last by:
+          30000.
+<S>  New H5:  v <= 30000
+###  Established a contradiction [P-and-not-P] among the following hypotheses:
+          H4 & H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_mass_6.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  true
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of kilo__first by:
+          0.
+<S>  New H2:  o >= 0
+<S>  New H15:  v * t_delta div 1000000 >= 0
+<S>  New C1:  o - v * t_delta div 1000000 >= 0
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of kilo__last by:
+          20000.
+<S>  New H3:  o <= 20000
+<S>  New H16:  v * t_delta div 1000000 <= 20000
+<S>  New C2:  o - v * t_delta div 1000000 <= 20000
+***  Proved C2:  o - v * t_delta div 1000000 <= 20000
+     using hypotheses H3 & H15.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  0 <= v
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  t_delta >= 0
+<S>  New H9:  v >= 0
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  t_delta <= 8640000
+<S>  New H10:  v <= 8640000
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__first by:
+          - 2147483648.
+<S>  New H19:  v * t_delta div 1000000 >= - 2147483648
+<S>  New H22:  v * t_delta >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(15).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__last by:
+          2147483647.
+<S>  New H20:  v * t_delta div 1000000 <= 2147483647
+<S>  New H23:  v * t_delta <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of gram_per_sec__first by:
+          0.
+<S>  New H4:  v >= 0
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of gram_per_sec__last by:
+          30000.
+<S>  New H5:  v <= 30000
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H9 (duplicate of H4).
+---  Eliminated hypothesis H8 (duplicate of H4).
+---  Eliminated hypothesis H10 (redundant, given H5).
+---  Eliminated hypothesis H19 (redundant, given H15).
+---  Eliminated hypothesis H20 (redundant, given H16).
+     +++  New H26:  measuretypes__kilo__size >= 0
+     +++  New H27:  measuretypes__gram_per_sec__size >= 0
+     +++  New H28:  clock__millisecond__size >= 0
+     +++  New H29:  kilo__size >= 0
+     +++  New H30:  gram_per_sec__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_mass_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_mass_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

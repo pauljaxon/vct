@@ -1,0 +1,72 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:39  SIMPLIFIED 25-NOV-2009, 14:18:44
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure compass.Set_XY
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_set_xy_1.  @@@@@@@@@@
+-S-  Applied substitution rule set_xy_rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__first by:
+          0.
+<S>  New C1:  xy >= 0
+-S-  Applied substitution rule set_xy_rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__angle_degrees__last by:
+          359.
+<S>  New C2:  xy <= 359
+-S-  Applied substitution rule set_xy_rules(13).
+     This was achieved by replacing all occurrences of angle_degrees__first by:
+          0.
+<S>  New H2:  xy >= 0
+-S-  Applied substitution rule set_xy_rules(14).
+     This was achieved by replacing all occurrences of angle_degrees__last by:
+          359.
+<S>  New H3:  xy <= 359
+***  Proved C1:  xy >= 0
+     using hypothesis H2.
+***  Proved C2:  xy <= 359
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_xy_2.  @@@@@@@@@@
+***  Proved C1:  last_time__1 >= clock__millisecond__first
+     using hypothesis H7.
+***  Proved C2:  last_time__1 <= clock__millisecond__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_xy_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_xy_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_xy_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_set_xy_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

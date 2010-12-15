@@ -1,0 +1,39 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.24
+
+                         function bc1553.Lru_Number
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 49:
+
+function_lru_number_1.
+H1:    true .
+H2:    l >= lru_name__first .
+H3:    l <= lru_name__last .
+        ->
+C1:    l >= lru_name__first .
+C2:    l <= lru_name__last .
+ 
+
+For path(s) from start to finish:
+
+function_lru_number_2.
+H1:    true .
+H2:    l >= lru_name__first .
+H3:    l <= lru_name__last .
+H4:    l >= lru_name__first .
+H5:    l <= lru_name__last .
+        ->
+C1:    true .
+C2:    element(lru_names, [l]) >= bus__lru_index__first .
+C3:    element(lru_names, [l]) <= bus__lru_index__last .
+ 
+

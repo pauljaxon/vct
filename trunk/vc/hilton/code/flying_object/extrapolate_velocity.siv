@@ -1,0 +1,179 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:26
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure flying_object.Extrapolate_Velocity
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 62:
+
+procedure_extrapolate_velocity_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 64:
+
+procedure_extrapolate_velocity_2.
+H1:    t >= 0 .
+H2:    t <= 8640000 .
+H3:    fld_t(e) >= 0 .
+H4:    fld_t(e) <= 8640000 .
+H5:    fld_az(fld_a(e)) >= - 30000 .
+H6:    fld_az(fld_a(e)) <= 30000 .
+H7:    fld_ay(fld_a(e)) >= - 30000 .
+H8:    fld_ay(fld_a(e)) <= 30000 .
+H9:    fld_ax(fld_a(e)) >= - 30000 .
+H10:   fld_ax(fld_a(e)) <= 30000 .
+H11:   fld_vz(fld_v(e)) >= - 5000 .
+H12:   fld_vz(fld_v(e)) <= 5000 .
+H13:   fld_vy(fld_v(e)) >= - 5000 .
+H14:   fld_vy(fld_v(e)) <= 5000 .
+H15:   fld_vx(fld_v(e)) >= - 5000 .
+H16:   fld_vx(fld_v(e)) <= 5000 .
+H17:   fld_z(fld_p(e)) >= - 200000 .
+H18:   fld_z(fld_p(e)) <= 200000 .
+H19:   fld_y(fld_p(e)) >= - 200000 .
+H20:   fld_y(fld_p(e)) <= 200000 .
+H21:   fld_x(fld_p(e)) >= - 200000 .
+H22:   fld_x(fld_p(e)) <= 200000 .
+H23:   t - fld_t(e) >= - 2147483648 .
+H24:   t - fld_t(e) <= 2147483647 .
+H25:   long_integer__size >= 0 .
+H26:   measuretypes__meter__size >= 0 .
+H27:   measuretypes__meter_per_sec__size >= 0 .
+H28:   measuretypes__cm_per_sec_2__size >= 0 .
+H29:   cartesian__position__size >= 0 .
+H30:   cartesian__velocity__size >= 0 .
+H31:   cartesian__accel__size >= 0 .
+H32:   clock__millisecond__size >= 0 .
+H33:   entity__size >= 0 .
+H34:   integer32__size >= 0 .
+       ->
+C1:    fld_vx(fld_v(e)) + fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 5000 .
+C2:    fld_vx(fld_v(e)) + fld_ax(fld_a(e)) * (t - fld_t(e)) <= 5000 .
+C3:    fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 5000 .
+C4:    fld_ax(fld_a(e)) * (t - fld_t(e)) <= 5000 .
+C5:    fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 2147483648 .
+C6:    fld_ax(fld_a(e)) * (t - fld_t(e)) <= 2147483647 .
+
+
+For path(s) from start to run-time check associated with statement of line 66:
+
+procedure_extrapolate_velocity_3.
+H1:    t >= 0 .
+H2:    t <= 8640000 .
+H3:    fld_t(e) >= 0 .
+H4:    fld_t(e) <= 8640000 .
+H5:    fld_az(fld_a(e)) >= - 30000 .
+H6:    fld_az(fld_a(e)) <= 30000 .
+H7:    fld_ay(fld_a(e)) >= - 30000 .
+H8:    fld_ay(fld_a(e)) <= 30000 .
+H9:    fld_ax(fld_a(e)) >= - 30000 .
+H10:   fld_ax(fld_a(e)) <= 30000 .
+H11:   fld_vz(fld_v(e)) >= - 5000 .
+H12:   fld_vz(fld_v(e)) <= 5000 .
+H13:   fld_vy(fld_v(e)) >= - 5000 .
+H14:   fld_vy(fld_v(e)) <= 5000 .
+H15:   fld_vx(fld_v(e)) >= - 5000 .
+H16:   fld_vx(fld_v(e)) <= 5000 .
+H17:   fld_z(fld_p(e)) >= - 200000 .
+H18:   fld_z(fld_p(e)) <= 200000 .
+H19:   fld_y(fld_p(e)) >= - 200000 .
+H20:   fld_y(fld_p(e)) <= 200000 .
+H21:   fld_x(fld_p(e)) >= - 200000 .
+H22:   fld_x(fld_p(e)) <= 200000 .
+H23:   t - fld_t(e) >= - 2147483648 .
+H24:   t - fld_t(e) <= 2147483647 .
+H25:   fld_vx(fld_v(e)) + fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 5000 .
+H26:   fld_vx(fld_v(e)) + fld_ax(fld_a(e)) * (t - fld_t(e)) <= 5000 .
+H27:   fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 5000 .
+H28:   fld_ax(fld_a(e)) * (t - fld_t(e)) <= 5000 .
+H29:   long_integer__size >= 0 .
+H30:   measuretypes__meter__size >= 0 .
+H31:   measuretypes__meter_per_sec__size >= 0 .
+H32:   measuretypes__cm_per_sec_2__size >= 0 .
+H33:   cartesian__position__size >= 0 .
+H34:   cartesian__velocity__size >= 0 .
+H35:   cartesian__accel__size >= 0 .
+H36:   clock__millisecond__size >= 0 .
+H37:   entity__size >= 0 .
+H38:   integer32__size >= 0 .
+       ->
+C1:    fld_vy(fld_v(e)) + fld_ay(fld_a(e)) * (t - fld_t(e)) >= - 5000 .
+C2:    fld_vy(fld_v(e)) + fld_ay(fld_a(e)) * (t - fld_t(e)) <= 5000 .
+C3:    fld_ay(fld_a(e)) * (t - fld_t(e)) >= - 5000 .
+C4:    fld_ay(fld_a(e)) * (t - fld_t(e)) <= 5000 .
+C5:    fld_ay(fld_a(e)) * (t - fld_t(e)) >= - 2147483648 .
+C6:    fld_ay(fld_a(e)) * (t - fld_t(e)) <= 2147483647 .
+
+
+For path(s) from start to run-time check associated with statement of line 68:
+
+procedure_extrapolate_velocity_4.
+H1:    t >= 0 .
+H2:    t <= 8640000 .
+H3:    fld_t(e) >= 0 .
+H4:    fld_t(e) <= 8640000 .
+H5:    fld_az(fld_a(e)) >= - 30000 .
+H6:    fld_az(fld_a(e)) <= 30000 .
+H7:    fld_ay(fld_a(e)) >= - 30000 .
+H8:    fld_ay(fld_a(e)) <= 30000 .
+H9:    fld_ax(fld_a(e)) >= - 30000 .
+H10:   fld_ax(fld_a(e)) <= 30000 .
+H11:   fld_vz(fld_v(e)) >= - 5000 .
+H12:   fld_vz(fld_v(e)) <= 5000 .
+H13:   fld_vy(fld_v(e)) >= - 5000 .
+H14:   fld_vy(fld_v(e)) <= 5000 .
+H15:   fld_vx(fld_v(e)) >= - 5000 .
+H16:   fld_vx(fld_v(e)) <= 5000 .
+H17:   fld_z(fld_p(e)) >= - 200000 .
+H18:   fld_z(fld_p(e)) <= 200000 .
+H19:   fld_y(fld_p(e)) >= - 200000 .
+H20:   fld_y(fld_p(e)) <= 200000 .
+H21:   fld_x(fld_p(e)) >= - 200000 .
+H22:   fld_x(fld_p(e)) <= 200000 .
+H23:   t - fld_t(e) >= - 2147483648 .
+H24:   t - fld_t(e) <= 2147483647 .
+H25:   fld_vx(fld_v(e)) + fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 5000 .
+H26:   fld_vx(fld_v(e)) + fld_ax(fld_a(e)) * (t - fld_t(e)) <= 5000 .
+H27:   fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 5000 .
+H28:   fld_ax(fld_a(e)) * (t - fld_t(e)) <= 5000 .
+H29:   fld_vy(fld_v(e)) + fld_ay(fld_a(e)) * (t - fld_t(e)) >= - 5000 .
+H30:   fld_vy(fld_v(e)) + fld_ay(fld_a(e)) * (t - fld_t(e)) <= 5000 .
+H31:   fld_ay(fld_a(e)) * (t - fld_t(e)) >= - 5000 .
+H32:   fld_ay(fld_a(e)) * (t - fld_t(e)) <= 5000 .
+H33:   long_integer__size >= 0 .
+H34:   measuretypes__meter__size >= 0 .
+H35:   measuretypes__meter_per_sec__size >= 0 .
+H36:   measuretypes__cm_per_sec_2__size >= 0 .
+H37:   cartesian__position__size >= 0 .
+H38:   cartesian__velocity__size >= 0 .
+H39:   cartesian__accel__size >= 0 .
+H40:   clock__millisecond__size >= 0 .
+H41:   entity__size >= 0 .
+H42:   integer32__size >= 0 .
+       ->
+C1:    fld_vz(fld_v(e)) + fld_az(fld_a(e)) * (t - fld_t(e)) >= - 5000 .
+C2:    fld_vz(fld_v(e)) + fld_az(fld_a(e)) * (t - fld_t(e)) <= 5000 .
+C3:    fld_az(fld_a(e)) * (t - fld_t(e)) >= - 5000 .
+C4:    fld_az(fld_a(e)) * (t - fld_t(e)) <= 5000 .
+C5:    fld_az(fld_a(e)) * (t - fld_t(e)) >= - 2147483648 .
+C6:    fld_az(fld_a(e)) * (t - fld_t(e)) <= 2147483647 .
+
+
+For path(s) from start to finish:
+
+procedure_extrapolate_velocity_5.
+*** true .          /* all conclusions proved */
+
+

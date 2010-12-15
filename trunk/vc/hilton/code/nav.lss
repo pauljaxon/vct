@@ -1,0 +1,122 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.01
+
+Line
+   1  -- Navigation tracking of missile
+   2  --
+   3  -- $Log: nav.ads,v $
+   4  -- Revision 1.2  2004/12/17 16:08:53  adi
+   5  -- Fixing errors in compass; renamed Angle to Angle_Degrees for clarity
+   6  --
+   7  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   8  -- Added from tarfile
+   9  --
+  10  --
+  11  -- Revision 1.6  2003/09/07 20:11:31  adi
+  12  -- Finalised annotations
+  13  --
+  14  -- Revision 1.5  2003/09/07 19:19:39  adi
+  15  -- Added use of systemtypes.maths
+  16  --
+  17  -- Revision 1.4  2003/09/07 18:44:48  adi
+  18  -- Added sensor_history as import
+  19  --
+  20  -- Revision 1.3  2003/09/04 18:41:45  adi
+  21  -- Sorted out annotations and inherits
+  22  --
+  23  -- Revision 1.2  2003/09/01 19:44:46  adi
+  24  -- Proper code to use nav interfaces
+  25  --
+  26  --
+  27  
+  28  with Measuretypes,Clock,Systemtypes;
+  29  use type Clock.Millisecond;
+  30  --# inherit if_barometer, if_compass, if_ins, if_airspeed,
+  31  --#  measuretypes, systemtypes, cartesian, clock,
+  32  --#  measuretypes.angle_ops, measuretypes.angle_ops.trig,
+  33  --#  sensor_history, systemtypes.maths;
+  34  package Nav
+  35    --# own Location_State, sensor_state;
+  36    --# initializes Location_State, sensor_state;
+  37  is
+  38     -- Low confidence is single-source, High is multiple-source
+  39     type Confidence is (None,Low,high);
+  40  
+  41     subtype Meter is Measuretypes.Meter;
+  42     subtype Meter_Per_Sec is Measuretypes.Meter_Per_Sec;
+  43     subtype Angle_Degrees is Measuretypes.Angle_Degrees;
+  44  
+  45     procedure Estimate_Height(M : out Meter;
+  46                               C : out confidence);
+  47     --# global in location_state, sensor_state;
+  48     --# derives m,c from location_state, sensor_state;
+  49  
+  50     procedure Estimate_Origin_Offset(M : out Meter;
+  51                                      C : out confidence);
+  52     --# global in location_state, sensor_state;
+  53     --# derives m,c from location_state, sensor_state;
+  54  
+  55     procedure Estimate_Heading(A : out Angle_Degrees;
+  56                                C : out Confidence);
+  57     --# global in location_state, sensor_state;
+  58     --# derives a,c from location_state, sensor_state;
+  59  
+  60     procedure Estimate_Speed(S : out Meter_Per_Sec;
+  61                              C : out Confidence);
+  62     --# global in location_state, sensor_state;
+  63     --#        in out clock.time;
+  64     --# derives s,c from location_state, sensor_state, clock.time &
+  65     --#   clock.time from *, sensor_state;
+  66  
+  67     procedure Maintain(Restart : in Boolean);
+  68     --# global in
+  69     --#    if_barometer.State,
+  70     --#    if_compass.state,
+  71     --#    if_airspeed.state,
+  72     --#    if_ins.state;
+  73     --#     in out
+  74     --#    clock.time,
+  75     --#    location_state,
+  76     --#    sensor_state;
+  77     --# derives
+  78     --#  location_state
+  79     --#  from *,
+  80     --#       restart,
+  81     --#       clock.time,
+  82     --#       sensor_state,
+  83     --#       if_barometer.state,
+  84     --#       if_compass.state,
+  85     --#       if_airspeed.state,
+  86     --#       if_ins.state &
+  87     --#  sensor_state
+  88     --#  from *,
+  89     --#       restart,
+  90     --#       sensor_state,
+  91     --#       if_barometer.state,
+  92     --#       if_compass.state,
+  93     --#       if_airspeed.state,
+  94     --#       if_ins.state &
+  95     --#  clock.time
+  96     --#  from *,
+  97     --#       restart,
+  98     --#       sensor_state,
+  99     --#       if_barometer.state,
+ 100     --#       if_compass.state,
+ 101     --#       if_airspeed.state,
+ 102     --#       if_ins.state
+ 103     --#   ;
+ 104  
+ 105     procedure Command;
+ 106     --# derives;
+ 107  end Nav;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

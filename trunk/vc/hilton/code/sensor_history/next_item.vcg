@@ -1,0 +1,70 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.86
+
+                     function sensor_history.Next_Item
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 24:
+
+function_next_item_1.
+H1:    true .
+H2:    h >= history_count__first .
+H3:    h <= history_count__last .
+H4:    h = history_count__last .
+        ->
+C1:    history_count__first >= history_count__first .
+C2:    history_count__first <= history_count__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 26:
+
+function_next_item_2.
+H1:    true .
+H2:    h >= history_count__first .
+H3:    h <= history_count__last .
+H4:    not (h = history_count__last) .
+        ->
+C1:    1 + h >= history_count__first .
+C2:    1 + h <= history_count__last .
+ 
+
+For path(s) from start to finish:
+
+function_next_item_3.
+H1:    true .
+H2:    h >= history_count__first .
+H3:    h <= history_count__last .
+H4:    h = history_count__last .
+H5:    history_count__first >= history_count__first .
+H6:    history_count__first <= history_count__last .
+H7:    history_count__first >= history_count__first .
+H8:    history_count__first <= history_count__last .
+        ->
+C1:    true .
+C2:    history_count__first >= history_count__first .
+C3:    history_count__first <= history_count__last .
+ 
+
+function_next_item_4.
+H1:    true .
+H2:    h >= history_count__first .
+H3:    h <= history_count__last .
+H4:    not (h = history_count__last) .
+H5:    1 + h >= history_count__first .
+H6:    1 + h <= history_count__last .
+H7:    1 + h >= history_count__first .
+H8:    1 + h <= history_count__last .
+        ->
+C1:    true .
+C2:    1 + h >= history_count__first .
+C3:    1 + h <= history_count__last .
+ 
+

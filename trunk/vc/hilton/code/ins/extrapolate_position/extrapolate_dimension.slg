@@ -1,0 +1,497 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:48
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure ins.Extrapolate_Position.Extrapolate_Dimension
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_dimension_1.  @@@@@@@@@@
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  t_delta >= 0
+<S>  New C1:  - v >= 0
+<S>  New C3:  - v >= 0
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  t_delta <= 8640000
+<S>  New C2:  - v <= 8640000
+<S>  New C4:  - v <= 8640000
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New C5:  - v >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New C6:  - v <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H2:  o >= - 200000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H3:  o <= 200000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H4:  v >= - 5000
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  v <= 5000
+***  Proved C2:  - v <= 8640000
+     via its standard form, which is:
+     Std.Fm C2:  v > - 8640001
+     using hypothesis H4.
+***  Proved C4:  - v <= 8640000
+     via its standard form, which is:
+     Std.Fm C4:  v > - 8640001
+     using hypothesis H4.
+***  Proved C6:  - v <= 2147483647
+     via its standard form, which is:
+     Std.Fm C6:  v > - 2147483648
+     using hypothesis H4.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H5 (redundant, given H8).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+***  Proved C1:  - v >= 0
+     using hypothesis H8.
+***  Proved C5:  - v >= - 2147483648
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_dimension_2.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C7:  true
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H2:  o >= - 200000
+<S>  New C1:  - (- v * t_delta div 1000) >= - 200000
+<S>  New C3:  - v * t_delta div 1000 >= - 200000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H3:  o <= 200000
+<S>  New C2:  - (- v * t_delta div 1000) <= 200000
+<S>  New C4:  - v * t_delta div 1000 <= 200000
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__first by:
+          - 2147483648.
+<S>  New C5:  - v * t_delta div 1000 >= - 2147483648
+<S>  New C8:  - v * t_delta >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(15).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__last by:
+          2147483647.
+<S>  New C6:  - v * t_delta div 1000 <= 2147483647
+<S>  New C9:  - v * t_delta <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H13:  - v >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H14:  - v <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  t_delta >= 0
+<S>  New H9:  - v >= 0
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  t_delta <= 8640000
+<S>  New H10:  - v <= 8640000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H4:  v >= - 5000
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  v <= 5000
+***  Proved C8:  - v * t_delta >= - 2147483648
+     using hypotheses H6 & H9.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H5 (redundant, given H8).
+---  Eliminated hypothesis H9 (redundant, given H8).
+---  Eliminated hypothesis H10 (redundant, given H4).
+---  Eliminated hypothesis H13 (redundant, given H8).
+---  Eliminated hypothesis H14 (redundant, given H4).
+---  Eliminated conclusion C4, which is a duplicate of C1.
+---  Eliminated conclusion C3, which is a duplicate of C2.
+***  Proved C2:  - (- v * t_delta div 1000) <= 200000
+     using hypotheses H8 & H6.
+***  Proved C5:  - v * t_delta div 1000 >= - 2147483648
+     using hypotheses H6 & H9.
+***  Proved C6:  - v * t_delta div 1000 <= 2147483647
+     using hypotheses H4 & H7.
+     +++  New H17:  measuretypes__meter__size >= 0
+     +++  New H18:  measuretypes__meter_per_sec__size >= 0
+     +++  New H19:  clock__millisecond__size >= 0
+     +++  New H20:  meter__size >= 0
+     +++  New H21:  meter_per_sec__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_dimension_3.  @@@@@@@@@@
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  t_delta >= 0
+<S>  New C1:  v >= 0
+<S>  New C3:  v >= 0
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  t_delta <= 8640000
+<S>  New C2:  v <= 8640000
+<S>  New C4:  v <= 8640000
+***  Proved C1:  v >= 0
+     using hypothesis H8.
+***  Proved C3:  v >= 0
+     using hypothesis H8.
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  0 <= v
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H2:  o >= - 200000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H3:  o <= 200000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H4:  v >= - 5000
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  v <= 5000
+***  Proved C2:  v <= 8640000
+     using hypothesis H5.
+***  Proved C4:  v <= 8640000
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_dimension_4.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+%%%  Simplified C7 on reading formula in, to give:
+     %%%  C7:  true
+***  Proved C7:  true
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H2:  o >= - 200000
+<S>  New C1:  v * t_delta div 1000 >= - 200000
+<S>  New C3:  v * t_delta div 1000 >= - 200000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H3:  o <= 200000
+<S>  New C2:  v * t_delta div 1000 <= 200000
+<S>  New C4:  v * t_delta div 1000 <= 200000
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__first by:
+          - 2147483648.
+<S>  New C5:  v * t_delta div 1000 >= - 2147483648
+<S>  New C8:  v * t_delta >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(15).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__last by:
+          2147483647.
+<S>  New C6:  v * t_delta div 1000 <= 2147483647
+<S>  New C9:  v * t_delta <= 2147483647
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  0 <= v
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  t_delta >= 0
+<S>  New H9:  v >= 0
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  t_delta <= 8640000
+<S>  New H10:  v <= 8640000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H4:  v >= - 5000
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  v <= 5000
+***  Proved C8:  v * t_delta >= - 2147483648
+     using hypotheses H6 & H9.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H9 (duplicate of H8).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H10 (redundant, given H5).
+---  Eliminated conclusion C3, which is a duplicate of C1.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C1:  v * t_delta div 1000 >= - 200000
+     using hypotheses H6 & H9.
+***  Proved C5:  v * t_delta div 1000 >= - 2147483648
+     using hypotheses H6 & H9.
+***  Proved C6:  v * t_delta div 1000 <= 2147483647
+     using hypotheses H5 & H7.
+     +++  New H15:  measuretypes__meter__size >= 0
+     +++  New H16:  measuretypes__meter_per_sec__size >= 0
+     +++  New H17:  clock__millisecond__size >= 0
+     +++  New H18:  meter__size >= 0
+     +++  New H19:  meter_per_sec__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_dimension_5.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H10).
+%%%  Simplified H23 on reading formula in, to give:
+     %%%  H23:  true
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H18).
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H2:  o >= - 200000
+<S>  New H17:  - (- v * t_delta div 1000) >= - 200000
+<S>  New H19:  - v * t_delta div 1000 >= - 200000
+<S>  New C1:  o + - (- v * t_delta div 1000) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H3:  o <= 200000
+<S>  New H18:  - (- v * t_delta div 1000) <= 200000
+<S>  New H20:  - v * t_delta div 1000 <= 200000
+<S>  New C2:  o + - (- v * t_delta div 1000) <= 200000
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__first by:
+          - 2147483648.
+<S>  New H13:  - v >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__base__last by:
+          2147483647.
+<S>  New H14:  - v <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  t_delta >= 0
+<S>  New H9:  - v >= 0
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  t_delta <= 8640000
+<S>  New H10:  - v <= 8640000
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__first by:
+          - 2147483648.
+<S>  New H21:  - v * t_delta div 1000 >= - 2147483648
+<S>  New H24:  - v * t_delta >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(15).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__last by:
+          2147483647.
+<S>  New H22:  - v * t_delta div 1000 <= 2147483647
+<S>  New H25:  - v * t_delta <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H4:  v >= - 5000
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  v <= 5000
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H20 (duplicate of H17).
+---  Eliminated hypothesis H19 (duplicate of H18).
+---  Eliminated hypothesis H5 (redundant, given H8).
+---  Eliminated hypothesis H9 (redundant, given H8).
+---  Eliminated hypothesis H10 (redundant, given H4).
+---  Eliminated hypothesis H13 (redundant, given H8).
+---  Eliminated hypothesis H14 (redundant, given H4).
+---  Eliminated hypothesis H21 (redundant, given H18).
+---  Eliminated hypothesis H22 (redundant, given H17).
+***  Proved C2:  o + - (- v * t_delta div 1000) <= 200000
+     using hypotheses H3, H6 & H8.
+     +++  New H28:  measuretypes__meter__size >= 0
+     +++  New H29:  measuretypes__meter_per_sec__size >= 0
+     +++  New H30:  clock__millisecond__size >= 0
+     +++  New H31:  meter__size >= 0
+     +++  New H32:  meter_per_sec__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_dimension_6.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H16).
+%%%  Simplified H21 on reading formula in, to give:
+     %%%  H21:  true
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H2:  o >= - 200000
+<S>  New H15:  v * t_delta div 1000 >= - 200000
+<S>  New C1:  o + v * t_delta div 1000 >= - 200000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H3:  o <= 200000
+<S>  New H16:  v * t_delta div 1000 <= 200000
+<S>  New C2:  o + v * t_delta div 1000 <= 200000
+>>>  Restructured hypothesis H8 into:
+     >>>  H8:  0 <= v
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  t_delta >= 0
+<S>  New H9:  v >= 0
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H7:  t_delta <= 8640000
+<S>  New H10:  v <= 8640000
+-S-  Applied substitution rule extrapolate__rules(14).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__first by:
+          - 2147483648.
+<S>  New H19:  v * t_delta div 1000 >= - 2147483648
+<S>  New H22:  v * t_delta >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(15).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__base__last by:
+          2147483647.
+<S>  New H20:  v * t_delta div 1000 <= 2147483647
+<S>  New H23:  v * t_delta <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H4:  v >= - 5000
+-S-  Applied substitution rule extrapolate__rules(23).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H5:  v <= 5000
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H9 (duplicate of H8).
+---  Eliminated hypothesis H4 (redundant, given H8).
+---  Eliminated hypothesis H10 (redundant, given H5).
+---  Eliminated hypothesis H19 (redundant, given H15).
+---  Eliminated hypothesis H20 (redundant, given H16).
+***  Proved C1:  o + v * t_delta div 1000 >= - 200000
+     using hypotheses H2, H6 & H9.
+     +++  New H26:  measuretypes__meter__size >= 0
+     +++  New H27:  measuretypes__meter_per_sec__size >= 0
+     +++  New H28:  clock__millisecond__size >= 0
+     +++  New H29:  meter__size >= 0
+     +++  New H30:  meter_per_sec__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_dimension_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_dimension_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

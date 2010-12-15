@@ -1,0 +1,114 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:22
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function random.Poly1
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_poly1_1.  @@@@@@@@@@
+-S-  Applied substitution rule poly1_rules(12).
+     This was achieved by replacing all occurrences of uint32__first by:
+          0.
+<S>  New C1:  s * (37 + s * (19 + s)) >= - 43
+<S>  New C11:  s >= 0
+<S>  New C13:  s >= 0
+<S>  New C15:  s >= 0
+-S-  Applied substitution rule poly1_rules(13).
+     This was achieved by replacing all occurrences of uint32__last by:
+          2147483647.
+<S>  New C2:  s * (37 + s * (19 + s)) <= 2147483604
+<S>  New C12:  s <= 2147483647
+<S>  New C14:  s <= 2147483647
+<S>  New C16:  s <= 2147483647
+-S-  Applied substitution rule poly1_rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  s * (37 + s * (19 + s)) >= - 2147483648
+<S>  New C5:  s * (19 + s) >= - 2147483685
+<S>  New C7:  s * (19 + s) >= - 2147483648
+<S>  New C9:  s >= - 2147483667
+-S-  Applied substitution rule poly1_rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  s * (37 + s * (19 + s)) <= 2147483647
+<S>  New C6:  s * (19 + s) <= 2147483610
+<S>  New C8:  s * (19 + s) <= 2147483647
+<S>  New C10:  s <= 2147483628
+-S-  Applied substitution rule poly1_rules(7).
+     This was achieved by replacing all occurrences of seed_range__first by:
+          0.
+<S>  New H2:  s >= 0
+-S-  Applied substitution rule poly1_rules(8).
+     This was achieved by replacing all occurrences of seed_range__last by:
+          971.
+<S>  New H3:  s <= 971
+***  Proved C1:  s * (37 + s * (19 + s)) >= - 43
+     using hypothesis H2.
+***  Proved C11:  s >= 0
+     using hypothesis H2.
+***  Proved C13:  s >= 0
+     using hypothesis H2.
+***  Proved C15:  s >= 0
+     using hypothesis H2.
+***  Proved C12:  s <= 2147483647
+     using hypothesis H3.
+***  Proved C14:  s <= 2147483647
+     using hypothesis H3.
+***  Proved C16:  s <= 2147483647
+     using hypothesis H3.
+***  Proved C3:  s * (37 + s * (19 + s)) >= - 2147483648
+     using hypothesis H2.
+***  Proved C5:  s * (19 + s) >= - 2147483685
+     using hypothesis H2.
+***  Proved C7:  s * (19 + s) >= - 2147483648
+     using hypothesis H2.
+***  Proved C9:  s >= - 2147483667
+     using hypothesis H2.
+***  Proved C10:  s <= 2147483628
+     using hypothesis H3.
+---  Eliminated hypothesis H1 (true-hypothesis).
+***  Proved C2:  s * (37 + s * (19 + s)) <= 2147483604
+     using hypotheses H3, H3 & H3.
+***  Proved C4:  s * (37 + s * (19 + s)) <= 2147483647
+     using hypotheses H3, H3 & H3.
+***  Proved C6:  s * (19 + s) <= 2147483610
+     using hypotheses H3 & H3.
+***  Proved C8:  s * (19 + s) <= 2147483647
+     using hypotheses H3 & H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_poly1_2.  @@@@@@@@@@
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H5)
+          .
+***  Proved C1:  true
+***  Proved C2:  43 + s * (37 + s * (19 + s)) >= uint32__first
+     using hypothesis H4.
+***  Proved C3:  43 + s * (37 + s * (19 + s)) <= uint32__last
+     using hypothesis H5.
+***  PROVED VC.
+

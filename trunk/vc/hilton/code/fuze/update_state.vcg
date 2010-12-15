@@ -1,0 +1,205 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.68
+
+                        procedure Fuze.Update_State
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 63:
+
+procedure_update_state_1.
+H1:    true .
+H2:    current_state >= state_types__fuze__first .
+H3:    current_state <= state_types__fuze__last .
+H4:    state_timer >= clock__millisecond__first .
+H5:    state_timer <= clock__millisecond__last .
+        ->
+C1:    element(max_state_time, [current_state]) >= 
+           clock__millisecond__first .
+C2:    element(max_state_time, [current_state]) <= 
+           clock__millisecond__last .
+C3:    current_state >= state_types__fuze__first .
+C4:    current_state <= state_types__fuze__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 65:
+
+procedure_update_state_2.
+H1:    true .
+H2:    current_state >= state_types__fuze__first .
+H3:    current_state <= state_types__fuze__last .
+H4:    state_timer >= clock__millisecond__first .
+H5:    state_timer <= clock__millisecond__last .
+H6:    element(max_state_time, [current_state]) >= 
+           clock__millisecond__first .
+H7:    element(max_state_time, [current_state]) <= 
+           clock__millisecond__last .
+H8:    current_state >= state_types__fuze__first .
+H9:    current_state <= state_types__fuze__last .
+H10:   element(max_state_time, [current_state]) >= 
+           clock__millisecond__first .
+H11:   element(max_state_time, [current_state]) <= 
+           clock__millisecond__last .
+H12:   element(max_state_time, [current_state]) > 0 .
+H13:   t_now__1 >= clock__millisecond__first .
+H14:   t_now__1 <= clock__millisecond__last .
+H15:   true .
+        ->
+C1:    t_now__1 >= clock__millisecond__first .
+C2:    t_now__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 67:
+
+procedure_update_state_3.
+H1:    true .
+H2:    current_state >= state_types__fuze__first .
+H3:    current_state <= state_types__fuze__last .
+H4:    state_timer >= clock__millisecond__first .
+H5:    state_timer <= clock__millisecond__last .
+H6:    element(max_state_time, [current_state]) >= 
+           clock__millisecond__first .
+H7:    element(max_state_time, [current_state]) <= 
+           clock__millisecond__last .
+H8:    current_state >= state_types__fuze__first .
+H9:    current_state <= state_types__fuze__last .
+H10:   element(max_state_time, [current_state]) >= 
+           clock__millisecond__first .
+H11:   element(max_state_time, [current_state]) <= 
+           clock__millisecond__last .
+H12:   element(max_state_time, [current_state]) > 0 .
+H13:   t_now__1 >= clock__millisecond__first .
+H14:   t_now__1 <= clock__millisecond__last .
+H15:   true .
+H16:   t_now__1 >= clock__millisecond__first .
+H17:   t_now__1 <= clock__millisecond__last .
+H18:   t_now__1 >= clock__millisecond__first .
+H19:   t_now__1 <= clock__millisecond__last .
+H20:   element(max_state_time, [current_state]) >= 
+           clock__millisecond__first .
+H21:   element(max_state_time, [current_state]) <= 
+           clock__millisecond__last .
+H22:   true .
+        ->
+C1:    (t_valid__1 and (state_timer < t_now__1)) -> ((t_now__1 - 
+           state_timer >= clock__millisecond__base__first) and (
+           t_now__1 - state_timer <= clock__millisecond__base__last)) .
+ 
+
+For path(s) from start to run-time check associated with statement of line 71:
+
+procedure_update_state_4.
+H1:    true .
+H2:    current_state >= state_types__fuze__first .
+H3:    current_state <= state_types__fuze__last .
+H4:    state_timer >= clock__millisecond__first .
+H5:    state_timer <= clock__millisecond__last .
+H6:    element(max_state_time, [current_state]) >= 
+           clock__millisecond__first .
+H7:    element(max_state_time, [current_state]) <= 
+           clock__millisecond__last .
+H8:    current_state >= state_types__fuze__first .
+H9:    current_state <= state_types__fuze__last .
+H10:   element(max_state_time, [current_state]) >= 
+           clock__millisecond__first .
+H11:   element(max_state_time, [current_state]) <= 
+           clock__millisecond__last .
+H12:   element(max_state_time, [current_state]) > 0 .
+H13:   t_now__1 >= clock__millisecond__first .
+H14:   t_now__1 <= clock__millisecond__last .
+H15:   true .
+H16:   t_now__1 >= clock__millisecond__first .
+H17:   t_now__1 <= clock__millisecond__last .
+H18:   t_now__1 >= clock__millisecond__first .
+H19:   t_now__1 <= clock__millisecond__last .
+H20:   element(max_state_time, [current_state]) >= 
+           clock__millisecond__first .
+H21:   element(max_state_time, [current_state]) <= 
+           clock__millisecond__last .
+H22:   true .
+H23:   (t_valid__1 and (state_timer < t_now__1)) -> ((t_now__1 - 
+           state_timer >= clock__millisecond__base__first) and (
+           t_now__1 - state_timer <= clock__millisecond__base__last)) .
+H24:   t_valid__1 .
+H25:   state_timer < t_now__1 .
+H26:   t_now__1 - state_timer >= element(max_state_time, [
+           current_state]) .
+H27:   t_now__1 >= clock__millisecond__first .
+H28:   t_now__1 <= clock__millisecond__last .
+        ->
+C1:    t_now__1 >= clock__millisecond__first .
+C2:    t_now__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 72:
+
+procedure_update_state_5.
+H1:    true .
+H2:    current_state >= state_types__fuze__first .
+H3:    current_state <= state_types__fuze__last .
+H4:    state_timer >= clock__millisecond__first .
+H5:    state_timer <= clock__millisecond__last .
+H6:    element(max_state_time, [current_state]) >= 
+           clock__millisecond__first .
+H7:    element(max_state_time, [current_state]) <= 
+           clock__millisecond__last .
+H8:    current_state >= state_types__fuze__first .
+H9:    current_state <= state_types__fuze__last .
+H10:   element(max_state_time, [current_state]) >= 
+           clock__millisecond__first .
+H11:   element(max_state_time, [current_state]) <= 
+           clock__millisecond__last .
+H12:   element(max_state_time, [current_state]) > 0 .
+H13:   t_now__1 >= clock__millisecond__first .
+H14:   t_now__1 <= clock__millisecond__last .
+H15:   true .
+H16:   t_now__1 >= clock__millisecond__first .
+H17:   t_now__1 <= clock__millisecond__last .
+H18:   t_now__1 >= clock__millisecond__first .
+H19:   t_now__1 <= clock__millisecond__last .
+H20:   element(max_state_time, [current_state]) >= 
+           clock__millisecond__first .
+H21:   element(max_state_time, [current_state]) <= 
+           clock__millisecond__last .
+H22:   true .
+H23:   (t_valid__1 and (state_timer < t_now__1)) -> ((t_now__1 - 
+           state_timer >= clock__millisecond__base__first) and (
+           t_now__1 - state_timer <= clock__millisecond__base__last)) .
+H24:   t_valid__1 .
+H25:   state_timer < t_now__1 .
+H26:   t_now__1 - state_timer >= element(max_state_time, [
+           current_state]) .
+H27:   t_now__1 >= clock__millisecond__first .
+H28:   t_now__1 <= clock__millisecond__last .
+H29:   t_now__1 >= clock__millisecond__first .
+H30:   t_now__1 <= clock__millisecond__last .
+        ->
+C1:    element(state_change, [current_state]) >= 
+           state_types__fuze__first .
+C2:    element(state_change, [current_state]) <= 
+           state_types__fuze__last .
+C3:    current_state >= state_types__fuze__first .
+C4:    current_state <= state_types__fuze__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_update_state_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_update_state_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_update_state_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+

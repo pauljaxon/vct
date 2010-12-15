@@ -1,0 +1,80 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.56
+
+                      procedure steer.Read_Deflection
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 174:
+
+procedure_read_deflection_1.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+        ->
+C1:    for_fin >= fin__first .
+C2:    for_fin <= fin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 174:
+
+procedure_read_deflection_2.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    for_fin >= fin__first .
+H8:    for_fin <= fin__last .
+H9:    this_angle__1 >= angle__first .
+H10:   this_angle__1 <= angle__last .
+        ->
+C1:    this_angle__1 >= angle__first .
+C2:    this_angle__1 <= angle__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_deflection_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_read_deflection_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_deflection_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+

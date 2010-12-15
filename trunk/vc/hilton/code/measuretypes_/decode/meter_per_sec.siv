@@ -1,0 +1,51 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:22
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function decode.Meter_Per_Sec
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 71:
+
+function_meter_per_sec_1.
+H1:    b <= 65535 .
+H2:    b >= 32768 .
+H3:    integer__size >= 0 .
+H4:    measuretypes__meter_per_sec__size >= 0 .
+H5:    bus__word__size >= 0 .
+       ->
+C1:    - (b - 32768) >= - 5000 .
+
+
+For path(s) from start to run-time check associated with statement of line 73:
+
+function_meter_per_sec_2.
+H1:    b >= 0 .
+H2:    b < 32768 .
+H3:    integer__size >= 0 .
+H4:    measuretypes__meter_per_sec__size >= 0 .
+H5:    bus__word__size >= 0 .
+       ->
+C1:    b <= 5000 .
+
+
+For path(s) from start to finish:
+
+function_meter_per_sec_3.
+*** true .          /* all conclusions proved */
+
+
+function_meter_per_sec_4.
+*** true .          /* all conclusions proved */
+
+

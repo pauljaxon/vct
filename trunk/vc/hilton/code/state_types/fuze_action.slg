@@ -1,0 +1,367 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:36  SIMPLIFIED 25-NOV-2009, 14:18:19
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function State_Types.Fuze_Action
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_fuze_action_1.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fuze__first <= unarmed
+-S-  Applied substitution rule fuze_action_rules(14).
+     This was achieved by replacing all occurrences of fuze__first by:
+          unarmed.
+<S>  New C1:  true
+-S-  Applied substitution rule fuze_action_rules(15).
+     This was achieved by replacing all occurrences of fuze__last by:
+          timed_out.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_2.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fuze__first <= unarmed
+***  Proved C1:  fuze__first <= unarmed
+     using hypothesis H4.
+***  Proved C2:  unarmed <= fuze__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_3.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fuze__first <= arming
+***  Proved C1:  fuze__first <= arming
+     using hypothesis H4.
+-S-  Applied substitution rule fuze_action_rules(15).
+     This was achieved by replacing all occurrences of fuze__last by:
+          timed_out.
+<S>  New H5:  true
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_4.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fuze__first <= arming
+***  Proved C1:  fuze__first <= arming
+     using hypothesis H7.
+***  Proved C2:  arming <= fuze__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_5.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fuze__first <= live
+***  Proved C1:  fuze__first <= live
+     using hypothesis H4.
+-S-  Applied substitution rule fuze_action_rules(15).
+     This was achieved by replacing all occurrences of fuze__last by:
+          timed_out.
+<S>  New H5:  true
+<S>  New H8:  true
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_6.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  fuze__first <= live
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fuze__first <= live
+***  Proved C1:  fuze__first <= live
+     using hypothesis H10.
+***  Proved C2:  live <= fuze__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_7.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  fuze__first <= live
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fuze__first <= triggering
+***  Proved C1:  fuze__first <= triggering
+     using hypothesis H4.
+-S-  Applied substitution rule fuze_action_rules(15).
+     This was achieved by replacing all occurrences of fuze__last by:
+          timed_out.
+<S>  New H5:  true
+<S>  New H8:  true
+<S>  New H11:  true
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_8.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  fuze__first <= live
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  fuze__first <= triggering
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fuze__first <= triggering
+***  Proved C1:  fuze__first <= triggering
+     using hypothesis H13.
+***  Proved C2:  triggering <= fuze__last
+     using hypothesis H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_9.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  fuze__first <= live
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  fuze__first <= triggering
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fuze__first <= timed_out
+***  Proved C1:  fuze__first <= timed_out
+     using hypothesis H4.
+-S-  Applied substitution rule fuze_action_rules(15).
+     This was achieved by replacing all occurrences of fuze__last by:
+          timed_out.
+<S>  New H5:  true
+<S>  New H8:  true
+<S>  New H11:  true
+<S>  New H14:  true
+<S>  New C2:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_10.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  fuze__first <= live
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  fuze__first <= triggering
+%%%  Simplified H16 on reading formula in, to give:
+     %%%  H16:  fuze__first <= timed_out
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fuze__first <= timed_out
+***  Proved C1:  fuze__first <= timed_out
+     using hypothesis H16.
+***  Proved C2:  timed_out <= fuze__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_11.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  fuze__first <= live
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  fuze__first <= triggering
+%%%  Simplified H16 on reading formula in, to give:
+     %%%  H16:  fuze__first <= timed_out
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  fuze__first <= unarmed
+***  Proved C1:  fuze__first <= unarmed
+     using hypothesis H4.
+***  Proved C2:  unarmed <= fuze__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_12.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  fuze__first <= unarmed
+***  Proved C1:  true
+***  Proved C2:  fuze__first <= unarmed
+     using hypothesis H4.
+***  Proved C3:  unarmed <= fuze__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_13.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  fuze__first <= arming
+***  Proved C1:  true
+***  Proved C2:  fuze__first <= arming
+     using hypothesis H7.
+***  Proved C3:  arming <= fuze__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_14.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  fuze__first <= live
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H11).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  fuze__first <= live
+***  Proved C1:  true
+***  Proved C2:  fuze__first <= live
+     using hypothesis H10.
+***  Proved C3:  live <= fuze__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_15.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  fuze__first <= live
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  fuze__first <= triggering
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  fuze__first <= triggering
+***  Proved C1:  true
+***  Proved C2:  fuze__first <= triggering
+     using hypothesis H13.
+***  Proved C3:  triggering <= fuze__last
+     using hypothesis H14.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_16.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  fuze__first <= live
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  fuze__first <= triggering
+%%%  Simplified H16 on reading formula in, to give:
+     %%%  H16:  fuze__first <= timed_out
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H17).
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  fuze__first <= timed_out
+***  Proved C1:  true
+***  Proved C2:  fuze__first <= timed_out
+     using hypothesis H16.
+***  Proved C3:  timed_out <= fuze__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fuze_action_17.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  fuze__first <= unarmed
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  fuze__first <= arming
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  fuze__first <= live
+%%%  Simplified H13 on reading formula in, to give:
+     %%%  H13:  fuze__first <= triggering
+%%%  Simplified H16 on reading formula in, to give:
+     %%%  H16:  fuze__first <= timed_out
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  fuze__first <= unarmed
+***  Proved C1:  true
+***  Proved C2:  fuze__first <= unarmed
+     using hypothesis H4.
+***  Proved C3:  unarmed <= fuze__last
+     using hypothesis H5.
+***  PROVED VC.
+

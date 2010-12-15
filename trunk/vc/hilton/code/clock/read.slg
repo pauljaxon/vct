@@ -1,0 +1,102 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:24
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure clock.Read
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_read_1.  @@@@@@@@@@
+***  Proved C1:  ticks >= millisecond__first
+     using hypothesis H2.
+***  Proved C2:  ticks <= millisecond__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_2.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+***  Proved C1:  ticks + 1 >= millisecond__first
+     using hypothesis H2.
+-S-  Applied substitution rule read_rules(3).
+     This was achieved by replacing all occurrences of millisecond__last by:
+          8640000.
+<S>  New H3:  ticks <= 8640000
+<S>  New H8:  ticks < 8640000
+<S>  New C2:  ticks <= 8639999
+***  Proved C2:  ticks <= 8639999
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_3.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
+-S-  Applied substitution rule read_rules(2).
+     This was achieved by replacing all occurrences of millisecond__first by:
+          0.
+<S>  New H2:  ticks >= 0
+<S>  New C1:  true
+-S-  Applied substitution rule read_rules(3).
+     This was achieved by replacing all occurrences of millisecond__last by:
+          8640000.
+<S>  New H3:  ticks <= 8640000
+<S>  New H8:  not ticks < 8640000
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_4.  @@@@@@@@@@
+-S-  Applied substitution rule read_rules(2).
+     This was achieved by replacing all occurrences of millisecond__first by:
+          0.
+<S>  New H2:  ticks >= 0
+<S>  New C1:  true
+-S-  Applied substitution rule read_rules(3).
+     This was achieved by replacing all occurrences of millisecond__last by:
+          8640000.
+<S>  New H3:  ticks <= 8640000
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_6.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_7.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_8.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_read_9.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

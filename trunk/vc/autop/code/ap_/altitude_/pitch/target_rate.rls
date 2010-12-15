@@ -1,0 +1,44 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 26-NOV-2009 09:54:53.62*/
+
+                         /*function Pitch.Target_Rate*/
+
+
+rule_family target_rate_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+target_rate_rules(1): system__min_int may_be_replaced_by -2147483648.
+target_rate_rules(2): system__max_int may_be_replaced_by 2147483647.
+target_rate_rules(3): degrees__degreespersec__size >= 0 may_be_deduced.
+target_rate_rules(4): degrees__degreespersec__first may_be_replaced_by -180.
+target_rate_rules(5): degrees__degreespersec__last may_be_replaced_by 180.
+target_rate_rules(6): degrees__degreespersec__base__first may_be_replaced_by -32768.
+target_rate_rules(7): degrees__degreespersec__base__last may_be_replaced_by 32767.
+target_rate_rules(8): instruments__feet__size >= 0 may_be_deduced.
+target_rate_rules(9): instruments__feet__first may_be_replaced_by 0.
+target_rate_rules(10): instruments__feet__last may_be_replaced_by 50000.
+target_rate_rules(11): instruments__feet__base__first may_be_replaced_by -2147483648.
+target_rate_rules(12): instruments__feet__base__last may_be_replaced_by 2147483647.
+target_rate_rules(13): instruments__feetpermin__size >= 0 may_be_deduced.
+target_rate_rules(14): instruments__feetpermin__first may_be_replaced_by -6000.
+target_rate_rules(15): instruments__feetpermin__last may_be_replaced_by 6000.
+target_rate_rules(16): instruments__feetpermin__base__first may_be_replaced_by -32768.
+target_rate_rules(17): instruments__feetpermin__base__last may_be_replaced_by 32767.
+target_rate_rules(18): floorfpm__size >= 0 may_be_deduced.
+target_rate_rules(19): floorfpm__first may_be_replaced_by -1000.
+target_rate_rules(20): floorfpm__last may_be_replaced_by 1000.
+target_rate_rules(21): floorfpm__base__first may_be_replaced_by -32768.
+target_rate_rules(22): floorfpm__base__last may_be_replaced_by 32767.
+target_rate_rules(23): degreespersec__size >= 0 may_be_deduced.
+target_rate_rules(24): degreespersec__first may_be_replaced_by -180.
+target_rate_rules(25): degreespersec__last may_be_replaced_by 180.
+target_rate_rules(26): degreespersec__base__first may_be_replaced_by -32768.
+target_rate_rules(27): degreespersec__base__last may_be_replaced_by 32767.

@@ -1,0 +1,80 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.70
+
+Line
+   1  with AP.Altitude.Pitch;
+   2  package body AP.Altitude
+   3    --# own State is 
+   4    --#   Target_Altitude, 
+   5    --#   Switch_Pressed_Before,
+   6    --#   AP.Altitude.Pitch.State;
+   7  is
+   8     Target_Altitude : Instruments.Feet  
+   9          := 0;
+  10     Switch_Pressed_Before : Controls.Switch 
+  11          := Controls.Off;
+  12     
+  13     procedure Maintain(Switch_Pressed   : in Controls.Switch;
+  14  		      Present_Altitude : in Instruments.Feet;
+  15  		      Mach             : in Instruments.Machnumber;
+  16  		      Climb_Rate       : in Instruments.Feetpermin;
+  17  		      The_Pitch        : in Instruments.Pitchangle)
+  18     --# global in out Target_Altitude,
+  19     --#               Switch_Pressed_Before,
+  20     --#               Pitch.State;
+  21     --#           out Surfaces.Elevators;
+  22     --# derives  Target_Altitude
+  23     --#          from *,
+  24     --#               Switch_Pressed,
+  25     --#               Switch_Pressed_Before,
+  26     --#               Present_Altitude &
+  27     --#          Pitch.State
+  28     --#          from *,
+  29     --#               Switch_Pressed,
+  30     --#               The_Pitch &
+  31     --#         Switch_Pressed_Before
+  32     --#          from 
+  33     --#               Switch_Pressed &
+  34     --#         Surfaces.Elevators
+  35     --#          from Switch_Pressed,
+  36     --#               Switch_Pressed_Before,
+  37     --#               Target_Altitude,
+  38     --#               Present_Altitude,
+  39     --#               Mach,
+  40     --#               Climb_Rate,
+  41     --#               The_Pitch,
+  42     --#               Pitch.State
+  43     --# ;
+  44     is
+  45     begin
+  46        case Switch_Pressed is
+  47     	 when Controls.On =>
+  48  	    case Switch_Pressed_Before is
+  49  	       when Controls.Off =>
+  50  		  Target_Altitude := Present_Altitude;
+  51  	       when Controls.On =>
+  52  		  null;
+  53  	    end case;
+  54  		  Pitch.Pitch_AP(Present_Altitude,Target_Altitude,Mach,Climb_Rate,The_Pitch);
+  55  	 when Controls.Off =>
+  56     	    null;
+  57        end case;
+  58        Switch_Pressed_Before := Switch_Pressed;
+  59     end Maintain;
+
++++        Flow analysis of subprogram Maintain performed: 
+           no errors found.
+
+  60     
+  61     
+  62  end AP.Altitude;
+  63        
+
+
+--End of file--------------------------------------------------

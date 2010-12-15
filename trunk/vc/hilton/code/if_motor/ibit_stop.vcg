@@ -1,0 +1,83 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.10
+
+                        procedure if_motor.Ibit_Stop
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 98:
+
+procedure_ibit_stop_1.
+H1:    true .
+        ->
+C1:    ibit__request_stop >= ibit__phase__first .
+C2:    ibit__request_stop <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 99:
+
+procedure_ibit_stop_2.
+H1:    true .
+H2:    ibit__request_stop >= ibit__phase__first .
+H3:    ibit__request_stop <= ibit__phase__last .
+        ->
+C1:    element(ibit__phase_lookup, [ibit__request_stop]) >= 
+           systemtypes__byte__first .
+C2:    element(ibit__phase_lookup, [ibit__request_stop]) <= 
+           systemtypes__byte__last .
+C3:    ibit__request_stop >= ibit__phase__first .
+C4:    ibit__request_stop <= ibit__phase__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 101:
+
+procedure_ibit_stop_3.
+H1:    true .
+H2:    ibit__request_stop >= ibit__phase__first .
+H3:    ibit__request_stop <= ibit__phase__last .
+H4:    element(ibit__phase_lookup, [ibit__request_stop]) >= 
+           systemtypes__byte__first .
+H5:    element(ibit__phase_lookup, [ibit__request_stop]) <= 
+           systemtypes__byte__last .
+H6:    ibit__request_stop >= ibit__phase__first .
+H7:    ibit__request_stop <= ibit__phase__last .
+H8:    element(ibit__phase_lookup, [ibit__request_stop]) >= 
+           systemtypes__byte__first .
+H9:    element(ibit__phase_lookup, [ibit__request_stop]) <= 
+           systemtypes__byte__last .
+        ->
+C1:    bus_id >= bc1553__lru_name__first .
+C2:    bus_id <= bc1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+C5:    3 >= bus__word_index__first .
+C6:    3 <= bus__word_index__last .
+C7:    element(ibit__phase_lookup, [ibit__request_stop]) >= 
+           bus__word__first .
+C8:    element(ibit__phase_lookup, [ibit__request_stop]) <= 
+           bus__word__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_ibit_stop_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_ibit_stop_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_ibit_stop_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+

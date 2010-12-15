@@ -1,0 +1,79 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:44.15}
+
+                    {procedure nav.Estimate_Origin_Offset}
+
+
+title procedure estimate_origin_offset;
+
+  function round__(real) : integer;
+  type long_integer = integer;
+  type measuretypes__meter = integer;
+  type clock__millisecond = integer;
+  type confidence = (none, low, high);
+  type sensor_status = (unknown, valid, failed, restarted);
+  const sensor_status__base__last : sensor_status = pending; 
+  const sensor_status__base__first : sensor_status = pending; 
+  const integer32__base__last : integer = pending; 
+  const integer32__base__first : integer = pending; 
+  const meter__base__last : integer = pending; 
+  const meter__base__first : integer = pending; 
+  const confidence__base__last : confidence = pending; 
+  const confidence__base__first : confidence = pending; 
+  const sensor_history__meter__base__last : integer = pending; 
+  const sensor_history__meter__base__first : integer = pending; 
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const measuretypes__meter__base__last : integer = pending; 
+  const measuretypes__meter__base__first : integer = pending; 
+  const systemtypes__integer32__base__last : integer = pending; 
+  const systemtypes__integer32__base__first : integer = pending; 
+  const long_integer__base__last : integer = pending; 
+  const long_integer__base__first : integer = pending; 
+  const sensor_status__size : integer = pending; 
+  const sensor_status__last : sensor_status = pending; 
+  const sensor_status__first : sensor_status = pending; 
+  const integer32__size : integer = pending; 
+  const integer32__last : integer = pending; 
+  const integer32__first : integer = pending; 
+  const meter__size : integer = pending; 
+  const meter__last : integer = pending; 
+  const meter__first : integer = pending; 
+  const confidence__size : integer = pending; 
+  const confidence__last : confidence = pending; 
+  const confidence__first : confidence = pending; 
+  const sensor_history__meter__size : integer = pending; 
+  const sensor_history__meter__last : integer = pending; 
+  const sensor_history__meter__first : integer = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  const measuretypes__meter__size : integer = pending; 
+  const measuretypes__meter__last : integer = pending; 
+  const measuretypes__meter__first : integer = pending; 
+  const systemtypes__integer32__size : integer = pending; 
+  const systemtypes__integer32__last : integer = pending; 
+  const systemtypes__integer32__first : integer = pending; 
+  const long_integer__size : integer = pending; 
+  const long_integer__last : integer = pending; 
+  const long_integer__first : integer = pending; 
+  var compass_ss : sensor_status;
+  var ins_ss : sensor_status;
+  var airspeed_ss : sensor_status;
+  var edx : integer;
+  var edy : integer;
+  var t1 : integer;
+  var t2 : integer;
+  function systemtypes__maths__sqrt(integer) : integer;
+  var t2__2 : integer;
+  var edy__2 : integer;
+  var t1__1 : integer;
+  var edx__1 : integer;
+
+end;

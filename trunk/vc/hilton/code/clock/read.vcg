@@ -1,0 +1,96 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.35
+
+                            procedure clock.Read
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 33:
+
+procedure_read_1.
+H1:    true .
+H2:    ticks >= millisecond__first .
+H3:    ticks <= millisecond__last .
+H4:    true .
+H5:    valid_time .
+        ->
+C1:    ticks >= millisecond__first .
+C2:    ticks <= millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 36:
+
+procedure_read_2.
+H1:    true .
+H2:    ticks >= millisecond__first .
+H3:    ticks <= millisecond__last .
+H4:    true .
+H5:    valid_time .
+H6:    ticks >= millisecond__first .
+H7:    ticks <= millisecond__last .
+H8:    ticks < millisecond__last .
+        ->
+C1:    ticks + 1 >= millisecond__first .
+C2:    ticks + 1 <= millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 38:
+
+procedure_read_3.
+H1:    true .
+H2:    ticks >= millisecond__first .
+H3:    ticks <= millisecond__last .
+H4:    true .
+H5:    valid_time .
+H6:    ticks >= millisecond__first .
+H7:    ticks <= millisecond__last .
+H8:    not (ticks < millisecond__last) .
+        ->
+C1:    0 >= millisecond__first .
+C2:    0 <= millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 41:
+
+procedure_read_4.
+H1:    true .
+H2:    ticks >= millisecond__first .
+H3:    ticks <= millisecond__last .
+H4:    true .
+H5:    not valid_time .
+        ->
+C1:    0 >= millisecond__first .
+C2:    0 <= millisecond__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_read_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+

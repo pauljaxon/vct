@@ -1,0 +1,47 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 26-NOV-2009 09:54:53.80*/
+
+                           /*procedure roll.Roll_AP*/
+
+
+rule_family roll_ap_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+roll_ap_rules(1): degrees__degreespersec__size >= 0 may_be_deduced.
+roll_ap_rules(2): degrees__degreespersec__first may_be_replaced_by -180.
+roll_ap_rules(3): degrees__degreespersec__last may_be_replaced_by 180.
+roll_ap_rules(4): degrees__degreespersec__base__first may_be_replaced_by -32768.
+roll_ap_rules(5): degrees__degreespersec__base__last may_be_replaced_by 32767.
+roll_ap_rules(6): instruments__bankangle__size >= 0 may_be_deduced.
+roll_ap_rules(7): instruments__bankangle__first may_be_replaced_by -45.
+roll_ap_rules(8): instruments__bankangle__last may_be_replaced_by 45.
+roll_ap_rules(9): instruments__bankangle__base__first may_be_replaced_by -128.
+roll_ap_rules(10): instruments__bankangle__base__last may_be_replaced_by 127.
+roll_ap_rules(11): instruments__headdegree__size >= 0 may_be_deduced.
+roll_ap_rules(12): instruments__headdegree__first may_be_replaced_by 0.
+roll_ap_rules(13): instruments__headdegree__last may_be_replaced_by 359.
+roll_ap_rules(14): instruments__headdegree__base__first may_be_replaced_by -32768.
+roll_ap_rules(15): instruments__headdegree__base__last may_be_replaced_by 32767.
+roll_ap_rules(16): instruments__machnumber__size >= 0 may_be_deduced.
+roll_ap_rules(17): instruments__machnumber__first may_be_replaced_by 0.
+roll_ap_rules(18): instruments__machnumber__last may_be_replaced_by 100.
+roll_ap_rules(19): instruments__machnumber__base__first may_be_replaced_by -128.
+roll_ap_rules(20): instruments__machnumber__base__last may_be_replaced_by 127.
+roll_ap_rules(21): surfaces__controlangle__size >= 0 may_be_deduced.
+roll_ap_rules(22): surfaces__controlangle__first may_be_replaced_by -45.
+roll_ap_rules(23): surfaces__controlangle__last may_be_replaced_by 45.
+roll_ap_rules(24): surfaces__controlangle__base__first may_be_replaced_by -128.
+roll_ap_rules(25): surfaces__controlangle__base__last may_be_replaced_by 127.
+roll_ap_rules(26): degreespersec__size >= 0 may_be_deduced.
+roll_ap_rules(27): degreespersec__first may_be_replaced_by -180.
+roll_ap_rules(28): degreespersec__last may_be_replaced_by 180.
+roll_ap_rules(29): degreespersec__base__first may_be_replaced_by -32768.
+roll_ap_rules(30): degreespersec__base__last may_be_replaced_by 32767.

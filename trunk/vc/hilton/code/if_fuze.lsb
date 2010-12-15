@@ -1,0 +1,222 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.95
+
+Line
+   1  -- MCU interface to the fuze, implementation
+   2  --
+   3  -- $Log: if_fuze.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.3  2003/09/10 21:01:07  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.2  2003/08/17 15:30:02  adi
+  12  -- Fixed Poll to write out too
+  13  --
+  14  -- Revision 1.1  2003/08/17 15:11:36  adi
+  15  -- Initial revision
+  16  --
+  17  --
+  18  with Bc1553, bus;
+  19  package body If_Fuze
+  20    --# own State is Last_state, Last_Valid, Ibit_Request;
+  21  is
+  22     Last_State : State_Types.Fuze := State_Types.Unarmed;
+  23     Last_Valid  : Boolean := False;
+  24     Ibit_Request : IBIT.Phase := IBIT.Off;
+  25  
+  26     Bus_Id : constant Bc1553.Lru_Name := Bc1553.Fuze;
+  27  
+  28     function Get_Ibit_State return Ibit.Phase
+  29       --# global ibit_request;
+  30     is begin
+  31        return Ibit_Request;
+  32     end Get_Ibit_State;
+
++++        Flow analysis of subprogram Get_IBIT_State 
+           performed: no errors found.
+
+  33  
+  34     -- Find out the current state and its validity
+  35     procedure Get_state(Action_state : out State_Types.fuze;
+  36                         Valid  : out Boolean)
+  37     --# global in Last_state, Last_Valid;
+  38     --# derives action_state from Last_state, Last_Valid &
+  39     --#        Valid from Last_Valid;
+  40     is
+  41     begin
+  42        Valid := Last_Valid;
+  43        if Last_Valid then
+  44           Action_State := Last_State;
+  45        else
+  46           Action_State := State_Types.Unarmed;
+  47        end if;
+  48     end Get_state;
+
++++        Flow analysis of subprogram Get_State performed: 
+           no errors found.
+
+  49  
+  50     -- Command an arming
+  51     procedure Arm
+  52       --# global in last_state;
+  53       --#        in out bus.outputs;
+  54       --# derives bus.outputs from *, last_state;
+  55     is begin
+  56        if Last_State = State_Types.Unarmed then
+  57           -- Send it out on 1R at word 1
+  58           BC1553.Write_Word(Data => State_Types.Fuze_Values(State_Types.Arming),
+  59                             Idx =>  1,
+  60                             Subaddress_Idx => 1,
+  61                             Dest => Bus_id);
+  62        end if;
+  63     end Arm;
+
++++        Flow analysis of subprogram Arm performed: no 
+           errors found.
+
+  64  
+  65     -- Command an unarming
+  66     procedure disarm
+  67     is begin
+  68        -- Send it out on 1R at word 1
+  69        BC1553.Write_Word(Data => State_Types.Fuze_Values(State_Types.unarmed),
+  70                          Idx =>  1,
+  71                          Subaddress_Idx => 1,
+  72                          Dest => Bus_id);
+  73     end Disarm;
+
++++        Flow analysis of subprogram Disarm performed: no 
+           errors found.
+
+  74  
+  75     -- Kick off a fuze IBIT
+  76     procedure Ibit_Start
+  77       --# global in out Bus.Outputs;
+  78       --#        out    Ibit_Request;
+  79     --# derives Bus.Outputs from * &
+  80     --#         Ibit_Request from ;
+  81     is
+  82        Code : SystemTypes.Byte;
+  83     begin
+  84        Ibit_Request := IBIT.Request_Start;
+  85        Code := IBIT.Phase_Lookup(Ibit_Request);
+  86        -- Send it out on 1R at word 2
+  87        BC1553.Write_Word(Data => Code,
+  88                          Idx =>  2,
+  89                          Subaddress_Idx => 1,
+  90                          Dest => Bus_id);
+  91     end Ibit_Start;
+
++++        Flow analysis of subprogram Ibit_Start 
+           performed: no errors found.
+
+  92  
+  93     -- Stop a fuze IBIT
+  94     procedure Ibit_Stop
+  95     --# global in out Bus.Outputs;
+  96     --#    out Ibit_Request;
+  97     --# derives Bus.Outputs from * &
+  98     --#         Ibit_Request from ;
+  99     is
+ 100        Code : SystemTypes.Byte;
+ 101     begin
+ 102        Ibit_Request := IBIT.Request_Stop;
+ 103        Code := IBIT.Phase_Lookup(Ibit_Request);
+ 104        -- Send it out on 1R at word 2
+ 105        BC1553.Write_Word(Data => Code,
+ 106                          Idx =>  2,
+ 107                          Subaddress_Idx => 1,
+ 108                          Dest => Bus_id);
+ 109     end Ibit_Stop;
+
++++        Flow analysis of subprogram Ibit_Stop performed: 
+           no errors found.
+
+ 110  
+ 111     -- Poll the bus and update states
+ 112     procedure Poll
+ 113     --# global in out Last_state, Last_Valid, Ibit_Request;
+ 114     --#        in Bus.Inputs; in out bus.outputs;
+ 115     --# derives Last_state, Last_Valid,
+ 116     --#         Ibit_Request from *, Bus.Inputs &
+ 117     --# bus.outputs from *, bus.inputs, last_state;
+ 118     is
+ 119        Word : Bus.Word;
+ 120        New_State : State_Types.Fuze;
+ 121     begin
+ 122        -- Check 1T
+ 123        if BC1553.Is_Valid(Src => Bus_id,
+ 124                           Subaddress_Idx => 1) and then
+ 125          BC1553.Is_Fresh(Src => Bus_id,
+ 126                          Subaddress_Idx => 1) then
+ 127           -- Read the state
+ 128           BC1553.Read_Word(Src => Bus_id,
+ 129                            Idx => 1,
+ 130                            Subaddress_Idx => 1,
+ 131                            Data => Word);
+ 132           new_State := State_Types.Fuze_Action(Word);
+ 133           -- Deal with the arm/disarm command
+ 134           if New_State /= Last_state then
+ 135              -- State has switched so turn off the arming/disarming request
+ 136              BC1553.Write_Word(Data => 0,
+ 137                                Idx =>  1,
+ 138                                Subaddress_Idx => 1,
+ 139                                Dest => Bus_id);
+ 140           end if;
+ 141           Last_State := New_State;
+ 142           Last_Valid := True;
+ 143           -- 1T word 2 - BIT
+ 144           BC1553.Read_Word(Src => Bus_id,
+ 145                            Idx => 2,
+ 146                            Subaddress_Idx => 1,
+ 147                            Data => Word);
+ 148           -- Use the standard state machine to transform
+ 149           -- our IBIT phase
+ 150           IBIT.State_Machine(Bus_Data => Word,
+ 151                              Current_Phase => IBIT_Request);
+ 152        else
+ 153           -- Nothing to do
+ 154           null;
+ 155        end if;
+ 156     end Poll;
+
++++        Flow analysis of subprogram Poll performed: no 
+           errors found.
+
+ 157  
+ 158     -- Initialise
+ 159     procedure Init
+ 160     --# global out Last_state, Last_Valid, Ibit_Request;
+ 161     --#        in out Bus.Outputs;
+ 162     --# derives Last_state, Last_Valid, Ibit_Request from &
+ 163     --#         Bus.Outputs from *;
+ 164     is begin
+ 165        Last_State := State_Types.Unarmed;
+ 166        Last_Valid := False;
+ 167        Ibit_Request := IBIT.Off;
+ 168        BC1553.Set_Message_Valid(Dest => Bus_id,
+ 169                                 Subaddress_Idx => 1);
+ 170     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 171  
+ 172     -- Test point
+ 173     procedure Command is separate;
+ 174  
+ 175  end If_Fuze;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

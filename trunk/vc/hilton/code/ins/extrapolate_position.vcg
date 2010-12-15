@@ -1,0 +1,489 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.08
+
+                     procedure ins.Extrapolate_Position
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 60:
+
+procedure_extrapolate_position_1.
+H1:    true .
+H2:    fld_z(last_position) >= measuretypes__meter__first .
+H3:    fld_z(last_position) <= measuretypes__meter__last .
+H4:    fld_y(last_position) >= measuretypes__meter__first .
+H5:    fld_y(last_position) <= measuretypes__meter__last .
+H6:    fld_x(last_position) >= measuretypes__meter__first .
+H7:    fld_x(last_position) <= measuretypes__meter__last .
+H8:    fld_vz(last_velocity) >= measuretypes__meter_per_sec__first .
+H9:    fld_vz(last_velocity) <= measuretypes__meter_per_sec__last .
+H10:   fld_vy(last_velocity) >= measuretypes__meter_per_sec__first .
+H11:   fld_vy(last_velocity) <= measuretypes__meter_per_sec__last .
+H12:   fld_vx(last_velocity) >= measuretypes__meter_per_sec__first .
+H13:   fld_vx(last_velocity) <= measuretypes__meter_per_sec__last .
+H14:   last_time >= clock__millisecond__first .
+H15:   last_time <= clock__millisecond__last .
+H16:   time_now__1 >= clock__millisecond__first .
+H17:   time_now__1 <= clock__millisecond__last .
+H18:   true .
+        ->
+C1:    time_now__1 >= clock__millisecond__first .
+C2:    time_now__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 67:
+
+procedure_extrapolate_position_2.
+H1:    true .
+H2:    fld_z(last_position) >= measuretypes__meter__first .
+H3:    fld_z(last_position) <= measuretypes__meter__last .
+H4:    fld_y(last_position) >= measuretypes__meter__first .
+H5:    fld_y(last_position) <= measuretypes__meter__last .
+H6:    fld_x(last_position) >= measuretypes__meter__first .
+H7:    fld_x(last_position) <= measuretypes__meter__last .
+H8:    fld_vz(last_velocity) >= measuretypes__meter_per_sec__first .
+H9:    fld_vz(last_velocity) <= measuretypes__meter_per_sec__last .
+H10:   fld_vy(last_velocity) >= measuretypes__meter_per_sec__first .
+H11:   fld_vy(last_velocity) <= measuretypes__meter_per_sec__last .
+H12:   fld_vx(last_velocity) >= measuretypes__meter_per_sec__first .
+H13:   fld_vx(last_velocity) <= measuretypes__meter_per_sec__last .
+H14:   last_time >= clock__millisecond__first .
+H15:   last_time <= clock__millisecond__last .
+H16:   time_now__1 >= clock__millisecond__first .
+H17:   time_now__1 <= clock__millisecond__last .
+H18:   true .
+H19:   time_now__1 >= clock__millisecond__first .
+H20:   time_now__1 <= clock__millisecond__last .
+H21:   true .
+H22:   not (not time_valid__1) .
+H23:   time_now__1 >= clock__millisecond__first .
+H24:   time_now__1 <= clock__millisecond__last .
+        ->
+C1:    time_now__1 >= clock__millisecond__first .
+C2:    time_now__1 <= clock__millisecond__last .
+C3:    last_time >= clock__millisecond__first .
+C4:    last_time <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 67:
+
+procedure_extrapolate_position_3.
+H1:    true .
+H2:    fld_z(last_position) >= measuretypes__meter__first .
+H3:    fld_z(last_position) <= measuretypes__meter__last .
+H4:    fld_y(last_position) >= measuretypes__meter__first .
+H5:    fld_y(last_position) <= measuretypes__meter__last .
+H6:    fld_x(last_position) >= measuretypes__meter__first .
+H7:    fld_x(last_position) <= measuretypes__meter__last .
+H8:    fld_vz(last_velocity) >= measuretypes__meter_per_sec__first .
+H9:    fld_vz(last_velocity) <= measuretypes__meter_per_sec__last .
+H10:   fld_vy(last_velocity) >= measuretypes__meter_per_sec__first .
+H11:   fld_vy(last_velocity) <= measuretypes__meter_per_sec__last .
+H12:   fld_vx(last_velocity) >= measuretypes__meter_per_sec__first .
+H13:   fld_vx(last_velocity) <= measuretypes__meter_per_sec__last .
+H14:   last_time >= clock__millisecond__first .
+H15:   last_time <= clock__millisecond__last .
+H16:   time_now__1 >= clock__millisecond__first .
+H17:   time_now__1 <= clock__millisecond__last .
+H18:   true .
+H19:   time_now__1 >= clock__millisecond__first .
+H20:   time_now__1 <= clock__millisecond__last .
+H21:   true .
+H22:   not (not time_valid__1) .
+H23:   time_now__1 >= clock__millisecond__first .
+H24:   time_now__1 <= clock__millisecond__last .
+H25:   time_now__1 >= clock__millisecond__first .
+H26:   time_now__1 <= clock__millisecond__last .
+H27:   last_time >= clock__millisecond__first .
+H28:   last_time <= clock__millisecond__last .
+H29:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H30:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+        ->
+C1:    clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+C2:    clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 68:
+
+procedure_extrapolate_position_4.
+H1:    true .
+H2:    fld_z(last_position) >= measuretypes__meter__first .
+H3:    fld_z(last_position) <= measuretypes__meter__last .
+H4:    fld_y(last_position) >= measuretypes__meter__first .
+H5:    fld_y(last_position) <= measuretypes__meter__last .
+H6:    fld_x(last_position) >= measuretypes__meter__first .
+H7:    fld_x(last_position) <= measuretypes__meter__last .
+H8:    fld_vz(last_velocity) >= measuretypes__meter_per_sec__first .
+H9:    fld_vz(last_velocity) <= measuretypes__meter_per_sec__last .
+H10:   fld_vy(last_velocity) >= measuretypes__meter_per_sec__first .
+H11:   fld_vy(last_velocity) <= measuretypes__meter_per_sec__last .
+H12:   fld_vx(last_velocity) >= measuretypes__meter_per_sec__first .
+H13:   fld_vx(last_velocity) <= measuretypes__meter_per_sec__last .
+H14:   last_time >= clock__millisecond__first .
+H15:   last_time <= clock__millisecond__last .
+H16:   time_now__1 >= clock__millisecond__first .
+H17:   time_now__1 <= clock__millisecond__last .
+H18:   true .
+H19:   time_now__1 >= clock__millisecond__first .
+H20:   time_now__1 <= clock__millisecond__last .
+H21:   true .
+H22:   not (not time_valid__1) .
+H23:   time_now__1 >= clock__millisecond__first .
+H24:   time_now__1 <= clock__millisecond__last .
+H25:   time_now__1 >= clock__millisecond__first .
+H26:   time_now__1 <= clock__millisecond__last .
+H27:   last_time >= clock__millisecond__first .
+H28:   last_time <= clock__millisecond__last .
+H29:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H30:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H31:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H32:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+        ->
+C1:    fld_vx(last_velocity) >= meter_per_sec__first .
+C2:    fld_vx(last_velocity) <= meter_per_sec__last .
+C3:    fld_x(last_position) >= meter__first .
+C4:    fld_x(last_position) <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 68:
+
+procedure_extrapolate_position_5.
+H1:    true .
+H2:    fld_z(last_position) >= measuretypes__meter__first .
+H3:    fld_z(last_position) <= measuretypes__meter__last .
+H4:    fld_y(last_position) >= measuretypes__meter__first .
+H5:    fld_y(last_position) <= measuretypes__meter__last .
+H6:    fld_x(last_position) >= measuretypes__meter__first .
+H7:    fld_x(last_position) <= measuretypes__meter__last .
+H8:    fld_vz(last_velocity) >= measuretypes__meter_per_sec__first .
+H9:    fld_vz(last_velocity) <= measuretypes__meter_per_sec__last .
+H10:   fld_vy(last_velocity) >= measuretypes__meter_per_sec__first .
+H11:   fld_vy(last_velocity) <= measuretypes__meter_per_sec__last .
+H12:   fld_vx(last_velocity) >= measuretypes__meter_per_sec__first .
+H13:   fld_vx(last_velocity) <= measuretypes__meter_per_sec__last .
+H14:   last_time >= clock__millisecond__first .
+H15:   last_time <= clock__millisecond__last .
+H16:   time_now__1 >= clock__millisecond__first .
+H17:   time_now__1 <= clock__millisecond__last .
+H18:   true .
+H19:   time_now__1 >= clock__millisecond__first .
+H20:   time_now__1 <= clock__millisecond__last .
+H21:   true .
+H22:   not (not time_valid__1) .
+H23:   time_now__1 >= clock__millisecond__first .
+H24:   time_now__1 <= clock__millisecond__last .
+H25:   time_now__1 >= clock__millisecond__first .
+H26:   time_now__1 <= clock__millisecond__last .
+H27:   last_time >= clock__millisecond__first .
+H28:   last_time <= clock__millisecond__last .
+H29:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H30:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H31:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H32:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H33:   fld_vx(last_velocity) >= meter_per_sec__first .
+H34:   fld_vx(last_velocity) <= meter_per_sec__last .
+H35:   fld_x(last_position) >= meter__first .
+H36:   fld_x(last_position) <= meter__last .
+H37:   fld_x(position__2) >= meter__first .
+H38:   fld_x(position__2) <= meter__last .
+H39:   fld_y(position__2) = fld_y(position) .
+H40:   fld_z(position__2) = fld_z(position) .
+H41:   position__2 = upf_x(position, fld_x(position__2)) .
+        ->
+C1:    fld_x(position__2) >= measuretypes__meter__first .
+C2:    fld_x(position__2) <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 71:
+
+procedure_extrapolate_position_6.
+H1:    true .
+H2:    fld_z(last_position) >= measuretypes__meter__first .
+H3:    fld_z(last_position) <= measuretypes__meter__last .
+H4:    fld_y(last_position) >= measuretypes__meter__first .
+H5:    fld_y(last_position) <= measuretypes__meter__last .
+H6:    fld_x(last_position) >= measuretypes__meter__first .
+H7:    fld_x(last_position) <= measuretypes__meter__last .
+H8:    fld_vz(last_velocity) >= measuretypes__meter_per_sec__first .
+H9:    fld_vz(last_velocity) <= measuretypes__meter_per_sec__last .
+H10:   fld_vy(last_velocity) >= measuretypes__meter_per_sec__first .
+H11:   fld_vy(last_velocity) <= measuretypes__meter_per_sec__last .
+H12:   fld_vx(last_velocity) >= measuretypes__meter_per_sec__first .
+H13:   fld_vx(last_velocity) <= measuretypes__meter_per_sec__last .
+H14:   last_time >= clock__millisecond__first .
+H15:   last_time <= clock__millisecond__last .
+H16:   time_now__1 >= clock__millisecond__first .
+H17:   time_now__1 <= clock__millisecond__last .
+H18:   true .
+H19:   time_now__1 >= clock__millisecond__first .
+H20:   time_now__1 <= clock__millisecond__last .
+H21:   true .
+H22:   not (not time_valid__1) .
+H23:   time_now__1 >= clock__millisecond__first .
+H24:   time_now__1 <= clock__millisecond__last .
+H25:   time_now__1 >= clock__millisecond__first .
+H26:   time_now__1 <= clock__millisecond__last .
+H27:   last_time >= clock__millisecond__first .
+H28:   last_time <= clock__millisecond__last .
+H29:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H30:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H31:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H32:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H33:   fld_vx(last_velocity) >= meter_per_sec__first .
+H34:   fld_vx(last_velocity) <= meter_per_sec__last .
+H35:   fld_x(last_position) >= meter__first .
+H36:   fld_x(last_position) <= meter__last .
+H37:   fld_x(position__2) >= meter__first .
+H38:   fld_x(position__2) <= meter__last .
+H39:   fld_y(position__2) = fld_y(position) .
+H40:   fld_z(position__2) = fld_z(position) .
+H41:   position__2 = upf_x(position, fld_x(position__2)) .
+H42:   fld_x(position__2) >= measuretypes__meter__first .
+H43:   fld_x(position__2) <= measuretypes__meter__last .
+        ->
+C1:    fld_vy(last_velocity) >= meter_per_sec__first .
+C2:    fld_vy(last_velocity) <= meter_per_sec__last .
+C3:    fld_y(last_position) >= meter__first .
+C4:    fld_y(last_position) <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 71:
+
+procedure_extrapolate_position_7.
+H1:    true .
+H2:    fld_z(last_position) >= measuretypes__meter__first .
+H3:    fld_z(last_position) <= measuretypes__meter__last .
+H4:    fld_y(last_position) >= measuretypes__meter__first .
+H5:    fld_y(last_position) <= measuretypes__meter__last .
+H6:    fld_x(last_position) >= measuretypes__meter__first .
+H7:    fld_x(last_position) <= measuretypes__meter__last .
+H8:    fld_vz(last_velocity) >= measuretypes__meter_per_sec__first .
+H9:    fld_vz(last_velocity) <= measuretypes__meter_per_sec__last .
+H10:   fld_vy(last_velocity) >= measuretypes__meter_per_sec__first .
+H11:   fld_vy(last_velocity) <= measuretypes__meter_per_sec__last .
+H12:   fld_vx(last_velocity) >= measuretypes__meter_per_sec__first .
+H13:   fld_vx(last_velocity) <= measuretypes__meter_per_sec__last .
+H14:   last_time >= clock__millisecond__first .
+H15:   last_time <= clock__millisecond__last .
+H16:   time_now__1 >= clock__millisecond__first .
+H17:   time_now__1 <= clock__millisecond__last .
+H18:   true .
+H19:   time_now__1 >= clock__millisecond__first .
+H20:   time_now__1 <= clock__millisecond__last .
+H21:   true .
+H22:   not (not time_valid__1) .
+H23:   time_now__1 >= clock__millisecond__first .
+H24:   time_now__1 <= clock__millisecond__last .
+H25:   time_now__1 >= clock__millisecond__first .
+H26:   time_now__1 <= clock__millisecond__last .
+H27:   last_time >= clock__millisecond__first .
+H28:   last_time <= clock__millisecond__last .
+H29:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H30:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H31:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H32:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H33:   fld_vx(last_velocity) >= meter_per_sec__first .
+H34:   fld_vx(last_velocity) <= meter_per_sec__last .
+H35:   fld_x(last_position) >= meter__first .
+H36:   fld_x(last_position) <= meter__last .
+H37:   fld_x(position__2) >= meter__first .
+H38:   fld_x(position__2) <= meter__last .
+H39:   fld_y(position__2) = fld_y(position) .
+H40:   fld_z(position__2) = fld_z(position) .
+H41:   position__2 = upf_x(position, fld_x(position__2)) .
+H42:   fld_x(position__2) >= measuretypes__meter__first .
+H43:   fld_x(position__2) <= measuretypes__meter__last .
+H44:   fld_vy(last_velocity) >= meter_per_sec__first .
+H45:   fld_vy(last_velocity) <= meter_per_sec__last .
+H46:   fld_y(last_position) >= meter__first .
+H47:   fld_y(last_position) <= meter__last .
+H48:   fld_y(position__3) >= meter__first .
+H49:   fld_y(position__3) <= meter__last .
+H50:   fld_x(position__3) = fld_x(position__2) .
+H51:   fld_z(position__3) = fld_z(position__2) .
+H52:   position__3 = upf_y(position__2, fld_y(position__3)) .
+        ->
+C1:    fld_y(position__3) >= measuretypes__meter__first .
+C2:    fld_y(position__3) <= measuretypes__meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 74:
+
+procedure_extrapolate_position_8.
+H1:    true .
+H2:    fld_z(last_position) >= measuretypes__meter__first .
+H3:    fld_z(last_position) <= measuretypes__meter__last .
+H4:    fld_y(last_position) >= measuretypes__meter__first .
+H5:    fld_y(last_position) <= measuretypes__meter__last .
+H6:    fld_x(last_position) >= measuretypes__meter__first .
+H7:    fld_x(last_position) <= measuretypes__meter__last .
+H8:    fld_vz(last_velocity) >= measuretypes__meter_per_sec__first .
+H9:    fld_vz(last_velocity) <= measuretypes__meter_per_sec__last .
+H10:   fld_vy(last_velocity) >= measuretypes__meter_per_sec__first .
+H11:   fld_vy(last_velocity) <= measuretypes__meter_per_sec__last .
+H12:   fld_vx(last_velocity) >= measuretypes__meter_per_sec__first .
+H13:   fld_vx(last_velocity) <= measuretypes__meter_per_sec__last .
+H14:   last_time >= clock__millisecond__first .
+H15:   last_time <= clock__millisecond__last .
+H16:   time_now__1 >= clock__millisecond__first .
+H17:   time_now__1 <= clock__millisecond__last .
+H18:   true .
+H19:   time_now__1 >= clock__millisecond__first .
+H20:   time_now__1 <= clock__millisecond__last .
+H21:   true .
+H22:   not (not time_valid__1) .
+H23:   time_now__1 >= clock__millisecond__first .
+H24:   time_now__1 <= clock__millisecond__last .
+H25:   time_now__1 >= clock__millisecond__first .
+H26:   time_now__1 <= clock__millisecond__last .
+H27:   last_time >= clock__millisecond__first .
+H28:   last_time <= clock__millisecond__last .
+H29:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H30:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H31:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H32:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H33:   fld_vx(last_velocity) >= meter_per_sec__first .
+H34:   fld_vx(last_velocity) <= meter_per_sec__last .
+H35:   fld_x(last_position) >= meter__first .
+H36:   fld_x(last_position) <= meter__last .
+H37:   fld_x(position__2) >= meter__first .
+H38:   fld_x(position__2) <= meter__last .
+H39:   fld_y(position__2) = fld_y(position) .
+H40:   fld_z(position__2) = fld_z(position) .
+H41:   position__2 = upf_x(position, fld_x(position__2)) .
+H42:   fld_x(position__2) >= measuretypes__meter__first .
+H43:   fld_x(position__2) <= measuretypes__meter__last .
+H44:   fld_vy(last_velocity) >= meter_per_sec__first .
+H45:   fld_vy(last_velocity) <= meter_per_sec__last .
+H46:   fld_y(last_position) >= meter__first .
+H47:   fld_y(last_position) <= meter__last .
+H48:   fld_y(position__3) >= meter__first .
+H49:   fld_y(position__3) <= meter__last .
+H50:   fld_x(position__3) = fld_x(position__2) .
+H51:   fld_z(position__3) = fld_z(position__2) .
+H52:   position__3 = upf_y(position__2, fld_y(position__3)) .
+H53:   fld_y(position__3) >= measuretypes__meter__first .
+H54:   fld_y(position__3) <= measuretypes__meter__last .
+        ->
+C1:    fld_vz(last_velocity) >= meter_per_sec__first .
+C2:    fld_vz(last_velocity) <= meter_per_sec__last .
+C3:    fld_z(last_position) >= meter__first .
+C4:    fld_z(last_position) <= meter__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 74:
+
+procedure_extrapolate_position_9.
+H1:    true .
+H2:    fld_z(last_position) >= measuretypes__meter__first .
+H3:    fld_z(last_position) <= measuretypes__meter__last .
+H4:    fld_y(last_position) >= measuretypes__meter__first .
+H5:    fld_y(last_position) <= measuretypes__meter__last .
+H6:    fld_x(last_position) >= measuretypes__meter__first .
+H7:    fld_x(last_position) <= measuretypes__meter__last .
+H8:    fld_vz(last_velocity) >= measuretypes__meter_per_sec__first .
+H9:    fld_vz(last_velocity) <= measuretypes__meter_per_sec__last .
+H10:   fld_vy(last_velocity) >= measuretypes__meter_per_sec__first .
+H11:   fld_vy(last_velocity) <= measuretypes__meter_per_sec__last .
+H12:   fld_vx(last_velocity) >= measuretypes__meter_per_sec__first .
+H13:   fld_vx(last_velocity) <= measuretypes__meter_per_sec__last .
+H14:   last_time >= clock__millisecond__first .
+H15:   last_time <= clock__millisecond__last .
+H16:   time_now__1 >= clock__millisecond__first .
+H17:   time_now__1 <= clock__millisecond__last .
+H18:   true .
+H19:   time_now__1 >= clock__millisecond__first .
+H20:   time_now__1 <= clock__millisecond__last .
+H21:   true .
+H22:   not (not time_valid__1) .
+H23:   time_now__1 >= clock__millisecond__first .
+H24:   time_now__1 <= clock__millisecond__last .
+H25:   time_now__1 >= clock__millisecond__first .
+H26:   time_now__1 <= clock__millisecond__last .
+H27:   last_time >= clock__millisecond__first .
+H28:   last_time <= clock__millisecond__last .
+H29:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H30:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H31:   clock_utils__delta_time(last_time, time_now__1) >= 
+           clock__millisecond__first .
+H32:   clock_utils__delta_time(last_time, time_now__1) <= 
+           clock__millisecond__last .
+H33:   fld_vx(last_velocity) >= meter_per_sec__first .
+H34:   fld_vx(last_velocity) <= meter_per_sec__last .
+H35:   fld_x(last_position) >= meter__first .
+H36:   fld_x(last_position) <= meter__last .
+H37:   fld_x(position__2) >= meter__first .
+H38:   fld_x(position__2) <= meter__last .
+H39:   fld_y(position__2) = fld_y(position) .
+H40:   fld_z(position__2) = fld_z(position) .
+H41:   position__2 = upf_x(position, fld_x(position__2)) .
+H42:   fld_x(position__2) >= measuretypes__meter__first .
+H43:   fld_x(position__2) <= measuretypes__meter__last .
+H44:   fld_vy(last_velocity) >= meter_per_sec__first .
+H45:   fld_vy(last_velocity) <= meter_per_sec__last .
+H46:   fld_y(last_position) >= meter__first .
+H47:   fld_y(last_position) <= meter__last .
+H48:   fld_y(position__3) >= meter__first .
+H49:   fld_y(position__3) <= meter__last .
+H50:   fld_x(position__3) = fld_x(position__2) .
+H51:   fld_z(position__3) = fld_z(position__2) .
+H52:   position__3 = upf_y(position__2, fld_y(position__3)) .
+H53:   fld_y(position__3) >= measuretypes__meter__first .
+H54:   fld_y(position__3) <= measuretypes__meter__last .
+H55:   fld_vz(last_velocity) >= meter_per_sec__first .
+H56:   fld_vz(last_velocity) <= meter_per_sec__last .
+H57:   fld_z(last_position) >= meter__first .
+H58:   fld_z(last_position) <= meter__last .
+H59:   fld_z(position__4) >= meter__first .
+H60:   fld_z(position__4) <= meter__last .
+H61:   fld_x(position__4) = fld_x(position__3) .
+H62:   fld_y(position__4) = fld_y(position__3) .
+H63:   position__4 = upf_z(position__3, fld_z(position__4)) .
+        ->
+C1:    fld_z(position__4) >= measuretypes__meter__first .
+C2:    fld_z(position__4) <= measuretypes__meter__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_extrapolate_position_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_position_11.
+*** true .          /* trivially true VC removed by Examiner */
+
+

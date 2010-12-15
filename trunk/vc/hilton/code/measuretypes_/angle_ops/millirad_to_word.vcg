@@ -1,0 +1,340 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.17
+
+                    function angle_ops.Millirad_To_Word
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 129:
+
+function_millirad_to_word_1.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+        ->
+C1:    orig_angle >= millirad__first .
+C2:    orig_angle <= millirad__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 129:
+
+function_millirad_to_word_2.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+        ->
+C1:    canon(orig_angle) >= systemtypes__integer32__first .
+C2:    canon(orig_angle) <= systemtypes__integer32__last .
+C3:    canon(orig_angle) >= systemtypes__integer32__first .
+C4:    canon(orig_angle) <= systemtypes__integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 131:
+
+function_millirad_to_word_3.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= systemtypes__integer32__first .
+H9:    canon(orig_angle) <= systemtypes__integer32__last .
+H10:   canon(orig_angle) >= systemtypes__integer32__first .
+H11:   canon(orig_angle) <= systemtypes__integer32__last .
+H12:   canon(orig_angle) >= systemtypes__integer32__first .
+H13:   canon(orig_angle) <= systemtypes__integer32__last .
+H14:   canon(orig_angle) < 0 .
+H15:   canon(orig_angle) >= systemtypes__integer32__first .
+H16:   canon(orig_angle) <= systemtypes__integer32__last .
+        ->
+C1:     -(canon(orig_angle)) >= systemtypes__integer32__first .
+C2:     -(canon(orig_angle)) <= systemtypes__integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 134:
+
+function_millirad_to_word_4.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= systemtypes__integer32__first .
+H9:    canon(orig_angle) <= systemtypes__integer32__last .
+H10:   canon(orig_angle) >= systemtypes__integer32__first .
+H11:   canon(orig_angle) <= systemtypes__integer32__last .
+H12:   canon(orig_angle) >= systemtypes__integer32__first .
+H13:   canon(orig_angle) <= systemtypes__integer32__last .
+H14:   canon(orig_angle) < 0 .
+H15:   canon(orig_angle) >= systemtypes__integer32__first .
+H16:   canon(orig_angle) <= systemtypes__integer32__last .
+H17:    -(canon(orig_angle)) >= systemtypes__integer32__first .
+H18:    -(canon(orig_angle)) <= systemtypes__integer32__last .
+H19:    -(canon(orig_angle)) >= systemtypes__integer32__first .
+H20:    -(canon(orig_angle)) <= systemtypes__integer32__last .
+        ->
+C1:     -(canon(orig_angle)) >= systemtypes__word__first .
+C2:     -(canon(orig_angle)) <= systemtypes__word__last .
+C3:     -(canon(orig_angle)) >= systemtypes__word__first .
+C4:     -(canon(orig_angle)) <= systemtypes__word__last .
+ 
+
+function_millirad_to_word_5.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= systemtypes__integer32__first .
+H9:    canon(orig_angle) <= systemtypes__integer32__last .
+H10:   canon(orig_angle) >= systemtypes__integer32__first .
+H11:   canon(orig_angle) <= systemtypes__integer32__last .
+H12:   canon(orig_angle) >= systemtypes__integer32__first .
+H13:   canon(orig_angle) <= systemtypes__integer32__last .
+H14:   not (canon(orig_angle) < 0) .
+H15:   canon(orig_angle) >= systemtypes__integer32__first .
+H16:   canon(orig_angle) <= systemtypes__integer32__last .
+        ->
+C1:    canon(orig_angle) >= systemtypes__word__first .
+C2:    canon(orig_angle) <= systemtypes__word__last .
+C3:    canon(orig_angle) >= systemtypes__word__first .
+C4:    canon(orig_angle) <= systemtypes__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 136:
+
+function_millirad_to_word_6.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= systemtypes__integer32__first .
+H9:    canon(orig_angle) <= systemtypes__integer32__last .
+H10:   canon(orig_angle) >= systemtypes__integer32__first .
+H11:   canon(orig_angle) <= systemtypes__integer32__last .
+H12:   canon(orig_angle) >= systemtypes__integer32__first .
+H13:   canon(orig_angle) <= systemtypes__integer32__last .
+H14:   canon(orig_angle) < 0 .
+H15:   canon(orig_angle) >= systemtypes__integer32__first .
+H16:   canon(orig_angle) <= systemtypes__integer32__last .
+H17:    -(canon(orig_angle)) >= systemtypes__integer32__first .
+H18:    -(canon(orig_angle)) <= systemtypes__integer32__last .
+H19:    -(canon(orig_angle)) >= systemtypes__integer32__first .
+H20:    -(canon(orig_angle)) <= systemtypes__integer32__last .
+H21:    -(canon(orig_angle)) >= systemtypes__word__first .
+H22:    -(canon(orig_angle)) <= systemtypes__word__last .
+H23:    -(canon(orig_angle)) >= systemtypes__word__first .
+H24:    -(canon(orig_angle)) <= systemtypes__word__last .
+H25:   true .
+H26:   true .
+H27:    -(canon(orig_angle)) >= systemtypes__word__first .
+H28:    -(canon(orig_angle)) <= systemtypes__word__last .
+        ->
+C1:     -(canon(orig_angle)) + 2 ** 15 >= systemtypes__word__first .
+C2:     -(canon(orig_angle)) + 2 ** 15 <= systemtypes__word__last .
+C3:    2 ** 15 >= integer__base__first .
+C4:    2 ** 15 <= integer__base__last .
+C5:    15 >= 0 .
+ 
+
+function_millirad_to_word_7.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= systemtypes__integer32__first .
+H9:    canon(orig_angle) <= systemtypes__integer32__last .
+H10:   canon(orig_angle) >= systemtypes__integer32__first .
+H11:   canon(orig_angle) <= systemtypes__integer32__last .
+H12:   canon(orig_angle) >= systemtypes__integer32__first .
+H13:   canon(orig_angle) <= systemtypes__integer32__last .
+H14:   not (canon(orig_angle) < 0) .
+H15:   canon(orig_angle) >= systemtypes__integer32__first .
+H16:   canon(orig_angle) <= systemtypes__integer32__last .
+H17:   canon(orig_angle) >= systemtypes__word__first .
+H18:   canon(orig_angle) <= systemtypes__word__last .
+H19:   canon(orig_angle) >= systemtypes__word__first .
+H20:   canon(orig_angle) <= systemtypes__word__last .
+H21:   true .
+H22:   false .
+H23:   canon(orig_angle) >= systemtypes__word__first .
+H24:   canon(orig_angle) <= systemtypes__word__last .
+        ->
+C1:    canon(orig_angle) + 2 ** 15 >= systemtypes__word__first .
+C2:    canon(orig_angle) + 2 ** 15 <= systemtypes__word__last .
+C3:    2 ** 15 >= integer__base__first .
+C4:    2 ** 15 <= integer__base__last .
+C5:    15 >= 0 .
+ 
+
+For path(s) from start to finish:
+
+function_millirad_to_word_8.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= systemtypes__integer32__first .
+H9:    canon(orig_angle) <= systemtypes__integer32__last .
+H10:   canon(orig_angle) >= systemtypes__integer32__first .
+H11:   canon(orig_angle) <= systemtypes__integer32__last .
+H12:   canon(orig_angle) >= systemtypes__integer32__first .
+H13:   canon(orig_angle) <= systemtypes__integer32__last .
+H14:   canon(orig_angle) < 0 .
+H15:   canon(orig_angle) >= systemtypes__integer32__first .
+H16:   canon(orig_angle) <= systemtypes__integer32__last .
+H17:    -(canon(orig_angle)) >= systemtypes__integer32__first .
+H18:    -(canon(orig_angle)) <= systemtypes__integer32__last .
+H19:    -(canon(orig_angle)) >= systemtypes__integer32__first .
+H20:    -(canon(orig_angle)) <= systemtypes__integer32__last .
+H21:    -(canon(orig_angle)) >= systemtypes__word__first .
+H22:    -(canon(orig_angle)) <= systemtypes__word__last .
+H23:    -(canon(orig_angle)) >= systemtypes__word__first .
+H24:    -(canon(orig_angle)) <= systemtypes__word__last .
+H25:   true .
+H26:   true .
+H27:    -(canon(orig_angle)) >= systemtypes__word__first .
+H28:    -(canon(orig_angle)) <= systemtypes__word__last .
+H29:    -(canon(orig_angle)) + 2 ** 15 >= systemtypes__word__first .
+H30:    -(canon(orig_angle)) + 2 ** 15 <= systemtypes__word__last .
+H31:   2 ** 15 >= integer__base__first .
+H32:   2 ** 15 <= integer__base__last .
+H33:   15 >= 0 .
+H34:    -(canon(orig_angle)) + 2 ** 15 >= systemtypes__word__first .
+H35:    -(canon(orig_angle)) + 2 ** 15 <= systemtypes__word__last .
+        ->
+C1:    true .
+C2:     -(canon(orig_angle)) + 2 ** 15 >= systemtypes__word__first .
+C3:     -(canon(orig_angle)) + 2 ** 15 <= systemtypes__word__last .
+ 
+
+function_millirad_to_word_9.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= systemtypes__integer32__first .
+H9:    canon(orig_angle) <= systemtypes__integer32__last .
+H10:   canon(orig_angle) >= systemtypes__integer32__first .
+H11:   canon(orig_angle) <= systemtypes__integer32__last .
+H12:   canon(orig_angle) >= systemtypes__integer32__first .
+H13:   canon(orig_angle) <= systemtypes__integer32__last .
+H14:   not (canon(orig_angle) < 0) .
+H15:   canon(orig_angle) >= systemtypes__integer32__first .
+H16:   canon(orig_angle) <= systemtypes__integer32__last .
+H17:   canon(orig_angle) >= systemtypes__word__first .
+H18:   canon(orig_angle) <= systemtypes__word__last .
+H19:   canon(orig_angle) >= systemtypes__word__first .
+H20:   canon(orig_angle) <= systemtypes__word__last .
+H21:   true .
+H22:   false .
+H23:   canon(orig_angle) >= systemtypes__word__first .
+H24:   canon(orig_angle) <= systemtypes__word__last .
+H25:   canon(orig_angle) + 2 ** 15 >= systemtypes__word__first .
+H26:   canon(orig_angle) + 2 ** 15 <= systemtypes__word__last .
+H27:   2 ** 15 >= integer__base__first .
+H28:   2 ** 15 <= integer__base__last .
+H29:   15 >= 0 .
+H30:   canon(orig_angle) + 2 ** 15 >= systemtypes__word__first .
+H31:   canon(orig_angle) + 2 ** 15 <= systemtypes__word__last .
+        ->
+C1:    true .
+C2:    canon(orig_angle) + 2 ** 15 >= systemtypes__word__first .
+C3:    canon(orig_angle) + 2 ** 15 <= systemtypes__word__last .
+ 
+
+function_millirad_to_word_10.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= systemtypes__integer32__first .
+H9:    canon(orig_angle) <= systemtypes__integer32__last .
+H10:   canon(orig_angle) >= systemtypes__integer32__first .
+H11:   canon(orig_angle) <= systemtypes__integer32__last .
+H12:   canon(orig_angle) >= systemtypes__integer32__first .
+H13:   canon(orig_angle) <= systemtypes__integer32__last .
+H14:   canon(orig_angle) < 0 .
+H15:   canon(orig_angle) >= systemtypes__integer32__first .
+H16:   canon(orig_angle) <= systemtypes__integer32__last .
+H17:    -(canon(orig_angle)) >= systemtypes__integer32__first .
+H18:    -(canon(orig_angle)) <= systemtypes__integer32__last .
+H19:    -(canon(orig_angle)) >= systemtypes__integer32__first .
+H20:    -(canon(orig_angle)) <= systemtypes__integer32__last .
+H21:    -(canon(orig_angle)) >= systemtypes__word__first .
+H22:    -(canon(orig_angle)) <= systemtypes__word__last .
+H23:    -(canon(orig_angle)) >= systemtypes__word__first .
+H24:    -(canon(orig_angle)) <= systemtypes__word__last .
+H25:   true .
+H26:   not true .
+H27:    -(canon(orig_angle)) >= systemtypes__word__first .
+H28:    -(canon(orig_angle)) <= systemtypes__word__last .
+        ->
+C1:    true .
+C2:     -(canon(orig_angle)) >= systemtypes__word__first .
+C3:     -(canon(orig_angle)) <= systemtypes__word__last .
+ 
+
+function_millirad_to_word_11.
+H1:    true .
+H2:    orig_angle >= measuretypes__millirad__first .
+H3:    orig_angle <= measuretypes__millirad__last .
+H4:    orig_angle >= millirad__first .
+H5:    orig_angle <= millirad__last .
+H6:    canon(orig_angle) >= canon_millirad__first .
+H7:    canon(orig_angle) <= canon_millirad__last .
+H8:    canon(orig_angle) >= systemtypes__integer32__first .
+H9:    canon(orig_angle) <= systemtypes__integer32__last .
+H10:   canon(orig_angle) >= systemtypes__integer32__first .
+H11:   canon(orig_angle) <= systemtypes__integer32__last .
+H12:   canon(orig_angle) >= systemtypes__integer32__first .
+H13:   canon(orig_angle) <= systemtypes__integer32__last .
+H14:   not (canon(orig_angle) < 0) .
+H15:   canon(orig_angle) >= systemtypes__integer32__first .
+H16:   canon(orig_angle) <= systemtypes__integer32__last .
+H17:   canon(orig_angle) >= systemtypes__word__first .
+H18:   canon(orig_angle) <= systemtypes__word__last .
+H19:   canon(orig_angle) >= systemtypes__word__first .
+H20:   canon(orig_angle) <= systemtypes__word__last .
+H21:   true .
+H22:   not false .
+H23:   canon(orig_angle) >= systemtypes__word__first .
+H24:   canon(orig_angle) <= systemtypes__word__last .
+        ->
+C1:    true .
+C2:    canon(orig_angle) >= systemtypes__word__first .
+C3:    canon(orig_angle) <= systemtypes__word__last .
+ 
+

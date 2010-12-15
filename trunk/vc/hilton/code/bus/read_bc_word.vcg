@@ -1,0 +1,361 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.13
+
+                         procedure bus.Read_BC_Word
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 463:
+
+procedure_read_bc_word_1.
+H1:    true .
+H2:    src >= lru_index__first .
+H3:    src <= lru_index__last .
+H4:    idx >= word_index__first .
+H5:    idx <= word_index__last .
+H6:    subaddress_idx >= lru_subaddress_index__first .
+H7:    subaddress_idx <= lru_subaddress_index__last .
+H8:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H9:    true .
+H10:   true .
+        ->
+C1:    src >= lru_index__first .
+C2:    src <= lru_index__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 465:
+
+procedure_read_bc_word_2.
+H1:    true .
+H2:    src >= lru_index__first .
+H3:    src <= lru_index__last .
+H4:    idx >= word_index__first .
+H5:    idx <= word_index__last .
+H6:    subaddress_idx >= lru_subaddress_index__first .
+H7:    subaddress_idx <= lru_subaddress_index__last .
+H8:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H9:    true .
+H10:   true .
+H11:   src >= lru_index__first .
+H12:   src <= lru_index__last .
+H13:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H14:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H15:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H16:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H17:   (fld_initial(element(rt_to_bc, [src])) < 
+           valid_msg_index__first) or (fld_initial(element(
+           rt_to_bc, [src])) > valid_msg_index__last) .
+        ->
+C1:    0 >= word__first .
+C2:    0 <= word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 468:
+
+procedure_read_bc_word_3.
+H1:    true .
+H2:    src >= lru_index__first .
+H3:    src <= lru_index__last .
+H4:    idx >= word_index__first .
+H5:    idx <= word_index__last .
+H6:    subaddress_idx >= lru_subaddress_index__first .
+H7:    subaddress_idx <= lru_subaddress_index__last .
+H8:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H9:    true .
+H10:   true .
+H11:   src >= lru_index__first .
+H12:   src <= lru_index__last .
+H13:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H14:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H15:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H16:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H17:   not ((fld_initial(element(rt_to_bc, [src])) < 
+           valid_msg_index__first) or (fld_initial(element(
+           rt_to_bc, [src])) > valid_msg_index__last)) .
+H18:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H19:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H20:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H21:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H22:   subaddress_idx > fld_msg_count(element(rt_to_bc, [
+           src])) .
+        ->
+C1:    0 >= word__first .
+C2:    0 <= word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 471:
+
+procedure_read_bc_word_4.
+H1:    true .
+H2:    src >= lru_index__first .
+H3:    src <= lru_index__last .
+H4:    idx >= word_index__first .
+H5:    idx <= word_index__last .
+H6:    subaddress_idx >= lru_subaddress_index__first .
+H7:    subaddress_idx <= lru_subaddress_index__last .
+H8:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H9:    true .
+H10:   true .
+H11:   src >= lru_index__first .
+H12:   src <= lru_index__last .
+H13:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H14:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H15:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H16:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H17:   not ((fld_initial(element(rt_to_bc, [src])) < 
+           valid_msg_index__first) or (fld_initial(element(
+           rt_to_bc, [src])) > valid_msg_index__last)) .
+H18:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H19:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H20:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H21:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H22:   not (subaddress_idx > fld_msg_count(element(rt_to_bc, [
+           src]))) .
+H23:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H24:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H25:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H26:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H27:   fld_initial(element(rt_to_bc, [src])) > 
+           lru_start_index__last .
+        ->
+C1:    0 >= word__first .
+C2:    0 <= word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 473:
+
+procedure_read_bc_word_5.
+H1:    true .
+H2:    src >= lru_index__first .
+H3:    src <= lru_index__last .
+H4:    idx >= word_index__first .
+H5:    idx <= word_index__last .
+H6:    subaddress_idx >= lru_subaddress_index__first .
+H7:    subaddress_idx <= lru_subaddress_index__last .
+H8:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H9:    true .
+H10:   true .
+H11:   src >= lru_index__first .
+H12:   src <= lru_index__last .
+H13:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H14:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H15:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H16:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H17:   not ((fld_initial(element(rt_to_bc, [src])) < 
+           valid_msg_index__first) or (fld_initial(element(
+           rt_to_bc, [src])) > valid_msg_index__last)) .
+H18:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H19:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H20:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H21:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H22:   not (subaddress_idx > fld_msg_count(element(rt_to_bc, [
+           src]))) .
+H23:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H24:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H25:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H26:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H27:   not (fld_initial(element(rt_to_bc, [src])) > 
+           lru_start_index__last) .
+H28:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H29:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H30:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H31:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+        ->
+C1:    fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) >= valid_msg_index__first .
+C2:    fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) <= valid_msg_index__last .
+C3:    subaddress_idx - 1 >= all_msg_index__base__first .
+C4:    subaddress_idx - 1 <= all_msg_index__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 474:
+
+procedure_read_bc_word_6.
+H1:    true .
+H2:    src >= lru_index__first .
+H3:    src <= lru_index__last .
+H4:    idx >= word_index__first .
+H5:    idx <= word_index__last .
+H6:    subaddress_idx >= lru_subaddress_index__first .
+H7:    subaddress_idx <= lru_subaddress_index__last .
+H8:    for_all(i___2: word_index, ((i___2 >= word_index__first) and (
+           i___2 <= word_index__last)) -> (for_all(i___1: 
+           all_msg_index, ((i___1 >= valid_msg_index__first) and (
+           i___1 <= valid_msg_index__last)) -> ((element(fld_data(element(
+           real_inputs, [i___1])), [i___2]) >= word__first) and (element(
+           fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+           word__last))))) .
+H9:    true .
+H10:   true .
+H11:   src >= lru_index__first .
+H12:   src <= lru_index__last .
+H13:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H14:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H15:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H16:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H17:   not ((fld_initial(element(rt_to_bc, [src])) < 
+           valid_msg_index__first) or (fld_initial(element(
+           rt_to_bc, [src])) > valid_msg_index__last)) .
+H18:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H19:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H20:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H21:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H22:   not (subaddress_idx > fld_msg_count(element(rt_to_bc, [
+           src]))) .
+H23:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H24:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H25:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H26:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H27:   not (fld_initial(element(rt_to_bc, [src])) > 
+           lru_start_index__last) .
+H28:   fld_msg_count(element(rt_to_bc, [src])) >= 
+           lru_subaddress_index__first .
+H29:   fld_msg_count(element(rt_to_bc, [src])) <= 
+           lru_subaddress_index__last .
+H30:   fld_initial(element(rt_to_bc, [src])) >= 
+           lru_start_index__first .
+H31:   fld_initial(element(rt_to_bc, [src])) <= 
+           lru_start_index__last .
+H32:   fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) >= valid_msg_index__first .
+H33:   fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) <= valid_msg_index__last .
+H34:   subaddress_idx - 1 >= all_msg_index__base__first .
+H35:   subaddress_idx - 1 <= all_msg_index__base__last .
+H36:   fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) >= valid_msg_index__first .
+H37:   fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) <= valid_msg_index__last .
+        ->
+C1:    element(fld_data(element(real_inputs, [fld_initial(element(
+           rt_to_bc, [src])) + (subaddress_idx - 1)])), [
+           idx]) >= word__first .
+C2:    element(fld_data(element(real_inputs, [fld_initial(element(
+           rt_to_bc, [src])) + (subaddress_idx - 1)])), [
+           idx]) <= word__last .
+C3:    idx >= word_index__first .
+C4:    idx <= word_index__last .
+C5:    fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) >= valid_msg_index__first .
+C6:    fld_initial(element(rt_to_bc, [src])) + (
+           subaddress_idx - 1) <= valid_msg_index__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_bc_word_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_bc_word_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_bc_word_9.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_bc_word_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_read_bc_word_11.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_bc_word_12.
+*** true .          /* trivially true VC removed by Examiner */
+
+

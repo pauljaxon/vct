@@ -1,0 +1,47 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.89
+
+                      procedure airspeed.Read_Airspeed
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 135:
+
+procedure_read_airspeed_1.
+H1:    true .
+H2:    last_speed >= meter_per_sec__first .
+H3:    last_speed <= meter_per_sec__last .
+H4:    last_time >= clock__millisecond__first .
+H5:    last_time <= clock__millisecond__last .
+H6:    last_accel >= cm_per_sec_2__first .
+H7:    last_accel <= cm_per_sec_2__last .
+H8:    speed__1 >= meter_per_sec__first .
+H9:    speed__1 <= meter_per_sec__last .
+        ->
+C1:    speed__1 >= meter_per_sec__first .
+C2:    speed__1 <= meter_per_sec__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_read_airspeed_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_read_airspeed_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_read_airspeed_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+

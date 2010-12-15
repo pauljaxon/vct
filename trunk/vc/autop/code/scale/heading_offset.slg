@@ -1,0 +1,227 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:07
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function Scale.Heading_Offset
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_heading_offset_1.  @@@@@@@@@@
+-S-  Applied substitution rule heading_offs_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New C1:  360 + target - present >= - 2147483648
+<S>  New C3:  present >= - 2147483648
+<S>  New C7:  target >= - 2147483648
+-S-  Applied substitution rule heading_offs_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New C2:  360 + target - present <= 2147483647
+<S>  New C4:  present <= 2147483647
+<S>  New C8:  target <= 2147483647
+-S-  Applied substitution rule heading_offs_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C5:  target >= - 2147484008
+-S-  Applied substitution rule heading_offs_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C6:  target <= 2147483287
+-S-  Applied substitution rule heading_offs_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__first by:
+          0.
+<S>  New H2:  present >= 0
+<S>  New H4:  target >= 0
+-S-  Applied substitution rule heading_offs_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__last by:
+          359.
+<S>  New H3:  present <= 359
+<S>  New H5:  target <= 359
+***  Proved C1:  360 + target - present >= - 2147483648
+     using hypotheses H3 & H4.
+***  Proved C3:  present >= - 2147483648
+     using hypothesis H2.
+***  Proved C7:  target >= - 2147483648
+     using hypothesis H4.
+***  Proved C2:  360 + target - present <= 2147483647
+     using hypotheses H2 & H5.
+***  Proved C4:  present <= 2147483647
+     using hypothesis H3.
+***  Proved C8:  target <= 2147483647
+     using hypothesis H5.
+***  Proved C5:  target >= - 2147484008
+     using hypothesis H4.
+***  Proved C6:  target <= 2147483287
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_heading_offset_2.  @@@@@@@@@@
+***  Proved C3:  present >= instruments__headdegree__first
+     using hypothesis H2.
+***  Proved C4:  present <= instruments__headdegree__last
+     using hypothesis H3.
+***  Proved C5:  target >= instruments__headdegree__first
+     using hypothesis H4.
+***  Proved C6:  target <= instruments__headdegree__last
+     using hypothesis H5.
+-S-  Applied substitution rule heading_offs_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H6:  360 + target - present >= - 2147483648
+<S>  New H8:  present >= - 2147483648
+<S>  New H12:  target >= - 2147483648
+-S-  Applied substitution rule heading_offs_rules(3).
+     This was achieved by replacing all occurrences of integer__last by:
+          2147483647.
+<S>  New H7:  360 + target - present <= 2147483647
+<S>  New H9:  present <= 2147483647
+<S>  New H13:  target <= 2147483647
+-S-  Applied substitution rule heading_offs_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H10:  target >= - 2147484008
+-S-  Applied substitution rule heading_offs_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H11:  target <= 2147483287
+-S-  Applied substitution rule heading_offs_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__first by:
+          0.
+<S>  New H2:  present >= 0
+<S>  New H4:  target >= 0
+-S-  Applied substitution rule heading_offs_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__last by:
+          359.
+<S>  New H3:  present <= 359
+<S>  New H5:  target <= 359
+***  Proved C1:  360 + target - present >= 0
+     using hypotheses H3 & H4.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H8 (redundant, given H2).
+---  Eliminated hypothesis H9 (redundant, given H3).
+---  Eliminated hypothesis H10 (redundant, given H4).
+---  Eliminated hypothesis H11 (redundant, given H5).
+---  Eliminated hypothesis H12 (redundant, given H4).
+---  Eliminated hypothesis H13 (redundant, given H5).
+***  Proved C2:  360 + target - present < 720
+     using hypotheses H2 & H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_heading_offset_3.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+***  Proved C2:  v - 360 <= integer__last
+     using hypothesis H8.
+-S-  Applied substitution rule heading_offs_rules(2).
+     This was achieved by replacing all occurrences of integer__first by:
+          - 2147483648.
+<S>  New H7:  v >= - 2147483648
+<S>  New C1:  v >= - 2147483288
+***  Proved C1:  v >= - 2147483288
+     using hypothesis H1.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_heading_offset_4.  @@@@@@@@@@
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  v >= 360
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  v < 720
+***  Proved C1:  v >= 360
+     using hypothesis H9.
+***  Proved C2:  v < 720
+     using hypothesis H2.
+***  Proved C3:  present >= instruments__headdegree__first
+     using hypothesis H3.
+***  Proved C4:  present <= instruments__headdegree__last
+     using hypothesis H4.
+***  Proved C5:  target >= instruments__headdegree__first
+     using hypothesis H5.
+***  Proved C6:  target <= instruments__headdegree__last
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_heading_offset_5.  @@@@@@@@@@
+***  Proved C1:  v >= 0
+     using hypothesis H1.
+***  Proved C2:  v < 360
+     using hypothesis H9.
+***  Proved C3:  present >= instruments__headdegree__first
+     using hypothesis H3.
+***  Proved C4:  present <= instruments__headdegree__last
+     using hypothesis H4.
+***  Proved C5:  target >= instruments__headdegree__first
+     using hypothesis H5.
+***  Proved C6:  target <= instruments__headdegree__last
+     using hypothesis H6.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_heading_offset_6.  @@@@@@@@@@
+-S-  Applied substitution rule heading_offs_rules(7).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__first by:
+          0.
+<S>  New H3:  present >= 0
+<S>  New H5:  target >= 0
+<S>  New C1:  v >= 0
+<S>  New C3:  v >= 0
+-S-  Applied substitution rule heading_offs_rules(8).
+     This was achieved by replacing all occurrences of 
+          instruments__headdegree__last by:
+          359.
+<S>  New H4:  present <= 359
+<S>  New H6:  target <= 359
+<S>  New C2:  v <= 359
+<S>  New C4:  v <= 359
+***  Proved C1:  v >= 0
+     using hypothesis H1.
+***  Proved C3:  v >= 0
+     using hypothesis H1.
+***  Proved C2:  v <= 359
+     using hypothesis H2.
+***  Proved C4:  v <= 359
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_heading_offset_7.  @@@@@@@@@@
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as 
+          H10).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H10).
+***  Proved C1:  true
+***  Proved C2:  v >= instruments__headdegree__first
+     using hypothesis H9.
+***  Proved C3:  v <= instruments__headdegree__last
+     using hypothesis H10.
+***  PROVED VC.
+

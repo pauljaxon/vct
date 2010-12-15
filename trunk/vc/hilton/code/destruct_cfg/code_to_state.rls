@@ -1,0 +1,73 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:43.49*/
+
+                    /*function destruct_cfg.Code_To_State*/
+
+
+rule_family code_to_stat_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+code_to_stat_rules(1): systemtypes__unsigned16__first <= element(state_to_code, [I]) may_be_deduced_from [inactive <= I, I <= detonated].
+code_to_stat_rules(2): element(state_to_code, [I]) <= 
+     systemtypes__unsigned16__last may_be_deduced_from [inactive <= I, I <= detonated].
+code_to_stat_rules(3): integer__size >= 0 may_be_deduced.
+code_to_stat_rules(4): integer__first may_be_replaced_by -2147483648.
+code_to_stat_rules(5): integer__last may_be_replaced_by 2147483647.
+code_to_stat_rules(6): integer__base__first may_be_replaced_by -2147483648.
+code_to_stat_rules(7): integer__base__last may_be_replaced_by 2147483647.
+code_to_stat_rules(8): systemtypes__unsigned16__size >= 0 may_be_deduced.
+code_to_stat_rules(9): systemtypes__unsigned16__first may_be_replaced_by 0.
+code_to_stat_rules(10): systemtypes__unsigned16__last may_be_replaced_by 65535.
+code_to_stat_rules(11): systemtypes__unsigned16__base__first may_be_replaced_by -2147483648.
+code_to_stat_rules(12): systemtypes__unsigned16__base__last may_be_replaced_by 2147483647.
+code_to_stat_rules(13): state__size >= 0 may_be_deduced.
+code_to_stat_rules(14): state__first may_be_replaced_by inactive.
+code_to_stat_rules(15): state__last may_be_replaced_by detonated.
+code_to_stat_rules(16): state__base__first may_be_replaced_by inactive.
+code_to_stat_rules(17): state__base__last may_be_replaced_by detonated.
+code_to_stat_rules(18): state__pos(state__first) may_be_replaced_by 0.
+code_to_stat_rules(19): state__pos(inactive) may_be_replaced_by 0.
+code_to_stat_rules(20): state__val(0) may_be_replaced_by inactive.
+code_to_stat_rules(21): state__pos(armed) may_be_replaced_by 1.
+code_to_stat_rules(22): state__val(1) may_be_replaced_by armed.
+code_to_stat_rules(23): state__pos(detonated) may_be_replaced_by 2.
+code_to_stat_rules(24): state__val(2) may_be_replaced_by 
+     detonated.
+code_to_stat_rules(25): state__pos(state__last) may_be_replaced_by 2.
+code_to_stat_rules(26): state__pos(succ(X)) may_be_replaced_by 
+     state__pos(X) + 1
+     if [X <=detonated, X <> detonated].
+code_to_stat_rules(27): state__pos(pred(X)) may_be_replaced_by 
+     state__pos(X) - 1
+     if [X >=inactive, X <> inactive].
+code_to_stat_rules(28): state__pos(X) >= 0 may_be_deduced_from
+     [inactive <= X, X <= detonated].
+code_to_stat_rules(29): state__pos(X) <= 2 may_be_deduced_from
+     [inactive <= X, X <= detonated].
+code_to_stat_rules(30): state__val(X) >= inactive may_be_deduced_from
+     [0 <= X, X <= 2].
+code_to_stat_rules(31): state__val(X) <= detonated may_be_deduced_from
+     [0 <= X, X <= 2].
+code_to_stat_rules(32): succ(state__val(X)) may_be_replaced_by 
+     state__val(X+1)
+     if [0 <= X, X < 2].
+code_to_stat_rules(33): pred(state__val(X)) may_be_replaced_by 
+     state__val(X-1)
+     if [0 < X, X <= 2].
+code_to_stat_rules(34): state__pos(state__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 2].
+code_to_stat_rules(35): state__val(state__pos(X)) may_be_replaced_by X
+     if [inactive <= X, X <= detonated].
+code_to_stat_rules(36): state__pos(X) <= state__pos(Y) & X <= Y are_interchangeable 
+     if [inactive <= X, X <= detonated, inactive <= Y, Y <= 
+     detonated].
+code_to_stat_rules(37): state__val(X) <= state__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 2, 0 <= Y, Y <= 2].

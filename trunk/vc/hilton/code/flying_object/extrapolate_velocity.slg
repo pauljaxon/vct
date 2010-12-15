@@ -1,0 +1,489 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:26
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure flying_object.Extrapolate_Velocity
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_velocity_1.  @@@@@@@@@@
+-S-  Applied substitution rule extrapolate__rules(35).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  t - fld_t(e) >= - 2147483648
+<S>  New C3:  fld_t(e) >= - 2147483648
+<S>  New C5:  t >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(36).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  t - fld_t(e) <= 2147483647
+<S>  New C4:  fld_t(e) <= 2147483647
+<S>  New C6:  t <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H18:  fld_z(fld_p(e)) >= - 200000
+<S>  New H20:  fld_y(fld_p(e)) >= - 200000
+<S>  New H22:  fld_x(fld_p(e)) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H19:  fld_z(fld_p(e)) <= 200000
+<S>  New H21:  fld_y(fld_p(e)) <= 200000
+<S>  New H23:  fld_x(fld_p(e)) <= 200000
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H12:  fld_vz(fld_v(e)) >= - 5000
+<S>  New H14:  fld_vy(fld_v(e)) >= - 5000
+<S>  New H16:  fld_vx(fld_v(e)) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H13:  fld_vz(fld_v(e)) <= 5000
+<S>  New H15:  fld_vy(fld_v(e)) <= 5000
+<S>  New H17:  fld_vx(fld_v(e)) <= 5000
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of 
+          measuretypes__cm_per_sec_2__first by:
+          - 30000.
+<S>  New H6:  fld_az(fld_a(e)) >= - 30000
+<S>  New H8:  fld_ay(fld_a(e)) >= - 30000
+<S>  New H10:  fld_ax(fld_a(e)) >= - 30000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__cm_per_sec_2__last by:
+          30000.
+<S>  New H7:  fld_az(fld_a(e)) <= 30000
+<S>  New H9:  fld_ay(fld_a(e)) <= 30000
+<S>  New H11:  fld_ax(fld_a(e)) <= 30000
+-S-  Applied substitution rule extrapolate__rules(28).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  t >= 0
+<S>  New H4:  fld_t(e) >= 0
+-S-  Applied substitution rule extrapolate__rules(29).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  t <= 8640000
+<S>  New H5:  fld_t(e) <= 8640000
+***  Proved C1:  t - fld_t(e) >= - 2147483648
+     using hypotheses H2 & H5.
+***  Proved C3:  fld_t(e) >= - 2147483648
+     using hypothesis H4.
+***  Proved C5:  t >= - 2147483648
+     using hypothesis H2.
+***  Proved C2:  t - fld_t(e) <= 2147483647
+     using hypotheses H3 & H4.
+***  Proved C4:  fld_t(e) <= 2147483647
+     using hypothesis H5.
+***  Proved C6:  t <= 2147483647
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_velocity_2.  @@@@@@@@@@
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H25).
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H12:  fld_vz(fld_v(e)) >= - 5000
+<S>  New H14:  fld_vy(fld_v(e)) >= - 5000
+<S>  New H16:  fld_vx(fld_v(e)) >= - 5000
+<S>  New C1:  fld_vx(fld_v(e)) + fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 5000
+<S>  New C3:  fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H13:  fld_vz(fld_v(e)) <= 5000
+<S>  New H15:  fld_vy(fld_v(e)) <= 5000
+<S>  New H17:  fld_vx(fld_v(e)) <= 5000
+<S>  New C2:  fld_vx(fld_v(e)) + fld_ax(fld_a(e)) * (t - fld_t(e)) <= 5000
+<S>  New C4:  fld_ax(fld_a(e)) * (t - fld_t(e)) <= 5000
+-S-  Applied substitution rule extrapolate__rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C5:  fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C6:  fld_ax(fld_a(e)) * (t - fld_t(e)) <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(35).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H24:  t - fld_t(e) >= - 2147483648
+<S>  New H26:  fld_t(e) >= - 2147483648
+<S>  New H28:  t >= - 2147483648
+<S>  New C7:  fld_ax(fld_a(e)) >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(36).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H25:  t - fld_t(e) <= 2147483647
+<S>  New H27:  fld_t(e) <= 2147483647
+<S>  New H29:  t <= 2147483647
+<S>  New C8:  fld_ax(fld_a(e)) <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H18:  fld_z(fld_p(e)) >= - 200000
+<S>  New H20:  fld_y(fld_p(e)) >= - 200000
+<S>  New H22:  fld_x(fld_p(e)) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H19:  fld_z(fld_p(e)) <= 200000
+<S>  New H21:  fld_y(fld_p(e)) <= 200000
+<S>  New H23:  fld_x(fld_p(e)) <= 200000
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of 
+          measuretypes__cm_per_sec_2__first by:
+          - 30000.
+<S>  New H6:  fld_az(fld_a(e)) >= - 30000
+<S>  New H8:  fld_ay(fld_a(e)) >= - 30000
+<S>  New H10:  fld_ax(fld_a(e)) >= - 30000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__cm_per_sec_2__last by:
+          30000.
+<S>  New H7:  fld_az(fld_a(e)) <= 30000
+<S>  New H9:  fld_ay(fld_a(e)) <= 30000
+<S>  New H11:  fld_ax(fld_a(e)) <= 30000
+-S-  Applied substitution rule extrapolate__rules(28).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  t >= 0
+<S>  New H4:  fld_t(e) >= 0
+-S-  Applied substitution rule extrapolate__rules(29).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  t <= 8640000
+<S>  New H5:  fld_t(e) <= 8640000
+***  Proved C7:  fld_ax(fld_a(e)) >= - 2147483648
+     using hypothesis H10.
+***  Proved C8:  fld_ax(fld_a(e)) <= 2147483647
+     using hypothesis H11.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H26 (redundant, given H4).
+---  Eliminated hypothesis H27 (redundant, given H5).
+---  Eliminated hypothesis H28 (redundant, given H2).
+---  Eliminated hypothesis H29 (redundant, given H3).
+     +++  New H32:  long_integer__size >= 0
+     +++  New H33:  measuretypes__meter__size >= 0
+     +++  New H34:  measuretypes__meter_per_sec__size >= 0
+     +++  New H35:  measuretypes__cm_per_sec_2__size >= 0
+     +++  New H36:  cartesian__position__size >= 0
+     +++  New H37:  cartesian__velocity__size >= 0
+     +++  New H38:  cartesian__accel__size >= 0
+     +++  New H39:  clock__millisecond__size >= 0
+     +++  New H40:  entity__size >= 0
+     +++  New H41:  integer32__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_velocity_3.  @@@@@@@@@@
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H25).
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H12:  fld_vz(fld_v(e)) >= - 5000
+<S>  New H14:  fld_vy(fld_v(e)) >= - 5000
+<S>  New H16:  fld_vx(fld_v(e)) >= - 5000
+<S>  New H32:  fld_vx(fld_v(e)) + fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 5000
+<S>  New H34:  fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 5000
+<S>  New C1:  fld_vy(fld_v(e)) + fld_ay(fld_a(e)) * (t - fld_t(e)) >= - 5000
+<S>  New C3:  fld_ay(fld_a(e)) * (t - fld_t(e)) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H13:  fld_vz(fld_v(e)) <= 5000
+<S>  New H15:  fld_vy(fld_v(e)) <= 5000
+<S>  New H17:  fld_vx(fld_v(e)) <= 5000
+<S>  New H33:  fld_vx(fld_v(e)) + fld_ax(fld_a(e)) * (t - fld_t(e)) <= 5000
+<S>  New H35:  fld_ax(fld_a(e)) * (t - fld_t(e)) <= 5000
+<S>  New C2:  fld_vy(fld_v(e)) + fld_ay(fld_a(e)) * (t - fld_t(e)) <= 5000
+<S>  New C4:  fld_ay(fld_a(e)) * (t - fld_t(e)) <= 5000
+-S-  Applied substitution rule extrapolate__rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H36:  fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 2147483648
+<S>  New C5:  fld_ay(fld_a(e)) * (t - fld_t(e)) >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H37:  fld_ax(fld_a(e)) * (t - fld_t(e)) <= 2147483647
+<S>  New C6:  fld_ay(fld_a(e)) * (t - fld_t(e)) <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(35).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H24:  t - fld_t(e) >= - 2147483648
+<S>  New H26:  fld_t(e) >= - 2147483648
+<S>  New H28:  t >= - 2147483648
+<S>  New H38:  fld_ax(fld_a(e)) >= - 2147483648
+<S>  New C7:  fld_ay(fld_a(e)) >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(36).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H25:  t - fld_t(e) <= 2147483647
+<S>  New H27:  fld_t(e) <= 2147483647
+<S>  New H29:  t <= 2147483647
+<S>  New H39:  fld_ax(fld_a(e)) <= 2147483647
+<S>  New C8:  fld_ay(fld_a(e)) <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H18:  fld_z(fld_p(e)) >= - 200000
+<S>  New H20:  fld_y(fld_p(e)) >= - 200000
+<S>  New H22:  fld_x(fld_p(e)) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H19:  fld_z(fld_p(e)) <= 200000
+<S>  New H21:  fld_y(fld_p(e)) <= 200000
+<S>  New H23:  fld_x(fld_p(e)) <= 200000
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of 
+          measuretypes__cm_per_sec_2__first by:
+          - 30000.
+<S>  New H6:  fld_az(fld_a(e)) >= - 30000
+<S>  New H8:  fld_ay(fld_a(e)) >= - 30000
+<S>  New H10:  fld_ax(fld_a(e)) >= - 30000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__cm_per_sec_2__last by:
+          30000.
+<S>  New H7:  fld_az(fld_a(e)) <= 30000
+<S>  New H9:  fld_ay(fld_a(e)) <= 30000
+<S>  New H11:  fld_ax(fld_a(e)) <= 30000
+-S-  Applied substitution rule extrapolate__rules(28).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  t >= 0
+<S>  New H4:  fld_t(e) >= 0
+-S-  Applied substitution rule extrapolate__rules(29).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  t <= 8640000
+<S>  New H5:  fld_t(e) <= 8640000
+***  Proved C7:  fld_ay(fld_a(e)) >= - 2147483648
+     using hypothesis H8.
+***  Proved C8:  fld_ay(fld_a(e)) <= 2147483647
+     using hypothesis H9.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H40 (true-hypothesis).
+---  Eliminated hypothesis H41 (true-hypothesis).
+---  Eliminated hypothesis H26 (redundant, given H4).
+---  Eliminated hypothesis H27 (redundant, given H5).
+---  Eliminated hypothesis H28 (redundant, given H2).
+---  Eliminated hypothesis H29 (redundant, given H3).
+---  Eliminated hypothesis H36 (redundant, given H34).
+---  Eliminated hypothesis H37 (redundant, given H35).
+---  Eliminated hypothesis H38 (redundant, given H10).
+---  Eliminated hypothesis H39 (redundant, given H11).
+     +++  New H42:  long_integer__size >= 0
+     +++  New H43:  measuretypes__meter__size >= 0
+     +++  New H44:  measuretypes__meter_per_sec__size >= 0
+     +++  New H45:  measuretypes__cm_per_sec_2__size >= 0
+     +++  New H46:  cartesian__position__size >= 0
+     +++  New H47:  cartesian__velocity__size >= 0
+     +++  New H48:  cartesian__accel__size >= 0
+     +++  New H49:  clock__millisecond__size >= 0
+     +++  New H50:  entity__size >= 0
+     +++  New H51:  integer32__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_velocity_4.  @@@@@@@@@@
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H50 has been replaced by "true".  (It is already present, as 
+          H24).
+---  Hypothesis H51 has been replaced by "true".  (It is already present, as 
+          H25).
+-S-  Applied substitution rule extrapolate__rules(12).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H12:  fld_vz(fld_v(e)) >= - 5000
+<S>  New H14:  fld_vy(fld_v(e)) >= - 5000
+<S>  New H16:  fld_vx(fld_v(e)) >= - 5000
+<S>  New H32:  fld_vx(fld_v(e)) + fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 5000
+<S>  New H34:  fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 5000
+<S>  New H42:  fld_vy(fld_v(e)) + fld_ay(fld_a(e)) * (t - fld_t(e)) >= - 5000
+<S>  New H44:  fld_ay(fld_a(e)) * (t - fld_t(e)) >= - 5000
+<S>  New C1:  fld_vz(fld_v(e)) + fld_az(fld_a(e)) * (t - fld_t(e)) >= - 5000
+<S>  New C3:  fld_az(fld_a(e)) * (t - fld_t(e)) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(13).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H13:  fld_vz(fld_v(e)) <= 5000
+<S>  New H15:  fld_vy(fld_v(e)) <= 5000
+<S>  New H17:  fld_vx(fld_v(e)) <= 5000
+<S>  New H33:  fld_vx(fld_v(e)) + fld_ax(fld_a(e)) * (t - fld_t(e)) <= 5000
+<S>  New H35:  fld_ax(fld_a(e)) * (t - fld_t(e)) <= 5000
+<S>  New H43:  fld_vy(fld_v(e)) + fld_ay(fld_a(e)) * (t - fld_t(e)) <= 5000
+<S>  New H45:  fld_ay(fld_a(e)) * (t - fld_t(e)) <= 5000
+<S>  New C2:  fld_vz(fld_v(e)) + fld_az(fld_a(e)) * (t - fld_t(e)) <= 5000
+<S>  New C4:  fld_az(fld_a(e)) * (t - fld_t(e)) <= 5000
+-S-  Applied substitution rule extrapolate__rules(4).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H36:  fld_ax(fld_a(e)) * (t - fld_t(e)) >= - 2147483648
+<S>  New H46:  fld_ay(fld_a(e)) * (t - fld_t(e)) >= - 2147483648
+<S>  New C5:  fld_az(fld_a(e)) * (t - fld_t(e)) >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H37:  fld_ax(fld_a(e)) * (t - fld_t(e)) <= 2147483647
+<S>  New H47:  fld_ay(fld_a(e)) * (t - fld_t(e)) <= 2147483647
+<S>  New C6:  fld_az(fld_a(e)) * (t - fld_t(e)) <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(35).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H24:  t - fld_t(e) >= - 2147483648
+<S>  New H26:  fld_t(e) >= - 2147483648
+<S>  New H28:  t >= - 2147483648
+<S>  New H38:  fld_ax(fld_a(e)) >= - 2147483648
+<S>  New H48:  fld_ay(fld_a(e)) >= - 2147483648
+<S>  New C7:  fld_az(fld_a(e)) >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(36).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H25:  t - fld_t(e) <= 2147483647
+<S>  New H27:  fld_t(e) <= 2147483647
+<S>  New H29:  t <= 2147483647
+<S>  New H39:  fld_ax(fld_a(e)) <= 2147483647
+<S>  New H49:  fld_ay(fld_a(e)) <= 2147483647
+<S>  New C8:  fld_az(fld_a(e)) <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H18:  fld_z(fld_p(e)) >= - 200000
+<S>  New H20:  fld_y(fld_p(e)) >= - 200000
+<S>  New H22:  fld_x(fld_p(e)) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H19:  fld_z(fld_p(e)) <= 200000
+<S>  New H21:  fld_y(fld_p(e)) <= 200000
+<S>  New H23:  fld_x(fld_p(e)) <= 200000
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of 
+          measuretypes__cm_per_sec_2__first by:
+          - 30000.
+<S>  New H6:  fld_az(fld_a(e)) >= - 30000
+<S>  New H8:  fld_ay(fld_a(e)) >= - 30000
+<S>  New H10:  fld_ax(fld_a(e)) >= - 30000
+-S-  Applied substitution rule extrapolate__rules(18).
+     This was achieved by replacing all occurrences of 
+          measuretypes__cm_per_sec_2__last by:
+          30000.
+<S>  New H7:  fld_az(fld_a(e)) <= 30000
+<S>  New H9:  fld_ay(fld_a(e)) <= 30000
+<S>  New H11:  fld_ax(fld_a(e)) <= 30000
+-S-  Applied substitution rule extrapolate__rules(28).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  t >= 0
+<S>  New H4:  fld_t(e) >= 0
+-S-  Applied substitution rule extrapolate__rules(29).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  t <= 8640000
+<S>  New H5:  fld_t(e) <= 8640000
+***  Proved C7:  fld_az(fld_a(e)) >= - 2147483648
+     using hypothesis H6.
+***  Proved C8:  fld_az(fld_a(e)) <= 2147483647
+     using hypothesis H7.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H40 (true-hypothesis).
+---  Eliminated hypothesis H41 (true-hypothesis).
+---  Eliminated hypothesis H50 (true-hypothesis).
+---  Eliminated hypothesis H51 (true-hypothesis).
+---  Eliminated hypothesis H26 (redundant, given H4).
+---  Eliminated hypothesis H27 (redundant, given H5).
+---  Eliminated hypothesis H28 (redundant, given H2).
+---  Eliminated hypothesis H29 (redundant, given H3).
+---  Eliminated hypothesis H36 (redundant, given H34).
+---  Eliminated hypothesis H37 (redundant, given H35).
+---  Eliminated hypothesis H38 (redundant, given H10).
+---  Eliminated hypothesis H39 (redundant, given H11).
+---  Eliminated hypothesis H46 (redundant, given H44).
+---  Eliminated hypothesis H47 (redundant, given H45).
+---  Eliminated hypothesis H48 (redundant, given H8).
+---  Eliminated hypothesis H49 (redundant, given H9).
+     +++  New H52:  long_integer__size >= 0
+     +++  New H53:  measuretypes__meter__size >= 0
+     +++  New H54:  measuretypes__meter_per_sec__size >= 0
+     +++  New H55:  measuretypes__cm_per_sec_2__size >= 0
+     +++  New H56:  cartesian__position__size >= 0
+     +++  New H57:  cartesian__velocity__size >= 0
+     +++  New H58:  cartesian__accel__size >= 0
+     +++  New H59:  clock__millisecond__size >= 0
+     +++  New H60:  entity__size >= 0
+     +++  New H61:  integer32__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_velocity_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

@@ -1,0 +1,4139 @@
+Terminals unused in grammar
+
+   TRIPLEBANG
+
+
+Grammar
+
+    0 $accept: top FILE_END
+
+    1 top: file
+
+    2 file: fdl_file
+    3     | rls_file
+    4     | vcg_file
+
+    5 fdl_file: TITLE program_kind id SEMIC fdl_decls END SEMIC
+
+    6 program_kind: TASK_TYPE
+    7             | FUNCTION
+    8             | PROCEDURE
+
+    9 fdl_decls: /* empty */
+   10          | fdl_decls fdl_decl
+
+   11 fdl_decl: TYPE id_str EQ type SEMIC
+   12         | CONST id_str COLON type EQ exp SEMIC
+   13         | VAR id_str COLON type SEMIC
+   14         | FUNCTION id_str LPAREN types RPAREN COLON type SEMIC
+   15         | FUNCTION id_str COLON type SEMIC
+
+   16 types: type
+   17      | types COMMA type
+
+   18 rls_file: rule_families
+
+   19 rule_families: rule_family
+   20              | rule_families rule_family
+
+   21 rule_family: RULE_FAMILY id_str COLON typeassums DOT rules
+   22            | RULE_FAMILY id_str COLON DOT rules
+
+   23 typeassums: typeassum
+   24           | typeassums AMPERSAND typeassum
+
+   25 typeassum: exp REQUIRES LSB typedecls RSB
+
+   26 rules: /* empty */
+   27      | rules rule
+
+   28 rule: id_str LPAREN NATNUM RPAREN COLON rule_body DOT
+
+   29 rule_body: exp MAY_BE_REPLACED_BY exp rule_condition
+   30          | exp MAY_BE_DEDUCED
+   31          | exp MAY_BE_DEDUCED_FROM expseq
+   32          | exp AMPERSAND exp ARE_INTERCHANGEABLE rule_condition
+
+   33 rule_condition: /* empty */
+   34               | IF expseq
+
+   35 vcg_file: goalsets
+
+   36 goalsets: goalset
+   37         | goalsets goalset
+
+   38 goalset: FOR GOAL_ORIGINS COLON goals
+
+   39 goals: goal
+   40      | goals goal
+
+   41 goal: SUBPROG_ID DOT hyps IMPLIES concls
+   42     | SUBPROG_ID DOT TRIPLESTAR id_str DOT
+
+   43 hyps: /* empty */
+   44     | hyps hyp
+
+   45 hyp: HYP_ID COLON exp DOT
+
+   46 concls: /* empty */
+   47       | concls concl
+
+   48 concl: CONCL_ID COLON exp DOT
+
+   49 id_str: ID
+   50       | HYP_ID
+   51       | CONCL_ID
+   52       | SUBPROG_ID
+   53       | TASK_TYPE
+
+   54 id: id_str
+
+   55 ids: id
+   56    | ids COMMA id
+
+   57 typedecls: typedecl
+   58          | typedecls COMMA typedecl
+
+   59 typedecl: id_str COLON type
+
+   60 multidecl: ids COLON type
+
+   61 expseq: LSB expseq1 RSB
+
+   62 expseq1: exp
+   63        | expseq1 COMMA exp
+
+   64 type: type_id
+   65     | LPAREN ids RPAREN
+   66     | ARRAY LSB types RSB OF type
+   67     | RECORD recordtypedecls END
+
+   68 recordtypedecls: multidecl
+   69                | recordtypedecls SEMIC multidecl
+
+   70 type_id: id
+
+   71 exp: FOR_ALL LPAREN multidecl COMMA exp RPAREN
+   72    | FOR_SOME LPAREN multidecl COMMA exp RPAREN
+   73    | exp IMPLIES exp
+   74    | exp IFF exp
+   75    | exp AND exp
+   76    | exp OR exp
+   77    | NOT exp
+   78    | exp EQ exp
+   79    | exp NE exp
+   80    | exp LT exp
+   81    | exp GT exp
+   82    | exp LE exp
+   83    | exp GE exp
+   84    | PLUS exp
+   85    | MINUS exp
+   86    | exp PLUS exp
+   87    | exp MINUS exp
+   88    | exp STAR exp
+   89    | exp SLASH exp
+   90    | exp MOD exp
+   91    | exp DIV exp
+   92    | exp STARSTAR exp
+   93    | exp DOTDOT exp
+   94    | LPAREN exp RPAREN
+   95    | NATNUM
+   96    | expseq
+   97    | exp_id
+   98    | id_str LPAREN aexpseq RPAREN
+
+   99 aexpseq: aexp
+  100        | aexpseq COMMA aexp
+
+  101 aexp: exp
+  102     | indexset ASSIGN exp
+
+  103 indexset: exp
+  104         | indexset AMPERSAND exp
+
+  105 exp_id: id
+
+
+Terminals, with rules where they appear
+
+FILE_END (0) 0
+error (256)
+RULE_FAMILY (258) 21 22
+TITLE (259) 5
+FOR (260) 38
+GOAL_ORIGINS (261) 38
+COLON (262) 12 13 14 15 21 22 28 38 45 48 59 60
+LSB (263) 25 61 66
+RSB (264) 25 61 66
+LPAREN (265) 14 28 65 71 72 94 98
+RPAREN (266) 14 28 65 71 72 94 98
+COMMA (267) 17 56 58 63 71 72 100
+AMPERSAND (268) 24 32 104
+SEMIC (269) 5 11 12 13 14 15 69
+DOT (270) 21 22 28 41 42 45 48
+DOTDOT (271) 93
+REQUIRES (272) 25
+MAY_BE_REPLACED_BY (273) 29
+MAY_BE_DEDUCED (274) 30
+MAY_BE_DEDUCED_FROM (275) 31
+ARE_INTERCHANGEABLE (276) 32
+IF (277) 34
+END (278) 5 67
+FUNCTION (279) 7 14 15
+PROCEDURE (280) 8
+TYPE (281) 11
+VAR (282) 13
+CONST (283) 12
+FOR_SOME (284) 72
+FOR_ALL (285) 71
+ARRAY (286) 66
+RECORD (287) 67
+ASSIGN (288) 102
+OF (289) 66
+SUBPROG_ID (290) 41 42 52
+CONCL_ID (291) 48 51
+HYP_ID (292) 45 50
+TASK_TYPE (293) 6 53
+ID (294) 49
+NATNUM (295) 28 95
+TRIPLESTAR (296) 42
+TRIPLEBANG (297)
+IMPLIES (298) 41 73
+IFF (299) 74
+OR (300) 76
+AND (301) 75
+NOT (302) 77
+LE (303) 82
+LT (304) 80
+GE (305) 83
+GT (306) 81
+NE (307) 79
+EQ (308) 11 12 78
+MINUS (309) 85 87
+PLUS (310) 84 86
+MOD (311) 90
+DIV (312) 91
+SLASH (313) 89
+STAR (314) 88
+UMINUS (315)
+STARSTAR (316) 92
+
+
+Nonterminals, with rules where they appear
+
+$accept (62)
+    on left: 0
+top (63)
+    on left: 1, on right: 0
+file (64)
+    on left: 2 3 4, on right: 1
+fdl_file (65)
+    on left: 5, on right: 2
+program_kind (66)
+    on left: 6 7 8, on right: 5
+fdl_decls (67)
+    on left: 9 10, on right: 5 10
+fdl_decl (68)
+    on left: 11 12 13 14 15, on right: 10
+types (69)
+    on left: 16 17, on right: 14 17 66
+rls_file (70)
+    on left: 18, on right: 3
+rule_families (71)
+    on left: 19 20, on right: 18 20
+rule_family (72)
+    on left: 21 22, on right: 19 20
+typeassums (73)
+    on left: 23 24, on right: 21 24
+typeassum (74)
+    on left: 25, on right: 23 24
+rules (75)
+    on left: 26 27, on right: 21 22 27
+rule (76)
+    on left: 28, on right: 27
+rule_body (77)
+    on left: 29 30 31 32, on right: 28
+rule_condition (78)
+    on left: 33 34, on right: 29 32
+vcg_file (79)
+    on left: 35, on right: 4
+goalsets (80)
+    on left: 36 37, on right: 35 37
+goalset (81)
+    on left: 38, on right: 36 37
+goals (82)
+    on left: 39 40, on right: 38 40
+goal (83)
+    on left: 41 42, on right: 39 40
+hyps (84)
+    on left: 43 44, on right: 41 44
+hyp (85)
+    on left: 45, on right: 44
+concls (86)
+    on left: 46 47, on right: 41 47
+concl (87)
+    on left: 48, on right: 47
+id_str (88)
+    on left: 49 50 51 52 53, on right: 11 12 13 14 15 21 22 28 42 54
+    59 98
+id (89)
+    on left: 54, on right: 5 55 56 70 105
+ids (90)
+    on left: 55 56, on right: 56 60 65
+typedecls (91)
+    on left: 57 58, on right: 25 58
+typedecl (92)
+    on left: 59, on right: 57 58
+multidecl (93)
+    on left: 60, on right: 68 69 71 72
+expseq (94)
+    on left: 61, on right: 31 34 96
+expseq1 (95)
+    on left: 62 63, on right: 61 63
+type (96)
+    on left: 64 65 66 67, on right: 11 12 13 14 15 16 17 59 60 66
+recordtypedecls (97)
+    on left: 68 69, on right: 67 69
+type_id (98)
+    on left: 70, on right: 64
+exp (99)
+    on left: 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88
+    89 90 91 92 93 94 95 96 97 98, on right: 12 25 29 30 31 32 45 48
+    62 63 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89
+    90 91 92 93 94 101 102 103 104
+aexpseq (100)
+    on left: 99 100, on right: 98 100
+aexp (101)
+    on left: 101 102, on right: 99 100
+indexset (102)
+    on left: 103 104, on right: 102 104
+exp_id (103)
+    on left: 105, on right: 97
+
+
+state 0
+
+    0 $accept: . top FILE_END
+
+    RULE_FAMILY  shift, and go to state 1
+    TITLE        shift, and go to state 2
+    FOR          shift, and go to state 3
+
+    top            go to state 4
+    file           go to state 5
+    fdl_file       go to state 6
+    rls_file       go to state 7
+    rule_families  go to state 8
+    rule_family    go to state 9
+    vcg_file       go to state 10
+    goalsets       go to state 11
+    goalset        go to state 12
+
+
+state 1
+
+   21 rule_family: RULE_FAMILY . id_str COLON typeassums DOT rules
+   22            | RULE_FAMILY . id_str COLON DOT rules
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str  go to state 18
+
+
+state 2
+
+    5 fdl_file: TITLE . program_kind id SEMIC fdl_decls END SEMIC
+
+    FUNCTION   shift, and go to state 19
+    PROCEDURE  shift, and go to state 20
+    TASK_TYPE  shift, and go to state 21
+
+    program_kind  go to state 22
+
+
+state 3
+
+   38 goalset: FOR . GOAL_ORIGINS COLON goals
+
+    GOAL_ORIGINS  shift, and go to state 23
+
+
+state 4
+
+    0 $accept: top . FILE_END
+
+    FILE_END  shift, and go to state 24
+
+
+state 5
+
+    1 top: file .
+
+    $default  reduce using rule 1 (top)
+
+
+state 6
+
+    2 file: fdl_file .
+
+    $default  reduce using rule 2 (file)
+
+
+state 7
+
+    3 file: rls_file .
+
+    $default  reduce using rule 3 (file)
+
+
+state 8
+
+   18 rls_file: rule_families .
+   20 rule_families: rule_families . rule_family
+
+    RULE_FAMILY  shift, and go to state 1
+
+    $default  reduce using rule 18 (rls_file)
+
+    rule_family  go to state 25
+
+
+state 9
+
+   19 rule_families: rule_family .
+
+    $default  reduce using rule 19 (rule_families)
+
+
+state 10
+
+    4 file: vcg_file .
+
+    $default  reduce using rule 4 (file)
+
+
+state 11
+
+   35 vcg_file: goalsets .
+   37 goalsets: goalsets . goalset
+
+    FOR  shift, and go to state 3
+
+    $default  reduce using rule 35 (vcg_file)
+
+    goalset  go to state 26
+
+
+state 12
+
+   36 goalsets: goalset .
+
+    $default  reduce using rule 36 (goalsets)
+
+
+state 13
+
+   52 id_str: SUBPROG_ID .
+
+    $default  reduce using rule 52 (id_str)
+
+
+state 14
+
+   51 id_str: CONCL_ID .
+
+    $default  reduce using rule 51 (id_str)
+
+
+state 15
+
+   50 id_str: HYP_ID .
+
+    $default  reduce using rule 50 (id_str)
+
+
+state 16
+
+   53 id_str: TASK_TYPE .
+
+    $default  reduce using rule 53 (id_str)
+
+
+state 17
+
+   49 id_str: ID .
+
+    $default  reduce using rule 49 (id_str)
+
+
+state 18
+
+   21 rule_family: RULE_FAMILY id_str . COLON typeassums DOT rules
+   22            | RULE_FAMILY id_str . COLON DOT rules
+
+    COLON  shift, and go to state 27
+
+
+state 19
+
+    7 program_kind: FUNCTION .
+
+    $default  reduce using rule 7 (program_kind)
+
+
+state 20
+
+    8 program_kind: PROCEDURE .
+
+    $default  reduce using rule 8 (program_kind)
+
+
+state 21
+
+    6 program_kind: TASK_TYPE .
+
+    $default  reduce using rule 6 (program_kind)
+
+
+state 22
+
+    5 fdl_file: TITLE program_kind . id SEMIC fdl_decls END SEMIC
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str  go to state 28
+    id      go to state 29
+
+
+state 23
+
+   38 goalset: FOR GOAL_ORIGINS . COLON goals
+
+    COLON  shift, and go to state 30
+
+
+state 24
+
+    0 $accept: top FILE_END .
+
+    $default  accept
+
+
+state 25
+
+   20 rule_families: rule_families rule_family .
+
+    $default  reduce using rule 20 (rule_families)
+
+
+state 26
+
+   37 goalsets: goalsets goalset .
+
+    $default  reduce using rule 37 (goalsets)
+
+
+state 27
+
+   21 rule_family: RULE_FAMILY id_str COLON . typeassums DOT rules
+   22            | RULE_FAMILY id_str COLON . DOT rules
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    DOT         shift, and go to state 33
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    typeassums  go to state 40
+    typeassum   go to state 41
+    id_str      go to state 42
+    id          go to state 43
+    expseq      go to state 44
+    exp         go to state 45
+    exp_id      go to state 46
+
+
+state 28
+
+   54 id: id_str .
+
+    $default  reduce using rule 54 (id)
+
+
+state 29
+
+    5 fdl_file: TITLE program_kind id . SEMIC fdl_decls END SEMIC
+
+    SEMIC  shift, and go to state 47
+
+
+state 30
+
+   38 goalset: FOR GOAL_ORIGINS COLON . goals
+
+    SUBPROG_ID  shift, and go to state 48
+
+    goals  go to state 49
+    goal   go to state 50
+
+
+state 31
+
+   61 expseq: LSB . expseq1 RSB
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str   go to state 42
+    id       go to state 43
+    expseq   go to state 44
+    expseq1  go to state 51
+    exp      go to state 52
+    exp_id   go to state 46
+
+
+state 32
+
+   94 exp: LPAREN . exp RPAREN
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 53
+    exp_id  go to state 46
+
+
+state 33
+
+   22 rule_family: RULE_FAMILY id_str COLON DOT . rules
+
+    $default  reduce using rule 26 (rules)
+
+    rules  go to state 54
+
+
+state 34
+
+   72 exp: FOR_SOME . LPAREN multidecl COMMA exp RPAREN
+
+    LPAREN  shift, and go to state 55
+
+
+state 35
+
+   71 exp: FOR_ALL . LPAREN multidecl COMMA exp RPAREN
+
+    LPAREN  shift, and go to state 56
+
+
+state 36
+
+   95 exp: NATNUM .
+
+    $default  reduce using rule 95 (exp)
+
+
+state 37
+
+   77 exp: NOT . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 57
+    exp_id  go to state 46
+
+
+state 38
+
+   85 exp: MINUS . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 58
+    exp_id  go to state 46
+
+
+state 39
+
+   84 exp: PLUS . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 59
+    exp_id  go to state 46
+
+
+state 40
+
+   21 rule_family: RULE_FAMILY id_str COLON typeassums . DOT rules
+   24 typeassums: typeassums . AMPERSAND typeassum
+
+    AMPERSAND  shift, and go to state 60
+    DOT        shift, and go to state 61
+
+
+state 41
+
+   23 typeassums: typeassum .
+
+    $default  reduce using rule 23 (typeassums)
+
+
+state 42
+
+   54 id: id_str .
+   98 exp: id_str . LPAREN aexpseq RPAREN
+
+    LPAREN  shift, and go to state 62
+
+    $default  reduce using rule 54 (id)
+
+
+state 43
+
+  105 exp_id: id .
+
+    $default  reduce using rule 105 (exp_id)
+
+
+state 44
+
+   96 exp: expseq .
+
+    $default  reduce using rule 96 (exp)
+
+
+state 45
+
+   25 typeassum: exp . REQUIRES LSB typedecls RSB
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    DOTDOT    shift, and go to state 63
+    REQUIRES  shift, and go to state 64
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+
+state 46
+
+   97 exp: exp_id .
+
+    $default  reduce using rule 97 (exp)
+
+
+state 47
+
+    5 fdl_file: TITLE program_kind id SEMIC . fdl_decls END SEMIC
+
+    $default  reduce using rule 9 (fdl_decls)
+
+    fdl_decls  go to state 82
+
+
+state 48
+
+   41 goal: SUBPROG_ID . DOT hyps IMPLIES concls
+   42     | SUBPROG_ID . DOT TRIPLESTAR id_str DOT
+
+    DOT  shift, and go to state 83
+
+
+state 49
+
+   38 goalset: FOR GOAL_ORIGINS COLON goals .
+   40 goals: goals . goal
+
+    SUBPROG_ID  shift, and go to state 48
+
+    $default  reduce using rule 38 (goalset)
+
+    goal  go to state 84
+
+
+state 50
+
+   39 goals: goal .
+
+    $default  reduce using rule 39 (goals)
+
+
+state 51
+
+   61 expseq: LSB expseq1 . RSB
+   63 expseq1: expseq1 . COMMA exp
+
+    RSB    shift, and go to state 85
+    COMMA  shift, and go to state 86
+
+
+state 52
+
+   62 expseq1: exp .
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    DOTDOT    shift, and go to state 63
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 62 (expseq1)
+
+
+state 53
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+   94    | LPAREN exp . RPAREN
+
+    RPAREN    shift, and go to state 87
+    DOTDOT    shift, and go to state 63
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+
+state 54
+
+   22 rule_family: RULE_FAMILY id_str COLON DOT rules .
+   27 rules: rules . rule
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    $default  reduce using rule 22 (rule_family)
+
+    rule    go to state 88
+    id_str  go to state 89
+
+
+state 55
+
+   72 exp: FOR_SOME LPAREN . multidecl COMMA exp RPAREN
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str     go to state 28
+    id         go to state 90
+    ids        go to state 91
+    multidecl  go to state 92
+
+
+state 56
+
+   71 exp: FOR_ALL LPAREN . multidecl COMMA exp RPAREN
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str     go to state 28
+    id         go to state 90
+    ids        go to state 91
+    multidecl  go to state 93
+
+
+state 57
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   77    | NOT exp .
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 77 (exp)
+
+
+state 58
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   85    | MINUS exp .
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 85 (exp)
+
+
+state 59
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   84    | PLUS exp .
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 84 (exp)
+
+
+state 60
+
+   24 typeassums: typeassums AMPERSAND . typeassum
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    typeassum  go to state 94
+    id_str     go to state 42
+    id         go to state 43
+    expseq     go to state 44
+    exp        go to state 45
+    exp_id     go to state 46
+
+
+state 61
+
+   21 rule_family: RULE_FAMILY id_str COLON typeassums DOT . rules
+
+    $default  reduce using rule 26 (rules)
+
+    rules  go to state 95
+
+
+state 62
+
+   98 exp: id_str LPAREN . aexpseq RPAREN
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str    go to state 42
+    id        go to state 43
+    expseq    go to state 44
+    exp       go to state 96
+    aexpseq   go to state 97
+    aexp      go to state 98
+    indexset  go to state 99
+    exp_id    go to state 46
+
+
+state 63
+
+   93 exp: exp DOTDOT . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 100
+    exp_id  go to state 46
+
+
+state 64
+
+   25 typeassum: exp REQUIRES . LSB typedecls RSB
+
+    LSB  shift, and go to state 101
+
+
+state 65
+
+   73 exp: exp IMPLIES . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 102
+    exp_id  go to state 46
+
+
+state 66
+
+   74 exp: exp IFF . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 103
+    exp_id  go to state 46
+
+
+state 67
+
+   76 exp: exp OR . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 104
+    exp_id  go to state 46
+
+
+state 68
+
+   75 exp: exp AND . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 105
+    exp_id  go to state 46
+
+
+state 69
+
+   82 exp: exp LE . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 106
+    exp_id  go to state 46
+
+
+state 70
+
+   80 exp: exp LT . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 107
+    exp_id  go to state 46
+
+
+state 71
+
+   83 exp: exp GE . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 108
+    exp_id  go to state 46
+
+
+state 72
+
+   81 exp: exp GT . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 109
+    exp_id  go to state 46
+
+
+state 73
+
+   79 exp: exp NE . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 110
+    exp_id  go to state 46
+
+
+state 74
+
+   78 exp: exp EQ . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 111
+    exp_id  go to state 46
+
+
+state 75
+
+   87 exp: exp MINUS . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 112
+    exp_id  go to state 46
+
+
+state 76
+
+   86 exp: exp PLUS . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 113
+    exp_id  go to state 46
+
+
+state 77
+
+   90 exp: exp MOD . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 114
+    exp_id  go to state 46
+
+
+state 78
+
+   91 exp: exp DIV . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 115
+    exp_id  go to state 46
+
+
+state 79
+
+   89 exp: exp SLASH . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 116
+    exp_id  go to state 46
+
+
+state 80
+
+   88 exp: exp STAR . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 117
+    exp_id  go to state 46
+
+
+state 81
+
+   92 exp: exp STARSTAR . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 118
+    exp_id  go to state 46
+
+
+state 82
+
+    5 fdl_file: TITLE program_kind id SEMIC fdl_decls . END SEMIC
+   10 fdl_decls: fdl_decls . fdl_decl
+
+    END       shift, and go to state 119
+    FUNCTION  shift, and go to state 120
+    TYPE      shift, and go to state 121
+    VAR       shift, and go to state 122
+    CONST     shift, and go to state 123
+
+    fdl_decl  go to state 124
+
+
+state 83
+
+   41 goal: SUBPROG_ID DOT . hyps IMPLIES concls
+   42     | SUBPROG_ID DOT . TRIPLESTAR id_str DOT
+
+    TRIPLESTAR  shift, and go to state 125
+
+    $default  reduce using rule 43 (hyps)
+
+    hyps  go to state 126
+
+
+state 84
+
+   40 goals: goals goal .
+
+    $default  reduce using rule 40 (goals)
+
+
+state 85
+
+   61 expseq: LSB expseq1 RSB .
+
+    $default  reduce using rule 61 (expseq)
+
+
+state 86
+
+   63 expseq1: expseq1 COMMA . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 127
+    exp_id  go to state 46
+
+
+state 87
+
+   94 exp: LPAREN exp RPAREN .
+
+    $default  reduce using rule 94 (exp)
+
+
+state 88
+
+   27 rules: rules rule .
+
+    $default  reduce using rule 27 (rules)
+
+
+state 89
+
+   28 rule: id_str . LPAREN NATNUM RPAREN COLON rule_body DOT
+
+    LPAREN  shift, and go to state 128
+
+
+state 90
+
+   55 ids: id .
+
+    $default  reduce using rule 55 (ids)
+
+
+state 91
+
+   56 ids: ids . COMMA id
+   60 multidecl: ids . COLON type
+
+    COLON  shift, and go to state 129
+    COMMA  shift, and go to state 130
+
+
+state 92
+
+   72 exp: FOR_SOME LPAREN multidecl . COMMA exp RPAREN
+
+    COMMA  shift, and go to state 131
+
+
+state 93
+
+   71 exp: FOR_ALL LPAREN multidecl . COMMA exp RPAREN
+
+    COMMA  shift, and go to state 132
+
+
+state 94
+
+   24 typeassums: typeassums AMPERSAND typeassum .
+
+    $default  reduce using rule 24 (typeassums)
+
+
+state 95
+
+   21 rule_family: RULE_FAMILY id_str COLON typeassums DOT rules .
+   27 rules: rules . rule
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    $default  reduce using rule 21 (rule_family)
+
+    rule    go to state 88
+    id_str  go to state 89
+
+
+state 96
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+  101 aexp: exp .
+  103 indexset: exp .
+
+    DOTDOT    shift, and go to state 63
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    AMPERSAND  reduce using rule 103 (indexset)
+    ASSIGN     reduce using rule 103 (indexset)
+    $default   reduce using rule 101 (aexp)
+
+
+state 97
+
+   98 exp: id_str LPAREN aexpseq . RPAREN
+  100 aexpseq: aexpseq . COMMA aexp
+
+    RPAREN  shift, and go to state 133
+    COMMA   shift, and go to state 134
+
+
+state 98
+
+   99 aexpseq: aexp .
+
+    $default  reduce using rule 99 (aexpseq)
+
+
+state 99
+
+  102 aexp: indexset . ASSIGN exp
+  104 indexset: indexset . AMPERSAND exp
+
+    AMPERSAND  shift, and go to state 135
+    ASSIGN     shift, and go to state 136
+
+
+state 100
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+   93    | exp DOTDOT exp .
+
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    DOTDOT  error (nonassociative)
+
+    $default  reduce using rule 93 (exp)
+
+
+state 101
+
+   25 typeassum: exp REQUIRES LSB . typedecls RSB
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str     go to state 137
+    typedecls  go to state 138
+    typedecl   go to state 139
+
+
+state 102
+
+   73 exp: exp . IMPLIES exp
+   73    | exp IMPLIES exp .
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    IMPLIES  error (nonassociative)
+    IFF      error (nonassociative)
+
+    $default  reduce using rule 73 (exp)
+
+
+state 103
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   74    | exp IFF exp .
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    IMPLIES  error (nonassociative)
+    IFF      error (nonassociative)
+
+    $default  reduce using rule 74 (exp)
+
+
+state 104
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   76    | exp OR exp .
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 76 (exp)
+
+
+state 105
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   75    | exp AND exp .
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 75 (exp)
+
+
+state 106
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   82    | exp LE exp .
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    LE  error (nonassociative)
+    LT  error (nonassociative)
+    GE  error (nonassociative)
+    GT  error (nonassociative)
+    NE  error (nonassociative)
+    EQ  error (nonassociative)
+
+    $default  reduce using rule 82 (exp)
+
+
+state 107
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   80    | exp LT exp .
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    LE  error (nonassociative)
+    LT  error (nonassociative)
+    GE  error (nonassociative)
+    GT  error (nonassociative)
+    NE  error (nonassociative)
+    EQ  error (nonassociative)
+
+    $default  reduce using rule 80 (exp)
+
+
+state 108
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   83    | exp GE exp .
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    LE  error (nonassociative)
+    LT  error (nonassociative)
+    GE  error (nonassociative)
+    GT  error (nonassociative)
+    NE  error (nonassociative)
+    EQ  error (nonassociative)
+
+    $default  reduce using rule 83 (exp)
+
+
+state 109
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   81    | exp GT exp .
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    LE  error (nonassociative)
+    LT  error (nonassociative)
+    GE  error (nonassociative)
+    GT  error (nonassociative)
+    NE  error (nonassociative)
+    EQ  error (nonassociative)
+
+    $default  reduce using rule 81 (exp)
+
+
+state 110
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   79    | exp NE exp .
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    LE  error (nonassociative)
+    LT  error (nonassociative)
+    GE  error (nonassociative)
+    GT  error (nonassociative)
+    NE  error (nonassociative)
+    EQ  error (nonassociative)
+
+    $default  reduce using rule 79 (exp)
+
+
+state 111
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   78    | exp EQ exp .
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    LE  error (nonassociative)
+    LT  error (nonassociative)
+    GE  error (nonassociative)
+    GT  error (nonassociative)
+    NE  error (nonassociative)
+    EQ  error (nonassociative)
+
+    $default  reduce using rule 78 (exp)
+
+
+state 112
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   87    | exp MINUS exp .
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 87 (exp)
+
+
+state 113
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   86    | exp PLUS exp .
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 86 (exp)
+
+
+state 114
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   90    | exp MOD exp .
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 90 (exp)
+
+
+state 115
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   91    | exp DIV exp .
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 91 (exp)
+
+
+state 116
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   89    | exp SLASH exp .
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 89 (exp)
+
+
+state 117
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   88    | exp STAR exp .
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 88 (exp)
+
+
+state 118
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   92    | exp STARSTAR exp .
+   93    | exp . DOTDOT exp
+
+    $default  reduce using rule 92 (exp)
+
+
+state 119
+
+    5 fdl_file: TITLE program_kind id SEMIC fdl_decls END . SEMIC
+
+    SEMIC  shift, and go to state 140
+
+
+state 120
+
+   14 fdl_decl: FUNCTION . id_str LPAREN types RPAREN COLON type SEMIC
+   15         | FUNCTION . id_str COLON type SEMIC
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str  go to state 141
+
+
+state 121
+
+   11 fdl_decl: TYPE . id_str EQ type SEMIC
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str  go to state 142
+
+
+state 122
+
+   13 fdl_decl: VAR . id_str COLON type SEMIC
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str  go to state 143
+
+
+state 123
+
+   12 fdl_decl: CONST . id_str COLON type EQ exp SEMIC
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str  go to state 144
+
+
+state 124
+
+   10 fdl_decls: fdl_decls fdl_decl .
+
+    $default  reduce using rule 10 (fdl_decls)
+
+
+state 125
+
+   42 goal: SUBPROG_ID DOT TRIPLESTAR . id_str DOT
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str  go to state 145
+
+
+state 126
+
+   41 goal: SUBPROG_ID DOT hyps . IMPLIES concls
+   44 hyps: hyps . hyp
+
+    HYP_ID   shift, and go to state 146
+    IMPLIES  shift, and go to state 147
+
+    hyp  go to state 148
+
+
+state 127
+
+   63 expseq1: expseq1 COMMA exp .
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    DOTDOT    shift, and go to state 63
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 63 (expseq1)
+
+
+state 128
+
+   28 rule: id_str LPAREN . NATNUM RPAREN COLON rule_body DOT
+
+    NATNUM  shift, and go to state 149
+
+
+state 129
+
+   60 multidecl: ids COLON . type
+
+    LPAREN      shift, and go to state 150
+    ARRAY       shift, and go to state 151
+    RECORD      shift, and go to state 152
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str   go to state 28
+    id       go to state 153
+    type     go to state 154
+    type_id  go to state 155
+
+
+state 130
+
+   56 ids: ids COMMA . id
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str  go to state 28
+    id      go to state 156
+
+
+state 131
+
+   72 exp: FOR_SOME LPAREN multidecl COMMA . exp RPAREN
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 157
+    exp_id  go to state 46
+
+
+state 132
+
+   71 exp: FOR_ALL LPAREN multidecl COMMA . exp RPAREN
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 158
+    exp_id  go to state 46
+
+
+state 133
+
+   98 exp: id_str LPAREN aexpseq RPAREN .
+
+    $default  reduce using rule 98 (exp)
+
+
+state 134
+
+  100 aexpseq: aexpseq COMMA . aexp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str    go to state 42
+    id        go to state 43
+    expseq    go to state 44
+    exp       go to state 96
+    aexp      go to state 159
+    indexset  go to state 99
+    exp_id    go to state 46
+
+
+state 135
+
+  104 indexset: indexset AMPERSAND . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 160
+    exp_id  go to state 46
+
+
+state 136
+
+  102 aexp: indexset ASSIGN . exp
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 161
+    exp_id  go to state 46
+
+
+state 137
+
+   59 typedecl: id_str . COLON type
+
+    COLON  shift, and go to state 162
+
+
+state 138
+
+   25 typeassum: exp REQUIRES LSB typedecls . RSB
+   58 typedecls: typedecls . COMMA typedecl
+
+    RSB    shift, and go to state 163
+    COMMA  shift, and go to state 164
+
+
+state 139
+
+   57 typedecls: typedecl .
+
+    $default  reduce using rule 57 (typedecls)
+
+
+state 140
+
+    5 fdl_file: TITLE program_kind id SEMIC fdl_decls END SEMIC .
+
+    $default  reduce using rule 5 (fdl_file)
+
+
+state 141
+
+   14 fdl_decl: FUNCTION id_str . LPAREN types RPAREN COLON type SEMIC
+   15         | FUNCTION id_str . COLON type SEMIC
+
+    COLON   shift, and go to state 165
+    LPAREN  shift, and go to state 166
+
+
+state 142
+
+   11 fdl_decl: TYPE id_str . EQ type SEMIC
+
+    EQ  shift, and go to state 167
+
+
+state 143
+
+   13 fdl_decl: VAR id_str . COLON type SEMIC
+
+    COLON  shift, and go to state 168
+
+
+state 144
+
+   12 fdl_decl: CONST id_str . COLON type EQ exp SEMIC
+
+    COLON  shift, and go to state 169
+
+
+state 145
+
+   42 goal: SUBPROG_ID DOT TRIPLESTAR id_str . DOT
+
+    DOT  shift, and go to state 170
+
+
+state 146
+
+   45 hyp: HYP_ID . COLON exp DOT
+
+    COLON  shift, and go to state 171
+
+
+state 147
+
+   41 goal: SUBPROG_ID DOT hyps IMPLIES . concls
+
+    $default  reduce using rule 46 (concls)
+
+    concls  go to state 172
+
+
+state 148
+
+   44 hyps: hyps hyp .
+
+    $default  reduce using rule 44 (hyps)
+
+
+state 149
+
+   28 rule: id_str LPAREN NATNUM . RPAREN COLON rule_body DOT
+
+    RPAREN  shift, and go to state 173
+
+
+state 150
+
+   65 type: LPAREN . ids RPAREN
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str  go to state 28
+    id      go to state 90
+    ids     go to state 174
+
+
+state 151
+
+   66 type: ARRAY . LSB types RSB OF type
+
+    LSB  shift, and go to state 175
+
+
+state 152
+
+   67 type: RECORD . recordtypedecls END
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str           go to state 28
+    id               go to state 90
+    ids              go to state 91
+    multidecl        go to state 176
+    recordtypedecls  go to state 177
+
+
+state 153
+
+   70 type_id: id .
+
+    $default  reduce using rule 70 (type_id)
+
+
+state 154
+
+   60 multidecl: ids COLON type .
+
+    $default  reduce using rule 60 (multidecl)
+
+
+state 155
+
+   64 type: type_id .
+
+    $default  reduce using rule 64 (type)
+
+
+state 156
+
+   56 ids: ids COMMA id .
+
+    $default  reduce using rule 56 (ids)
+
+
+state 157
+
+   72 exp: FOR_SOME LPAREN multidecl COMMA exp . RPAREN
+   73    | exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    RPAREN    shift, and go to state 178
+    DOTDOT    shift, and go to state 63
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+
+state 158
+
+   71 exp: FOR_ALL LPAREN multidecl COMMA exp . RPAREN
+   73    | exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    RPAREN    shift, and go to state 179
+    DOTDOT    shift, and go to state 63
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+
+state 159
+
+  100 aexpseq: aexpseq COMMA aexp .
+
+    $default  reduce using rule 100 (aexpseq)
+
+
+state 160
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+  104 indexset: indexset AMPERSAND exp .
+
+    DOTDOT    shift, and go to state 63
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 104 (indexset)
+
+
+state 161
+
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+  102 aexp: indexset ASSIGN exp .
+
+    DOTDOT    shift, and go to state 63
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 102 (aexp)
+
+
+state 162
+
+   59 typedecl: id_str COLON . type
+
+    LPAREN      shift, and go to state 150
+    ARRAY       shift, and go to state 151
+    RECORD      shift, and go to state 152
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str   go to state 28
+    id       go to state 153
+    type     go to state 180
+    type_id  go to state 155
+
+
+state 163
+
+   25 typeassum: exp REQUIRES LSB typedecls RSB .
+
+    $default  reduce using rule 25 (typeassum)
+
+
+state 164
+
+   58 typedecls: typedecls COMMA . typedecl
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str    go to state 137
+    typedecl  go to state 181
+
+
+state 165
+
+   15 fdl_decl: FUNCTION id_str COLON . type SEMIC
+
+    LPAREN      shift, and go to state 150
+    ARRAY       shift, and go to state 151
+    RECORD      shift, and go to state 152
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str   go to state 28
+    id       go to state 153
+    type     go to state 182
+    type_id  go to state 155
+
+
+state 166
+
+   14 fdl_decl: FUNCTION id_str LPAREN . types RPAREN COLON type SEMIC
+
+    LPAREN      shift, and go to state 150
+    ARRAY       shift, and go to state 151
+    RECORD      shift, and go to state 152
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    types    go to state 183
+    id_str   go to state 28
+    id       go to state 153
+    type     go to state 184
+    type_id  go to state 155
+
+
+state 167
+
+   11 fdl_decl: TYPE id_str EQ . type SEMIC
+
+    LPAREN      shift, and go to state 150
+    ARRAY       shift, and go to state 151
+    RECORD      shift, and go to state 152
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str   go to state 28
+    id       go to state 153
+    type     go to state 185
+    type_id  go to state 155
+
+
+state 168
+
+   13 fdl_decl: VAR id_str COLON . type SEMIC
+
+    LPAREN      shift, and go to state 150
+    ARRAY       shift, and go to state 151
+    RECORD      shift, and go to state 152
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str   go to state 28
+    id       go to state 153
+    type     go to state 186
+    type_id  go to state 155
+
+
+state 169
+
+   12 fdl_decl: CONST id_str COLON . type EQ exp SEMIC
+
+    LPAREN      shift, and go to state 150
+    ARRAY       shift, and go to state 151
+    RECORD      shift, and go to state 152
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str   go to state 28
+    id       go to state 153
+    type     go to state 187
+    type_id  go to state 155
+
+
+state 170
+
+   42 goal: SUBPROG_ID DOT TRIPLESTAR id_str DOT .
+
+    $default  reduce using rule 42 (goal)
+
+
+state 171
+
+   45 hyp: HYP_ID COLON . exp DOT
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 188
+    exp_id  go to state 46
+
+
+state 172
+
+   41 goal: SUBPROG_ID DOT hyps IMPLIES concls .
+   47 concls: concls . concl
+
+    CONCL_ID  shift, and go to state 189
+
+    $default  reduce using rule 41 (goal)
+
+    concl  go to state 190
+
+
+state 173
+
+   28 rule: id_str LPAREN NATNUM RPAREN . COLON rule_body DOT
+
+    COLON  shift, and go to state 191
+
+
+state 174
+
+   56 ids: ids . COMMA id
+   65 type: LPAREN ids . RPAREN
+
+    RPAREN  shift, and go to state 192
+    COMMA   shift, and go to state 130
+
+
+state 175
+
+   66 type: ARRAY LSB . types RSB OF type
+
+    LPAREN      shift, and go to state 150
+    ARRAY       shift, and go to state 151
+    RECORD      shift, and go to state 152
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    types    go to state 193
+    id_str   go to state 28
+    id       go to state 153
+    type     go to state 184
+    type_id  go to state 155
+
+
+state 176
+
+   68 recordtypedecls: multidecl .
+
+    $default  reduce using rule 68 (recordtypedecls)
+
+
+state 177
+
+   67 type: RECORD recordtypedecls . END
+   69 recordtypedecls: recordtypedecls . SEMIC multidecl
+
+    SEMIC  shift, and go to state 194
+    END    shift, and go to state 195
+
+
+state 178
+
+   72 exp: FOR_SOME LPAREN multidecl COMMA exp RPAREN .
+
+    $default  reduce using rule 72 (exp)
+
+
+state 179
+
+   71 exp: FOR_ALL LPAREN multidecl COMMA exp RPAREN .
+
+    $default  reduce using rule 71 (exp)
+
+
+state 180
+
+   59 typedecl: id_str COLON type .
+
+    $default  reduce using rule 59 (typedecl)
+
+
+state 181
+
+   58 typedecls: typedecls COMMA typedecl .
+
+    $default  reduce using rule 58 (typedecls)
+
+
+state 182
+
+   15 fdl_decl: FUNCTION id_str COLON type . SEMIC
+
+    SEMIC  shift, and go to state 196
+
+
+state 183
+
+   14 fdl_decl: FUNCTION id_str LPAREN types . RPAREN COLON type SEMIC
+   17 types: types . COMMA type
+
+    RPAREN  shift, and go to state 197
+    COMMA   shift, and go to state 198
+
+
+state 184
+
+   16 types: type .
+
+    $default  reduce using rule 16 (types)
+
+
+state 185
+
+   11 fdl_decl: TYPE id_str EQ type . SEMIC
+
+    SEMIC  shift, and go to state 199
+
+
+state 186
+
+   13 fdl_decl: VAR id_str COLON type . SEMIC
+
+    SEMIC  shift, and go to state 200
+
+
+state 187
+
+   12 fdl_decl: CONST id_str COLON type . EQ exp SEMIC
+
+    EQ  shift, and go to state 201
+
+
+state 188
+
+   45 hyp: HYP_ID COLON exp . DOT
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    DOT       shift, and go to state 202
+    DOTDOT    shift, and go to state 63
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+
+state 189
+
+   48 concl: CONCL_ID . COLON exp DOT
+
+    COLON  shift, and go to state 203
+
+
+state 190
+
+   47 concls: concls concl .
+
+    $default  reduce using rule 47 (concls)
+
+
+state 191
+
+   28 rule: id_str LPAREN NATNUM RPAREN COLON . rule_body DOT
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    rule_body  go to state 204
+    id_str     go to state 42
+    id         go to state 43
+    expseq     go to state 44
+    exp        go to state 205
+    exp_id     go to state 46
+
+
+state 192
+
+   65 type: LPAREN ids RPAREN .
+
+    $default  reduce using rule 65 (type)
+
+
+state 193
+
+   17 types: types . COMMA type
+   66 type: ARRAY LSB types . RSB OF type
+
+    RSB    shift, and go to state 206
+    COMMA  shift, and go to state 198
+
+
+state 194
+
+   69 recordtypedecls: recordtypedecls SEMIC . multidecl
+
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str     go to state 28
+    id         go to state 90
+    ids        go to state 91
+    multidecl  go to state 207
+
+
+state 195
+
+   67 type: RECORD recordtypedecls END .
+
+    $default  reduce using rule 67 (type)
+
+
+state 196
+
+   15 fdl_decl: FUNCTION id_str COLON type SEMIC .
+
+    $default  reduce using rule 15 (fdl_decl)
+
+
+state 197
+
+   14 fdl_decl: FUNCTION id_str LPAREN types RPAREN . COLON type SEMIC
+
+    COLON  shift, and go to state 208
+
+
+state 198
+
+   17 types: types COMMA . type
+
+    LPAREN      shift, and go to state 150
+    ARRAY       shift, and go to state 151
+    RECORD      shift, and go to state 152
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str   go to state 28
+    id       go to state 153
+    type     go to state 209
+    type_id  go to state 155
+
+
+state 199
+
+   11 fdl_decl: TYPE id_str EQ type SEMIC .
+
+    $default  reduce using rule 11 (fdl_decl)
+
+
+state 200
+
+   13 fdl_decl: VAR id_str COLON type SEMIC .
+
+    $default  reduce using rule 13 (fdl_decl)
+
+
+state 201
+
+   12 fdl_decl: CONST id_str COLON type EQ . exp SEMIC
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 210
+    exp_id  go to state 46
+
+
+state 202
+
+   45 hyp: HYP_ID COLON exp DOT .
+
+    $default  reduce using rule 45 (hyp)
+
+
+state 203
+
+   48 concl: CONCL_ID COLON . exp DOT
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 211
+    exp_id  go to state 46
+
+
+state 204
+
+   28 rule: id_str LPAREN NATNUM RPAREN COLON rule_body . DOT
+
+    DOT  shift, and go to state 212
+
+
+state 205
+
+   29 rule_body: exp . MAY_BE_REPLACED_BY exp rule_condition
+   30          | exp . MAY_BE_DEDUCED
+   31          | exp . MAY_BE_DEDUCED_FROM expseq
+   32          | exp . AMPERSAND exp ARE_INTERCHANGEABLE rule_condition
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    AMPERSAND            shift, and go to state 213
+    DOTDOT               shift, and go to state 63
+    MAY_BE_REPLACED_BY   shift, and go to state 214
+    MAY_BE_DEDUCED       shift, and go to state 215
+    MAY_BE_DEDUCED_FROM  shift, and go to state 216
+    IMPLIES              shift, and go to state 65
+    IFF                  shift, and go to state 66
+    OR                   shift, and go to state 67
+    AND                  shift, and go to state 68
+    LE                   shift, and go to state 69
+    LT                   shift, and go to state 70
+    GE                   shift, and go to state 71
+    GT                   shift, and go to state 72
+    NE                   shift, and go to state 73
+    EQ                   shift, and go to state 74
+    MINUS                shift, and go to state 75
+    PLUS                 shift, and go to state 76
+    MOD                  shift, and go to state 77
+    DIV                  shift, and go to state 78
+    SLASH                shift, and go to state 79
+    STAR                 shift, and go to state 80
+    STARSTAR             shift, and go to state 81
+
+
+state 206
+
+   66 type: ARRAY LSB types RSB . OF type
+
+    OF  shift, and go to state 217
+
+
+state 207
+
+   69 recordtypedecls: recordtypedecls SEMIC multidecl .
+
+    $default  reduce using rule 69 (recordtypedecls)
+
+
+state 208
+
+   14 fdl_decl: FUNCTION id_str LPAREN types RPAREN COLON . type SEMIC
+
+    LPAREN      shift, and go to state 150
+    ARRAY       shift, and go to state 151
+    RECORD      shift, and go to state 152
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str   go to state 28
+    id       go to state 153
+    type     go to state 218
+    type_id  go to state 155
+
+
+state 209
+
+   17 types: types COMMA type .
+
+    $default  reduce using rule 17 (types)
+
+
+state 210
+
+   12 fdl_decl: CONST id_str COLON type EQ exp . SEMIC
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    SEMIC     shift, and go to state 219
+    DOTDOT    shift, and go to state 63
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+
+state 211
+
+   48 concl: CONCL_ID COLON exp . DOT
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    DOT       shift, and go to state 220
+    DOTDOT    shift, and go to state 63
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+
+state 212
+
+   28 rule: id_str LPAREN NATNUM RPAREN COLON rule_body DOT .
+
+    $default  reduce using rule 28 (rule)
+
+
+state 213
+
+   32 rule_body: exp AMPERSAND . exp ARE_INTERCHANGEABLE rule_condition
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 221
+    exp_id  go to state 46
+
+
+state 214
+
+   29 rule_body: exp MAY_BE_REPLACED_BY . exp rule_condition
+
+    LSB         shift, and go to state 31
+    LPAREN      shift, and go to state 32
+    FOR_SOME    shift, and go to state 34
+    FOR_ALL     shift, and go to state 35
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+    NATNUM      shift, and go to state 36
+    NOT         shift, and go to state 37
+    MINUS       shift, and go to state 38
+    PLUS        shift, and go to state 39
+
+    id_str  go to state 42
+    id      go to state 43
+    expseq  go to state 44
+    exp     go to state 222
+    exp_id  go to state 46
+
+
+state 215
+
+   30 rule_body: exp MAY_BE_DEDUCED .
+
+    $default  reduce using rule 30 (rule_body)
+
+
+state 216
+
+   31 rule_body: exp MAY_BE_DEDUCED_FROM . expseq
+
+    LSB  shift, and go to state 31
+
+    expseq  go to state 223
+
+
+state 217
+
+   66 type: ARRAY LSB types RSB OF . type
+
+    LPAREN      shift, and go to state 150
+    ARRAY       shift, and go to state 151
+    RECORD      shift, and go to state 152
+    SUBPROG_ID  shift, and go to state 13
+    CONCL_ID    shift, and go to state 14
+    HYP_ID      shift, and go to state 15
+    TASK_TYPE   shift, and go to state 16
+    ID          shift, and go to state 17
+
+    id_str   go to state 28
+    id       go to state 153
+    type     go to state 224
+    type_id  go to state 155
+
+
+state 218
+
+   14 fdl_decl: FUNCTION id_str LPAREN types RPAREN COLON type . SEMIC
+
+    SEMIC  shift, and go to state 225
+
+
+state 219
+
+   12 fdl_decl: CONST id_str COLON type EQ exp SEMIC .
+
+    $default  reduce using rule 12 (fdl_decl)
+
+
+state 220
+
+   48 concl: CONCL_ID COLON exp DOT .
+
+    $default  reduce using rule 48 (concl)
+
+
+state 221
+
+   32 rule_body: exp AMPERSAND exp . ARE_INTERCHANGEABLE rule_condition
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    DOTDOT               shift, and go to state 63
+    ARE_INTERCHANGEABLE  shift, and go to state 226
+    IMPLIES              shift, and go to state 65
+    IFF                  shift, and go to state 66
+    OR                   shift, and go to state 67
+    AND                  shift, and go to state 68
+    LE                   shift, and go to state 69
+    LT                   shift, and go to state 70
+    GE                   shift, and go to state 71
+    GT                   shift, and go to state 72
+    NE                   shift, and go to state 73
+    EQ                   shift, and go to state 74
+    MINUS                shift, and go to state 75
+    PLUS                 shift, and go to state 76
+    MOD                  shift, and go to state 77
+    DIV                  shift, and go to state 78
+    SLASH                shift, and go to state 79
+    STAR                 shift, and go to state 80
+    STARSTAR             shift, and go to state 81
+
+
+state 222
+
+   29 rule_body: exp MAY_BE_REPLACED_BY exp . rule_condition
+   73 exp: exp . IMPLIES exp
+   74    | exp . IFF exp
+   75    | exp . AND exp
+   76    | exp . OR exp
+   78    | exp . EQ exp
+   79    | exp . NE exp
+   80    | exp . LT exp
+   81    | exp . GT exp
+   82    | exp . LE exp
+   83    | exp . GE exp
+   86    | exp . PLUS exp
+   87    | exp . MINUS exp
+   88    | exp . STAR exp
+   89    | exp . SLASH exp
+   90    | exp . MOD exp
+   91    | exp . DIV exp
+   92    | exp . STARSTAR exp
+   93    | exp . DOTDOT exp
+
+    DOTDOT    shift, and go to state 63
+    IF        shift, and go to state 227
+    IMPLIES   shift, and go to state 65
+    IFF       shift, and go to state 66
+    OR        shift, and go to state 67
+    AND       shift, and go to state 68
+    LE        shift, and go to state 69
+    LT        shift, and go to state 70
+    GE        shift, and go to state 71
+    GT        shift, and go to state 72
+    NE        shift, and go to state 73
+    EQ        shift, and go to state 74
+    MINUS     shift, and go to state 75
+    PLUS      shift, and go to state 76
+    MOD       shift, and go to state 77
+    DIV       shift, and go to state 78
+    SLASH     shift, and go to state 79
+    STAR      shift, and go to state 80
+    STARSTAR  shift, and go to state 81
+
+    $default  reduce using rule 33 (rule_condition)
+
+    rule_condition  go to state 228
+
+
+state 223
+
+   31 rule_body: exp MAY_BE_DEDUCED_FROM expseq .
+
+    $default  reduce using rule 31 (rule_body)
+
+
+state 224
+
+   66 type: ARRAY LSB types RSB OF type .
+
+    $default  reduce using rule 66 (type)
+
+
+state 225
+
+   14 fdl_decl: FUNCTION id_str LPAREN types RPAREN COLON type SEMIC .
+
+    $default  reduce using rule 14 (fdl_decl)
+
+
+state 226
+
+   32 rule_body: exp AMPERSAND exp ARE_INTERCHANGEABLE . rule_condition
+
+    IF  shift, and go to state 227
+
+    $default  reduce using rule 33 (rule_condition)
+
+    rule_condition  go to state 229
+
+
+state 227
+
+   34 rule_condition: IF . expseq
+
+    LSB  shift, and go to state 31
+
+    expseq  go to state 230
+
+
+state 228
+
+   29 rule_body: exp MAY_BE_REPLACED_BY exp rule_condition .
+
+    $default  reduce using rule 29 (rule_body)
+
+
+state 229
+
+   32 rule_body: exp AMPERSAND exp ARE_INTERCHANGEABLE rule_condition .
+
+    $default  reduce using rule 32 (rule_body)
+
+
+state 230
+
+   34 rule_condition: IF expseq .
+
+    $default  reduce using rule 34 (rule_condition)

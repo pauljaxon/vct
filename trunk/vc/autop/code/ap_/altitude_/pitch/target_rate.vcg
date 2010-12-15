@@ -1,0 +1,599 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.62
+
+                         function Pitch.Target_Rate
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 44:
+
+function_target_rate_1.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    climb_rate >= instruments__feetpermin__first .
+H7:    climb_rate <= instruments__feetpermin__last .
+        ->
+C1:    target_altitude >= instruments__feet__first .
+C2:    target_altitude <= instruments__feet__last .
+C3:    present_altitude >= instruments__feet__first .
+C4:    present_altitude <= instruments__feet__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 44:
+
+function_target_rate_2.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    climb_rate >= instruments__feetpermin__first .
+H7:    climb_rate <= instruments__feetpermin__last .
+H8:    target_altitude >= instruments__feet__first .
+H9:    target_altitude <= instruments__feet__last .
+H10:   present_altitude >= instruments__feet__first .
+H11:   present_altitude <= instruments__feet__last .
+H12:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H13:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+        ->
+C1:    target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+C2:    target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 46:
+
+function_target_rate_3.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    climb_rate >= instruments__feetpermin__first .
+H7:    climb_rate <= instruments__feetpermin__last .
+H8:    target_altitude >= instruments__feet__first .
+H9:    target_altitude <= instruments__feet__last .
+H10:   present_altitude >= instruments__feet__first .
+H11:   present_altitude <= instruments__feet__last .
+H12:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H13:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+H14:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H15:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+H16:   climb_rate > floorfpm__last .
+        ->
+C1:    floorfpm__last >= floorfpm__first .
+C2:    floorfpm__last <= floorfpm__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 48:
+
+function_target_rate_4.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    climb_rate >= instruments__feetpermin__first .
+H7:    climb_rate <= instruments__feetpermin__last .
+H8:    target_altitude >= instruments__feet__first .
+H9:    target_altitude <= instruments__feet__last .
+H10:   present_altitude >= instruments__feet__first .
+H11:   present_altitude <= instruments__feet__last .
+H12:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H13:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+H14:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H15:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+H16:   not (climb_rate > floorfpm__last) .
+H17:   climb_rate < floorfpm__first .
+        ->
+C1:    floorfpm__first >= floorfpm__first .
+C2:    floorfpm__first <= floorfpm__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 50:
+
+function_target_rate_5.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    climb_rate >= instruments__feetpermin__first .
+H7:    climb_rate <= instruments__feetpermin__last .
+H8:    target_altitude >= instruments__feet__first .
+H9:    target_altitude <= instruments__feet__last .
+H10:   present_altitude >= instruments__feet__first .
+H11:   present_altitude <= instruments__feet__last .
+H12:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H13:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+H14:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H15:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+H16:   not (climb_rate > floorfpm__last) .
+H17:   not (climb_rate < floorfpm__first) .
+        ->
+C1:    climb_rate >= floorfpm__first .
+C2:    climb_rate <= floorfpm__last .
+ 
+
+For path(s) from start to assertion of line 52:
+
+function_target_rate_6.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    climb_rate >= instruments__feetpermin__first .
+H7:    climb_rate <= instruments__feetpermin__last .
+H8:    target_altitude >= instruments__feet__first .
+H9:    target_altitude <= instruments__feet__last .
+H10:   present_altitude >= instruments__feet__first .
+H11:   present_altitude <= instruments__feet__last .
+H12:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H13:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+H14:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H15:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+H16:   climb_rate > floorfpm__last .
+H17:   floorfpm__last >= floorfpm__first .
+H18:   floorfpm__last <= floorfpm__last .
+        ->
+C1:    floorfpm__last >= floorfpm__first .
+C2:    floorfpm__last <= floorfpm__last .
+C3:    target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+C4:    target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+C5:    present_altitude >= instruments__feet__first .
+C6:    present_altitude <= instruments__feet__last .
+C7:    target_altitude >= instruments__feet__first .
+C8:    target_altitude <= instruments__feet__last .
+C9:    climb_rate >= instruments__feetpermin__first .
+C10:   climb_rate <= instruments__feetpermin__last .
+ 
+
+function_target_rate_7.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    climb_rate >= instruments__feetpermin__first .
+H7:    climb_rate <= instruments__feetpermin__last .
+H8:    target_altitude >= instruments__feet__first .
+H9:    target_altitude <= instruments__feet__last .
+H10:   present_altitude >= instruments__feet__first .
+H11:   present_altitude <= instruments__feet__last .
+H12:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H13:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+H14:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H15:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+H16:   not (climb_rate > floorfpm__last) .
+H17:   climb_rate < floorfpm__first .
+H18:   floorfpm__first >= floorfpm__first .
+H19:   floorfpm__first <= floorfpm__last .
+        ->
+C1:    floorfpm__first >= floorfpm__first .
+C2:    floorfpm__first <= floorfpm__last .
+C3:    target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+C4:    target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+C5:    present_altitude >= instruments__feet__first .
+C6:    present_altitude <= instruments__feet__last .
+C7:    target_altitude >= instruments__feet__first .
+C8:    target_altitude <= instruments__feet__last .
+C9:    climb_rate >= instruments__feetpermin__first .
+C10:   climb_rate <= instruments__feetpermin__last .
+ 
+
+function_target_rate_8.
+H1:    true .
+H2:    present_altitude >= instruments__feet__first .
+H3:    present_altitude <= instruments__feet__last .
+H4:    target_altitude >= instruments__feet__first .
+H5:    target_altitude <= instruments__feet__last .
+H6:    climb_rate >= instruments__feetpermin__first .
+H7:    climb_rate <= instruments__feetpermin__last .
+H8:    target_altitude >= instruments__feet__first .
+H9:    target_altitude <= instruments__feet__last .
+H10:   present_altitude >= instruments__feet__first .
+H11:   present_altitude <= instruments__feet__last .
+H12:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H13:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+H14:   target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+H15:   target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+H16:   not (climb_rate > floorfpm__last) .
+H17:   not (climb_rate < floorfpm__first) .
+H18:   climb_rate >= floorfpm__first .
+H19:   climb_rate <= floorfpm__last .
+        ->
+C1:    climb_rate >= floorfpm__first .
+C2:    climb_rate <= floorfpm__last .
+C3:    target_roc(present_altitude, target_altitude) >= 
+           floorfpm__first .
+C4:    target_roc(present_altitude, target_altitude) <= 
+           floorfpm__last .
+C5:    present_altitude >= instruments__feet__first .
+C6:    present_altitude <= instruments__feet__last .
+C7:    target_altitude >= instruments__feet__first .
+C8:    target_altitude <= instruments__feet__last .
+C9:    climb_rate >= instruments__feetpermin__first .
+C10:   climb_rate <= instruments__feetpermin__last .
+ 
+
+For path(s) from assertion of line 52 to run-time check associated with statement of line 54:
+
+function_target_rate_9.
+H1:    floor_climb_rate >= floorfpm__first .
+H2:    floor_climb_rate <= floorfpm__last .
+H3:    target_climb_rate >= floorfpm__first .
+H4:    target_climb_rate <= floorfpm__last .
+H5:    present_altitude >= instruments__feet__first .
+H6:    present_altitude <= instruments__feet__last .
+H7:    target_altitude >= instruments__feet__first .
+H8:    target_altitude <= instruments__feet__last .
+H9:    climb_rate >= instruments__feetpermin__first .
+H10:   climb_rate <= instruments__feetpermin__last .
+H11:   target_climb_rate >= floorfpm__first .
+H12:   target_climb_rate <= floorfpm__last .
+H13:   floor_climb_rate >= floorfpm__first .
+H14:   floor_climb_rate <= floorfpm__last .
+        ->
+C1:    (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+C2:    (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+C3:    (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+C4:    (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+C5:    (target_climb_rate - floor_climb_rate) div 12 >= 
+           instruments__feetpermin__base__first .
+C6:    (target_climb_rate - floor_climb_rate) div 12 <= 
+           instruments__feetpermin__base__last .
+C7:    12 <> 0 .
+C8:    target_climb_rate - floor_climb_rate >= 
+           instruments__feetpermin__base__first .
+C9:    target_climb_rate - floor_climb_rate <= 
+           instruments__feetpermin__base__last .
+ 
+
+For path(s) from assertion of line 52 to run-time check associated with statement of line 56:
+
+function_target_rate_10.
+H1:    floor_climb_rate >= floorfpm__first .
+H2:    floor_climb_rate <= floorfpm__last .
+H3:    target_climb_rate >= floorfpm__first .
+H4:    target_climb_rate <= floorfpm__last .
+H5:    present_altitude >= instruments__feet__first .
+H6:    present_altitude <= instruments__feet__last .
+H7:    target_altitude >= instruments__feet__first .
+H8:    target_altitude <= instruments__feet__last .
+H9:    climb_rate >= instruments__feetpermin__first .
+H10:   climb_rate <= instruments__feetpermin__last .
+H11:   target_climb_rate >= floorfpm__first .
+H12:   target_climb_rate <= floorfpm__last .
+H13:   floor_climb_rate >= floorfpm__first .
+H14:   floor_climb_rate <= floorfpm__last .
+H15:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H16:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H17:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H18:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H19:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           instruments__feetpermin__base__first .
+H20:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           instruments__feetpermin__base__last .
+H21:   12 <> 0 .
+H22:   target_climb_rate - floor_climb_rate >= 
+           instruments__feetpermin__base__first .
+H23:   target_climb_rate - floor_climb_rate <= 
+           instruments__feetpermin__base__last .
+H24:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H25:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H26:   (target_climb_rate - floor_climb_rate) div 12 > 10 .
+        ->
+C1:    10 >= degreespersec__first .
+C2:    10 <= degreespersec__last .
+ 
+
+For path(s) from assertion of line 52 to run-time check associated with statement of line 57:
+
+function_target_rate_11.
+H1:    floor_climb_rate >= floorfpm__first .
+H2:    floor_climb_rate <= floorfpm__last .
+H3:    target_climb_rate >= floorfpm__first .
+H4:    target_climb_rate <= floorfpm__last .
+H5:    present_altitude >= instruments__feet__first .
+H6:    present_altitude <= instruments__feet__last .
+H7:    target_altitude >= instruments__feet__first .
+H8:    target_altitude <= instruments__feet__last .
+H9:    climb_rate >= instruments__feetpermin__first .
+H10:   climb_rate <= instruments__feetpermin__last .
+H11:   target_climb_rate >= floorfpm__first .
+H12:   target_climb_rate <= floorfpm__last .
+H13:   floor_climb_rate >= floorfpm__first .
+H14:   floor_climb_rate <= floorfpm__last .
+H15:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H16:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H17:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H18:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H19:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           instruments__feetpermin__base__first .
+H20:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           instruments__feetpermin__base__last .
+H21:   12 <> 0 .
+H22:   target_climb_rate - floor_climb_rate >= 
+           instruments__feetpermin__base__first .
+H23:   target_climb_rate - floor_climb_rate <= 
+           instruments__feetpermin__base__last .
+H24:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H25:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H26:   not ((target_climb_rate - floor_climb_rate) div 12 > 10) .
+H27:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H28:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+        ->
+C1:     -10 >= system__min_int .
+C2:     -10 <= system__max_int .
+ 
+
+For path(s) from assertion of line 52 to run-time check associated with statement of line 58:
+
+function_target_rate_12.
+H1:    floor_climb_rate >= floorfpm__first .
+H2:    floor_climb_rate <= floorfpm__last .
+H3:    target_climb_rate >= floorfpm__first .
+H4:    target_climb_rate <= floorfpm__last .
+H5:    present_altitude >= instruments__feet__first .
+H6:    present_altitude <= instruments__feet__last .
+H7:    target_altitude >= instruments__feet__first .
+H8:    target_altitude <= instruments__feet__last .
+H9:    climb_rate >= instruments__feetpermin__first .
+H10:   climb_rate <= instruments__feetpermin__last .
+H11:   target_climb_rate >= floorfpm__first .
+H12:   target_climb_rate <= floorfpm__last .
+H13:   floor_climb_rate >= floorfpm__first .
+H14:   floor_climb_rate <= floorfpm__last .
+H15:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H16:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H17:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H18:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H19:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           instruments__feetpermin__base__first .
+H20:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           instruments__feetpermin__base__last .
+H21:   12 <> 0 .
+H22:   target_climb_rate - floor_climb_rate >= 
+           instruments__feetpermin__base__first .
+H23:   target_climb_rate - floor_climb_rate <= 
+           instruments__feetpermin__base__last .
+H24:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H25:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H26:   not ((target_climb_rate - floor_climb_rate) div 12 > 10) .
+H27:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H28:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H29:    -10 >= system__min_int .
+H30:    -10 <= system__max_int .
+H31:   (target_climb_rate - floor_climb_rate) div 12 <  -10 .
+        ->
+C1:     -10 >= degreespersec__first .
+C2:     -10 <= degreespersec__last .
+ 
+
+For path(s) from assertion of line 52 to finish:
+
+function_target_rate_13.
+H1:    floor_climb_rate >= floorfpm__first .
+H2:    floor_climb_rate <= floorfpm__last .
+H3:    target_climb_rate >= floorfpm__first .
+H4:    target_climb_rate <= floorfpm__last .
+H5:    present_altitude >= instruments__feet__first .
+H6:    present_altitude <= instruments__feet__last .
+H7:    target_altitude >= instruments__feet__first .
+H8:    target_altitude <= instruments__feet__last .
+H9:    climb_rate >= instruments__feetpermin__first .
+H10:   climb_rate <= instruments__feetpermin__last .
+H11:   target_climb_rate >= floorfpm__first .
+H12:   target_climb_rate <= floorfpm__last .
+H13:   floor_climb_rate >= floorfpm__first .
+H14:   floor_climb_rate <= floorfpm__last .
+H15:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H16:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H17:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H18:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H19:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           instruments__feetpermin__base__first .
+H20:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           instruments__feetpermin__base__last .
+H21:   12 <> 0 .
+H22:   target_climb_rate - floor_climb_rate >= 
+           instruments__feetpermin__base__first .
+H23:   target_climb_rate - floor_climb_rate <= 
+           instruments__feetpermin__base__last .
+H24:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H25:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H26:   (target_climb_rate - floor_climb_rate) div 12 > 10 .
+H27:   10 >= degreespersec__first .
+H28:   10 <= degreespersec__last .
+H29:   10 >= degreespersec__first .
+H30:   10 <= degreespersec__last .
+        ->
+C1:    true .
+C2:    10 >= degreespersec__first .
+C3:    10 <= degreespersec__last .
+ 
+
+function_target_rate_14.
+H1:    floor_climb_rate >= floorfpm__first .
+H2:    floor_climb_rate <= floorfpm__last .
+H3:    target_climb_rate >= floorfpm__first .
+H4:    target_climb_rate <= floorfpm__last .
+H5:    present_altitude >= instruments__feet__first .
+H6:    present_altitude <= instruments__feet__last .
+H7:    target_altitude >= instruments__feet__first .
+H8:    target_altitude <= instruments__feet__last .
+H9:    climb_rate >= instruments__feetpermin__first .
+H10:   climb_rate <= instruments__feetpermin__last .
+H11:   target_climb_rate >= floorfpm__first .
+H12:   target_climb_rate <= floorfpm__last .
+H13:   floor_climb_rate >= floorfpm__first .
+H14:   floor_climb_rate <= floorfpm__last .
+H15:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H16:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H17:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H18:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H19:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           instruments__feetpermin__base__first .
+H20:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           instruments__feetpermin__base__last .
+H21:   12 <> 0 .
+H22:   target_climb_rate - floor_climb_rate >= 
+           instruments__feetpermin__base__first .
+H23:   target_climb_rate - floor_climb_rate <= 
+           instruments__feetpermin__base__last .
+H24:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H25:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H26:   not ((target_climb_rate - floor_climb_rate) div 12 > 10) .
+H27:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H28:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H29:    -10 >= system__min_int .
+H30:    -10 <= system__max_int .
+H31:   (target_climb_rate - floor_climb_rate) div 12 <  -10 .
+H32:    -10 >= degreespersec__first .
+H33:    -10 <= degreespersec__last .
+H34:    -10 >= degreespersec__first .
+H35:    -10 <= degreespersec__last .
+        ->
+C1:    true .
+C2:     -10 >= degreespersec__first .
+C3:     -10 <= degreespersec__last .
+ 
+
+function_target_rate_15.
+H1:    floor_climb_rate >= floorfpm__first .
+H2:    floor_climb_rate <= floorfpm__last .
+H3:    target_climb_rate >= floorfpm__first .
+H4:    target_climb_rate <= floorfpm__last .
+H5:    present_altitude >= instruments__feet__first .
+H6:    present_altitude <= instruments__feet__last .
+H7:    target_altitude >= instruments__feet__first .
+H8:    target_altitude <= instruments__feet__last .
+H9:    climb_rate >= instruments__feetpermin__first .
+H10:   climb_rate <= instruments__feetpermin__last .
+H11:   target_climb_rate >= floorfpm__first .
+H12:   target_climb_rate <= floorfpm__last .
+H13:   floor_climb_rate >= floorfpm__first .
+H14:   floor_climb_rate <= floorfpm__last .
+H15:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H16:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H17:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H18:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H19:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           instruments__feetpermin__base__first .
+H20:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           instruments__feetpermin__base__last .
+H21:   12 <> 0 .
+H22:   target_climb_rate - floor_climb_rate >= 
+           instruments__feetpermin__base__first .
+H23:   target_climb_rate - floor_climb_rate <= 
+           instruments__feetpermin__base__last .
+H24:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H25:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H26:   not ((target_climb_rate - floor_climb_rate) div 12 > 10) .
+H27:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H28:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+H29:    -10 >= system__min_int .
+H30:    -10 <= system__max_int .
+H31:   not ((target_climb_rate - floor_climb_rate) div 12 <  -10) .
+H32:   (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+H33:   (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+        ->
+C1:    true .
+C2:    (target_climb_rate - floor_climb_rate) div 12 >= 
+           degreespersec__first .
+C3:    (target_climb_rate - floor_climb_rate) div 12 <= 
+           degreespersec__last .
+ 
+

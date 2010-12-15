@@ -1,0 +1,67 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.87
+
+Line
+   1  with AP.Heading.Roll, Ap.Heading.Yaw;
+   2  package body AP.Heading
+   3  --# own State is AP.Heading.Roll.State, AP.Heading.Yaw.State;
+   4  is
+   5     procedure Maintain(Switch_Pressed   : in Controls.Switch;
+   6                        Mach             : in Instruments.Machnumber;
+   7                        Present_Heading  : in Instruments.Headdegree;
+   8                        Target_Heading   : in Instruments.Headdegree;
+   9                        Bank             : in Instruments.Bankangle;
+  10                        Slip             : in Instruments.Slipangle)
+  11       --# global in out Roll.State,
+  12       --#               Yaw.State;
+  13       --#           out Surfaces.Ailerons;
+  14       --#           out Surfaces.Rudder;
+  15       --# derives
+  16       --#       Roll.State
+  17       --#          from *,
+  18       --#               Switch_Pressed,
+  19       --#               Bank &
+  20       --#       Yaw.State
+  21       --#          from *,
+  22       --#               Switch_Pressed,
+  23       --#               Slip &
+  24       --#       Surfaces.Ailerons
+  25       --#          from Switch_Pressed,
+  26       --#               Mach,
+  27       --#               Present_Heading,
+  28       --#               Target_Heading,
+  29       --#               Bank,
+  30       --#               Roll.State &
+  31       --#         Surfaces.Rudder
+  32       --#          from Switch_Pressed,
+  33       --#               Mach,
+  34       --#               Yaw.State,
+  35       --#               Slip
+  36       --# ;
+  37     is
+  38     begin
+  39        case Switch_Pressed is
+  40           when Controls.On =>
+  41              Roll.Roll_AP(Mach,Present_Heading,Target_Heading,Bank);
+  42              Yaw.Yaw_AP(Mach,Slip);
+  43           when Controls.Off =>
+  44              null;
+  45        end case;
+  46     end Maintain;
+
++++        Flow analysis of subprogram Maintain performed: 
+           no errors found.
+
+  47  
+  48  
+  49  end AP.Heading;
+  50  
+
+
+--End of file--------------------------------------------------

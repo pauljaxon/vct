@@ -1,0 +1,2027 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.47
+
+                     procedure steer.Extrapolate_Angle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 70:
+
+procedure_extrapolate_angle_1.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+        ->
+C1:    now__1 >= clock__millisecond__first .
+C2:    now__1 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 71:
+
+procedure_extrapolate_angle_2.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+        ->
+C1:    element(current_angles, [for_fin]) >= angle__first .
+C2:    element(current_angles, [for_fin]) <= angle__last .
+C3:    for_fin >= fin__first .
+C4:    for_fin <= fin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 72:
+
+procedure_extrapolate_angle_3.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+        ->
+C1:    element(commanded_angles, [for_fin]) >= angle__first .
+C2:    element(commanded_angles, [for_fin]) <= angle__last .
+C3:    for_fin >= fin__first .
+C4:    for_fin <= fin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 74:
+
+procedure_extrapolate_angle_4.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin]) .
+H25:   element(current_angles, [for_fin]) >= angle__first .
+H26:   element(current_angles, [for_fin]) <= angle__last .
+        ->
+C1:    element(current_angles, [for_fin]) >= angle__first .
+C2:    element(current_angles, [for_fin]) <= angle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 76:
+
+procedure_extrapolate_angle_5.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+        ->
+C1:    now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+C2:    now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+C3:    for_fin >= fin__first .
+C4:    for_fin <= fin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 79:
+
+procedure_extrapolate_angle_6.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   now__1 - element(command_times, [for_fin]) < 0 .
+H36:   element(current_angles, [for_fin]) >= angle__first .
+H37:   element(current_angles, [for_fin]) <= angle__last .
+        ->
+C1:    element(current_angles, [for_fin]) >= angle__first .
+C2:    element(current_angles, [for_fin]) <= angle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 83:
+
+procedure_extrapolate_angle_7.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   now__1 - element(command_times, [for_fin]) > 2000 .
+        ->
+C1:    2000 >= clock__millisecond__first .
+C2:    2000 <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 87:
+
+procedure_extrapolate_angle_8.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   now__1 - element(command_times, [for_fin]) > 2000 .
+H39:   2000 >= clock__millisecond__first .
+H40:   2000 <= clock__millisecond__last .
+H41:   element(current_angles, [for_fin]) >= angle__first .
+H42:   element(current_angles, [for_fin]) <= angle__last .
+H43:   element(commanded_angles, [for_fin]) >= angle__first .
+H44:   element(commanded_angles, [for_fin]) <= angle__last .
+H45:   element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin]) .
+H46:   element(current_angles, [for_fin]) >= angle__first .
+H47:   element(current_angles, [for_fin]) <= angle__last .
+H48:   2000 >= clock__millisecond__first .
+H49:   2000 <= clock__millisecond__last .
+        ->
+C1:    element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+C2:    element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+C3:    2000 * steer_cfg__move_rate div 1000 >= long_integer__base__first .
+C4:    2000 * steer_cfg__move_rate div 1000 <= long_integer__base__last .
+C5:    1000 <> 0 .
+C6:    2000 * steer_cfg__move_rate >= long_integer__base__first .
+C7:    2000 * steer_cfg__move_rate <= long_integer__base__last .
+C8:    2000 >= integer32__first .
+C9:    2000 <= integer32__last .
+C10:   element(current_angles, [for_fin]) >= integer32__first .
+C11:   element(current_angles, [for_fin]) <= integer32__last .
+ 
+
+procedure_extrapolate_angle_9.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   not (now__1 - element(command_times, [for_fin]) > 2000) .
+H39:   element(current_angles, [for_fin]) >= angle__first .
+H40:   element(current_angles, [for_fin]) <= angle__last .
+H41:   element(commanded_angles, [for_fin]) >= angle__first .
+H42:   element(commanded_angles, [for_fin]) <= angle__last .
+H43:   element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin]) .
+H44:   element(current_angles, [for_fin]) >= angle__first .
+H45:   element(current_angles, [for_fin]) <= angle__last .
+H46:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H47:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+        ->
+C1:    element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+C2:    element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+C3:    (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 >= long_integer__base__first .
+C4:    (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 <= long_integer__base__last .
+C5:    1000 <> 0 .
+C6:    (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate >= long_integer__base__first .
+C7:    (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate <= long_integer__base__last .
+C8:    now__1 - element(command_times, [for_fin]) >= 
+           integer32__first .
+C9:    now__1 - element(command_times, [for_fin]) <= 
+           integer32__last .
+C10:   element(current_angles, [for_fin]) >= integer32__first .
+C11:   element(current_angles, [for_fin]) <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 89:
+
+procedure_extrapolate_angle_10.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   now__1 - element(command_times, [for_fin]) > 2000 .
+H39:   2000 >= clock__millisecond__first .
+H40:   2000 <= clock__millisecond__last .
+H41:   element(current_angles, [for_fin]) >= angle__first .
+H42:   element(current_angles, [for_fin]) <= angle__last .
+H43:   element(commanded_angles, [for_fin]) >= angle__first .
+H44:   element(commanded_angles, [for_fin]) <= angle__last .
+H45:   element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin]) .
+H46:   element(current_angles, [for_fin]) >= angle__first .
+H47:   element(current_angles, [for_fin]) <= angle__last .
+H48:   2000 >= clock__millisecond__first .
+H49:   2000 <= clock__millisecond__last .
+H50:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H51:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+H52:   2000 * steer_cfg__move_rate div 1000 >= long_integer__base__first .
+H53:   2000 * steer_cfg__move_rate div 1000 <= long_integer__base__last .
+H54:   1000 <> 0 .
+H55:   2000 * steer_cfg__move_rate >= long_integer__base__first .
+H56:   2000 * steer_cfg__move_rate <= long_integer__base__last .
+H57:   2000 >= integer32__first .
+H58:   2000 <= integer32__last .
+H59:   element(current_angles, [for_fin]) >= integer32__first .
+H60:   element(current_angles, [for_fin]) <= integer32__last .
+H61:   element(commanded_angles, [for_fin]) >= angle__first .
+H62:   element(commanded_angles, [for_fin]) <= angle__last .
+H63:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H64:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+        ->
+C1:    element(commanded_angles, [for_fin]) >= integer32__first .
+C2:    element(commanded_angles, [for_fin]) <= integer32__last .
+ 
+
+procedure_extrapolate_angle_11.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   not (now__1 - element(command_times, [for_fin]) > 2000) .
+H39:   element(current_angles, [for_fin]) >= angle__first .
+H40:   element(current_angles, [for_fin]) <= angle__last .
+H41:   element(commanded_angles, [for_fin]) >= angle__first .
+H42:   element(commanded_angles, [for_fin]) <= angle__last .
+H43:   element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin]) .
+H44:   element(current_angles, [for_fin]) >= angle__first .
+H45:   element(current_angles, [for_fin]) <= angle__last .
+H46:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H47:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H48:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H49:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+H50:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 >= long_integer__base__first .
+H51:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 <= long_integer__base__last .
+H52:   1000 <> 0 .
+H53:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate >= long_integer__base__first .
+H54:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate <= long_integer__base__last .
+H55:   now__1 - element(command_times, [for_fin]) >= 
+           integer32__first .
+H56:   now__1 - element(command_times, [for_fin]) <= 
+           integer32__last .
+H57:   element(current_angles, [for_fin]) >= integer32__first .
+H58:   element(current_angles, [for_fin]) <= integer32__last .
+H59:   element(commanded_angles, [for_fin]) >= angle__first .
+H60:   element(commanded_angles, [for_fin]) <= angle__last .
+H61:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H62:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+        ->
+C1:    element(commanded_angles, [for_fin]) >= integer32__first .
+C2:    element(commanded_angles, [for_fin]) <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 90:
+
+procedure_extrapolate_angle_12.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   now__1 - element(command_times, [for_fin]) > 2000 .
+H39:   2000 >= clock__millisecond__first .
+H40:   2000 <= clock__millisecond__last .
+H41:   element(current_angles, [for_fin]) >= angle__first .
+H42:   element(current_angles, [for_fin]) <= angle__last .
+H43:   element(commanded_angles, [for_fin]) >= angle__first .
+H44:   element(commanded_angles, [for_fin]) <= angle__last .
+H45:   element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin]) .
+H46:   element(current_angles, [for_fin]) >= angle__first .
+H47:   element(current_angles, [for_fin]) <= angle__last .
+H48:   2000 >= clock__millisecond__first .
+H49:   2000 <= clock__millisecond__last .
+H50:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H51:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+H52:   2000 * steer_cfg__move_rate div 1000 >= long_integer__base__first .
+H53:   2000 * steer_cfg__move_rate div 1000 <= long_integer__base__last .
+H54:   1000 <> 0 .
+H55:   2000 * steer_cfg__move_rate >= long_integer__base__first .
+H56:   2000 * steer_cfg__move_rate <= long_integer__base__last .
+H57:   2000 >= integer32__first .
+H58:   2000 <= integer32__last .
+H59:   element(current_angles, [for_fin]) >= integer32__first .
+H60:   element(current_angles, [for_fin]) <= integer32__last .
+H61:   element(commanded_angles, [for_fin]) >= angle__first .
+H62:   element(commanded_angles, [for_fin]) <= angle__last .
+H63:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H64:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+H65:   element(commanded_angles, [for_fin]) >= integer32__first .
+H66:   element(commanded_angles, [for_fin]) <= integer32__last .
+H67:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 > element(
+           commanded_angles, [for_fin]) .
+H68:   element(commanded_angles, [for_fin]) >= angle__first .
+H69:   element(commanded_angles, [for_fin]) <= angle__last .
+        ->
+C1:    element(commanded_angles, [for_fin]) >= angle__first .
+C2:    element(commanded_angles, [for_fin]) <= angle__last .
+ 
+
+procedure_extrapolate_angle_13.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   not (now__1 - element(command_times, [for_fin]) > 2000) .
+H39:   element(current_angles, [for_fin]) >= angle__first .
+H40:   element(current_angles, [for_fin]) <= angle__last .
+H41:   element(commanded_angles, [for_fin]) >= angle__first .
+H42:   element(commanded_angles, [for_fin]) <= angle__last .
+H43:   element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin]) .
+H44:   element(current_angles, [for_fin]) >= angle__first .
+H45:   element(current_angles, [for_fin]) <= angle__last .
+H46:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H47:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H48:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H49:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+H50:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 >= long_integer__base__first .
+H51:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 <= long_integer__base__last .
+H52:   1000 <> 0 .
+H53:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate >= long_integer__base__first .
+H54:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate <= long_integer__base__last .
+H55:   now__1 - element(command_times, [for_fin]) >= 
+           integer32__first .
+H56:   now__1 - element(command_times, [for_fin]) <= 
+           integer32__last .
+H57:   element(current_angles, [for_fin]) >= integer32__first .
+H58:   element(current_angles, [for_fin]) <= integer32__last .
+H59:   element(commanded_angles, [for_fin]) >= angle__first .
+H60:   element(commanded_angles, [for_fin]) <= angle__last .
+H61:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H62:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+H63:   element(commanded_angles, [for_fin]) >= integer32__first .
+H64:   element(commanded_angles, [for_fin]) <= integer32__last .
+H65:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 > element(
+           commanded_angles, [for_fin]) .
+H66:   element(commanded_angles, [for_fin]) >= angle__first .
+H67:   element(commanded_angles, [for_fin]) <= angle__last .
+        ->
+C1:    element(commanded_angles, [for_fin]) >= angle__first .
+C2:    element(commanded_angles, [for_fin]) <= angle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 92:
+
+procedure_extrapolate_angle_14.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   now__1 - element(command_times, [for_fin]) > 2000 .
+H39:   2000 >= clock__millisecond__first .
+H40:   2000 <= clock__millisecond__last .
+H41:   element(current_angles, [for_fin]) >= angle__first .
+H42:   element(current_angles, [for_fin]) <= angle__last .
+H43:   element(commanded_angles, [for_fin]) >= angle__first .
+H44:   element(commanded_angles, [for_fin]) <= angle__last .
+H45:   element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin]) .
+H46:   element(current_angles, [for_fin]) >= angle__first .
+H47:   element(current_angles, [for_fin]) <= angle__last .
+H48:   2000 >= clock__millisecond__first .
+H49:   2000 <= clock__millisecond__last .
+H50:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H51:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+H52:   2000 * steer_cfg__move_rate div 1000 >= long_integer__base__first .
+H53:   2000 * steer_cfg__move_rate div 1000 <= long_integer__base__last .
+H54:   1000 <> 0 .
+H55:   2000 * steer_cfg__move_rate >= long_integer__base__first .
+H56:   2000 * steer_cfg__move_rate <= long_integer__base__last .
+H57:   2000 >= integer32__first .
+H58:   2000 <= integer32__last .
+H59:   element(current_angles, [for_fin]) >= integer32__first .
+H60:   element(current_angles, [for_fin]) <= integer32__last .
+H61:   element(commanded_angles, [for_fin]) >= angle__first .
+H62:   element(commanded_angles, [for_fin]) <= angle__last .
+H63:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H64:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+H65:   element(commanded_angles, [for_fin]) >= integer32__first .
+H66:   element(commanded_angles, [for_fin]) <= integer32__last .
+H67:   not (element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 > element(
+           commanded_angles, [for_fin])) .
+H68:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H69:   element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+        ->
+C1:    element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 >= angle__first .
+C2:    element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 <= angle__last .
+C3:    element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 >= angle__first .
+C4:    element(current_angles, [for_fin]) + 2000 * 
+           steer_cfg__move_rate div 1000 <= angle__last .
+ 
+
+procedure_extrapolate_angle_15.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   not (now__1 - element(command_times, [for_fin]) > 2000) .
+H39:   element(current_angles, [for_fin]) >= angle__first .
+H40:   element(current_angles, [for_fin]) <= angle__last .
+H41:   element(commanded_angles, [for_fin]) >= angle__first .
+H42:   element(commanded_angles, [for_fin]) <= angle__last .
+H43:   element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin]) .
+H44:   element(current_angles, [for_fin]) >= angle__first .
+H45:   element(current_angles, [for_fin]) <= angle__last .
+H46:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H47:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H48:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H49:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+H50:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 >= long_integer__base__first .
+H51:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 <= long_integer__base__last .
+H52:   1000 <> 0 .
+H53:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate >= long_integer__base__first .
+H54:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate <= long_integer__base__last .
+H55:   now__1 - element(command_times, [for_fin]) >= 
+           integer32__first .
+H56:   now__1 - element(command_times, [for_fin]) <= 
+           integer32__last .
+H57:   element(current_angles, [for_fin]) >= integer32__first .
+H58:   element(current_angles, [for_fin]) <= integer32__last .
+H59:   element(commanded_angles, [for_fin]) >= angle__first .
+H60:   element(commanded_angles, [for_fin]) <= angle__last .
+H61:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H62:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+H63:   element(commanded_angles, [for_fin]) >= integer32__first .
+H64:   element(commanded_angles, [for_fin]) <= integer32__last .
+H65:   not (element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 > element(
+           commanded_angles, [for_fin])) .
+H66:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H67:   element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+        ->
+C1:    element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           angle__first .
+C2:    element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           angle__last .
+C3:    element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           angle__first .
+C4:    element(current_angles, [for_fin]) + (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           angle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 96:
+
+procedure_extrapolate_angle_16.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   now__1 - element(command_times, [for_fin]) > 2000 .
+H39:   2000 >= clock__millisecond__first .
+H40:   2000 <= clock__millisecond__last .
+H41:   element(current_angles, [for_fin]) >= angle__first .
+H42:   element(current_angles, [for_fin]) <= angle__last .
+H43:   element(commanded_angles, [for_fin]) >= angle__first .
+H44:   element(commanded_angles, [for_fin]) <= angle__last .
+H45:   not (element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin])) .
+H46:   element(current_angles, [for_fin]) >= angle__first .
+H47:   element(current_angles, [for_fin]) <= angle__last .
+H48:   2000 >= clock__millisecond__first .
+H49:   2000 <= clock__millisecond__last .
+        ->
+C1:    element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+C2:    element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+C3:    2000 * steer_cfg__move_rate div 1000 >= long_integer__base__first .
+C4:    2000 * steer_cfg__move_rate div 1000 <= long_integer__base__last .
+C5:    1000 <> 0 .
+C6:    2000 * steer_cfg__move_rate >= long_integer__base__first .
+C7:    2000 * steer_cfg__move_rate <= long_integer__base__last .
+C8:    2000 >= integer32__first .
+C9:    2000 <= integer32__last .
+C10:   element(current_angles, [for_fin]) >= integer32__first .
+C11:   element(current_angles, [for_fin]) <= integer32__last .
+ 
+
+procedure_extrapolate_angle_17.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   not (now__1 - element(command_times, [for_fin]) > 2000) .
+H39:   element(current_angles, [for_fin]) >= angle__first .
+H40:   element(current_angles, [for_fin]) <= angle__last .
+H41:   element(commanded_angles, [for_fin]) >= angle__first .
+H42:   element(commanded_angles, [for_fin]) <= angle__last .
+H43:   not (element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin])) .
+H44:   element(current_angles, [for_fin]) >= angle__first .
+H45:   element(current_angles, [for_fin]) <= angle__last .
+H46:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H47:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+        ->
+C1:    element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+C2:    element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+C3:    (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 >= long_integer__base__first .
+C4:    (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 <= long_integer__base__last .
+C5:    1000 <> 0 .
+C6:    (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate >= long_integer__base__first .
+C7:    (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate <= long_integer__base__last .
+C8:    now__1 - element(command_times, [for_fin]) >= 
+           integer32__first .
+C9:    now__1 - element(command_times, [for_fin]) <= 
+           integer32__last .
+C10:   element(current_angles, [for_fin]) >= integer32__first .
+C11:   element(current_angles, [for_fin]) <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 98:
+
+procedure_extrapolate_angle_18.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   now__1 - element(command_times, [for_fin]) > 2000 .
+H39:   2000 >= clock__millisecond__first .
+H40:   2000 <= clock__millisecond__last .
+H41:   element(current_angles, [for_fin]) >= angle__first .
+H42:   element(current_angles, [for_fin]) <= angle__last .
+H43:   element(commanded_angles, [for_fin]) >= angle__first .
+H44:   element(commanded_angles, [for_fin]) <= angle__last .
+H45:   not (element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin])) .
+H46:   element(current_angles, [for_fin]) >= angle__first .
+H47:   element(current_angles, [for_fin]) <= angle__last .
+H48:   2000 >= clock__millisecond__first .
+H49:   2000 <= clock__millisecond__last .
+H50:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H51:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+H52:   2000 * steer_cfg__move_rate div 1000 >= long_integer__base__first .
+H53:   2000 * steer_cfg__move_rate div 1000 <= long_integer__base__last .
+H54:   1000 <> 0 .
+H55:   2000 * steer_cfg__move_rate >= long_integer__base__first .
+H56:   2000 * steer_cfg__move_rate <= long_integer__base__last .
+H57:   2000 >= integer32__first .
+H58:   2000 <= integer32__last .
+H59:   element(current_angles, [for_fin]) >= integer32__first .
+H60:   element(current_angles, [for_fin]) <= integer32__last .
+H61:   element(commanded_angles, [for_fin]) >= angle__first .
+H62:   element(commanded_angles, [for_fin]) <= angle__last .
+H63:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H64:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+        ->
+C1:    element(commanded_angles, [for_fin]) >= integer32__first .
+C2:    element(commanded_angles, [for_fin]) <= integer32__last .
+ 
+
+procedure_extrapolate_angle_19.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   not (now__1 - element(command_times, [for_fin]) > 2000) .
+H39:   element(current_angles, [for_fin]) >= angle__first .
+H40:   element(current_angles, [for_fin]) <= angle__last .
+H41:   element(commanded_angles, [for_fin]) >= angle__first .
+H42:   element(commanded_angles, [for_fin]) <= angle__last .
+H43:   not (element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin])) .
+H44:   element(current_angles, [for_fin]) >= angle__first .
+H45:   element(current_angles, [for_fin]) <= angle__last .
+H46:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H47:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H48:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H49:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+H50:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 >= long_integer__base__first .
+H51:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 <= long_integer__base__last .
+H52:   1000 <> 0 .
+H53:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate >= long_integer__base__first .
+H54:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate <= long_integer__base__last .
+H55:   now__1 - element(command_times, [for_fin]) >= 
+           integer32__first .
+H56:   now__1 - element(command_times, [for_fin]) <= 
+           integer32__last .
+H57:   element(current_angles, [for_fin]) >= integer32__first .
+H58:   element(current_angles, [for_fin]) <= integer32__last .
+H59:   element(commanded_angles, [for_fin]) >= angle__first .
+H60:   element(commanded_angles, [for_fin]) <= angle__last .
+H61:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H62:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+        ->
+C1:    element(commanded_angles, [for_fin]) >= integer32__first .
+C2:    element(commanded_angles, [for_fin]) <= integer32__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 99:
+
+procedure_extrapolate_angle_20.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   now__1 - element(command_times, [for_fin]) > 2000 .
+H39:   2000 >= clock__millisecond__first .
+H40:   2000 <= clock__millisecond__last .
+H41:   element(current_angles, [for_fin]) >= angle__first .
+H42:   element(current_angles, [for_fin]) <= angle__last .
+H43:   element(commanded_angles, [for_fin]) >= angle__first .
+H44:   element(commanded_angles, [for_fin]) <= angle__last .
+H45:   not (element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin])) .
+H46:   element(current_angles, [for_fin]) >= angle__first .
+H47:   element(current_angles, [for_fin]) <= angle__last .
+H48:   2000 >= clock__millisecond__first .
+H49:   2000 <= clock__millisecond__last .
+H50:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H51:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+H52:   2000 * steer_cfg__move_rate div 1000 >= long_integer__base__first .
+H53:   2000 * steer_cfg__move_rate div 1000 <= long_integer__base__last .
+H54:   1000 <> 0 .
+H55:   2000 * steer_cfg__move_rate >= long_integer__base__first .
+H56:   2000 * steer_cfg__move_rate <= long_integer__base__last .
+H57:   2000 >= integer32__first .
+H58:   2000 <= integer32__last .
+H59:   element(current_angles, [for_fin]) >= integer32__first .
+H60:   element(current_angles, [for_fin]) <= integer32__last .
+H61:   element(commanded_angles, [for_fin]) >= angle__first .
+H62:   element(commanded_angles, [for_fin]) <= angle__last .
+H63:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H64:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+H65:   element(commanded_angles, [for_fin]) >= integer32__first .
+H66:   element(commanded_angles, [for_fin]) <= integer32__last .
+H67:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 < element(
+           commanded_angles, [for_fin]) .
+H68:   element(commanded_angles, [for_fin]) >= angle__first .
+H69:   element(commanded_angles, [for_fin]) <= angle__last .
+        ->
+C1:    element(commanded_angles, [for_fin]) >= angle__first .
+C2:    element(commanded_angles, [for_fin]) <= angle__last .
+ 
+
+procedure_extrapolate_angle_21.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   not (now__1 - element(command_times, [for_fin]) > 2000) .
+H39:   element(current_angles, [for_fin]) >= angle__first .
+H40:   element(current_angles, [for_fin]) <= angle__last .
+H41:   element(commanded_angles, [for_fin]) >= angle__first .
+H42:   element(commanded_angles, [for_fin]) <= angle__last .
+H43:   not (element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin])) .
+H44:   element(current_angles, [for_fin]) >= angle__first .
+H45:   element(current_angles, [for_fin]) <= angle__last .
+H46:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H47:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H48:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H49:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+H50:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 >= long_integer__base__first .
+H51:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 <= long_integer__base__last .
+H52:   1000 <> 0 .
+H53:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate >= long_integer__base__first .
+H54:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate <= long_integer__base__last .
+H55:   now__1 - element(command_times, [for_fin]) >= 
+           integer32__first .
+H56:   now__1 - element(command_times, [for_fin]) <= 
+           integer32__last .
+H57:   element(current_angles, [for_fin]) >= integer32__first .
+H58:   element(current_angles, [for_fin]) <= integer32__last .
+H59:   element(commanded_angles, [for_fin]) >= angle__first .
+H60:   element(commanded_angles, [for_fin]) <= angle__last .
+H61:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H62:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+H63:   element(commanded_angles, [for_fin]) >= integer32__first .
+H64:   element(commanded_angles, [for_fin]) <= integer32__last .
+H65:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 < element(
+           commanded_angles, [for_fin]) .
+H66:   element(commanded_angles, [for_fin]) >= angle__first .
+H67:   element(commanded_angles, [for_fin]) <= angle__last .
+        ->
+C1:    element(commanded_angles, [for_fin]) >= angle__first .
+C2:    element(commanded_angles, [for_fin]) <= angle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 101:
+
+procedure_extrapolate_angle_22.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   now__1 - element(command_times, [for_fin]) > 2000 .
+H39:   2000 >= clock__millisecond__first .
+H40:   2000 <= clock__millisecond__last .
+H41:   element(current_angles, [for_fin]) >= angle__first .
+H42:   element(current_angles, [for_fin]) <= angle__last .
+H43:   element(commanded_angles, [for_fin]) >= angle__first .
+H44:   element(commanded_angles, [for_fin]) <= angle__last .
+H45:   not (element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin])) .
+H46:   element(current_angles, [for_fin]) >= angle__first .
+H47:   element(current_angles, [for_fin]) <= angle__last .
+H48:   2000 >= clock__millisecond__first .
+H49:   2000 <= clock__millisecond__last .
+H50:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H51:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+H52:   2000 * steer_cfg__move_rate div 1000 >= long_integer__base__first .
+H53:   2000 * steer_cfg__move_rate div 1000 <= long_integer__base__last .
+H54:   1000 <> 0 .
+H55:   2000 * steer_cfg__move_rate >= long_integer__base__first .
+H56:   2000 * steer_cfg__move_rate <= long_integer__base__last .
+H57:   2000 >= integer32__first .
+H58:   2000 <= integer32__last .
+H59:   element(current_angles, [for_fin]) >= integer32__first .
+H60:   element(current_angles, [for_fin]) <= integer32__last .
+H61:   element(commanded_angles, [for_fin]) >= angle__first .
+H62:   element(commanded_angles, [for_fin]) <= angle__last .
+H63:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H64:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+H65:   element(commanded_angles, [for_fin]) >= integer32__first .
+H66:   element(commanded_angles, [for_fin]) <= integer32__last .
+H67:   not (element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 < element(
+           commanded_angles, [for_fin])) .
+H68:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 >= integer32__first .
+H69:   element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 <= integer32__last .
+        ->
+C1:    element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 >= angle__first .
+C2:    element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 <= angle__last .
+C3:    element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 >= angle__first .
+C4:    element(current_angles, [for_fin]) - 2000 * 
+           steer_cfg__move_rate div 1000 <= angle__last .
+ 
+
+procedure_extrapolate_angle_23.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   time_valid__1 .
+H27:   now__1 >= clock__millisecond__first .
+H28:   now__1 <= clock__millisecond__last .
+H29:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H30:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H31:   for_fin >= fin__first .
+H32:   for_fin <= fin__last .
+H33:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H34:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H35:   not (now__1 - element(command_times, [for_fin]) < 0) .
+H36:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H37:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H38:   not (now__1 - element(command_times, [for_fin]) > 2000) .
+H39:   element(current_angles, [for_fin]) >= angle__first .
+H40:   element(current_angles, [for_fin]) <= angle__last .
+H41:   element(commanded_angles, [for_fin]) >= angle__first .
+H42:   element(commanded_angles, [for_fin]) <= angle__last .
+H43:   not (element(commanded_angles, [for_fin]) >= element(
+           current_angles, [for_fin])) .
+H44:   element(current_angles, [for_fin]) >= angle__first .
+H45:   element(current_angles, [for_fin]) <= angle__last .
+H46:   now__1 - element(command_times, [for_fin]) >= 
+           clock__millisecond__first .
+H47:   now__1 - element(command_times, [for_fin]) <= 
+           clock__millisecond__last .
+H48:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H49:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+H50:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 >= long_integer__base__first .
+H51:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate div 1000 <= long_integer__base__last .
+H52:   1000 <> 0 .
+H53:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate >= long_integer__base__first .
+H54:   (now__1 - element(command_times, [for_fin])) * 
+           steer_cfg__move_rate <= long_integer__base__last .
+H55:   now__1 - element(command_times, [for_fin]) >= 
+           integer32__first .
+H56:   now__1 - element(command_times, [for_fin]) <= 
+           integer32__last .
+H57:   element(current_angles, [for_fin]) >= integer32__first .
+H58:   element(current_angles, [for_fin]) <= integer32__last .
+H59:   element(commanded_angles, [for_fin]) >= angle__first .
+H60:   element(commanded_angles, [for_fin]) <= angle__last .
+H61:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H62:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+H63:   element(commanded_angles, [for_fin]) >= integer32__first .
+H64:   element(commanded_angles, [for_fin]) <= integer32__last .
+H65:   not (element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 < element(
+           commanded_angles, [for_fin])) .
+H66:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           integer32__first .
+H67:   element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           integer32__last .
+        ->
+C1:    element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           angle__first .
+C2:    element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           angle__last .
+C3:    element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+           angle__first .
+C4:    element(current_angles, [for_fin]) - (now__1 - element(
+           command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+           angle__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 107:
+
+procedure_extrapolate_angle_24.
+H1:    true .
+H2:    for_fin >= fin__first .
+H3:    for_fin <= fin__last .
+H4:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(current_angles, [
+           i___1]) >= angle__first) and (element(
+           current_angles, [i___1]) <= angle__last))) .
+H5:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(
+           commanded_angles, [i___1]) >= angle__first) and (element(
+           commanded_angles, [i___1]) <= angle__last))) .
+H6:    for_all(i___1: steer_cfg__fin, ((i___1 >= fin__first) and (
+           i___1 <= fin__last)) -> ((element(command_times, [
+           i___1]) >= clock__millisecond__first) and (element(
+           command_times, [i___1]) <= clock__millisecond__last))) .
+H7:    now__1 >= clock__millisecond__first .
+H8:    now__1 <= clock__millisecond__last .
+H9:    true .
+H10:   now__1 >= clock__millisecond__first .
+H11:   now__1 <= clock__millisecond__last .
+H12:   element(current_angles, [for_fin]) >= angle__first .
+H13:   element(current_angles, [for_fin]) <= angle__last .
+H14:   for_fin >= fin__first .
+H15:   for_fin <= fin__last .
+H16:   element(commanded_angles, [for_fin]) >= angle__first .
+H17:   element(commanded_angles, [for_fin]) <= angle__last .
+H18:   for_fin >= fin__first .
+H19:   for_fin <= fin__last .
+H20:   element(current_angles, [for_fin]) >= angle__first .
+H21:   element(current_angles, [for_fin]) <= angle__last .
+H22:   element(commanded_angles, [for_fin]) >= angle__first .
+H23:   element(commanded_angles, [for_fin]) <= angle__last .
+H24:   not (element(current_angles, [for_fin]) = element(
+           commanded_angles, [for_fin])) .
+H25:   true .
+H26:   not time_valid__1 .
+H27:   element(current_angles, [for_fin]) >= angle__first .
+H28:   element(current_angles, [for_fin]) <= angle__last .
+        ->
+C1:    element(current_angles, [for_fin]) >= angle__first .
+C2:    element(current_angles, [for_fin]) <= angle__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_extrapolate_angle_25.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_26.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_27.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_28.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_29.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_30.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_31.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_32.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_33.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_34.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_extrapolate_angle_35.
+*** true .          /* trivially true VC removed by Examiner */
+
+

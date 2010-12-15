@@ -1,0 +1,71 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:37.55}
+
+                    {procedure flying_object.Get_Position}
+
+
+title procedure get_position;
+
+  function round__(real) : integer;
+  type measuretypes__meter = integer;
+  type measuretypes__meter_per_sec = integer;
+  type measuretypes__cm_per_sec_2 = integer;
+  type clock__millisecond = integer;
+  type cartesian__position = record
+        x : integer;
+        y : integer;
+        z : integer
+     end;
+  type cartesian__velocity = record
+        vx : integer;
+        vy : integer;
+        vz : integer
+     end;
+  type cartesian__accel = record
+        ax : integer;
+        ay : integer;
+        az : integer
+     end;
+  type entity = record
+        p : cartesian__position;
+        v : cartesian__velocity;
+        a : cartesian__accel;
+        t : integer
+     end;
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const measuretypes__cm_per_sec_2__base__last : integer = pending; 
+  const measuretypes__cm_per_sec_2__base__first : integer = pending; 
+  const measuretypes__meter_per_sec__base__last : integer = pending; 
+  const measuretypes__meter_per_sec__base__first : integer = pending; 
+  const measuretypes__meter__base__last : integer = pending; 
+  const measuretypes__meter__base__first : integer = pending; 
+  const entity__size : integer = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  const cartesian__accel__size : integer = pending; 
+  const cartesian__velocity__size : integer = pending; 
+  const cartesian__position__size : integer = pending; 
+  const measuretypes__cm_per_sec_2__size : integer = pending; 
+  const measuretypes__cm_per_sec_2__last : integer = pending; 
+  const measuretypes__cm_per_sec_2__first : integer = pending; 
+  const measuretypes__meter_per_sec__size : integer = pending; 
+  const measuretypes__meter_per_sec__last : integer = pending; 
+  const measuretypes__meter_per_sec__first : integer = pending; 
+  const measuretypes__meter__size : integer = pending; 
+  const measuretypes__meter__last : integer = pending; 
+  const measuretypes__meter__first : integer = pending; 
+  var e : entity;
+  var t : integer;
+  var valid : boolean;
+  var valid__1 : boolean;
+  var t__1 : integer;
+
+end;

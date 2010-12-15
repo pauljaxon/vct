@@ -1,0 +1,2008 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:38
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure bus.Cycle
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_cycle_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H11 on reading formula in, to give:
+     %%%  H11:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified C6 on reading formula in, to give:
+     %%%  C6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified C12 on reading formula in, to give:
+     %%%  C12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+%%%  Simplified C15 on reading formula in, to give:
+     %%%  C15:  true
+%%%  Simplified C17 on reading formula in, to give:
+     %%%  C17:  true
+***  Proved C1:  true
+***  Proved C3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(real_inputs, [i___1])), [
+          i___2]) and element(fld_data(element(real_inputs, [i___1])), [i___2]) 
+          <= word__last))
+     using hypothesis H2.
+***  Proved C4:  true
+***  Proved C5:  true
+***  Proved C6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_inputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_inputs, [i___1])), [i___2]
+          ) <= word__last))
+     using hypothesis H5.
+***  Proved C7:  true
+***  Proved C8:  true
+***  Proved C9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(real_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(real_outputs, [i___1])), [i___2])
+           <= word__last))
+     using hypothesis H8.
+***  Proved C10:  true
+***  Proved C11:  true
+***  Proved C12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+     using hypothesis H11.
+***  Proved C13:  true
+***  Proved C14:  true
+***  Proved C15:  true
+***  Proved C17:  true
+-S-  Applied substitution rule cycle_rules(27).
+     This was achieved by replacing all occurrences of valid_msg_index__first 
+          by:
+          1.
+<S>  New H2:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          valid_msg_index__last -> word__first <= element(fld_data(element(
+          real_inputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_inputs, [i___1])), [i___2]) <= word__last))
+<S>  New H5:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          valid_msg_index__last -> word__first <= element(fld_data(element(
+          shadow_inputs, [i___1])), [i___2]) and element(fld_data(element(
+          shadow_inputs, [i___1])), [i___2]) <= word__last))
+<S>  New H8:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          valid_msg_index__last -> word__first <= element(fld_data(element(
+          real_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New H11:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          valid_msg_index__last -> word__first <= element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New C2:  1 <= valid_msg_index__last
+<S>  New C16:  1 <= valid_msg_index__last
+<S>  New C18:  1 <= valid_msg_index__last
+-S-  Applied substitution rule cycle_rules(28).
+     This was achieved by replacing all occurrences of valid_msg_index__last by:
+          63.
+<S>  New H2:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          63 -> word__first <= element(fld_data(element(real_inputs, [i___1])), 
+          [i___2]) and element(fld_data(element(real_inputs, [i___1])), [i___2])
+           <= word__last))
+<S>  New H5:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          63 -> word__first <= element(fld_data(element(shadow_inputs, [i___1]))
+          , [i___2]) and element(fld_data(element(shadow_inputs, [i___1])), [
+          i___2]) <= word__last))
+<S>  New H8:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          63 -> word__first <= element(fld_data(element(real_outputs, [i___1]))
+          , [i___2]) and element(fld_data(element(real_outputs, [i___1])), [
+          i___2]) <= word__last))
+<S>  New H11:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, 1 <= i___1 and i___1 <= 
+          63 -> word__first <= element(fld_data(element(shadow_outputs, [i___1])
+          ), [i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+<S>  New C2:  true
+<S>  New C16:  true
+<S>  New C18:  true
+***  Proved C2:  true
+***  Proved C16:  true
+***  Proved C18:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_2.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as H2)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified C6 on reading formula in, to give:
+     %%%  C6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(update(real_outputs, [loop__1__i], element(
+          shadow_outputs, [loop__1__i])), [i___1])), [i___2]) and element(
+          fld_data(element(update(real_outputs, [loop__1__i], element(
+          shadow_outputs, [loop__1__i])), [i___1])), [i___2]) <= word__last))
+%%%  Simplified C12 on reading formula in, to give:
+     %%%  C12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(update(shadow_outputs, [
+          loop__1__i], upf_valid(null_message, fld_valid(element(
+          shadow_outputs, [loop__1__i])))), [i___1])), [i___2]) and element(
+          fld_data(element(update(shadow_outputs, [loop__1__i], upf_valid(
+          null_message, fld_valid(element(shadow_outputs, [loop__1__i])))), [
+          i___1])), [i___2]) <= word__last))
+***  Proved C1:  loop__1__i + 1 >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(real_inputs, [i___1])), [
+          i___2]) and element(fld_data(element(real_inputs, [i___1])), [i___2]) 
+          <= word__last))
+     using hypothesis H3.
+***  Proved C4:  true
+***  Proved C5:  true
+***  Proved C6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_inputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_inputs, [i___1])), [i___2]
+          ) <= word__last))
+     using hypothesis H6.
+***  Proved C7:  true
+***  Proved C8:  true
+***  Proved C10:  true
+***  Proved C11:  true
+***  Proved C13:  true
+***  Proved C14:  true
+***  Proved C15:  loop__1__i + 1 >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C17:  loop__1__i + 1 >= valid_msg_index__first
+     using hypothesis H1.
+-S-  Applied substitution rule cycle_rules(28).
+     This was achieved by replacing all occurrences of valid_msg_index__last by:
+          63.
+<S>  New H2:  loop__1__i <= 63
+<S>  New H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= 63 -> word__first <= element(fld_data(element(
+          real_inputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_inputs, [i___1])), [i___2]) <= word__last))
+<S>  New H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= 63 -> word__first <= element(fld_data(element(
+          shadow_inputs, [i___1])), [i___2]) and element(fld_data(element(
+          shadow_inputs, [i___1])), [i___2]) <= word__last))
+<S>  New H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= 63 -> word__first <= element(fld_data(element(
+          real_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= 63 -> word__first <= element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New H19:  not fld_fresh(element(shadow_outputs, [loop__1__i])) -> 
+          loop__1__i >= valid_msg_index__first and loop__1__i <= 63
+<S>  New H34:  not loop__1__i = 63
+<S>  New C2:  loop__1__i <= 62
+<S>  New C9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= 63 -> word__first <= element(fld_data(element(
+          update(real_outputs, [loop__1__i], element(shadow_outputs, [
+          loop__1__i])), [i___1])), [i___2]) and element(fld_data(element(
+          update(real_outputs, [loop__1__i], element(shadow_outputs, [
+          loop__1__i])), [i___1])), [i___2]) <= word__last))
+<S>  New C12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= 63 -> word__first <= element(fld_data(element(
+          update(shadow_outputs, [loop__1__i], upf_valid(null_message, 
+          fld_valid(element(shadow_outputs, [loop__1__i])))), [i___1])), [i___2]
+          ) and element(fld_data(element(update(shadow_outputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_outputs, [loop__1__i]
+          )))), [i___1])), [i___2]) <= word__last))
+<S>  New C16:  loop__1__i <= 62
+<S>  New C18:  loop__1__i <= 62
+***  Proved C2:  loop__1__i <= 62
+     using hypotheses H2 & H34.
+***  Proved C16:  loop__1__i <= 62
+     using hypotheses H2 & H34.
+***  Proved C18:  loop__1__i <= 62
+     using hypotheses H2 & H34.
+>>>  Restructured hypothesis H34 into:
+     >>>  H34:  loop__1__i <> 63
+-S-  Applied substitution rule cycle_rules(9).
+     This was achieved by replacing all occurrences of word_index__first by:
+          1.
+<S>  New H3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= word_index__last 
+          -> for_all(i___1 : integer, valid_msg_index__first <= i___1 and i___1 
+          <= 63 -> word__first <= element(fld_data(element(real_inputs, [i___1])
+          ), [i___2]) and element(fld_data(element(real_inputs, [i___1])), [
+          i___2]) <= word__last))
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= word_index__last 
+          -> for_all(i___1 : integer, valid_msg_index__first <= i___1 and i___1 
+          <= 63 -> word__first <= element(fld_data(element(shadow_inputs, [
+          i___1])), [i___2]) and element(fld_data(element(shadow_inputs, [i___1]
+          )), [i___2]) <= word__last))
+<S>  New H9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= word_index__last 
+          -> for_all(i___1 : integer, valid_msg_index__first <= i___1 and i___1 
+          <= 63 -> word__first <= element(fld_data(element(real_outputs, [i___1]
+          )), [i___2]) and element(fld_data(element(real_outputs, [i___1])), [
+          i___2]) <= word__last))
+<S>  New H12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= 63 -> word__first <= element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New C9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= word_index__last 
+          -> for_all(i___1 : integer, valid_msg_index__first <= i___1 and i___1 
+          <= 63 -> word__first <= element(fld_data(element(update(real_outputs, 
+          [loop__1__i], element(shadow_outputs, [loop__1__i])), [i___1])), [
+          i___2]) and element(fld_data(element(update(real_outputs, [loop__1__i]
+          , element(shadow_outputs, [loop__1__i])), [i___1])), [i___2]) <= 
+          word__last))
+<S>  New C12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= 63 -> word__first <= element(fld_data(element(
+          update(shadow_outputs, [loop__1__i], upf_valid(null_message, 
+          fld_valid(element(shadow_outputs, [loop__1__i])))), [i___1])), [i___2]
+          ) and element(fld_data(element(update(shadow_outputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_outputs, [loop__1__i]
+          )))), [i___1])), [i___2]) <= word__last))
+-S-  Applied substitution rule cycle_rules(10).
+     This was achieved by replacing all occurrences of word_index__last by:
+          31.
+<S>  New H3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 
+          word__first <= element(fld_data(element(real_inputs, [i___1])), [
+          i___2]) and element(fld_data(element(real_inputs, [i___1])), [i___2]) 
+          <= word__last))
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 
+          word__first <= element(fld_data(element(shadow_inputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_inputs, [i___1])), [i___2]
+          ) <= word__last))
+<S>  New H9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 
+          word__first <= element(fld_data(element(real_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(real_outputs, [i___1])), [i___2])
+           <= word__last))
+<S>  New H12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+<S>  New C9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 
+          word__first <= element(fld_data(element(update(real_outputs, [
+          loop__1__i], element(shadow_outputs, [loop__1__i])), [i___1])), [
+          i___2]) and element(fld_data(element(update(real_outputs, [loop__1__i]
+          , element(shadow_outputs, [loop__1__i])), [i___1])), [i___2]) <= 
+          word__last))
+<S>  New C12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 
+          word__first <= element(fld_data(element(update(shadow_outputs, [
+          loop__1__i], upf_valid(null_message, fld_valid(element(
+          shadow_outputs, [loop__1__i])))), [i___1])), [i___2]) and element(
+          fld_data(element(update(shadow_outputs, [loop__1__i], upf_valid(
+          null_message, fld_valid(element(shadow_outputs, [loop__1__i])))), [
+          i___1])), [i___2]) <= word__last))
+-S-  Applied substitution rule cycle_rules(15).
+     This was achieved by replacing all occurrences of word__first by:
+          0.
+<S>  New H3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(real_inputs, [i___1])), [i___2]) and 
+          element(fld_data(element(real_inputs, [i___1])), [i___2]) <= 
+          word__last))
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(shadow_inputs, [i___1])), [i___2]) and 
+          element(fld_data(element(shadow_inputs, [i___1])), [i___2]) <= 
+          word__last))
+<S>  New H9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(real_outputs, [i___1])), [i___2]) and 
+          element(fld_data(element(real_outputs, [i___1])), [i___2]) <= 
+          word__last))
+<S>  New H12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(shadow_outputs, [i___1])), [i___2]) and 
+          element(fld_data(element(shadow_outputs, [i___1])), [i___2]) <= 
+          word__last))
+<S>  New C9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(update(real_outputs, [loop__1__i], 
+          element(shadow_outputs, [loop__1__i])), [i___1])), [i___2]) and 
+          element(fld_data(element(update(real_outputs, [loop__1__i], element(
+          shadow_outputs, [loop__1__i])), [i___1])), [i___2]) <= word__last))
+<S>  New C12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(update(shadow_outputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_outputs, [loop__1__i]
+          )))), [i___1])), [i___2]) and element(fld_data(element(update(
+          shadow_outputs, [loop__1__i], upf_valid(null_message, fld_valid(
+          element(shadow_outputs, [loop__1__i])))), [i___1])), [i___2]) <= 
+          word__last))
+-S-  Applied substitution rule cycle_rules(16).
+     This was achieved by replacing all occurrences of word__last by:
+          65535.
+<S>  New H3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(real_inputs, [i___1])), [i___2]) and 
+          element(fld_data(element(real_inputs, [i___1])), [i___2]) <= 65535))
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(shadow_inputs, [i___1])), [i___2]) and 
+          element(fld_data(element(shadow_inputs, [i___1])), [i___2]) <= 65535))
+<S>  New H9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(real_outputs, [i___1])), [i___2]) and 
+          element(fld_data(element(real_outputs, [i___1])), [i___2]) <= 65535))
+<S>  New H12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(shadow_outputs, [i___1])), [i___2]) and 
+          element(fld_data(element(shadow_outputs, [i___1])), [i___2]) <= 65535)
+          )
+<S>  New C9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(update(real_outputs, [loop__1__i], 
+          element(shadow_outputs, [loop__1__i])), [i___1])), [i___2]) and 
+          element(fld_data(element(update(real_outputs, [loop__1__i], element(
+          shadow_outputs, [loop__1__i])), [i___1])), [i___2]) <= 65535))
+<S>  New C12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(update(shadow_outputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_outputs, [loop__1__i]
+          )))), [i___1])), [i___2]) and element(fld_data(element(update(
+          shadow_outputs, [loop__1__i], upf_valid(null_message, fld_valid(
+          element(shadow_outputs, [loop__1__i])))), [i___1])), [i___2]) <= 
+          65535))
+-S-  Applied substitution rule cycle_rules(27).
+     This was achieved by replacing all occurrences of valid_msg_index__first 
+          by:
+          1.
+<S>  New H1:  loop__1__i >= 1
+<S>  New H19:  not fld_fresh(element(shadow_outputs, [loop__1__i])) -> 
+          loop__1__i >= 1 and loop__1__i <= 63
+<S>  New H3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(real_inputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_inputs, [i___1])), [i___2]) <= 65535))
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(shadow_inputs, [i___1])), [i___2]) and element(fld_data(
+          element(shadow_inputs, [i___1])), [i___2]) <= 65535))
+<S>  New H9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(real_outputs, [i___1])), [i___2]) and element(fld_data(
+          element(real_outputs, [i___1])), [i___2]) <= 65535))
+<S>  New H12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(shadow_outputs, [i___1])), [i___2]) and element(fld_data(
+          element(shadow_outputs, [i___1])), [i___2]) <= 65535))
+<S>  New C9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(update(real_outputs, [loop__1__i], element(shadow_outputs, [
+          loop__1__i])), [i___1])), [i___2]) and element(fld_data(element(
+          update(real_outputs, [loop__1__i], element(shadow_outputs, [
+          loop__1__i])), [i___1])), [i___2]) <= 65535))
+<S>  New C12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(update(shadow_outputs, [loop__1__i], upf_valid(null_message, 
+          fld_valid(element(shadow_outputs, [loop__1__i])))), [i___1])), [i___2]
+          ) and element(fld_data(element(update(shadow_outputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_outputs, [loop__1__i]
+          )))), [i___1])), [i___2]) <= 65535))
+%%%  Hypotheses H2 & H34 together imply that
+          loop__1__i < 63.
+     H2 & H34 have therefore been deleted and a new H2 added to this effect.
+---  Eliminated hypothesis H4 (true-hypothesis).
+---  Eliminated hypothesis H5 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H29 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H33 (true-hypothesis).
+     +++  New H34:  integer__size >= 0
+     +++  New H35:  word_index__size >= 0
+     +++  New H36:  word_index__base__first <= word_index__base__last
+     +++  New H37:  word__size >= 0
+     +++  New H38:  message__size >= 0
+     +++  New H39:  all_msg_index__size >= 0
+     +++  New H40:  valid_msg_index__size >= 0
+     +++  New H41:  word_index__base__first <= 1
+     +++  New H42:  word_index__base__last >= 31
+>>>  Attempting to prove quantified formula C9 by "unwrapping" it.
++++  Added new hypotheses (in proving an implication formula).
+     +++  New H43:  1 <= int_i___2_1
+     +++  New H44:  int_i___2_1 <= 31
++++  New subgoal C1:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(update(real_outputs, [loop__1__i], 
+          element(shadow_outputs, [loop__1__i])), [i___1])), [int_i___2_1]) and 
+          element(fld_data(element(update(real_outputs, [loop__1__i], element(
+          shadow_outputs, [loop__1__i])), [i___1])), [int_i___2_1]) <= 65535)
+     >>>  Attempting to prove quantified formula C1 by "unwrapping" it.
+     +++  Added new hypotheses (in proving an implication formula).
+          +++  New H45:  1 <= int_i___1_1
+          +++  New H46:  int_i___1_1 <= 63
+     +++  New subgoal C1:  0 <= element(fld_data(element(update(real_outputs, [
+          loop__1__i], element(shadow_outputs, [loop__1__i])), [int_i___1_1])), 
+          [int_i___2_1]) and element(fld_data(element(update(real_outputs, [
+          loop__1__i], element(shadow_outputs, [loop__1__i])), [int_i___1_1])), 
+          [int_i___2_1]) <= 65535
+     >>>  Conclusion C1 has now been split into two, giving:
+          >>>  C1:  0 <= element(fld_data(element(update(real_outputs, [
+          loop__1__i], element(shadow_outputs, [loop__1__i])), [int_i___1_1])), 
+          [int_i___2_1])
+          >>>  C2:  element(fld_data(element(update(real_outputs, [loop__1__i], 
+          element(shadow_outputs, [loop__1__i])), [int_i___1_1])), [int_i___2_1]
+          ) <= 65535
+          >>>  Attempting to prove C1 by cases, depending on whether
+               (1)  loop__1__i = int_i___1_1, or
+               (2)  loop__1__i <> int_i___1_1,
+               given the need to simplify update(A, [I], X) accesses in C1.
+          +++  Case 1 - New H47:  loop__1__i = int_i___1_1
+          +++  New subgoal C1:  0 <= element(fld_data(element(shadow_outputs, [
+          loop__1__i])), [int_i___2_1])
+          -S-  Eliminated hypothesis H47.
+               This was achieved by replacing all occurrences of loop__1__i by:
+                    int_i___1_1.
+          <S>  New H1:  int_i___1_1 >= 1
+          <S>  New H2:  int_i___1_1 < 63
+          <S>  New H19:  not fld_fresh(element(shadow_outputs, [int_i___1_1])) 
+          -> int_i___1_1 >= 1 and int_i___1_1 <= 63
+          <S>  New H23:  fld_fresh(element(shadow_outputs, [int_i___1_1])) or 
+          fld_valid(element(shadow_outputs, [int_i___1_1])) and not fld_valid(
+          element(real_outputs, [int_i___1_1]))
+          <S>  New C1:  0 <= element(fld_data(element(shadow_outputs, [
+          int_i___1_1])), [int_i___2_1])
+          ***  Proved subgoal C1
+               using hypotheses H12, H43, H44, H45 & H46.
+          +++  Case 2 - New H47:  loop__1__i <> int_i___1_1
+          +++  New subgoal C1:  0 <= element(fld_data(element(real_outputs, [
+          int_i___1_1])), [int_i___2_1])
+          ***  Proved subgoal C1
+               using hypotheses H9, H43, H44, H45 & H46.
+          >>>  Attempting to prove C2 by cases, depending on whether
+               (1)  loop__1__i = int_i___1_1, or
+               (2)  loop__1__i <> int_i___1_1,
+               given the need to simplify update(A, [I], X) accesses in C2.
+          +++  Case 1 - New H47:  loop__1__i = int_i___1_1
+          +++  New subgoal C1:  element(fld_data(element(shadow_outputs, [
+          loop__1__i])), [int_i___2_1]) <= 65535
+          -S-  Eliminated hypothesis H47.
+               This was achieved by replacing all occurrences of loop__1__i by:
+                    int_i___1_1.
+          <S>  New H1:  int_i___1_1 >= 1
+          <S>  New H2:  int_i___1_1 < 63
+          <S>  New H19:  not fld_fresh(element(shadow_outputs, [int_i___1_1])) 
+          -> int_i___1_1 >= 1 and int_i___1_1 <= 63
+          <S>  New H23:  fld_fresh(element(shadow_outputs, [int_i___1_1])) or 
+          fld_valid(element(shadow_outputs, [int_i___1_1])) and not fld_valid(
+          element(real_outputs, [int_i___1_1]))
+          <S>  New C1:  element(fld_data(element(shadow_outputs, [int_i___1_1]))
+          , [int_i___2_1]) <= 65535
+          ***  Proved subgoal C1
+               using hypotheses H12, H43, H44, H45 & H46.
+          +++  Case 2 - New H47:  loop__1__i <> int_i___1_1
+          +++  New subgoal C1:  element(fld_data(element(real_outputs, [
+          int_i___1_1])), [int_i___2_1]) <= 65535
+          ***  Proved subgoal C1
+               using hypotheses H9, H43, H44, H45 & H46.
+***  Proved C9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(update(real_outputs, [loop__1__i], element(shadow_outputs, [
+          loop__1__i])), [i___1])), [i___2]) and element(fld_data(element(
+          update(real_outputs, [loop__1__i], element(shadow_outputs, [
+          loop__1__i])), [i___1])), [i___2]) <= 65535))
+     by unwrapping a universally-quantified formula.
+>>>  Attempting to prove quantified formula C12 by "unwrapping" it.
++++  Added new hypotheses (in proving an implication formula).
+     +++  New H43:  1 <= int_i___2_2
+     +++  New H44:  int_i___2_2 <= 31
++++  New subgoal C1:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(update(shadow_outputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_outputs, [loop__1__i]
+          )))), [i___1])), [int_i___2_2]) and element(fld_data(element(update(
+          shadow_outputs, [loop__1__i], upf_valid(null_message, fld_valid(
+          element(shadow_outputs, [loop__1__i])))), [i___1])), [int_i___2_2]) 
+          <= 65535)
+     >>>  Attempting to prove quantified formula C1 by "unwrapping" it.
+     +++  Added new hypotheses (in proving an implication formula).
+          +++  New H45:  1 <= int_i___1_2
+          +++  New H46:  int_i___1_2 <= 63
+     +++  New subgoal C1:  0 <= element(fld_data(element(update(shadow_outputs, 
+          [loop__1__i], upf_valid(null_message, fld_valid(element(
+          shadow_outputs, [loop__1__i])))), [int_i___1_2])), [int_i___2_2]) and 
+          element(fld_data(element(update(shadow_outputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_outputs, [loop__1__i]
+          )))), [int_i___1_2])), [int_i___2_2]) <= 65535
+     >>>  Conclusion C1 has now been split into two, giving:
+          >>>  C1:  0 <= element(fld_data(element(update(shadow_outputs, [
+          loop__1__i], upf_valid(null_message, fld_valid(element(
+          shadow_outputs, [loop__1__i])))), [int_i___1_2])), [int_i___2_2])
+          >>>  C2:  element(fld_data(element(update(shadow_outputs, [loop__1__i]
+          , upf_valid(null_message, fld_valid(element(shadow_outputs, [
+          loop__1__i])))), [int_i___1_2])), [int_i___2_2]) <= 65535
+          >>>  Attempting to prove C1 by cases, depending on whether
+               (1)  loop__1__i = int_i___1_2, or
+               (2)  loop__1__i <> int_i___1_2,
+               given the need to simplify update(A, [I], X) accesses in C1.
+          +++  Case 1 - New H47:  loop__1__i = int_i___1_2
+          +++  New subgoal C1:  0 <= element(fld_data(null_message), [
+          int_i___2_2])
+          -S-  Eliminated hypothesis H47.
+               This was achieved by replacing all occurrences of loop__1__i by:
+                    int_i___1_2.
+          <S>  New H1:  int_i___1_2 >= 1
+          <S>  New H2:  int_i___1_2 < 63
+          <S>  New H19:  not fld_fresh(element(shadow_outputs, [int_i___1_2])) 
+          -> int_i___1_2 >= 1 and int_i___1_2 <= 63
+          <S>  New H23:  fld_fresh(element(shadow_outputs, [int_i___1_2])) or 
+          fld_valid(element(shadow_outputs, [int_i___1_2])) and not fld_valid(
+          element(real_outputs, [int_i___1_2]))
+          ***  Proved subgoal C1
+               using hypotheses H43 & H44.
+          +++  Case 2 - New H47:  loop__1__i <> int_i___1_2
+          +++  New subgoal C1:  0 <= element(fld_data(element(shadow_outputs, [
+          int_i___1_2])), [int_i___2_2])
+          ***  Proved subgoal C1
+               using hypotheses H12, H43, H44, H45 & H46.
+          >>>  Attempting to prove C2 by cases, depending on whether
+               (1)  loop__1__i = int_i___1_2, or
+               (2)  loop__1__i <> int_i___1_2,
+               given the need to simplify update(A, [I], X) accesses in C2.
+          +++  Case 1 - New H47:  loop__1__i = int_i___1_2
+          +++  New subgoal C1:  element(fld_data(null_message), [int_i___2_2]) 
+          <= 65535
+          -S-  Eliminated hypothesis H47.
+               This was achieved by replacing all occurrences of loop__1__i by:
+                    int_i___1_2.
+          <S>  New H1:  int_i___1_2 >= 1
+          <S>  New H2:  int_i___1_2 < 63
+          <S>  New H19:  not fld_fresh(element(shadow_outputs, [int_i___1_2])) 
+          -> int_i___1_2 >= 1 and int_i___1_2 <= 63
+          <S>  New H23:  fld_fresh(element(shadow_outputs, [int_i___1_2])) or 
+          fld_valid(element(shadow_outputs, [int_i___1_2])) and not fld_valid(
+          element(real_outputs, [int_i___1_2]))
+          ***  Proved subgoal C1
+               using hypotheses H43 & H44.
+          +++  Case 2 - New H47:  loop__1__i <> int_i___1_2
+          +++  New subgoal C1:  element(fld_data(element(shadow_outputs, [
+          int_i___1_2])), [int_i___2_2]) <= 65535
+          ***  Proved subgoal C1
+               using hypotheses H12, H43, H44, H45 & H46.
+***  Proved C12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> 
+          for_all(i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(
+          fld_data(element(update(shadow_outputs, [loop__1__i], upf_valid(
+          null_message, fld_valid(element(shadow_outputs, [loop__1__i])))), [
+          i___1])), [i___2]) and element(fld_data(element(update(
+          shadow_outputs, [loop__1__i], upf_valid(null_message, fld_valid(
+          element(shadow_outputs, [loop__1__i])))), [i___1])), [i___2]) <= 
+          65535))
+     by unwrapping a universally-quantified formula.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_3.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified C6 on reading formula in, to give:
+     %%%  C6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified C12 on reading formula in, to give:
+     %%%  C12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+***  Proved C1:  loop__1__i + 1 >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(real_inputs, [i___1])), [
+          i___2]) and element(fld_data(element(real_inputs, [i___1])), [i___2]) 
+          <= word__last))
+     using hypothesis H3.
+***  Proved C4:  true
+***  Proved C5:  true
+***  Proved C6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_inputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_inputs, [i___1])), [i___2]
+          ) <= word__last))
+     using hypothesis H6.
+***  Proved C7:  true
+***  Proved C8:  true
+***  Proved C9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(real_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(real_outputs, [i___1])), [i___2])
+           <= word__last))
+     using hypothesis H9.
+***  Proved C10:  true
+***  Proved C11:  true
+***  Proved C12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+     using hypothesis H12.
+***  Proved C13:  true
+***  Proved C14:  true
+***  Proved C15:  loop__1__i + 1 >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C17:  loop__1__i + 1 >= valid_msg_index__first
+     using hypothesis H1.
+-S-  Applied substitution rule cycle_rules(28).
+     This was achieved by replacing all occurrences of valid_msg_index__last by:
+          63.
+<S>  New H2:  loop__1__i <= 63
+<S>  New H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= 63 -> word__first <= element(fld_data(element(
+          real_inputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_inputs, [i___1])), [i___2]) <= word__last))
+<S>  New H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= 63 -> word__first <= element(fld_data(element(
+          shadow_inputs, [i___1])), [i___2]) and element(fld_data(element(
+          shadow_inputs, [i___1])), [i___2]) <= word__last))
+<S>  New H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= 63 -> word__first <= element(fld_data(element(
+          real_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= 63 -> word__first <= element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New H19:  not fld_fresh(element(shadow_outputs, [loop__1__i])) -> 
+          loop__1__i >= valid_msg_index__first and loop__1__i <= 63
+<S>  New H24:  not loop__1__i = 63
+<S>  New C2:  loop__1__i <= 62
+<S>  New C16:  loop__1__i <= 62
+<S>  New C18:  loop__1__i <= 62
+***  Proved C2:  loop__1__i <= 62
+     using hypotheses H2 & H24.
+***  Proved C16:  loop__1__i <= 62
+     using hypotheses H2 & H24.
+***  Proved C18:  loop__1__i <= 62
+     using hypotheses H2 & H24.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_4.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+***  Proved C1:  not fld_fresh(element(shadow_inputs, [loop__1__i])) -> 
+          loop__1__i >= valid_msg_index__first and loop__1__i <= 
+          valid_msg_index__last
+     using hypotheses H1 & H2.
+***  Proved C2:  not fld_fresh(element(shadow_inputs, [loop__1__i])) -> 
+          loop__1__i >= valid_msg_index__first and loop__1__i <= 
+          valid_msg_index__last
+     using hypotheses H1 & H2.
+***  Proved C3:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C4:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_5.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+***  Proved C1:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C2:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  Proved C3:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C4:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_6.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H2)
+          .
+***  Proved C1:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C2:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_7.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H2)
+          .
+***  Proved C1:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C2:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  Proved C3:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C4:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_8.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H30 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as H2)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(update(real_inputs, [loop__1__i], element(
+          shadow_inputs, [loop__1__i])), [i___1])), [i___2]) and element(
+          fld_data(element(update(real_inputs, [loop__1__i], element(
+          shadow_inputs, [loop__1__i])), [i___1])), [i___2]) <= word__last))
+%%%  Simplified C6 on reading formula in, to give:
+     %%%  C6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(update(shadow_inputs, [loop__1__i], upf_valid(
+          null_message, fld_valid(element(shadow_inputs, [loop__1__i])))), [
+          i___1])), [i___2]) and element(fld_data(element(update(shadow_inputs, 
+          [loop__1__i], upf_valid(null_message, fld_valid(element(
+          shadow_inputs, [loop__1__i])))), [i___1])), [i___2]) <= word__last))
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified C12 on reading formula in, to give:
+     %%%  C12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+***  Proved C1:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C2:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  Proved C4:  true
+***  Proved C5:  true
+***  Proved C7:  true
+***  Proved C8:  true
+***  Proved C9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(real_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(real_outputs, [i___1])), [i___2])
+           <= word__last))
+     using hypothesis H9.
+***  Proved C10:  true
+***  Proved C11:  true
+***  Proved C12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+     using hypothesis H12.
+***  Proved C13:  true
+***  Proved C14:  true
+***  Proved C15:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C16:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  Proved C17:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C18:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+-S-  Applied substitution rule cycle_rules(9).
+     This was achieved by replacing all occurrences of word_index__first by:
+          1.
+<S>  New H3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= word_index__last 
+          -> for_all(i___1 : integer, valid_msg_index__first <= i___1 and i___1 
+          <= valid_msg_index__last -> word__first <= element(fld_data(element(
+          real_inputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_inputs, [i___1])), [i___2]) <= word__last))
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= word_index__last 
+          -> for_all(i___1 : integer, valid_msg_index__first <= i___1 and i___1 
+          <= valid_msg_index__last -> word__first <= element(fld_data(element(
+          shadow_inputs, [i___1])), [i___2]) and element(fld_data(element(
+          shadow_inputs, [i___1])), [i___2]) <= word__last))
+<S>  New H9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= word_index__last 
+          -> for_all(i___1 : integer, valid_msg_index__first <= i___1 and i___1 
+          <= valid_msg_index__last -> word__first <= element(fld_data(element(
+          real_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New H12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New C3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= word_index__last 
+          -> for_all(i___1 : integer, valid_msg_index__first <= i___1 and i___1 
+          <= valid_msg_index__last -> word__first <= element(fld_data(element(
+          update(real_inputs, [loop__1__i], element(shadow_inputs, [loop__1__i])
+          ), [i___1])), [i___2]) and element(fld_data(element(update(
+          real_inputs, [loop__1__i], element(shadow_inputs, [loop__1__i])), [
+          i___1])), [i___2]) <= word__last))
+<S>  New C6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= word_index__last 
+          -> for_all(i___1 : integer, valid_msg_index__first <= i___1 and i___1 
+          <= valid_msg_index__last -> word__first <= element(fld_data(element(
+          update(shadow_inputs, [loop__1__i], upf_valid(null_message, fld_valid(
+          element(shadow_inputs, [loop__1__i])))), [i___1])), [i___2]) and 
+          element(fld_data(element(update(shadow_inputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_inputs, [loop__1__i])
+          ))), [i___1])), [i___2]) <= word__last))
+-S-  Applied substitution rule cycle_rules(10).
+     This was achieved by replacing all occurrences of word_index__last by:
+          31.
+<S>  New H3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> word__first <= element(fld_data(element(
+          real_inputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_inputs, [i___1])), [i___2]) <= word__last))
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> word__first <= element(fld_data(element(
+          shadow_inputs, [i___1])), [i___2]) and element(fld_data(element(
+          shadow_inputs, [i___1])), [i___2]) <= word__last))
+<S>  New H9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> word__first <= element(fld_data(element(
+          real_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New H12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> word__first <= element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New C3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> word__first <= element(fld_data(element(
+          update(real_inputs, [loop__1__i], element(shadow_inputs, [loop__1__i])
+          ), [i___1])), [i___2]) and element(fld_data(element(update(
+          real_inputs, [loop__1__i], element(shadow_inputs, [loop__1__i])), [
+          i___1])), [i___2]) <= word__last))
+<S>  New C6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> word__first <= element(fld_data(element(
+          update(shadow_inputs, [loop__1__i], upf_valid(null_message, fld_valid(
+          element(shadow_inputs, [loop__1__i])))), [i___1])), [i___2]) and 
+          element(fld_data(element(update(shadow_inputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_inputs, [loop__1__i])
+          ))), [i___1])), [i___2]) <= word__last))
+-S-  Applied substitution rule cycle_rules(15).
+     This was achieved by replacing all occurrences of word__first by:
+          0.
+<S>  New H3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> 0 <= element(fld_data(element(real_inputs, [
+          i___1])), [i___2]) and element(fld_data(element(real_inputs, [i___1]))
+          , [i___2]) <= word__last))
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> 0 <= element(fld_data(element(shadow_inputs, 
+          [i___1])), [i___2]) and element(fld_data(element(shadow_inputs, [
+          i___1])), [i___2]) <= word__last))
+<S>  New H9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> 0 <= element(fld_data(element(real_outputs, [
+          i___1])), [i___2]) and element(fld_data(element(real_outputs, [i___1])
+          ), [i___2]) <= word__last))
+<S>  New H12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> 0 <= element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) <= word__last))
+<S>  New C3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> 0 <= element(fld_data(element(update(
+          real_inputs, [loop__1__i], element(shadow_inputs, [loop__1__i])), [
+          i___1])), [i___2]) and element(fld_data(element(update(real_inputs, [
+          loop__1__i], element(shadow_inputs, [loop__1__i])), [i___1])), [i___2]
+          ) <= word__last))
+<S>  New C6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> 0 <= element(fld_data(element(update(
+          shadow_inputs, [loop__1__i], upf_valid(null_message, fld_valid(
+          element(shadow_inputs, [loop__1__i])))), [i___1])), [i___2]) and 
+          element(fld_data(element(update(shadow_inputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_inputs, [loop__1__i])
+          ))), [i___1])), [i___2]) <= word__last))
+-S-  Applied substitution rule cycle_rules(16).
+     This was achieved by replacing all occurrences of word__last by:
+          65535.
+<S>  New H3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> 0 <= element(fld_data(element(real_inputs, [
+          i___1])), [i___2]) and element(fld_data(element(real_inputs, [i___1]))
+          , [i___2]) <= 65535))
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> 0 <= element(fld_data(element(shadow_inputs, 
+          [i___1])), [i___2]) and element(fld_data(element(shadow_inputs, [
+          i___1])), [i___2]) <= 65535))
+<S>  New H9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> 0 <= element(fld_data(element(real_outputs, [
+          i___1])), [i___2]) and element(fld_data(element(real_outputs, [i___1])
+          ), [i___2]) <= 65535))
+<S>  New H12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> 0 <= element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) and element(fld_data(element(
+          shadow_outputs, [i___1])), [i___2]) <= 65535))
+<S>  New C3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> 0 <= element(fld_data(element(update(
+          real_inputs, [loop__1__i], element(shadow_inputs, [loop__1__i])), [
+          i___1])), [i___2]) and element(fld_data(element(update(real_inputs, [
+          loop__1__i], element(shadow_inputs, [loop__1__i])), [i___1])), [i___2]
+          ) <= 65535))
+<S>  New C6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, valid_msg_index__first <= i___1 and i___1 <= 
+          valid_msg_index__last -> 0 <= element(fld_data(element(update(
+          shadow_inputs, [loop__1__i], upf_valid(null_message, fld_valid(
+          element(shadow_inputs, [loop__1__i])))), [i___1])), [i___2]) and 
+          element(fld_data(element(update(shadow_inputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_inputs, [loop__1__i])
+          ))), [i___1])), [i___2]) <= 65535))
+-S-  Applied substitution rule cycle_rules(27).
+     This was achieved by replacing all occurrences of valid_msg_index__first 
+          by:
+          1.
+<S>  New H1:  loop__1__i >= 1
+<S>  New H19:  not fld_fresh(element(shadow_inputs, [loop__1__i])) -> 
+          loop__1__i >= 1 and loop__1__i <= valid_msg_index__last
+<S>  New H3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= valid_msg_index__last -> 0 
+          <= element(fld_data(element(real_inputs, [i___1])), [i___2]) and 
+          element(fld_data(element(real_inputs, [i___1])), [i___2]) <= 65535))
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= valid_msg_index__last -> 0 
+          <= element(fld_data(element(shadow_inputs, [i___1])), [i___2]) and 
+          element(fld_data(element(shadow_inputs, [i___1])), [i___2]) <= 65535))
+<S>  New H9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= valid_msg_index__last -> 0 
+          <= element(fld_data(element(real_outputs, [i___1])), [i___2]) and 
+          element(fld_data(element(real_outputs, [i___1])), [i___2]) <= 65535))
+<S>  New H12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= valid_msg_index__last -> 0 
+          <= element(fld_data(element(shadow_outputs, [i___1])), [i___2]) and 
+          element(fld_data(element(shadow_outputs, [i___1])), [i___2]) <= 65535)
+          )
+<S>  New C3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= valid_msg_index__last -> 0 
+          <= element(fld_data(element(update(real_inputs, [loop__1__i], element(
+          shadow_inputs, [loop__1__i])), [i___1])), [i___2]) and element(
+          fld_data(element(update(real_inputs, [loop__1__i], element(
+          shadow_inputs, [loop__1__i])), [i___1])), [i___2]) <= 65535))
+<S>  New C6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= valid_msg_index__last -> 0 
+          <= element(fld_data(element(update(shadow_inputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_inputs, [loop__1__i])
+          ))), [i___1])), [i___2]) and element(fld_data(element(update(
+          shadow_inputs, [loop__1__i], upf_valid(null_message, fld_valid(
+          element(shadow_inputs, [loop__1__i])))), [i___1])), [i___2]) <= 65535)
+          )
+-S-  Applied substitution rule cycle_rules(28).
+     This was achieved by replacing all occurrences of valid_msg_index__last by:
+          63.
+<S>  New H2:  loop__1__i <= 63
+<S>  New H19:  not fld_fresh(element(shadow_inputs, [loop__1__i])) -> 
+          loop__1__i >= 1 and loop__1__i <= 63
+<S>  New H3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(real_inputs, [i___1])), [i___2]) and element(fld_data(element(
+          real_inputs, [i___1])), [i___2]) <= 65535))
+<S>  New H6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(shadow_inputs, [i___1])), [i___2]) and element(fld_data(
+          element(shadow_inputs, [i___1])), [i___2]) <= 65535))
+<S>  New H9:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(real_outputs, [i___1])), [i___2]) and element(fld_data(
+          element(real_outputs, [i___1])), [i___2]) <= 65535))
+<S>  New H12:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(shadow_outputs, [i___1])), [i___2]) and element(fld_data(
+          element(shadow_outputs, [i___1])), [i___2]) <= 65535))
+<S>  New C3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(update(real_inputs, [loop__1__i], element(shadow_inputs, [
+          loop__1__i])), [i___1])), [i___2]) and element(fld_data(element(
+          update(real_inputs, [loop__1__i], element(shadow_inputs, [loop__1__i])
+          ), [i___1])), [i___2]) <= 65535))
+<S>  New C6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(update(shadow_inputs, [loop__1__i], upf_valid(null_message, 
+          fld_valid(element(shadow_inputs, [loop__1__i])))), [i___1])), [i___2])
+           and element(fld_data(element(update(shadow_inputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_inputs, [loop__1__i])
+          ))), [i___1])), [i___2]) <= 65535))
+---  Eliminated hypothesis H4 (true-hypothesis).
+---  Eliminated hypothesis H5 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H24 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H26 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H29 (true-hypothesis).
+---  Eliminated hypothesis H30 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H33 (true-hypothesis).
+     +++  New H34:  integer__size >= 0
+     +++  New H35:  word_index__size >= 0
+     +++  New H36:  word_index__base__first <= word_index__base__last
+     +++  New H37:  word__size >= 0
+     +++  New H38:  message__size >= 0
+     +++  New H39:  all_msg_index__size >= 0
+     +++  New H40:  valid_msg_index__size >= 0
+     +++  New H41:  word_index__base__first <= 1
+     +++  New H42:  word_index__base__last >= 31
+>>>  Attempting to prove quantified formula C3 by "unwrapping" it.
++++  Added new hypotheses (in proving an implication formula).
+     +++  New H43:  1 <= int_i___2_3
+     +++  New H44:  int_i___2_3 <= 31
++++  New subgoal C1:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(update(real_inputs, [loop__1__i], element(
+          shadow_inputs, [loop__1__i])), [i___1])), [int_i___2_3]) and element(
+          fld_data(element(update(real_inputs, [loop__1__i], element(
+          shadow_inputs, [loop__1__i])), [i___1])), [int_i___2_3]) <= 65535)
+     >>>  Attempting to prove quantified formula C1 by "unwrapping" it.
+     +++  Added new hypotheses (in proving an implication formula).
+          +++  New H45:  1 <= int_i___1_3
+          +++  New H46:  int_i___1_3 <= 63
+     +++  New subgoal C1:  0 <= element(fld_data(element(update(real_inputs, [
+          loop__1__i], element(shadow_inputs, [loop__1__i])), [int_i___1_3])), [
+          int_i___2_3]) and element(fld_data(element(update(real_inputs, [
+          loop__1__i], element(shadow_inputs, [loop__1__i])), [int_i___1_3])), [
+          int_i___2_3]) <= 65535
+     >>>  Conclusion C1 has now been split into two, giving:
+          >>>  C1:  0 <= element(fld_data(element(update(real_inputs, [
+          loop__1__i], element(shadow_inputs, [loop__1__i])), [int_i___1_3])), [
+          int_i___2_3])
+          >>>  C2:  element(fld_data(element(update(real_inputs, [loop__1__i], 
+          element(shadow_inputs, [loop__1__i])), [int_i___1_3])), [int_i___2_3])
+           <= 65535
+          >>>  Attempting to prove C1 by cases, depending on whether
+               (1)  loop__1__i = int_i___1_3, or
+               (2)  loop__1__i <> int_i___1_3,
+               given the need to simplify update(A, [I], X) accesses in C1.
+          +++  Case 1 - New H47:  loop__1__i = int_i___1_3
+          +++  New subgoal C1:  0 <= element(fld_data(element(shadow_inputs, [
+          loop__1__i])), [int_i___2_3])
+          -S-  Eliminated hypothesis H47.
+               This was achieved by replacing all occurrences of loop__1__i by:
+                    int_i___1_3.
+          <S>  New H1:  int_i___1_3 >= 1
+          <S>  New H2:  int_i___1_3 <= 63
+          <S>  New H19:  not fld_fresh(element(shadow_inputs, [int_i___1_3])) 
+          -> int_i___1_3 >= 1 and int_i___1_3 <= 63
+          <S>  New H23:  fld_fresh(element(shadow_inputs, [int_i___1_3])) or 
+          fld_valid(element(shadow_inputs, [int_i___1_3])) and not fld_valid(
+          element(real_inputs, [int_i___1_3]))
+          <S>  New C1:  0 <= element(fld_data(element(shadow_inputs, [
+          int_i___1_3])), [int_i___2_3])
+          ***  Proved subgoal C1
+               using hypotheses H6, H43, H44, H45 & H46.
+          +++  Case 2 - New H47:  loop__1__i <> int_i___1_3
+          +++  New subgoal C1:  0 <= element(fld_data(element(real_inputs, [
+          int_i___1_3])), [int_i___2_3])
+          ***  Proved subgoal C1
+               using hypotheses H3, H43, H44, H45 & H46.
+          >>>  Attempting to prove C2 by cases, depending on whether
+               (1)  loop__1__i = int_i___1_3, or
+               (2)  loop__1__i <> int_i___1_3,
+               given the need to simplify update(A, [I], X) accesses in C2.
+          +++  Case 1 - New H47:  loop__1__i = int_i___1_3
+          +++  New subgoal C1:  element(fld_data(element(shadow_inputs, [
+          loop__1__i])), [int_i___2_3]) <= 65535
+          -S-  Eliminated hypothesis H47.
+               This was achieved by replacing all occurrences of loop__1__i by:
+                    int_i___1_3.
+          <S>  New H1:  int_i___1_3 >= 1
+          <S>  New H2:  int_i___1_3 <= 63
+          <S>  New H19:  not fld_fresh(element(shadow_inputs, [int_i___1_3])) 
+          -> int_i___1_3 >= 1 and int_i___1_3 <= 63
+          <S>  New H23:  fld_fresh(element(shadow_inputs, [int_i___1_3])) or 
+          fld_valid(element(shadow_inputs, [int_i___1_3])) and not fld_valid(
+          element(real_inputs, [int_i___1_3]))
+          <S>  New C1:  element(fld_data(element(shadow_inputs, [int_i___1_3]))
+          , [int_i___2_3]) <= 65535
+          ***  Proved subgoal C1
+               using hypotheses H6, H43, H44, H45 & H46.
+          +++  Case 2 - New H47:  loop__1__i <> int_i___1_3
+          +++  New subgoal C1:  element(fld_data(element(real_inputs, [
+          int_i___1_3])), [int_i___2_3]) <= 65535
+          ***  Proved subgoal C1
+               using hypotheses H3, H43, H44, H45 & H46.
+***  Proved C3:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(update(real_inputs, [loop__1__i], element(shadow_inputs, [
+          loop__1__i])), [i___1])), [i___2]) and element(fld_data(element(
+          update(real_inputs, [loop__1__i], element(shadow_inputs, [loop__1__i])
+          ), [i___1])), [i___2]) <= 65535))
+     by unwrapping a universally-quantified formula.
+>>>  Attempting to prove quantified formula C6 by "unwrapping" it.
++++  Added new hypotheses (in proving an implication formula).
+     +++  New H43:  1 <= int_i___2_4
+     +++  New H44:  int_i___2_4 <= 31
++++  New subgoal C1:  for_all(i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 
+          <= element(fld_data(element(update(shadow_inputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_inputs, [loop__1__i])
+          ))), [i___1])), [int_i___2_4]) and element(fld_data(element(update(
+          shadow_inputs, [loop__1__i], upf_valid(null_message, fld_valid(
+          element(shadow_inputs, [loop__1__i])))), [i___1])), [int_i___2_4]) <= 
+          65535)
+     >>>  Attempting to prove quantified formula C1 by "unwrapping" it.
+     +++  Added new hypotheses (in proving an implication formula).
+          +++  New H45:  1 <= int_i___1_4
+          +++  New H46:  int_i___1_4 <= 63
+     +++  New subgoal C1:  0 <= element(fld_data(element(update(shadow_inputs, [
+          loop__1__i], upf_valid(null_message, fld_valid(element(shadow_inputs, 
+          [loop__1__i])))), [int_i___1_4])), [int_i___2_4]) and element(
+          fld_data(element(update(shadow_inputs, [loop__1__i], upf_valid(
+          null_message, fld_valid(element(shadow_inputs, [loop__1__i])))), [
+          int_i___1_4])), [int_i___2_4]) <= 65535
+     >>>  Conclusion C1 has now been split into two, giving:
+          >>>  C1:  0 <= element(fld_data(element(update(shadow_inputs, [
+          loop__1__i], upf_valid(null_message, fld_valid(element(shadow_inputs, 
+          [loop__1__i])))), [int_i___1_4])), [int_i___2_4])
+          >>>  C2:  element(fld_data(element(update(shadow_inputs, [loop__1__i]
+          , upf_valid(null_message, fld_valid(element(shadow_inputs, [
+          loop__1__i])))), [int_i___1_4])), [int_i___2_4]) <= 65535
+          >>>  Attempting to prove C1 by cases, depending on whether
+               (1)  loop__1__i = int_i___1_4, or
+               (2)  loop__1__i <> int_i___1_4,
+               given the need to simplify update(A, [I], X) accesses in C1.
+          +++  Case 1 - New H47:  loop__1__i = int_i___1_4
+          +++  New subgoal C1:  0 <= element(fld_data(null_message), [
+          int_i___2_4])
+          -S-  Eliminated hypothesis H47.
+               This was achieved by replacing all occurrences of loop__1__i by:
+                    int_i___1_4.
+          <S>  New H1:  int_i___1_4 >= 1
+          <S>  New H2:  int_i___1_4 <= 63
+          <S>  New H19:  not fld_fresh(element(shadow_inputs, [int_i___1_4])) 
+          -> int_i___1_4 >= 1 and int_i___1_4 <= 63
+          <S>  New H23:  fld_fresh(element(shadow_inputs, [int_i___1_4])) or 
+          fld_valid(element(shadow_inputs, [int_i___1_4])) and not fld_valid(
+          element(real_inputs, [int_i___1_4]))
+          ***  Proved subgoal C1
+               using hypotheses H43 & H44.
+          +++  Case 2 - New H47:  loop__1__i <> int_i___1_4
+          +++  New subgoal C1:  0 <= element(fld_data(element(shadow_inputs, [
+          int_i___1_4])), [int_i___2_4])
+          ***  Proved subgoal C1
+               using hypotheses H6, H43, H44, H45 & H46.
+          >>>  Attempting to prove C2 by cases, depending on whether
+               (1)  loop__1__i = int_i___1_4, or
+               (2)  loop__1__i <> int_i___1_4,
+               given the need to simplify update(A, [I], X) accesses in C2.
+          +++  Case 1 - New H47:  loop__1__i = int_i___1_4
+          +++  New subgoal C1:  element(fld_data(null_message), [int_i___2_4]) 
+          <= 65535
+          -S-  Eliminated hypothesis H47.
+               This was achieved by replacing all occurrences of loop__1__i by:
+                    int_i___1_4.
+          <S>  New H1:  int_i___1_4 >= 1
+          <S>  New H2:  int_i___1_4 <= 63
+          <S>  New H19:  not fld_fresh(element(shadow_inputs, [int_i___1_4])) 
+          -> int_i___1_4 >= 1 and int_i___1_4 <= 63
+          <S>  New H23:  fld_fresh(element(shadow_inputs, [int_i___1_4])) or 
+          fld_valid(element(shadow_inputs, [int_i___1_4])) and not fld_valid(
+          element(real_inputs, [int_i___1_4]))
+          ***  Proved subgoal C1
+               using hypotheses H43 & H44.
+          +++  Case 2 - New H47:  loop__1__i <> int_i___1_4
+          +++  New subgoal C1:  element(fld_data(element(shadow_inputs, [
+          int_i___1_4])), [int_i___2_4]) <= 65535
+          ***  Proved subgoal C1
+               using hypotheses H6, H43, H44, H45 & H46.
+***  Proved C6:  for_all(i___2 : integer, 1 <= i___2 and i___2 <= 31 -> for_all(
+          i___1 : integer, 1 <= i___1 and i___1 <= 63 -> 0 <= element(fld_data(
+          element(update(shadow_inputs, [loop__1__i], upf_valid(null_message, 
+          fld_valid(element(shadow_inputs, [loop__1__i])))), [i___1])), [i___2])
+           and element(fld_data(element(update(shadow_inputs, [loop__1__i], 
+          upf_valid(null_message, fld_valid(element(shadow_inputs, [loop__1__i])
+          ))), [i___1])), [i___2]) <= 65535))
+     by unwrapping a universally-quantified formula.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_9.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified C6 on reading formula in, to give:
+     %%%  C6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified C12 on reading formula in, to give:
+     %%%  C12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+***  Proved C1:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C2:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  Proved C3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(real_inputs, [i___1])), [
+          i___2]) and element(fld_data(element(real_inputs, [i___1])), [i___2]) 
+          <= word__last))
+     using hypothesis H3.
+***  Proved C4:  true
+***  Proved C5:  true
+***  Proved C6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_inputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_inputs, [i___1])), [i___2]
+          ) <= word__last))
+     using hypothesis H6.
+***  Proved C7:  true
+***  Proved C8:  true
+***  Proved C9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(real_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(real_outputs, [i___1])), [i___2])
+           <= word__last))
+     using hypothesis H9.
+***  Proved C10:  true
+***  Proved C11:  true
+***  Proved C12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+     using hypothesis H12.
+***  Proved C13:  true
+***  Proved C14:  true
+***  Proved C15:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C16:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  Proved C17:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C18:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_10.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+***  Proved C1:  not fld_fresh(element(shadow_outputs, [loop__1__i])) -> 
+          loop__1__i >= valid_msg_index__first and loop__1__i <= 
+          valid_msg_index__last
+     using hypotheses H1 & H2.
+***  Proved C2:  not fld_fresh(element(shadow_outputs, [loop__1__i])) -> 
+          loop__1__i >= valid_msg_index__first and loop__1__i <= 
+          valid_msg_index__last
+     using hypotheses H1 & H2.
+***  Proved C3:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C4:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_11.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+***  Proved C1:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C2:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  Proved C3:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C4:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_12.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H2)
+          .
+***  Proved C1:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C2:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_13.  @@@@@@@@@@
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) and element(
+          fld_data(element(shadow_inputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 <= 
+          word_index__last -> for_all(i___1 : integer, valid_msg_index__first 
+          <= i___1 and i___1 <= valid_msg_index__last -> word__first <= element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) and element(
+          fld_data(element(real_outputs, [i___1])), [i___2]) <= word__last))
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  for_all(i___2 : integer, word_index__first <= i___2 and i___2 
+          <= word_index__last -> for_all(i___1 : integer, 
+          valid_msg_index__first <= i___1 and i___1 <= valid_msg_index__last -> 
+          word__first <= element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) and element(fld_data(element(shadow_outputs, [i___1])), [
+          i___2]) <= word__last))
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H19).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H1)
+          .
+---  Hypothesis H29 has been replaced by "true".  (It is already present, as H2)
+          .
+***  Proved C1:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C2:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  Proved C3:  loop__1__i >= valid_msg_index__first
+     using hypothesis H1.
+***  Proved C4:  loop__1__i <= valid_msg_index__last
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_14.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_15.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_16.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_cycle_17.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

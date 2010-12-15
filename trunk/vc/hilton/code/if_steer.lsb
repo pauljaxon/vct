@@ -1,0 +1,238 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.84
+
+Line
+   1  -- MCU interface to the fins, implementation
+   2  --
+   3  -- $Log: if_steer.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.2  2003/09/11 19:54:08  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.1  2003/08/31 20:28:55  adi
+  12  -- Initial revision
+  13  --
+  14  --
+  15  with
+  16    Systemtypes,
+  17    Bc1553,
+  18    Bus,
+  19    Steer_Cfg.Encode,
+  20    Steer_Cfg.decode;
+  21  package body If_Steer
+  22    --# own State is Last_fins, last_valid, Ibit_Request;
+  23  is
+  24     type Fin_Angles is array(Fin) of angle;
+  25     Zero_Angles : constant Fin_Angles
+  26       := Fin_Angles'(others => 0);
+  27  
+  28     Last_Fins    : Fin_Angles := Zero_Angles;
+  29     Last_Valid   : Boolean    := False;
+  30     Ibit_Request : IBIT.Phase := IBIT.Off;
+  31  
+  32     Bus_Id : constant Bc1553.Lru_Name := Bc1553.Fins;
+  33  
+  34     function Get_Ibit_State return Ibit.Phase
+  35       --# global ibit_request;
+  36     is begin
+  37        return Ibit_Request;
+  38     end Get_Ibit_State;
+
++++        Flow analysis of subprogram Get_IBIT_State 
+           performed: no errors found.
+
+  39  
+  40     -- Find out a fin deflection
+  41     procedure Get_deflection(For_Fin : in Fin;
+  42                              This_Angle : out Angle;
+  43                              Valid  : out Boolean)
+  44     --# global in last_fins, Last_Valid;
+  45     --# derives this_angle from for_fin, last_fins, Last_Valid &
+  46     --#        Valid from Last_Valid;
+  47     is
+  48     begin
+  49        Valid := Last_Valid;
+  50        if Last_Valid then
+  51           This_Angle := Last_Fins(For_Fin);
+  52        else
+  53           This_Angle := 0;
+  54        end if;
+  55     end Get_deflection;
+
++++        Flow analysis of subprogram Get_Deflection 
+           performed: no errors found.
+
+  56  
+  57     -- Command a fin steering deflection
+  58     procedure Set_Deflection(For_Fin : in Fin;
+  59                              New_Angle : in Angle)
+  60     is
+  61        Idx : Bus.Word_Index;
+  62        Datum : Bus.Word;
+  63     begin
+  64        Datum := Steer_Cfg.Encode.Fin_Angle(New_Angle);
+  65        case For_Fin is
+  66           when Steer_Cfg.Port =>
+  67              Idx := 1;
+  68           when Steer_Cfg.Starboard =>
+  69              Idx := 2;
+  70           when Steer_Cfg.Top =>
+  71              Idx := 3;
+  72           when Steer_Cfg.Bottom =>
+  73              Idx := 4;
+  74        end case;
+  75        BC1553.Write_Word(Data => Datum,
+  76                          Idx =>  Idx,
+  77                          Subaddress_Idx => 1,
+  78                          Dest => Bus_id);
+  79     end Set_Deflection;
+
++++        Flow analysis of subprogram Set_Deflection 
+           performed: no errors found.
+
+  80  
+  81  
+  82     -- Kick off a steer IBIT
+  83     procedure Ibit_Start
+  84       --# global in out Bus.Outputs;
+  85       --#        out    Ibit_Request;
+  86     --# derives Bus.Outputs from * &
+  87     --#         Ibit_Request from ;
+  88     is
+  89        Code : SystemTypes.Byte;
+  90     begin
+  91        Ibit_Request := IBIT.Request_Start;
+  92        Code := IBIT.Phase_Lookup(Ibit_Request);
+  93        -- Send it out on 1R at word 5
+  94        BC1553.Write_Word(Data => Code,
+  95                          Idx =>  5,
+  96                          Subaddress_Idx => 1,
+  97                          Dest => Bus_id);
+  98     end Ibit_Start;
+
++++        Flow analysis of subprogram Ibit_Start 
+           performed: no errors found.
+
+  99  
+ 100     -- Stop a steer IBIT
+ 101     procedure Ibit_Stop
+ 102     --# global in out Bus.Outputs;
+ 103     --#    out Ibit_Request;
+ 104     --# derives Bus.Outputs from * &
+ 105     --#         Ibit_Request from ;
+ 106     is
+ 107        Code : SystemTypes.Byte;
+ 108     begin
+ 109        Ibit_Request := IBIT.Request_Stop;
+ 110        Code := IBIT.Phase_Lookup(Ibit_Request);
+ 111        -- Send it out on 1R at word 5
+ 112        BC1553.Write_Word(Data => Code,
+ 113                          Idx =>  5,
+ 114                          Subaddress_Idx => 1,
+ 115                          Dest => Bus_id);
+ 116     end Ibit_Stop;
+
++++        Flow analysis of subprogram Ibit_Stop performed: 
+           no errors found.
+
+ 117  
+ 118     -- Poll the bus and update states
+ 119     procedure Poll
+ 120     --# global in out last_fins, Last_Valid, Ibit_Request;
+ 121     --#        in Bus.Inputs;
+ 122     --# derives last_fins, Last_Valid,
+ 123     --#         Ibit_Request from *, Bus.Inputs;
+ 124     is
+ 125        Datum : Bus.Word;
+ 126  
+ 127        procedure Update_Fin(For_Fin : in Fin;
+ 128                             Idx : in Bus.Word_Index)
+ 129          --# global in bus.inputs;
+ 130          --#    in out last_fins;
+ 131          --# derives last_fins from *, for_fin, idx, bus.inputs;
+ 132        is
+ 133           Word : Bus.Word;
+ 134           A : Angle;
+ 135        begin
+ 136           BC1553.Read_Word(Src => Bus_id,
+ 137                            Idx => idx,
+ 138                            Subaddress_Idx => 1,
+ 139                            Data => Word);
+ 140           A := Steer_Cfg.Decode.Fin_Angle(Word);
+ 141           Last_Fins(For_Fin) := A;
+ 142        end Update_Fin;
+
++++        Flow analysis of subprogram Update_Fin 
+           performed: no errors found.
+
+ 143     begin
+ 144        -- Check 1T
+ 145          if BC1553.Is_Valid(Src => Bus_id,
+ 146                             Subaddress_Idx => 1) and then
+ 147            BC1553.Is_Fresh(Src => Bus_id,
+ 148                          Subaddress_Idx => 1) then
+ 149             -- Continuous check
+ 150             Update_Fin(For_Fin => Steer_Cfg.Port,
+ 151                        Idx => 1);
+ 152             Update_Fin(For_Fin => Steer_Cfg.Starboard,
+ 153                        Idx => 2);
+ 154             Update_Fin(For_Fin => Steer_Cfg.Top,
+ 155                        Idx => 3);
+ 156             Update_Fin(For_Fin => Steer_Cfg.Bottom,
+ 157                        Idx => 4);
+ 158             Last_Valid := True;
+ 159             -- 1T word 5 - BIT
+ 160             BC1553.Read_Word(Src => Bus_id,
+ 161                              Idx => 5,
+ 162                              Subaddress_Idx => 1,
+ 163                              Data => datum);
+ 164             -- Use the standard state machine to transform
+ 165             -- our IBIT phase
+ 166             IBIT.State_Machine(Bus_Data => datum,
+ 167                                Current_Phase => IBIT_Request);
+ 168          else
+ 169             -- Nothing to do
+ 170             null;
+ 171          end if;
+ 172     end Poll;
+
++++        Flow analysis of subprogram Poll performed: no 
+           errors found.
+
+ 173  
+ 174     -- Initialise
+ 175     procedure Init
+ 176     --# global out last_fins, Last_Valid, Ibit_Request;
+ 177     --#        in out Bus.Outputs;
+ 178     --# derives last_fins, Last_Valid, Ibit_Request from &
+ 179     --#         Bus.Outputs from *;
+ 180     is begin
+ 181        Last_Fins := Zero_angles;
+ 182        Last_Valid := False;
+ 183        Ibit_Request := IBIT.Off;
+ 184        BC1553.Set_Message_Valid(Dest => Bus_id,
+ 185                                 Subaddress_Idx => 1);
+ 186     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 187  
+ 188     -- Test point
+ 189     procedure Command is separate;
+ 190  
+ 191  end If_Steer;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

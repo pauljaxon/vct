@@ -1,0 +1,231 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:32
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure environment.Find_Slot
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_find_slot_1.  @@@@@@@@@@
+-S-  Applied substitution rule find_slot_rules(3).
+     This was achieved by replacing all occurrences of handle__first by:
+          0.
+<S>  New C1:  true
+-S-  Applied substitution rule find_slot_rules(4).
+     This was achieved by replacing all occurrences of handle__last by:
+          20.
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_2.  @@@@@@@@@@
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+***  Proved C1:  true
+***  Proved C2:  1 <= handle__last
+     using hypothesis H4.
+***  Proved C3:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_3.  @@@@@@@@@@
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+%%%  Simplified H12 on reading formula in, to give:
+     %%%  H12:  false
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+***  Proved C1:  h >= 1
+     using hypothesis H1.
+***  Proved C2:  h <= handle__last
+     using hypothesis H2.
+***  Proved C3:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_4.  @@@@@@@@@@
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H2).
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  element(item_valid, [h])
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H13).
+%%%  Simplified H18 on reading formula in, to give:
+     %%%  H18:  false
+***  Proved C2:  null_handle <= handle__last
+     using hypothesis H13.
+***  Proved C3:  true
+-S-  Applied substitution rule find_slot_rules(1).
+     This was achieved by replacing all occurrences of null_handle by:
+          0.
+<S>  New H12:  0 >= handle__first
+<S>  New H13:  0 <= handle__last
+<S>  New C1:  false
+***  Proved C1:  false
+     using hypothesis H18.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_5.  @@@@@@@@@@
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H2).
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  element(item_valid, [h])
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H15).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  h >= 0
+***  Proved C1:  h >= 0
+     using hypothesis H1.
+***  Proved C2:  h + 1 <= handle__last
+     using hypothesis H15.
+***  Proved C3:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_6.  @@@@@@@@@@
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H2).
+-S-  Applied substitution rule find_slot_rules(9).
+     This was achieved by replacing all occurrences of valid_handle__first by:
+          1.
+<S>  New C1:  h >= 1
+-S-  Applied substitution rule find_slot_rules(10).
+     This was achieved by replacing all occurrences of valid_handle__last by:
+          20.
+<S>  New C2:  h <= 20
+***  Proved C1:  h >= 1
+     using hypothesis H1.
+-S-  Applied substitution rule find_slot_rules(3).
+     This was achieved by replacing all occurrences of handle__first by:
+          0.
+<S>  New H4:  h >= 0
+-S-  Applied substitution rule find_slot_rules(4).
+     This was achieved by replacing all occurrences of handle__last by:
+          20.
+<S>  New H2:  h <= 20
+***  Proved C2:  h <= 20
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_7.  @@@@@@@@@@
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H2).
+***  Proved C1:  h >= valid_handle__first
+     using hypothesis H6.
+***  Proved C2:  h <= valid_handle__last
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_8.  @@@@@@@@@@
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H2).
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  element(item_valid, [h])
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+-S-  Applied substitution rule find_slot_rules(1).
+     This was achieved by replacing all occurrences of null_handle by:
+          0.
+<S>  New C1:  0 >= handle__first
+<S>  New C2:  0 <= handle__last
+-S-  Applied substitution rule find_slot_rules(3).
+     This was achieved by replacing all occurrences of handle__first by:
+          0.
+<S>  New H4:  h >= 0
+<S>  New C1:  true
+-S-  Applied substitution rule find_slot_rules(4).
+     This was achieved by replacing all occurrences of handle__last by:
+          20.
+<S>  New H2:  h <= 20
+<S>  New H11:  h = 20
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_9.  @@@@@@@@@@
+---  Hypothesis H5 has been replaced by "true".  (It is already present, as H2).
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  element(item_valid, [h])
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H2)
+          .
+***  Proved C1:  h + 1 >= handle__first
+     using hypothesis H4.
+***  Proved C3:  h <> handle__last
+     using hypothesis H11.
+-S-  Applied substitution rule find_slot_rules(4).
+     This was achieved by replacing all occurrences of handle__last by:
+          20.
+<S>  New H2:  h <= 20
+<S>  New H11:  not h = 20
+<S>  New C2:  h <= 19
+***  Proved C2:  h <= 19
+     using hypotheses H2 & H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_12.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_13.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_14.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_find_slot_15.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

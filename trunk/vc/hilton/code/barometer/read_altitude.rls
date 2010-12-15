@@ -1,0 +1,47 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:39.16*/
+
+                     /*procedure barometer.Read_Altitude*/
+
+
+rule_family read_altitud_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+read_altitud_rules(1): measuretypes__meter__size >= 0 may_be_deduced.
+read_altitud_rules(2): measuretypes__meter__first may_be_replaced_by -200000.
+read_altitud_rules(3): measuretypes__meter__last may_be_replaced_by 200000.
+read_altitud_rules(4): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+read_altitud_rules(5): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+read_altitud_rules(6): measuretypes__meter_per_sec__size >= 0 may_be_deduced.
+read_altitud_rules(7): measuretypes__meter_per_sec__first may_be_replaced_by -5000.
+read_altitud_rules(8): measuretypes__meter_per_sec__last may_be_replaced_by 5000.
+read_altitud_rules(9): measuretypes__meter_per_sec__base__first may_be_replaced_by -2147483648.
+read_altitud_rules(10): measuretypes__meter_per_sec__base__last may_be_replaced_by 2147483647.
+read_altitud_rules(11): clock__millisecond__size >= 0 may_be_deduced.
+read_altitud_rules(12): clock__millisecond__first may_be_replaced_by 0.
+read_altitud_rules(13): clock__millisecond__last may_be_replaced_by 8640000.
+read_altitud_rules(14): clock__millisecond__base__first may_be_replaced_by -2147483648.
+read_altitud_rules(15): clock__millisecond__base__last may_be_replaced_by 2147483647.
+read_altitud_rules(16): meter__size >= 0 may_be_deduced.
+read_altitud_rules(17): meter__first may_be_replaced_by -200000.
+read_altitud_rules(18): meter__last may_be_replaced_by 200000.
+read_altitud_rules(19): meter__base__first may_be_replaced_by -2147483648.
+read_altitud_rules(20): meter__base__last may_be_replaced_by 2147483647.
+read_altitud_rules(21): meter_per_sec__size >= 0 may_be_deduced.
+read_altitud_rules(22): meter_per_sec__first may_be_replaced_by -5000.
+read_altitud_rules(23): meter_per_sec__last may_be_replaced_by 5000.
+read_altitud_rules(24): meter_per_sec__base__first may_be_replaced_by -2147483648.
+read_altitud_rules(25): meter_per_sec__base__last may_be_replaced_by 2147483647.
+read_altitud_rules(26): pos_meter__size >= 0 may_be_deduced.
+read_altitud_rules(27): pos_meter__first may_be_replaced_by 0.
+read_altitud_rules(28): pos_meter__last may_be_replaced_by 200000.
+read_altitud_rules(29): pos_meter__base__first may_be_replaced_by -2147483648.
+read_altitud_rules(30): pos_meter__base__last may_be_replaced_by 2147483647.

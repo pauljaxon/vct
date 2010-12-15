@@ -1,0 +1,2377 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:42.36
+
+                            procedure if_ir.Poll
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 227:
+
+procedure_poll_1.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+        ->
+C1:    2 >= bus__lru_subaddress_index__first .
+C2:    2 <= bus__lru_subaddress_index__last .
+C3:    bus_id >= bc1553__lru_name__first .
+C4:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 227:
+
+procedure_poll_2.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+        ->
+C1:    bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+C2:    bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+ 
+
+For path(s) from start to run-time check associated with statement of line 232:
+
+procedure_poll_3.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+        ->
+C1:    2 >= bus__lru_subaddress_index__first .
+C2:    2 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 232:
+
+procedure_poll_4.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+        ->
+C1:    word__1 >= bus__word__first .
+C2:    word__1 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 236:
+
+procedure_poll_5.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+        ->
+C1:    word__1 >= state_types__word__first .
+C2:    word__1 <= state_types__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 236:
+
+procedure_poll_6.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+        ->
+C1:    state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+C2:    state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 242:
+
+procedure_poll_7.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_stare .
+        ->
+C1:    2 >= bus__lru_subaddress_index__first .
+C2:    2 <= bus__lru_subaddress_index__last .
+C3:    2 >= bus__word_index__first .
+C4:    2 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 242:
+
+procedure_poll_8.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_stare .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__2 >= bus__word__first .
+H61:   word__2 <= bus__word__last .
+        ->
+C1:    word__2 >= bus__word__first .
+C2:    word__2 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 246:
+
+procedure_poll_9.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_stare .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__2 >= bus__word__first .
+H61:   word__2 <= bus__word__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+        ->
+C1:    word__2 >= bus__word__first .
+C2:    word__2 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 246:
+
+procedure_poll_10.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_stare .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__2 >= bus__word__first .
+H61:   word__2 <= bus__word__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H69:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+        ->
+C1:    measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+C2:    measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 248:
+
+procedure_poll_11.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_stare .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__2 >= bus__word__first .
+H61:   word__2 <= bus__word__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H69:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H70:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H71:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H72:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H73:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+        ->
+C1:    measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+C2:    measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 251:
+
+procedure_poll_12.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_sweep .
+        ->
+C1:    2 >= bus__lru_subaddress_index__first .
+C2:    2 <= bus__lru_subaddress_index__last .
+C3:    2 >= bus__word_index__first .
+C4:    2 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 251:
+
+procedure_poll_13.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_sweep .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__3 >= bus__word__first .
+H61:   word__3 <= bus__word__last .
+        ->
+C1:    word__3 >= bus__word__first .
+C2:    word__3 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 255:
+
+procedure_poll_14.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_sweep .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__3 >= bus__word__first .
+H61:   word__3 <= bus__word__last .
+H62:   word__3 >= bus__word__first .
+H63:   word__3 <= bus__word__last .
+H64:   word__3 >= bus__word__first .
+H65:   word__3 <= bus__word__last .
+        ->
+C1:    word__3 >= bus__word__first .
+C2:    word__3 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 264:
+
+procedure_poll_15.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_inactive .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+procedure_poll_16.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_stare .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__2 >= bus__word__first .
+H61:   word__2 <= bus__word__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H69:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H70:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H71:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H72:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H73:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H74:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H75:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+procedure_poll_17.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_sweep .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__3 >= bus__word__first .
+H61:   word__3 <= bus__word__last .
+H62:   word__3 >= bus__word__first .
+H63:   word__3 <= bus__word__last .
+H64:   word__3 >= bus__word__first .
+H65:   word__3 <= bus__word__last .
+H66:   word__3 >= bus__word__first .
+H67:   word__3 <= bus__word__last .
+H68:   true .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+procedure_poll_18.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   not (bc1553__is_valid(bus_id, 2, bus__inputs) and 
+           bc1553__is_fresh(bus_id, 2, bus__inputs)) .
+        ->
+C1:    1 >= bus__lru_subaddress_index__first .
+C2:    1 <= bus__lru_subaddress_index__last .
+C3:    1 >= bus__word_index__first .
+C4:    1 <= bus__word_index__last .
+C5:    bus_id >= bc1553__lru_name__first .
+C6:    bus_id <= bc1553__lru_name__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 264:
+
+procedure_poll_19.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_inactive .
+H54:   1 >= bus__lru_subaddress_index__first .
+H55:   1 <= bus__lru_subaddress_index__last .
+H56:   1 >= bus__word_index__first .
+H57:   1 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__4 >= bus__word__first .
+H61:   word__4 <= bus__word__last .
+        ->
+C1:    word__4 >= bus__word__first .
+C2:    word__4 <= bus__word__last .
+ 
+
+procedure_poll_20.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_stare .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__2 >= bus__word__first .
+H61:   word__2 <= bus__word__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H69:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H70:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H71:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H72:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H73:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H74:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H75:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   1 >= bus__word_index__first .
+H79:   1 <= bus__word_index__last .
+H80:   bus_id >= bc1553__lru_name__first .
+H81:   bus_id <= bc1553__lru_name__last .
+H82:   word__4 >= bus__word__first .
+H83:   word__4 <= bus__word__last .
+        ->
+C1:    word__4 >= bus__word__first .
+C2:    word__4 <= bus__word__last .
+ 
+
+procedure_poll_21.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_sweep .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__3 >= bus__word__first .
+H61:   word__3 <= bus__word__last .
+H62:   word__3 >= bus__word__first .
+H63:   word__3 <= bus__word__last .
+H64:   word__3 >= bus__word__first .
+H65:   word__3 <= bus__word__last .
+H66:   word__3 >= bus__word__first .
+H67:   word__3 <= bus__word__last .
+H68:   true .
+H69:   1 >= bus__lru_subaddress_index__first .
+H70:   1 <= bus__lru_subaddress_index__last .
+H71:   1 >= bus__word_index__first .
+H72:   1 <= bus__word_index__last .
+H73:   bus_id >= bc1553__lru_name__first .
+H74:   bus_id <= bc1553__lru_name__last .
+H75:   word__4 >= bus__word__first .
+H76:   word__4 <= bus__word__last .
+        ->
+C1:    word__4 >= bus__word__first .
+C2:    word__4 <= bus__word__last .
+ 
+
+procedure_poll_22.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   not (bc1553__is_valid(bus_id, 2, bus__inputs) and 
+           bc1553__is_fresh(bus_id, 2, bus__inputs)) .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   1 >= bus__word_index__first .
+H35:   1 <= bus__word_index__last .
+H36:   bus_id >= bc1553__lru_name__first .
+H37:   bus_id <= bc1553__lru_name__last .
+H38:   word__4 >= bus__word__first .
+H39:   word__4 <= bus__word__last .
+        ->
+C1:    word__4 >= bus__word__first .
+C2:    word__4 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 270:
+
+procedure_poll_23.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_inactive .
+H54:   1 >= bus__lru_subaddress_index__first .
+H55:   1 <= bus__lru_subaddress_index__last .
+H56:   1 >= bus__word_index__first .
+H57:   1 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__4 >= bus__word__first .
+H61:   word__4 <= bus__word__last .
+H62:   word__4 >= bus__word__first .
+H63:   word__4 <= bus__word__last .
+H64:   word__4 >= bus__word__first .
+H65:   word__4 <= bus__word__last .
+        ->
+C1:    ibit_request >= ibit__phase__first .
+C2:    ibit_request <= ibit__phase__last .
+C3:    word__4 >= systemtypes__unsigned16__first .
+C4:    word__4 <= systemtypes__unsigned16__last .
+ 
+
+procedure_poll_24.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_stare .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__2 >= bus__word__first .
+H61:   word__2 <= bus__word__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H69:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H70:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H71:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H72:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H73:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H74:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H75:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   1 >= bus__word_index__first .
+H79:   1 <= bus__word_index__last .
+H80:   bus_id >= bc1553__lru_name__first .
+H81:   bus_id <= bc1553__lru_name__last .
+H82:   word__4 >= bus__word__first .
+H83:   word__4 <= bus__word__last .
+H84:   word__4 >= bus__word__first .
+H85:   word__4 <= bus__word__last .
+H86:   word__4 >= bus__word__first .
+H87:   word__4 <= bus__word__last .
+        ->
+C1:    ibit_request >= ibit__phase__first .
+C2:    ibit_request <= ibit__phase__last .
+C3:    word__4 >= systemtypes__unsigned16__first .
+C4:    word__4 <= systemtypes__unsigned16__last .
+ 
+
+procedure_poll_25.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_sweep .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__3 >= bus__word__first .
+H61:   word__3 <= bus__word__last .
+H62:   word__3 >= bus__word__first .
+H63:   word__3 <= bus__word__last .
+H64:   word__3 >= bus__word__first .
+H65:   word__3 <= bus__word__last .
+H66:   word__3 >= bus__word__first .
+H67:   word__3 <= bus__word__last .
+H68:   true .
+H69:   1 >= bus__lru_subaddress_index__first .
+H70:   1 <= bus__lru_subaddress_index__last .
+H71:   1 >= bus__word_index__first .
+H72:   1 <= bus__word_index__last .
+H73:   bus_id >= bc1553__lru_name__first .
+H74:   bus_id <= bc1553__lru_name__last .
+H75:   word__4 >= bus__word__first .
+H76:   word__4 <= bus__word__last .
+H77:   word__4 >= bus__word__first .
+H78:   word__4 <= bus__word__last .
+H79:   word__4 >= bus__word__first .
+H80:   word__4 <= bus__word__last .
+        ->
+C1:    ibit_request >= ibit__phase__first .
+C2:    ibit_request <= ibit__phase__last .
+C3:    word__4 >= systemtypes__unsigned16__first .
+C4:    word__4 <= systemtypes__unsigned16__last .
+ 
+
+procedure_poll_26.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   not (bc1553__is_valid(bus_id, 2, bus__inputs) and 
+           bc1553__is_fresh(bus_id, 2, bus__inputs)) .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   1 >= bus__word_index__first .
+H35:   1 <= bus__word_index__last .
+H36:   bus_id >= bc1553__lru_name__first .
+H37:   bus_id <= bc1553__lru_name__last .
+H38:   word__4 >= bus__word__first .
+H39:   word__4 <= bus__word__last .
+H40:   word__4 >= bus__word__first .
+H41:   word__4 <= bus__word__last .
+H42:   word__4 >= bus__word__first .
+H43:   word__4 <= bus__word__last .
+        ->
+C1:    ibit_request >= ibit__phase__first .
+C2:    ibit_request <= ibit__phase__last .
+C3:    word__4 >= systemtypes__unsigned16__first .
+C4:    word__4 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 270:
+
+procedure_poll_27.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_inactive .
+H54:   1 >= bus__lru_subaddress_index__first .
+H55:   1 <= bus__lru_subaddress_index__last .
+H56:   1 >= bus__word_index__first .
+H57:   1 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__4 >= bus__word__first .
+H61:   word__4 <= bus__word__last .
+H62:   word__4 >= bus__word__first .
+H63:   word__4 <= bus__word__last .
+H64:   word__4 >= bus__word__first .
+H65:   word__4 <= bus__word__last .
+H66:   ibit_request >= ibit__phase__first .
+H67:   ibit_request <= ibit__phase__last .
+H68:   word__4 >= systemtypes__unsigned16__first .
+H69:   word__4 <= systemtypes__unsigned16__last .
+H70:   ibit_request__5 >= ibit__phase__first .
+H71:   ibit_request__5 <= ibit__phase__last .
+        ->
+C1:    ibit_request__5 >= ibit__phase__first .
+C2:    ibit_request__5 <= ibit__phase__last .
+ 
+
+procedure_poll_28.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_stare .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__2 >= bus__word__first .
+H61:   word__2 <= bus__word__last .
+H62:   word__2 >= bus__word__first .
+H63:   word__2 <= bus__word__last .
+H64:   word__2 >= bus__word__first .
+H65:   word__2 <= bus__word__last .
+H66:   word__2 >= bus__word__first .
+H67:   word__2 <= bus__word__last .
+H68:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H69:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H70:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H71:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H72:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H73:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H74:   measuretypes__decode__kelvin(word__2) >= 
+           measuretypes__kelvin__first .
+H75:   measuretypes__decode__kelvin(word__2) <= 
+           measuretypes__kelvin__last .
+H76:   1 >= bus__lru_subaddress_index__first .
+H77:   1 <= bus__lru_subaddress_index__last .
+H78:   1 >= bus__word_index__first .
+H79:   1 <= bus__word_index__last .
+H80:   bus_id >= bc1553__lru_name__first .
+H81:   bus_id <= bc1553__lru_name__last .
+H82:   word__4 >= bus__word__first .
+H83:   word__4 <= bus__word__last .
+H84:   word__4 >= bus__word__first .
+H85:   word__4 <= bus__word__last .
+H86:   word__4 >= bus__word__first .
+H87:   word__4 <= bus__word__last .
+H88:   ibit_request >= ibit__phase__first .
+H89:   ibit_request <= ibit__phase__last .
+H90:   word__4 >= systemtypes__unsigned16__first .
+H91:   word__4 <= systemtypes__unsigned16__last .
+H92:   ibit_request__5 >= ibit__phase__first .
+H93:   ibit_request__5 <= ibit__phase__last .
+        ->
+C1:    ibit_request__5 >= ibit__phase__first .
+C2:    ibit_request__5 <= ibit__phase__last .
+ 
+
+procedure_poll_29.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   bc1553__is_valid(bus_id, 2, bus__inputs) .
+H32:   bc1553__is_fresh(bus_id, 2, bus__inputs) .
+H33:   2 >= bus__lru_subaddress_index__first .
+H34:   2 <= bus__lru_subaddress_index__last .
+H35:   1 >= bus__word_index__first .
+H36:   1 <= bus__word_index__last .
+H37:   bus_id >= bc1553__lru_name__first .
+H38:   bus_id <= bc1553__lru_name__last .
+H39:   word__1 >= bus__word__first .
+H40:   word__1 <= bus__word__last .
+H41:   word__1 >= bus__word__first .
+H42:   word__1 <= bus__word__last .
+H43:   word__1 >= bus__word__first .
+H44:   word__1 <= bus__word__last .
+H45:   word__1 >= state_types__word__first .
+H46:   word__1 <= state_types__word__last .
+H47:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H48:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H49:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H50:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H51:   state_types__ir_action(word__1) >= 
+           state_types__infrared__first .
+H52:   state_types__ir_action(word__1) <= 
+           state_types__infrared__last .
+H53:   state_types__ir_action(word__1) = 
+           state_types__ir_sweep .
+H54:   2 >= bus__lru_subaddress_index__first .
+H55:   2 <= bus__lru_subaddress_index__last .
+H56:   2 >= bus__word_index__first .
+H57:   2 <= bus__word_index__last .
+H58:   bus_id >= bc1553__lru_name__first .
+H59:   bus_id <= bc1553__lru_name__last .
+H60:   word__3 >= bus__word__first .
+H61:   word__3 <= bus__word__last .
+H62:   word__3 >= bus__word__first .
+H63:   word__3 <= bus__word__last .
+H64:   word__3 >= bus__word__first .
+H65:   word__3 <= bus__word__last .
+H66:   word__3 >= bus__word__first .
+H67:   word__3 <= bus__word__last .
+H68:   true .
+H69:   1 >= bus__lru_subaddress_index__first .
+H70:   1 <= bus__lru_subaddress_index__last .
+H71:   1 >= bus__word_index__first .
+H72:   1 <= bus__word_index__last .
+H73:   bus_id >= bc1553__lru_name__first .
+H74:   bus_id <= bc1553__lru_name__last .
+H75:   word__4 >= bus__word__first .
+H76:   word__4 <= bus__word__last .
+H77:   word__4 >= bus__word__first .
+H78:   word__4 <= bus__word__last .
+H79:   word__4 >= bus__word__first .
+H80:   word__4 <= bus__word__last .
+H81:   ibit_request >= ibit__phase__first .
+H82:   ibit_request <= ibit__phase__last .
+H83:   word__4 >= systemtypes__unsigned16__first .
+H84:   word__4 <= systemtypes__unsigned16__last .
+H85:   ibit_request__5 >= ibit__phase__first .
+H86:   ibit_request__5 <= ibit__phase__last .
+        ->
+C1:    ibit_request__5 >= ibit__phase__first .
+C2:    ibit_request__5 <= ibit__phase__last .
+ 
+
+procedure_poll_30.
+H1:    true .
+H2:    fld_temp(last_stare) >= measuretypes__kelvin__first .
+H3:    fld_temp(last_stare) <= measuretypes__kelvin__last .
+H4:    true .
+H5:    true .
+H6:    fld_sy(last_stare) >= sector__first .
+H7:    fld_sy(last_stare) <= sector__last .
+H8:    fld_sx(last_stare) >= sector__first .
+H9:    fld_sx(last_stare) <= sector__last .
+H10:   true .
+H11:   true .
+H12:   true .
+H13:   fld_sy_end(last_sweep) >= sector__first .
+H14:   fld_sy_end(last_sweep) <= sector__last .
+H15:   fld_sy_start(last_sweep) >= sector__first .
+H16:   fld_sy_start(last_sweep) <= sector__last .
+H17:   fld_sx_end(last_sweep) >= sector__first .
+H18:   fld_sx_end(last_sweep) <= sector__last .
+H19:   fld_sx_start(last_sweep) >= sector__first .
+H20:   fld_sx_start(last_sweep) <= sector__last .
+H21:   ibit_request >= ibit__phase__first .
+H22:   ibit_request <= ibit__phase__last .
+H23:   2 >= bus__lru_subaddress_index__first .
+H24:   2 <= bus__lru_subaddress_index__last .
+H25:   bus_id >= bc1553__lru_name__first .
+H26:   bus_id <= bc1553__lru_name__last .
+H27:   true .
+H28:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((2 >= 
+           bus__lru_subaddress_index__first) and (2 <= 
+           bus__lru_subaddress_index__last)) .
+H29:   bc1553__is_valid(bus_id, 2, bus__inputs) -> ((bus_id >= 
+           bc1553__lru_name__first) and (bus_id <= 
+           bc1553__lru_name__last)) .
+H30:   bc1553__is_valid(bus_id, 2, bus__inputs) -> true .
+H31:   not (bc1553__is_valid(bus_id, 2, bus__inputs) and 
+           bc1553__is_fresh(bus_id, 2, bus__inputs)) .
+H32:   1 >= bus__lru_subaddress_index__first .
+H33:   1 <= bus__lru_subaddress_index__last .
+H34:   1 >= bus__word_index__first .
+H35:   1 <= bus__word_index__last .
+H36:   bus_id >= bc1553__lru_name__first .
+H37:   bus_id <= bc1553__lru_name__last .
+H38:   word__4 >= bus__word__first .
+H39:   word__4 <= bus__word__last .
+H40:   word__4 >= bus__word__first .
+H41:   word__4 <= bus__word__last .
+H42:   word__4 >= bus__word__first .
+H43:   word__4 <= bus__word__last .
+H44:   ibit_request >= ibit__phase__first .
+H45:   ibit_request <= ibit__phase__last .
+H46:   word__4 >= systemtypes__unsigned16__first .
+H47:   word__4 <= systemtypes__unsigned16__last .
+H48:   ibit_request__5 >= ibit__phase__first .
+H49:   ibit_request__5 <= ibit__phase__last .
+        ->
+C1:    ibit_request__5 >= ibit__phase__first .
+C2:    ibit_request__5 <= ibit__phase__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_poll_31.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_poll_32.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_poll_33.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_poll_34.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_poll_35.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_poll_36.
+*** true .          /* trivially true VC removed by Examiner */
+
+

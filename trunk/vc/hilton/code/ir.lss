@@ -1,0 +1,86 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:41.89
+
+Line
+   1  -- IR simulator
+   2  --
+   3  -- $Log: ir.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/08/27 20:46:05  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with MeasureTypes,Ir_Cfg,random;
+  13  use type MeasureTypes.Meter;
+  14  use type Measuretypes.Kelvin;
+  15  use type Ir_Cfg.Sector_Range;
+  16  use type Random.Value;
+  17  --# inherit MeasureTypes, measuretypes.encode,
+  18  --#         Bus, Rt1553,
+  19  --#         random, SystemTypes, state_types,
+  20  --#         IBIT, Bit_Machine, ir_cfg;
+  21  package IR
+  22    --# own State;
+  23    --# initializes State;
+  24  is
+  25     -- Type renamings for brevity
+  26     subtype Meter is Measuretypes.Meter;
+  27     subtype Kelvin is Measuretypes.Kelvin;
+  28     subtype Sector is Ir_Cfg.Sector_Range;
+  29  
+  30     -- Cone of detection is 1200 millirads left and right of axis
+  31     -- Detection distance up to 30,000m
+  32     -- Accuracy is +- 100millirads
+  33     -- Also detects range via expected temperature, +/- 30%
+  34  
+  35     -- Cycle the reading of data from the bus
+  36     -- and writing of data to the bus
+  37     procedure Cycle;
+  38     --# global in out State;
+  39     --#        in Bus.Outputs;
+  40     --#        in out Bus.Inputs;
+  41     --# derives State from *, Bus.Outputs &
+  42     --#        Bus.Inputs from *, State, bus.outputs;
+  43  
+  44  
+  45     procedure Set_cell_Return(Sx, Sy : in Sector;
+  46                                  T : in Kelvin);
+  47     --# global in out State;
+  48     --# derives State from *, Sx, Sy, T;
+  49  
+  50     -- Read what's at a cell
+  51     procedure Read_Location(Sx, Sy : in Sector;
+  52                             T : out Kelvin);
+  53     --# global in     State;
+  54     --# derives T from State, Sx, Sy;
+  55  
+  56     -- Cause the next BIT to fail
+  57     procedure Fail_Next_Bit;
+  58     --# global in out State;
+  59     --# derives State from *;
+  60  
+  61     procedure Init;
+  62     --# global out State;
+  63     --#        in out Bus.Inputs;
+  64     --# derives State from &
+  65     --#         Bus.Inputs from *;
+  66  
+  67     -- Test stub
+  68     procedure Command;
+  69     --# derives;
+  70  
+  71  end Ir;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

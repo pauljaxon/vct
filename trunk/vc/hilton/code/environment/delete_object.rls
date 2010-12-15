@@ -1,0 +1,29 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.76*/
+
+                    /*procedure environment.Delete_Object*/
+
+
+rule_family delete_objec_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+delete_objec_rules(1): handle__size >= 0 may_be_deduced.
+delete_objec_rules(2): handle__first may_be_replaced_by 0.
+delete_objec_rules(3): handle__last may_be_replaced_by 20.
+delete_objec_rules(4): handle__base__first <= handle__base__last may_be_deduced.
+delete_objec_rules(5): handle__base__first <= handle__first may_be_deduced.
+delete_objec_rules(6): handle__base__last >= handle__last may_be_deduced.
+delete_objec_rules(7): valid_handle__size >= 0 may_be_deduced.
+delete_objec_rules(8): valid_handle__first may_be_replaced_by 1.
+delete_objec_rules(9): valid_handle__last may_be_replaced_by 20.
+delete_objec_rules(10): valid_handle__base__first <= valid_handle__base__last may_be_deduced.
+delete_objec_rules(11): valid_handle__base__first <= valid_handle__first may_be_deduced.
+delete_objec_rules(12): valid_handle__base__last >= valid_handle__last may_be_deduced.

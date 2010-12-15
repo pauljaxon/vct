@@ -1,0 +1,85 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:44  SIMPLIFIED 25-NOV-2009, 14:19:23
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure missile.Poll.Manage_Bit_Process
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_manage_bit_process_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : bc1553__lru_name, bc1553__lru_name__first <= 
+          i___1 and i___1 <= bc1553__lru_name__last -> ibit__phase__first <= 
+          fld_bit_phase(element(fld_components(state), [i___1])) and 
+          fld_bit_phase(element(fld_components(state), [i___1])) <= 
+          ibit__phase__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  phase_stage__first <= fld_phase(state)
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  phase_stage__first <= boost
+-S-  Applied substitution rule manage_bit_p_rules(78).
+     This was achieved by replacing all occurrences of phase_stage__first by:
+          off.
+<S>  New H3:  off <= fld_phase(state)
+<S>  New C1:  true
+-S-  Applied substitution rule manage_bit_p_rules(79).
+     This was achieved by replacing all occurrences of phase_stage__last by:
+          shutdown.
+<S>  New H4:  fld_phase(state) <= shutdown
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_manage_bit_process_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  for_all(i___1 : bc1553__lru_name, bc1553__lru_name__first <= 
+          i___1 and i___1 <= bc1553__lru_name__last -> ibit__phase__first <= 
+          fld_bit_phase(element(fld_components(state), [i___1])) and 
+          fld_bit_phase(element(fld_components(state), [i___1])) <= 
+          ibit__phase__last)
+%%%  Simplified H3 on reading formula in, to give:
+     %%%  H3:  phase_stage__first <= fld_phase(state)
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  phase_stage__first <= shutdown
+-S-  Applied substitution rule manage_bit_p_rules(78).
+     This was achieved by replacing all occurrences of phase_stage__first by:
+          off.
+<S>  New H3:  off <= fld_phase(state)
+<S>  New C1:  true
+-S-  Applied substitution rule manage_bit_p_rules(79).
+     This was achieved by replacing all occurrences of phase_stage__last by:
+          shutdown.
+<S>  New H4:  fld_phase(state) <= shutdown
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_manage_bit_process_3.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_manage_bit_process_4.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_manage_bit_process_5.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

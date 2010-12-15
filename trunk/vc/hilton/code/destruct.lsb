@@ -1,0 +1,237 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.72
+
+Line
+   1  -- Self-destruct implementation
+   2  --
+   3  -- $Log: destruct.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/09/01 19:15:39  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with Clock_Utils,SystemTypes;
+  13  with Bus,RT1553,IBIT,Bit_Machine;
+  14  package body Destruct
+  15    --# own State is
+  16    --#     current_stage,
+  17    --#     stage_timer,
+  18    --#     BIT_State;
+  19  is
+  20     -- The current action state of the destruct
+  21     Current_Stage : Stage := Destruct_Cfg.inactive;
+  22     -- What time the destruct state last changed
+  23     stage_timer  : Clock.Millisecond := Clock.Millisecond'First;
+  24     -- The BIT state
+  25     Bit_State  : Bit_Machine.Machine := Bit_Machine.Initial_Machine;
+  26  
+  27     Bus_Id : constant Rt1553.Lru_Name := Rt1553.Destruct;
+  28  
+  29     -- maximum times to remain in states
+  30     type Time_Array is array(Stage) of Clock.Millisecond;
+  31     Max_Stage_Time : constant Time_Array
+  32       := Time_Array'(Destruct_Cfg.Inactive  => 0,
+  33                      Destruct_Cfg.Armed     => 20_000,
+  34                      Destruct_Cfg.Detonated => 0);
+  35  
+  36     -- See whether the current stage needs updating automatically
+  37     procedure Update_Stage
+  38       --# global in out current_stage, stage_timer;
+  39       --#        in out clock.time;
+  40       --# derives clock.time from *, current_stage &
+  41       --#         current_stage, stage_timer from
+  42       --#         stage_timer, clock.time, current_stage;
+  43     is
+  44        T_Now,T_Delta : Clock.Millisecond;
+  45        T_Valid : Boolean;
+  46     begin
+  47        T_Delta := Max_Stage_Time(Current_Stage);
+  48        if T_Delta > 0 then
+  49           Clock.Read(T => T_Now,
+  50                      Valid => T_Valid);
+  51           if T_Valid and then
+  52             Stage_Timer < T_Now and then
+  53             (T_Now - Stage_Timer) >= T_Delta then
+  54              -- Time is valid and enough has passed
+  55              Stage_Timer := T_Now;
+  56              -- Always resets to Inactive for safety reasons
+  57              Current_Stage := Destruct_Cfg.inactive;
+  58           else
+  59              -- Can't change state as no time known
+  60              null;
+  61           end if;
+  62        else
+  63           -- No automatic change
+  64           null;
+  65        end if;
+  66     end Update_Stage;
+
++++        Flow analysis of subprogram Update_Stage 
+           performed: no errors found.
+
+  67  
+  68  
+  69     --------- Public subprograms
+  70  
+  71     procedure Set_stage(New_stage : in Stage)
+  72       --# global    out current_stage, stage_timer;
+  73       --#           in out clock.time;
+  74       --# derives current_stage from new_stage, clock.time &
+  75       --#         clock.time from * &
+  76       --#         stage_timer from clock.time;
+  77     is
+  78        Time_Valid : Boolean;
+  79     begin
+  80        Current_Stage := New_Stage;
+  81        Clock.Read(stage_timer,Time_Valid);
+  82        if not Time_Valid then
+  83           -- This is OK for now
+  84           Current_Stage := New_Stage;
+  85        end if;
+  86     end Set_stage;
+
++++        Flow analysis of subprogram Set_Stage performed: 
+           no errors found.
+
+  87  
+  88     -- Cycle the reading of data from the bus
+  89     -- and writing of data to the bus
+  90     procedure Cycle
+  91       --# global in out current_stage, stage_timer;
+  92       --#        in out BIT_State;
+  93       --#        in out Clock.Time;
+  94       --#        in Bus.Outputs;
+  95       --#        in out Bus.Inputs;
+  96       --# derives
+  97       --#        BIT_State
+  98       --#          from *, Bus.Outputs &
+  99       --#        Bus.Inputs from *, Clock.Time,
+ 100       --#        current_stage, stage_timer,
+ 101       --#        BIT_State &
+ 102       --#        Clock.Time from *, current_stage, stage_timer, bus.outputs
+ 103       --#                    &
+ 104       --#        current_stage from *, clock.time, stage_timer,
+ 105       --#                bus.outputs &
+ 106       --#        stage_timer from *, clock.time, current_stage,
+ 107       --#                bus.outputs;
+ 108     is
+ 109        Datum : Bus.Word;
+ 110        New_Stage : stage;
+ 111     begin
+ 112        Update_Stage;
+ 113        -- Write the stage info to T1 word 1
+ 114        Rt1553.Write_Word(Data =>
+ 115                            Destruct_cfg.State_To_code(Current_Stage),
+ 116                          Idx => 1,
+ 117                          Subaddress_Idx => 1,
+ 118                          Src => Bus_Id);
+ 119        -- Write the BIT phase to T1 word 2
+ 120        Rt1553.Write_Word(Data =>
+ 121                            IBIT.Phase_Lookup(BIT_Machine.Phase(Bit_State)),
+ 122                         Idx => 2,
+ 123                         Subaddress_Idx => 1,
+ 124                          Src => Bus_id);
+ 125        if Rt1553.Is_Valid(Src => Bus_Id,
+ 126                           Subaddress_Idx => 1) and then
+ 127          Rt1553.Is_Fresh(Src => Bus_Id,
+ 128                          Subaddress_Idx => 1) then
+ 129           -- Read a new stage value off R1 word 1
+ 130           Rt1553.Read_Word(Src => Bus_id,
+ 131                            Idx => 1,
+ 132                            Subaddress_Idx => 1,
+ 133                            Data => Datum);
+ 134           if Destruct_Cfg.Code_To_State(Datum) /=
+ 135             Current_Stage then
+ 136              New_Stage := Destruct_Cfg.Transition(Old_State => Current_Stage,
+ 137                                                  New_Code  => Datum);
+ 138              Set_Stage(New_Stage);
+ 139           end if;
+ 140        end if;
+ 141        -- Read the BIT info off R1 word 2
+ 142        Rt1553.Read_Word(Src => Bus_id,
+ 143                         Idx => 2,
+ 144                         Subaddress_Idx => 1,
+ 145                         Data => Datum);
+ 146        BIT_Machine.Change_State(Word => Datum,
+ 147                                 State => Bit_state);
+ 148        -- And cycle the BIT
+ 149        BIT_Machine.Step(Bit_State);
+ 150     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+ 151  
+ 152  
+ 153     -- Set the current state timer
+ 154     procedure Set_timer(Ms : in Clock.Millisecond)
+ 155     --# global    out stage_timer;
+ 156     --# derives stage_timer from ms;
+ 157     is begin
+ 158        Stage_Timer := Ms;
+ 159     end Set_timer;
+
++++        Flow analysis of subprogram Set_Timer performed: 
+           no errors found.
+
+ 160  
+ 161     -- Read the current stage
+ 162     procedure Read_stage(This_Stage : out Stage)
+ 163       --# global in     current_stage;
+ 164       --# derives this_stage from current_stage;
+ 165     is
+ 166     begin
+ 167        This_Stage := Current_Stage;
+ 168     end Read_stage;
+
++++        Flow analysis of subprogram Read_Stage 
+           performed: no errors found.
+
+ 169  
+ 170     procedure Fail_Next_Bit
+ 171       --# global in out BIT_State;
+ 172       --# derives BIT_State from *;
+ 173     is begin
+ 174        BIT_Machine.Fail_Next(Bit_State);
+ 175     end Fail_Next_Bit;
+
++++        Flow analysis of subprogram Fail_Next_Bit 
+           performed: no errors found.
+
+ 176  
+ 177     procedure Init
+ 178       --# global out current_stage, stage_timer, BIT_State;
+ 179       --#        in out Bus.Inputs;
+ 180       --# derives current_stage, stage_timer, BIT_State from &
+ 181       --#        Bus.Inputs from *;
+ 182     is begin
+ 183        -- Initialise the bus message 1T
+ 184        RT1553.Set_Message_Valid(Subaddress_Idx => 1,
+ 185                                 Src => Bus_id);
+ 186        -- Initialise the variables
+ 187        Current_Stage := Destruct_Cfg.inactive;
+ 188        Stage_Timer   := Clock.Millisecond'First;
+ 189        BIT_Machine.Create(Ticks_To_Complete => 9,
+ 190                           State => Bit_State);
+ 191     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 192  
+ 193     procedure Command is separate;
+ 194  end Destruct;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

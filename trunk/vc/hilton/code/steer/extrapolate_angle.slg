@@ -1,0 +1,3627 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:42  SIMPLIFIED 25-NOV-2009, 14:19:11
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure steer.Extrapolate_Angle
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_1.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+***  Proved C1:  now__1 >= clock__millisecond__first
+     using hypothesis H7.
+***  Proved C2:  now__1 <= clock__millisecond__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_2.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= for_fin
+***  Proved C1:  element(current_angles, [for_fin]) >= angle__first
+     using hypotheses H2, H3 & H4.
+***  Proved C2:  element(current_angles, [for_fin]) <= angle__last
+     using hypotheses H2, H3 & H4.
+***  Proved C3:  fin__first <= for_fin
+     using hypothesis H2.
+***  Proved C4:  for_fin <= fin__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_3.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= for_fin
+***  Proved C1:  element(commanded_angles, [for_fin]) >= angle__first
+     using hypotheses H2, H3 & H5.
+***  Proved C2:  element(commanded_angles, [for_fin]) <= angle__last
+     using hypotheses H2, H3 & H5.
+***  Proved C3:  fin__first <= for_fin
+     using hypothesis H2.
+***  Proved C4:  for_fin <= fin__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_4.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H13).
+***  Proved C1:  element(current_angles, [for_fin]) >= angle__first
+     using hypothesis H12.
+***  Proved C2:  element(current_angles, [for_fin]) <= angle__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_5.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  fin__first <= for_fin
+***  Proved C3:  fin__first <= for_fin
+     using hypothesis H2.
+***  Proved C4:  for_fin <= fin__last
+     using hypothesis H3.
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New C1:  now__1 - element(command_times, [for_fin]) >= 0
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+<S>  New C2:  now__1 - element(command_times, [for_fin]) <= 8640000
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= angle__last)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= angle__last)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H26, which only specifies a value for time_valid__1.
+     This is not referred to anywhere else in the VC.
+***  Proved C2:  now__1 - element(command_times, [for_fin]) <= 8640000
+     using hypotheses H2, H3, H6 & H8.
+     +++  New H29:  long_integer__size >= 0
+     +++  New H30:  clock__millisecond__size >= 0
+     +++  New H31:  steer_cfg__fin_angle__size >= 0
+     +++  New H32:  steer_cfg__fin_angle__base__first <= 
+          steer_cfg__fin_angle__base__last
+     +++  New H33:  steer_cfg__fin__size >= 0
+     +++  New H34:  angle__size >= 0
+     +++  New H35:  angle__base__first <= angle__base__last
+     +++  New H36:  fin__size >= 0
+     +++  New H37:  integer32__size >= 0
+     +++  New H38:  steer_cfg__fin_angle__base__first <= - 57
+     +++  New H39:  steer_cfg__fin_angle__base__last >= 57
+     +++  New H40:  angle__base__first <= - 57
+     +++  New H41:  angle__base__last >= 57
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_6.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H13).
+***  Proved C1:  element(current_angles, [for_fin]) >= angle__first
+     using hypothesis H12.
+***  Proved C2:  element(current_angles, [for_fin]) <= angle__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_7.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+***  Proved C2:  2000 <= clock__millisecond__last
+     using hypotheses H30 & H38.
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_8.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H40).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  true
+***  Proved C5:  true
+-S-  Applied substitution rule extrapolate__rules(57).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  element(current_angles, [for_fin]) + 2000 * steer_cfg__move_rate 
+          div 1000 >= - 2147483648
+<S>  New C8:  true
+<S>  New C10:  element(current_angles, [for_fin]) >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(58).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  element(current_angles, [for_fin]) + 2000 * steer_cfg__move_rate 
+          div 1000 <= 2147483647
+<S>  New C9:  true
+<S>  New C11:  element(current_angles, [for_fin]) <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  2000 * steer_cfg__move_rate div 1000 >= - 2147483648
+<S>  New C6:  2000 * steer_cfg__move_rate >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  2000 * steer_cfg__move_rate div 1000 <= 2147483647
+<S>  New C7:  2000 * steer_cfg__move_rate <= 2147483647
+***  Proved C8:  true
+***  Proved C9:  true
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+>>>  Restructured hypothesis H35 into:
+     >>>  H35:  0 <= now__1 - element(command_times, [for_fin])
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of steer_cfg__move_rate by:
+          120.
+<S>  New C1:  element(current_angles, [for_fin]) >= - 2147483888
+<S>  New C2:  element(current_angles, [for_fin]) <= 2147483407
+<S>  New C3:  true
+<S>  New C6:  true
+<S>  New C4:  true
+<S>  New C7:  true
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+<S>  New H39:  true
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H30:  now__1 - element(command_times, [for_fin]) <= 8640000
+<S>  New H40:  true
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= angle__last)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= angle__last)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+%%%  Hypotheses H45 & H24 together imply that
+          element(current_angles, [for_fin]) < element(commanded_angles, [
+          for_fin]).
+     H45 & H24 have therefore been deleted and a new H24 added to this effect.
+***  Proved C10:  element(current_angles, [for_fin]) >= - 2147483648
+     using hypothesis H12.
+***  Proved C11:  element(current_angles, [for_fin]) <= 2147483647
+     using hypothesis H13.
+***  Proved C1:  element(current_angles, [for_fin]) >= - 2147483888
+     using hypothesis H12.
+***  Proved C2:  element(current_angles, [for_fin]) <= 2147483407
+     using hypothesis H13.
+***  Proved C3:  true
+***  Proved C6:  true
+***  Proved C4:  true
+***  Proved C7:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_9.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H30).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  true
+***  Proved C5:  true
+-S-  Applied substitution rule extrapolate__rules(57).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= - 
+          2147483648
+<S>  New C8:  now__1 - element(command_times, [for_fin]) >= - 2147483648
+<S>  New C10:  element(current_angles, [for_fin]) >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(58).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+          2147483647
+<S>  New C9:  now__1 - element(command_times, [for_fin]) <= 2147483647
+<S>  New C11:  element(current_angles, [for_fin]) <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  (now__1 - element(command_times, [for_fin])) * 
+          steer_cfg__move_rate div 1000 >= - 2147483648
+<S>  New C6:  (now__1 - element(command_times, [for_fin])) * 
+          steer_cfg__move_rate >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  (now__1 - element(command_times, [for_fin])) * 
+          steer_cfg__move_rate div 1000 <= 2147483647
+<S>  New C7:  (now__1 - element(command_times, [for_fin])) * 
+          steer_cfg__move_rate <= 2147483647
+***  Proved C8:  now__1 - element(command_times, [for_fin]) >= - 2147483648
+     using hypothesis H35.
+***  Proved C9:  now__1 - element(command_times, [for_fin]) <= 2147483647
+     using hypothesis H38.
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+>>>  Restructured hypothesis H35 into:
+     >>>  H35:  0 <= now__1 - element(command_times, [for_fin])
+>>>  Restructured hypothesis H38 into:
+     >>>  H38:  now__1 - element(command_times, [for_fin]) <= 2000
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of steer_cfg__move_rate by:
+          120.
+<S>  New C1:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= - 2147483648
+<S>  New C2:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= 2147483647
+<S>  New C3:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 >= - 
+          2147483648
+<S>  New C6:  (now__1 - element(command_times, [for_fin])) * 120 >= - 2147483648
+<S>  New C4:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 <= 
+          2147483647
+<S>  New C7:  (now__1 - element(command_times, [for_fin])) * 120 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H30:  now__1 - element(command_times, [for_fin]) <= 8640000
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= angle__last)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= angle__last)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+%%%  Hypotheses H43 & H24 together imply that
+          element(current_angles, [for_fin]) < element(commanded_angles, [
+          for_fin]).
+     H43 & H24 have therefore been deleted and a new H24 added to this effect.
+***  Proved C10:  element(current_angles, [for_fin]) >= - 2147483648
+     using hypothesis H12.
+***  Proved C11:  element(current_angles, [for_fin]) <= 2147483647
+     using hypothesis H13.
+***  Proved C6:  (now__1 - element(command_times, [for_fin])) * 120 >= - 
+          2147483648
+     using hypothesis H29.
+***  Proved C7:  (now__1 - element(command_times, [for_fin])) * 120 <= 
+          2147483647
+     using hypothesis H38.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H33 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H36 (true-hypothesis).
+---  Eliminated hypothesis H37 (true-hypothesis).
+---  Eliminated hypothesis H39 (true-hypothesis).
+---  Eliminated hypothesis H40 (true-hypothesis).
+---  Eliminated hypothesis H41 (true-hypothesis).
+---  Eliminated hypothesis H42 (true-hypothesis).
+---  Eliminated hypothesis H44 (true-hypothesis).
+---  Eliminated hypothesis H45 (true-hypothesis).
+---  Eliminated hypothesis H46 (true-hypothesis).
+---  Eliminated hypothesis H47 (true-hypothesis).
+---  Eliminated hypothesis H35 (duplicate of H29).
+---  Eliminated hypothesis H13 (redundant, given H17 & H24).
+---  Eliminated hypothesis H16 (redundant, given H12 & H24).
+---  Eliminated hypothesis H30 (redundant, given H38).
+---  Eliminated hypothesis H26, which only specifies a value for time_valid__1.
+     This is not referred to anywhere else in the VC.
+***  Proved C1:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= - 2147483648
+     using hypotheses H12 & H29.
+***  Proved C2:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= 2147483647
+     using hypotheses H17, H24 & H38.
+***  Proved C3:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 >= 
+          - 2147483648
+     using hypothesis H29.
+***  Proved C4:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 <= 
+          2147483647
+     using hypothesis H38.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_10.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H40).
+%%%  Simplified H54 on reading formula in, to give:
+     %%%  H54:  true
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H50).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H51).
+***  Proved C1:  element(commanded_angles, [for_fin]) >= integer32__first
+     using hypotheses H45 & H59.
+-S-  Applied substitution rule extrapolate__rules(58).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H51:  element(current_angles, [for_fin]) + 2000 * steer_cfg__move_rate 
+          div 1000 <= 2147483647
+<S>  New H58:  true
+<S>  New H60:  element(current_angles, [for_fin]) <= 2147483647
+<S>  New C2:  element(commanded_angles, [for_fin]) <= 2147483647
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+>>>  Restructured hypothesis H35 into:
+     >>>  H35:  0 <= now__1 - element(command_times, [for_fin])
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of steer_cfg__move_rate by:
+          120.
+<S>  New H50:  element(current_angles, [for_fin]) + 240 >= integer32__first
+<S>  New H51:  element(current_angles, [for_fin]) <= 2147483407
+<S>  New H52:  240 >= long_integer__base__first
+<S>  New H53:  240 <= long_integer__base__last
+<S>  New H55:  240000 >= long_integer__base__first
+<S>  New H56:  240000 <= long_integer__base__last
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H52:  true
+<S>  New H55:  true
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H53:  true
+<S>  New H56:  true
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+<S>  New H39:  true
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H30:  now__1 - element(command_times, [for_fin]) <= 8640000
+<S>  New H40:  true
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= angle__last)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= angle__last)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(57).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H57:  true
+<S>  New H59:  element(current_angles, [for_fin]) >= - 2147483648
+<S>  New H50:  element(current_angles, [for_fin]) >= - 2147483888
+%%%  Hypotheses H45 & H24 together imply that
+          element(current_angles, [for_fin]) < element(commanded_angles, [
+          for_fin]).
+     H45 & H24 have therefore been deleted and a new H24 added to this effect.
+***  Proved C2:  element(commanded_angles, [for_fin]) <= 2147483647
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_11.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H30).
+%%%  Simplified H52 on reading formula in, to give:
+     %%%  H52:  true
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H49).
+***  Proved C1:  element(commanded_angles, [for_fin]) >= integer32__first
+     using hypotheses H43 & H57.
+-S-  Applied substitution rule extrapolate__rules(58).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H49:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+          2147483647
+<S>  New H56:  now__1 - element(command_times, [for_fin]) <= 2147483647
+<S>  New H58:  element(current_angles, [for_fin]) <= 2147483647
+<S>  New C2:  element(commanded_angles, [for_fin]) <= 2147483647
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+>>>  Restructured hypothesis H35 into:
+     >>>  H35:  0 <= now__1 - element(command_times, [for_fin])
+>>>  Restructured hypothesis H38 into:
+     >>>  H38:  now__1 - element(command_times, [for_fin]) <= 2000
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of steer_cfg__move_rate by:
+          120.
+<S>  New H48:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= integer32__first
+<S>  New H49:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= 2147483647
+<S>  New H50:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 >= 
+          long_integer__base__first
+<S>  New H51:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 <= 
+          long_integer__base__last
+<S>  New H53:  (now__1 - element(command_times, [for_fin])) * 120 >= 
+          long_integer__base__first
+<S>  New H54:  (now__1 - element(command_times, [for_fin])) * 120 <= 
+          long_integer__base__last
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H50:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 >= - 
+          2147483648
+<S>  New H53:  (now__1 - element(command_times, [for_fin])) * 120 >= - 
+          2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H51:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 <= 
+          2147483647
+<S>  New H54:  (now__1 - element(command_times, [for_fin])) * 120 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H30:  now__1 - element(command_times, [for_fin]) <= 8640000
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= angle__last)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= angle__last)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(57).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H55:  now__1 - element(command_times, [for_fin]) >= - 2147483648
+<S>  New H57:  element(current_angles, [for_fin]) >= - 2147483648
+<S>  New H48:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= - 2147483648
+%%%  Hypotheses H43 & H24 together imply that
+          element(current_angles, [for_fin]) < element(commanded_angles, [
+          for_fin]).
+     H43 & H24 have therefore been deleted and a new H24 added to this effect.
+***  Proved C2:  element(commanded_angles, [for_fin]) <= 2147483647
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_12.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H40).
+%%%  Simplified H54 on reading formula in, to give:
+     %%%  H54:  true
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H50).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H51).
+---  Hypothesis H68 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H69 has been replaced by "true".  (It is already present, as 
+          H17).
+***  Proved C1:  element(commanded_angles, [for_fin]) >= angle__first
+     using hypothesis H16.
+***  Proved C2:  element(commanded_angles, [for_fin]) <= angle__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_13.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H30).
+%%%  Simplified H52 on reading formula in, to give:
+     %%%  H52:  true
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H66 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H67 has been replaced by "true".  (It is already present, as 
+          H17).
+***  Proved C1:  element(commanded_angles, [for_fin]) >= angle__first
+     using hypothesis H16.
+***  Proved C2:  element(commanded_angles, [for_fin]) <= angle__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_14.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H40).
+%%%  Simplified H54 on reading formula in, to give:
+     %%%  H54:  true
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H50).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H51).
+---  Hypothesis H68 has been replaced by "true".  (It is already present, as 
+          H50).
+---  Hypothesis H69 has been replaced by "true".  (It is already present, as 
+          H51).
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= angle__last)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= angle__last)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+<S>  New C1:  element(current_angles, [for_fin]) + 2000 * steer_cfg__move_rate 
+          div 1000 >= - 57
+<S>  New C3:  element(current_angles, [for_fin]) + 2000 * steer_cfg__move_rate 
+          div 1000 >= - 57
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+<S>  New C2:  element(current_angles, [for_fin]) + 2000 * steer_cfg__move_rate 
+          div 1000 <= 57
+<S>  New C4:  element(current_angles, [for_fin]) + 2000 * steer_cfg__move_rate 
+          div 1000 <= 57
+***  Proved C2:  element(current_angles, [for_fin]) + 2000 * 
+          steer_cfg__move_rate div 1000 <= 57
+     using hypotheses H17 & H67.
+***  Proved C4:  element(current_angles, [for_fin]) + 2000 * 
+          steer_cfg__move_rate div 1000 <= 57
+     using hypotheses H17 & H67.
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+>>>  Restructured hypothesis H35 into:
+     >>>  H35:  0 <= now__1 - element(command_times, [for_fin])
+>>>  Restructured hypothesis H67 into:
+     >>>  H67:  element(current_angles, [for_fin]) + 2000 * 
+          steer_cfg__move_rate div 1000 <= element(commanded_angles, [for_fin])
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of steer_cfg__move_rate by:
+          120.
+<S>  New H50:  element(current_angles, [for_fin]) + 240 >= integer32__first
+<S>  New H51:  element(current_angles, [for_fin]) + 240 <= integer32__last
+<S>  New H52:  240 >= long_integer__base__first
+<S>  New H53:  240 <= long_integer__base__last
+<S>  New H55:  240000 >= long_integer__base__first
+<S>  New H56:  240000 <= long_integer__base__last
+<S>  New H67:  element(current_angles, [for_fin]) + 240 <= element(
+          commanded_angles, [for_fin])
+<S>  New C1:  element(current_angles, [for_fin]) >= - 297
+<S>  New C3:  element(current_angles, [for_fin]) >= - 297
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H52:  true
+<S>  New H55:  true
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H53:  true
+<S>  New H56:  true
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+<S>  New H39:  true
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H30:  now__1 - element(command_times, [for_fin]) <= 8640000
+<S>  New H40:  true
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(57).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H57:  true
+<S>  New H59:  element(current_angles, [for_fin]) >= - 2147483648
+<S>  New H65:  element(commanded_angles, [for_fin]) >= - 2147483648
+<S>  New H50:  element(current_angles, [for_fin]) >= - 2147483888
+-S-  Applied substitution rule extrapolate__rules(58).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H58:  true
+<S>  New H60:  element(current_angles, [for_fin]) <= 2147483647
+<S>  New H66:  element(commanded_angles, [for_fin]) <= 2147483647
+<S>  New H51:  element(current_angles, [for_fin]) <= 2147483407
+%%%  Hypotheses H45 & H24 together imply that
+          element(current_angles, [for_fin]) < element(commanded_angles, [
+          for_fin]).
+     H45 & H24 have therefore been deleted and a new H24 added to this effect.
+***  Proved C1:  element(current_angles, [for_fin]) >= - 297
+     using hypothesis H12.
+***  Proved C3:  element(current_angles, [for_fin]) >= - 297
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_15.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H30).
+%%%  Simplified H52 on reading formula in, to give:
+     %%%  H52:  true
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H66 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H67 has been replaced by "true".  (It is already present, as 
+          H49).
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= angle__last)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= angle__last)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+<S>  New C1:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= - 57
+<S>  New C3:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= - 57
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+<S>  New C2:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 57
+<S>  New C4:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 57
+***  Proved C2:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 57
+     using hypotheses H17 & H65.
+***  Proved C4:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 57
+     using hypotheses H17 & H65.
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+>>>  Restructured hypothesis H35 into:
+     >>>  H35:  0 <= now__1 - element(command_times, [for_fin])
+>>>  Restructured hypothesis H38 into:
+     >>>  H38:  now__1 - element(command_times, [for_fin]) <= 2000
+>>>  Restructured hypothesis H65 into:
+     >>>  H65:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= element(
+          commanded_angles, [for_fin])
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of steer_cfg__move_rate by:
+          120.
+<S>  New H48:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= integer32__first
+<S>  New H49:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= integer32__last
+<S>  New H50:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 >= 
+          long_integer__base__first
+<S>  New H51:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 <= 
+          long_integer__base__last
+<S>  New H53:  (now__1 - element(command_times, [for_fin])) * 120 >= 
+          long_integer__base__first
+<S>  New H54:  (now__1 - element(command_times, [for_fin])) * 120 <= 
+          long_integer__base__last
+<S>  New H65:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= element(
+          commanded_angles, [for_fin])
+<S>  New C1:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= - 57
+<S>  New C3:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= - 57
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H50:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 >= - 
+          2147483648
+<S>  New H53:  (now__1 - element(command_times, [for_fin])) * 120 >= - 
+          2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H51:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 <= 
+          2147483647
+<S>  New H54:  (now__1 - element(command_times, [for_fin])) * 120 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H30:  now__1 - element(command_times, [for_fin]) <= 8640000
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(57).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H55:  now__1 - element(command_times, [for_fin]) >= - 2147483648
+<S>  New H57:  element(current_angles, [for_fin]) >= - 2147483648
+<S>  New H63:  element(commanded_angles, [for_fin]) >= - 2147483648
+<S>  New H48:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(58).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H56:  now__1 - element(command_times, [for_fin]) <= 2147483647
+<S>  New H58:  element(current_angles, [for_fin]) <= 2147483647
+<S>  New H64:  element(commanded_angles, [for_fin]) <= 2147483647
+<S>  New H49:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= 2147483647
+%%%  Hypotheses H43 & H24 together imply that
+          element(current_angles, [for_fin]) < element(commanded_angles, [
+          for_fin]).
+     H43 & H24 have therefore been deleted and a new H24 added to this effect.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H33 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H36 (true-hypothesis).
+---  Eliminated hypothesis H37 (true-hypothesis).
+---  Eliminated hypothesis H39 (true-hypothesis).
+---  Eliminated hypothesis H40 (true-hypothesis).
+---  Eliminated hypothesis H41 (true-hypothesis).
+---  Eliminated hypothesis H42 (true-hypothesis).
+---  Eliminated hypothesis H44 (true-hypothesis).
+---  Eliminated hypothesis H45 (true-hypothesis).
+---  Eliminated hypothesis H46 (true-hypothesis).
+---  Eliminated hypothesis H47 (true-hypothesis).
+---  Eliminated hypothesis H52 (true-hypothesis).
+---  Eliminated hypothesis H59 (true-hypothesis).
+---  Eliminated hypothesis H60 (true-hypothesis).
+---  Eliminated hypothesis H61 (true-hypothesis).
+---  Eliminated hypothesis H62 (true-hypothesis).
+---  Eliminated hypothesis H66 (true-hypothesis).
+---  Eliminated hypothesis H67 (true-hypothesis).
+---  Eliminated hypothesis H35 (duplicate of H29).
+---  Eliminated hypothesis H13 (redundant, given H17 & H24).
+---  Eliminated hypothesis H16 (redundant, given H12 & H24).
+---  Eliminated hypothesis H30 (redundant, given H38).
+---  Eliminated hypothesis H49 (redundant, given H17 & H65).
+---  Eliminated hypothesis H53 (redundant, given H29).
+---  Eliminated hypothesis H54 (redundant, given H38).
+---  Eliminated hypothesis H55 (redundant, given H29).
+---  Eliminated hypothesis H56 (redundant, given H38).
+---  Eliminated hypothesis H57 (redundant, given H12).
+---  Eliminated hypothesis H58 (redundant, given H17 & H24).
+---  Eliminated hypothesis H63 (redundant, given H12 & H24).
+---  Eliminated hypothesis H64 (redundant, given H17).
+---  Eliminated hypothesis H26, which only specifies a value for time_valid__1.
+     This is not referred to anywhere else in the VC.
+---  Eliminated conclusion C3, which is a duplicate of C1.
+***  Proved C1:  element(current_angles, [for_fin]) + (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= - 57
+     using hypotheses H12 & H29.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_16.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H40).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  true
+***  Proved C5:  true
+-S-  Applied substitution rule extrapolate__rules(57).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  element(current_angles, [for_fin]) - 2000 * steer_cfg__move_rate 
+          div 1000 >= - 2147483648
+<S>  New C8:  true
+<S>  New C10:  element(current_angles, [for_fin]) >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(58).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  element(current_angles, [for_fin]) - 2000 * steer_cfg__move_rate 
+          div 1000 <= 2147483647
+<S>  New C9:  true
+<S>  New C11:  element(current_angles, [for_fin]) <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  2000 * steer_cfg__move_rate div 1000 >= - 2147483648
+<S>  New C6:  2000 * steer_cfg__move_rate >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  2000 * steer_cfg__move_rate div 1000 <= 2147483647
+<S>  New C7:  2000 * steer_cfg__move_rate <= 2147483647
+***  Proved C8:  true
+***  Proved C9:  true
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+>>>  Restructured hypothesis H35 into:
+     >>>  H35:  0 <= now__1 - element(command_times, [for_fin])
+>>>  Restructured hypothesis H45 into:
+     >>>  H45:  element(commanded_angles, [for_fin]) < element(current_angles, [
+          for_fin])
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of steer_cfg__move_rate by:
+          120.
+<S>  New C1:  element(current_angles, [for_fin]) >= - 2147483408
+<S>  New C2:  element(current_angles, [for_fin]) <= 2147483887
+<S>  New C3:  true
+<S>  New C6:  true
+<S>  New C4:  true
+<S>  New C7:  true
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+<S>  New H39:  true
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H30:  now__1 - element(command_times, [for_fin]) <= 8640000
+<S>  New H40:  true
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= angle__last)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= angle__last)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+***  Proved C10:  element(current_angles, [for_fin]) >= - 2147483648
+     using hypothesis H12.
+***  Proved C11:  element(current_angles, [for_fin]) <= 2147483647
+     using hypothesis H13.
+***  Proved C1:  element(current_angles, [for_fin]) >= - 2147483408
+     using hypothesis H12.
+***  Proved C2:  element(current_angles, [for_fin]) <= 2147483887
+     using hypothesis H13.
+***  Proved C3:  true
+***  Proved C6:  true
+***  Proved C4:  true
+***  Proved C7:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_17.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H30).
+%%%  Simplified C5 on reading formula in, to give:
+     %%%  C5:  true
+***  Proved C5:  true
+-S-  Applied substitution rule extrapolate__rules(57).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New C1:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= - 
+          2147483648
+<S>  New C8:  now__1 - element(command_times, [for_fin]) >= - 2147483648
+<S>  New C10:  element(current_angles, [for_fin]) >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(58).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New C2:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 
+          2147483647
+<S>  New C9:  now__1 - element(command_times, [for_fin]) <= 2147483647
+<S>  New C11:  element(current_angles, [for_fin]) <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New C3:  (now__1 - element(command_times, [for_fin])) * 
+          steer_cfg__move_rate div 1000 >= - 2147483648
+<S>  New C6:  (now__1 - element(command_times, [for_fin])) * 
+          steer_cfg__move_rate >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New C4:  (now__1 - element(command_times, [for_fin])) * 
+          steer_cfg__move_rate div 1000 <= 2147483647
+<S>  New C7:  (now__1 - element(command_times, [for_fin])) * 
+          steer_cfg__move_rate <= 2147483647
+***  Proved C8:  now__1 - element(command_times, [for_fin]) >= - 2147483648
+     using hypothesis H35.
+***  Proved C9:  now__1 - element(command_times, [for_fin]) <= 2147483647
+     using hypothesis H38.
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+>>>  Restructured hypothesis H35 into:
+     >>>  H35:  0 <= now__1 - element(command_times, [for_fin])
+>>>  Restructured hypothesis H38 into:
+     >>>  H38:  now__1 - element(command_times, [for_fin]) <= 2000
+>>>  Restructured hypothesis H43 into:
+     >>>  H43:  element(commanded_angles, [for_fin]) < element(current_angles, [
+          for_fin])
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of steer_cfg__move_rate by:
+          120.
+<S>  New C1:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= - 2147483648
+<S>  New C2:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= 2147483647
+<S>  New C3:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 >= - 
+          2147483648
+<S>  New C6:  (now__1 - element(command_times, [for_fin])) * 120 >= - 2147483648
+<S>  New C4:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 <= 
+          2147483647
+<S>  New C7:  (now__1 - element(command_times, [for_fin])) * 120 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H30:  now__1 - element(command_times, [for_fin]) <= 8640000
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= angle__last)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= angle__last)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+***  Proved C10:  element(current_angles, [for_fin]) >= - 2147483648
+     using hypothesis H12.
+***  Proved C11:  element(current_angles, [for_fin]) <= 2147483647
+     using hypothesis H13.
+***  Proved C6:  (now__1 - element(command_times, [for_fin])) * 120 >= - 
+          2147483648
+     using hypothesis H29.
+***  Proved C7:  (now__1 - element(command_times, [for_fin])) * 120 <= 
+          2147483647
+     using hypothesis H38.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H33 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H36 (true-hypothesis).
+---  Eliminated hypothesis H37 (true-hypothesis).
+---  Eliminated hypothesis H39 (true-hypothesis).
+---  Eliminated hypothesis H40 (true-hypothesis).
+---  Eliminated hypothesis H41 (true-hypothesis).
+---  Eliminated hypothesis H42 (true-hypothesis).
+---  Eliminated hypothesis H44 (true-hypothesis).
+---  Eliminated hypothesis H45 (true-hypothesis).
+---  Eliminated hypothesis H46 (true-hypothesis).
+---  Eliminated hypothesis H47 (true-hypothesis).
+---  Eliminated hypothesis H35 (duplicate of H29).
+---  Eliminated hypothesis H12 (redundant, given H16 & H43).
+---  Eliminated hypothesis H17 (redundant, given H13 & H43).
+---  Eliminated hypothesis H24 (redundant, given H43).
+---  Eliminated hypothesis H30 (redundant, given H38).
+---  Eliminated hypothesis H26, which only specifies a value for time_valid__1.
+     This is not referred to anywhere else in the VC.
+***  Proved C1:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= - 2147483648
+     using hypotheses H16, H38 & H43.
+***  Proved C2:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= 2147483647
+     using hypotheses H13 & H29.
+***  Proved C3:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 >= 
+          - 2147483648
+     using hypothesis H29.
+***  Proved C4:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 <= 
+          2147483647
+     using hypothesis H38.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_18.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H40).
+%%%  Simplified H54 on reading formula in, to give:
+     %%%  H54:  true
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H50).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H51).
+***  Proved C2:  element(commanded_angles, [for_fin]) <= integer32__last
+     using hypotheses H45 & H60.
+-S-  Applied substitution rule extrapolate__rules(57).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H50:  element(current_angles, [for_fin]) - 2000 * steer_cfg__move_rate 
+          div 1000 >= - 2147483648
+<S>  New H57:  true
+<S>  New H59:  element(current_angles, [for_fin]) >= - 2147483648
+<S>  New C1:  element(commanded_angles, [for_fin]) >= - 2147483648
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+>>>  Restructured hypothesis H35 into:
+     >>>  H35:  0 <= now__1 - element(command_times, [for_fin])
+>>>  Restructured hypothesis H45 into:
+     >>>  H45:  element(commanded_angles, [for_fin]) < element(current_angles, [
+          for_fin])
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of steer_cfg__move_rate by:
+          120.
+<S>  New H50:  element(current_angles, [for_fin]) >= - 2147483408
+<S>  New H51:  element(current_angles, [for_fin]) - 240 <= integer32__last
+<S>  New H52:  240 >= long_integer__base__first
+<S>  New H53:  240 <= long_integer__base__last
+<S>  New H55:  240000 >= long_integer__base__first
+<S>  New H56:  240000 <= long_integer__base__last
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H52:  true
+<S>  New H55:  true
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H53:  true
+<S>  New H56:  true
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+<S>  New H39:  true
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H30:  now__1 - element(command_times, [for_fin]) <= 8640000
+<S>  New H40:  true
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= angle__last)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= angle__last)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(58).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H58:  true
+<S>  New H60:  element(current_angles, [for_fin]) <= 2147483647
+<S>  New H51:  element(current_angles, [for_fin]) <= 2147483887
+***  Proved C1:  element(commanded_angles, [for_fin]) >= - 2147483648
+     using hypothesis H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_19.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H30).
+%%%  Simplified H52 on reading formula in, to give:
+     %%%  H52:  true
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H49).
+***  Proved C2:  element(commanded_angles, [for_fin]) <= integer32__last
+     using hypotheses H43 & H58.
+-S-  Applied substitution rule extrapolate__rules(57).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H48:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= - 
+          2147483648
+<S>  New H55:  now__1 - element(command_times, [for_fin]) >= - 2147483648
+<S>  New H57:  element(current_angles, [for_fin]) >= - 2147483648
+<S>  New C1:  element(commanded_angles, [for_fin]) >= - 2147483648
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+>>>  Restructured hypothesis H35 into:
+     >>>  H35:  0 <= now__1 - element(command_times, [for_fin])
+>>>  Restructured hypothesis H38 into:
+     >>>  H38:  now__1 - element(command_times, [for_fin]) <= 2000
+>>>  Restructured hypothesis H43 into:
+     >>>  H43:  element(commanded_angles, [for_fin]) < element(current_angles, [
+          for_fin])
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of steer_cfg__move_rate by:
+          120.
+<S>  New H48:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= - 2147483648
+<S>  New H49:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= integer32__last
+<S>  New H50:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 >= 
+          long_integer__base__first
+<S>  New H51:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 <= 
+          long_integer__base__last
+<S>  New H53:  (now__1 - element(command_times, [for_fin])) * 120 >= 
+          long_integer__base__first
+<S>  New H54:  (now__1 - element(command_times, [for_fin])) * 120 <= 
+          long_integer__base__last
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H50:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 >= - 
+          2147483648
+<S>  New H53:  (now__1 - element(command_times, [for_fin])) * 120 >= - 
+          2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H51:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 <= 
+          2147483647
+<S>  New H54:  (now__1 - element(command_times, [for_fin])) * 120 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H30:  now__1 - element(command_times, [for_fin]) <= 8640000
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= angle__last)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= angle__last)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(58).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H56:  now__1 - element(command_times, [for_fin]) <= 2147483647
+<S>  New H58:  element(current_angles, [for_fin]) <= 2147483647
+<S>  New H49:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= 2147483647
+***  Proved C1:  element(commanded_angles, [for_fin]) >= - 2147483648
+     using hypothesis H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_20.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H40).
+%%%  Simplified H54 on reading formula in, to give:
+     %%%  H54:  true
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H50).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H51).
+---  Hypothesis H68 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H69 has been replaced by "true".  (It is already present, as 
+          H17).
+***  Proved C1:  element(commanded_angles, [for_fin]) >= angle__first
+     using hypothesis H16.
+***  Proved C2:  element(commanded_angles, [for_fin]) <= angle__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_21.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H30).
+%%%  Simplified H52 on reading formula in, to give:
+     %%%  H52:  true
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H66 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H67 has been replaced by "true".  (It is already present, as 
+          H17).
+***  Proved C1:  element(commanded_angles, [for_fin]) >= angle__first
+     using hypothesis H16.
+***  Proved C2:  element(commanded_angles, [for_fin]) <= angle__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_22.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H43 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H48 has been replaced by "true".  (It is already present, as 
+          H39).
+---  Hypothesis H49 has been replaced by "true".  (It is already present, as 
+          H40).
+%%%  Simplified H54 on reading formula in, to give:
+     %%%  H54:  true
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H63 has been replaced by "true".  (It is already present, as 
+          H50).
+---  Hypothesis H64 has been replaced by "true".  (It is already present, as 
+          H51).
+---  Hypothesis H68 has been replaced by "true".  (It is already present, as 
+          H50).
+---  Hypothesis H69 has been replaced by "true".  (It is already present, as 
+          H51).
+***  Proved C1:  element(current_angles, [for_fin]) - 2000 * 
+          steer_cfg__move_rate div 1000 >= angle__first
+     using hypotheses H16 & H67.
+***  Proved C3:  element(current_angles, [for_fin]) - 2000 * 
+          steer_cfg__move_rate div 1000 >= angle__first
+     using hypotheses H16 & H67.
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New C2:  element(current_angles, [for_fin]) - 2000 * steer_cfg__move_rate 
+          div 1000 <= 57
+<S>  New C4:  element(current_angles, [for_fin]) - 2000 * steer_cfg__move_rate 
+          div 1000 <= 57
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+>>>  Restructured hypothesis H35 into:
+     >>>  H35:  0 <= now__1 - element(command_times, [for_fin])
+>>>  Restructured hypothesis H45 into:
+     >>>  H45:  element(commanded_angles, [for_fin]) < element(current_angles, [
+          for_fin])
+>>>  Restructured hypothesis H67 into:
+     >>>  H67:  element(commanded_angles, [for_fin]) <= element(current_angles, 
+          [for_fin]) - 2000 * steer_cfg__move_rate div 1000
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of steer_cfg__move_rate by:
+          120.
+<S>  New H50:  element(current_angles, [for_fin]) - 240 >= integer32__first
+<S>  New H51:  element(current_angles, [for_fin]) - 240 <= integer32__last
+<S>  New H52:  240 >= long_integer__base__first
+<S>  New H53:  240 <= long_integer__base__last
+<S>  New H55:  240000 >= long_integer__base__first
+<S>  New H56:  240000 <= long_integer__base__last
+<S>  New H67:  element(commanded_angles, [for_fin]) <= element(current_angles, [
+          for_fin]) - 240
+<S>  New C2:  element(current_angles, [for_fin]) <= 297
+<S>  New C4:  element(current_angles, [for_fin]) <= 297
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H52:  true
+<S>  New H55:  true
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H53:  true
+<S>  New H56:  true
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+<S>  New H39:  true
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H30:  now__1 - element(command_times, [for_fin]) <= 8640000
+<S>  New H40:  true
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(57).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H57:  true
+<S>  New H59:  element(current_angles, [for_fin]) >= - 2147483648
+<S>  New H65:  element(commanded_angles, [for_fin]) >= - 2147483648
+<S>  New H50:  element(current_angles, [for_fin]) >= - 2147483408
+-S-  Applied substitution rule extrapolate__rules(58).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H58:  true
+<S>  New H60:  element(current_angles, [for_fin]) <= 2147483647
+<S>  New H66:  element(commanded_angles, [for_fin]) <= 2147483647
+<S>  New H51:  element(current_angles, [for_fin]) <= 2147483887
+***  Proved C2:  element(current_angles, [for_fin]) <= 297
+     using hypothesis H13.
+***  Proved C4:  element(current_angles, [for_fin]) <= 297
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_23.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H33 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H34 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H36 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H37 has been replaced by "true".  (It is already present, as 
+          H30).
+---  Hypothesis H39 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H40 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H41 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H42 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H44 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H45 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H46 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H47 has been replaced by "true".  (It is already present, as 
+          H30).
+%%%  Simplified H52 on reading formula in, to give:
+     %%%  H52:  true
+---  Hypothesis H59 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H60 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H61 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H62 has been replaced by "true".  (It is already present, as 
+          H49).
+---  Hypothesis H66 has been replaced by "true".  (It is already present, as 
+          H48).
+---  Hypothesis H67 has been replaced by "true".  (It is already present, as 
+          H49).
+***  Proved C1:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+          angle__first
+     using hypotheses H16 & H65.
+***  Proved C3:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 >= 
+          angle__first
+     using hypotheses H16 & H65.
+-S-  Applied substitution rule extrapolate__rules(47).
+     This was achieved by replacing all occurrences of angle__last by:
+          57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+<S>  New H13:  element(current_angles, [for_fin]) <= 57
+<S>  New H17:  element(commanded_angles, [for_fin]) <= 57
+<S>  New C2:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 57
+<S>  New C4:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * steer_cfg__move_rate div 1000 <= 57
+>>>  Restructured hypothesis H24 into:
+     >>>  H24:  element(current_angles, [for_fin]) <> element(commanded_angles, 
+          [for_fin])
+>>>  Restructured hypothesis H35 into:
+     >>>  H35:  0 <= now__1 - element(command_times, [for_fin])
+>>>  Restructured hypothesis H38 into:
+     >>>  H38:  now__1 - element(command_times, [for_fin]) <= 2000
+>>>  Restructured hypothesis H43 into:
+     >>>  H43:  element(commanded_angles, [for_fin]) < element(current_angles, [
+          for_fin])
+>>>  Restructured hypothesis H65 into:
+     >>>  H65:  element(commanded_angles, [for_fin]) <= element(current_angles, 
+          [for_fin]) - (now__1 - element(command_times, [for_fin])) * 
+          steer_cfg__move_rate div 1000
+-S-  Applied substitution rule extrapolate__rules(1).
+     This was achieved by replacing all occurrences of steer_cfg__move_rate by:
+          120.
+<S>  New H48:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= integer32__first
+<S>  New H49:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= integer32__last
+<S>  New H50:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 >= 
+          long_integer__base__first
+<S>  New H51:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 <= 
+          long_integer__base__last
+<S>  New H53:  (now__1 - element(command_times, [for_fin])) * 120 >= 
+          long_integer__base__first
+<S>  New H54:  (now__1 - element(command_times, [for_fin])) * 120 <= 
+          long_integer__base__last
+<S>  New H65:  element(commanded_angles, [for_fin]) <= element(current_angles, [
+          for_fin]) - (now__1 - element(command_times, [for_fin])) * 120 div 
+          1000
+<S>  New C2:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= 57
+<S>  New C4:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= 57
+-S-  Applied substitution rule extrapolate__rules(5).
+     This was achieved by replacing all occurrences of 
+          long_integer__base__first by:
+          - 2147483648.
+<S>  New H50:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 >= - 
+          2147483648
+<S>  New H53:  (now__1 - element(command_times, [for_fin])) * 120 >= - 
+          2147483648
+-S-  Applied substitution rule extrapolate__rules(6).
+     This was achieved by replacing all occurrences of long_integer__base__last 
+          by:
+          2147483647.
+<S>  New H51:  (now__1 - element(command_times, [for_fin])) * 120 div 1000 <= 
+          2147483647
+<S>  New H54:  (now__1 - element(command_times, [for_fin])) * 120 <= 2147483647
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= clock__millisecond__last)
+<S>  New H7:  now__1 >= 0
+<S>  New H29:  now__1 - element(command_times, [for_fin]) >= 0
+-S-  Applied substitution rule extrapolate__rules(9).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H8:  now__1 <= 8640000
+<S>  New H30:  now__1 - element(command_times, [for_fin]) <= 8640000
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> 0 <= element(command_times, [i___1]) and element(
+          command_times, [i___1]) <= 8640000)
+-S-  Applied substitution rule extrapolate__rules(46).
+     This was achieved by replacing all occurrences of angle__first by:
+          - 57.
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(current_angles, [i___1]) and element(
+          current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> - 57 <= element(commanded_angles, [i___1]) and element(
+          commanded_angles, [i___1]) <= 57)
+<S>  New H12:  element(current_angles, [for_fin]) >= - 57
+<S>  New H16:  element(commanded_angles, [for_fin]) >= - 57
+-S-  Applied substitution rule extrapolate__rules(52).
+     This was achieved by replacing all occurrences of fin__first by:
+          steer_cfg__port.
+<S>  New H2:  steer_cfg__port <= for_fin
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> 0 <= element(command_times, [i___1]) and 
+          element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= fin__last -> - 57 <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(53).
+     This was achieved by replacing all occurrences of fin__last by:
+          steer_cfg__bottom.
+<S>  New H3:  for_fin <= steer_cfg__bottom
+<S>  New H6:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> 0 <= element(command_times, [i___1]) 
+          and element(command_times, [i___1]) <= 8640000)
+<S>  New H4:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(current_angles, [i___1])
+           and element(current_angles, [i___1]) <= 57)
+<S>  New H5:  for_all(i___1 : steer_cfg__fin, steer_cfg__port <= i___1 and 
+          i___1 <= steer_cfg__bottom -> - 57 <= element(commanded_angles, [
+          i___1]) and element(commanded_angles, [i___1]) <= 57)
+-S-  Applied substitution rule extrapolate__rules(57).
+     This was achieved by replacing all occurrences of integer32__first by:
+          - 2147483648.
+<S>  New H55:  now__1 - element(command_times, [for_fin]) >= - 2147483648
+<S>  New H57:  element(current_angles, [for_fin]) >= - 2147483648
+<S>  New H63:  element(commanded_angles, [for_fin]) >= - 2147483648
+<S>  New H48:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 >= - 2147483648
+-S-  Applied substitution rule extrapolate__rules(58).
+     This was achieved by replacing all occurrences of integer32__last by:
+          2147483647.
+<S>  New H56:  now__1 - element(command_times, [for_fin]) <= 2147483647
+<S>  New H58:  element(current_angles, [for_fin]) <= 2147483647
+<S>  New H64:  element(commanded_angles, [for_fin]) <= 2147483647
+<S>  New H49:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= 2147483647
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H20 (true-hypothesis).
+---  Eliminated hypothesis H21 (true-hypothesis).
+---  Eliminated hypothesis H22 (true-hypothesis).
+---  Eliminated hypothesis H23 (true-hypothesis).
+---  Eliminated hypothesis H25 (true-hypothesis).
+---  Eliminated hypothesis H27 (true-hypothesis).
+---  Eliminated hypothesis H28 (true-hypothesis).
+---  Eliminated hypothesis H31 (true-hypothesis).
+---  Eliminated hypothesis H32 (true-hypothesis).
+---  Eliminated hypothesis H33 (true-hypothesis).
+---  Eliminated hypothesis H34 (true-hypothesis).
+---  Eliminated hypothesis H36 (true-hypothesis).
+---  Eliminated hypothesis H37 (true-hypothesis).
+---  Eliminated hypothesis H39 (true-hypothesis).
+---  Eliminated hypothesis H40 (true-hypothesis).
+---  Eliminated hypothesis H41 (true-hypothesis).
+---  Eliminated hypothesis H42 (true-hypothesis).
+---  Eliminated hypothesis H44 (true-hypothesis).
+---  Eliminated hypothesis H45 (true-hypothesis).
+---  Eliminated hypothesis H46 (true-hypothesis).
+---  Eliminated hypothesis H47 (true-hypothesis).
+---  Eliminated hypothesis H52 (true-hypothesis).
+---  Eliminated hypothesis H59 (true-hypothesis).
+---  Eliminated hypothesis H60 (true-hypothesis).
+---  Eliminated hypothesis H61 (true-hypothesis).
+---  Eliminated hypothesis H62 (true-hypothesis).
+---  Eliminated hypothesis H66 (true-hypothesis).
+---  Eliminated hypothesis H67 (true-hypothesis).
+---  Eliminated hypothesis H35 (duplicate of H29).
+---  Eliminated hypothesis H12 (redundant, given H16 & H43).
+---  Eliminated hypothesis H17 (redundant, given H13 & H43).
+---  Eliminated hypothesis H24 (redundant, given H43).
+---  Eliminated hypothesis H30 (redundant, given H38).
+---  Eliminated hypothesis H48 (redundant, given H16 & H65).
+---  Eliminated hypothesis H53 (redundant, given H29).
+---  Eliminated hypothesis H54 (redundant, given H38).
+---  Eliminated hypothesis H55 (redundant, given H29).
+---  Eliminated hypothesis H56 (redundant, given H38).
+---  Eliminated hypothesis H57 (redundant, given H16 & H43).
+---  Eliminated hypothesis H58 (redundant, given H13).
+---  Eliminated hypothesis H63 (redundant, given H16).
+---  Eliminated hypothesis H64 (redundant, given H13 & H43).
+---  Eliminated hypothesis H26, which only specifies a value for time_valid__1.
+     This is not referred to anywhere else in the VC.
+---  Eliminated conclusion C4, which is a duplicate of C2.
+***  Proved C2:  element(current_angles, [for_fin]) - (now__1 - element(
+          command_times, [for_fin])) * 120 div 1000 <= 57
+     using hypotheses H13 & H29.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_24.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  fin__first <= for_fin
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(current_angles, [i___1]) and 
+          element(current_angles, [i___1]) <= angle__last)
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> angle__first <= element(commanded_angles, [i___1]) and 
+          element(commanded_angles, [i___1]) <= angle__last)
+%%%  Simplified H6 on reading formula in, to give:
+     %%%  H6:  for_all(i___1 : steer_cfg__fin, fin__first <= i___1 and i___1 <= 
+          fin__last -> clock__millisecond__first <= element(command_times, [
+          i___1]) and element(command_times, [i___1]) <= 
+          clock__millisecond__last)
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H2)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H3)
+          .
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H21 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H12).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H13).
+***  Proved C1:  element(current_angles, [for_fin]) >= angle__first
+     using hypothesis H12.
+***  Proved C2:  element(current_angles, [for_fin]) <= angle__last
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_25.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_26.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_27.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_28.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_29.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_30.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_31.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_32.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_33.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_34.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_angle_35.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

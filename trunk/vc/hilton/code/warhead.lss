@@ -1,0 +1,167 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.21
+
+Line
+   1  --=head1 NAME
+   2  --
+   3  -- Warhead - warhead simulator
+   4  --
+   5  --=head1 REVISION HISTORY
+   6  --
+   7  -- $Log: warhead.ads,v $
+   8  -- Revision 1.2  2005/01/24 19:19:05  adi
+   9  -- Hacked to implement logging
+  10  --
+  11  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+  12  -- Added from tarfile
+  13  --
+  14  --
+  15  -- Revision 1.2  2003/09/01 18:56:47  adi
+  16  -- Added use type for state
+  17  --
+  18  -- Revision 1.1  2003/09/01 18:25:18  adi
+  19  -- Initial revision
+  20  --
+  21  --=cut
+  22  
+  23  with Clock,Warhead_cfg;
+  24  use type Clock.Millisecond, Warhead_Cfg.state;
+  25  --# inherit state_types, Bus, Rt1553,
+  26  --#         Clock, Clock_Utils, warhead_cfg,
+  27  --#         IBIT, Bit_Machine, systemtypes;
+  28  package Warhead
+  29    --# own State;
+  30    --# initializes State;
+  31  is
+  32     -- Renaming of warhead state type
+  33     subtype Stage is Warhead_Cfg.State;
+  34  
+  35     --=head1 SUBPROGRAMS
+  36     --
+  37     --=over 4
+  38  
+  39     --=item *
+  40     --
+  41     procedure Cycle;
+  42     --# global in out State;
+  43     --#        in out Clock.Time;
+  44     --#        in     Bus.Outputs;
+  45     --#        in out Bus.Inputs;
+  46     --# derives
+  47     --#   State,
+  48     --#   Clock.Time
+  49     --#     from  State,
+  50     --#           Bus.Outputs,
+  51     --#           Clock.Time
+  52     --# &
+  53     --#   Bus.Inputs
+  54     --#     from  *,
+  55     --#           Clock.Time,
+  56     --#           State
+  57     --#  ;
+  58     --
+  59     --Cycle the reading of data from the bus
+  60     --and writing of data to the bus
+  61  
+  62     --=item *
+  63     --
+  64     procedure Set_Stage(New_Stage : in Stage);
+  65     --# global in out State, Clock.Time;
+  66     --# derives
+  67     --#   Clock.Time
+  68     --#     from  *
+  69     --#  &
+  70     --#   State
+  71     --#     from  *,
+  72     --#           Clock.Time,
+  73     --#           New_Stage;
+  74     --
+  75     --Set the current code exchange stage level.
+  76     --This determines what state the warhead is allowed
+  77     --to be in; it may implement minimum times between
+  78     --stages (e.g. 2 seconds between arming and detonation).
+  79  
+  80     --=item *
+  81     --
+  82     procedure Read_Stage(This_Stage : out Stage);
+  83     --# global in     State;
+  84     --# derives
+  85     --#   This_Stage
+  86     --#     from  State;
+  87     --
+  88     --Read the current code exchange stage.
+  89  
+  90     --=item *
+  91     --
+  92     procedure Fail_Next_Bit;
+  93     --# global in out State;
+  94     --# derives State from *;
+  95     --
+  96     --Cause the next BIT to fail.
+  97  
+  98     --=item *
+  99     --
+ 100     procedure Init;
+ 101     --# global    out State;
+ 102     --#        in out Bus.Inputs;
+ 103     --# derives
+ 104     --#   State
+ 105     --#     from
+ 106     --#  &
+ 107     --#   Bus.Inputs
+ 108     --#     from  *;
+ 109     --
+ 110     --Initialise the warhead.
+ 111  
+ 112     --=item *
+ 113     --
+ 114     procedure Command;
+ 115     --# derives;
+ 116     --
+ 117     --Test stub
+ 118  
+ 119     --=back
+ 120     --
+ 121     --=cut
+ 122  end Warhead;
+ 123  
+ 124  --=head1 NOTES
+ 125  --
+ 126  --This package provides a simulator of a warhead for a missile.
+ 127  --It implements communication over the system bus and certain
+ 128  --control aspects such as minimum timings between state changes.
+ 129  --
+ 130  --=head1 AUTHOR
+ 131  --
+ 132  --Adrian J. Hilton.  Home web page at L<http://www.suslik.org/>
+ 133  --
+ 134  --=head1 LICENSE
+ 135  --
+ 136  --Copyright (C) 2003-2005, Adrian J. Hilton
+ 137  --
+ 138  --This program is free software; you can redistribute it and/or modify
+ 139  --it under the terms of the GNU General Public License as published by
+ 140  --the Free Software Foundation; either version 2 of the License, or
+ 141  --(at your option) any later version.
+ 142  --
+ 143  --This program is distributed in the hope that it will be useful,
+ 144  --but WITHOUT ANY WARRANTY; without even the implied warranty of
+ 145  --MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ 146  --GNU General Public License for more details.
+ 147  --
+ 148  --You should have received a copy of the GNU General Public License
+ 149  --along with this program; if not, write to the Free Software
+ 150  --Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 151  --
+ 152  --=cut
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

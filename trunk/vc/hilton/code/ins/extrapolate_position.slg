@@ -1,0 +1,686 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:40  SIMPLIFIED 25-NOV-2009, 14:18:48
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure ins.Extrapolate_Position
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_position_1.  @@@@@@@@@@
+***  Proved C1:  time_now__1 >= clock__millisecond__first
+     using hypothesis H16.
+***  Proved C2:  time_now__1 <= clock__millisecond__last
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_position_2.  @@@@@@@@@@
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  time_valid__1
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H17).
+***  Proved C1:  time_now__1 >= clock__millisecond__first
+     using hypothesis H16.
+***  Proved C2:  time_now__1 <= clock__millisecond__last
+     using hypothesis H17.
+***  Proved C3:  last_time >= clock__millisecond__first
+     using hypothesis H14.
+***  Proved C4:  last_time <= clock__millisecond__last
+     using hypothesis H15.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_position_3.  @@@@@@@@@@
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  time_valid__1
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H15).
+***  Proved C1:  clock_utils__delta_time(last_time, time_now__1) >= 
+          clock__millisecond__first
+     using hypothesis H29.
+***  Proved C2:  clock_utils__delta_time(last_time, time_now__1) <= 
+          clock__millisecond__last
+     using hypothesis H30.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_position_4.  @@@@@@@@@@
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  time_valid__1
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+-S-  Applied substitution rule extrapolate__rules(26).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New C1:  fld_vx(last_velocity) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(27).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New C2:  fld_vx(last_velocity) <= 5000
+-S-  Applied substitution rule extrapolate__rules(21).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New C3:  fld_x(last_position) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New C4:  fld_x(last_position) <= 200000
+-S-  Applied substitution rule extrapolate__rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  fld_z(last_position) >= - 200000
+<S>  New H4:  fld_y(last_position) >= - 200000
+<S>  New H6:  fld_x(last_position) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  fld_z(last_position) <= 200000
+<S>  New H5:  fld_y(last_position) <= 200000
+<S>  New H7:  fld_x(last_position) <= 200000
+-S-  Applied substitution rule extrapolate__rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H8:  fld_vz(last_velocity) >= - 5000
+<S>  New H10:  fld_vy(last_velocity) >= - 5000
+<S>  New H12:  fld_vx(last_velocity) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H9:  fld_vz(last_velocity) <= 5000
+<S>  New H11:  fld_vy(last_velocity) <= 5000
+<S>  New H13:  fld_vx(last_velocity) <= 5000
+-S-  Applied substitution rule extrapolate__rules(16).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H14:  last_time >= 0
+<S>  New H16:  time_now__1 >= 0
+<S>  New H29:  clock_utils__delta_time(last_time, time_now__1) >= 0
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H15:  last_time <= 8640000
+<S>  New H17:  time_now__1 <= 8640000
+<S>  New H30:  clock_utils__delta_time(last_time, time_now__1) <= 8640000
+***  Proved C1:  fld_vx(last_velocity) >= - 5000
+     using hypothesis H12.
+***  Proved C2:  fld_vx(last_velocity) <= 5000
+     using hypothesis H13.
+***  Proved C3:  fld_x(last_position) >= - 200000
+     using hypothesis H6.
+***  Proved C4:  fld_x(last_position) <= 200000
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_position_5.  @@@@@@@@@@
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  time_valid__1
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+-S-  Applied substitution rule extrapolate__rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  fld_z(last_position) >= - 200000
+<S>  New H4:  fld_y(last_position) >= - 200000
+<S>  New H6:  fld_x(last_position) >= - 200000
+<S>  New C1:  fld_x(position__2) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  fld_z(last_position) <= 200000
+<S>  New H5:  fld_y(last_position) <= 200000
+<S>  New H7:  fld_x(last_position) <= 200000
+<S>  New C2:  fld_x(position__2) <= 200000
+-S-  Applied substitution rule extrapolate__rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H8:  fld_vz(last_velocity) >= - 5000
+<S>  New H10:  fld_vy(last_velocity) >= - 5000
+<S>  New H12:  fld_vx(last_velocity) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H9:  fld_vz(last_velocity) <= 5000
+<S>  New H11:  fld_vy(last_velocity) <= 5000
+<S>  New H13:  fld_vx(last_velocity) <= 5000
+-S-  Applied substitution rule extrapolate__rules(16).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H14:  last_time >= 0
+<S>  New H16:  time_now__1 >= 0
+<S>  New H29:  clock_utils__delta_time(last_time, time_now__1) >= 0
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H15:  last_time <= 8640000
+<S>  New H17:  time_now__1 <= 8640000
+<S>  New H30:  clock_utils__delta_time(last_time, time_now__1) <= 8640000
+-S-  Applied substitution rule extrapolate__rules(21).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H35:  fld_x(last_position) >= - 200000
+<S>  New H37:  fld_x(position__2) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H36:  fld_x(last_position) <= 200000
+<S>  New H38:  fld_x(position__2) <= 200000
+-S-  Applied substitution rule extrapolate__rules(26).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H33:  fld_vx(last_velocity) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(27).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H34:  fld_vx(last_velocity) <= 5000
+***  Proved C1:  fld_x(position__2) >= - 200000
+     using hypothesis H37.
+***  Proved C2:  fld_x(position__2) <= 200000
+     using hypothesis H38.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_position_6.  @@@@@@@@@@
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  time_valid__1
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+-S-  Applied substitution rule extrapolate__rules(26).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H33:  fld_vx(last_velocity) >= - 5000
+<S>  New C1:  fld_vy(last_velocity) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(27).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H34:  fld_vx(last_velocity) <= 5000
+<S>  New C2:  fld_vy(last_velocity) <= 5000
+-S-  Applied substitution rule extrapolate__rules(21).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H35:  fld_x(last_position) >= - 200000
+<S>  New H37:  fld_x(position__2) >= - 200000
+<S>  New C3:  fld_y(last_position) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H36:  fld_x(last_position) <= 200000
+<S>  New H38:  fld_x(position__2) <= 200000
+<S>  New C4:  fld_y(last_position) <= 200000
+-S-  Applied substitution rule extrapolate__rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  fld_z(last_position) >= - 200000
+<S>  New H4:  fld_y(last_position) >= - 200000
+<S>  New H6:  fld_x(last_position) >= - 200000
+<S>  New H42:  fld_x(position__2) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  fld_z(last_position) <= 200000
+<S>  New H5:  fld_y(last_position) <= 200000
+<S>  New H7:  fld_x(last_position) <= 200000
+<S>  New H43:  fld_x(position__2) <= 200000
+-S-  Applied substitution rule extrapolate__rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H8:  fld_vz(last_velocity) >= - 5000
+<S>  New H10:  fld_vy(last_velocity) >= - 5000
+<S>  New H12:  fld_vx(last_velocity) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H9:  fld_vz(last_velocity) <= 5000
+<S>  New H11:  fld_vy(last_velocity) <= 5000
+<S>  New H13:  fld_vx(last_velocity) <= 5000
+-S-  Applied substitution rule extrapolate__rules(16).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H14:  last_time >= 0
+<S>  New H16:  time_now__1 >= 0
+<S>  New H29:  clock_utils__delta_time(last_time, time_now__1) >= 0
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H15:  last_time <= 8640000
+<S>  New H17:  time_now__1 <= 8640000
+<S>  New H30:  clock_utils__delta_time(last_time, time_now__1) <= 8640000
+***  Proved C1:  fld_vy(last_velocity) >= - 5000
+     using hypothesis H10.
+***  Proved C2:  fld_vy(last_velocity) <= 5000
+     using hypothesis H11.
+***  Proved C3:  fld_y(last_position) >= - 200000
+     using hypothesis H4.
+***  Proved C4:  fld_y(last_position) <= 200000
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_position_7.  @@@@@@@@@@
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  time_valid__1
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+-S-  Applied substitution rule extrapolate__rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  fld_z(last_position) >= - 200000
+<S>  New H4:  fld_y(last_position) >= - 200000
+<S>  New H6:  fld_x(last_position) >= - 200000
+<S>  New H42:  fld_x(position__2) >= - 200000
+<S>  New C1:  fld_y(position__3) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  fld_z(last_position) <= 200000
+<S>  New H5:  fld_y(last_position) <= 200000
+<S>  New H7:  fld_x(last_position) <= 200000
+<S>  New H43:  fld_x(position__2) <= 200000
+<S>  New C2:  fld_y(position__3) <= 200000
+-S-  Applied substitution rule extrapolate__rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H8:  fld_vz(last_velocity) >= - 5000
+<S>  New H10:  fld_vy(last_velocity) >= - 5000
+<S>  New H12:  fld_vx(last_velocity) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H9:  fld_vz(last_velocity) <= 5000
+<S>  New H11:  fld_vy(last_velocity) <= 5000
+<S>  New H13:  fld_vx(last_velocity) <= 5000
+-S-  Applied substitution rule extrapolate__rules(16).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H14:  last_time >= 0
+<S>  New H16:  time_now__1 >= 0
+<S>  New H29:  clock_utils__delta_time(last_time, time_now__1) >= 0
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H15:  last_time <= 8640000
+<S>  New H17:  time_now__1 <= 8640000
+<S>  New H30:  clock_utils__delta_time(last_time, time_now__1) <= 8640000
+-S-  Applied substitution rule extrapolate__rules(21).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H35:  fld_x(last_position) >= - 200000
+<S>  New H37:  fld_x(position__2) >= - 200000
+<S>  New H46:  fld_y(last_position) >= - 200000
+<S>  New H48:  fld_y(position__3) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H36:  fld_x(last_position) <= 200000
+<S>  New H38:  fld_x(position__2) <= 200000
+<S>  New H47:  fld_y(last_position) <= 200000
+<S>  New H49:  fld_y(position__3) <= 200000
+-S-  Applied substitution rule extrapolate__rules(26).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H33:  fld_vx(last_velocity) >= - 5000
+<S>  New H44:  fld_vy(last_velocity) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(27).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H34:  fld_vx(last_velocity) <= 5000
+<S>  New H45:  fld_vy(last_velocity) <= 5000
+***  Proved C1:  fld_y(position__3) >= - 200000
+     using hypothesis H48.
+***  Proved C2:  fld_y(position__3) <= 200000
+     using hypothesis H49.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_position_8.  @@@@@@@@@@
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  time_valid__1
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+-S-  Applied substitution rule extrapolate__rules(26).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H33:  fld_vx(last_velocity) >= - 5000
+<S>  New H44:  fld_vy(last_velocity) >= - 5000
+<S>  New C1:  fld_vz(last_velocity) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(27).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H34:  fld_vx(last_velocity) <= 5000
+<S>  New H45:  fld_vy(last_velocity) <= 5000
+<S>  New C2:  fld_vz(last_velocity) <= 5000
+-S-  Applied substitution rule extrapolate__rules(21).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H35:  fld_x(last_position) >= - 200000
+<S>  New H37:  fld_x(position__2) >= - 200000
+<S>  New H46:  fld_y(last_position) >= - 200000
+<S>  New H48:  fld_y(position__3) >= - 200000
+<S>  New C3:  fld_z(last_position) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H36:  fld_x(last_position) <= 200000
+<S>  New H38:  fld_x(position__2) <= 200000
+<S>  New H47:  fld_y(last_position) <= 200000
+<S>  New H49:  fld_y(position__3) <= 200000
+<S>  New C4:  fld_z(last_position) <= 200000
+-S-  Applied substitution rule extrapolate__rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  fld_z(last_position) >= - 200000
+<S>  New H4:  fld_y(last_position) >= - 200000
+<S>  New H6:  fld_x(last_position) >= - 200000
+<S>  New H42:  fld_x(position__2) >= - 200000
+<S>  New H53:  fld_y(position__3) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  fld_z(last_position) <= 200000
+<S>  New H5:  fld_y(last_position) <= 200000
+<S>  New H7:  fld_x(last_position) <= 200000
+<S>  New H43:  fld_x(position__2) <= 200000
+<S>  New H54:  fld_y(position__3) <= 200000
+-S-  Applied substitution rule extrapolate__rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H8:  fld_vz(last_velocity) >= - 5000
+<S>  New H10:  fld_vy(last_velocity) >= - 5000
+<S>  New H12:  fld_vx(last_velocity) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H9:  fld_vz(last_velocity) <= 5000
+<S>  New H11:  fld_vy(last_velocity) <= 5000
+<S>  New H13:  fld_vx(last_velocity) <= 5000
+-S-  Applied substitution rule extrapolate__rules(16).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H14:  last_time >= 0
+<S>  New H16:  time_now__1 >= 0
+<S>  New H29:  clock_utils__delta_time(last_time, time_now__1) >= 0
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H15:  last_time <= 8640000
+<S>  New H17:  time_now__1 <= 8640000
+<S>  New H30:  clock_utils__delta_time(last_time, time_now__1) <= 8640000
+***  Proved C1:  fld_vz(last_velocity) >= - 5000
+     using hypothesis H8.
+***  Proved C2:  fld_vz(last_velocity) <= 5000
+     using hypothesis H9.
+***  Proved C3:  fld_z(last_position) >= - 200000
+     using hypothesis H2.
+***  Proved C4:  fld_z(last_position) <= 200000
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_position_9.  @@@@@@@@@@
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H20 has been replaced by "true".  (It is already present, as 
+          H17).
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  time_valid__1
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H25 has been replaced by "true".  (It is already present, as 
+          H16).
+---  Hypothesis H26 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H15).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+-S-  Applied substitution rule extrapolate__rules(2).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__first by:
+          - 200000.
+<S>  New H2:  fld_z(last_position) >= - 200000
+<S>  New H4:  fld_y(last_position) >= - 200000
+<S>  New H6:  fld_x(last_position) >= - 200000
+<S>  New H42:  fld_x(position__2) >= - 200000
+<S>  New H53:  fld_y(position__3) >= - 200000
+<S>  New C1:  fld_z(position__4) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(3).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter__last by:
+          200000.
+<S>  New H3:  fld_z(last_position) <= 200000
+<S>  New H5:  fld_y(last_position) <= 200000
+<S>  New H7:  fld_x(last_position) <= 200000
+<S>  New H43:  fld_x(position__2) <= 200000
+<S>  New H54:  fld_y(position__3) <= 200000
+<S>  New C2:  fld_z(position__4) <= 200000
+-S-  Applied substitution rule extrapolate__rules(7).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__first by:
+          - 5000.
+<S>  New H8:  fld_vz(last_velocity) >= - 5000
+<S>  New H10:  fld_vy(last_velocity) >= - 5000
+<S>  New H12:  fld_vx(last_velocity) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__meter_per_sec__last by:
+          5000.
+<S>  New H9:  fld_vz(last_velocity) <= 5000
+<S>  New H11:  fld_vy(last_velocity) <= 5000
+<S>  New H13:  fld_vx(last_velocity) <= 5000
+-S-  Applied substitution rule extrapolate__rules(16).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H14:  last_time >= 0
+<S>  New H16:  time_now__1 >= 0
+<S>  New H29:  clock_utils__delta_time(last_time, time_now__1) >= 0
+-S-  Applied substitution rule extrapolate__rules(17).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H15:  last_time <= 8640000
+<S>  New H17:  time_now__1 <= 8640000
+<S>  New H30:  clock_utils__delta_time(last_time, time_now__1) <= 8640000
+-S-  Applied substitution rule extrapolate__rules(21).
+     This was achieved by replacing all occurrences of meter__first by:
+          - 200000.
+<S>  New H35:  fld_x(last_position) >= - 200000
+<S>  New H37:  fld_x(position__2) >= - 200000
+<S>  New H46:  fld_y(last_position) >= - 200000
+<S>  New H48:  fld_y(position__3) >= - 200000
+<S>  New H57:  fld_z(last_position) >= - 200000
+<S>  New H59:  fld_z(position__4) >= - 200000
+-S-  Applied substitution rule extrapolate__rules(22).
+     This was achieved by replacing all occurrences of meter__last by:
+          200000.
+<S>  New H36:  fld_x(last_position) <= 200000
+<S>  New H38:  fld_x(position__2) <= 200000
+<S>  New H47:  fld_y(last_position) <= 200000
+<S>  New H49:  fld_y(position__3) <= 200000
+<S>  New H58:  fld_z(last_position) <= 200000
+<S>  New H60:  fld_z(position__4) <= 200000
+-S-  Applied substitution rule extrapolate__rules(26).
+     This was achieved by replacing all occurrences of meter_per_sec__first by:
+          - 5000.
+<S>  New H33:  fld_vx(last_velocity) >= - 5000
+<S>  New H44:  fld_vy(last_velocity) >= - 5000
+<S>  New H55:  fld_vz(last_velocity) >= - 5000
+-S-  Applied substitution rule extrapolate__rules(27).
+     This was achieved by replacing all occurrences of meter_per_sec__last by:
+          5000.
+<S>  New H34:  fld_vx(last_velocity) <= 5000
+<S>  New H45:  fld_vy(last_velocity) <= 5000
+<S>  New H56:  fld_vz(last_velocity) <= 5000
+***  Proved C1:  fld_z(position__4) >= - 200000
+     using hypothesis H59.
+***  Proved C2:  fld_z(position__4) <= 200000
+     using hypothesis H60.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_position_10.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_extrapolate_position_11.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

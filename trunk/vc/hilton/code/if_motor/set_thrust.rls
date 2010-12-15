@@ -1,0 +1,132 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:43.07*/
+
+                       /*procedure if_motor.Set_thrust*/
+
+
+rule_family set_thrust_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+set_thrust_rules(1): bus_id may_be_replaced_by bc1553__motor.
+set_thrust_rules(2): integer__size >= 0 may_be_deduced.
+set_thrust_rules(3): integer__first may_be_replaced_by -2147483648.
+set_thrust_rules(4): integer__last may_be_replaced_by 2147483647.
+set_thrust_rules(5): integer__base__first may_be_replaced_by -2147483648.
+set_thrust_rules(6): integer__base__last may_be_replaced_by 2147483647.
+set_thrust_rules(7): measuretypes__newton__size >= 0 may_be_deduced.
+set_thrust_rules(8): measuretypes__newton__first may_be_replaced_by -1000000.
+set_thrust_rules(9): measuretypes__newton__last may_be_replaced_by 1000000.
+set_thrust_rules(10): measuretypes__newton__base__first may_be_replaced_by -2147483648.
+set_thrust_rules(11): measuretypes__newton__base__last may_be_replaced_by 2147483647.
+set_thrust_rules(12): bus__word_index__size >= 0 may_be_deduced.
+set_thrust_rules(13): bus__word_index__first may_be_replaced_by 1.
+set_thrust_rules(14): bus__word_index__last may_be_replaced_by 31.
+set_thrust_rules(15): bus__word_index__base__first <= 
+     bus__word_index__base__last may_be_deduced.
+set_thrust_rules(16): bus__word_index__base__first <= 
+     bus__word_index__first may_be_deduced.
+set_thrust_rules(17): bus__word_index__base__last >= 
+     bus__word_index__last may_be_deduced.
+set_thrust_rules(18): bus__word__size >= 0 may_be_deduced.
+set_thrust_rules(19): bus__word__first may_be_replaced_by 0.
+set_thrust_rules(20): bus__word__last may_be_replaced_by 65535.
+set_thrust_rules(21): bus__word__base__first may_be_replaced_by -2147483648.
+set_thrust_rules(22): bus__word__base__last may_be_replaced_by 2147483647.
+set_thrust_rules(23): bus__all_msg_index__size >= 0 may_be_deduced.
+set_thrust_rules(24): bus__all_msg_index__first may_be_replaced_by 0.
+set_thrust_rules(25): bus__all_msg_index__last may_be_replaced_by 63.
+set_thrust_rules(26): bus__all_msg_index__base__first may_be_replaced_by -32768.
+set_thrust_rules(27): bus__all_msg_index__base__last may_be_replaced_by 32767.
+set_thrust_rules(28): bus__lru_subaddress_index__size >= 0 may_be_deduced.
+set_thrust_rules(29): bus__lru_subaddress_index__first may_be_replaced_by 1.
+set_thrust_rules(30): bus__lru_subaddress_index__last may_be_replaced_by 8.
+set_thrust_rules(31): bus__lru_subaddress_index__base__first may_be_replaced_by -32768.
+set_thrust_rules(32): bus__lru_subaddress_index__base__last may_be_replaced_by 32767.
+set_thrust_rules(33): bc1553__lru_name__size >= 0 may_be_deduced.
+set_thrust_rules(34): bc1553__lru_name__first may_be_replaced_by bc1553__barometer.
+set_thrust_rules(35): bc1553__lru_name__last may_be_replaced_by bc1553__warhead.
+set_thrust_rules(36): bc1553__lru_name__base__first may_be_replaced_by bc1553__barometer.
+set_thrust_rules(37): bc1553__lru_name__base__last may_be_replaced_by bc1553__warhead.
+set_thrust_rules(38): bc1553__lru_name__pos(bc1553__lru_name__first) may_be_replaced_by 0.
+set_thrust_rules(39): bc1553__lru_name__pos(bc1553__barometer) may_be_replaced_by 0.
+set_thrust_rules(40): bc1553__lru_name__val(0) may_be_replaced_by 
+     bc1553__barometer.
+set_thrust_rules(41): bc1553__lru_name__pos(bc1553__asi) may_be_replaced_by 1.
+set_thrust_rules(42): bc1553__lru_name__val(1) may_be_replaced_by 
+     bc1553__asi.
+set_thrust_rules(43): bc1553__lru_name__pos(bc1553__ins) may_be_replaced_by 2.
+set_thrust_rules(44): bc1553__lru_name__val(2) may_be_replaced_by 
+     bc1553__ins.
+set_thrust_rules(45): bc1553__lru_name__pos(bc1553__compass) may_be_replaced_by 3.
+set_thrust_rules(46): bc1553__lru_name__val(3) may_be_replaced_by 
+     bc1553__compass.
+set_thrust_rules(47): bc1553__lru_name__pos(bc1553__fuel) may_be_replaced_by 4.
+set_thrust_rules(48): bc1553__lru_name__val(4) may_be_replaced_by 
+     bc1553__fuel.
+set_thrust_rules(49): bc1553__lru_name__pos(bc1553__fuze) may_be_replaced_by 5.
+set_thrust_rules(50): bc1553__lru_name__val(5) may_be_replaced_by 
+     bc1553__fuze.
+set_thrust_rules(51): bc1553__lru_name__pos(bc1553__radar) may_be_replaced_by 6.
+set_thrust_rules(52): bc1553__lru_name__val(6) may_be_replaced_by 
+     bc1553__radar.
+set_thrust_rules(53): bc1553__lru_name__pos(bc1553__infrared) may_be_replaced_by 7.
+set_thrust_rules(54): bc1553__lru_name__val(7) may_be_replaced_by 
+     bc1553__infrared.
+set_thrust_rules(55): bc1553__lru_name__pos(bc1553__fins) may_be_replaced_by 8.
+set_thrust_rules(56): bc1553__lru_name__val(8) may_be_replaced_by 
+     bc1553__fins.
+set_thrust_rules(57): bc1553__lru_name__pos(bc1553__motor) may_be_replaced_by 9.
+set_thrust_rules(58): bc1553__lru_name__val(9) may_be_replaced_by 
+     bc1553__motor.
+set_thrust_rules(59): bc1553__lru_name__pos(bc1553__destruct) may_be_replaced_by 10.
+set_thrust_rules(60): bc1553__lru_name__val(10) may_be_replaced_by 
+     bc1553__destruct.
+set_thrust_rules(61): bc1553__lru_name__pos(bc1553__warhead) may_be_replaced_by 11.
+set_thrust_rules(62): bc1553__lru_name__val(11) may_be_replaced_by 
+     bc1553__warhead.
+set_thrust_rules(63): bc1553__lru_name__pos(bc1553__lru_name__last) may_be_replaced_by 11.
+set_thrust_rules(64): bc1553__lru_name__pos(succ(X)) may_be_replaced_by 
+     bc1553__lru_name__pos(X) + 1
+     if [X <=bc1553__warhead, X <> bc1553__warhead].
+set_thrust_rules(65): bc1553__lru_name__pos(pred(X)) may_be_replaced_by 
+     bc1553__lru_name__pos(X) - 1
+     if [X >=bc1553__barometer, X <> bc1553__barometer].
+set_thrust_rules(66): bc1553__lru_name__pos(X) >= 0 may_be_deduced_from
+     [bc1553__barometer <= X, X <= bc1553__warhead].
+set_thrust_rules(67): bc1553__lru_name__pos(X) <= 11 may_be_deduced_from
+     [bc1553__barometer <= X, X <= bc1553__warhead].
+set_thrust_rules(68): bc1553__lru_name__val(X) >= 
+     bc1553__barometer may_be_deduced_from
+     [0 <= X, X <= 11].
+set_thrust_rules(69): bc1553__lru_name__val(X) <= bc1553__warhead may_be_deduced_from
+     [0 <= X, X <= 11].
+set_thrust_rules(70): succ(bc1553__lru_name__val(X)) may_be_replaced_by 
+     bc1553__lru_name__val(X+1)
+     if [0 <= X, X < 11].
+set_thrust_rules(71): pred(bc1553__lru_name__val(X)) may_be_replaced_by 
+     bc1553__lru_name__val(X-1)
+     if [0 < X, X <= 11].
+set_thrust_rules(72): bc1553__lru_name__pos(bc1553__lru_name__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 11].
+set_thrust_rules(73): bc1553__lru_name__val(bc1553__lru_name__pos(X)) may_be_replaced_by X
+     if [bc1553__barometer <= X, X <= bc1553__warhead].
+set_thrust_rules(74): bc1553__lru_name__pos(X) <= 
+     bc1553__lru_name__pos(Y) & X <= Y are_interchangeable 
+     if [bc1553__barometer <= X, X <= bc1553__warhead, 
+     bc1553__barometer <= Y, Y <= bc1553__warhead].
+set_thrust_rules(75): bc1553__lru_name__val(X) <= 
+     bc1553__lru_name__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 11, 0 <= Y, Y <= 11].
+set_thrust_rules(76): power__size >= 0 may_be_deduced.
+set_thrust_rules(77): power__first may_be_replaced_by 0.
+set_thrust_rules(78): power__last may_be_replaced_by 35000.
+set_thrust_rules(79): power__base__first may_be_replaced_by -2147483648.
+set_thrust_rules(80): power__base__last may_be_replaced_by 2147483647.

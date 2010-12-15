@@ -1,0 +1,367 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.49
+
+Line
+   1  -- Compass simulator implementation
+   2  --
+   3  -- $Log: compass.adb,v $
+   4  -- Revision 1.3  2004/12/17 17:51:22  adi
+   5  -- Fixed compass angle conversions and checks so that compass.in passes
+   6  --
+   7  -- Revision 1.2  2004/12/17 16:08:53  adi
+   8  -- Fixing errors in compass; renamed Angle to Angle_Degrees for clarity
+   9  --
+  10  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+  11  -- Added from tarfile
+  12  --
+  13  --
+  14  -- Revision 1.3  2003/08/08 20:29:48  adi
+  15  -- Use Angle_Ops public child
+  16  --
+  17  -- Revision 1.2  2003/08/06 20:37:31  adi
+  18  -- use separate bit_machine package
+  19  --
+  20  -- Revision 1.1  2003/08/04 20:57:38  adi
+  21  -- Initial revision
+  22  --
+  23  --
+  24  --
+  25  --with ada.text_io;
+  26  
+  27  with Clock_Utils,SystemTypes,Measuretypes.Angle_ops;
+  28  with Bus,RT1553,IBIT,Bit_Machine;
+  29  package body Compass
+  30    --# own State is
+  31    --#     Last_XY, Last_YZ,
+  32    --#     Last_Time,
+  33    --#     Last_dXY, Last_dYZ,
+  34    --#     BIT_State;
+  35  is
+  36  
+  37     Last_XY,
+  38     Last_YZ   : Measuretypes.Millirad := Measuretypes.Angle_zero;
+  39     Last_Time : Clock.Millisecond := Clock.Millisecond'First;
+  40     Last_DXY,
+  41     Last_dYZ  : Measuretypes.Millirad_Per_Sec := 0;
+  42     Bit_State : Bit_Machine.Machine := Bit_Machine.Initial_Machine;
+  43  
+  44     -- Can't extrapolate angles past 10 minutes
+  45     Max_Extrapolate_Time : constant Clock.Millisecond := 600_000;
+  46  
+  47     -- Work out the current XY or YZ angle.
+  48     procedure Extrapolate_Angle(Last_Angle : in Measuretypes.Millirad;
+  49                                 Last_Delta : in Measuretypes.Millirad_Per_Sec;
+  50                                 New_Angle : out Measuretypes.Millirad)
+  51       --# global in     Last_Time;
+  52       --#        in out Clock.Time;
+  53       --# derives Clock.Time from * &
+  54       --#         New_Angle from Clock.Time, Last_Angle,
+  55       --#         Last_Delta, Last_Time;
+  56     is
+  57        Time_Now,T_Delta : Clock.Millisecond;
+  58        Time_Valid : Boolean;
+  59        Delta_Thousand_Millirads : Systemtypes.Integer32;
+  60        Delta_Angle : Measuretypes.Millirad;
+  61     begin
+  62        Clock.Read(T => Time_Now,
+  63                   Valid => Time_Valid);
+  64        if not Time_Valid then
+  65          -- Can't extrapolate
+  66          New_Angle := Measuretypes.Angle_zero;
+  67        else
+  68           -- How many seconds change
+  69           T_Delta := Clock_Utils.Delta_Time(Last_Time,Time_Now);
+  70           if T_Delta = 0 then
+  71              --Ada.Text_Io.Put_Line("Time not valid");
+  72              -- No time change; new is same as old
+  73              New_Angle := Last_Angle;
+  74           elsif T_Delta > Max_Extrapolate_Time then
+  75              --Ada.Text_Io.Put_Line("Too great a time since last reading");
+  76              New_Angle := Last_Angle;
+  77           else
+  78              -- Need to extrapolate angle swept in T_Delta milliseconds
+  79              --  at Last_Delta millirads per sec == (Last_Delta / 1000) millirads per millisec
+  80              Delta_Thousand_Millirads :=
+  81                 Systemtypes.Integer32(Last_Delta) * Systemtypes.Integer32(T_Delta);
+  82              -- Reduce delta_thousand_millirads to a real millirads,
+  83              -- dividing by 1000 to represent conversion from millirads/millisec to millirads/sec
+  84              Delta_Angle := Measuretypes.Angle_Ops.Int_To_Millirad(Delta_Thousand_Millirads / 1000);
+  85              -- Now work out the new angle
+  86              New_Angle := Measuretypes.Angle_Ops.Sum(Last_Angle,Delta_Angle);
+  87           end if;
+  88        End if;
+  89        -- Useful for debugging:
+  90        --ada.text_io.put_line("Extrapolating angle " &
+  91        --                     Measuretypes.io.millirad(Last_Angle) &
+  92        --                     " with delta " &
+  93        --                     Measuretypes.millirad_per_sec'image(Last_Delta) &
+  94        --                     "mR/s over " &
+  95        --                     Clock.Millisecond'Image(T_Delta) &
+  96        --                     "ms to " &
+  97        --                     Measuretypes.io.millirad(New_Angle));
+  98     end Extrapolate_angle;
+
++++        Flow analysis of subprogram Extrapolate_Angle 
+           performed: no errors found.
+
+  99  
+ 100     --------- Public subprograms
+ 101  
+ 102     -- Cycle the reading of data from the bus
+ 103     -- and writing of data to the bus
+ 104     procedure Cycle
+ 105       --# global in Last_XY, Last_YZ, Last_Time, Last_dXY, Last_dYZ;
+ 106       --#        in out BIT_State;
+ 107       --#        in out Clock.Time;
+ 108       --#        in Bus.Outputs;
+ 109       --#        in out Bus.Inputs;
+ 110       --# derives
+ 111       --#        BIT_State
+ 112       --#          from *, Bus.Outputs &
+ 113       --#        Bus.Inputs from *, Clock.Time, Last_XY, Last_YZ, Last_Time,
+ 114       --#        Last_dXY, Last_dYZ, BIT_State &
+ 115       --#        Clock.Time from *;
+ 116     is
+ 117        This_Angle : Measuretypes.millirad;
+ 118        Datum : Bus.Word;
+ 119     begin
+ 120        -- Do it for XY angle
+ 121        Extrapolate_Angle(Last_Angle => Last_XY,
+ 122                          Last_Delta => Last_DXY,
+ 123                          New_Angle => This_Angle);
+ 124        Datum := Measuretypes.Angle_Ops.Millirad_To_Word(This_Angle);
+ 125        -- Write the XY info to T1 word 1
+ 126        Rt1553.Write_Word(Data => datum,
+ 127                          Idx  => 1,
+ 128                          Subaddress_Idx => 1,
+ 129                          Src => RT1553.Compass);
+ 130        -- Do it for YZ angle
+ 131        Extrapolate_Angle(Last_Angle => Last_YZ,
+ 132                          Last_Delta => Last_DYZ,
+ 133                          New_Angle => This_Angle);
+ 134        Datum := Measuretypes.Angle_Ops.Millirad_To_Word(This_Angle);
+ 135        -- Write the XY info to T1 word 2
+ 136        Rt1553.Write_Word(Data => datum,
+ 137                          Idx  => 2,
+ 138                          Subaddress_Idx => 1,
+ 139                          Src => RT1553.Compass);
+ 140  
+ 141        -- Write the BIT phase to T1 word 3
+ 142        Rt1553.Write_Word(Data => IBIT.Phase_Lookup(BIT_Machine.Phase(Bit_State)),
+ 143                         Idx => 3,
+ 144                         Subaddress_Idx => 1,
+ 145                         Src => RT1553.Compass);
+ 146        -- Read the BIT info off R1
+ 147        Rt1553.Read_Word(Src => Rt1553.Compass,
+ 148                         Idx => 1,
+ 149                         Subaddress_Idx => 1,
+ 150                         Data => Datum);
+ 151        BIT_machine.Change_State(Word => Datum,
+ 152                                 State => Bit_State);
+ 153        -- And cycle the BIT
+ 154        BIT_Machine.Step(Bit_State);
+ 155     end Cycle;
+
++++        Flow analysis of subprogram Cycle performed: no 
+           errors found.
+
+ 156  
+ 157     -- Set the current XY angle
+ 158     procedure Set_XY(XY : in Angle_Degrees)
+ 159     --# global    out Last_XY, Last_Time;
+ 160     --#        in out Clock.Time;
+ 161     --# derives Clock.Time from * &
+ 162     --#         Last_XY from XY, clock.time &
+ 163     --#         Last_Time     from Clock.Time;
+ 164     is
+ 165        Time_Valid : Boolean;
+ 166     begin
+ 167        Last_XY := Measuretypes.Angle_Ops.Degree_To_Millirad(XY);
+ 168        Clock.Read(Last_Time,Time_Valid);
+ 169        if not Time_Valid then
+ 170           Last_XY := Measuretypes.Angle_Zero;
+ 171        end if;
+ 172     end Set_XY;
+
++++        Flow analysis of subprogram Set_XY performed: no 
+           errors found.
+
+ 173  
+ 174     -- Set the current YZ angle
+ 175     procedure Set_YZ(YZ : in Angle_Degrees)
+ 176     --# global    out Last_YZ, Last_Time;
+ 177     --#        in out Clock.Time;
+ 178     --# derives Clock.Time from * &
+ 179     --#         Last_YZ from YZ, clock.time &
+ 180     --#         Last_Time     from Clock.Time;
+ 181     is
+ 182        Time_Valid : Boolean;
+ 183     begin
+ 184        Last_YZ := Measuretypes.Angle_Ops.Degree_To_Millirad(YZ);
+ 185        Clock.Read(Last_Time,Time_Valid);
+ 186        if not Time_Valid then
+ 187           Last_YZ := Measuretypes.Angle_Zero;
+ 188        end if;
+ 189     end Set_YZ;
+
++++        Flow analysis of subprogram Set_YZ performed: no 
+           errors found.
+
+ 190  
+ 191     -- Set the current XY delta
+ 192     procedure Set_dXY(dXY : in Measuretypes.Millirad_Per_Sec)
+ 193     --# global    out Last_dXY, Last_Time;
+ 194     --#        in out Clock.Time;
+ 195     --# derives Clock.Time from * &
+ 196     --#         Last_dXY from dXY, clock.time &
+ 197     --#         Last_Time     from Clock.Time;
+ 198     is
+ 199        Time_Valid : Boolean;
+ 200     begin
+ 201        Last_dXY := dXY;
+ 202        Clock.Read(Last_Time,Time_Valid);
+ 203        if not Time_Valid then
+ 204           Last_dXY := 0;
+ 205        end if;
+ 206     end Set_dXY;
+
++++        Flow analysis of subprogram Set_dXY performed: 
+           no errors found.
+
+ 207  
+ 208     -- Set the current YZ delta
+ 209     procedure Set_dYZ(dYZ : in Measuretypes.Millirad_Per_Sec)
+ 210     --# global    out Last_dYZ, Last_Time;
+ 211     --#        in out Clock.Time;
+ 212     --# derives Clock.Time from * &
+ 213     --#         Last_dYZ from dYZ, clock.time &
+ 214     --#         Last_Time     from Clock.Time;
+ 215     is
+ 216        Time_Valid : Boolean;
+ 217     begin
+ 218        Last_dYZ := dYZ;
+ 219        Clock.Read(Last_Time,Time_Valid);
+ 220        if not Time_Valid then
+ 221           Last_dYZ := 0;
+ 222        end if;
+ 223     end Set_dYZ;
+
++++        Flow analysis of subprogram Set_dYZ performed: 
+           no errors found.
+
+ 224  
+ 225     -- Read the current XY angle
+ 226     procedure Read_XY(XY : out Angle_Degrees)
+ 227       --# global in     Last_XY, Last_Time, Last_dXY;
+ 228       --#        in out Clock.Time;
+ 229       --# derives Clock.Time from * &
+ 230       --#         XY from Last_XY, Last_Time, Last_dXY,
+ 231       --#         Clock.Time;
+ 232     is
+ 233        Xy_Millirad : Measuretypes.Millirad;
+ 234     begin
+ 235        Extrapolate_angle(Last_Angle => Last_XY,
+ 236                          Last_Delta => Last_DXY,
+ 237                          New_Angle => Xy_millirad);
+ 238        Xy := Measuretypes.Angle_Ops.Round_Degree(Xy_Millirad);
+ 239     end Read_XY;
+
++++        Flow analysis of subprogram Read_XY performed: 
+           no errors found.
+
+ 240  
+ 241     -- Read the current XY delta
+ 242     procedure Read_dXY(Delta_angle : out Measuretypes.Millirad_Per_Sec)
+ 243       --# global in     Last_dXY;
+ 244       --# derives Delta_angle from last_dXY;
+ 245     is
+ 246     begin
+ 247        Delta_Angle := Last_Dxy;
+ 248     end Read_dXY;
+
++++        Flow analysis of subprogram Read_dXY performed: 
+           no errors found.
+
+ 249  
+ 250     -- Read the current YZ angle
+ 251     procedure Read_YZ(YZ : out Angle_Degrees)
+ 252       --# global in     Last_YZ, Last_Time, Last_dYZ;
+ 253       --#        in out Clock.Time;
+ 254       --# derives Clock.Time from * &
+ 255       --#         YZ from Last_YZ, Last_Time, Last_dYZ,
+ 256       --#         Clock.Time;
+ 257     is
+ 258        YZ_Millirad : Measuretypes.Millirad;
+ 259     begin
+ 260        Extrapolate_angle(Last_Angle => Last_YZ,
+ 261                          Last_Delta => Last_DYZ,
+ 262                          New_Angle  => YZ_millirad);
+ 263        YZ := Measuretypes.Angle_Ops.Round_Degree(YZ_Millirad);
+ 264     end Read_YZ;
+
++++        Flow analysis of subprogram Read_YZ performed: 
+           no errors found.
+
+ 265  
+ 266     -- Read the current YZ delta
+ 267     procedure Read_dYZ(Delta_angle : out Measuretypes.Millirad_Per_Sec)
+ 268       --# global in     Last_dYZ;
+ 269       --# derives Delta_angle from last_dYZ;
+ 270     is
+ 271     begin
+ 272        Delta_Angle := Last_dYZ;
+ 273     end Read_dYZ;
+
++++        Flow analysis of subprogram Read_dYZ performed: 
+           no errors found.
+
+ 274  
+ 275     procedure Fail_Next_Bit
+ 276       --# global in out BIT_State;
+ 277       --# derives BIT_State from *;
+ 278     is begin
+ 279        BIT_Machine.Fail_Next(Bit_State);
+ 280     end Fail_Next_Bit;
+
++++        Flow analysis of subprogram Fail_Next_Bit 
+           performed: no errors found.
+
+ 281  
+ 282     procedure Init
+ 283       --# global out Last_XY, Last_YZ, Last_Time,
+ 284       --#        Last_dXY, Last_dYZ, BIT_State;
+ 285       --#        in out Bus.Inputs;
+ 286       --# derives Last_XY, Last_YZ, Last_Time,
+ 287       --#        Last_dXY, Last_dYZ, BIT_State from &
+ 288       --#        Bus.Inputs from *;
+ 289     is begin
+ 290        -- Initialise the bus message 1T
+ 291        RT1553.Set_Message_Valid(Subaddress_Idx => 1,
+ 292                                 Src => RT1553.Compass);
+ 293        -- Initialise the variables
+ 294        Last_XY := Measuretypes.Angle_zero;
+ 295        Last_YZ := Measuretypes.Angle_zero;
+ 296        Last_Time     := Clock.Millisecond'First;
+ 297        Last_DXY := 0;
+ 298        Last_DYZ := 0;
+ 299        BIT_Machine.Create(Ticks_To_Complete => 15,
+ 300                           State => Bit_State);
+ 301     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 302  
+ 303     procedure Command is separate;
+ 304  end Compass;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

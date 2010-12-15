@@ -1,0 +1,81 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.39
+
+                           procedure clock.Cycle
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 68:
+
+procedure_cycle_1.
+H1:    true .
+H2:    plus >= millisecond__first .
+H3:    plus <= millisecond__last .
+H4:    ticks >= millisecond__first .
+H5:    ticks <= millisecond__last .
+        ->
+C1:    millisecond__last - plus >= millisecond__base__first .
+C2:    millisecond__last - plus <= millisecond__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 70:
+
+procedure_cycle_2.
+H1:    true .
+H2:    plus >= millisecond__first .
+H3:    plus <= millisecond__last .
+H4:    ticks >= millisecond__first .
+H5:    ticks <= millisecond__last .
+H6:    millisecond__last - plus >= millisecond__base__first .
+H7:    millisecond__last - plus <= millisecond__base__last .
+H8:    millisecond__last - plus < ticks .
+        ->
+C1:    plus - (millisecond__last - ticks) >= millisecond__first .
+C2:    plus - (millisecond__last - ticks) <= millisecond__last .
+C3:    millisecond__last - ticks >= millisecond__base__first .
+C4:    millisecond__last - ticks <= millisecond__base__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 72:
+
+procedure_cycle_3.
+H1:    true .
+H2:    plus >= millisecond__first .
+H3:    plus <= millisecond__last .
+H4:    ticks >= millisecond__first .
+H5:    ticks <= millisecond__last .
+H6:    millisecond__last - plus >= millisecond__base__first .
+H7:    millisecond__last - plus <= millisecond__base__last .
+H8:    not (millisecond__last - plus < ticks) .
+        ->
+C1:    ticks + plus >= millisecond__first .
+C2:    ticks + plus <= millisecond__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_cycle_4.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_5.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_cycle_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_cycle_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+

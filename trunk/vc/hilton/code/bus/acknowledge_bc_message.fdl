@@ -1,0 +1,79 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:38.17}
+
+                    {procedure bus.Acknowledge_BC_Message}
+
+
+title procedure acknowledge_bc_message;
+
+  function round__(real) : integer;
+  type word_index = integer;
+  type all_msg_index = integer;
+  type lru_index = integer;
+  type message_data = array [integer] of integer;
+  type lru_message_record = record
+        initial : integer;
+        msg_count : integer
+     end;
+  type message = record
+        valid : boolean;
+        fresh : boolean;
+        data : message_data
+     end;
+  type bc_rt_table = array [integer] of lru_message_record;
+  type raw_messages = array [integer] of message;
+  const rt_to_bc : bc_rt_table = pending;
+  const lru_start_index__base__last : integer = pending; 
+  const lru_start_index__base__first : integer = pending; 
+  const lru_index__base__last : integer = pending; 
+  const lru_index__base__first : integer = pending; 
+  const lru_subaddress_index__base__last : integer = pending; 
+  const lru_subaddress_index__base__first : integer = pending; 
+  const valid_msg_index__base__last : integer = pending; 
+  const valid_msg_index__base__first : integer = pending; 
+  const all_msg_index__base__last : integer = pending; 
+  const all_msg_index__base__first : integer = pending; 
+  const word__base__last : integer = pending; 
+  const word__base__first : integer = pending; 
+  const word_index__base__last : integer = pending; 
+  const word_index__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const lru_message_record__size : integer = pending; 
+  const lru_start_index__size : integer = pending; 
+  const lru_start_index__last : integer = pending; 
+  const lru_start_index__first : integer = pending; 
+  const lru_index__size : integer = pending; 
+  const lru_index__last : integer = pending; 
+  const lru_index__first : integer = pending; 
+  const lru_subaddress_index__size : integer = pending; 
+  const lru_subaddress_index__last : integer = pending; 
+  const lru_subaddress_index__first : integer = pending; 
+  const valid_msg_index__size : integer = pending; 
+  const valid_msg_index__last : integer = pending; 
+  const valid_msg_index__first : integer = pending; 
+  const all_msg_index__size : integer = pending; 
+  const all_msg_index__last : integer = pending; 
+  const all_msg_index__first : integer = pending; 
+  const message__size : integer = pending; 
+  const word__size : integer = pending; 
+  const word__last : integer = pending; 
+  const word__first : integer = pending; 
+  const word_index__size : integer = pending; 
+  const word_index__last : integer = pending; 
+  const word_index__first : integer = pending; 
+  const integer__size : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__first : integer = pending; 
+  var src : integer;
+  var subaddress_idx : integer;
+  var real_inputs : raw_messages;
+  var placing : lru_message_record;
+
+end;

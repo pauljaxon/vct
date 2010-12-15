@@ -1,0 +1,85 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:39.49
+
+Line
+   1  -- MCU interface to the compass over the bus
+   2  --
+   3  -- $Log: if_compass.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.3  2003/09/10 20:18:22  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.2  2003/08/08 20:31:28  adi
+  12  -- Use Angle_Ops public child
+  13  --
+  14  -- Revision 1.1  2003/08/02 19:49:15  adi
+  15  -- Initial revision
+  16  --
+  17  --
+  18  with SystemTypes, MeasureTypes, Ibit;
+  19  use type MeasureTypes.Millirad;
+  20  --# inherit SystemTypes, MeasureTypes, Bus, Ibit,
+  21  --# bc1553, Measuretypes.angle_ops;
+  22  package If_Compass
+  23    --# own State;
+  24    --# initializes State;
+  25  is
+  26     -- Get IBIT state
+  27     function Get_IBIT_State return Ibit.Phase;
+  28     --# global state;
+  29  
+  30     -- Find out the current angle in the XY plane off magnetic north
+  31     procedure Get_XY(Angle : out MeasureTypes.Millirad;
+  32                      Valid  : out Boolean);
+  33     --# global in State;
+  34     --# derives Angle, Valid from State;
+  35  
+  36     -- Find out the current angle in the YZ plane off Earth tangent plane
+  37     procedure Get_YZ(Angle : out MeasureTypes.Millirad;
+  38                      Valid  : out Boolean);
+  39     --# global in State;
+  40     --# derives Angle, Valid from State;
+  41  
+  42     -- Kick off a component IBIT
+  43     procedure Ibit_Start;
+  44     --# global in out Bus.Outputs, State;
+  45     --# derives Bus.Outputs from * &
+  46     --#         State from *;
+  47  
+  48     -- Stop a component IBIT
+  49     procedure Ibit_Stop;
+  50     --# global in out Bus.Outputs, State;
+  51     --# derives Bus.Outputs from * &
+  52     --#         State from *;
+  53  
+  54     -- Poll the bus
+  55     procedure Poll;
+  56     --# global in out State;
+  57     --#        in Bus.Inputs;
+  58     --# derives State from *, Bus.Inputs;
+  59  
+  60     -- Initialise
+  61     procedure Init;
+  62     --# global out State;
+  63     --#        in out Bus.Outputs;
+  64     --# derives State from &
+  65     --#         Bus.Outputs from *;
+  66  
+  67     -- test point
+  68     procedure Command;
+  69     --# derives;
+  70  end If_Compass;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

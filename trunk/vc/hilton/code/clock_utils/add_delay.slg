@@ -1,0 +1,132 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:24
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function clock_utils.Add_Delay
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_add_delay_1.  @@@@@@@@@@
+-S-  Applied substitution rule add_delay_rules(2).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  orig >= 0
+<S>  New H4:  plusdelta >= 0
+<S>  New C1:  clock__millisecond__last - orig >= 0
+-S-  Applied substitution rule add_delay_rules(3).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  orig <= 8640000
+<S>  New H5:  plusdelta <= 8640000
+<S>  New C2:  0 <= orig
+<S>  New C1:  orig <= 8640000
+***  Proved C2:  0 <= orig
+     using hypothesis H2.
+***  Proved C1:  orig <= 8640000
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_add_delay_2.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+***  Proved C2:  orig + plusdelta <= clock__millisecond__last
+     using hypothesis H10.
+-S-  Applied substitution rule add_delay_rules(2).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  orig >= 0
+<S>  New H4:  plusdelta >= 0
+<S>  New H6:  clock__millisecond__last - orig >= 0
+<S>  New C1:  orig + plusdelta >= 0
+***  Proved C1:  orig + plusdelta >= 0
+     using hypotheses H2 & H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_add_delay_3.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H7)
+          .
+-S-  Applied substitution rule add_delay_rules(2).
+     This was achieved by replacing all occurrences of 
+          clock__millisecond__first by:
+          0.
+<S>  New H2:  orig >= 0
+<S>  New H4:  plusdelta >= 0
+<S>  New H6:  clock__millisecond__last - orig >= 0
+<S>  New C1:  plusdelta - (clock__millisecond__last - orig) >= 0
+-S-  Applied substitution rule add_delay_rules(3).
+     This was achieved by replacing all occurrences of clock__millisecond__last 
+          by:
+          8640000.
+<S>  New H3:  orig <= 8640000
+<S>  New H5:  plusdelta <= 8640000
+<S>  New H7:  0 <= orig
+<S>  New H10:  not 8640000 - orig >= plusdelta
+<S>  New H6:  orig <= 8640000
+<S>  New C2:  plusdelta - (8640000 - orig) <= 8640000
+<S>  New C1:  plusdelta - (8640000 - orig) >= 0
+***  Proved C1:  plusdelta - (8640000 - orig) >= 0
+     using hypothesis H10.
+>>>  Restructured hypothesis H10 into:
+     >>>  H10:  8640000 - orig < plusdelta
+***  Proved C2:  plusdelta - (8640000 - orig) <= 8640000
+     via its standard form, which is:
+     Std.Fm C2:  - 8640000 + (orig + plusdelta) <= 8640000
+     using hypotheses H3 & H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_add_delay_4.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as 
+          H11).
+---  Hypothesis H14 has been replaced by "true".  (It is already present, as 
+          H12).
+***  Proved C1:  true
+***  Proved C2:  orig + plusdelta >= clock__millisecond__first
+     using hypothesis H11.
+***  Proved C3:  orig + plusdelta <= clock__millisecond__last
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_add_delay_5.  @@@@@@@@@@
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H6).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H7).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H7)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+***  Proved C1:  true
+***  Proved C2:  plusdelta - (clock__millisecond__last - orig) >= 
+          clock__millisecond__first
+     using hypothesis H13.
+***  Proved C3:  plusdelta - (clock__millisecond__last - orig) <= 
+          clock__millisecond__last
+     using hypothesis H14.
+***  PROVED VC.
+

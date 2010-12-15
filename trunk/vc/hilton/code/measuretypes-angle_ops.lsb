@@ -1,0 +1,264 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.25
+
+Line
+   1  package body MeasureTypes.Angle_ops
+   2  is
+   3     -- Simple type renamings for brevity
+   4     subtype Millirad is Measuretypes.Millirad;
+   5     subtype Canon_Millirad is Measuretypes.Canon_Millirad;
+   6     -- Canonical millirads are 0deg .. 359.999deg
+   7  
+   8     -- Canonicalise an angle into -180..+179 degree range
+   9     function Canon(Orig_Angle : Millirad) return Canon_Millirad
+  10     is
+  11        Answer : Millirad;
+  12     begin
+  13        Answer := Orig_Angle;
+  14        if Answer > Canon_Millirad'Last then
+  15           Answer := Canon_Millirad'First + (Answer - Canon_Millirad'Last);
+  16        elsif Answer < Canon_Millirad'First then
+  17           Answer := Canon_Millirad'Last - (Canon_Millirad'First - Answer);
+  18        else
+  19           -- Nothing to do
+  20           null;
+  21        end if;
+  22        -- Useful for debugging
+  23        --Ada.Text_Io.Put_Line("Canon map of " &
+  24        --                    Millirad'Image(Orig_Angle) &
+  25        --                     "mR is " &
+  26        --                     Millirad'Image(Answer) & "mR");
+  27        return Answer;
+  28     end Canon;
+
++++        Flow analysis of subprogram Canon performed: no 
+           errors found.
+
+  29  
+  30     function Mul(Orig_Angle : Measuretypes.Millirad;
+  31                  Mult       : Integer)
+  32                 return Measuretypes.Millirad
+  33     is
+  34        Ans : Measuretypes.Millirad;
+  35     begin
+  36        Ans := Orig_Angle * Measuretypes.Millirad(Mult);
+  37        return Canon(Ans);
+  38     end Mul;
+
++++        Flow analysis of subprogram Mul performed: no 
+           errors found.
+
+  39  
+  40     -- Add two angles, preventing overflow
+  41     function Sum(Left, Right : Measuretypes.Millirad)
+  42                 return Measuretypes.Millirad
+  43     is
+  44        Answer : Millirad;
+  45        Lc, Rc : Canon_Millirad;
+  46     begin
+  47        Lc := Canon(Left);
+  48        Rc := Canon(Right);
+  49        if Lc >= 0 then
+  50           if Rc >= 0 then
+  51              -- Two +ve angles; get the sum minus 180 degrees
+  52              Answer := (Lc - Measuretypes.Angle_Half) + Rc;
+  53              if Answer > 0 then
+  54                 -- Adding 180 degrees makes it go negative
+  55                 Answer := Answer + Measuretypes.Angle_Minushalf;
+  56              else
+  57                 -- Adding 180 degrees makes it go positive
+  58                 Answer := Lc + Rc;
+  59              end if;
+  60           else
+  61              -- Right -ve, left +ve so we're OK
+  62              Answer := Lc + Rc;
+  63           end if;
+  64        else
+  65           if Rc >= 0 then
+  66              -- Left -ve, right +ve
+  67              Answer := Lc + Rc;
+  68           else
+  69              -- Two -ve angles; get the sum plus 180 degrees
+  70              Answer := (Lc + Measuretypes.Angle_Half) + Rc;
+  71              if Answer >= 0 then
+  72                 -- Subtracting 180 degrees keeps it negative
+  73                 Answer := Lc + Rc;
+  74              else
+  75                 -- Subtracting 180 degrees makes it positive
+  76                 Answer := Measuretypes.Angle_Half + Answer;
+  77              end if;
+  78           end if;
+  79        end if;
+  80        return Answer;
+  81     end Sum;
+
++++        Flow analysis of subprogram Sum performed: no 
+           errors found.
+
+  82  
+  83     -- Reflect an angle about N-S
+  84     function Negate(Orig_Angle : Measuretypes.Millirad)
+  85                    return Measuretypes.Millirad
+  86     is
+  87     begin
+  88        return -Orig_Angle;
+  89     end Negate;
+
++++        Flow analysis of subprogram Negate performed: no 
+           errors found.
+
+  90  
+  91     function Diff(Left, Right : Measuretypes.Millirad)
+  92                  return Measuretypes.Millirad
+  93     is
+  94        Rminus, Answer : Millirad;
+  95     begin
+  96        Rminus := Negate(Right);
+  97        Answer := Sum(Left => Left,Right => Rminus);
+  98        return Answer;
+  99     end Diff;
+
++++        Flow analysis of subprogram Diff performed: no 
+           errors found.
+
+ 100  
+ 101     function Create_Angle(Word : Systemtypes.Word)
+ 102                          return Measuretypes.Millirad
+ 103     is
+ 104        Sign_word : Systemtypes.Integer32;
+ 105        Answer : Millirad;
+ 106     begin
+ 107        if Word >= 2**15 then
+ 108           Sign_Word := -Systemtypes.integer32(Word - Systemtypes.Word(2**15));
+ 109        else
+ 110           Sign_Word := Systemtypes.Integer32(Word);
+ 111        end if;
+ 112        if Sign_Word > Systemtypes.Integer32(Millirad'Last) then
+ 113           Answer := Millirad'Last;
+ 114        elsif Sign_Word < Systemtypes.Integer32(Millirad'First) then
+ 115           Answer := Millirad'First;
+ 116        else
+ 117           Answer := Millirad(Sign_Word);
+ 118        end if;
+ 119        return Answer;
+ 120     end Create_angle;
+
++++        Flow analysis of subprogram Create_Angle 
+           performed: no errors found.
+
+ 121  
+ 122     function Millirad_To_word(Orig_angle : Measuretypes.Millirad)
+ 123                              return Systemtypes.Word
+ 124     is
+ 125        Sign_word : Systemtypes.Integer32;
+ 126        Word : Systemtypes.Word;
+ 127        Neg_Sign : Boolean := False;
+ 128     begin
+ 129        Sign_Word := Systemtypes.Integer32(Canon(Orig_Angle));
+ 130        if Sign_Word < 0 then
+ 131           Sign_Word := -Sign_Word;
+ 132           Neg_Sign := True;
+ 133        end if;
+ 134        Word := Systemtypes.Word(Sign_Word);
+ 135        if Neg_Sign then
+ 136           Word := Word + 2**15;
+ 137        end if;
+ 138        return word;
+ 139     end Millirad_To_word;
+
++++        Flow analysis of subprogram Millirad_To_Word 
+           performed: no errors found.
+
+ 140  
+ 141     function Int_To_Millirad(Count : in Systemtypes.Integer32)
+ 142                              return Measuretypes.Millirad
+ 143     is
+ 144        Neg_Sign : Boolean;
+ 145        Tmp_Count : Systemtypes.Unsigned32;
+ 146        Answer : Millirad;
+ 147     begin
+ 148        if Count < 0 then
+ 149           Neg_Sign := True;
+ 150           Tmp_Count := Systemtypes.Unsigned32(-Count);
+ 151        else
+ 152           Neg_Sign := False;
+ 153           Tmp_Count := Systemtypes.Unsigned32(Count);
+ 154        end if;
+ 155        -- This may represent more than one revolution around the circle,
+ 156        -- so divide by a full circle circumference and take the remainder
+ 157        Tmp_Count := Tmp_Count mod Systemtypes.Unsigned32(Measuretypes.Angle_Full);
+ 158        -- Restore sign
+ 159        if Neg_Sign then
+ 160           Answer := -Millirad(Tmp_Count);
+ 161        else
+ 162           Answer := Millirad(Tmp_Count);
+ 163        end if;
+ 164        return Answer;
+ 165     end Int_To_Millirad;
+
++++        Flow analysis of subprogram Int_To_Millirad 
+           performed: no errors found.
+
+ 166  
+ 167     function Degree_To_Millirad(Orig_Degree : Measuretypes.Angle_Degrees)
+ 168                                return Measuretypes.Millirad
+ 169     is
+ 170        Count : Systemtypes.Integer32;
+ 171     begin
+ 172        -- Scale angle_full by orig_degree/(degrees in a full circle)
+ 173        Count := Systemtypes.Integer32(Measuretypes.Angle_Full) *
+ 174          Systemtypes.Integer32(Orig_Degree);
+ 175        Count := Count / Systemtypes.Integer32(Measuretypes.Angle_Degrees'Last+1);
+ 176        -- And convert this number in the (-7000,+7000) range into a millirad
+ 177        return Int_To_Millirad(Count);
+ 178     end Degree_To_Millirad;
+
++++        Flow analysis of subprogram Degree_To_Millirad 
+           performed: no errors found.
+
+ 179  
+ 180     -- Map millirads back into a round number of degrees (0..359)
+ 181     function Round_Degree(Orig_Angle : Measuretypes.Millirad)
+ 182                          return Measuretypes.Angle_Degrees
+ 183     is
+ 184        Tmp_mr : Millirad;
+ 185        Tmp_Int : SystemTypes.Integer32;
+ 186        Tmp : Measuretypes.Angle_Degrees;
+ 187     begin
+ 188        Tmp_mr := Canon(Orig_Angle); -- force into Angle_Minushalf..Angle_Half
+ 189        if Tmp_Mr < 0 then
+ 190           -- Force into 0..Angle_Full
+ 191           Tmp_Mr := Measuretypes.Angle_Full + Tmp_Mr;
+ 192        end if;
+ 193        Tmp_Int := (SystemTypes.Integer32(Tmp_Mr) * 360) /
+ 194          Systemtypes.Integer32(Measuretypes.Angle_Full);
+ 195        if Tmp_Int >= 360 then
+ 196           Tmp := 0;
+ 197        else
+ 198           Tmp := Measuretypes.Angle_Degrees(Tmp_Int);
+ 199        end if;
+ 200        -- Useful for debugging
+ 201        --Ada.Text_IO.Put_Line("Rounded " &
+ 202        --                     Measuretypes.Millirad'Image(Orig_Angle) &
+ 203        --                     "mR to " &
+ 204        --                     Measuretypes.Angle_Degrees'Image(Tmp) &
+ 205        --                     "deg");
+ 206        return tmp;
+ 207     end Round_Degree;
+
++++        Flow analysis of subprogram Round_Degree 
+           performed: no errors found.
+
+ 208  
+ 209  end Measuretypes.Angle_ops;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

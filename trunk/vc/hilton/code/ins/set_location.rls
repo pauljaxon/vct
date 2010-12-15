@@ -1,0 +1,32 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:40.16*/
+
+                         /*procedure ins.Set_Location*/
+
+
+rule_family set_location_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+set_location_rules(1): measuretypes__meter__size >= 0 may_be_deduced.
+set_location_rules(2): measuretypes__meter__first may_be_replaced_by -200000.
+set_location_rules(3): measuretypes__meter__last may_be_replaced_by 200000.
+set_location_rules(4): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+set_location_rules(5): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+set_location_rules(6): clock__millisecond__size >= 0 may_be_deduced.
+set_location_rules(7): clock__millisecond__first may_be_replaced_by 0.
+set_location_rules(8): clock__millisecond__last may_be_replaced_by 8640000.
+set_location_rules(9): clock__millisecond__base__first may_be_replaced_by -2147483648.
+set_location_rules(10): clock__millisecond__base__last may_be_replaced_by 2147483647.
+set_location_rules(11): meter__size >= 0 may_be_deduced.
+set_location_rules(12): meter__first may_be_replaced_by -200000.
+set_location_rules(13): meter__last may_be_replaced_by 200000.
+set_location_rules(14): meter__base__first may_be_replaced_by -2147483648.
+set_location_rules(15): meter__base__last may_be_replaced_by 2147483647.

@@ -1,0 +1,54 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 26-NOV-2009 09:54:53.87}
+
+                         {procedure Heading.Maintain}
+
+
+title procedure maintain;
+
+  function round__(real) : integer;
+  type instruments__bankangle = integer;
+  type instruments__headdegree = integer;
+  type instruments__machnumber = integer;
+  type instruments__slipangle = integer;
+  type ap__controls__switch = (ap__controls__on, 
+     ap__controls__off);
+  const ap__controls__switch__base__last : ap__controls__switch = pending; 
+  const ap__controls__switch__base__first : ap__controls__switch = pending; 
+  const instruments__slipangle__base__last : integer = pending; 
+  const instruments__slipangle__base__first : integer = pending; 
+  const instruments__machnumber__base__last : integer = pending; 
+  const instruments__machnumber__base__first : integer = pending; 
+  const instruments__headdegree__base__last : integer = pending; 
+  const instruments__headdegree__base__first : integer = pending; 
+  const instruments__bankangle__base__last : integer = pending; 
+  const instruments__bankangle__base__first : integer = pending; 
+  const ap__controls__switch__size : integer = pending; 
+  const ap__controls__switch__last : ap__controls__switch = pending; 
+  const ap__controls__switch__first : ap__controls__switch = pending; 
+  const instruments__slipangle__size : integer = pending; 
+  const instruments__slipangle__last : integer = pending; 
+  const instruments__slipangle__first : integer = pending; 
+  const instruments__machnumber__size : integer = pending; 
+  const instruments__machnumber__last : integer = pending; 
+  const instruments__machnumber__first : integer = pending; 
+  const instruments__headdegree__size : integer = pending; 
+  const instruments__headdegree__last : integer = pending; 
+  const instruments__headdegree__first : integer = pending; 
+  const instruments__bankangle__size : integer = pending; 
+  const instruments__bankangle__last : integer = pending; 
+  const instruments__bankangle__first : integer = pending; 
+  var switch_pressed : ap__controls__switch;
+  var mach : integer;
+  var present_heading : integer;
+  var target_heading : integer;
+  var bank : integer;
+  var slip : integer;
+
+end;

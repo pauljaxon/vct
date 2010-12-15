@@ -1,0 +1,59 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.63
+
+                           procedure encode.Meter
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 54:
+
+procedure_meter_1.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+        ->
+C1:    m mod word_max >= bus__word__first .
+C2:    m mod word_max <= bus__word__last .
+C3:    m mod word_max >= bus__word__first .
+C4:    m mod word_max <= bus__word__last .
+C5:    m mod word_max >= measuretypes__meter__base__first .
+C6:    m mod word_max <= measuretypes__meter__base__last .
+C7:    word_max <> 0 .
+ 
+
+For path(s) from start to run-time check associated with statement of line 55:
+
+procedure_meter_2.
+H1:    true .
+H2:    m >= measuretypes__meter__first .
+H3:    m <= measuretypes__meter__last .
+H4:    m mod word_max >= bus__word__first .
+H5:    m mod word_max <= bus__word__last .
+H6:    m mod word_max >= bus__word__first .
+H7:    m mod word_max <= bus__word__last .
+H8:    m mod word_max >= measuretypes__meter__base__first .
+H9:    m mod word_max <= measuretypes__meter__base__last .
+H10:   word_max <> 0 .
+        ->
+C1:    m div word_max >= bus__word__first .
+C2:    m div word_max <= bus__word__last .
+C3:    m div word_max >= bus__word__first .
+C4:    m div word_max <= bus__word__last .
+C5:    m div word_max >= measuretypes__meter__base__first .
+C6:    m div word_max <= measuretypes__meter__base__last .
+C7:    word_max <> 0 .
+ 
+
+For path(s) from start to finish:
+
+procedure_meter_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+

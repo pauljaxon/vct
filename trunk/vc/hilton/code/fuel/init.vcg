@@ -1,0 +1,105 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:40.55
+
+                            procedure fuel.Init
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 193:
+
+procedure_init_1.
+H1:    true .
+        ->
+C1:    bus_id >= rt1553__lru_name__first .
+C2:    bus_id <= rt1553__lru_name__last .
+C3:    1 >= bus__lru_subaddress_index__first .
+C4:    1 <= bus__lru_subaddress_index__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 196:
+
+procedure_init_2.
+H1:    true .
+H2:    bus_id >= rt1553__lru_name__first .
+H3:    bus_id <= rt1553__lru_name__last .
+H4:    1 >= bus__lru_subaddress_index__first .
+H5:    1 <= bus__lru_subaddress_index__last .
+        ->
+C1:    0 >= measuretypes__kilo__first .
+C2:    0 <= measuretypes__kilo__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 197:
+
+procedure_init_3.
+H1:    true .
+H2:    bus_id >= rt1553__lru_name__first .
+H3:    bus_id <= rt1553__lru_name__last .
+H4:    1 >= bus__lru_subaddress_index__first .
+H5:    1 <= bus__lru_subaddress_index__last .
+H6:    0 >= measuretypes__kilo__first .
+H7:    0 <= measuretypes__kilo__last .
+        ->
+C1:    clock__millisecond__first >= clock__millisecond__first .
+C2:    clock__millisecond__first <= clock__millisecond__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 198:
+
+procedure_init_4.
+H1:    true .
+H2:    bus_id >= rt1553__lru_name__first .
+H3:    bus_id <= rt1553__lru_name__last .
+H4:    1 >= bus__lru_subaddress_index__first .
+H5:    1 <= bus__lru_subaddress_index__last .
+H6:    0 >= measuretypes__kilo__first .
+H7:    0 <= measuretypes__kilo__last .
+H8:    clock__millisecond__first >= clock__millisecond__first .
+H9:    clock__millisecond__first <= clock__millisecond__last .
+        ->
+C1:    0 >= measuretypes__gram_per_sec__first .
+C2:    0 <= measuretypes__gram_per_sec__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 199:
+
+procedure_init_5.
+H1:    true .
+H2:    bus_id >= rt1553__lru_name__first .
+H3:    bus_id <= rt1553__lru_name__last .
+H4:    1 >= bus__lru_subaddress_index__first .
+H5:    1 <= bus__lru_subaddress_index__last .
+H6:    0 >= measuretypes__kilo__first .
+H7:    0 <= measuretypes__kilo__last .
+H8:    clock__millisecond__first >= clock__millisecond__first .
+H9:    clock__millisecond__first <= clock__millisecond__last .
+H10:   0 >= measuretypes__gram_per_sec__first .
+H11:   0 <= measuretypes__gram_per_sec__last .
+        ->
+C1:    25 >= systemtypes__unsigned16__first .
+C2:    25 <= systemtypes__unsigned16__last .
+ 
+
+For path(s) from start to finish:
+
+procedure_init_6.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+For checks of refinement integrity: 
+
+procedure_init_7.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_init_8.
+*** true .          /* trivially true VC removed by Examiner */
+
+

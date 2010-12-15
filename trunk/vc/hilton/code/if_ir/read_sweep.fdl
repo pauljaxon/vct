@@ -1,0 +1,53 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:42.31}
+
+                         {procedure if_ir.Read_sweep}
+
+
+title procedure read_sweep;
+
+  function round__(real) : integer;
+  type measuretypes__bit_range = integer;
+  type ir_cfg__sector_range = integer;
+  type measuretypes__bit4_slice = array [integer] of boolean;
+  type measuretypes__bit4_array = array [integer] of 
+     measuretypes__bit4_slice;
+  type sweep_request = record
+        sx_start : integer;
+        sx_end : integer;
+        sy_start : integer;
+        sy_end : integer;
+        fresh_request : boolean;
+        fresh_answer : boolean;
+        grid : measuretypes__bit4_array
+     end;
+  const sector__base__last : integer = pending; 
+  const sector__base__first : integer = pending; 
+  const ir_cfg__sector_range__base__last : integer = pending; 
+  const ir_cfg__sector_range__base__first : integer = pending; 
+  const measuretypes__bit4_range__base__last : integer = pending; 
+  const measuretypes__bit4_range__base__first : integer = pending; 
+  const measuretypes__bit_range__base__last : integer = pending; 
+  const measuretypes__bit_range__base__first : integer = pending; 
+  const sweep_request__size : integer = pending; 
+  const sector__size : integer = pending; 
+  const sector__last : integer = pending; 
+  const sector__first : integer = pending; 
+  const ir_cfg__sector_range__size : integer = pending; 
+  const ir_cfg__sector_range__last : integer = pending; 
+  const ir_cfg__sector_range__first : integer = pending; 
+  const measuretypes__bit4_range__size : integer = pending; 
+  const measuretypes__bit4_range__last : integer = pending; 
+  const measuretypes__bit4_range__first : integer = pending; 
+  const measuretypes__bit_range__size : integer = pending; 
+  const measuretypes__bit_range__last : integer = pending; 
+  const measuretypes__bit_range__first : integer = pending; 
+  var last_sweep : sweep_request;
+
+end;

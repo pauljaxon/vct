@@ -1,0 +1,66 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:37.60*/
+
+                     /*procedure flying_object.Set_accel*/
+
+
+rule_family set_accel_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+set_accel_rules(1): measuretypes__meter__size >= 0 may_be_deduced.
+set_accel_rules(2): measuretypes__meter__first may_be_replaced_by -200000.
+set_accel_rules(3): measuretypes__meter__last may_be_replaced_by 200000.
+set_accel_rules(4): measuretypes__meter__base__first may_be_replaced_by -2147483648.
+set_accel_rules(5): measuretypes__meter__base__last may_be_replaced_by 2147483647.
+set_accel_rules(6): measuretypes__meter_per_sec__size >= 0 may_be_deduced.
+set_accel_rules(7): measuretypes__meter_per_sec__first may_be_replaced_by -5000.
+set_accel_rules(8): measuretypes__meter_per_sec__last may_be_replaced_by 5000.
+set_accel_rules(9): measuretypes__meter_per_sec__base__first may_be_replaced_by -2147483648.
+set_accel_rules(10): measuretypes__meter_per_sec__base__last may_be_replaced_by 2147483647.
+set_accel_rules(11): measuretypes__cm_per_sec_2__size >= 0 may_be_deduced.
+set_accel_rules(12): measuretypes__cm_per_sec_2__first may_be_replaced_by -30000.
+set_accel_rules(13): measuretypes__cm_per_sec_2__last may_be_replaced_by 30000.
+set_accel_rules(14): measuretypes__cm_per_sec_2__base__first may_be_replaced_by -2147483648.
+set_accel_rules(15): measuretypes__cm_per_sec_2__base__last may_be_replaced_by 2147483647.
+set_accel_rules(16): cartesian__position__size >= 0 may_be_deduced.
+set_accel_rules(17): A = B may_be_deduced_from
+     [goal(checktype(A,cartesian__position)),
+      goal(checktype(B,cartesian__position)),
+      fld_x(A) = fld_x(B),
+      fld_y(A) = fld_y(B),
+      fld_z(A) = fld_z(B)].
+set_accel_rules(18): cartesian__velocity__size >= 0 may_be_deduced.
+set_accel_rules(19): A = B may_be_deduced_from
+     [goal(checktype(A,cartesian__velocity)),
+      goal(checktype(B,cartesian__velocity)),
+      fld_vx(A) = fld_vx(B),
+      fld_vy(A) = fld_vy(B),
+      fld_vz(A) = fld_vz(B)].
+set_accel_rules(20): cartesian__accel__size >= 0 may_be_deduced.
+set_accel_rules(21): A = B may_be_deduced_from
+     [goal(checktype(A,cartesian__accel)),
+      goal(checktype(B,cartesian__accel)),
+      fld_ax(A) = fld_ax(B),
+      fld_ay(A) = fld_ay(B),
+      fld_az(A) = fld_az(B)].
+set_accel_rules(22): clock__millisecond__size >= 0 may_be_deduced.
+set_accel_rules(23): clock__millisecond__first may_be_replaced_by 0.
+set_accel_rules(24): clock__millisecond__last may_be_replaced_by 8640000.
+set_accel_rules(25): clock__millisecond__base__first may_be_replaced_by -2147483648.
+set_accel_rules(26): clock__millisecond__base__last may_be_replaced_by 2147483647.
+set_accel_rules(27): entity__size >= 0 may_be_deduced.
+set_accel_rules(28): A = B may_be_deduced_from
+     [goal(checktype(A,entity)),
+      goal(checktype(B,entity)),
+      fld_p(A) = fld_p(B),
+      fld_v(A) = fld_v(B),
+      fld_a(A) = fld_a(B),
+      fld_t(A) = fld_t(B)].

@@ -1,0 +1,89 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+ /*SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331*/
+      /*Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 25-NOV-2009 14:04:38.98*/
+
+                         /*procedure bit_machine.Halt*/
+
+
+rule_family halt_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+halt_rules(1): integer__size >= 0 may_be_deduced.
+halt_rules(2): integer__first may_be_replaced_by -2147483648.
+halt_rules(3): integer__last may_be_replaced_by 2147483647.
+halt_rules(4): integer__base__first may_be_replaced_by -2147483648.
+halt_rules(5): integer__base__last may_be_replaced_by 2147483647.
+halt_rules(6): systemtypes__unsigned16__size >= 0 may_be_deduced.
+halt_rules(7): systemtypes__unsigned16__first may_be_replaced_by 0.
+halt_rules(8): systemtypes__unsigned16__last may_be_replaced_by 65535.
+halt_rules(9): systemtypes__unsigned16__base__first may_be_replaced_by -2147483648.
+halt_rules(10): systemtypes__unsigned16__base__last may_be_replaced_by 2147483647.
+halt_rules(11): ibit__phase__size >= 0 may_be_deduced.
+halt_rules(12): ibit__phase__first may_be_replaced_by ibit__off.
+halt_rules(13): ibit__phase__last may_be_replaced_by ibit__timeout.
+halt_rules(14): ibit__phase__base__first may_be_replaced_by ibit__off.
+halt_rules(15): ibit__phase__base__last may_be_replaced_by ibit__timeout.
+halt_rules(16): ibit__phase__pos(ibit__phase__first) may_be_replaced_by 0.
+halt_rules(17): ibit__phase__pos(ibit__off) may_be_replaced_by 0.
+halt_rules(18): ibit__phase__val(0) may_be_replaced_by ibit__off.
+halt_rules(19): ibit__phase__pos(ibit__request_start) may_be_replaced_by 1.
+halt_rules(20): ibit__phase__val(1) may_be_replaced_by 
+     ibit__request_start.
+halt_rules(21): ibit__phase__pos(ibit__in_progress) may_be_replaced_by 2.
+halt_rules(22): ibit__phase__val(2) may_be_replaced_by 
+     ibit__in_progress.
+halt_rules(23): ibit__phase__pos(ibit__request_stop) may_be_replaced_by 3.
+halt_rules(24): ibit__phase__val(3) may_be_replaced_by 
+     ibit__request_stop.
+halt_rules(25): ibit__phase__pos(ibit__pass) may_be_replaced_by 4.
+halt_rules(26): ibit__phase__val(4) may_be_replaced_by ibit__pass.
+halt_rules(27): ibit__phase__pos(ibit__fail) may_be_replaced_by 5.
+halt_rules(28): ibit__phase__val(5) may_be_replaced_by ibit__fail.
+halt_rules(29): ibit__phase__pos(ibit__timeout) may_be_replaced_by 6.
+halt_rules(30): ibit__phase__val(6) may_be_replaced_by 
+     ibit__timeout.
+halt_rules(31): ibit__phase__pos(ibit__phase__last) may_be_replaced_by 6.
+halt_rules(32): ibit__phase__pos(succ(X)) may_be_replaced_by 
+     ibit__phase__pos(X) + 1
+     if [X <=ibit__timeout, X <> ibit__timeout].
+halt_rules(33): ibit__phase__pos(pred(X)) may_be_replaced_by 
+     ibit__phase__pos(X) - 1
+     if [X >=ibit__off, X <> ibit__off].
+halt_rules(34): ibit__phase__pos(X) >= 0 may_be_deduced_from
+     [ibit__off <= X, X <= ibit__timeout].
+halt_rules(35): ibit__phase__pos(X) <= 6 may_be_deduced_from
+     [ibit__off <= X, X <= ibit__timeout].
+halt_rules(36): ibit__phase__val(X) >= ibit__off may_be_deduced_from
+     [0 <= X, X <= 6].
+halt_rules(37): ibit__phase__val(X) <= ibit__timeout may_be_deduced_from
+     [0 <= X, X <= 6].
+halt_rules(38): succ(ibit__phase__val(X)) may_be_replaced_by 
+     ibit__phase__val(X+1)
+     if [0 <= X, X < 6].
+halt_rules(39): pred(ibit__phase__val(X)) may_be_replaced_by 
+     ibit__phase__val(X-1)
+     if [0 < X, X <= 6].
+halt_rules(40): ibit__phase__pos(ibit__phase__val(X)) may_be_replaced_by X
+     if [0 <= X, X <= 6].
+halt_rules(41): ibit__phase__val(ibit__phase__pos(X)) may_be_replaced_by X
+     if [ibit__off <= X, X <= ibit__timeout].
+halt_rules(42): ibit__phase__pos(X) <= ibit__phase__pos(Y) & X <= Y are_interchangeable 
+     if [ibit__off <= X, X <= ibit__timeout, ibit__off <= Y, Y <= 
+     ibit__timeout].
+halt_rules(43): ibit__phase__val(X) <= ibit__phase__val(Y) & X <= Y are_interchangeable 
+     if [0 <= X, X <= 6, 0 <= Y, Y <= 6].
+halt_rules(44): machine__size >= 0 may_be_deduced.
+halt_rules(45): A = B may_be_deduced_from
+     [goal(checktype(A,machine)),
+      goal(checktype(B,machine)),
+      fld_current_phase(A) = fld_current_phase(B),
+      fld_ticks(A) = fld_ticks(B),
+      fld_fail_bit(A) = fld_fail_bit(B),
+      fld_ticks_to_complete(A) = fld_ticks_to_complete(B)].

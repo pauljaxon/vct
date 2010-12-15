@@ -1,0 +1,317 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.73
+
+                           function decode.Newton
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 33:
+
+function_newton_1.
+H1:    true .
+H2:    lo >= bus__word__first .
+H3:    lo <= bus__word__last .
+H4:    hi >= bus__word__first .
+H5:    hi <= bus__word__last .
+        ->
+C1:    hi >= bus__word__first .
+C2:    hi <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 35:
+
+function_newton_2.
+H1:    true .
+H2:    lo >= bus__word__first .
+H3:    lo <= bus__word__last .
+H4:    hi >= bus__word__first .
+H5:    hi <= bus__word__last .
+H6:    hi >= bus__word__first .
+H7:    hi <= bus__word__last .
+H8:    hi >= bus__word__first .
+H9:    hi <= bus__word__last .
+H10:   hi >= 32768 .
+H11:   hi >= bus__word__first .
+H12:   hi <= bus__word__last .
+        ->
+C1:    hi - 32768 >= bus__word__first .
+C2:    hi - 32768 <= bus__word__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 40:
+
+function_newton_3.
+H1:    true .
+H2:    lo >= bus__word__first .
+H3:    lo <= bus__word__last .
+H4:    hi >= bus__word__first .
+H5:    hi <= bus__word__last .
+H6:    hi >= bus__word__first .
+H7:    hi <= bus__word__last .
+H8:    hi >= bus__word__first .
+H9:    hi <= bus__word__last .
+H10:   hi >= 32768 .
+H11:   hi >= bus__word__first .
+H12:   hi <= bus__word__last .
+H13:   hi - 32768 >= bus__word__first .
+H14:   hi - 32768 <= bus__word__last .
+H15:   hi - 32768 >= bus__word__first .
+H16:   hi - 32768 <= bus__word__last .
+        ->
+C1:    lo + (hi - 32768) * word_max >= measuretypes__newton__first .
+C2:    lo + (hi - 32768) * word_max <= measuretypes__newton__last .
+C3:    (hi - 32768) * word_max >= measuretypes__newton__base__first .
+C4:    (hi - 32768) * word_max <= measuretypes__newton__base__last .
+C5:    hi - 32768 >= measuretypes__newton__first .
+C6:    hi - 32768 <= measuretypes__newton__last .
+C7:    lo >= measuretypes__newton__first .
+C8:    lo <= measuretypes__newton__last .
+ 
+
+function_newton_4.
+H1:    true .
+H2:    lo >= bus__word__first .
+H3:    lo <= bus__word__last .
+H4:    hi >= bus__word__first .
+H5:    hi <= bus__word__last .
+H6:    hi >= bus__word__first .
+H7:    hi <= bus__word__last .
+H8:    hi >= bus__word__first .
+H9:    hi <= bus__word__last .
+H10:   not (hi >= 32768) .
+H11:   hi >= bus__word__first .
+H12:   hi <= bus__word__last .
+        ->
+C1:    lo + hi * word_max >= measuretypes__newton__first .
+C2:    lo + hi * word_max <= measuretypes__newton__last .
+C3:    hi * word_max >= measuretypes__newton__base__first .
+C4:    hi * word_max <= measuretypes__newton__base__last .
+C5:    hi >= measuretypes__newton__first .
+C6:    hi <= measuretypes__newton__last .
+C7:    lo >= measuretypes__newton__first .
+C8:    lo <= measuretypes__newton__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 43:
+
+function_newton_5.
+H1:    true .
+H2:    lo >= bus__word__first .
+H3:    lo <= bus__word__last .
+H4:    hi >= bus__word__first .
+H5:    hi <= bus__word__last .
+H6:    hi >= bus__word__first .
+H7:    hi <= bus__word__last .
+H8:    hi >= bus__word__first .
+H9:    hi <= bus__word__last .
+H10:   hi >= 32768 .
+H11:   hi >= bus__word__first .
+H12:   hi <= bus__word__last .
+H13:   hi - 32768 >= bus__word__first .
+H14:   hi - 32768 <= bus__word__last .
+H15:   hi - 32768 >= bus__word__first .
+H16:   hi - 32768 <= bus__word__last .
+H17:   lo + (hi - 32768) * word_max >= measuretypes__newton__first .
+H18:   lo + (hi - 32768) * word_max <= measuretypes__newton__last .
+H19:   (hi - 32768) * word_max >= measuretypes__newton__base__first .
+H20:   (hi - 32768) * word_max <= measuretypes__newton__base__last .
+H21:   hi - 32768 >= measuretypes__newton__first .
+H22:   hi - 32768 <= measuretypes__newton__last .
+H23:   lo >= measuretypes__newton__first .
+H24:   lo <= measuretypes__newton__last .
+H25:   true .
+H26:   true .
+H27:   lo + (hi - 32768) * word_max >= measuretypes__newton__first .
+H28:   lo + (hi - 32768) * word_max <= measuretypes__newton__last .
+        ->
+C1:     -(lo + (hi - 32768) * word_max) >= 
+           measuretypes__newton__first .
+C2:     -(lo + (hi - 32768) * word_max) <= 
+           measuretypes__newton__last .
+ 
+
+function_newton_6.
+H1:    true .
+H2:    lo >= bus__word__first .
+H3:    lo <= bus__word__last .
+H4:    hi >= bus__word__first .
+H5:    hi <= bus__word__last .
+H6:    hi >= bus__word__first .
+H7:    hi <= bus__word__last .
+H8:    hi >= bus__word__first .
+H9:    hi <= bus__word__last .
+H10:   not (hi >= 32768) .
+H11:   hi >= bus__word__first .
+H12:   hi <= bus__word__last .
+H13:   lo + hi * word_max >= measuretypes__newton__first .
+H14:   lo + hi * word_max <= measuretypes__newton__last .
+H15:   hi * word_max >= measuretypes__newton__base__first .
+H16:   hi * word_max <= measuretypes__newton__base__last .
+H17:   hi >= measuretypes__newton__first .
+H18:   hi <= measuretypes__newton__last .
+H19:   lo >= measuretypes__newton__first .
+H20:   lo <= measuretypes__newton__last .
+H21:   true .
+H22:   false .
+H23:   lo + hi * word_max >= measuretypes__newton__first .
+H24:   lo + hi * word_max <= measuretypes__newton__last .
+        ->
+C1:     -(lo + hi * word_max) >= measuretypes__newton__first .
+C2:     -(lo + hi * word_max) <= measuretypes__newton__last .
+ 
+
+For path(s) from start to finish:
+
+function_newton_7.
+H1:    true .
+H2:    lo >= bus__word__first .
+H3:    lo <= bus__word__last .
+H4:    hi >= bus__word__first .
+H5:    hi <= bus__word__last .
+H6:    hi >= bus__word__first .
+H7:    hi <= bus__word__last .
+H8:    hi >= bus__word__first .
+H9:    hi <= bus__word__last .
+H10:   hi >= 32768 .
+H11:   hi >= bus__word__first .
+H12:   hi <= bus__word__last .
+H13:   hi - 32768 >= bus__word__first .
+H14:   hi - 32768 <= bus__word__last .
+H15:   hi - 32768 >= bus__word__first .
+H16:   hi - 32768 <= bus__word__last .
+H17:   lo + (hi - 32768) * word_max >= measuretypes__newton__first .
+H18:   lo + (hi - 32768) * word_max <= measuretypes__newton__last .
+H19:   (hi - 32768) * word_max >= measuretypes__newton__base__first .
+H20:   (hi - 32768) * word_max <= measuretypes__newton__base__last .
+H21:   hi - 32768 >= measuretypes__newton__first .
+H22:   hi - 32768 <= measuretypes__newton__last .
+H23:   lo >= measuretypes__newton__first .
+H24:   lo <= measuretypes__newton__last .
+H25:   true .
+H26:   true .
+H27:   lo + (hi - 32768) * word_max >= measuretypes__newton__first .
+H28:   lo + (hi - 32768) * word_max <= measuretypes__newton__last .
+H29:    -(lo + (hi - 32768) * word_max) >= 
+           measuretypes__newton__first .
+H30:    -(lo + (hi - 32768) * word_max) <= 
+           measuretypes__newton__last .
+H31:    -(lo + (hi - 32768) * word_max) >= 
+           measuretypes__newton__first .
+H32:    -(lo + (hi - 32768) * word_max) <= 
+           measuretypes__newton__last .
+        ->
+C1:    true .
+C2:     -(lo + (hi - 32768) * word_max) >= 
+           measuretypes__newton__first .
+C3:     -(lo + (hi - 32768) * word_max) <= 
+           measuretypes__newton__last .
+ 
+
+function_newton_8.
+H1:    true .
+H2:    lo >= bus__word__first .
+H3:    lo <= bus__word__last .
+H4:    hi >= bus__word__first .
+H5:    hi <= bus__word__last .
+H6:    hi >= bus__word__first .
+H7:    hi <= bus__word__last .
+H8:    hi >= bus__word__first .
+H9:    hi <= bus__word__last .
+H10:   not (hi >= 32768) .
+H11:   hi >= bus__word__first .
+H12:   hi <= bus__word__last .
+H13:   lo + hi * word_max >= measuretypes__newton__first .
+H14:   lo + hi * word_max <= measuretypes__newton__last .
+H15:   hi * word_max >= measuretypes__newton__base__first .
+H16:   hi * word_max <= measuretypes__newton__base__last .
+H17:   hi >= measuretypes__newton__first .
+H18:   hi <= measuretypes__newton__last .
+H19:   lo >= measuretypes__newton__first .
+H20:   lo <= measuretypes__newton__last .
+H21:   true .
+H22:   false .
+H23:   lo + hi * word_max >= measuretypes__newton__first .
+H24:   lo + hi * word_max <= measuretypes__newton__last .
+H25:    -(lo + hi * word_max) >= measuretypes__newton__first .
+H26:    -(lo + hi * word_max) <= measuretypes__newton__last .
+H27:    -(lo + hi * word_max) >= measuretypes__newton__first .
+H28:    -(lo + hi * word_max) <= measuretypes__newton__last .
+        ->
+C1:    true .
+C2:     -(lo + hi * word_max) >= measuretypes__newton__first .
+C3:     -(lo + hi * word_max) <= measuretypes__newton__last .
+ 
+
+function_newton_9.
+H1:    true .
+H2:    lo >= bus__word__first .
+H3:    lo <= bus__word__last .
+H4:    hi >= bus__word__first .
+H5:    hi <= bus__word__last .
+H6:    hi >= bus__word__first .
+H7:    hi <= bus__word__last .
+H8:    hi >= bus__word__first .
+H9:    hi <= bus__word__last .
+H10:   hi >= 32768 .
+H11:   hi >= bus__word__first .
+H12:   hi <= bus__word__last .
+H13:   hi - 32768 >= bus__word__first .
+H14:   hi - 32768 <= bus__word__last .
+H15:   hi - 32768 >= bus__word__first .
+H16:   hi - 32768 <= bus__word__last .
+H17:   lo + (hi - 32768) * word_max >= measuretypes__newton__first .
+H18:   lo + (hi - 32768) * word_max <= measuretypes__newton__last .
+H19:   (hi - 32768) * word_max >= measuretypes__newton__base__first .
+H20:   (hi - 32768) * word_max <= measuretypes__newton__base__last .
+H21:   hi - 32768 >= measuretypes__newton__first .
+H22:   hi - 32768 <= measuretypes__newton__last .
+H23:   lo >= measuretypes__newton__first .
+H24:   lo <= measuretypes__newton__last .
+H25:   true .
+H26:   not true .
+H27:   lo + (hi - 32768) * word_max >= measuretypes__newton__first .
+H28:   lo + (hi - 32768) * word_max <= measuretypes__newton__last .
+        ->
+C1:    true .
+C2:    lo + (hi - 32768) * word_max >= measuretypes__newton__first .
+C3:    lo + (hi - 32768) * word_max <= measuretypes__newton__last .
+ 
+
+function_newton_10.
+H1:    true .
+H2:    lo >= bus__word__first .
+H3:    lo <= bus__word__last .
+H4:    hi >= bus__word__first .
+H5:    hi <= bus__word__last .
+H6:    hi >= bus__word__first .
+H7:    hi <= bus__word__last .
+H8:    hi >= bus__word__first .
+H9:    hi <= bus__word__last .
+H10:   not (hi >= 32768) .
+H11:   hi >= bus__word__first .
+H12:   hi <= bus__word__last .
+H13:   lo + hi * word_max >= measuretypes__newton__first .
+H14:   lo + hi * word_max <= measuretypes__newton__last .
+H15:   hi * word_max >= measuretypes__newton__base__first .
+H16:   hi * word_max <= measuretypes__newton__base__last .
+H17:   hi >= measuretypes__newton__first .
+H18:   hi <= measuretypes__newton__last .
+H19:   lo >= measuretypes__newton__first .
+H20:   lo <= measuretypes__newton__last .
+H21:   true .
+H22:   not false .
+H23:   lo + hi * word_max >= measuretypes__newton__first .
+H24:   lo + hi * word_max <= measuretypes__newton__last .
+        ->
+C1:    true .
+C2:    lo + hi * word_max >= measuretypes__newton__first .
+C3:    lo + hi * word_max <= measuretypes__newton__last .
+ 
+

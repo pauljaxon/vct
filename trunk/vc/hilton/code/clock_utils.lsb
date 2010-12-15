@@ -1,0 +1,87 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.44
+
+Line
+   1  -- Time-related utilities implementation
+   2  --
+   3  -- $Log: clock_utils.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/02/09 20:35:18  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  package body Clock_Utils is
+  13     -- Wraparound time diff delta calculation
+  14     function Delta_Time (Orig, Now : Clock.Millisecond)
+  15                         return Clock.Millisecond
+  16     is
+  17        Gap : Clock.Millisecond;
+  18     begin
+  19        if Now >= Orig then
+  20           Gap := Now - Orig;
+  21        else
+  22           -- Wraparound
+  23           Gap := Clock.Millisecond'Last - Orig;
+  24           Gap := Gap + Now;
+  25        end if;
+  26        return Gap;
+  27     end Delta_Time;
+
++++        Flow analysis of subprogram Delta_Time 
+           performed: no errors found.
+
+  28  
+  29     -- Add a delta to a time and deal with wraparound
+  30     function Add_Delay(Orig, PlusDelta : Clock.Millisecond)
+  31                       return Clock.Millisecond
+  32     is
+  33        Gap,Result : Clock.Millisecond;
+  34     begin
+  35        Gap := Clock.Millisecond'Last - Orig;
+  36        if Gap >= PlusDelta then
+  37           Result := Orig + PlusDelta;
+  38        else
+  39           Result := PlusDelta - Gap;
+  40        end if;
+  41        return Result;
+  42     end Add_Delay;
+
++++        Flow analysis of subprogram Add_Delay performed: 
+           no errors found.
+
+  43  
+  44     -- Subtract a delta from a time and deal with wraparound
+  45     function Subtract_Delay(Orig, MinusDelta : Clock.Millisecond)
+  46                            return Clock.Millisecond
+  47     is
+  48        Gap, Result : Clock.Millisecond;
+  49     begin
+  50        if Orig >= MinusDelta then
+  51           Result := Orig - MinusDelta;
+  52        else
+  53           Gap := MinusDelta - Orig;
+  54           Result := Clock.Millisecond'Last - Gap;
+  55        end if;
+  56        return Result;
+  57     end Subtract_Delay;
+
++++        Flow analysis of subprogram Subtract_Delay 
+           performed: no errors found.
+
+  58  
+  59  
+  60  end Clock_Utils;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

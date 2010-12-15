@@ -1,0 +1,194 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:38.91
+
+Line
+   1  --=head1 NAME
+   2  --
+   3  -- bit_machine - BIT machine for components
+   4  --
+   5  --=head1 REVISION HISTORY
+   6  --
+   7  -- $Log: bit_machine.ads,v $
+   8  -- Revision 1.2  2004/12/20 18:21:31  adi
+   9  -- Added POD for bit_machine.ads
+  10  --
+  11  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+  12  -- Added from tarfile
+  13  --
+  14  -- Revision 1.4  2003/09/10 20:03:12  adi
+  15  -- Added Ticks counter
+  16  --
+  17  -- Revision 1.3  2003/08/06 20:38:06  adi
+  18  -- Corrected constant defn
+  19  --
+  20  -- Revision 1.2  2003/08/06 20:29:53  adi
+  21  -- Split out of Compass/Barometer
+  22  --
+  23  -- Revision 1.1  2003/08/05 22:06:17  adi
+  24  -- Initial revision
+  25  --
+  26  --=cut
+  27  with SystemTypes,Bus,IBIT;
+  28  --# inherit Bus,SystemTypes,IBIT;
+  29  package BIT_Machine
+  30  is
+  31     --=head1 TYPES
+  32     --
+  33     --=over 4
+  34     --
+  35     --=cut
+  36  
+  37     --=item *
+  38     --
+  39     type Machine is private;
+  40     Initial_Machine : constant Machine;
+  41     --
+  42     --Private type of a machine that is instantiated for each subsystem
+  43     --wanting a BIT machine
+  44     --
+  45     --=cut
+  46  
+  47     --=back
+  48     --
+  49     --=head1 SUBPROGRAMS
+  50     --
+  51     --=over 4
+  52  
+  53     --=item *
+  54     --
+  55     procedure Create
+  56       (Ticks_To_Complete : in     Systemtypes.Unsigned16;
+  57        State             :    out Machine);
+  58     --# derives State from Ticks_To_Complete;
+  59     --
+  60     --Create a BIT machine C<State> which will take
+  61     --C<Ticks_To_Complete> BIT ticks until the BIT reports success.
+  62     --
+  63  
+  64     --=item *
+  65     --
+  66     function Phase(State : Machine)
+  67                   return IBIT.Phase;
+  68     --
+  69     --Get the current BIT phase for machine C<State>.
+  70     --
+  71  
+  72     --=item *
+  73     --
+  74     function Machine_Ticks(State : Machine)
+  75                           return Systemtypes.Unsigned16;
+  76     --
+  77     --Get the current number of ticks for machine C<State>.
+  78     --
+  79  
+  80     --=item *
+  81     --
+  82     procedure Init(State : in out Machine);
+  83     --# derives State from *;
+  84     --
+  85     --Kick off a BIT for machine C<State>
+  86     --
+  87  
+  88     --=item *
+  89     --
+  90     procedure Halt(State : in out Machine);
+  91     --# derives State from *;
+  92     --
+  93     --Stop a BIT in progress on machine C<State>
+  94     --
+  95  
+  96     --=item *
+  97     --
+  98     procedure Step(State : in out Machine);
+  99     --# derives State from *;
+ 100     --
+ 101     --Step a BIT process along for machine C<State>
+ 102     --
+ 103  
+ 104     --=item *
+ 105     --
+ 106     procedure Fail_Next(State : in out Machine);
+ 107     --# derives State from *;
+ 108     --
+ 109     --Cause machine C<State> to fail the next BIT
+ 110     --
+ 111  
+ 112  
+ 113     --=item *
+ 114     --
+ 115     procedure Change_State
+ 116       (Word  : in Bus.Word;
+ 117        State : in out Machine);
+ 118     --# derives State from *, Word;
+ 119     --
+ 120     --Cause machine C<State> to act on a piece of data C<Word> which
+ 121     --has been read off the bus as part of a BIT request
+ 122     --
+ 123  
+ 124     --=item *
+ 125     --
+ 126     procedure Reset(State : in out Machine);
+ 127     --# derives State from *;
+ 128     --
+ 129     --Reset the BIT state of machine C<State>
+ 130     --
+ 131     --=back
+ 132     --
+ 133     --=cut
+ 134  
+ 135  private
+ 136     type Machine is record
+ 137        Current_Phase : IBIT.Phase;
+ 138        Ticks : SystemTypes.Unsigned16;
+ 139        Fail_BIT : Boolean;
+ 140        Ticks_To_Complete : Systemtypes.Unsigned16;
+ 141     end record;
+ 142  
+ 143     Initial_Machine : constant Machine
+ 144       := Machine'(Current_Phase => Ibit.Off,
+ 145                   Ticks => 0,
+ 146                   Fail_Bit => False,
+ 147                   Ticks_To_Complete => 10);
+ 148  end BIT_Machine;
+ 149  
+ 150  
+ 151  --=head1 NOTES
+ 152  --
+ 153  --This package provides the abstract data type (ADT)
+ 154  --C<BIT_Machine.Machine>, allowing subsystems to instantiate
+ 155  --standard BIT machines as part of their internal state.
+ 156  --
+ 157  --=head1 AUTHOR
+ 158  --
+ 159  --Adrian J. Hilton.  Home web page at L<http://www.suslik.org/>
+ 160  --
+ 161  --=head1 LICENSE
+ 162  --
+ 163  --Copyright (C) 2003-2005, Adrian J. Hilton
+ 164  --
+ 165  --This program is free software; you can redistribute it and/or modify
+ 166  --it under the terms of the GNU General Public License as published by
+ 167  --the Free Software Foundation; either version 2 of the License, or
+ 168  --(at your option) any later version.
+ 169  --
+ 170  --This program is distributed in the hope that it will be useful,
+ 171  --but WITHOUT ANY WARRANTY; without even the implied warranty of
+ 172  --MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ 173  --GNU General Public License for more details.
+ 174  --
+ 175  --You should have received a copy of the GNU General Public License
+ 176  --along with this program; if not, write to the Free Software
+ 177  --Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 178  --
+ 179  --=cut
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

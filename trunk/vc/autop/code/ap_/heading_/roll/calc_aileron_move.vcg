@@ -1,0 +1,141 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2009 09:54:53.78
+
+                      function roll.Calc_Aileron_Move
+
+
+
+
+For path(s) from start to precondition check associated with statement of line 64:
+
+function_calc_aileron_move_1.
+H1:    true .
+H2:    present_bank >= degreespersec__first .
+H3:    present_bank <= degreespersec__last .
+H4:    target_bank >= degreespersec__first .
+H5:    target_bank <= degreespersec__last .
+H6:    mach >= instruments__machnumber__first .
+H7:    mach <= instruments__machnumber__last .
+        ->
+C1:    40 > 0 .
+C2:    40 >= surfaces__controlangle__first .
+C3:    40 <= surfaces__controlangle__last .
+C4:    40 >= surfaces__controlangle__first .
+C5:    40 <= surfaces__controlangle__last .
+C6:    target_bank div 2 >= scale__scaledata__first .
+C7:    target_bank div 2 <= scale__scaledata__last .
+C8:    target_bank div 2 >= scale__scaledata__first .
+C9:    target_bank div 2 <= scale__scaledata__last .
+C10:   target_bank div 2 >= degrees__degreespersec__base__first .
+C11:   target_bank div 2 <= degrees__degreespersec__base__last .
+C12:   2 <> 0 .
+C13:   present_bank div 2 >= scale__scaledata__first .
+C14:   present_bank div 2 <= scale__scaledata__last .
+C15:   present_bank div 2 >= scale__scaledata__first .
+C16:   present_bank div 2 <= scale__scaledata__last .
+C17:   present_bank div 2 >= degrees__degreespersec__base__first .
+C18:   present_bank div 2 <= degrees__degreespersec__base__last .
+C19:   2 <> 0 .
+C20:   mach >= instruments__machnumber__first .
+C21:   mach <= instruments__machnumber__last .
+ 
+
+For path(s) from start to run-time check associated with statement of line 64:
+
+function_calc_aileron_move_2.
+H1:    true .
+H2:    present_bank >= degreespersec__first .
+H3:    present_bank <= degreespersec__last .
+H4:    target_bank >= degreespersec__first .
+H5:    target_bank <= degreespersec__last .
+H6:    mach >= instruments__machnumber__first .
+H7:    mach <= instruments__machnumber__last .
+H8:    40 > 0 .
+H9:    40 >= surfaces__controlangle__first .
+H10:   40 <= surfaces__controlangle__last .
+H11:   40 >= surfaces__controlangle__first .
+H12:   40 <= surfaces__controlangle__last .
+H13:   target_bank div 2 >= scale__scaledata__first .
+H14:   target_bank div 2 <= scale__scaledata__last .
+H15:   target_bank div 2 >= scale__scaledata__first .
+H16:   target_bank div 2 <= scale__scaledata__last .
+H17:   target_bank div 2 >= degrees__degreespersec__base__first .
+H18:   target_bank div 2 <= degrees__degreespersec__base__last .
+H19:   2 <> 0 .
+H20:   present_bank div 2 >= scale__scaledata__first .
+H21:   present_bank div 2 <= scale__scaledata__last .
+H22:   present_bank div 2 >= scale__scaledata__first .
+H23:   present_bank div 2 <= scale__scaledata__last .
+H24:   present_bank div 2 >= degrees__degreespersec__base__first .
+H25:   present_bank div 2 <= degrees__degreespersec__base__last .
+H26:   2 <> 0 .
+H27:   mach >= instruments__machnumber__first .
+H28:   mach <= instruments__machnumber__last .
+H29:   scale__scale_movement(mach, present_bank div 2, 
+           target_bank div 2, 40) >= surfaces__controlangle__first .
+H30:   scale__scale_movement(mach, present_bank div 2, 
+           target_bank div 2, 40) <= surfaces__controlangle__last .
+        ->
+C1:    scale__scale_movement(mach, present_bank div 2, 
+           target_bank div 2, 40) >= surfaces__controlangle__first .
+C2:    scale__scale_movement(mach, present_bank div 2, 
+           target_bank div 2, 40) <= surfaces__controlangle__last .
+ 
+
+For path(s) from start to finish:
+
+function_calc_aileron_move_3.
+H1:    true .
+H2:    present_bank >= degreespersec__first .
+H3:    present_bank <= degreespersec__last .
+H4:    target_bank >= degreespersec__first .
+H5:    target_bank <= degreespersec__last .
+H6:    mach >= instruments__machnumber__first .
+H7:    mach <= instruments__machnumber__last .
+H8:    40 > 0 .
+H9:    40 >= surfaces__controlangle__first .
+H10:   40 <= surfaces__controlangle__last .
+H11:   40 >= surfaces__controlangle__first .
+H12:   40 <= surfaces__controlangle__last .
+H13:   target_bank div 2 >= scale__scaledata__first .
+H14:   target_bank div 2 <= scale__scaledata__last .
+H15:   target_bank div 2 >= scale__scaledata__first .
+H16:   target_bank div 2 <= scale__scaledata__last .
+H17:   target_bank div 2 >= degrees__degreespersec__base__first .
+H18:   target_bank div 2 <= degrees__degreespersec__base__last .
+H19:   2 <> 0 .
+H20:   present_bank div 2 >= scale__scaledata__first .
+H21:   present_bank div 2 <= scale__scaledata__last .
+H22:   present_bank div 2 >= scale__scaledata__first .
+H23:   present_bank div 2 <= scale__scaledata__last .
+H24:   present_bank div 2 >= degrees__degreespersec__base__first .
+H25:   present_bank div 2 <= degrees__degreespersec__base__last .
+H26:   2 <> 0 .
+H27:   mach >= instruments__machnumber__first .
+H28:   mach <= instruments__machnumber__last .
+H29:   scale__scale_movement(mach, present_bank div 2, 
+           target_bank div 2, 40) >= surfaces__controlangle__first .
+H30:   scale__scale_movement(mach, present_bank div 2, 
+           target_bank div 2, 40) <= surfaces__controlangle__last .
+H31:   scale__scale_movement(mach, present_bank div 2, 
+           target_bank div 2, 40) >= surfaces__controlangle__first .
+H32:   scale__scale_movement(mach, present_bank div 2, 
+           target_bank div 2, 40) <= surfaces__controlangle__last .
+H33:   scale__scale_movement(mach, present_bank div 2, 
+           target_bank div 2, 40) >= surfaces__controlangle__first .
+H34:   scale__scale_movement(mach, present_bank div 2, 
+           target_bank div 2, 40) <= surfaces__controlangle__last .
+        ->
+C1:    true .
+C2:    scale__scale_movement(mach, present_bank div 2, 
+           target_bank div 2, 40) >= surfaces__controlangle__first .
+C3:    scale__scale_movement(mach, present_bank div 2, 
+           target_bank div 2, 40) <= surfaces__controlangle__last .
+ 
+

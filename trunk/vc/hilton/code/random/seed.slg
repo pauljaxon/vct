@@ -1,0 +1,79 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:37  SIMPLIFIED 25-NOV-2009, 14:18:23
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function random.Seed
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_seed_1.  @@@@@@@@@@
+***  Proved C1:  v >= value__first
+     using hypothesis H2.
+***  Proved C2:  v <= value__last
+     using hypothesis H3.
+-S-  Applied substitution rule seed_rules(9).
+     This was achieved by replacing all occurrences of seed_range__first by:
+          0.
+<S>  New C3:  v mod max_seed >= 0
+<S>  New C8:  v >= 0
+-S-  Applied substitution rule seed_rules(10).
+     This was achieved by replacing all occurrences of seed_range__last by:
+          971.
+<S>  New C4:  v mod max_seed <= 971
+<S>  New C9:  v <= 971
+-S-  Applied substitution rule seed_rules(11).
+     This was achieved by replacing all occurrences of seed_range__base__first 
+          by:
+          - 2147483648.
+<S>  New C5:  v mod max_seed >= - 2147483648
+-S-  Applied substitution rule seed_rules(12).
+     This was achieved by replacing all occurrences of seed_range__base__last 
+          by:
+          2147483647.
+<S>  New C6:  v mod max_seed <= 2147483647
+-S-  Applied substitution rule seed_rules(1).
+     This was achieved by replacing all occurrences of max_seed by:
+          971.
+<S>  New C7:  true
+<S>  New C3:  v mod 971 >= 0
+<S>  New C4:  v mod 971 <= 971
+<S>  New C5:  v mod 971 >= - 2147483648
+<S>  New C6:  v mod 971 <= 2147483647
+-S-  Applied substitution rule seed_rules(3).
+     This was achieved by replacing all occurrences of value__first by:
+          0.
+<S>  New H2:  v >= 0
+-S-  Applied substitution rule seed_rules(4).
+     This was achieved by replacing all occurrences of value__last by:
+          63001.
+<S>  New H3:  v <= 63001
+***  Proved C8:  v >= 0
+     using hypothesis H2.
+***  Proved C7:  true
+***  Proved C3:  v mod 971 >= 0
+***  Proved C4:  v mod 971 <= 971
+***  Proved C5:  v mod 971 >= - 2147483648
+***  Proved C6:  v mod 971 <= 2147483647
+---  Eliminated hypothesis H1 (true-hypothesis).
+     +++  New H4:  value__size >= 0
+     +++  New H5:  value__base__first <= value__base__last
+     +++  New H6:  seed_range__size >= 0
+     +++  New H7:  value__base__first <= 0
+     +++  New H8:  value__base__last >= 63001
+
+
+@@@@@@@@@@  VC: function_seed_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
+

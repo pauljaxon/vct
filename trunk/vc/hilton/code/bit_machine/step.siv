@@ -1,0 +1,91 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:39  SIMPLIFIED 25-NOV-2009, 14:18:41
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure bit_machine.Step
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 62:
+
+procedure_step_1.
+H1:    fld_ticks_to_complete(state) >= 0 .
+H2:    fld_ticks_to_complete(state) <= 65535 .
+H3:    fld_ticks(state) >= 0 .
+H4:    fld_ticks(state) <= 65535 .
+H5:    ibit__off <= fld_current_phase(state) .
+H6:    fld_current_phase(state) <= ibit__timeout .
+H7:    fld_current_phase(state) = ibit__in_progress .
+H8:    integer__size >= 0 .
+H9:    systemtypes__unsigned16__size >= 0 .
+H10:   ibit__phase__size >= 0 .
+H11:   machine__size >= 0 .
+       ->
+C1:    fld_ticks(state) <= 65534 .
+
+
+For path(s) from start to run-time check associated with statement of line 66:
+
+procedure_step_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 68:
+
+procedure_step_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 71:
+
+procedure_step_4.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 76:
+
+procedure_step_5.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 80:
+
+procedure_step_6.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to finish:
+
+procedure_step_7.
+*** true .          /* all conclusions proved */
+
+
+procedure_step_8.
+*** true .          /* all conclusions proved */
+
+
+procedure_step_9.
+*** true .          /* all conclusions proved */
+
+
+procedure_step_10.
+*** true .          /* all conclusions proved */
+
+
+procedure_step_11.
+*** true .          /* all conclusions proved */
+
+
+procedure_step_12.
+*** true .          /* all conclusions proved */
+
+

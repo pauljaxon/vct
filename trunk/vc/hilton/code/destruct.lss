@@ -1,0 +1,75 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.52
+
+Line
+   1  -- Self-destruct simulator
+   2  --
+   3  -- $Log: destruct.ads,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.1  2003/09/01 19:14:29  adi
+   9  -- Initial revision
+  10  --
+  11  --
+  12  with Clock,Destruct_cfg;
+  13  use type Clock.Millisecond, Destruct_Cfg.state;
+  14  --# inherit state_types, Bus, Rt1553,
+  15  --#         Clock, Clock_Utils, destruct_cfg,
+  16  --#         IBIT, Bit_Machine, systemtypes;
+  17  package Destruct
+  18    --# own State;
+  19    --# initializes State;
+  20  is
+  21     subtype Stage is Destruct_Cfg.State;
+  22  
+  23     -- Cycle the reading of data from the bus
+  24     -- and writing of data to the bus
+  25     procedure Cycle;
+  26     --# global in out State;
+  27     --#        in out Clock.Time;
+  28     --#        in Bus.Outputs;
+  29     --#        in out Bus.Inputs;
+  30     --# derives State from *, Bus.Outputs, clock.time &
+  31     --#        Bus.Inputs from *, Clock.Time, State &
+  32     --#        Clock.Time from *, state, bus.outputs;
+  33  
+  34     -- Set the current code exchange stage level
+  35     procedure Set_Stage(New_Stage : in Stage);
+  36     --# global in out State, Clock.Time;
+  37     --# derives Clock.Time from * &
+  38     --#         State from *, Clock.Time, New_Stage;
+  39  
+  40     -- Read the current exchange stage
+  41     procedure Read_Stage(This_Stage : out Stage);
+  42     --# global in     State;
+  43     --# derives
+  44     --#    this_stage from state;
+  45  
+  46     -- Cause the next BIT to fail
+  47     procedure Fail_Next_Bit;
+  48     --# global in out State;
+  49     --# derives State from *;
+  50  
+  51     procedure Init;
+  52     --# global out State;
+  53     --#        in out Bus.Inputs;
+  54     --# derives State from &
+  55     --#         Bus.Inputs from *;
+  56  
+  57     -- Test stub
+  58     procedure Command;
+  59     --# derives;
+  60  end Destruct;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

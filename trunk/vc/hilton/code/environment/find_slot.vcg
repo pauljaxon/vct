@@ -1,0 +1,210 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:37.65
+
+                      procedure environment.Find_Slot
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 47:
+
+procedure_find_slot_1.
+H1:    true .
+H2:    true .
+        ->
+C1:    1 >= handle__first .
+C2:    1 <= handle__last .
+ 
+
+For path(s) from start to assertion of line 49:
+
+procedure_find_slot_2.
+H1:    true .
+H2:    true .
+H3:    1 >= handle__first .
+H4:    1 <= handle__last .
+        ->
+C1:    1 >= 1 .
+C2:    1 <= handle__last .
+C3:    true .
+ 
+
+For path(s) from assertion of line 49 to assertion of line 49:
+
+procedure_find_slot_3.
+H1:    h >= 1 .
+H2:    h <= handle__last .
+H3:    true .
+H4:    h >= handle__first .
+H5:    h <= handle__last .
+H6:    h >= valid_handle__first .
+H7:    h <= valid_handle__last .
+H8:    not (element(item_valid, [h])) .
+H9:    h >= valid_handle__first .
+H10:   h <= valid_handle__last .
+H11:   true .
+H12:   not true .
+H13:   h >= handle__first .
+H14:   h <= handle__last .
+H15:   not (h = null_handle) .
+        ->
+C1:    h >= 1 .
+C2:    h <= handle__last .
+C3:    true .
+ 
+
+procedure_find_slot_4.
+H1:    h >= 1 .
+H2:    h <= handle__last .
+H3:    true .
+H4:    h >= handle__first .
+H5:    h <= handle__last .
+H6:    h >= valid_handle__first .
+H7:    h <= valid_handle__last .
+H8:    not (not (element(item_valid, [h]))) .
+H9:    h >= handle__first .
+H10:   h <= handle__last .
+H11:   h = handle__last .
+H12:   null_handle >= handle__first .
+H13:   null_handle <= handle__last .
+H14:   true .
+H15:   not found .
+H16:   null_handle >= handle__first .
+H17:   null_handle <= handle__last .
+H18:   not (null_handle = null_handle) .
+        ->
+C1:    null_handle >= 1 .
+C2:    null_handle <= handle__last .
+C3:    true .
+ 
+
+procedure_find_slot_5.
+H1:    h >= 1 .
+H2:    h <= handle__last .
+H3:    true .
+H4:    h >= handle__first .
+H5:    h <= handle__last .
+H6:    h >= valid_handle__first .
+H7:    h <= valid_handle__last .
+H8:    not (not (element(item_valid, [h]))) .
+H9:    h >= handle__first .
+H10:   h <= handle__last .
+H11:   not (h = handle__last) .
+H12:   h >= handle__first .
+H13:   h <= handle__last .
+H14:   h + 1 >= handle__first .
+H15:   h + 1 <= handle__last .
+H16:   h <> handle__last .
+H17:   true .
+H18:   not found .
+H19:   h + 1 >= handle__first .
+H20:   h + 1 <= handle__last .
+H21:   not (h + 1 = null_handle) .
+        ->
+C1:    h + 1 >= 1 .
+C2:    h + 1 <= handle__last .
+C3:    true .
+ 
+
+For path(s) from assertion of line 49 to run-time check associated with statement of line 50:
+
+procedure_find_slot_6.
+H1:    h >= 1 .
+H2:    h <= handle__last .
+H3:    true .
+H4:    h >= handle__first .
+H5:    h <= handle__last .
+        ->
+C1:    h >= valid_handle__first .
+C2:    h <= valid_handle__last .
+ 
+
+For path(s) from assertion of line 49 to run-time check associated with statement of line 53:
+
+procedure_find_slot_7.
+H1:    h >= 1 .
+H2:    h <= handle__last .
+H3:    true .
+H4:    h >= handle__first .
+H5:    h <= handle__last .
+H6:    h >= valid_handle__first .
+H7:    h <= valid_handle__last .
+H8:    not (element(item_valid, [h])) .
+        ->
+C1:    h >= valid_handle__first .
+C2:    h <= valid_handle__last .
+ 
+
+For path(s) from assertion of line 49 to run-time check associated with statement of line 56:
+
+procedure_find_slot_8.
+H1:    h >= 1 .
+H2:    h <= handle__last .
+H3:    true .
+H4:    h >= handle__first .
+H5:    h <= handle__last .
+H6:    h >= valid_handle__first .
+H7:    h <= valid_handle__last .
+H8:    not (not (element(item_valid, [h]))) .
+H9:    h >= handle__first .
+H10:   h <= handle__last .
+H11:   h = handle__last .
+        ->
+C1:    null_handle >= handle__first .
+C2:    null_handle <= handle__last .
+ 
+
+For path(s) from assertion of line 49 to run-time check associated with statement of line 58:
+
+procedure_find_slot_9.
+H1:    h >= 1 .
+H2:    h <= handle__last .
+H3:    true .
+H4:    h >= handle__first .
+H5:    h <= handle__last .
+H6:    h >= valid_handle__first .
+H7:    h <= valid_handle__last .
+H8:    not (not (element(item_valid, [h]))) .
+H9:    h >= handle__first .
+H10:   h <= handle__last .
+H11:   not (h = handle__last) .
+H12:   h >= handle__first .
+H13:   h <= handle__last .
+        ->
+C1:    h + 1 >= handle__first .
+C2:    h + 1 <= handle__last .
+C3:    h <> handle__last .
+ 
+
+For path(s) from assertion of line 49 to finish:
+
+procedure_find_slot_10.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_find_slot_11.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_find_slot_12.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_find_slot_13.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_find_slot_14.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+procedure_find_slot_15.
+*** true .          /* trivially true VC removed by Examiner */
+
+

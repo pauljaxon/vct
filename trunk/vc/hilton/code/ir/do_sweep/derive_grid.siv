@@ -1,0 +1,310 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:41  SIMPLIFIED 25-NOV-2009, 14:19:05
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+procedure ir.Do_Sweep.Derive_Grid
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 117:
+
+procedure_derive_grid_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 118:
+
+procedure_derive_grid_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 119:
+
+procedure_derive_grid_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 119:
+
+procedure_derive_grid_4.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to assertion of line 120:
+
+procedure_derive_grid_5.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 120 to assertion of line 120:
+
+procedure_derive_grid_6.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 124 to assertion of line 120:
+
+procedure_derive_grid_7.
+*** true .          /* all conclusions proved */
+
+
+procedure_derive_grid_8.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 120 to run-time check associated with 
+          statement of line 121:
+
+procedure_derive_grid_9.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 120 to run-time check associated with 
+          statement of line 122:
+
+procedure_derive_grid_10.
+H1:    loop__1__x >= x_start .
+H2:    loop__1__x <= x_end .
+H3:    for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(i___1 
+          : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(element(
+          element(detect_points, [i___1]), [i___2])) and fld_temp(element(
+          element(detect_points, [i___1]), [i___2])) <= 6000)) .
+H4:    x_start >= - 12 .
+H5:    x_start <= 12 .
+H6:    x_end >= - 12 .
+H7:    x_end <= 12 .
+H8:    y_start >= - 12 .
+H9:    y_start <= 12 .
+H10:   y_end >= - 12 .
+H11:   y_end <= 12 .
+H12:   loop__1__x >= - 12 .
+H13:   loop__1__x <= 12 .
+H14:   loop__1__x - x_start <= 2147483647 .
+H15:   dx >= - 2147483648 .
+H16:   dx <= 2147483647 .
+H17:   long_integer__size >= 0 .
+H18:   measuretypes__kelvin__size >= 0 .
+H19:   measuretypes__bit_range__size >= 0 .
+H20:   measuretypes__bit_range__base__first <= 
+          measuretypes__bit_range__base__last .
+H21:   measuretypes__bit4_range__size >= 0 .
+H22:   measuretypes__bit4_range__base__first <= 
+          measuretypes__bit4_range__base__last .
+H23:   ir_cfg__sector_range__size >= 0 .
+H24:   ir_cfg__sector_range__base__first <= ir_cfg__sector_range__base__last .
+H25:   kelvin__size >= 0 .
+H26:   sector__size >= 0 .
+H27:   sector__base__first <= sector__base__last .
+H28:   integer32__size >= 0 .
+H29:   cell__size >= 0 .
+H30:   measuretypes__bit_range__base__first <= 0 .
+H31:   measuretypes__bit_range__base__last >= 255 .
+H32:   measuretypes__bit4_range__base__first <= 0 .
+H33:   measuretypes__bit4_range__base__last >= 3 .
+H34:   ir_cfg__sector_range__base__first <= - 12 .
+H35:   ir_cfg__sector_range__base__last >= 12 .
+H36:   sector__base__first <= - 12 .
+H37:   sector__base__last >= 12 .
+       ->
+C1:    4 * (loop__1__x - x_start) div (dx + 1) >= 0 .
+C2:    4 * (loop__1__x - x_start) div (dx + 1) <= 3 .
+C3:    4 * (loop__1__x - x_start) div (dx + 1) >= - 2147483648 .
+C4:    4 * (loop__1__x - x_start) div (dx + 1) <= 2147483647 .
+C5:    dx <> - 1 .
+C6:    dx <= 2147483646 .
+
+
+For path(s) from assertion of line 120 to run-time check associated with 
+          statement of line 123:
+
+procedure_derive_grid_11.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 120 to run-time check associated with 
+          statement of line 123:
+
+procedure_derive_grid_12.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 120 to assertion of line 124:
+
+procedure_derive_grid_13.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 124 to assertion of line 124:
+
+procedure_derive_grid_14.
+*** true .          /* all conclusions proved */
+
+
+procedure_derive_grid_15.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 124 to run-time check associated with 
+          statement of line 126:
+
+procedure_derive_grid_16.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 124 to run-time check associated with 
+          statement of line 127:
+
+procedure_derive_grid_17.
+H1:    loop__1__x >= x_start .
+H2:    loop__1__x <= x_end .
+H3:    loop__2__y >= y_start .
+H4:    loop__2__y <= y_end .
+H5:    for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(i___1 
+          : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(element(
+          element(detect_points, [i___1]), [i___2])) and fld_temp(element(
+          element(detect_points, [i___1]), [i___2])) <= 6000)) .
+H6:    x_start >= - 12 .
+H7:    x_start <= 12 .
+H8:    x_end >= - 12 .
+H9:    x_end <= 12 .
+H10:   y_start >= - 12 .
+H11:   y_start <= 12 .
+H12:   y_end >= - 12 .
+H13:   y_end <= 12 .
+H14:   loop__2__y >= - 12 .
+H15:   loop__2__y <= 12 .
+H16:   loop__1__x >= - 12 .
+H17:   loop__1__x <= 12 .
+H18:   loop__2__y - y_start <= 2147483647 .
+H19:   dy >= - 2147483648 .
+H20:   dy <= 2147483647 .
+H21:   long_integer__size >= 0 .
+H22:   measuretypes__kelvin__size >= 0 .
+H23:   measuretypes__bit_range__size >= 0 .
+H24:   measuretypes__bit_range__base__first <= 
+          measuretypes__bit_range__base__last .
+H25:   measuretypes__bit4_range__size >= 0 .
+H26:   measuretypes__bit4_range__base__first <= 
+          measuretypes__bit4_range__base__last .
+H27:   ir_cfg__sector_range__size >= 0 .
+H28:   ir_cfg__sector_range__base__first <= ir_cfg__sector_range__base__last .
+H29:   kelvin__size >= 0 .
+H30:   sector__size >= 0 .
+H31:   sector__base__first <= sector__base__last .
+H32:   integer32__size >= 0 .
+H33:   cell__size >= 0 .
+H34:   measuretypes__bit_range__base__first <= 0 .
+H35:   measuretypes__bit_range__base__last >= 255 .
+H36:   measuretypes__bit4_range__base__first <= 0 .
+H37:   measuretypes__bit4_range__base__last >= 3 .
+H38:   ir_cfg__sector_range__base__first <= - 12 .
+H39:   ir_cfg__sector_range__base__last >= 12 .
+H40:   sector__base__first <= - 12 .
+H41:   sector__base__last >= 12 .
+       ->
+C1:    4 * (loop__2__y - y_start) div (dy + 1) >= 0 .
+C2:    4 * (loop__2__y - y_start) div (dy + 1) <= 3 .
+C3:    4 * (loop__2__y - y_start) div (dy + 1) >= - 2147483648 .
+C4:    4 * (loop__2__y - y_start) div (dy + 1) <= 2147483647 .
+C5:    dy <> - 1 .
+C6:    dy <= 2147483646 .
+
+
+For path(s) from assertion of line 124 to run-time check associated with 
+          statement of line 128:
+
+procedure_derive_grid_18.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 124 to run-time check associated with 
+          statement of line 130:
+
+procedure_derive_grid_19.
+H1:    loop__1__x >= x_start .
+H2:    loop__1__x <= x_end .
+H3:    loop__2__y >= y_start .
+H4:    loop__2__y <= y_end .
+H5:    for_all(i___2 : integer, - 12 <= i___2 and i___2 <= 12 -> for_all(i___1 
+          : integer, - 12 <= i___1 and i___1 <= 12 -> 0 <= fld_temp(element(
+          element(detect_points, [i___1]), [i___2])) and fld_temp(element(
+          element(detect_points, [i___1]), [i___2])) <= 6000)) .
+H6:    x_start >= - 12 .
+H7:    x_start <= 12 .
+H8:    x_end >= - 12 .
+H9:    x_end <= 12 .
+H10:   y_start >= - 12 .
+H11:   y_start <= 12 .
+H12:   y_end >= - 12 .
+H13:   y_end <= 12 .
+H14:   loop__2__y >= - 12 .
+H15:   loop__2__y <= 12 .
+H16:   loop__1__x >= - 12 .
+H17:   loop__1__x <= 12 .
+H18:   dy >= - 2147483648 .
+H19:   4 * (loop__2__y - y_start) div (dy + 1) >= 0 .
+H20:   4 * (loop__2__y - y_start) div (dy + 1) <= 3 .
+H21:   dy <> - 1 .
+H22:   dy <= 2147483646 .
+H23:   4 * (loop__2__y - y_start) <= 2147483647 .
+H24:   fld_temp(element(element(detect_points, [loop__1__x]), [loop__2__y])) > 
+          0 .
+H25:   long_integer__size >= 0 .
+H26:   measuretypes__kelvin__size >= 0 .
+H27:   measuretypes__bit_range__size >= 0 .
+H28:   measuretypes__bit_range__base__first <= 
+          measuretypes__bit_range__base__last .
+H29:   measuretypes__bit4_range__size >= 0 .
+H30:   measuretypes__bit4_range__base__first <= 
+          measuretypes__bit4_range__base__last .
+H31:   ir_cfg__sector_range__size >= 0 .
+H32:   ir_cfg__sector_range__base__first <= ir_cfg__sector_range__base__last .
+H33:   kelvin__size >= 0 .
+H34:   sector__size >= 0 .
+H35:   sector__base__first <= sector__base__last .
+H36:   integer32__size >= 0 .
+H37:   cell__size >= 0 .
+H38:   measuretypes__bit_range__base__first <= 0 .
+H39:   measuretypes__bit_range__base__last >= 255 .
+H40:   measuretypes__bit4_range__base__first <= 0 .
+H41:   measuretypes__bit4_range__base__last >= 3 .
+H42:   ir_cfg__sector_range__base__first <= - 12 .
+H43:   ir_cfg__sector_range__base__last >= 12 .
+H44:   sector__base__first <= - 12 .
+H45:   sector__base__last >= 12 .
+       ->
+C1:    actual_x >= 0 .
+C2:    actual_x <= 3 .
+
+
+For path(s) from start to finish:
+
+procedure_derive_grid_20.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 120 to finish:
+
+procedure_derive_grid_21.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 124 to finish:
+
+procedure_derive_grid_22.
+*** true .          /* all conclusions proved */
+
+
+procedure_derive_grid_23.
+*** true .          /* all conclusions proved */
+
+

@@ -1,0 +1,359 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:41.85
+
+Line
+   1  -- MCU interface to the radar, implementation
+   2  --
+   3  -- $Log: if_radar.adb,v $
+   4  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   5  -- Added from tarfile
+   6  --
+   7  --
+   8  -- Revision 1.3  2003/09/11 19:52:47  adi
+   9  -- Added get_ibit_state
+  10  --
+  11  -- Revision 1.2  2003/08/25 20:31:57  adi
+  12  -- Corrected feedback check
+  13  --
+  14  -- Revision 1.1  2003/08/25 19:44:55  adi
+  15  -- Initial revision
+  16  --
+  17  --
+  18  with Bc1553, Bus, State_Types, Measuretypes.decode;
+  19  package body If_Radar
+  20    --# own State is
+  21    --#     Last_ping, Last_sweep, Ibit_Request;
+  22  is
+  23     subtype Sector is Radar_Cfg.Sector_Range;
+  24     type Ping_Request is record
+  25        Sx, Sy : Sector;
+  26        Fresh_Request, Fresh_Answer : Boolean;
+  27        Distance : Measuretypes.Meter;
+  28        Velocity : Measuretypes.Meter_Per_Sec;
+  29     end record;
+  30  
+  31     type Sweep_Request is record
+  32        Sx_Start, Sx_End : Sector;
+  33        Sy_Start, Sy_End : Sector;
+  34        Fresh_Request, Fresh_Answer : Boolean;
+  35        Grid : Measuretypes.Bit4_Array;
+  36     end record;
+  37  
+  38     Null_Ping : constant Ping_Request
+  39       := Ping_Request'(Sx => 0,
+  40                        Sy => 0,
+  41                        Fresh_Request => False,
+  42                        Fresh_Answer => False,
+  43                        Distance => 0,
+  44                        Velocity => 0);
+  45  
+  46     Null_Sweep : constant Sweep_Request
+  47       := Sweep_Request'(Sx_Start => 0,
+  48                         Sx_End   => 0,
+  49                         Sy_Start => 0,
+  50                         Sy_End   => 0,
+  51                         Fresh_Request => False,
+  52                         Fresh_Answer => False,
+  53                         Grid => Measuretypes.Bit4_Array'
+  54                         (others => Measuretypes.Bit4_Slice'(others => False))
+  55                         );
+  56  
+  57     Last_Ping : Ping_Request := Null_ping;
+  58     Last_Sweep : Sweep_Request := Null_sweep;
+  59     Ibit_Request : IBIT.Phase := IBIT.Off;
+  60  
+  61     Bus_Id : constant Bc1553.Lru_Name := Bc1553.Radar;
+  62  
+  63     function Get_Ibit_State return Ibit.Phase
+  64       --# global ibit_request;
+  65     is begin
+  66        return Ibit_Request;
+  67     end Get_Ibit_State;
+
++++        Flow analysis of subprogram Get_IBIT_State 
+           performed: no errors found.
+
+  68  
+  69     -- Ping the radar
+  70     procedure Ping(Sx, Sy : in Radar_Cfg.Sector_Range)
+  71     --# global in out Bus.Outputs; out last_ping;
+  72     --# derives Bus.Outputs from *, sx, sy &
+  73     --#         last_ping from sx, sy;
+  74     is
+  75     begin
+  76        -- Mark the last requested ping accordingly
+  77        Last_Ping := Ping_Request'
+  78          (Sx => Sx,
+  79           Sy => Sy,
+  80           Fresh_Request => True,
+  81           Fresh_Answer => False,
+  82           Distance => 0,
+  83           Velocity => 0);
+  84        -- Write on 2T
+  85        bc1553.Write_Word(Data => State_Types.Radar_values(State_Types.Ping),
+  86                          Idx => 1,
+  87                          Subaddress_Idx => 2,
+  88                          Dest => Bus_id);
+  89        Bc1553.Write_Word(Data => Radar_Cfg.Encode_Sector(Sx),
+  90                          Idx => 2,
+  91                          Subaddress_Idx => 2,
+  92                          Dest => Bus_Id);
+  93        Bc1553.Write_Word(Data => Radar_Cfg.Encode_Sector(Sy),
+  94                          Idx => 4,
+  95                          Subaddress_Idx => 2,
+  96                          Dest => Bus_Id);
+  97     end Ping;
+
++++        Flow analysis of subprogram Ping performed: no 
+           errors found.
+
+  98  
+  99     -- Sweep the radar
+ 100     procedure Sweep(Sx_Start, Sx_End : in Radar_Cfg.Sector_Range;
+ 101                     Sy_Start, Sy_End : in Radar_Cfg.Sector_Range)
+ 102     --# global in out bus.outputs; out last_sweep;
+ 103     --# derives bus.outputs from *, sx_start, sx_end,
+ 104     --#          sy_start, sy_end &
+ 105     --#    last_sweep from sx_start, sx_end,
+ 106     --#          sy_start, sy_end;
+ 107     is
+ 108     begin
+ 109       -- Mark the last requested ping accordingly
+ 110        Last_Sweep := Sweep_Request'
+ 111          (Sx_start => Sx_start,
+ 112           Sx_End   => Sx_End,
+ 113           Sy_Start => Sy_Start,
+ 114           Sy_End   => Sy_End,
+ 115           Fresh_Request => True,
+ 116           Fresh_Answer => False,
+ 117           Grid => Measuretypes.Bit4_Array'
+ 118           (others => Measuretypes.Bit4_Slice'(others => False))
+ 119           );
+ 120        -- Write on 2T
+ 121        bc1553.Write_Word(Data => State_Types.Radar_values(State_Types.Sweep),
+ 122                          Idx => 1,
+ 123                          Subaddress_Idx => 2,
+ 124                          Dest => Bus_id);
+ 125        Bc1553.Write_Word(Data => Radar_Cfg.Encode_Sector(Sx_start),
+ 126                          Idx => 2,
+ 127                          Subaddress_Idx => 2,
+ 128                          Dest => Bus_Id);
+ 129        Bc1553.Write_Word(Data => Radar_Cfg.Encode_Sector(Sx_end),
+ 130                          Idx => 3,
+ 131                          Subaddress_Idx => 2,
+ 132                          Dest => Bus_Id);
+ 133        Bc1553.Write_Word(Data => Radar_Cfg.Encode_Sector(Sy_start),
+ 134                          Idx => 4,
+ 135                          Subaddress_Idx => 2,
+ 136                          Dest => Bus_Id);
+ 137        Bc1553.Write_Word(Data => Radar_Cfg.Encode_Sector(Sy_end),
+ 138                          Idx => 5,
+ 139                          Subaddress_Idx => 2,
+ 140                          Dest => Bus_Id);
+ 141     end Sweep;
+
++++        Flow analysis of subprogram Sweep performed: no 
+           errors found.
+
+ 142  
+ 143     procedure Read_Ping(Sx,Sy : out Radar_Cfg.Sector_Range;
+ 144                         Dist  : out Measuretypes.Meter;
+ 145                         Vel   : out Measuretypes.Meter_Per_Sec)
+ 146     --# global in last_ping;
+ 147     --# derives sx, sy, dist, vel from last_ping;
+ 148     is
+ 149     begin
+ 150        if Last_Ping.Fresh_Answer then
+ 151           Sx := Last_Ping.Sx;
+ 152           Sy := Last_Ping.Sx;
+ 153           Dist := Last_Ping.Distance;
+ 154           Vel := Last_Ping.Velocity;
+ 155        else
+ 156           Sx := 0;
+ 157           Sy := 0;
+ 158           Dist := 0;
+ 159           Vel := 0;
+ 160        end if;
+ 161     end Read_Ping;
+
++++        Flow analysis of subprogram Read_Ping performed: 
+           no errors found.
+
+ 162  
+ 163     procedure Read_sweep(Sx_start,Sx_end : out Radar_Cfg.Sector_Range;
+ 164                          Sy_Start,Sy_End : out Radar_Cfg.Sector_Range;
+ 165                          Grid : out Measuretypes.Bit4_Array)
+ 166     --# global in last_sweep;
+ 167     --# derives sx_start, sx_end, sy_start, sy_end,
+ 168     --#         grid from last_sweep;
+ 169     is
+ 170     begin
+ 171        if Last_Sweep.Fresh_Answer then
+ 172           Sx_Start := Last_Sweep.Sx_Start;
+ 173           Sx_End   := Last_Sweep.Sx_end;
+ 174           Sy_Start := Last_Sweep.Sy_Start;
+ 175           Sy_End   := Last_Sweep.Sy_end;
+ 176           Grid := Last_Sweep.Grid;
+ 177        else
+ 178           Sx_Start := 0;
+ 179           Sx_end := 0;
+ 180           Sy_Start := 0;
+ 181           Sy_end := 0;
+ 182           Grid := Measuretypes.Bit4_Array'
+ 183             (others => Measuretypes.Bit4_Slice'(others => False));
+ 184        end if;
+ 185     end Read_Sweep;
+
++++        Flow analysis of subprogram Read_sweep 
+           performed: no errors found.
+
+ 186  
+ 187     -- Kick off a radar IBIT
+ 188     procedure Ibit_Start
+ 189       --# global in out Bus.Outputs;
+ 190       --#        out    Ibit_Request;
+ 191     --# derives Bus.Outputs from * &
+ 192     --#         Ibit_Request from ;
+ 193     is
+ 194        Code : SystemTypes.Byte;
+ 195     begin
+ 196        Ibit_Request := IBIT.Request_Start;
+ 197        Code := IBIT.Phase_Lookup(Ibit_Request);
+ 198        -- Send it out on 1R at word 1
+ 199        BC1553.Write_Word(Data => Code,
+ 200                          Idx =>  1,
+ 201                          Subaddress_Idx => 1,
+ 202                          Dest => Bus_id);
+ 203     end Ibit_Start;
+
++++        Flow analysis of subprogram Ibit_Start 
+           performed: no errors found.
+
+ 204  
+ 205     -- Stop a radar IBIT
+ 206     procedure Ibit_Stop
+ 207     --# global in out Bus.Outputs;
+ 208     --#    out Ibit_Request;
+ 209     --# derives Bus.Outputs from * &
+ 210     --#         Ibit_Request from ;
+ 211     is
+ 212        Code : SystemTypes.Byte;
+ 213     begin
+ 214        Ibit_Request := IBIT.Request_Stop;
+ 215        Code := IBIT.Phase_Lookup(Ibit_Request);
+ 216        -- Send it out on 1R at word 1
+ 217        BC1553.Write_Word(Data => Code,
+ 218                          Idx =>  1,
+ 219                          Subaddress_Idx => 1,
+ 220                          Dest => Bus_id);
+ 221     end Ibit_Stop;
+
++++        Flow analysis of subprogram Ibit_Stop performed: 
+           no errors found.
+
+ 222  
+ 223     -- Poll the bus and update states
+ 224     procedure Poll
+ 225     --# global in out Last_ping, last_sweep, Ibit_Request;
+ 226     --#        in Bus.Inputs;
+ 227     --# derives Last_ping, last_sweep,
+ 228     --#         Ibit_Request from *, Bus.Inputs;
+ 229     is
+ 230        Word : Bus.Word;
+ 231        New_State : State_Types.Radar;
+ 232        Dist : Measuretypes.Meter;
+ 233        Vel : Measuretypes.Meter_Per_Sec;
+ 234     begin
+ 235        -- Check 2T
+ 236        if BC1553.Is_Valid(Src => Bus_id,
+ 237                           Subaddress_Idx => 2) and then
+ 238          BC1553.Is_Fresh(Src => Bus_id,
+ 239                          Subaddress_Idx => 2) then
+ 240           -- Read the state
+ 241           BC1553.Read_Word(Src => Bus_id,
+ 242                            Idx => 1,
+ 243                            Subaddress_Idx => 2,
+ 244                            Data => Word);
+ 245           New_State := State_Types.Radar_Action(Word);
+ 246           case New_State is
+ 247              when State_Types.Rad_Inactive =>
+ 248                 null;
+ 249              when State_Types.Ping =>
+ 250                 -- dist is in idx 2, vel is in idx 3
+ 251                 BC1553.Read_Word(Src => Bus_id,
+ 252                                  Idx => 2,
+ 253                                  Subaddress_Idx => 2,
+ 254                                  Data => Word);
+ 255                 Dist := Measuretypes.Decode.Meter_Single(Word);
+ 256                 BC1553.Read_Word(Src => Bus_id,
+ 257                                  Idx => 3,
+ 258                                  Subaddress_Idx => 2,
+ 259                                  Data => Word);
+ 260                 Vel  := Measuretypes.Decode.Meter_Per_Sec(Word);
+ 261                 Last_Ping.Fresh_Answer := True;
+ 262                 Last_Ping.Distance := Dist;
+ 263                 Last_Ping.Velocity := Vel;
+ 264              when State_Types.Sweep =>
+ 265                 -- Grid is in idx 2
+ 266                 BC1553.Read_Word(Src => Bus_id,
+ 267                                  Idx => 2,
+ 268                                  Subaddress_Idx => 2,
+ 269                                  Data => Word);
+ 270                 Last_Sweep.Grid := Measuretypes.Decode.Bit4_Array(Word);
+ 271                 Last_Sweep.Fresh_Answer := True;
+ 272           end case;
+ 273        else
+ 274           -- Nothing to do
+ 275           null;
+ 276        end if;
+ 277  
+ 278        -- 1T word 1 - BIT
+ 279        BC1553.Read_Word(Src => Bus_id,
+ 280                         Idx => 1,
+ 281                         Subaddress_Idx => 1,
+ 282                         Data => Word);
+ 283        -- Use the standard state machine to transform
+ 284        -- our IBIT phase
+ 285        IBIT.State_Machine(Bus_Data => Word,
+ 286                           Current_Phase => IBIT_Request);
+ 287     end Poll;
+
++++        Flow analysis of subprogram Poll performed: no 
+           errors found.
+
+ 288  
+ 289     -- Initialise
+ 290     procedure Init
+ 291     --# global out Last_ping, last_sweep, Ibit_Request;
+ 292     --#        in out Bus.Outputs;
+ 293     --# derives Last_ping, last_sweep, Ibit_Request from &
+ 294     --#         Bus.Outputs from *;
+ 295     is begin
+ 296        Last_Ping := Null_Ping;
+ 297        Last_Sweep := Null_Sweep;
+ 298        Ibit_Request := IBIT.Off;
+ 299        BC1553.Set_Message_Valid(Dest => Bus_id,
+ 300                                 Subaddress_Idx => 1);
+ 301        Bc1553.Set_Message_Valid(Subaddress_Idx => 2,
+ 302                                 dest => Bus_Id);
+ 303     end Init;
+
++++        Flow analysis of subprogram Init performed: no 
+           errors found.
+
+ 304  
+ 305     -- Test point
+ 306     procedure Command is separate;
+ 307  
+ 308  end If_Radar;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------

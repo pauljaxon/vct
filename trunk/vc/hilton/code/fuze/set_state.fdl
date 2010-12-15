@@ -1,0 +1,36 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:40.70}
+
+                          {procedure Fuze.Set_state}
+
+
+title procedure set_state;
+
+  function round__(real) : integer;
+  type state_types__fuze = (state_types__unarmed, 
+     state_types__arming, state_types__live, 
+     state_types__triggering, state_types__timed_out);
+  type clock__millisecond = integer;
+  const clock__millisecond__base__last : integer = pending; 
+  const clock__millisecond__base__first : integer = pending; 
+  const state_types__fuze__base__last : state_types__fuze = pending; 
+  const state_types__fuze__base__first : state_types__fuze = pending; 
+  const clock__millisecond__size : integer = pending; 
+  const clock__millisecond__last : integer = pending; 
+  const clock__millisecond__first : integer = pending; 
+  const state_types__fuze__size : integer = pending; 
+  const state_types__fuze__last : state_types__fuze = pending; 
+  const state_types__fuze__first : state_types__fuze = pending; 
+  var new_state : state_types__fuze;
+  var state_timer : integer;
+  var time_valid : boolean;
+  var time_valid__1 : boolean;
+  var state_timer__1 : integer;
+
+end;

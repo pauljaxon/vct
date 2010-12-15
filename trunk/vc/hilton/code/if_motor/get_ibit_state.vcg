@@ -1,0 +1,36 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:43.05
+
+                      function if_motor.Get_IBIT_State
+
+
+
+
+For path(s) from start to finish:
+
+function_get_ibit_state_1.
+H1:    true .
+H2:    ibit_request >= ibit__phase__first .
+H3:    ibit_request <= ibit__phase__last .
+        ->
+C1:    true .
+C2:    ibit_request >= ibit__phase__first .
+C3:    ibit_request <= ibit__phase__last .
+ 
+
+For checks of refinement integrity: 
+
+function_get_ibit_state_2.
+*** true .          /* trivially true VC removed by Examiner */
+
+
+function_get_ibit_state_3.
+*** true .          /* trivially true VC removed by Examiner */
+
+

@@ -1,0 +1,48 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 26-NOV-2009, 09:54:53  SIMPLIFIED 26-NOV-2009, 09:55:07
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function Scale.Inverse
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 19:
+
+function_inverse_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from start to run-time check associated with statement of line 20:
+
+function_inverse_2.
+H1:    val >= 0 .
+H2:    flatness > 0 .
+H3:    flatness <= 100 .
+H4:    val <= 100 .
+H5:    100 * flatness div (flatness + val) >= - 2147483648 .
+H6:    100 * flatness div (flatness + val) <= 2147483647 .
+H7:    flatness + val <> 0 .
+H8:    flatness + val >= - 2147483648 .
+H9:    flatness + val <= 2147483647 .
+H10:   integer__size >= 0 .
+H11:   scaledata__size >= 0 .
+H12:   percent__size >= 0 .
+       ->
+C1:    100 * flatness div (flatness + val) <= 100 .
+
+
+For path(s) from start to finish:
+
+function_inverse_3.
+*** true .          /* all conclusions proved */
+
+

@@ -1,0 +1,26 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:42.22}
+
+                       {function if_ir.Get_IBIT_State}
+
+
+title function get_ibit_state;
+
+  function round__(real) : integer;
+  type ibit__phase = (ibit__off, ibit__request_start, 
+     ibit__in_progress, ibit__request_stop, ibit__pass, 
+     ibit__fail, ibit__timeout);
+  const ibit__phase__base__last : ibit__phase = pending; 
+  const ibit__phase__base__first : ibit__phase = pending; 
+  const ibit__phase__size : integer = pending; 
+  const ibit__phase__last : ibit__phase = pending; 
+  const ibit__phase__first : ibit__phase = pending; 
+  var ibit_request : ibit__phase;
+
+end;

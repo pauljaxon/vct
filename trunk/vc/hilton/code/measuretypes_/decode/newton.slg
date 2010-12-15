@@ -1,0 +1,470 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+*****************************************************************************
+
+
+CREATED 25-NOV-2009, 14:04:38  SIMPLIFIED 25-NOV-2009, 14:18:22
+
+SPARK Simplifier Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+
+function decode.Newton
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_newton_1.  @@@@@@@@@@
+***  Proved C1:  hi >= bus__word__first
+     using hypothesis H4.
+***  Proved C2:  hi <= bus__word__last
+     using hypothesis H5.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_newton_2.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+***  Proved C2:  hi - 32768 <= bus__word__last
+     using hypothesis H5.
+-S-  Applied substitution rule newton_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  lo >= 0
+<S>  New H4:  hi >= 0
+<S>  New C1:  hi >= 32768
+***  Proved C1:  hi >= 32768
+     using hypothesis H10.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_newton_3.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+-S-  Applied substitution rule newton_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New C1:  lo + (hi - 32768) * word_max >= - 1000000
+<S>  New C5:  hi >= - 967232
+<S>  New C7:  lo >= - 1000000
+-S-  Applied substitution rule newton_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New C2:  lo + (hi - 32768) * word_max <= 1000000
+<S>  New C6:  hi <= 1032768
+<S>  New C8:  lo <= 1000000
+-S-  Applied substitution rule newton_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__first by:
+          - 2147483648.
+<S>  New C3:  (hi - 32768) * word_max >= - 2147483648
+-S-  Applied substitution rule newton_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__last by:
+          2147483647.
+<S>  New C4:  (hi - 32768) * word_max <= 2147483647
+***  Proved C5:  hi >= - 967232
+     using hypothesis H10.
+-S-  Applied substitution rule newton_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New C1:  lo + (hi - 32768) * 65536 >= - 1000000
+<S>  New C2:  lo + (hi - 32768) * 65536 <= 1000000
+<S>  New C3:  (hi - 32768) * 65536 >= - 2147483648
+<S>  New C4:  (hi - 32768) * 65536 <= 2147483647
+-S-  Applied substitution rule newton_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  lo >= 0
+<S>  New H4:  hi >= 0
+<S>  New H13:  hi >= 32768
+-S-  Applied substitution rule newton_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  lo <= 65535
+<S>  New H5:  hi <= 65535
+<S>  New H14:  hi <= 98303
+***  Proved C7:  lo >= - 1000000
+     using hypothesis H2.
+***  Proved C6:  hi <= 1032768
+     using hypothesis H5.
+***  Proved C8:  lo <= 1000000
+     using hypothesis H3.
+***  Proved C1:  lo + (hi - 32768) * 65536 >= - 1000000
+     via its standard form, which is:
+     Std.Fm C1:  - 2147483648 + (65536 * hi + lo) >= - 1000000
+     using hypotheses H2 & H10.
+***  Proved C3:  (hi - 32768) * 65536 >= - 2147483648
+     via its standard form, which is:
+     Std.Fm C3:  65536 * hi > - 1
+     using hypothesis H10.
+***  Proved C4:  (hi - 32768) * 65536 <= 2147483647
+     via its standard form, which is:
+     Std.Fm C4:  - 2147483648 + 65536 * hi <= 2147483647
+     using hypothesis H5.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H15 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H13 (duplicate of H10).
+---  Eliminated hypothesis H4 (redundant, given H10).
+---  Eliminated hypothesis H14 (redundant, given H5).
+     +++  New H17:  integer__size >= 0
+     +++  New H18:  measuretypes__newton__size >= 0
+     +++  New H19:  bus__word__size >= 0
+
+
+@@@@@@@@@@  VC: function_newton_4.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+-S-  Applied substitution rule newton_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New C1:  lo + hi * word_max >= - 1000000
+<S>  New C5:  hi >= - 1000000
+<S>  New C7:  lo >= - 1000000
+-S-  Applied substitution rule newton_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New C2:  lo + hi * word_max <= 1000000
+<S>  New C6:  hi <= 1000000
+<S>  New C8:  lo <= 1000000
+-S-  Applied substitution rule newton_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__first by:
+          - 2147483648.
+<S>  New C3:  hi * word_max >= - 2147483648
+-S-  Applied substitution rule newton_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__last by:
+          2147483647.
+<S>  New C4:  hi * word_max <= 2147483647
+***  Proved C6:  hi <= 1000000
+     using hypothesis H10.
+>>>  Restructured hypothesis H10 into:
+     >>>  H10:  hi < 32768
+-S-  Applied substitution rule newton_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New C1:  lo + hi * 65536 >= - 1000000
+<S>  New C2:  lo + hi * 65536 <= 1000000
+<S>  New C3:  hi * 65536 >= - 2147483648
+<S>  New C4:  hi * 65536 <= 2147483647
+-S-  Applied substitution rule newton_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  lo >= 0
+<S>  New H4:  hi >= 0
+-S-  Applied substitution rule newton_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  lo <= 65535
+<S>  New H5:  hi <= 65535
+***  Proved C5:  hi >= - 1000000
+     using hypothesis H4.
+***  Proved C7:  lo >= - 1000000
+     using hypothesis H2.
+***  Proved C8:  lo <= 1000000
+     using hypothesis H3.
+***  Proved C1:  lo + hi * 65536 >= - 1000000
+     using hypotheses H2 & H4.
+***  Proved C3:  hi * 65536 >= - 2147483648
+     using hypothesis H4.
+***  Proved C4:  hi * 65536 <= 2147483647
+     using hypothesis H10.
+---  Eliminated hypothesis H1 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H5 (redundant, given H10).
+     +++  New H13:  integer__size >= 0
+     +++  New H14:  measuretypes__newton__size >= 0
+     +++  New H15:  bus__word__size >= 0
+
+
+@@@@@@@@@@  VC: function_newton_5.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H18).
+-S-  Applied substitution rule newton_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New H17:  lo + (hi - 32768) * word_max >= - 1000000
+<S>  New H21:  hi >= - 967232
+<S>  New H23:  lo >= - 1000000
+<S>  New C1:  - (lo + (hi - 32768) * word_max) >= - 1000000
+-S-  Applied substitution rule newton_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New H18:  lo + (hi - 32768) * word_max <= 1000000
+<S>  New H22:  hi <= 1032768
+<S>  New H24:  lo <= 1000000
+<S>  New C2:  - (lo + (hi - 32768) * word_max) <= 1000000
+-S-  Applied substitution rule newton_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New H17:  lo + (hi - 32768) * 65536 >= - 1000000
+<S>  New H18:  lo + (hi - 32768) * 65536 <= 1000000
+<S>  New H19:  (hi - 32768) * 65536 >= measuretypes__newton__base__first
+<S>  New H20:  (hi - 32768) * 65536 <= measuretypes__newton__base__last
+<S>  New C1:  - (lo + (hi - 32768) * 65536) >= - 1000000
+<S>  New C2:  - (lo + (hi - 32768) * 65536) <= 1000000
+-S-  Applied substitution rule newton_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__first by:
+          - 2147483648.
+<S>  New H19:  (hi - 32768) * 65536 >= - 2147483648
+-S-  Applied substitution rule newton_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__last by:
+          2147483647.
+<S>  New H20:  (hi - 32768) * 65536 <= 2147483647
+-S-  Applied substitution rule newton_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  lo >= 0
+<S>  New H4:  hi >= 0
+<S>  New H13:  hi >= 32768
+-S-  Applied substitution rule newton_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  lo <= 65535
+<S>  New H5:  hi <= 65535
+<S>  New H14:  hi <= 98303
+***  Proved C1:  - (lo + (hi - 32768) * 65536) >= - 1000000
+     via its standard form, which is:
+     Std.Fm C1:  - (65536 * hi) - lo > - 2148483649
+     using hypothesis H18.
+***  Proved C2:  - (lo + (hi - 32768) * 65536) <= 1000000
+     via its standard form, which is:
+     Std.Fm C2:  65536 * hi + lo > 2146483647
+     using hypothesis H17.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_newton_6.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H14).
+-S-  Applied substitution rule newton_rules(8).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__first by:
+          - 1000000.
+<S>  New H13:  lo + hi * word_max >= - 1000000
+<S>  New H17:  hi >= - 1000000
+<S>  New H19:  lo >= - 1000000
+<S>  New C1:  - (lo + hi * word_max) >= - 1000000
+-S-  Applied substitution rule newton_rules(9).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__last by:
+          1000000.
+<S>  New H14:  lo + hi * word_max <= 1000000
+<S>  New H18:  hi <= 1000000
+<S>  New H20:  lo <= 1000000
+<S>  New C2:  - (lo + hi * word_max) <= 1000000
+>>>  Restructured hypothesis H10 into:
+     >>>  H10:  hi < 32768
+-S-  Applied substitution rule newton_rules(1).
+     This was achieved by replacing all occurrences of word_max by:
+          65536.
+<S>  New H13:  lo + hi * 65536 >= - 1000000
+<S>  New H14:  lo + hi * 65536 <= 1000000
+<S>  New H15:  hi * 65536 >= measuretypes__newton__base__first
+<S>  New H16:  hi * 65536 <= measuretypes__newton__base__last
+<S>  New C1:  - (lo + hi * 65536) >= - 1000000
+<S>  New C2:  - (lo + hi * 65536) <= 1000000
+-S-  Applied substitution rule newton_rules(10).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__first by:
+          - 2147483648.
+<S>  New H15:  hi * 65536 >= - 2147483648
+-S-  Applied substitution rule newton_rules(11).
+     This was achieved by replacing all occurrences of 
+          measuretypes__newton__base__last by:
+          2147483647.
+<S>  New H16:  hi * 65536 <= 2147483647
+-S-  Applied substitution rule newton_rules(13).
+     This was achieved by replacing all occurrences of bus__word__first by:
+          0.
+<S>  New H2:  lo >= 0
+<S>  New H4:  hi >= 0
+-S-  Applied substitution rule newton_rules(14).
+     This was achieved by replacing all occurrences of bus__word__last by:
+          65535.
+<S>  New H3:  lo <= 65535
+<S>  New H5:  hi <= 65535
+***  Proved C1:  - (lo + hi * 65536) >= - 1000000
+     via its standard form, which is:
+     Std.Fm C1:  - (65536 * hi) - lo > - 1000001
+     using hypothesis H14.
+***  Proved C2:  - (lo + hi * 65536) <= 1000000
+     via its standard form, which is:
+     Std.Fm C2:  65536 * hi + lo > - 1000001
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_newton_7.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H18).
+---  Hypothesis H31 has been replaced by "true".  (It is already present, as 
+          H29).
+---  Hypothesis H32 has been replaced by "true".  (It is already present, as 
+          H30).
+***  Proved C1:  true
+***  Proved C2:  - (lo + (hi - 32768) * word_max) >= measuretypes__newton__first
+     using hypothesis H29.
+***  Proved C3:  - (lo + (hi - 32768) * word_max) <= measuretypes__newton__last
+     using hypothesis H30.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_newton_8.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H25).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H26).
+***  Proved C1:  true
+***  Proved C2:  - (lo + hi * word_max) >= measuretypes__newton__first
+     using hypothesis H25.
+***  Proved C3:  - (lo + hi * word_max) <= measuretypes__newton__last
+     using hypothesis H26.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_newton_9.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H15 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as 
+          H14).
+%%%  Simplified H26 on reading formula in, to give:
+     %%%  H26:  false
+---  Hypothesis H27 has been replaced by "true".  (It is already present, as 
+          H17).
+---  Hypothesis H28 has been replaced by "true".  (It is already present, as 
+          H18).
+***  Proved C1:  true
+***  Proved C2:  lo + (hi - 32768) * word_max >= measuretypes__newton__first
+     using hypothesis H17.
+***  Proved C3:  lo + (hi - 32768) * word_max <= measuretypes__newton__last
+     using hypothesis H18.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_newton_10.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H5).
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H4)
+          .
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H5)
+          .
+%%%  Simplified H22 on reading formula in, to give:
+     %%%  H22:  true
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as 
+          H13).
+---  Hypothesis H24 has been replaced by "true".  (It is already present, as 
+          H14).
+***  Proved C1:  true
+***  Proved C2:  lo + hi * word_max >= measuretypes__newton__first
+     using hypothesis H13.
+***  Proved C3:  lo + hi * word_max <= measuretypes__newton__last
+     using hypothesis H14.
+***  PROVED VC.
+

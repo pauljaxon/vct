@@ -1,0 +1,48 @@
+           {*******************************************************}
+                               {FDL Declarations}
+ {SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331}
+      {Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 25-NOV-2009 14:04:44.07}
+
+                          {procedure nav.Handle_Ins}
+
+
+title procedure handle_ins;
+
+  function round__(real) : integer;
+  type measuretypes__meter = integer;
+  type sensor_status = (unknown, valid, failed, restarted);
+  type cartesian__position = record
+        x : integer;
+        y : integer;
+        z : integer
+     end;
+  const sensor_status__base__last : sensor_status = pending; 
+  const sensor_status__base__first : sensor_status = pending; 
+  const sensor_history__meter__base__last : integer = pending; 
+  const sensor_history__meter__base__first : integer = pending; 
+  const measuretypes__meter__base__last : integer = pending; 
+  const measuretypes__meter__base__first : integer = pending; 
+  const sensor_status__size : integer = pending; 
+  const sensor_status__last : sensor_status = pending; 
+  const sensor_status__first : sensor_status = pending; 
+  const sensor_history__meter__size : integer = pending; 
+  const sensor_history__meter__last : integer = pending; 
+  const sensor_history__meter__first : integer = pending; 
+  const cartesian__position__size : integer = pending; 
+  const measuretypes__meter__size : integer = pending; 
+  const measuretypes__meter__last : integer = pending; 
+  const measuretypes__meter__first : integer = pending; 
+  var ins_ss : sensor_status;
+  var restart : boolean;
+  var position : cartesian__position;
+  var ins_valid : boolean;
+  var ins_valid__5 : boolean;
+  var position__5 : cartesian__position;
+  var ins_valid__1 : boolean;
+  var position__1 : cartesian__position;
+
+end;

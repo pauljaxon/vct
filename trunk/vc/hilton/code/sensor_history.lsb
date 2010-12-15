@@ -1,0 +1,179 @@
+           *******************************************************
+                            Listing of SPARK Text
+ SPARK Examiner Pro Edition, Version 8.1.4, Build Date 20090925, Build 14331
+      Copyright (C) 2009 Praxis High Integrity Systems Ltd., Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 25-NOV-2009 14:04:44.00
+
+Line
+   1  -- Sensor history type implementation
+   2  --
+   3  -- $Log: sensor_history.adb,v $
+   4  -- Revision 1.2  2004/12/17 16:08:53  adi
+   5  -- Fixing errors in compass; renamed Angle to Angle_Degrees for clarity
+   6  --
+   7  -- Revision 1.1.1.1  2004/01/12 19:29:12  adi
+   8  -- Added from tarfile
+   9  --
+  10  --
+  11  -- Revision 1.1  2003/09/07 18:44:19  adi
+  12  -- Initial revision
+  13  --
+  14  
+  15  package body Sensor_history
+  16  is
+  17     -- Modular history count
+  18     function Next_Item(H : History_Count)
+  19                       return History_Count
+  20     is
+  21        Ans : History_Count;
+  22     begin
+  23        if H = History_Count'Last then
+  24           Ans := History_Count'First;
+  25        else
+  26           Ans := 1 + H;
+  27        end if;
+  28        return Ans;
+  29     end Next_item;
+
++++        Flow analysis of subprogram Next_Item performed: 
+           no errors found.
+
+  30  
+  31     function previous_Item(H : History_Count)
+  32                       return History_Count
+  33     is
+  34        Ans : History_Count;
+  35     begin
+  36        if H = History_Count'first then
+  37           Ans := History_Count'last;
+  38        else
+  39           Ans := H - 1;
+  40        end if;
+  41        return Ans;
+  42     end Previous_item;
+
++++        Flow analysis of subprogram Previous_Item 
+           performed: no errors found.
+
+  43  
+  44     -- Accessor functions for the history trackers
+  45  
+  46     procedure Get_Recent_Meter(Item      : in Measure_History;
+  47                                Recent    : out Meter;
+  48                                Timestamp : out Clock.Millisecond)
+  49     is
+  50        Prev_Idx : History_Count;
+  51     begin
+  52        Prev_Idx := Previous_Item(Item.New_Idx);
+  53        Recent := Item.Distance(Prev_Idx);
+  54        Timestamp := Item.Times(Prev_Idx);
+  55     end Get_Recent_Meter;
+
++++        Flow analysis of subprogram Get_Recent_Meter 
+           performed: no errors found.
+
+  56  
+  57     procedure Update_Meter_Reading(item : in out measure_History;
+  58                                    Data : in Meter)
+  59     is
+  60        T : Clock.Millisecond;
+  61        T_Valid : Boolean;
+  62     begin
+  63        Clock.Read(T => T,
+  64                   Valid => T_Valid);
+  65        if T_Valid then
+  66           Item.Times(Item.New_Idx) := T;
+  67        else
+  68           Item.Times(Item.New_Idx) := 0;
+  69        end if;
+  70        item.Distance(item.New_Idx) := Data;
+  71        Item.New_Idx := Next_Item(Item.New_Idx);
+  72     end Update_Meter_Reading;
+
++++        Flow analysis of subprogram Update_Meter_Reading 
+           performed: no errors found.
+
+  73  
+  74  
+  75     procedure Get_Recent_angle(Item      : in     Measure_History;
+  76                                Recent    :    out Angle_Degrees;
+  77                                Timestamp :    out Clock.Millisecond)
+  78     is
+  79        Prev_Idx : History_Count;
+  80     begin
+  81        Prev_Idx := Previous_Item(Item.New_Idx);
+  82        Recent := Item.bearing(Prev_Idx);
+  83        Timestamp := Item.Times(Prev_Idx);
+  84     end Get_Recent_angle;
+
++++        Flow analysis of subprogram Get_Recent_angle 
+           performed: no errors found.
+
+  85  
+  86     procedure Update_angle_Reading(item : in out Measure_History;
+  87                                    Data : in     Angle_Degrees)
+  88     is
+  89        T : Clock.Millisecond;
+  90        T_Valid : Boolean;
+  91     begin
+  92        Clock.Read(T => T,
+  93                   Valid => T_Valid);
+  94        if T_Valid then
+  95           Item.Times(Item.New_Idx) := T;
+  96        else
+  97           Item.Times(Item.New_Idx) := 0;
+  98        end if;
+  99        item.bearing(item.New_Idx) := Data;
+ 100        Item.New_Idx := Next_Item(Item.New_Idx);
+ 101     end Update_angle_Reading;
+
++++        Flow analysis of subprogram Update_Angle_Reading 
+           performed: no errors found.
+
+ 102  
+ 103  
+ 104     procedure Get_Recent_speed(Item      : in Measure_History;
+ 105                                Recent    : out Meter_Per_sec;
+ 106                                Timestamp : out Clock.Millisecond)
+ 107     is
+ 108        Prev_Idx : History_Count;
+ 109     begin
+ 110        Prev_Idx := Previous_Item(Item.New_Idx);
+ 111        Recent := Item.speed(Prev_Idx);
+ 112        Timestamp := Item.Times(Prev_Idx);
+ 113     end Get_Recent_speed;
+
++++        Flow analysis of subprogram Get_Recent_Speed 
+           performed: no errors found.
+
+ 114  
+ 115     procedure Update_Speed_Reading(item : in out measure_History;
+ 116                                    Data : in Meter_Per_sec)
+ 117     is
+ 118        T : Clock.Millisecond;
+ 119        T_Valid : Boolean;
+ 120     begin
+ 121        Clock.Read(T => T,
+ 122                   Valid => T_Valid);
+ 123        if T_Valid then
+ 124           Item.Times(Item.New_Idx) := T;
+ 125        else
+ 126           Item.Times(Item.New_Idx) := 0;
+ 127        end if;
+ 128        item.speed(item.New_Idx) := Data;
+ 129        Item.New_Idx := Next_Item(Item.New_Idx);
+ 130     end Update_Speed_Reading;
+
++++        Flow analysis of subprogram Update_Speed_Reading 
+           performed: no errors found.
+
+ 131  
+ 132  end Sensor_history;
+No summarized warnings
+
+
+
+--End of file--------------------------------------------------
