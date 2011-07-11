@@ -86,7 +86,8 @@ using namespace std;
 }      // **bison 2.4**
 // %}  // **bison 2.3**
 
-%token RULE_FAMILY TITLE FOR
+%token <sval> TITLE
+%token FOR RULE_FAMILY 
 %token <sval> GOAL_ORIGINS
 %token COLON LSB RSB LPAREN RPAREN COMMA AMPERSAND SEMIC DOT DOTDOT
 %token REQUIRES 
@@ -95,9 +96,10 @@ using namespace std;
 %token IF END FUNCTION PROCEDURE TYPE VAR CONST 
 %token FOR_SOME FOR_ALL
 %token ARRAY RECORD ASSIGN OF 
-%token <sval> SUBPROG_ID CONCL_ID HYP_ID TASK_TYPE ID NATNUM
+%token <sval> SUBPROG_ID CONCL_ID HYP_ID TASK_TYPE ID NATNUM 
 %token TRIPLESTAR
 %token TRIPLEBANG
+%token START_FDL_FILE START_RULE_FILE START_VCG_FILE;
 %token FILE_END 0
 
 %nonassoc ASSIGN 
@@ -152,7 +154,7 @@ On precedence of unary minus.
 %type <nval>   fdl_file   fdl_decl
 %type <nval>  fdl_decls  types
 
-%type <nval>   rls_file rule_family typeassum rule rule_condition rule_body
+%type <nval>   rule_file rule_family typeassum rule rule_condition rule_body
 %type <nval>  rule_families typeassums rules
 
 %type <nval>   vcg_file hyp concl goal
@@ -188,10 +190,10 @@ Top level
 top: file {driver.result = $1;} 
 ;
 
-file:        
-   fdl_file  { $$ = $1; }
- | rls_file  { $$ = $1; }
- | vcg_file  { $$ = $1; }
+file:
+   START_FDL_FILE fdl_file { $$ = $2; }
+ | START_RULE_FILE rule_file { $$ = $2; }
+ | START_VCG_FILE vcg_file { $$ = $2; }
 ;
 
 /* 
@@ -262,26 +264,34 @@ types:
 
 /* 
 ==========================================================================
-RLS files
+Rule files (RLS, RUL, RLU suffix)
 ==========================================================================
+Grammar allows for initial sequence of rules without an explicit
+RULE_FAMILY header.  This is observed in RUL and RLU files.
 */
 
-rls_file: 
-    rule_families            { $$ = $1;
-                               $$->kind = z::RLS_FILE;
-                             }
+rule_file: 
+    rules rule_families  
+          { $$ = $2;
+            $$->addLeftChild(new Node(z::RULE_FAMILY,
+                                      "implicit",
+                                      new Node(z::SEQ), 
+                                      $1));
+            $$->kind = z::RULE_FILE;
+          }
 ;
 
 rule_families:
-   rule_family               { $$ = new Node(z::SEQ,$1); }
+   /* empty */               { $$ = new Node(z::SEQ); }
  | rule_families rule_family { $$ = $1; $$->addChild($2); }
 ;
 
 rule_family:
    RULE_FAMILY id_str COLON typeassums DOT rules
-                            { $$ = new Node(z::RULE_FAMILY, $4, $6); }
+                            { $$ = new Node(z::RULE_FAMILY, *$2, $4, $6); }
  | RULE_FAMILY id_str COLON DOT rules
                             { $$ = new Node(z::RULE_FAMILY,
+                                            *$2,
                                             new Node(z::SEQ),
                                             $5);
                             }
@@ -400,13 +410,14 @@ Multi-use non-terminals
 IDs, type declarations and sequence expressions.
 */
 
-// Note that the token task_type can also be a valid identifier.
+// Note that the tokens "task_type" and "title" can also be a valid identifiers.
 id_str:
    ID          { $$ = $1;}
  | HYP_ID      { $$ = $1;}
  | CONCL_ID    { $$ = $1;}
  | SUBPROG_ID  { $$ = $1;}
  | TASK_TYPE   { $$ = $1;}
+ | TITLE       { $$ = $1;}
 ;
 
 id: 

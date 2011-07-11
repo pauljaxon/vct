@@ -1375,6 +1375,9 @@ Timer::toLongString() {
 // Manipulating names for working files
 //==========================================================================
 
+bool readableFileExists(const string& s) {
+    return (access(s.c_str(), R_OK) == 0);
+}
 
 void ensureDirPathExists(const string& s) {
 

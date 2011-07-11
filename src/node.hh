@@ -56,7 +56,7 @@ enum Kind {
     DECL_CONST, // Isabelle
     DECL_VAR,
     DECL_FUN,
-    RLS_FILE,
+    RULE_FILE,
     RULE_FAMILY,
     REQUIRES,
     MAY_BE_REPLACED_BY,

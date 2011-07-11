@@ -349,6 +349,8 @@ public:
 // Manipulating names for working files
 //==========================================================================
 
+bool readableFileExists(const string& s);
+
 void ensureDirPathExists(const string& dirPath);
 
 string getFullGoalFileRoot(const string& defaultFileRoot, 

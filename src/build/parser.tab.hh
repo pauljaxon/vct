@@ -164,9 +164,9 @@ namespace yy {
       /* Tokens.  */
    enum yytokentype {
      FILE_END = 0,
-     RULE_FAMILY = 258,
-     TITLE = 259,
-     FOR = 260,
+     TITLE = 258,
+     FOR = 259,
+     RULE_FAMILY = 260,
      GOAL_ORIGINS = 261,
      COLON = 262,
      LSB = 263,
@@ -204,25 +204,28 @@ namespace yy {
      NATNUM = 295,
      TRIPLESTAR = 296,
      TRIPLEBANG = 297,
-     IMPLIES = 298,
-     IFF = 299,
-     OR = 300,
-     AND = 301,
-     NOT = 302,
-     LE = 303,
-     LT = 304,
-     GE = 305,
-     GT = 306,
-     NE = 307,
-     EQ = 308,
-     MINUS = 309,
-     PLUS = 310,
-     MOD = 311,
-     DIV = 312,
-     SLASH = 313,
-     STAR = 314,
-     UMINUS = 315,
-     STARSTAR = 316
+     START_FDL_FILE = 298,
+     START_RULE_FILE = 299,
+     START_VCG_FILE = 300,
+     IMPLIES = 301,
+     IFF = 302,
+     OR = 303,
+     AND = 304,
+     NOT = 305,
+     LE = 306,
+     LT = 307,
+     GE = 308,
+     GT = 309,
+     NE = 310,
+     EQ = 311,
+     MINUS = 312,
+     PLUS = 313,
+     MOD = 314,
+     DIV = 315,
+     SLASH = 316,
+     STAR = 317,
+     UMINUS = 318,
+     STARSTAR = 319
    };
 
     };
@@ -399,7 +402,7 @@ namespace yy {
 } // yy
 
 /* Line 35 of lalr1.cc  */
-#line 403 "parser.tab.hh"
+#line 406 "parser.tab.hh"
 
 
 
