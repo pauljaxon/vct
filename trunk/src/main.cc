@@ -180,18 +180,13 @@ Node* parseUnit(UnitInfo unitInfo) {
         
         printMessage(FINEm, "Reading declarations file " + declFile);
 
-        if (driver.parse(declFile) ) {
+        if (driver.parseFDLFile(declFile) ) {
             printMessage(ERRORm, "Parse of declarations file "
                          + declFile + " failed");
             return 0;
         }
         Node* newDecls = driver.result;
-        if (newDecls->kind != FDL_FILE) {
-            printMessage(ERRORm, "Declarations file "
-                         + declFile + " has unexpected root kind "
-                         + kindString(newDecls->kind));
-            return 0;
-        }
+
         decls->appendChildren(newDecls);
     }
     unitAST->addChild(decls);
@@ -220,7 +215,25 @@ Node* parseUnit(UnitInfo unitInfo) {
                      unitRuleFiles.end()
                      );
 
-    Node* rules = new Node(RLS_FILE);
+    if (option("read-directory-rlu-files")) {
+        vector<string> filerootParts = splitString(fileroot,"/");
+        if (filerootParts.size() >=2) {
+            filerootParts.pop_back();
+            string dirRLUFile = concatStrings(filerootParts, "/") 
+                + "/" + filerootParts.back() + ".rlu";
+            if (readableFileExists(dirRLUFile))
+                ruleFiles.push_back(dirRLUFile);
+        }
+            
+    }
+
+    if (option("read-unit-rlu-files")) {
+        string unitRLUFile = fileroot + ".rlu";
+        if (readableFileExists(unitRLUFile))
+            ruleFiles.push_back(unitRLUFile);
+    }
+
+    Node* rules = new Node(RULE_FILE);
 
     // Do read of files
 
@@ -229,19 +242,12 @@ Node* parseUnit(UnitInfo unitInfo) {
         
         printMessage(FINEm, "Reading rule file " + ruleFile);
 
-        if (driver.parse(ruleFile) ) {
+        if (driver.parseRuleFile(ruleFile) ) {
             printMessage(ERRORm, "Parse of rule file "
                          + ruleFile + " failed");
             return 0;
         }
         Node* newRules = driver.result;
-
-        if (newRules->kind != RLS_FILE) {
-            printMessage(ERRORm, "Rule file "
-                         + ruleFile + " has unexpected root kind "
-                         + kindString(newRules->kind));
-            return 0;
-        }
 
         rules->appendChildren(newRules);
     }
@@ -255,7 +261,7 @@ Node* parseUnit(UnitInfo unitInfo) {
     if (option("siv")) vcFileExt = ".siv";
 
     printMessage(FINEm, "Reading VCG file");
-    if (driver.parse (fileroot + vcFileExt)) {
+    if (driver.parseVCGFile(fileroot + vcFileExt)) {
         printMessage(ERRORm, "Parse of VC file failed");
         return 0;
     }

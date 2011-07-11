@@ -54,7 +54,7 @@ z::kindString(z::Kind k) {
 	c(DECL_CONST); // Isabelle
 	c(DECL_VAR);
 	c(DECL_FUN);
-	c(RLS_FILE);
+	c(RULE_FILE);
 	c(RULE_FAMILY);
 	c(REQUIRES);
 	c(MAY_BE_REPLACED_BY);

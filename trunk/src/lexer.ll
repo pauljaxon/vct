@@ -51,30 +51,47 @@ typedef yy::parser::token tok;
 
 DIGIT      [0-9]
 ID         [A-Za-z][A-Za-z0-9_]*[~]?
-COMMENT    "/*"([^*]+|[*]+[^*/])*"*"+"/"
+PROLOGBLOCKCOMMENT  "/*"([^*]+|[*]+[^*/])*"*"+"/"
+PROLOGLINECOMMENT   "%".*$
+FDLCOMMENT          "{"[^}]*"}"
 WHITESPACE [ \t\n\r]+
+VCGHEADER  (.*\n){13}
 
-%x body goalorigins
+%x VCGInitial PrologBody FDLBody GoalOrigins
 
 %%
 
-<*>{
-^"rule_family"     { BEGIN(body); return tok::RULE_FAMILY; }
-^"title"           { BEGIN(body); return tok::TITLE; }  
-^"For"             { BEGIN(goalorigins); return tok::FOR; }  
+%{
+  // Code for start of yylex to inject alternate start tokens into token
+  // stream for different file types
+  if (driver.at_start)  {
 
-{WHITESPACE}       /* eat up whitespace */
+      driver.at_start = false;
+      if (driver.currentFileType == pdriver::FDL) 
+          return tok::START_FDL_FILE;
+      if (driver.currentFileType == pdriver::RULE) 
+          return tok::START_RULE_FILE;
+      else // driver.currentFileType == pdriver::VCG 
+          return tok::START_VCG_FILE;
+  }
+%}
 
-}
 
-<goalorigins>[^:]+ { BEGIN(body); 
+
+<VCGInitial>{VCGHEADER} { BEGIN(PrologBody); }
+
+<*>{WHITESPACE}       /* eat up whitespace */
+
+<PrologBody>^"For" { BEGIN(GoalOrigins); return tok::FOR; }  
+
+<GoalOrigins>[^:]+ { BEGIN(PrologBody); 
                      yylval->sval = new std::string(yytext);
                      return tok::GOAL_ORIGINS; 
                    }
 
-<INITIAL>.         /* ignore non-trigger characters in header */
+<PrologBody>^rule_family/" "   { return tok::RULE_FAMILY; }
 
-<body>{
+<FDLBody,PrologBody>{
 
 ":"                { return tok::COLON; }
 "["                { return tok::LSB; }
@@ -98,6 +115,9 @@ task_type          { // task_type can also be a valid identifier, so we need to
                      // have a useful sval.
                      yylval->sval = new std::string(yytext);
 		     return tok::TASK_TYPE; }
+title              { // Like task_type, both a keyword and an identifier
+                     yylval->sval = new std::string(yytext);
+		     return tok::TITLE; }
 function           { return tok::FUNCTION; }
 procedure          { return tok::PROCEDURE; }
 type               { return tok::TYPE; }
@@ -149,9 +169,15 @@ for_all            { return tok::FOR_ALL; }
                       return tok::NATNUM; 
                     }
 
-{COMMENT}          {}     /* Eat up any C-style comments */
 
 }
+
+<PrologBody>{
+{PROLOGBLOCKCOMMENT}          {}  /* Skip comment */
+{PROLOGLINECOMMENT}           {}  /* Skip comment */
+}
+
+<FDLBody>{FDLCOMMENT}         {}  /* Skip comment */
 
      
 %%
@@ -165,7 +191,19 @@ pdriver::scan_begin ()
 
   // flex doesn't reset start condition on 2nd and subsequent scans, 
   // so here we reset it explicitly.
-  BEGIN(INITIAL); 
+
+  // Set start condition appropriate for file.
+  // Doing this also addresses issue that flex doesn't reset start 
+  // condition on 2nd and subsequent scans, 
+
+  if (currentFileType == FDL) { BEGIN(FDLBody); }
+  else if (currentFileType == RULE) { BEGIN(PrologBody);  }
+  else { // currentFileType == VCG
+      BEGIN(VCGInitial);
+  }
+
+  // Set flag for triggering return of file-type-specific start token
+  at_start = true;
 }
 
 void
