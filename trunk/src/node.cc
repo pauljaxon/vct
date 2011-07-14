@@ -89,8 +89,11 @@ z::kindString(z::Kind k) {
         c(FUN_TY);     // Yices, HOLs
         c(FUN_ARG_TY); // Isabelle/HOL
         c(TUPLE_TY);
-        c(UNKNOWN);
-        c(TYPE_UNIV);
+        c(UNKNOWN);    // Used when no constraints known on a type
+        c(TYPE_UNIV);  // Type of types
+        c(INT_OR_REAL_TY);    // Int or Real
+        c(INT_REAL_OR_ENUM_TY); // Int or Real or Enum
+        c(NO_TY);  // Set of no types.
 
     // Expressions
 	c(FORALL);
@@ -426,7 +429,12 @@ Node*
 Node::type_univ = new Node (z::TYPE_UNIV, UNMANAGED);
 Node*    
 Node::unknown = new Node (z::UNKNOWN, UNMANAGED);
-    
+Node*    
+Node::int_or_real_ty = new Node(z::INT_OR_REAL_TY, UNMANAGED);    
+Node*    
+Node::int_real_or_enum_ty = new Node(z::INT_REAL_OR_ENUM_TY, UNMANAGED);    
+Node*    
+Node::no_ty = new Node(z::NO_TY, UNMANAGED);    
 
 bool isDivOrMod(Node* n) {
     return

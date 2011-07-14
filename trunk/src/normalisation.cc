@@ -385,11 +385,8 @@ void augmentConstDecls(FDLContext* ctxt, Node* unit) {
 
 
 //========================================================================
-// declCheck class
+// Find undeclared constants and functions
 //========================================================================
-// Class for finding undeclared constants and functions
-//
-//
 
 class declCheck {
 public:
@@ -450,184 +447,9 @@ findUndeclaredIds(FDLContext* ctxt, Node* unit) {
     return c.constIds.size() + c.funIds.size() > 0;
 }
 
-
-
-
 //========================================================================
-// Close rules.
-//========================================================================
-// Infer types for free variables in rules and universally quantify them.
-
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// inferVarTypes
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-/*
-Strategy:
-
-
-- Consider formula f.  
-- need to infer type for each free Prolog var.
-- Then replace f with universal closure of f, closing over these free vars.
-
-Input f.
-Output closure of f.
-
-Need to map over f, maintaining map of freevars to types.
-
-To allow for binders already in f (likely?) map over f function should
-maintain context.
-
-
-mapped function operation:
-
-- Lookup up type Tyn of n. (possibly null if type inf fails).
-
-- consider each subnode n of f in turn, maintaining context of bindings
-
-
-
-  - consider each ith child n' of n in turn
-    if n' is an unbound Upper-case var
-    then 
-
-     Let Tyn' = type of n' (ith arg type if Tyn non null).  Tyn' might be null.
-
-    if (Tyn' is non null and n' is unbound in typing map)
-    then 
-       create entry in typing map n' -> Tyn'
-
-    else if (Tyn' non null and n' bound in typing map to `pending')
-
-    then   update entry in typing map to n' -> Tyn'
-
-    else if (Tyn' null and n' is unbound in typing map)
-    then
-       create pending entry in typing map
-
-- At end, 
-    Check no pending bindings in typing map.  If are any, report as
-    warning or error. 
-    Form closure using non-pending bindings.
-*/
-
-
-class VarTypingFun {
-public:
-    map<string,Node*> vMap;
-    
-    VarTypingFun() {};
-    
-    Node* operator() (FDLContext* c, Node* n);
-};
-
-Node* 
-VarTypingFun::operator() (FDLContext* c, Node* n) {
-
-    Formatter::setFormatter(VanillaFormatter::getFormatter());
-
-    Node* subNodeTypes = c->getSubNodeTypes(n);
-
-    vector<Node**> subNodes = n->getSubNodes();
-
-    for ( int i = 0; i != (int) subNodes.size(); i++) {
-
-        Node* subNode = *(subNodes.at(i));
-        string subNodeId = subNode->id;
-
-        if ( subNode->kind == ID
-             && hasUpperCaseStart(subNodeId)
-             && c->lookupId(subNodeId) == 0 ) {
-
-            Node* subNodeTy;
-            if (subNodeTypes != 0) {
-                subNodeTy = subNodeTypes->child(i);
-            } else {
-                subNodeTy = Node::unknown;
-            }
-
-            if ( subNodeTy->kind != UNKNOWN && vMap.count(subNodeId) == 0) {
-
-                vMap.insert(make_pair(subNodeId, subNodeTy));
-
-            } else if ( subNodeTy->kind != UNKNOWN
-                        && vMap.count(subNodeId) == 1 
-                        && vMap.find(subNodeId)->second->kind == PENDING) {
-
-                vMap.find(subNodeId)->second = subNodeTy; 
-            }
-            else if (subNodeTy->kind == UNKNOWN
-                     && vMap.count(subNodeId) == 0) {
-
-                vMap.insert(make_pair(subNodeId, new Node(PENDING)));
-            }
-            
-        }
-    }
-    return n;
-}
-
-
-Node* closeExpr(FDLContext* c, int rulNum, Node* expr) {
-
-    string rulNumStr (intToString(rulNum));
-
-    VarTypingFun varTypingFun;
-    mapOverWithContext(varTypingFun, c, expr);
-
-    if (varTypingFun.vMap.size() == 0) {
-        return expr;
-    }
-    Formatter::setFormatter(VanillaFormatter::getFormatter());
-    printMessage(FINEm, "closeExpr: vars found in rule " + rulNumStr
-                 + ENDLs + expr->toString());
-
-    
-    Node* decls = new Node(SEQ);
-    for (map<string,Node*>::iterator i = varTypingFun.vMap.begin();
-         i != varTypingFun.vMap.end();
-         i++) {
-
-        string id = i->first;
-        Node* type = i->second;
-
-        if (type->kind == PENDING) {
-            printMessage(INFOm,
-                         "closeExpr (rule " + rulNumStr
-                         + "): no binding for: " + id);
-        } else {
-            Formatter::setFormatter(VanillaFormatter::getFormatter());
-            printMessage(FINEm, 
-                         "closeExpr (rule " + rulNumStr
-                         + "): binding " + id + " to " + type->toString());
-
-            decls->addChild(new Node(DECL, id, type->copy()));
-        }
-    }
-    return new Node(FORALL, decls, expr);
-}
-
-
-
-
-void closeRules(FDLContext* ctxt, Node* unit) {
-
-    Node* rules = unit->child(1);
-
-    for (int i = 0; i != rules->arity(); i++) {
-        rules->child(i) = closeExpr(ctxt, i+1, rules->child(i));
-    }
-    return;
-}
-
-//========================================================================
-// Resolve overloading. 
-//========================================================================
-
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // normaliseIneqs
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//========================================================================
 
 void normaliseIneqs(Node* n) {
 
@@ -642,362 +464,6 @@ void normaliseIneqs(Node* n) {
     return;
 }
 
-
-
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// resolveIneqs
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-// Resolve overloading of LT and LE by looking at types of children.
-
-Node*
-resolveIneqs (FDLContext* ctxt, Node* n) {
-
-    string enumSuffix;
-    Kind intRelKind;
-    Kind realRelKind;
-
-    if (n->kind == LE) {
-        enumSuffix = "__LE";
-        intRelKind = I_LE;
-        realRelKind = R_LE;
-
-    } else if (n->kind == LT) {
-        enumSuffix = "__LT";
-        intRelKind = I_LT;
-        realRelKind = R_LT;
-
-    } else {
-        return n;
-    }
-         
-    Node* child0BaseTy =
-        ctxt->normaliseType(ctxt->getType(n->child(0)))->expandSubranges();
-    Node* child1BaseTy =
-        ctxt->normaliseType(ctxt->getType(n->child(1)))->expandSubranges();
-
-    if (child0BaseTy->kind == INT_TY && child1BaseTy->kind == INT_TY) {
-        n->kind = intRelKind;
-        return n;
-    }
-    else if (child0BaseTy->kind == REAL_TY || child1BaseTy->kind == REAL_TY) {
-        n->kind = realRelKind;
-        return n;
-    }
-    else if (child0BaseTy->kind == ENUM_TY && child1BaseTy->kind == ENUM_TY) {
-
-        n->kind = FUN_AP;
-        n->id = (child0BaseTy->id) + enumSuffix;
-        return n;
-    }
-    else {
-
-        Formatter::setFormatter(VanillaFormatter::getFormatter());
-        printMessage(INFOm,
-                     "resolveIneqs:  Inequality "
-                     + ENDLs + n->toString() 
-                     + ENDLs + "has unexpected arg types: " 
-                     + ENDLs + child0BaseTy->toString()
-                     + ENDLs + child1BaseTy->toString());
-        return n;
-    }
-}
-
-
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// resolveSuccPred
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-Node*
-resolveSuccPred(FDLContext* ctxt, Node* n) {
-    if (! (n->kind == SUCC || n->kind == PRED) ) return n;
-
-    Node* childTy = ctxt->getType(n->child(0));
-    Node* baseChildTy = ctxt->normaliseType(childTy)->expandSubranges();
- 
-    if (baseChildTy->kind == INT_TY) {
-        if (n->kind == SUCC)
-            n->kind = I_SUCC;
-        else
-            n->kind = I_PRED;
-        return n;
-    }
-    if (  baseChildTy->kind == ENUM_TY) {
-
-        if (n->kind == SUCC) {
-            n->id = (baseChildTy->id) + "__succ";
-        }
-        else {
-            n->id = (baseChildTy->id) + "__pred";
-        }
-        n->kind = FUN_AP;
-        return n;
-    }
-    printMessage(INFOm,
-                 "resolveSuccPred: unexpected arg type: "
-                 + kindString(baseChildTy->kind)
-                 + "{" + (baseChildTy->id) + "}"
-                 );
-    return n;
-}
-
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// resolveEq
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// Add type of equality or disequality as 3rd child.
-
-// Is there a coercion from ty1 to ty2?
-
-bool existsCoercion(Node* ty1, Node* ty2) {
-
-    return ty1->kind == INT_TY && ty2->kind == REAL_TY;
-}
-
-Node*
-resolveEq(FDLContext* ctxt, Node* n) {
-    if (! ((n->kind == EQ || n->kind == NE)
-           && n->arity() == 2)
-        ) return n;
-
-    Node* child0Ty = ctxt->getType(n->child(0))->expandSubranges();
-    Node* child1Ty = ctxt->getType(n->child(1))->expandSubranges();
-
-    if (child0Ty->equals(child1Ty) && child0Ty->kind != UNKNOWN) {
-        n->addChild(child0Ty->copy());
-        return n;
-    }
-        
-    Node* child0BaseTy = ctxt->canoniseType(child0Ty)->expandSubranges();
-    Node* child1BaseTy = ctxt->canoniseType(child1Ty)->expandSubranges();
-
-    if (child0BaseTy->equals(child1BaseTy) && child0Ty->kind != UNKNOWN) {
-        n->addChild(child0BaseTy->copy());
-        return n;
-    }
-
-    if (existsCoercion(child0BaseTy, child1BaseTy)) {
-        n->addChild(child1BaseTy->copy());
-        return n;
-    }
-        
-    if (existsCoercion(child1BaseTy, child0BaseTy)) {
-        n->addChild(child0BaseTy->copy());
-        return n;
-    }
-    printMessage(INFOm,
-                 "resolveEq: incompatible types "
-                 + kindString(child0BaseTy->kind)
-                 + " and " + kindString(child1BaseTy->kind)
-                 + " for children "
-                 + kindString(n->child(0)->kind)
-                 + " and " + kindString(n->child(1)->kind)
-                 );
-    return n;
-}
-
-
-
-
-
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// Resolve arithmetic Real/Int overloading
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Node* resolveUnaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
-
-    Node* ty0 = c->normaliseType(c->getType(n->child(0)))->expandSubranges();
-
-    if (ty0->kind == INT_TY) {
-        return n->updateKind(iKind);
-    }
-    else if (ty0->kind == REAL_TY) {
-        return n->updateKind(rKind);
-    }
-    else {
-        printMessage(INFOm,
-                     "resolveUnaryArithNode: " + kindString(n->kind)
-                     + "has unexpected arg type: "
-                     + kindString(ty0->kind) );
-        return n;
-    }
-}
-    
-Node* resolveBinaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
-
-    Node* ty0 = c->normaliseType(c->getType(n->child(0)))->expandSubranges();
-    Node* ty1 = c->normaliseType(c->getType(n->child(1)))->expandSubranges();
-
-    if (ty0->kind == INT_TY && ty1->kind == INT_TY)
-        return n->updateKind(iKind);
-    else if (ty0->kind == REAL_TY || ty1->kind == REAL_TY) {
-        return n->updateKind(rKind);
-    }
-    else {
-        printMessage(INFOm,
-                     "resolveBinaryArithNode: " + kindString(n->kind)
-                     + " has unexpected arg types: "
-                     + kindString(ty0->kind) + " " 
-                     + kindString(ty1->kind) );
-        return n;
-    }
-}
-    
-Node* resolveArithOps(FDLContext* c, Node* n) {
-
-    switch (n->kind) {
-    case(PLUS):   return resolveBinaryArithNode(c, n, I_PLUS, R_PLUS);
-    case(TIMES):  return resolveBinaryArithNode(c, n, I_TIMES, R_TIMES);
-    case(MINUS):  return resolveBinaryArithNode(c, n, I_MINUS, R_MINUS);
-    case(EXP):    return resolveBinaryArithNode(c, n, I_EXP, R_EXP);
-    case(UMINUS): return resolveUnaryArithNode(c, n, I_UMINUS, R_UMINUS);
-    case(ABS):    return resolveUnaryArithNode(c, n, I_ABS, R_ABS);
-    case(SQR):    return resolveUnaryArithNode(c, n, I_SQR, R_SQR);
-    default:
-        return n;
-    }
-}
-
-
-
-
-
-
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// Add int to real coercions.
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// Try to insert coercion.  If see problem, just continue.  Typechecking later
-// will catch it.
-
-Node* insertRealCoercion(FDLContext* c, Node* n) {
-
-    // Skip n if is internal node of compound operator
-    if (n->kind == SEQ
-        || n->kind == ASSIGN
-        || n->kind == SUBRANGE
-        || n->kind == DECL)
-        return n;
-
-    vector<Node**> subNodes = n->getSubNodes();
-    Node* subNodeTypes = c->getSubNodeTypes(n); // Expected types of subnodes
-
-    for (int i = 0; i != (int) subNodes.size(); i++) {
-        Node** subNode = subNodes.at(i);
-
-        Node* subNodeTy =
-            c->normaliseType(c->getType(*subNode))->expandSubranges();
-
-        if (subNodeTy->kind != INT_TY) continue;
-
-        // Put test here rather than at top so we only report error
-        // when coercion might be needed.
-        if (subNodeTypes == 0) {
-            printMessage(FINEm,
-                         "insertRealCoercion: can't find child types of "
-                         + kindString(n->kind));
-            return n;
-        }
-        Node* expectedSubNodeTy =
-            c->normaliseType(subNodeTypes->child(i))->expandSubranges();
-
-        if (expectedSubNodeTy->kind == INT_TY) {
-            continue;
-        }
-        else if (expectedSubNodeTy->kind == REAL_TY) {
-            *subNode = new Node(TO_REAL, *subNode);
-        }
-        else {
-            printMessage(INFOm,
-                         "insertRealCoercion: trying to coerce INT_TY to:"
-                         + kindString(expectedSubNodeTy->kind)
-                         + ", the reported type of subNode " + intToString(i+1)
-                         + " of " + kindString(n->kind) + " node");
-        }
-    }
-    return n;
-        
-
-}
-
-
-Node* resolveOverloadedOp(FDLContext* c, Node* n) {
-
-    n = resolveSuccPred(c,n);
-    n = resolveArithOps(c,n);
-    n = resolveEq(c,n);
-    n = resolveIneqs(c,n);
-
-    return n;
-}
-
-void resolveOverloading(FDLContext* ctxt, Node* unit) {
-
-    //--------------------------------------------------------------------
-    // Invert > and >= relations.
-    //--------------------------------------------------------------------
-
-    unit->mapOver(normaliseIneqs);
-
-    //--------------------------------------------------------------------
-    // Resolve overloaded operators
-    //--------------------------------------------------------------------
-    // - succ and pred operators over int & enum types.
-    // - int/real overloading of operators and relations
-    // - equality and disequalities
-    // - < and <= inequalities.over int, real and enum types.
-
-
-    // Important here that mapOver is bottom up, so can do resolution
-    // in single pass.
-
-    mapOverWithContext(resolveOverloadedOp, ctxt, unit);
-    
-    //--------------------------------------------------------------------
-    // Insert coercions
-    //--------------------------------------------------------------------
-
-    mapOverWithContext(insertRealCoercion, ctxt, unit);
-
-}
-
-
-
-//========================================================================
-// Eliminate standard FDL functions.
-//========================================================================
-// Eliminate occurrences of ABS, SQR, EXP functions, ODD predicate.
-
-// SUCC and PRED taken care of separately.
-
-
-Node* elimStdFDLFun(Node* n) {
-    switch (n->kind) {
-    case I_ABS: return n->updateKindAndId(FUN_AP,"int___abs");
-    case R_ABS: return n->updateKindAndId(FUN_AP,"real___abs");
-    case I_SQR: {
-        n->kind = I_EXP;
-        n->addChild(new Node(NATNUM, "2"));
-        return n;
-    }
-    case R_SQR: {
-        n->kind = R_EXP;
-        n->addChild(new Node(NATNUM, "2"));
-        return n;
-    }
-    case ODD:   return n->updateKindAndId(FUN_AP,"int___odd");
-    default:    return n;
-    }
-}
-
-
-void elimStdFDLFuns(Node* unit) {
-    unit->mapOver1(elimStdFDLFun);
-}
 
 
 
@@ -1088,6 +554,805 @@ Node* simpMkArray(Node* n) {
 
 
 //========================================================================
+// Close rules.
+//========================================================================
+// Infer types for free variables in rules and universally quantify them.
+
+/*
+Strategy:
+
+
+- Consider formula f.  
+- need to infer type for each free Prolog var.
+- Then replace f with universal closure of f, closing over these free vars.
+
+Input f.
+Output closure of f.
+
+Need to map over f, maintaining map of freevars to types.
+
+To allow for binders already in f, map over f function should
+maintain context.
+
+
+mapped function operation:
+
+- consider each subnode n of f in turn, maintaining context of bindings
+
+  - consider each ith child n' of n in turn
+    if n' is an unbound Upper-case var
+    then 
+
+     Let Tyn' = best guess at type that node n expects n' to have
+
+     if (n' is unbound in typing map)
+    then 
+       create entry in typing map n' -> Tyn'
+    else 
+       merge new guess with existing guess in map for n'.
+- At end, 
+
+  -  Form closure using resolved bindings.
+
+  -  Flag if there any unresolved bindings
+
+  - If, in phase 3 of type resolution, an unresolved binding is for ir
+    or ire type, choose to use i.  Hopefully this guess is right some
+    of the time, maybe more often than other guesses.
+  
+*/
+
+
+class VarTypingFun {
+public:
+    map<string,Node*> vMap;
+    
+    VarTypingFun() {};
+    
+    Node* mergeVarTypings(Node* ty1, Node* ty2, FDLContext* c);
+
+    Node* operator() (FDLContext* c, Node* n);
+};
+
+Node*
+VarTypingFun::mergeVarTypings(Node* ty1, Node* ty2, FDLContext* c) {
+    // Hopefully common case first.
+    if (ty1->kind == ty2->kind) {
+        return ty1;
+    }
+    Kind k1 = c->canoniseType(ty1)->kind;
+    Kind k2 = c->canoniseType(ty2)->kind;
+
+    if (k1 == UNKNOWN) {
+        return ty2;    
+    }
+    if (k2 == UNKNOWN) {
+        return ty1;    
+    }
+    if (k1 == INT_REAL_OR_ENUM_TY) {
+        // Expect ty2 is INT_TY, REAL_TY, ENUM_TY, INT_OR_REAL_TY or
+        // INT_REAL_OR_ENUM_TY. 
+        return ty2;   
+    }
+    if (k2 == INT_REAL_OR_ENUM_TY) {
+        // Expect ty1 is INT_TY, REAL_TY, ENUM_TY or INT_OR_REAL_TY
+        return ty1;    
+    }
+    if (k1 == INT_OR_REAL_TY) {
+        // Expect ty2 is INT_TY, REAL_TY or INT_OR_REAL_TY
+        return ty2;   
+    }
+    if (k2 == INT_OR_REAL_TY) {
+        // Expect ty2 is INT_TY or REAL_TY 
+        return ty1;   
+    }
+    if (k1 == INT_TY && k2 == REAL_TY) {
+        return ty1;   
+    }
+    if (k1 == REAL_TY && k2 == INT_TY) {
+        return ty2;   
+    }
+    if (k1 == k2) {
+        return ty1;
+    }
+    return Node::no_ty; // Types are incompatible.  Hopefully never see this!
+}
+
+Node* 
+VarTypingFun::operator() (FDLContext* c, Node* n) {
+
+    Formatter::setFormatter(VanillaFormatter::getFormatter());
+
+    Node* subNodeTypes = c->getSubNodeTypes(n);
+
+    vector<Node**> subNodes = n->getSubNodes();
+
+    for ( int i = 0; i != (int) subNodes.size(); i++) {
+
+        Node* subNode = *(subNodes.at(i));
+        string subNodeId = subNode->id;
+
+        if ( subNode->kind == ID
+             && hasUpperCaseStart(subNodeId)
+             && c->lookupId(subNodeId) == 0 ) {
+
+            Node* subNodeTy;
+            if (subNodeTypes != 0) {
+                subNodeTy = subNodeTypes->child(i);
+            } else {
+                subNodeTy = Node::unknown;
+            }
+
+            pair< map<string,Node*>::iterator,bool > p = 
+                vMap.insert(make_pair(subNodeId, subNodeTy));
+
+            bool insertSuccess = p.second;
+            if (!insertSuccess) {
+                Node** typeInMap = & ((p.first)->second);
+                *typeInMap = mergeVarTypings(*typeInMap, subNodeTy, c);
+            }
+        }
+    }
+    return n;
+}
+
+
+Node*
+closeExpr(FDLContext* c, int rulNum, Node* expr) {
+
+    string rulNumStr (intToString(rulNum));
+
+    VarTypingFun varTypingFun;
+    mapOverWithContext(varTypingFun, c, expr);
+
+    if (varTypingFun.vMap.size() == 0) {
+        return expr;
+    }
+    Formatter::setFormatter(VanillaFormatter::getFormatter());
+    printMessage(FINEm, "closeExpr: vars found in rule " + rulNumStr
+                 + ENDLs + expr->toString());
+
+    Node* result;
+    Node* decls;
+    if (expr->kind == FORALL) {
+        decls = expr->child(0);
+        result = expr;
+    } else {
+        decls = new Node(SEQ);
+        result = new Node(FORALL, decls, expr);
+    }
+
+    for (map<string,Node*>::iterator i = varTypingFun.vMap.begin();
+         i != varTypingFun.vMap.end();
+         i++) {
+
+        string id = i->first;
+        Node* type = i->second;
+
+        Kind tyKind = type->kind;
+
+        if ( c->typeResolutionPhase == 3
+             && (tyKind == INT_OR_REAL_TY || tyKind == INT_REAL_OR_ENUM_TY)
+            ) {
+
+            decls->addChild(new Node(DECL, id, new Node(INT_TY)));
+            c->typeResolutionMadeProgress = true;
+
+            printMessage(INFOm,
+      "closeExpr: Speculatively guessing INT_TY type for free variable " + id
+                         + ENDLs + " in rule " + rulNumStr);
+
+        }
+        else if (tyKind == UNKNOWN
+                 || tyKind == INT_OR_REAL_TY
+                 || tyKind == INT_REAL_OR_ENUM_TY
+                 || tyKind == NO_TY) {
+
+            c->typeResolutionIncomplete = true;
+        }
+        else {
+
+            decls->addChild(new Node(DECL, id, type->copy()));
+            c->typeResolutionMadeProgress = true;
+
+        }
+    }
+    return result;
+}
+
+void closeRules(FDLContext* ctxt, Node* unit) {
+
+    Node* rules = unit->child(1);
+
+    for (int i = 0; i != rules->arity(); i++) {
+        rules->child(i) = closeExpr(ctxt, i+1, rules->child(i));
+    }
+    return;
+}
+
+//========================================================================
+// Resolve overloading. 
+//========================================================================
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// resolveIneqs
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Resolve overloading of LT and LE by looking at types of children.
+
+Node*
+resolveIneqs (FDLContext* ctxt, Node* n) {
+
+    string enumSuffix;
+    Kind intRelKind;
+    Kind realRelKind;
+
+    if (n->kind == LE) {
+        enumSuffix = "__LE";
+        intRelKind = I_LE;
+        realRelKind = R_LE;
+
+    } else if (n->kind == LT) {
+        enumSuffix = "__LT";
+        intRelKind = I_LT;
+        realRelKind = R_LT;
+
+    } else {
+        return n;
+    }
+         
+    Node* child0BaseTy =
+        ctxt->normaliseType(ctxt->getType(n->child(0)))->expandSubranges();
+    Node* child1BaseTy =
+        ctxt->normaliseType(ctxt->getType(n->child(1)))->expandSubranges();
+
+    if (child0BaseTy->kind == INT_TY && child1BaseTy->kind == INT_TY) {
+
+        n->kind = intRelKind;
+        ctxt->typeResolutionMadeProgress = true;
+    }
+    else if (ctxt->typeResolutionPhase >= 2
+        && (child0BaseTy->kind == INT_TY || child1BaseTy->kind == INT_TY)
+        ) {
+        n->kind = intRelKind;
+        ctxt->typeResolutionMadeProgress = true;
+
+        printMessage(INFOm,
+                         "resolveIneqs: Speculatively inserting "
+                          + kindString(intRelKind) +
+                         " node at position " + ctxt->getPathString());
+        
+    }
+    else if (child0BaseTy->kind == REAL_TY || child1BaseTy->kind == REAL_TY) {
+
+        n->kind = realRelKind;
+        ctxt->typeResolutionMadeProgress = true;
+    }
+    else if (child0BaseTy->kind == ENUM_TY) {
+
+        n->kind = FUN_AP;
+        n->id = (child0BaseTy->id) + enumSuffix;
+        ctxt->typeResolutionMadeProgress = true;
+    }
+    else if (child1BaseTy->kind == ENUM_TY) {
+
+        n->kind = FUN_AP;
+        n->id = (child1BaseTy->id) + enumSuffix;
+        ctxt->typeResolutionMadeProgress = true;
+    }
+    else {
+        ctxt->typeResolutionIncomplete = true;
+    }
+    return n;
+}
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// resolveSuccPred
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Node*
+resolveSuccPred(FDLContext* ctxt, Node* n) {
+    if (! (n->kind == SUCC || n->kind == PRED) ) return n;
+
+    Node* childTy = ctxt->getType(n->child(0));
+    Node* baseChildTy = ctxt->normaliseType(childTy)->expandSubranges();
+ 
+    if (baseChildTy->kind == INT_TY) {
+        if (n->kind == SUCC) {
+            n->kind = I_SUCC;
+        } else {
+            n->kind = I_PRED;
+        }
+        ctxt->typeResolutionMadeProgress = true;
+        return n;
+    }
+    if (  baseChildTy->kind == ENUM_TY) {
+
+        if (n->kind == SUCC) {
+            n->id = (baseChildTy->id) + "__succ";
+        }
+        else {
+            n->id = (baseChildTy->id) + "__pred";
+        }
+        n->kind = FUN_AP;
+        ctxt->typeResolutionMadeProgress = true;
+        return n;
+    }
+    ctxt->typeResolutionIncomplete = true;
+    return n;
+}
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// resolveEq
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Add type of equality or disequality as 3rd child.
+
+// Is there a coercion from ty1 to ty2?
+
+bool existsCoercion(Node* ty1, Node* ty2) {
+
+    return ty1->kind == INT_TY && ty2->kind == REAL_TY;
+}
+
+bool hasSupertype(Node* ty) {
+
+    return ty->kind == INT_TY;
+}
+
+Node*
+resolveEq(FDLContext* ctxt, Node* n) {
+    if (! ((n->kind == EQ || n->kind == NE)
+           && n->arity() == 2)
+        ) return n;
+
+    Node* child0Ty = ctxt->getType(n->child(0))->expandSubranges();
+    Node* child1Ty = ctxt->getType(n->child(1))->expandSubranges();
+
+    // Pick up an easy common case first
+    if (child0Ty->equals(child1Ty) && child0Ty->kind != UNKNOWN) {
+        n->addChild(child0Ty->copy());
+        ctxt->typeResolutionMadeProgress = true;
+        return n;
+    }
+    Node* child0BaseTy = ctxt->canoniseType(child0Ty)->expandSubranges();
+    Node* child1BaseTy = ctxt->canoniseType(child1Ty)->expandSubranges();
+
+    /* Cases
+
+       U = unknown type
+       T = known type with no supertype
+       S = known type with supertype
+
+       U,T & T,U    Use T
+       T,T          Use T
+       S,T & T,S    Use T
+
+       S,S          Use S (NB: no cases in FDL when have 2 distinct Ss)
+
+       U,S & S,U    Fail in Phase 1.  Use S in Phases 2 & 3.
+       U,U          Fail
+
+
+     */
+  
+
+    if (child0Ty->kind != UNKNOWN && ! hasSupertype(child0Ty)) {
+        //  T,U  T,S  T,T
+        n->addChild(child0BaseTy->copy());
+        ctxt->typeResolutionMadeProgress = true;
+        return n;
+    }
+
+    if (child1Ty->kind != UNKNOWN && ! hasSupertype(child1Ty)) {
+        //  U,T  S,T  (T,T)
+        n->addChild(child1BaseTy->copy());
+        ctxt->typeResolutionMadeProgress = true;
+        return n;
+    }
+
+    if (child0BaseTy->equals(child1BaseTy) && child0Ty->kind != UNKNOWN) {
+        // S,S  (T,T)
+        n->addChild(child0BaseTy->copy());
+        ctxt->typeResolutionMadeProgress = true;
+        return n;
+    }
+
+    if (ctxt->typeResolutionPhase >= 2) {
+
+        if (child0Ty->kind == UNKNOWN && child1Ty->kind != UNKNOWN) {
+            // U,S  (U,T)
+            n->addChild(child1Ty->copy());
+
+            printMessage(INFOm,
+                         "resolveEq: Speculatively adding type " 
+                          + child1Ty->toString() + " to "
+                          + kindString(n->kind) +
+                         " node at position " + ctxt->getPathString());
+
+            ctxt->typeResolutionMadeProgress = true;
+            return n;
+        }
+        if (child0Ty->kind != UNKNOWN && child1Ty->kind == UNKNOWN) {
+            // S,U  (T,U)
+            n->addChild(child0Ty->copy());
+
+            printMessage(INFOm,
+                         "resolveEq: Speculatively adding type " 
+                          + child0Ty->toString() + " to "
+                          + kindString(n->kind) +
+                         " node at position " + ctxt->getPathString());
+
+            ctxt->typeResolutionMadeProgress = true;
+            return n;
+        }
+    }
+    ctxt->typeResolutionIncomplete = true;
+    return n;
+}
+
+
+
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Resolve arithmetic Real/Int overloading
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Node* resolveUnaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
+
+    Node* ty0 = c->normaliseType(c->getType(n->child(0)))->expandSubranges();
+
+    if (ty0->kind == INT_TY) {
+        c->typeResolutionMadeProgress = true;
+        return n->updateKind(iKind);
+    }
+    else if (ty0->kind == REAL_TY) {
+        c->typeResolutionMadeProgress = true;
+        return n->updateKind(rKind);
+    }
+    else {
+        c->typeResolutionIncomplete = true;
+        return n;
+    }
+}
+    
+Node* resolveBinaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
+
+    Node* ty0 = c->normaliseType(c->getType(n->child(0)))->expandSubranges();
+    Node* ty1 = c->normaliseType(c->getType(n->child(1)))->expandSubranges();
+
+    if (ty0->kind == REAL_TY || ty1->kind == REAL_TY) {
+        // R,R   I,R   R,I   U,R   R,U
+        c->typeResolutionMadeProgress = true;
+        return n->updateKind(rKind);
+    }
+    else if (ty0->kind == INT_TY && ty1->kind == INT_TY) {
+        // I,I
+        c->typeResolutionMadeProgress = true;
+        return n->updateKind(iKind);
+    }
+    else if (c->typeResolutionPhase >= 2
+             && (ty0->kind == INT_TY || ty1->kind == INT_TY)
+        ) {
+        // I,U  U,I  Phases 2 & 3.
+        c->typeResolutionMadeProgress = true;
+        printMessage(INFOm,
+                     "resolveBinaryArithNode: Speculatively inserting "
+                     + kindString(iKind) +
+                     " at position " + c->getPathString());
+        return n->updateKind(iKind);
+    }
+    else {
+        c->typeResolutionIncomplete = true;
+        return n;
+    }
+}
+    
+Node* resolveArithOps(FDLContext* c, Node* n) {
+
+    switch (n->kind) {
+    case(PLUS):   return resolveBinaryArithNode(c, n, I_PLUS, R_PLUS);
+    case(TIMES):  return resolveBinaryArithNode(c, n, I_TIMES, R_TIMES);
+    case(MINUS):  return resolveBinaryArithNode(c, n, I_MINUS, R_MINUS);
+    case(EXP):    return resolveBinaryArithNode(c, n, I_EXP, R_EXP);
+    case(UMINUS): return resolveUnaryArithNode(c, n, I_UMINUS, R_UMINUS);
+    case(ABS):    return resolveUnaryArithNode(c, n, I_ABS, R_ABS);
+    case(SQR):    return resolveUnaryArithNode(c, n, I_SQR, R_SQR);
+    default:
+        return n;
+    }
+}
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Augmentation of array operators with array name information.
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/*
+     ARR_ELEMENT arr index-tup    --> ARR_ELEMENT{type-id} arr index-tup
+     ARR_UPDATE arr index-tup val --> ARR_UPDATE{type-id} arr index-tup val
+
+    where t-id is the type-id for the type of argument rcd.
+
+*/
+
+Node* addTypeToArrayOp (FDLContext* c, Node* n) {
+
+    if ((n->kind == ARR_ELEMENT && n->id.size() == 0)
+        ||
+        (n->kind == ARR_UPDATE && n->id.size() == 0)) {
+
+        Node* arrTy = c->getType(n->child(0));
+        Node* normArrTy = c->normaliseType(arrTy);
+
+        if (normArrTy->kind == ARRAY_TY && normArrTy->id.size() > 0) {
+            n->id = normArrTy->id;
+            c->typeResolutionMadeProgress = true;
+        }
+        else {
+            c->typeResolutionIncomplete = true;
+        }
+    }
+    return n;
+}
+
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Augmentation of record operators with record name information.
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/*
+     RCD_ELEMENT{rcd-id} rcd     --> RCD_ELEMENT{rcd-id} rcd  t-id 
+     RCD_UPDATE{rcd-id} rcd val   --> RCD_UPDATE{rcd-id} rcd val  t-id
+
+where t-id is the type-id for the type of argument rcd.
+
+Two strategies are used:
+
+1. Look at record type declarations in FDL file and see if only one
+   record type uses the rcd-id fieldname.  If so, use that type.
+
+2. Try to infer type of rcd argument.  
+
+*/
+
+Node* addTypeToRecordOp (FDLContext* c, Node* n) {
+
+    if ((n->kind == RCD_ELEMENT && n->arity() == 1)
+        ||
+        (n->kind == RCD_UPDATE && n->arity() == 2)) {
+
+        Node* rcdTyFromDecls = c->lookupRecordField(n->id);
+        if (rcdTyFromDecls->kind != UNKNOWN) {
+
+            n->addChild(rcdTyFromDecls->copy());
+            c->typeResolutionMadeProgress = true;
+            return n;
+        }
+        Node* rcdTy = c->getType(n->child(0));
+        Node* normRcdTy = c->normaliseType(rcdTy);
+
+        if (normRcdTy->kind == RECORD_TY) {
+            n->addChild(new Node(TYPE_PARAM, normRcdTy->id));
+            c->typeResolutionMadeProgress = true;
+        }
+        else {
+            c->typeResolutionIncomplete = true;
+        }
+    }
+    return n;
+}
+
+
+
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Add int to real coercions.
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Try to insert coercion.  If see problem, just continue.  Typechecking later
+// will catch it.
+
+Node* insertRealCoercion(FDLContext* c, Node* n) {
+
+    // Skip n if is internal node of compound operator
+    if (n->kind == SEQ
+        || n->kind == ASSIGN
+        || n->kind == SUBRANGE
+        || n->kind == DECL)
+        return n;
+
+    vector<Node**> subNodes = n->getSubNodes();
+    Node* subNodeTypes = c->getSubNodeTypes(n); // Expected types of subnodes
+
+    for (int i = 0; i != (int) subNodes.size(); i++) {
+        Node** subNode = subNodes.at(i);
+
+        Node* subNodeTy =
+            c->normaliseType(c->getType(*subNode))->expandSubranges();
+
+        if (subNodeTy->kind != INT_TY) continue;
+
+        // Put test here rather than at top so we only report error
+        // when coercion might be needed.
+        if (subNodeTypes == 0) {
+            printMessage(FINEm,
+                         "insertRealCoercion: can't find child types of "
+                         + kindString(n->kind));
+            return n;
+        }
+        Node* expectedSubNodeTy =
+            c->normaliseType(subNodeTypes->child(i))->expandSubranges();
+
+        if (expectedSubNodeTy->kind == INT_TY) {
+            continue;
+        }
+        else if (expectedSubNodeTy->kind == REAL_TY) {
+            *subNode = new Node(TO_REAL, *subNode);
+        }
+        else {
+            printMessage(INFOm,
+                         "insertRealCoercion: trying to coerce INT_TY to:"
+                         + kindString(expectedSubNodeTy->kind)
+                         + ", the reported type of subNode " + intToString(i+1)
+                         + " of " + kindString(n->kind) + " node");
+        }
+    }
+    return n;
+        
+
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Assembly of main procedure for resolving overloading
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Node* resolveOverloadedOp(FDLContext* c, Node* n) {
+
+    n = resolveSuccPred(c,n);
+    n = resolveArithOps(c,n);
+    n = resolveEq(c,n);
+    n = resolveIneqs(c,n);
+    n = addTypeToArrayOp(c,n);
+    n = addTypeToRecordOp(c,n);
+    return n;
+}
+
+void resolveOverloading(FDLContext* ctxt, Node* unit) {
+
+    //--------------------------------------------------------------------
+    // Resolve overloaded / polymorphic operators
+    //--------------------------------------------------------------------
+    // - succ and pred operators over int & enum types.
+    // - int/real overloading of operators and relations
+    // - equality and disequalities
+    // - < and <= inequalities.over int, real and enum types.
+    // - polymorphic array operators
+    // - polymorphic record operators
+
+    // Useful here that mapOver is bottom up, as resolution often depends
+    // on examining typing of arguments
+
+    mapOverWithContext(resolveOverloadedOp, ctxt, unit);
+    
+}
+
+
+
+
+
+//========================================================================
+// Type resolution 
+//========================================================================
+// Resolve all polymorphism / overloading and figure out types
+// of free variables.
+
+
+void resolveTyping(FDLContext* ctxt, Node* unit) {
+
+    //--------------------------------------------------------------------
+    // Ensure type inference set up to be eager
+    //--------------------------------------------------------------------
+
+    ctxt->strictTyping = false;
+
+
+    //--------------------------------------------------------------------
+    // Iteratively close rules and resolve overloading
+    //--------------------------------------------------------------------
+    // Victor 0.9.1 and before used a single call of closeRules() followed
+    // resolveOverloading().
+    // Examples have been seen in the 2nd Tokeneer release of user-defined
+    // rules for which this is not sufficient.
+
+    // The typing resolutions in Phase 1 are always safe.  Those in
+    // Phases 2 and 3 are increasingly speculative.
+
+    for (int phase = 1; phase <= 3; phase++) {
+
+        ctxt->typeResolutionPhase = phase;
+
+        const int maxLoopIt = 10;
+        
+        for (int i = 1 ; i <= maxLoopIt; i++) {
+
+            ctxt->typeResolutionMadeProgress = false;
+            ctxt->typeResolutionIncomplete = false;
+
+
+            closeRules(ctxt, unit);
+
+            resolveOverloading(ctxt, unit);
+
+            if (! ctxt->typeResolutionMadeProgress
+                || ! ctxt->typeResolutionIncomplete) break;
+
+            if (i == maxLoopIt) {
+
+                printMessage(WARNINGm,
+                             "resolveTyping: in phase " + intToString(phase)
+                             + ", reached loop iteration " + intToString(i)
+                             + ENDLs + "Could be due to Victor bug");
+
+            }
+        } // End for i
+
+        if (! ctxt->typeResolutionIncomplete) break;
+
+    } // End for phase 
+
+    //--------------------------------------------------------------------
+    // Insert coercions
+    //--------------------------------------------------------------------
+
+    mapOverWithContext(insertRealCoercion, ctxt, unit);
+
+
+    return;
+}
+
+//========================================================================
+// Eliminate standard FDL functions.
+//========================================================================
+// Eliminate occurrences of ABS, SQR, EXP functions, ODD predicate.
+
+// SUCC and PRED taken care of separately.
+
+
+Node* elimStdFDLFun(Node* n) {
+    switch (n->kind) {
+    case I_ABS: return n->updateKindAndId(FUN_AP,"int___abs");
+    case R_ABS: return n->updateKindAndId(FUN_AP,"real___abs");
+    case I_SQR: {
+        n->kind = I_EXP;
+        n->addChild(new Node(NATNUM, "2"));
+        return n;
+    }
+    case R_SQR: {
+        n->kind = R_EXP;
+        n->addChild(new Node(NATNUM, "2"));
+        return n;
+    }
+    case ODD:   return n->updateKindAndId(FUN_AP,"int___odd");
+    default:    return n;
+    }
+}
+
+
+void elimStdFDLFuns(Node* unit) {
+    unit->mapOver1(elimStdFDLFun);
+}
+
+
+
+//========================================================================
 // Fix IDs
 //========================================================================
 // Replace IDs by CONST or VAR, as appropriate.
@@ -1120,85 +1385,8 @@ Node* resolveIDs(FDLContext* c, Node* n) {
 
 
 //========================================================================
-// Augmentation of array operators with array name information.
 //========================================================================
-/*
-     ARR_ELEMENT arr index-tup    --> ARR_ELEMENT{type-id} arr index-tup
-     ARR_UPDATE arr index-tup val --> ARR_UPDATE{type-id} arr index-tup val
-
-    where t-id is the type-id for the type of argument rcd.
-
-*/
-
-Node* addTypesToArrayOps (FDLContext* c, Node* n) {
-
-    if (n->kind == ARR_ELEMENT || n->kind == ARR_UPDATE) {
-
-        Node* arrTy = c->getType(n->child(0));
-        Node* normArrTy = c->normaliseType(arrTy);
-
-        if (normArrTy->kind == ARRAY_TY && normArrTy->id.size() > 0) {
-            n->id = normArrTy->id;
-        }
-        else {
-            printMessage(INFOm,
-                         "Failed to infer type of array operator "
-                         + kindString(n->kind) +  "{"
-                         + n->id + "}"
-                         + ENDLs + "Found type "
-                         + kindString(normArrTy->kind));
-            printMessage(FINESTm,
-                         "Failed to infer type of array operator " + ENDLs
-                         + (n->toString()) + ENDLs + "Found type " + ENDLs
-                         + (normArrTy->toString())
-                         );
-        }
-    }
-    return n;
-}
-
-
-
-
-//========================================================================
-// Augmentation of record operators with record name information.
-//========================================================================
-/*
-     RCD_ELEMENT{rcd-id} rcd     --> RCD_ELEMENT{rcd-id} rcd  t-id 
-     RCD_UPDATE{rcd-id} rcd val   --> RCD_UPDATE{rcd-id} rcd val  t-id
-
-where t-id is the type-id for the type of argument rcd.
-
-*/
-
-Node* addTypesToRecordOps (FDLContext* c, Node* n) {
-
-    if (n->kind == RCD_ELEMENT || n->kind == RCD_UPDATE) {
-
-        Node* rcdTy = c->getType(n->child(0));
-        Node* normRcdTy = c->normaliseType(rcdTy);
-
-        if (normRcdTy->kind == RECORD_TY) {
-            n->addChild(new Node(TYPE_PARAM, normRcdTy->id));
-        }
-        else {
-            printMessage(INFOm,
-                         "Failed to infer type of record operator "
-                         + kindString(n->kind) +  "{"
-                         + n->id + "}"
-                         + ENDLs + "Found type "
-                         + kindString(normRcdTy->kind));
-            printMessage(FINESTm,
-                         "Failed to infer type of record operator " + ENDLs
-                         + (n->toString()));
-        }
-    }
-    return n;
-}
-
-//========================================================================
-//========================================================================
-// Main processing functions
+// Main processing function
 //========================================================================
 //========================================================================
 
@@ -1238,37 +1426,18 @@ putUnitInStandardForm(Node* unit) {
     unit->mapOver1(simpMkArray); 
 
     //--------------------------------------------------------------------
-    // Ensure type inference set up to be eager
+    // Invert > and >= relations.
     //--------------------------------------------------------------------
 
-    ctxt->strictTyping = false;
+    unit->mapOver(normaliseIneqs);
 
     //--------------------------------------------------------------------
-    // Close any rules with free variables.
+    // Resolve typing 
     //--------------------------------------------------------------------
-    // Infer var types from typings of surrounding operators.
+    // Resolve typing of overloaded & polymorphic operators and of
+    // free vars in rules.
 
-    closeRules(ctxt, unit);
-
-    //--------------------------------------------------------------------
-    // Resolve overloading
-    //--------------------------------------------------------------------
-    // Also eliminate > and >= operators and add in int-to-real coercions.
-
-    resolveOverloading(ctxt, unit);
-
-    //--------------------------------------------------------------------
-    // Add type info to array operators
-    //--------------------------------------------------------------------
-
-    mapOverWithContext(addTypesToArrayOps, ctxt, unit);
-
-    //--------------------------------------------------------------------
-    // Add type info to record operators
-    //--------------------------------------------------------------------
-
-    mapOverWithContext(addTypesToRecordOps, ctxt, unit);
-
+    resolveTyping(ctxt, unit);
 
     //--------------------------------------------------------------------
     // Eliminate special operators for FDL standard functions

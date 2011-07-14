@@ -139,6 +139,7 @@ class FDLContext {
     map<string, Node*> enumConstMap; // Constants introduced for enum types
     map<string, Node*> varMap;
     map<string, Node*> funMap;
+    map<string, Node*> recordFieldMap; // Map from fieldnames to record types.
 
     vector<z::Kind> pathKinds;
     vector<int> pathAddr;
@@ -153,6 +154,15 @@ class FDLContext {
                         // so type of any operator immediately resolvable
                         // without consulting wider context.
 
+    // Flags for monitoring progress of resolution of polymorphic operators
+    // and of types of free variables in rules
+
+    // See normalisation.cc for use of these.
+
+    bool typeResolutionMadeProgress; 
+    bool typeResolutionIncomplete;
+
+    int  typeResolutionPhase;  
 
     FDLContext(Node* FDL_AST);
 
@@ -170,6 +180,8 @@ class FDLContext {
     Node* lookupVar(const string& s);
     Node* lookupFun(const string& s);
     Node* lookupEnumConst(const string& s);
+    Node* lookupRecordField(const string& s); // Returns TYPE_ID{rectypename}
+                                              // or UNKNOWN()
 
     Node* normaliseType(Node* n);      // Expand all top-level type defs 
     Node* canoniseType(Node* n);      // Expand top-level type defs down to 

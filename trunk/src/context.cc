@@ -156,6 +156,29 @@ FDLContext::insert(Node* decl, bool atEnd) {
                 enumConstMap.insert(make_pair(enumId->id, enumConstDecl));
             }
         }
+        else if (ty->kind == RECORD_TY) {
+            Node* recordTy = ty;
+            
+            Node* recordTyId = new Node(TYPE_ID, decl->id);
+
+            for ( int i = 0; 
+                  i!= recordTy->arity();
+                  i++) {
+                Node* fieldDecl = recordTy->child(i); // DECL{fname}(type)
+                // If fname already in map, need to update val to UNKNOWN()
+
+                // Try adding fname, recType pair to record field map
+                pair < map<string, Node*>::iterator, bool > res = 
+                    recordFieldMap.insert(make_pair(fieldDecl->id,recordTyId));
+                if (!res.second) {
+                    // If already entry in map for fieldDecl->id,
+                    // update corresponding value to UNKNOWN() to flag
+                    // that type cannot be unambiguously figured out
+                    // from fieldname.
+                    (res.first)->second = Node::unknown;
+                }
+            } // End for
+        } // End if
         break;
     }
     case DEF_CONST:  {
@@ -241,6 +264,15 @@ FDLContext::lookupEnumConst(const string& s) {
         map<string, Node*>::iterator i = enumConstMap.find(s);
         if (i == enumConstMap.end())
             return 0;
+        else
+            return i->second;
+}
+
+Node* 
+FDLContext::lookupRecordField(const string& s) {
+        map<string, Node*>::iterator i = recordFieldMap.find(s);
+        if (i == recordFieldMap.end())
+            return Node::unknown;
         else
             return i->second;
 }
@@ -761,6 +793,32 @@ FDLContext::getSubNodeTypes (Node* n) {
     case NATNUM:
     case ID:
         return result;
+    case LE:
+    case LT:
+        {
+            result->addChild(Node::int_real_or_enum_ty);
+            result->addChild(Node::int_real_or_enum_ty);
+            return result;
+        }
+    case SUCC:
+    case PRED:
+        {
+            result->addChild(Node::int_real_or_enum_ty);
+            return result;
+        }
+    case UMINUS:
+        {
+            result->addChild(Node::int_or_real_ty);
+            return result;
+        }
+    case PLUS:
+    case MINUS:
+    case TIMES:
+        {
+            result->addChild(Node::int_or_real_ty);
+            result->addChild(Node::int_or_real_ty);
+            return result;
+        }
 
     case TERM_I_LT:
     case TERM_I_LE:
@@ -814,7 +872,7 @@ FDLContext::getSubNodeTypes (Node* n) {
         }
     case EXP:
         {
-            result->addChild(Node::unknown);
+            result->addChild(Node::int_or_real_ty);
             result->addChild(Node::int_ty);
             return result;
         }
