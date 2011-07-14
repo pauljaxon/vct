@@ -93,7 +93,10 @@ enum Kind {
     TUPLE_TY,
     UNKNOWN,
     TYPE_UNIV,
-  
+    INT_OR_REAL_TY,    // Int or Real
+    INT_REAL_OR_ENUM_TY, // Int or Real or Enum
+    NO_TY,    // Set of no types
+
     // Expressions
     FORALL,
     EXISTS,
@@ -413,8 +416,11 @@ class Node {
     static Node* bool_ty;
     static Node* bit_ty;
     static Node* real_ty;
+    static Node* int_or_real_ty;
+    static Node* int_real_or_enum_ty;
     static Node* type_univ;
     static Node* unknown;
+    static Node* no_ty;
 
 
 };
