@@ -1423,6 +1423,23 @@ SMTLibDriver::getResults(string& remarks) {
 
 }
 
+//---------------------------------------------------------------------------
+// finaliseGoal()
+//---------------------------------------------------------------------------
+
+void
+SMTLibDriver::finaliseGoal() {
+
+    if (option("delete-working-files")) {
+
+        tryRemoveFile(solverInputFileName);
+        tryRemoveFile(solverOutputFileName);
+        tryRemoveFile(solverErrorFileName);
+    }
+    return;
+
+    
+}
 
 
 //=========================================================================
