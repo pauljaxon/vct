@@ -73,6 +73,9 @@ protected:
     virtual bool checkGoal(string& remarks);
     
     virtual Status getResults(string& remarks);
+
+    virtual void finaliseGoal();
+
 };
 
 

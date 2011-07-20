@@ -61,11 +61,13 @@ using std::isdigit;
 
 #include <stdexcept>  // for runtime_error
 
-extern "C" { // For access, mkdir, gethostname, getpid functions
+extern "C" { 
 
-#include <sys/stat.h>
-#include <unistd.h>
+#include <sys/stat.h> // For mkdir
+#include <unistd.h> // For access, unlink, gethostname, getpid
 #include <dirent.h> // For opendir, readdir, closedir
+#include <errno.h>  // For errno static var and error codes
+#include <string.h> // For strerror - printing error codes
 
 #ifdef _WIN32
 #include <windows.h>
@@ -1394,6 +1396,35 @@ vector<string> listDir (const string& dir) {
     (void) closedir (dp);
     return contents;
 }
+
+// Returns  0 if remove successful.
+// Returns -1 on failure and sets errNumber and errorMessage.
+
+int removeFile (const string& file, int& errNumber, string& errorMessage) {
+
+    int failure = unlink(file.c_str());
+    if (failure != 0) {
+        errorMessage = string( strerror(errno));
+    }
+    return failure;
+}
+
+// Attempt to remove file.  Silent if file doesn't exist.
+
+void tryRemoveFile (const string& file) {
+
+    int errNumber;
+    string errMessage;
+    int failure = removeFile(file, errNumber, errMessage);
+    if (failure != 0 && errNumber != ENOENT) {
+
+        printMessage(ERRORm, "Attempt at removing file " + file +
+                     " failed with error: " + errMessage);
+    }
+    return;
+}
+
+
 
 
 bool readableFileExists(const string& s) {

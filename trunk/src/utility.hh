@@ -351,6 +351,8 @@ public:
 
 vector<string> listDir (const string& dir);
 
+void tryRemoveFile (const string& file);
+
 bool readableFileExists(const string& s);
 
 void ensureDirPathExists(const string& dirPath);
