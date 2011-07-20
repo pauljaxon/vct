@@ -46,6 +46,20 @@ main (int argc, char *argv[]) {
 
     vector<string> nonOptions = processCommandArgs(argc, argv);
 
+    if (nonOptions.size() < 1) {
+        cerr 
+<< "Usage" << endl
+<< endl
+<< "  csvproj n1 ... nk [filename]  " << endl
+<< endl
+<< "Project out selected fields of input records."<< endl
+<< "n1 ... nk are the (1-based) numbers of the fields to select." << endl
+<< "filename is input filename to use." << endl
+<< "If filename is not provided, stdin is used instead." << endl
+<< "The result is written to stdout." << endl;
+        return 0;
+    }
+
     istream* isp = &cin;
     
     ifstream ifs;

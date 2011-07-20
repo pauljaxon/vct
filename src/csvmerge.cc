@@ -49,17 +49,27 @@ main (int argc, char *argv[]) {
 
     vector<string> args = processCommandArgs(argc, argv);
 
+    if (args.size() < 2) {
+        cerr 
+<< "Usage" << endl
+<< "" << endl
+<< "  csvmerge filename1 m1 ... mj filename2 n1 ... nk" << endl
+<< "" << endl
+<< "Create new csv records on stdout using" << endl
+<< "fields m1 .. mj of records from filename1 and" << endl
+<< "fields n1 .. nk of recordsfrom filename2." << endl
+<< "If j = 0 use all fields from filename1." << endl
+<< "If k = 0 use all fields from filename2." << endl
+<< "" << endl
+<< "filename1 and filename2 must be same length." << endl;
+        return 0;
+    }
     
     ifstream ifs1;
     ifstream ifs2;
 
     bool readingSecondFileInfo = false;
 
-    if (args.size() < 2) {
-        cerr << "Too few args" << endl;
-        exit(1);
-    }
-    
     string fileName1(args[0]);
     string fileName2;
     

@@ -48,6 +48,20 @@ main (int argc, char *argv[]) {
 
     vector<string> nonOptions = processCommandArgs(argc, argv);
 
+    if (nonOptions.size() < 2) {
+        cerr 
+<< "Usage" << endl
+<< endl
+<< "  csvfilt [-v] n str [filename] " << endl
+<< endl
+<< "Filter csv (comma-separated-value) records on stdin, returning" << endl
+<< "just those with str a substring of field n (1-based)." << endl
+<< endl
+<< "Options: " << endl
+<< "  -v        Select records without str a substring of field n." << endl
+<< "  filename  Read input from file filename rather than stdin" << endl;
+        return 0;
+    }
     istream* isp = &cin;
     
     ifstream ifs;
