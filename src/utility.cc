@@ -65,6 +65,7 @@ extern "C" { // For access, mkdir, gethostname, getpid functions
 
 #include <sys/stat.h>
 #include <unistd.h>
+#include <dirent.h> // For opendir, readdir, closedir
 
 #ifdef _WIN32
 #include <windows.h>
@@ -1372,8 +1373,28 @@ Timer::toLongString() {
 
 
 //==========================================================================
-// Manipulating names for working files
+// File system access & manipulating names for working files
 //==========================================================================
+
+vector<string> listDir (const string& dir) {
+    DIR *dp;
+    struct dirent *ep;
+    vector<string> contents;
+
+    dp = opendir (dir.c_str());
+
+    if (dp == NULL) {
+        cerr << "Error on trying to list directory " << dir << endl;
+        return contents;
+    }
+
+    while (ep = readdir (dp)) {
+        contents.push_back(ep->d_name);
+    }
+    (void) closedir (dp);
+    return contents;
+}
+
 
 bool readableFileExists(const string& s) {
     return (access(s.c_str(), R_OK) == 0);

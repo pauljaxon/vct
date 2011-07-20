@@ -305,8 +305,12 @@ void enumsToIntSubranges(FDLContext* ctxt, Node* unit) {
             rules->addChild(rule);
         }
     }
-
-    if (erules != expectedNumRules) {
+    // With read-all-decl-files-in-dir option, Victor reads in enum type
+    // declarations without corresponding rule sets, making the
+    // expectedNumRules calculation incorrect, and this check pointless.
+    
+    if (!option("read-all-decl-files-in-dir")
+        && erules != expectedNumRules) {
         printMessage(WARNINGm, "elim-enums: found "
                      + intToString(erules) + " rules, expected "
                      + intToString(expectedNumRules) + " rules"

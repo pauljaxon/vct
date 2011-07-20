@@ -151,7 +151,24 @@ Node* parseUnit(UnitInfo unitInfo) {
     vector<string> declFiles;
 
     if (! option("skip-unit-decls")) {
-        declFiles.push_back(fileroot + ".fdl");
+        if (option("read-all-decl-files-in-dir")) {
+
+            vector<string> filerootParts = splitString(fileroot,"/");
+            filerootParts.pop_back();
+            string unitDir = concatStrings(filerootParts, "/") ;
+
+            vector<string> dirContents = listDir(unitDir);
+            for (int i = 0; i != (int) dirContents.size(); i++) {
+                string dirItem = dirContents.at(i);
+                if (hasSuffix(dirItem, ".fdl")) {
+                    string fullFDLFileName = unitDir + "/" + dirItem;
+                    declFiles.push_back(fullFDLFileName);
+                }
+            }
+        }
+        else {
+            declFiles.push_back(fileroot + ".fdl");
+        }
     }
     if (option("decls")) {
         vector<string> extraDeclFiles = optionVals("decls");

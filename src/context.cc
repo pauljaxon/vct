@@ -84,6 +84,9 @@ FDLContext::FDLContext(Node* FDL_AST) :
 
 }
 
+// NB: If ever modify this to merge new and existing bindings, should then
+// check the effect of the return val on callers.
+
 bool mapInsertWithCheck(const char* mapName,
                         map<string,Node*>& m,  // Use & to modify arg, not copy
                         const string& key,
@@ -91,15 +94,21 @@ bool mapInsertWithCheck(const char* mapName,
 
     bool success = m.insert(make_pair(key, val)).second;
     if (!success) {
-
-        if (val->equals(m.find(key)->second)) {
-                printMessage(INFOm,
-                             "Rejected repeated entry for " + key
-                             + " in map " + mapName);
+        Node* mapVal = m.find(key)->second;
+        if (val->equals(mapVal)) {
+            printMessage(INFOm,
+                         "Rejected repeated entry for " + key
+                         + " in map " + mapName);
         } else {
                 printMessage(ERRORm,
-                             "Detected conflicting entry for " + key
-                             + " in map " + mapName);
+                             "New value for " + key
+                             + " in map " + mapName + 
+                             +  "conflicts with existing value." +  ENDLs
+                             + "Existing value: " + ENDLs
+                             + mapVal->toString() + ENDLs
+                             + "New value: " + ENDLs
+                             + val->toString() + ENDLs
+                    );
         }
     }
     return success;

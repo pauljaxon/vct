@@ -346,8 +346,10 @@ public:
 };
 
 //==========================================================================
-// Manipulating names for working files
+// File system access & manipulating names for working files
 //==========================================================================
+
+vector<string> listDir (const string& dir);
 
 bool readableFileExists(const string& s);
 

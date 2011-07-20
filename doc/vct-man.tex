@@ -4,7 +4,8 @@
 
 \title{Victor: a SPARK VC Translator and Prover Driver \\[4ex]
   \Large
-  User Manual for release 0.9.0 \\[1ex]
+  User Manual for release 0.9.1 \\
+  and subsequent experimental modifications \\[1ex]
 % \normalsize
 % \cbstart
 %   \emph{Changebars indicate changes from User Manual for release 0.6 }\\[1ex]
@@ -15,7 +16,7 @@
 \author{Paul Jackson \\
         \texttt{pbj@inf.ed.ac.uk}}
 
-\date{5th November 2010}
+\date{20th July 2011}
 
 %\usepackage{vpage}
 %\usepackage{vmargin}
@@ -770,13 +771,44 @@ prover.
     For every program unit, read auxiliary \texttt{.fdl} 
     declarations file named in \textit{declfile}.  
     Multiple files can be specified using multiple 
-    \optionb{decls} options.
+    \texttt{-decls} options.
 %     For example, the Examiner does not provide declarations for built-in
 %     bit operations such as \texttt{bit\_\_or} and \texttt{bit\_\_not}.
 
-    \optionv{rules}{rulesfile} For every program unit, read in
+  \optionb{read-all-decl-files-in-dir}
+  For each program unit with full name \textit{dirs/dir/unitname},
+  read in all FDL declaration files in directory \textit{dirs/dir/} rather
+  than just the FDL declaration file \textit{dirs/dir/unitname.fdl}.
+  This option is useful in conjunction with 
+  \texttt{-read-directory-rlu-files}
+  and \texttt{-read-unit-rlu-files} when the user-defined rules files for a
+  unit 
+  (see options \texttt{-read-directory-rlu-files} 
+   and \texttt{-read-unit-rlu-files})
+  refer to identifiers that are not declared in \textit{dirs/dir/unitname.fdl}.
+  An alternative option is \texttt{-delete-rules-with-undeclared-ids}.
+
+  \optionb{read-directory-rlu-files}
+  For each program unit with full name \textit{dirs/dir/unitname},
+  read in the user-defined rules file \textit{dirs/dir/dir.rlu}.  The SPARK
+  Simplifier reads in such rules files by default.
+
+  \optionb{read-unit-rlu-files}
+  For each program unit with full name \textit{dirs/dir/unitname},
+  read in the user-defined rules file \textit{dirs/dir/unitname.rlu}.  
+  The SPARK Simplifier reads in such rules files by default.
+
+  \optionv{rules}{rulesfile} For every program unit, read in
     auxiliary rules file named in \textit{rulesfile}.  Multiple files
-    can be specified using multiple \optionb{rules} options.
+    can be specified using multiple \texttt{-rules} options.
+
+  \optionb{delete-rules-with-undeclared-ids}
+  User-defined rules files can sometimes mention rules that involve 
+  functions and constants that are not declared in the FDL file for a unit
+  being processed.   Normally Victor abandons processing a unit when
+  it encounters undeclared ids.  With this option, the rules involving 
+  the undeclared ids are deleted.
+  An alternative option is \texttt{read-all-decl-files-in-dir}.
 
   \optionb{siv} Read in \texttt{.siv} simplified VC files output by the
      Simplifier rather than \texttt{.vcg} Examiner VC files.
