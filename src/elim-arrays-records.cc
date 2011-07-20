@@ -456,11 +456,12 @@ addArrayElementUpdateAxioms(FDLContext* ctxt, Node* unit) {
 //-------------------------------------------------------------------------
 
 // normT expected to be normalised type, 
-// either ENUM_TY{type-id} k1 .. kn  or INT_TY
-//
+// either ENUM_TY{type-id} k1 .. kn, TYPE_ID{type-id} or INT_TY.
+
+// TYPE_ID{type-id} is assumed to be an abstract enumeration type.
 
 Node* mkLE(Node* e1, Node* e2, Node* normT) {
-    if (normT->kind == ENUM_TY)
+    if (normT->kind == ENUM_TY || normT->kind == TYPE_ID)
         return new Node (FUN_AP, normT->id + "__LE", e1, e2);
     else if (normT->kind == INT_TY || normT->kind == SUBRANGE_TY)
         return new Node (I_LE, e1, e2);
