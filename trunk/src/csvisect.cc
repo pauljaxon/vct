@@ -48,7 +48,13 @@ main (int argc, char *argv[]) {
     ifstream ifs2;
 
     if (args.size() < 2) {
-        cerr << "Too few args" << endl;
+        cerr 
+<< "Usage" << endl
+<< "" << endl
+<< "csvisect filename1 filename2" << endl
+<< "" << endl
+<< "Only return list of those records in filename1 that also " << endl
+<< "occur in filename2" << endl;
         exit(1);
     }
     
