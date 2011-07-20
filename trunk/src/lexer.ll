@@ -77,12 +77,11 @@ VCGHEADER  (.*\n){13}
 %}
 
 
-
-<VCGInitial>{VCGHEADER} { BEGIN(PrologBody); }
-
 <*>{WHITESPACE}       /* eat up whitespace */
 
-<PrologBody>^"For" { BEGIN(GoalOrigins); return tok::FOR; }  
+<VCGInitial>.         /* ignore non-trigger characters in VCG file header */
+
+<VCGInitial,PrologBody>^"For" { BEGIN(GoalOrigins); return tok::FOR; }  
 
 <GoalOrigins>[^:]+ { BEGIN(PrologBody); 
                      yylval->sval = new std::string(yytext);

@@ -416,36 +416,69 @@ declCheck::operator() (FDLContext* c, Node* n) {
 
 // return true if success
 
-bool
-findUndeclaredIds(FDLContext* ctxt, Node* unit) {
+void
+findUndeclaredIds(FDLContext* ctxt,
+                  Node* unit,
+                  string& undeclaredIds,
+                  string& undeclaredFuns) {
 
     declCheck c;
     mapOverWithContext(c, ctxt, unit);
 
-    if (c.constIds.size() > 0) {
-
-        string ids;
-        for (set<string>::iterator i = c.constIds.begin(); i != c.constIds.end()
-                 ; i++ ) {
-            ids += ENDLs + (*i);
-        }
-        printMessage(ERRORm, "Found undeclared identifiers:"
-                               + ids);
+    for (set<string>::iterator i = c.constIds.begin()
+             ; i != c.constIds.end()
+             ; i++ ) {
+        undeclaredIds += ENDLs + (*i);
     }
-
-    if (c.funIds.size() > 0) {
-
-        string funIds;
-        for (set<string>::iterator i = c.funIds.begin(); i != c.funIds.end()
-                 ; i++ ) {
-            funIds += ENDLs + (*i);
-        }
-        printMessage(ERRORm, "Found undeclared functions:"
-                               + funIds);
+    for (set<string>::iterator i = c.funIds.begin()
+             ; i != c.funIds.end()
+             ; i++ ) {
+        undeclaredFuns += ENDLs + (*i);
     }
-
-    return c.constIds.size() + c.funIds.size() > 0;
+    return;
 }
+
+
+bool checkForUndeclaredIds(FDLContext* ctxt, Node* unit) {
+    string idStr;
+    string funStr;
+    findUndeclaredIds(ctxt, unit, idStr, funStr);
+    if (idStr.size() > 0) {
+        printMessage(ERRORm, "Found undeclared identifiers:"
+                               + idStr);
+    }
+    if (funStr.size() > 0) {
+        printMessage(ERRORm, "Found undeclared functions:"
+                               + funStr);
+    }
+    return idStr.size() + funStr.size() > 0 ;
+}
+
+void
+deleteRulesWithUndeclaredIds(FDLContext* ctxt, Node* unit) {
+
+    Node* rules = unit->child(1);
+    Node* newRules = new Node(RULES);
+    for (int ruleNum = 1; ruleNum <= rules->arity(); ruleNum++) {
+
+        Node* rule = rules->child(ruleNum-1);
+        string undeclaredIds;
+        string undeclaredFuns;
+        findUndeclaredIds(ctxt, rule, undeclaredIds, undeclaredFuns);
+        if (undeclaredIds.size() + undeclaredFuns.size() == 0) {
+            newRules->addChild(rule);
+        }
+        else {
+            printMessage(INFOm,
+                         "Deleting rule " + intToString(ruleNum)
+                         + "because of " + ENDLs
+                         + "undeclared identifiers:" + undeclaredIds + ENDLs
+                             + "and undeclared functions:" + undeclaredFuns);
+        }
+    } // End for 
+    unit->child(1) = newRules;
+}
+
 
 //========================================================================
 // normaliseIneqs
@@ -732,16 +765,35 @@ closeExpr(FDLContext* c, int rulNum, Node* expr) {
         Kind tyKind = type->kind;
 
         if ( c->typeResolutionPhase == 3
-             && (tyKind == INT_OR_REAL_TY || tyKind == INT_REAL_OR_ENUM_TY)
+             && (tyKind == INT_OR_REAL_TY
+                 || tyKind == INT_REAL_OR_ENUM_TY
+                 || tyKind == UNKNOWN)
             ) {
 
             decls->addChild(new Node(DECL, id, new Node(INT_TY)));
             c->typeResolutionMadeProgress = true;
 
-            printMessage(INFOm,
-      "closeExpr: Speculatively guessing INT_TY type for free variable " + id
-                         + ENDLs + " in rule " + rulNumStr);
-
+            if (tyKind == INT_OR_REAL_TY) {
+                printMessage(INFOm,
+          "closeExpr: Free variable " + id 
+                       + " in rule " + rulNumStr + ENDLs
+                       + " is constrained to have integer or real type." + ENDLs
+                       + "Speculatively assigning it to have integer type ");
+            }
+            else if (tyKind == INT_REAL_OR_ENUM_TY) {
+                printMessage(INFOm,
+          "closeExpr: Free variable " + id 
+                       + " in rule " + rulNumStr + ENDLs
+                       + " is constrained to have integer, real or enumeration type." + ENDLs
+                       + "Speculatively assigning it to have integer type ");
+            }
+            else {
+                printMessage(INFOm,
+          "closeExpr: Free variable " + id 
+                       + " in rule " + rulNumStr + ENDLs
+                       + " has  no constraints on its typing. " + ENDLs
+                       + "Speculatively assigning it to have integer type ");
+            }
         }
         else if (tyKind == UNKNOWN
                  || tyKind == INT_OR_REAL_TY
@@ -1413,10 +1465,20 @@ putUnitInStandardForm(Node* unit) {
     augmentConstDecls(ctxt, unit);
 
     //--------------------------------------------------------------------
+    // Delete rules with undeclared functions and constants
+    //--------------------------------------------------------------------
+
+    if (option("delete-rules-with-undeclared-ids")) {
+        deleteRulesWithUndeclaredIds(ctxt, unit);
+    }
+
+
+    
+    //--------------------------------------------------------------------
     // Check all function and constant identifiers have bindings
     //--------------------------------------------------------------------
 
-    if (findUndeclaredIds(ctxt, unit))
+    if (checkForUndeclaredIds(ctxt, unit))
         return 0;
 
     //--------------------------------------------------------------------
