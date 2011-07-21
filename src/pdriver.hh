@@ -63,14 +63,23 @@ public:
     void scan_end ();
     bool trace_scanning;
 
+    bool at_start;
+    enum FileType {FDL, RULE, VCG};
+    FileType currentFileType;
+
     // Handling the parser.
 
-    int parse (const std::string& f);
     std::string file;
     bool trace_parsing;
+
+    int parse (FileType ty, const std::string& f);
+    int parseFDLFile(const std::string &f)  {return parse(FDL,f); }
+    int parseRuleFile(const std::string &f) {return parse(RULE,f); }
+    int parseVCGFile(const std::string &f)  {return parse(VCG,f); }
 
     // Error handling.
     void error (const std::string& m);
     bool errorFlag;
+
 };
 #endif // ! PDRIVER_HH
