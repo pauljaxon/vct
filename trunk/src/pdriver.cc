@@ -42,8 +42,9 @@ pdriver::~pdriver ()
 }
 
 int
-pdriver::parse (const string &f)
+pdriver::parse (FileType ty, const string &f)
 {
+  currentFileType = ty;
   file = f;
   errorFlag = false;
 
@@ -56,6 +57,7 @@ pdriver::parse (const string &f)
   scan_end ();
   return pval;
 }
+
 
 void
 pdriver::error (const std::string& m)
