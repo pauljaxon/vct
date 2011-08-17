@@ -1243,7 +1243,15 @@ SMTLibDriver::getResults(string& remarks) {
                 printMessage(INFOm,
                              "SMTLib solver reached timeout.sh time limit");
                 seenTimeout = true;
-            } else {
+            }
+            // Proof steps limit message from Alt-Ergo
+            else if (hasPrefix(s, "Steps limit reached")) {
+                appendCommaString(remarks, "steps limit reached");
+                printMessage(INFOm,
+                             "Alt-Ergo proof steps limit reached");
+                seenTimeout = true;
+	    } 
+	    else {
                 seenUnexpectedOutput = true;
             }
             
@@ -1322,6 +1330,8 @@ SMTLibDriver::getResults(string& remarks) {
 
     }
 
+    //  Detecting termination signals, not on windows platform:
+#ifndef _WIN32
 
     // Code here discovered by trial and error and reading man pages.
 
@@ -1383,6 +1393,7 @@ SMTLibDriver::getResults(string& remarks) {
                      "Unexpected subprocess exit status "
                      + intToString(exitStatus));
     }
+#endif
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
     // Report on output and decide return status
