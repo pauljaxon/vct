@@ -1392,9 +1392,15 @@ and after all translation steps have been applied.
 
 \begin{description}
 \optionb{abstract-enums} 
-  Replace enumerated types with abstract types, 
-  introduce all enumeration constants as normal constants, and
-  keep all enumerated type axioms. 
+  Replace enumerated types with abstract types, introduce all
+  enumeration constants as normal constants, and keep all enumerated
+  type axioms.  
+  %
+  These axioms are introduced by the Examiner to
+  characterise enumerated-type-related functions such as
+  $\mathit{E}\mathtt{\_\_val}$ and $\mathit{E}\mathtt{\_\_pos}$ and
+  can serve as a partial axiomatisation of the introduced
+  abstract types.
 
 \optionb{elim-enums}      
   Replace each enumeration type $E$ with an integer subrange type $\{0
@@ -1407,6 +1413,17 @@ and after all translation steps have been applied.
   Delete all existing enumerated type axioms and add in new axioms
   characterising enumerated-type-related functions such as 
   $\mathit{E}\mathtt{\_\_val}$ and  $\mathit{E}\mathtt{\_\_pos}$.
+
+\optionb{axiomatise-enums}
+  Replace each enumeration type $E$ with an uninterpreted type, and add
+  axioms characterising the the uninterpreted type as isomorphic to the
+  integer subrange $\{0 \ldots k - 1 \}$ where $k$ is the number of
+  enumeration constants in $E$.
+  %
+  The added axioms replace the enumerated-type-related axioms
+  introduced by the Examiner and provide a full axiomatisation of
+  the enumerated types.
+
 \end{description}
 
 %----------------------------------------------------------------------------
