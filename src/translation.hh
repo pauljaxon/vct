@@ -50,6 +50,7 @@ bool typeCheckUnit(const string& tcKind, FDLContext* c, Node* n);
 
 void abstractEnums(FDLContext* ctxt, Node* unit);
 void enumsToIntSubranges(FDLContext* ctxt, Node* unit);
+void axiomatiseEnums(FDLContext* ctxt, Node* unit);
 
 void abstractArraysRecords(FDLContext* ctxt, Node* unit);
 

@@ -622,9 +622,12 @@ translateUnit(FDLContext* ctxt, Node* unit) {
     // Eliminating enumeration type primitives
     //--------------------------------------------------------------------
 
-    if (option("abstract-enums")) abstractEnums(ctxt, unit);
-
-    if (option("elim-enums")) enumsToIntSubranges(ctxt, unit);
+    if (option("abstract-enums"))
+        abstractEnums(ctxt, unit);
+    else if (option("elim-enums"))
+        enumsToIntSubranges(ctxt, unit);
+    else if (option("axiomatise-enums"))
+        axiomatiseEnums(ctxt, unit);
 
     //--------------------------------------------------------------------
     // Early array and record abstraction
