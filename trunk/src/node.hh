@@ -49,11 +49,11 @@ enum Kind {
     // Top level
     FDL_FILE,
     DEF_TYPE,
-    DECL_TYPE,  // Isabelle
+    DECL_TYPE,  // Isabelle, SMTLIB2
     DEF_RECORD, // Isabelle
     OUTER_DECL, // Isabelle
     DEF_CONST,
-    DECL_CONST, // Isabelle
+    DECL_CONST, // Isabelle, SMTLIB2
     DECL_VAR,
     DECL_FUN,
     RULE_FILE,
@@ -64,10 +64,11 @@ enum Kind {
     ARE_INTERCHANGEABLE,
     VCG_FILE,
     GOAL,
-    ASSERT,  // Yices extras
+    ASSERT,  // Yices & SMTLib2
     CHECK,
     PUSH,
     POP,
+    SCRIPT,
     DECLS,  // Introduced by processing
     RULES,
     GOALS,
@@ -141,8 +142,10 @@ enum Kind {
     R_NL_TIMES, // Nonlinear times
     RDIV,
     IDIV,
+    IDIV_E,  // Euclidian IDIV
     IDIVM, // IDIV compatible with MOD
     MOD,
+    MOD_E,   // Euclidian MOD
     EXP,
     ABS,
     I_ABS,
@@ -215,7 +218,11 @@ enum Kind {
     DISTINCT,
     ITE,
     CONST,
-    VAR
+    VAR,
+    // SMTLIB2 specific
+    SET_OPTION,
+    TO_INT,
+    IS_INT
 };
 
 
@@ -516,6 +523,8 @@ bool isProp(Node* n);  // Is a propositional node.  Counts top level
 
 
 std::string gatherKinds(Node* n);
+
+std::set<std::string> gatherBoundVars(Node* n);
 
 // Expects hyps to be AND(h1 ... hk) where k >= 0.
 // If k = 0   returns  concl

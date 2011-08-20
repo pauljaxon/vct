@@ -759,7 +759,6 @@ Terms
         return oldN;
     }
     case ITE: {
-        oldN->popChild();  // Strip type arg.
         return oldN;
     }
 

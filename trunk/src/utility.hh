@@ -45,6 +45,8 @@ using std::pair;
 #include <csignal>
 #include <csetjmp>
 
+#include <algorithm>
+
 extern "C" {
 
 #ifdef _WIN32
@@ -106,6 +108,31 @@ string fixSuffix(const string& s,
                  const string& oldSuffix,
                  const string& newPrefix,
                  const string& newSuffix);
+
+//========================================================================
+// Set operations
+// ========================================================================
+// Wrap the set operations from <algorithm> to make their invocation
+// more compact As needed, could make these more generic.
+
+template <class T>
+void setUnion(set<T>& a, set<T>& b, set<T>& c) {
+    set_union(a.begin(), a.end(), b.begin(), b.end(), inserter(c,c.begin()));
+}
+
+template <class T>
+void setSymDiff(set<T>& a, set<T>& b, set<T>& c) {
+    set_symmetric_difference(a.begin(), a.end(),
+                             b.begin(), b.end(),
+                             inserter(c,c.begin()));
+}
+
+template <class T>
+void setIsect(set<T>& a, set<T>& b, set<T>& c) {
+    set_intersection(a.begin(), a.end(),
+                     b.begin(), b.end(),
+                     inserter(c,c.begin()));
+}
 
 //========================================================================
 // Command line option processing

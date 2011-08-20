@@ -364,10 +364,6 @@ stripQuantPats(Node* unit) {
 //------------------------------------------------------------------------
 // Expand any type aliases.
 
-// 1. Misses types in quants because of mapOIC
-// 2. missing types in decls
-//
-
 // Can ignore TYPE_PARAMs since they already are normalised.
 
 Node* expandTypeAlias(FDLContext* ctxt, Node* n) {
@@ -393,5 +389,21 @@ void elimTypeAliases(FDLContext* ctxt, Node* unit) {
     mapOverWithContext(expandTypeAlias, ctxt, &(ctxt->typeSeq));
     mapOverWithContext(expandTypeAlias, ctxt, &(ctxt->termSeq));
     mapOverWithContext(expandTypeAlias, ctxt, unit);
+
+    // Turn all alias type definitions into abstract type declarations.
+
+    // Eventually could do work of completely removing the unused
+    // alias type declarations.
+
+    for (int i = 0; i != ctxt->typeSeq.arity(); i++) {
+        Node* typeDecl = ctxt->typeSeq.child(i);
+        if (typeDecl->arity() == 1) {
+            Node* declRHS = typeDecl->child(0);
+            Kind k = declRHS->kind;
+            if (! (k == RECORD_TY || k == ENUM_TY || k == ARRAY_TY) ) {
+                typeDecl->popChild();
+            }
+        }
+    }
     return;
 }
