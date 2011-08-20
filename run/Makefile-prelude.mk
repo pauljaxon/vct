@@ -23,7 +23,12 @@
 # LICENSE.txt and online at http://www.gnu.org/licenses/.
 #
 #=============================================================================
-# Assemble sets of Victor options.
+
+#=============================================================================
+# Victor executable
+#=============================================================================
+
+VCT=vct
 
 #=============================================================================
 # Overridable options
@@ -160,6 +165,38 @@ else
 endif
 
 #-----------------------------------------------------------------------------
+# Reading standard user-defined rules files
+#------------------------------------------
+
+ifdef RLU
+  std_rlu_sfx=-rlu
+  std_rlu_option= -read-directory-rlu-files -read-unit-rlu-files
+
+else ifdef RLUA
+  std_rlu_sfx=-rlua
+  std_rlu_option= -read-directory-rlu-files -read-unit-rlu-files \
+                  -read-all-decl-files-in-dir
+else ifdef RLUD
+  std_rlu_sfx=-rlud
+  std_rlu_option= -read-directory-rlu-files -read-unit-rlu-files \
+                  -delete-rules-with-undeclared-ids
+endif
+
+#-----------------------------------------------------------------------------
+# Enum type options
+#------------------
+
+ifdef AXE
+  enum_sfx = -axe
+  enum_option = -axiomatise-enums
+else ifdef ABE
+  enum_sfx = -abe
+  enum_option = -abstract-enums
+else
+  enum_option = -elim-enums
+endif
+
+#-----------------------------------------------------------------------------
 # Focussing on single unit and goal
 #----------------------------------
 
@@ -181,8 +218,8 @@ SYM_CONSTS=100000
 
 
 #-----------------------------------------------------------------------------
-# Translation options for SMTLIB and Simplify
-# -------------------------------------------
+# Translation options for SMTLIB, SMTLIB2 and Simplify
+# ----------------------------------------------------
 #
 # Possible values:
 #
@@ -204,6 +241,7 @@ endif
 
 # A. Whether to treat bit type as subtype 0,1 of integers or quotient of
 # integers where 1 is true and all other values false.
+# SMTLIB and Simplify
 #
 A = 0
 ifeq ($(A),0)
@@ -215,6 +253,7 @@ endif
 
 # B. Whether to introduce term-level bit ops and rels or use
 # prop-to-bit coercions
+# SMTLIB and Simplify
 #
 B = 0
 ifeq ($(B),0)
@@ -229,6 +268,8 @@ endif
 # C. Heuristics for how one chooses a bit-valued or prop-valued version for
 # each QFOL uninterpreted function to bool.
 # C = 2 is OK only if B = 1.
+# SMTLIB and Simplify
+
 C = 0
 ifeq ($(C),0)
   C_opt = # (no option) use bit-valued ops iff is instance in term position
@@ -324,10 +365,10 @@ endif
 #=============================================================================
 # Assembly of option lists
 #=============================================================================
+#SMTLIB2: will need to address alternate divmod support and abs abstraction
 
 
-
-report_root = $(fuse_c_pfx)-$@$(siv_sfx)$(tg_sfx)$(lin_sfx)$(timeout_sfx)$(repeat_sfx)$(smtlib_option_suffix)$(SFX)
+report_root = $(fuse_c_pfx)-$@$(siv_sfx)$(tg_sfx)$(std_rlu_sfx)$(lin_sfx)$(enum_sfx)$(timeout_sfx)$(repeat_sfx)$(smtlib_option_suffix)$(SFX)
 
 std_options = \
             $(unit_option) \
@@ -337,16 +378,18 @@ std_options = \
             $(siv_flag)\
             $(tg_flag)\
             $(lin_opt)\
+            $(enum_option)\
             $(repeat_option)\
+            $(std_rlu_option)\
             -units=$($*_units)\
             -report=$(report_root)\
             -report-dir=$(OUTDIR)\
             -prefix=$($*_prefix)\
             -decls=prelude.fdl\
             -unique-working-files\
+            -delete-working-files\
             -rules=divmod.rul\
             -rules=prelude.rul\
-            -elim-enums\
             -ground-eval-exp\
             -abstract-exp\
             -abstract-divmod\
@@ -380,7 +423,9 @@ api_cvc3_options =  \
   -gstime-inc-setup \
   -interface-mode=api \
   -strip-quantifier-patterns\
-  -prover=cvc3
+  -prover=cvc3\
+   $(EXTRAS)
+
 
 #----------------------------------------------------------------------------
 # API Yices options
@@ -396,7 +441,8 @@ api_yices_options = \
   \
   -gstime-inc-setup \
   -interface-mode=api \
-  -prover=yices
+  -prover=yices\
+   $(EXTRAS)
 
 #----------------------------------------------------------------------------
 # SMTLIB Interface options
@@ -408,8 +454,6 @@ smtlib_base_options = \
   \
   -refine-types\
   -refine-int-subrange-type \
-  \
-  -abstract-arrays-records-late \
   \
   -elim-array-constructors\
   -add-array-select-box-update-axioms\
@@ -444,7 +488,40 @@ smtlib_options = \
   $(E_opt)\
   $(F_opt)\
   $(G_opt)\
-  -logic=$(smtlib_logic)
+  -logic=$(smtlib_logic)\
+  $(EXTRAS)
+
+#----------------------------------------------------------------------------
+# SMTLIB2 Interface options
+#----------------------------------------------------------------------------
+
+smtlib2_base_options = \
+  -refine-types\
+  -refine-int-subrange-type \
+  \
+  -elim-array-constructors\
+  -add-array-select-box-update-axioms\
+  -abstract-array-box-updates\
+  -add-array-select-update-axioms\
+  -abstract-array-select-updates\
+  -abstract-array-types\
+  \
+  -abstract-record-types\
+  \
+  -lift-quants \
+  -strip-quantifier-patterns\
+  \
+  -interface-mode=smtlib2
+
+
+smtlib2_options = \
+  $(smtlib2_base_options)\
+  $(D_opt)\
+  $(E_opt)\
+  $(F_opt)\
+  $(G_opt)\
+  -logic=$(smtlib_logic)\
+  $(EXTRAS)
 
 
 #----------------------------------------------------------------------------
@@ -458,6 +535,7 @@ simplify_interface_options= \
   -refine-uninterpreted-types \
   -switch-types-to-int \
   -interface-mode=simplify \
+  $(EXTRAS)
 
 
 #----------------------------------------------------------------------------

@@ -59,12 +59,14 @@ ALT_ERGO=alt-ergo
 
 # Make variables for VC sets distributed with Victor.
 
-autop_prefix =  ../vc/autop/code
-autop_units =   ../vc/autop/autop-units.lis
+VCT_VCSETS=../vc
+
+autop_prefix =  $(VCT_VCSETS)/autop/code
+autop_units =   $(VCT_VCSETS)/autop/autop-units.lis
 .PHONY: vcset-autop
 
-hilton_prefix =  ../vc/hilton/code
-hilton_units =    ../vc/hilton/hilton-units.lis
+hilton_prefix = $(VCT_VCSETS)/hilton/code
+hilton_units =  $(VCT_VCSETS)/hilton/hilton-units.lis
 .PHONY: vcset-hilton
 
 
@@ -260,18 +262,6 @@ hilton_units =    ../vc/hilton/hilton-units.lis
 
 include Makefile-prelude.mk
 
-#=============================================================================
-# Utility rules
-#=============================================================================
-
-# Rebuild Victor
-
-src:
-	cd ../src; make vct; cd ../run
-
-
-
-
 
 #============================================================================
 # Rules for running Victor
@@ -284,7 +274,7 @@ src:
 #   <unit-set>-<interface-m><prover>
 #
 # Output files:
-# <prefix><unit-set>-<interface-m><prover><suffix>.[log|csv|sum]
+# <prefix><unit-set>-<interface-m><prover><suffix>.[vlg|vct|vsm]
 
 # <prefix> = 
 # f-: conclusions fused
@@ -293,6 +283,7 @@ src:
 # <interface-m> =
 # a: API
 # s: SMT-Lib and file-level 
+# t: SMT-Lib2 and file-level 
 # p: Simplify and file-level
 # i: Isabelle/HOL and file-level
 # d: dummy
@@ -328,13 +319,13 @@ src:
 #-------------------
 
 %-ac: vcset-%
-	vct \
+	$(VCT) \
            $(std_options) \
            $(api_cvc3_options)\
 
 
 %-ay: vcset-%
-	vct \
+	$(VCT) \
            $(std_options)\
            $(api_yices_options) \
 
@@ -343,20 +334,20 @@ src:
 #---------------------------
 
 %-sa: vcset-%
-	vct \
+	$(VCT) \
             $(std_options)\
             $(smtlib_options) \
             -prover-command=$(ALT_ERGO) \
 
 
 %-sc: vcset-%
-	vct \
+	$(VCT) \
             $(std_options)\
             $(smtlib_options) \
             -prover-command='$(CVC3) -lang smt $(cvc3_timeout_flag)'\
 
 %-sy: vcset-%
-	vct \
+	$(VCT) \
             $(std_options)\
             $(smtlib_options) \
             -abstract-nonlin-times\
@@ -365,10 +356,54 @@ src:
 
 
 %-sz: vcset-%
-	vct \
+	$(VCT) \
             $(std_options)\
             $(smtlib_options) \
             -prover-command='$(Z3) -smt' \
+
+
+#----------------------------------------------------------------------------
+# SMTLIB2 file interface mode
+#----------------------------
+# Observed incompletenesses of SMTLIB2 support noted below.  
+# (Partial) workaround options provided for some of these.
+
+# Alt-Ergo. 0.93
+# - define-type not supported.
+# - to_real function not recognised.
+# - Instances of quantified Bool-typed variables not recognised.
+
+%-ta: vcset-%
+	$(VCT) \
+            $(std_options)\
+            $(smtlib2_options) \
+            -elim-type-aliases\
+            -smtlib2-add-to_real-decl\
+            -prover-command=$(ALT_ERGO) \
+
+# CVC3 2.4 (SMT-COMP 2011 version)
+#  - define-type not supported.
+#  - to_real function not recognised.
+#  - (set-option :print-success false)  flagged as syntax error.
+#  - Bool cannot be used as function argument type.
+
+%-tc: vcset-%
+	$(VCT) \
+            $(std_options)\
+            $(smtlib2_options) \
+            -elim-type-aliases\
+            -smtlib2-omit-set-option-command\
+            -smtlib2-add-to_real-decl\
+            -prover-command='$(CVC3) -lang smt2 $(cvc3_timeout_flag)'\
+
+# Z3 2.20/3.0 preview (As submitted to SMT-COMP 2011). 
+# No significant incompletenesses observed yet.
+
+%-tz: vcset-%
+	$(VCT) \
+            $(std_options)\
+            $(smtlib2_options) \
+            -prover-command=$(Z3) \
 
 
 #----------------------------------------------------------------------------
@@ -376,7 +411,7 @@ src:
 #-----------------------------
 
 %-pp: vcset-%
-	vct \
+	$(VCT) \
             $(std_options)\
             $(simplify_interface_options) \
             -sym-consts=$(SYM_CONSTS) \
@@ -386,7 +421,7 @@ src:
 # As %-pp, but use z3
 
 %-pz: vcset-%
-	vct \
+	$(VCT) \
             $(std_options)\
             $(simplify_interface_options) \
             -sym-consts=$(SYM_CONSTS) \
@@ -396,7 +431,7 @@ src:
 # As %-pz but no threshold
 
 %-pz-nt: vcset-%
-	vct \
+	$(VCT) \
             $(std_options)\
             $(simplify_interface_options) \
             -prover-command='$(Z3) -s' \
@@ -407,14 +442,14 @@ src:
 #-----------------------------
 
 %-in: vcset-%
-	vct \
+	$(VCT) \
             $(isabelle_options)\
             -prover=none\
             -working-dir=iwork \
             -flat-working-files\
 
 %-ii: vcset-%
-	vct \
+	$(VCT) \
             $(isabelle_options)\
             -prover-command='isabelle tty <' \
             -working-dir=iwork \
@@ -428,21 +463,21 @@ src:
 # reports on Praxis Simplifier performance
 
 %-dn: vcset-%
-	vct \
+	$(VCT) \
             $(std_options)\
             -interface-mode=dummy \
             -prover=none\
 
 
 %-sn: vcset-%
-	vct \
+	$(VCT) \
             $(std_options)\
             $(smtlib_options) \
             -prover=none\
 
 
 %-se: vcset-%
-	vct \
+	$(VCT) \
             $(std_options)\
             $(smtlib_options) \
             -prover-command='./echo.sh' \

@@ -433,19 +433,41 @@ void useTuplesForArrayIndexes(Node* unit) {
 }
 
 //========================================================================
-// Remove EQ and NE types
+// Remove EQ, NE and ITE type arguments
 //========================================================================
 
-Node* removeEqType(Node* n) {
-    if ((n->kind == EQ || n->kind == NE || n->kind == TERM_EQ)
-        && n->arity() == 3) {
+Node* removeTypeArg(Node* n) {
+
+    if ( ( (n->kind == EQ || n->kind == NE || n->kind == TERM_EQ)
+           && n->arity() == 3)
+         || (n->kind == ITE && n->arity() == 4)
+        )  {
         n->popChild();
     }
     return n;
 }
 
-void removeEqTypes(Node* unit) {
-    unit->mapOver1(removeEqType);
+void removeTypeArgs(Node* unit) {
+    unit->mapOver1(removeTypeArg);
+}
+
+//========================================================================
+// Remove Patterns from Quantifiers
+//========================================================================
+// Patterns are used in the axioms characterising operations on the bit type.
+// May be used elsewhere too.
+
+Node* removeQuantifierPattern(Node* n) {
+
+    if ( (n->kind == FORALL || n->kind == EXISTS)
+         && n->arity() == 3) {
+        n->popChild();
+    }
+    return n;
+}
+
+void removeQuantifierPatterns(Node* unit) {
+    unit->mapOver1(removeQuantifierPattern);
 }
 
 
@@ -744,9 +766,13 @@ translateUnit(FDLContext* ctxt, Node* unit) {
     //--------------------------------------------------------------------
     // Minor final formatting in preparation for passing to drivers
     //--------------------------------------------------------------------
-    // - Remove type argument from EQ, NE, and TERM_EQ nodes.
+    // - Remove type argument from EQ, NE, TERM_EQ and ITE nodes.
 
-    removeEqTypes(unit);
+    removeTypeArgs(unit);
+
+    if (!option("include-patterns-in-quantifiers")) {
+        removeQuantifierPatterns(unit);
+    }
 
     //--------------------------------------------------------------------
     // Insert modified declarations back into unit AST.

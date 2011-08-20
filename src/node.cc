@@ -66,6 +66,7 @@ z::kindString(z::Kind k) {
 	c(CHECK);
 	c(PUSH);
 	c(POP);
+	c(SCRIPT);
         c(DECLS);  // Introduced by processing
         c(RULES);
         c(GOALS);
@@ -139,8 +140,10 @@ z::kindString(z::Kind k) {
 	c(R_NL_TIMES);
 	c(RDIV);
 	c(IDIV);
+	c(IDIV_E);  // Euclidean IDIV
 	c(IDIVM); // IDIV compatible with MOD
 	c(MOD);
+	c(MOD_E);  // Euclidean MOD
 	c(EXP);
 	c(I_EXP);
 	c(R_EXP);
@@ -212,6 +215,11 @@ z::kindString(z::Kind k) {
         c(ITE);
         c(CONST);
         c(VAR);
+    // SMTLIB2 
+        c(SET_OPTION);
+        c(TO_INT);
+        c(IS_INT);
+
         #undef c
     }
     return s;
@@ -658,6 +666,37 @@ gatherKinds(Node* n) {
     }
     return result;
 }
+
+// Collect names of bound variables
+
+class GatherBVs {
+public:
+    set<string> vSet;
+    void operator() (Node* n);
+};
+
+void
+GatherBVs::operator() (Node* n) {
+    if (n->kind == FORALL || n->kind == EXISTS) {
+        Node* decls = n->child(0);
+        for (int i = 0; i != decls->arity(); i++) {
+            Node* decl = decls->child(i);
+            vSet.insert(decl->id);
+        }
+    }
+    return;
+}
+
+set<string>
+gatherBoundVars(Node* n) {
+
+    GatherBVs gFun;
+    n->mapOver(gFun);
+    return gFun.vSet;
+}
+
+
+
     
 Node* 
 nameToType(const std::string& s) {

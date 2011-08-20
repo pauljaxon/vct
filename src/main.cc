@@ -51,6 +51,7 @@ using std::ifstream;
 #include "smt-driver.hh"
 
 #include "smtlib-driver.hh"
+#include "smtlib2-driver.hh"
 
 #ifdef LINK_YICES
 #include "yices-driver.hh"
@@ -472,6 +473,10 @@ main (int argc, char *argv[]) {
                  || optionVal("interface-mode") == "simplify") {
 
             smtDriver = new SMTLibDriver();
+        }
+        else if (optionVal("interface-mode") == "smtlib2") {
+            
+            smtDriver = new SMTLib2Driver();
         }
         else if (optionVal("interface-mode") == "isabelle") {
 

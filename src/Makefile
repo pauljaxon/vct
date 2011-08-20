@@ -125,6 +125,7 @@ OBJS= \
   main.o \
   smt-driver.o \
   smtlib-driver.o \
+  smtlib2-driver.o \
   isab-driver.o
 
 

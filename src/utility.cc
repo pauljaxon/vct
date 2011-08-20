@@ -1390,7 +1390,7 @@ vector<string> listDir (const string& dir) {
         return contents;
     }
 
-    while (ep = readdir (dp)) {
+    while ( (ep = readdir (dp)) ) {
         contents.push_back(ep->d_name);
     }
     (void) closedir (dp);
