@@ -511,6 +511,8 @@ Node* FDLContext::getType (Node* n) {
     case I_TIMES:
     case IDIV:
     case MOD: 
+    case IDIV_E:
+    case MOD_E: 
     case I_EXP:
     case I_SQR:
     case I_ABS:
@@ -838,6 +840,8 @@ FDLContext::getSubNodeTypes (Node* n) {
     case I_TIMES:
     case IDIV:
     case MOD: 
+    case IDIV_E:
+    case MOD_E: 
     case I_EXP:
         {
             result->addChild(Node::int_ty);

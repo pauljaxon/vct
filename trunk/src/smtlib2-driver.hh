@@ -55,10 +55,18 @@ private:
     Node* script;
     Node* formula;
 
+    bool analyseExitStatus(int exitStatus, string& remarks);
+
 protected:
 
     virtual Node* translateUnit(Node* n);
 
+    virtual bool resourceLimitsForQuerySet();
+    
+    virtual void initQuerySet(const string& unitName,
+                          int goalNum,
+                          int ConclNum);
+    // For old smt driver
     virtual void initGoal(const string& unitName,
                           int goalNum,
                           int ConclNum);
@@ -67,12 +75,24 @@ protected:
     virtual void addRule(Node* h, const string& hId, string& remarks);
     virtual void addHyp(Node* h, const string& hId, string& remarks);
     virtual void addConcl(Node* n, string& remarks); 
+    virtual void push();
+    virtual Status check(string& remarks);
+    virtual void pop();
 
     virtual void finishSetup();
 
+    virtual void outputQuerySet();
+
+    // For old smt driver
     virtual bool checkGoal(string& remarks);
+
+    virtual bool runQuerySet(string& remarks);
     
     virtual Status getResults(string& remarks);
+    virtual vector<QueryStatus> getRunResults(int numQueries);
+
+    virtual void finaliseQuerySet();
+    virtual void finaliseGoal();
 };
 
 

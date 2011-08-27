@@ -405,6 +405,175 @@ void abstractDivMods(Node* unit) {
     unit->mapOver1(abstractDivMod);
 }
 
+
+//========================================================================
+// Introduce axioms relating IDIV and MOD to IDIV_E and MOD_E
+//========================================================================
+// IDIV_E and MOD_E are the primitives supported by SMTLIB2.
+/*
+In email to SMTLIB mail list (11/8/08), John Harrison argued for SMTLIB2 to
+use the Euclidean definitions of IDIV and MOD, as discussed in
+
+  Raymond Boute:
+  "The Euclidean definition of the functions div and mod". 
+  ACM TOPLAS vol. 14 (1992), pp127-144
+
+He used this definition for HOL Light.
+
+Following Boute paper, we introduce explicit Kinds for each of the 
+3 kinds of div and mod.
+
+IDIV_T, MOD_T:  Division truncates, rounds towards zero.
+IDIV_F, MOD_F:  Division takes integer floor, rounds towards -infinity. 
+IDIV_E, MOD_E:  Euclidean division.  
+                Floor if divisor +ve
+                Ceiling if divisor -ve
+                Ensures that 0 <= MOD_E x y < |y|.
+
+All 3 obey remainder law:
+
+  x = y * (x div y) + x mod y
+
+Coming from FDL, IDIV is IDIV_T, MOD is MOD_F.
+*/
+
+// i | j  =def   j mod_e i == 0
+#define nDIVIDES(i,j) nEQ(nMOD_E((j),(i)), nNATNUM("0"), nINT_TY)
+
+// Axioms in terms of primitive IDIV and MOD, so abstraction of these 
+// should occur after.
+
+void addEuclideanIdivModAxioms(Node* unit) {
+
+    Node* rules = unit->child(1);
+
+    // Axioms phrased so more awkward cases are as restricted as
+    // possible, they have stronger preconditions.
+
+
+    rules->addChild(
+
+// y > 0 => 
+//   MOD x y = MOD_E x y
+
+        nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                 nIMPLIES(nI_GT(nVAR("Y"),nNATNUM("0")),
+                          nI_EQ(nMOD(nVAR("X"), nVAR("Y")),
+                                nMOD_E(nVAR("X"), nVAR("Y")))))
+        );
+
+// y < 0 & y | x =>
+//   MOD x y = MOD_E x y
+
+    rules->addChild(
+        nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                 nIMPLIES(nAND(nI_LT(nVAR("Y"),nNATNUM("0")),
+                               nDIVIDES(nVAR("Y"),nVAR("X"))),
+                          nI_EQ(nMOD(nVAR("X"), nVAR("Y")),
+                                nMOD_E(nVAR("X"), nVAR("Y")))))
+        );
+
+
+
+// y < 0 & ~(y | x) =>
+//   MOD x y = (MOD_E x y) + y 
+
+    rules->addChild(
+        nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                 nIMPLIES(nAND(nI_LT(nVAR("Y"),nNATNUM("0")),
+                               nNOT(nDIVIDES(nVAR("Y"),nVAR("X")))),
+                          nI_EQ(nMOD(nVAR("X"), nVAR("Y")),
+                                nI_PLUS(nMOD_E(nVAR("X"), nVAR("Y")),
+                                        nVAR("Y")))))
+        );
+
+
+
+// x >= 0 & y > 0 => 
+//  IDIV x y = IDIV_E x y        Both rounding down
+
+    rules->addChild(
+        nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                 nIMPLIES(nAND(nI_GE(nVAR("X"),nNATNUM("0")),
+                               nI_GT(nVAR("Y"),nNATNUM("0"))),
+                          nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
+                                nIDIV_E(nVAR("X"), nVAR("Y")))))
+        );
+
+
+// x < 0 & y > 0 & y | x =>
+//  IDIV x y = IDIV_E x y
+
+    rules->addChild(
+        nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                 nIMPLIES(nAND(nI_LT(nVAR("X"),nNATNUM("0")),
+                               nAND(nI_GT(nVAR("Y"),nNATNUM("0")),
+                                    nDIVIDES(nVAR("Y"), nVAR("X")))),
+                          nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
+                                nIDIV_E(nVAR("X"), nVAR("Y")))))
+        );
+
+// x < 0 & y > 0 & ~(y | x) =>
+//  IDIV x y = IDIV_E x y + 1     
+//
+// IDIV -ve so rounding up, IDIV_E rounding down
+
+    rules->addChild(
+        nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                 nIMPLIES(nAND(nI_LT(nVAR("X"),nNATNUM("0")),
+                               nAND(nI_GT(nVAR("Y"),nNATNUM("0")),
+                                    nNOT(nDIVIDES(nVAR("Y"), nVAR("X"))))),
+                          nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
+                                nI_PLUS(nIDIV_E(nVAR("X"), nVAR("Y")),
+                                        nNATNUM("1")))))
+        );
+
+
+
+// x >= 0 & y < 0 => 
+//  IDIV x y = IDIV_E x y        Both rounding up
+
+    rules->addChild(
+        nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                 nIMPLIES(nAND(nI_GE(nVAR("X"),nNATNUM("0")),
+                               nI_LT(nVAR("Y"),nNATNUM("0"))),
+                          nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
+                                nIDIV_E(nVAR("X"), nVAR("Y")))))
+        );
+
+
+// x < 0 & y < 0 & y | x =>
+//  IDIV x y = IDIV_E x y
+
+    rules->addChild(
+        nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                 nIMPLIES(nAND(nI_LT(nVAR("X"),nNATNUM("0")),
+                               nAND(nI_LT(nVAR("Y"),nNATNUM("0")),
+                                    nDIVIDES(nVAR("Y"), nVAR("X")))),
+                          nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
+                                nIDIV_E(nVAR("X"), nVAR("Y")))))
+        );
+
+
+// x < 0 & y < 0 & ~(y | x) =>
+//  IDIV x y = IDIV_E x y - 1    
+//
+// IDIV rounding down, IDIV_E rounding up
+
+    rules->addChild(
+        nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                 nIMPLIES(nAND(nI_LT(nVAR("X"),nNATNUM("0")),
+                               nAND(nI_LT(nVAR("Y"),nNATNUM("0")),
+                                    nNOT(nDIVIDES(nVAR("Y"), nVAR("X"))))),
+                          nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
+                                nI_MINUS(nIDIV_E(nVAR("X"), nVAR("Y")),
+                                        nNATNUM("1")))))
+        );
+
+    return;
+}
+
+
 //========================================================================
 // Abstract RDIV 
 //========================================================================
@@ -468,6 +637,9 @@ void abstractRealOpsRelsType(FDLContext* ctxt, Node* unit) {
 }
 
 
+//========================================================================
+// Define compound arithmetic transformation functions
+//========================================================================
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // arithSimp
@@ -545,6 +717,12 @@ arithAbstract(FDLContext* ctxt, Node* unit) {
 
     if (option("abstract-exp")) abstractExps(unit);
 
+    //--------------------------------------------------------------------
+    // Relate (IDIV) and modulus (MOD) to Euclidean definitions
+    //--------------------------------------------------------------------
+
+    if (option("use-euclidean-divmod")) addEuclideanIdivModAxioms(unit);
+    
     //--------------------------------------------------------------------
     // Replace integer division (IDIV) and modulus (MOD) by UIFs
     //--------------------------------------------------------------------

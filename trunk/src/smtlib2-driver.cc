@@ -77,6 +77,8 @@ Box& SMTLib2Formatter::addSyntax(z::Kind k, const std::string& id,
     case(SET_OPTION):  return makeStringAp("set-option :" + id, bs);
     case(ASSERT):      return makeStringAp("assert", bs);
     case(CHECK):       return makeStringAp("check-sat", bs);
+    case(PUSH):        return box("(push 1)");
+    case(POP):         return box("(pop 1)");
 
     // Declarations
 
@@ -420,8 +422,16 @@ SMTLib2Driver::translateUnit(Node* unit) {
     return unit;
 }
 
+
+// If watchdog timer used for timeouts, then time limit is for each query.
+
+bool 
+SMTLib2Driver::resourceLimitsForQuerySet() {
+        return !option("watchdog-timeout");
+}
+
 void
-SMTLib2Driver::initGoal(const string& unitName,
+SMTLib2Driver::initQuerySet(const string& unitName,
                          int goalNum,
                          int conclNum) {
 
@@ -442,6 +452,13 @@ SMTLib2Driver::initGoal(const string& unitName,
     script->addChild(new Node(LOGIC,logic));
 
     return;
+}
+
+void
+SMTLib2Driver::initGoal(const string& unitName,
+                         int goalNum,
+                         int conclNum) {
+    initQuerySet(unitName, goalNum, conclNum);
 }
 
 void 
@@ -465,8 +482,35 @@ SMTLib2Driver::addConcl(Node* concl, string& remarks) {
 }
 
 void
+SMTLib2Driver::push() {
+    script->addChild(new Node(PUSH));
+}
+
+SMTLib2Driver::Status
+SMTLib2Driver::check(string& remarks) {
+    script->addChild(new Node(CHECK));
+    return UNCHECKED;
+}
+
+void
+SMTLib2Driver::pop() {
+    script->addChild(new Node(POP));
+}
+
+
+//---------------------------------------------------------------------------
+// check
+//---------------------------------------------------------------------------
+
+void
 SMTLib2Driver::finishSetup() {
     script->addChild(new Node(CHECK));
+    outputQuerySet();
+    return;
+}
+
+void
+SMTLib2Driver::outputQuerySet() {
 
     ofstream solverInput;
     solverInput.open(solverInputFileName.c_str());
@@ -482,13 +526,18 @@ SMTLib2Driver::finishSetup() {
     solverInput.close();
 }
 //---------------------------------------------------------------------------
-// checkGoal
+// check
 //---------------------------------------------------------------------------
-
 bool
 SMTLib2Driver::checkGoal(string& remarks) {
+    return runQuerySet(remarks);
+}
+
+bool
+SMTLib2Driver::runQuerySet(string& remarks) {
 
     string cmd;
+    string cmdOptions;
 
     if (! (option("prover") || option("prover-command") )) {
         return false;
@@ -501,46 +550,42 @@ SMTLib2Driver::checkGoal(string& remarks) {
 
     // Must be case now that prover option set
 
-    else if (optionVal("prover") == "yices") {
-
-        cmd = "yices -smt ";
-
-        // timeout value is timeout in sec.
-        if (option("timeout"))
-            cmd += "--timeout=" + optionVal("timeout") + " ";
-    }
     else if (optionVal("prover") == "z3") {
 
-        cmd = "z3 ";
+        cmd = "z3";
 
         if (option("z3-fourier-motzkin"))
-            cmd += "FOURIER_MOTZKIN_ELIM=true ";
+            cmdOptions += "FOURIER_MOTZKIN_ELIM=true ";
         if (option("timeout"))
             // Was not supported in Z3 v1.3 Linux. 
-            cmd += "SOFT_TIMEOUT=" + optionVal("timeout") + " ";
+            cmdOptions += "SOFT_TIMEOUT=" + optionVal("timeout") + " ";
     }
     else if (optionVal("prover") == "cvc3") {
 
-        cmd = "cvc3 -lang smt ";
+        cmd = "cvc3";
+        cmdOptions = "-lang smt2 ";
         if (option("timeout"))
-            cmd += "-timeout " + optionVal("timeout") + " ";
+            cmdOptions += "-timeout " + optionVal("timeout") + " ";
         if (option("resourcelimit"))
-            cmd += "-resource " + optionVal("resourcelimit") + " ";
+            cmdOptions += "-resource " + optionVal("resourcelimit") + " ";
     }
     else {
-        printMessage(ERRORm, "Unrecognised prover option: "
+        printMessage(ERRORm, "Unsupported prover option: "
                      + optionVal("prover") + ENDLs);
         return false;
     }
-    
+
+    // Modify cmd for I/O files and detecting timeouts. 
     if (option("shell-timeout")) {
         // Use shell-level timeout utility
         // This will accept integer or fixed point time in sec.
 
-        cmd = "./timeout.sh " + optionVal("shell-timeout") + " " + cmd;
+        cmd = "./timeout.sh " + optionVal("shell-timeout") + " "
+            + cmd + " " + cmdOptions
+            + " 1> "  + solverOutputFileName
+            + " 2> "  + solverErrorFileName;
     }
-
-    if (option("ulimit-timeout")) {
+    else if (option("ulimit-timeout")) {
         // Use bash built-in timeout facility
         // This accepts  integer time in sec.
 
@@ -551,26 +596,43 @@ SMTLib2Driver::checkGoal(string& remarks) {
         // output from running vct.
 
         cmd = "( ulimit -t " + optionVal("ulimit-timeout")
-            + " ; " + cmd + solverInputFileName + " )";
+            + " ; " + cmd + " " + cmdOptions + solverInputFileName + " )"
+            + " 1> "  + solverOutputFileName
+            + " 2> "  + solverErrorFileName;
+    }
+    else if (option("watchdog-timeout")) {
+        // Use watchdogrun timeout facility:
+        // Usage:
+        //   watchdogrun outfile errfile timeout cmd arg1 ...  argn
+
+        // timeout is read as floating-point number.
+
+        cmd = "./watchdogrun "
+            + solverOutputFileName + " "
+            + solverErrorFileName + " " 
+            + optionVal("watchdog-timeout") + " "
+            + cmd + " "
+            + cmdOptions + " "
+            + solverInputFileName;
+
     } else {
 
-        cmd += solverInputFileName ;
-    
+        cmd += " " + solverInputFileName 
+            + " 1> "  + solverOutputFileName
+            + " 2> "  + solverErrorFileName;
     }
-
-    cmd +=
-        " 1> "  + solverOutputFileName
-        + " 2> "  + solverErrorFileName;
 
     if (option("doublerun")) cmd = cmd + " ; " + cmd;
 
     printMessage(INFOm, "Running command" + ENDLs
                              + cmd + ENDLs);
 
+    // Should rename this to terminationStatus.  exitStatus is just
+    // part of the terminationStatus.
     exitStatus = std::system(cmd.c_str());
 
     // For SMT mode, exit status is not reliable guide for something going
-    // wrong.  z3 -smt returns non-zero status when result is unknown.
+    // wrong.  E.g. z3 -smt returns exit status 103. 
 
     printMessage(INFOm, "Exit status is " + intToString(exitStatus));
 
@@ -578,9 +640,120 @@ SMTLib2Driver::checkGoal(string& remarks) {
 }
 
 //---------------------------------------------------------------------------
-// getResults
+// analyse Exit Status of solver
 //---------------------------------------------------------------------------
 
+// Returns true iff exit code indicates that resource limit reached.
+bool
+SMTLib2Driver::analyseExitStatus(int exitStatus, string& remarks) {
+    bool resourceLimitReached = false;
+    
+    //  Detecting termination signals, not on windows platform:
+#ifndef _WIN32
+
+    /* Code here discovered by trial and error and reading man pages.
+
+       Man page for getrlimit makes clear that a process is terminated using
+       a KILL signal when the time limit is reached.
+    
+       system(3) man page says that return status of system call is in format 
+       specified on wait(2) man page.  There is says:
+
+       WIFEXITED(status)
+              returns true if the child terminated normally, that is, by call-
+              ing exit(3) or _exit(2), or by returning from main().
+
+       WEXITSTATUS(status)
+              returns the exit status of the  child.   This  consists  of  the
+              least  significant  8 bits of the status argument that the child
+              specified in a call to exit(3) or _exit(2) or  as  the  argument
+              for  a  return  statement  in main().  This macro should only be
+              employed if WIFEXITED returned true.
+
+       WIFSIGNALED(status)
+              returns true if the child process was terminated by a signal.
+
+       WTERMSIG(status)
+              returns the number of the signal that caused the  child  process
+              to terminate.  This macro should only be employed if WIFSIGNALED
+              returned true.
+ 
+     For z3 3.0 on Scientific Linux 6, are seeing:
+
+     on unsat:
+
+     exitStatus = 0
+     WIFSIGNALED = 0
+     WTERMSIG = 0
+     WIFEXITED = 1
+     WEXITSTATUS = 0
+
+     on ulimit timeout:
+
+     exitStatus = 35072   (= 137 * 256)
+     WIFSIGNALED = 0
+     WTERMSIG = 0
+     WIFEXITED = 1
+     WEXITSTATUS = 137   (bits 15-8 of exitStatus, as remarked on wait(2) page)
+
+     WIFSIGNALED is *not* being set on a kill, and WTERMSIG is not pulling
+     out any signal number.
+
+     Some web pages remark on exit codes of form 128 + signumber being used
+     to flag processes terminated by signals.  SIGKILL has value 9, hence
+     this 137.
+
+      Can see this 137 by e.g. doing:
+        ulimit -t 1 ; z3 -smt x.smt ; echo $?
+
+     Watchdogrun routine uses SIGTERM (15) to kill z3.  This results
+     in z3 returning 128+15 = 143.
+    */
+    /*
+    printMessageWithHeader
+        ("DEBUG",
+         "exitStatus = " + intToString(exitStatus) + ENDLs + 
+         "WIFSIGNALED = " + intToString(WIFSIGNALED(exitStatus)) + ENDLs + 
+         "WTERMSIG = " + intToString(WTERMSIG(exitStatus)) + ENDLs +
+         "WIFEXITED = " + intToString(WIFEXITED(exitStatus)) + ENDLs + 
+         "WEXITSTATUS = " + intToString(WEXITSTATUS(exitStatus))
+         );
+    */
+    if (WIFEXITED(exitStatus)) {
+        int exitCode = WEXITSTATUS(exitStatus);
+        if (exitCode == 128 + SIGKILL) {
+            appendCommaString(remarks, "timeout (exit code 137)");
+            printMessage(INFOm,
+                         "Solver killed.  Assume ulimit time limit reached.");
+            resourceLimitReached = true;
+        }
+        else if (exitCode == 128 + SIGTERM) {
+            appendCommaString(remarks, "timeout (exit code 143)");
+            printMessage(INFOm,
+                         "Solver killed.  Assume by SIGTERM from watchdogrun.");
+            resourceLimitReached = true;
+        }
+        else if (exitCode != EXIT_SUCCESS) { // EXIT_SUCCESS == 0 usually
+            appendCommaString(remarks, "exit code " + intToString(exitCode));
+        }
+    }
+    else if (WIFSIGNALED(exitStatus)) {
+        printMessage(WARNINGm,
+                     "Subprocess termination on signal "
+                     + intToString(WTERMSIG(exitStatus)));
+    }
+    else {
+        printMessage(WARNINGm,
+                     "Unexpected subprocess exit status "
+                     + intToString(exitStatus));
+    }
+#endif
+
+    return resourceLimitReached;
+}
+//---------------------------------------------------------------------------
+// getResults
+//---------------------------------------------------------------------------
 SMTLib2Driver::Status
 SMTLib2Driver::getResults(string& remarks) {
 
@@ -708,100 +881,9 @@ SMTLib2Driver::getResults(string& remarks) {
     }
 
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-    // Analyse solver exit code 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-    //  Detecting termination signals, not on windows platform:
-#ifndef _WIN32
-
-    /* Code here discovered by trial and error and reading man pages.
-
-       Man page for getrlimit makes clear that a process is terminated using
-       a KILL signal when the time limit is reached.
-    
-       system(3) man page says that return status of system call is in format 
-       specified on wait(2) man page.  There is says:
-
-       WIFEXITED(status)
-              returns true if the child terminated normally, that is, by call-
-              ing exit(3) or _exit(2), or by returning from main().
-
-       WEXITSTATUS(status)
-              returns the exit status of the  child.   This  consists  of  the
-              least  significant  8 bits of the status argument that the child
-              specified in a call to exit(3) or _exit(2) or  as  the  argument
-              for  a  return  statement  in main().  This macro should only be
-              employed if WIFEXITED returned true.
-
-       WIFSIGNALED(status)
-              returns true if the child process was terminated by a signal.
-
-       WTERMSIG(status)
-              returns the number of the signal that caused the  child  process
-              to terminate.  This macro should only be employed if WIFSIGNALED
-              returned true.
- 
-     For z3 3.0 on Scientific Linux 6, are seeing:
-
-     on unsat:
-
-     exitStatus = 0
-     WIFSIGNALED = 0
-     WTERMSIG = 0
-     WIFEXITED = 1
-     WEXITSTATUS = 0
-
-     on ulimit timeout:
-
-     exitStatus = 35072   (= 137 * 256)
-     WIFSIGNALED = 0
-     WTERMSIG = 0
-     WIFEXITED = 1
-     WEXITSTATUS = 137   (bits 15-8 of exitStatus, as remarked on wait(2) page)
-
-     WIFSIGNALED is *not* being set on a kill, and WTERMSIG is not pulling
-     out any signal number.
-
-     Some web pages remark on exit codes of form 128 + signumber being used
-     to flag processes terminated by signals.  SIGKILL has value 9, hence
-     this 137.
-
-      Can see this 137 by e.g. doing:
-        ulimit -t 1 ; z3 -smt x.smt ; echo $?
-    */
-    /*
-    printMessageWithHeader
-        ("DEBUG",
-         "exitStatus = " + intToString(exitStatus) + ENDLs + 
-         "WIFSIGNALED = " + intToString(WIFSIGNALED(exitStatus)) + ENDLs + 
-         "WTERMSIG = " + intToString(WTERMSIG(exitStatus)) + ENDLs +
-         "WIFEXITED = " + intToString(WIFEXITED(exitStatus)) + ENDLs + 
-         "WEXITSTATUS = " + intToString(WEXITSTATUS(exitStatus))
-         );
-    */
-    if (WIFEXITED(exitStatus)) {
-        int exitCode = WEXITSTATUS(exitStatus);
-        if (exitCode == 128 + SIGKILL) {
-            appendCommaString(remarks, "timeout (exit code 137)");
-            printMessage(INFOm,
-                         "Solver killed.  Assume ulimit time limit reached.");
-            seenTimeout = true;
-        }
-        else if (exitCode != EXIT_SUCCESS) { // EXIT_SUCCESS == 0 usually
-            appendCommaString(remarks, "exit code " + intToString(exitCode));
-        }
+    if (analyseExitStatus(exitStatus, remarks)) {
+        seenTimeout = true;
     }
-    else if (WIFSIGNALED(exitStatus)) {
-        printMessage(WARNINGm,
-                     "Subprocess termination on signal "
-                     + intToString(WTERMSIG(exitStatus)));
-    }
-    else {
-        printMessage(WARNINGm,
-                     "Unexpected subprocess exit status "
-                     + intToString(exitStatus));
-    }
-#endif
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
     // Report on output and decide return status
@@ -842,6 +924,218 @@ SMTLib2Driver::getResults(string& remarks) {
 
 }
 
+//---------------------------------------------------------------------------
+// getRunResults
+//---------------------------------------------------------------------------
+
+vector<SMTDriver::QueryStatus> 
+SMTLib2Driver::getRunResults(int numQueries) {
+
+    vector<SMTLib2Driver::QueryStatus> results;
+    
+    // Do not check output files if none were generated in first place
+
+    if (! (option("prover") || option("prover-command") )) {
+        results.push_back(QueryStatus(UNPROVEN,"prover not run"));
+        return results;
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // Read in output and error files from solver
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+    ifstream solverOut (solverOutputFileName.c_str() );
+    ifstream solverErr (solverErrorFileName.c_str() );
+
+    if (!solverOut) {
+        printMessage(ERRORm, "Cannot open output file "
+                             + solverOutputFileName);
+        results.push_back(QueryStatus(ERROR, ".out file not found"));
+        return results;
+    }
+
+    if (!solverErr) {
+        printMessage(ERRORm, "Cannot open error output file "
+                             + solverErrorFileName);
+        results.push_back(QueryStatus(ERROR, ".err file not found"));
+        return results;
+    }
+
+    vector<string> solverOutput;
+    vector<string> solverErrOutput;
+    {
+        string line;
+
+        while (getline(solverOut, line)) solverOutput.push_back(line);
+        solverOut.close();
+
+        while (getline(solverErr, line)) solverErrOutput.push_back(line);
+        solverErr.close();
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // Initialise flags for tracking run status
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+    // flags for processing of standard error file
+
+    bool seenTimeout = false;
+    // bool seenWarning = false;
+    bool seenUnexpectedErrOutput = false;
+
+    // flags for processing of standard output file
+
+    bool seenUnexpectedOutput = false;
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // Check over stderr output from solver
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+    // First inspect error output.  Check for
+    // - warning messages than can be logged
+    // - Timeout termination messages
+    //
+    // First cut, just echo output to log file. Minimally process.
+
+    for (int i = 0; i != (int) solverErrOutput.size(); i++) {
+
+        string s = solverErrOutput.at(i);
+
+        if (tokeniseString(s).size() == 0) {
+            continue;
+        }
+
+
+        // Detect message produced by ulimit -t killing process
+            
+        // See below for alternate method of detecting this timeout.
+        // Approach here works on Scientific Linux 5.3 but not 
+        // Ubuntu 10.4.2.
+
+        if (hasPrefix(s, "sh: line 1:") && hasSubstring(s, "Killed")) {
+
+
+            // appendCommaString(remarks, "timeout (ulim)");
+            // printMessage(INFOm,
+            //              "SMTLib solver reached ulimit time limit");
+            // seenTimeout = true;
+            continue;
+        }
+
+        seenUnexpectedErrOutput = true;
+
+
+    }
+     
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // Check over stdout output from solver
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+       
+    for (int i = 0; i != (int) solverOutput.size(); i++) {
+
+        string s = solverOutput.at(i);
+        vector<string> line = tokeniseString(s);
+
+        if (line.size() == 0) {
+            continue;
+        }
+            
+        if (line.size() == 1 && line.at(0) == "unsat") {
+            results.push_back(QueryStatus(TRUE,""));
+        }
+        else if (line.size() == 1 && line.at(0) == "sat") {
+            results.push_back(QueryStatus(UNPROVEN,""));
+        }
+        else if (line.size() == 1 && line.at(0) == "unknown") {
+            results.push_back(QueryStatus(UNPROVEN,""));
+        } else {
+            seenUnexpectedOutput = true;
+        }
+    }
+
+
+    // Make the assumption that the solver outputs "unknown" on stdout if
+    // it is killed because of resource limit.  This seems to be true of z3
+    // If not true, then an extra QueryStatus should be added to results.
+    // NOT TRUE
+    string exitStatusRemarks;
+    if (analyseExitStatus(exitStatus, exitStatusRemarks)) {
+        seenTimeout = true;
+    }
+
+    /*
+    if (seenTimeout) {
+        if (results.back().status == TRUE) {
+            printMessage(ERRORm,
+                         "Resource limit detected on true goal.  Something has gone wrong");
+        }
+        results.back().status = RESOURCE_LIMIT;
+        results.back().remarks = exitStatusRemarks;
+    }
+    */
+
+    if (seenTimeout) {
+        results.push_back(QueryStatus(RESOURCE_LIMIT,exitStatusRemarks));
+    }
+
+    // Ensure at least 1 result reported
+    if (results.size() == 0) {
+        results.push_back(QueryStatus(ERROR,""));
+    }
+
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // Report on output and decide return status
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+    if (seenUnexpectedErrOutput || seenUnexpectedOutput) {
+
+        string outMessage = concatStrings(solverOutput, ENDLs);
+        string errMessage = concatStrings(solverErrOutput, ENDLs);
+
+        printMessage(ERRORm, 
+                     "Error(s) on prover output." + ENDLs
+                     + "On STDOUT:" + ENDLs
+                     + outMessage + ENDLs
+                     + "On STDERR: " + ENDLs
+                     + errMessage + ENDLs
+                     + "END of output");
+        // It's hard to know which of results an error is associated with.
+        // Just pick to report it with the first.
+        results.front().status = ERROR;
+    }
+
+    if ((int) results.size() > numQueries) {
+        printMessage(ERRORm,
+                     "getRunResults is reporting more results than queries");
+    }
+
+    return results;
+}
+
+//---------------------------------------------------------------------------
+// finaliseQuerySet
+//---------------------------------------------------------------------------
+
+void
+SMTLib2Driver::finaliseQuerySet() {
+
+    if (option("delete-working-files")) {
+
+        tryRemoveFile(solverInputFileName);
+        tryRemoveFile(solverOutputFileName);
+        tryRemoveFile(solverErrorFileName);
+    }
+    return;
+}
+
+//---------------------------------------------------------------------------
+// finaliseGoal
+//---------------------------------------------------------------------------
+
+void
+SMTLib2Driver::finaliseGoal() { finaliseQuerySet(); }
 
 
 //=========================================================================

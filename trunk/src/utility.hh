@@ -252,6 +252,7 @@ extern const int FINESTm;  // Lowest
 
 extern int messageThreshold; 
 
+extern string currentGoalNumStr; 
 extern int currentConcl;
 
 extern string currentHypsKinds;
@@ -263,6 +264,13 @@ extern string goalSliceTime;
 
 void initCurrentUnitInfo(UnitInfo unitInfo);
 void updateCurrentGoalInfo(const string& s);
+
+// Functional version of updateCurrentGoalInfo
+void extractGoalInfo(const string& s,
+                     string& unitKind,
+                     string& goalNum,
+                     string& goalOrigins);
+
 
 
 // Primitive used by printMessage, but also callable stand-alone.
@@ -309,6 +317,15 @@ string csvConcat(const vector<string>& ss);
 //========================================================================
 // CSV file management
 //========================================================================
+
+void
+printCSVRecordAux(const string& unitKind,
+                  const string& goalOrigins,
+                  const string& goalNumString,
+                  int conclNum,
+                  const string& status,
+                  const string& queryTime,
+                  const string& remarks);
 
 void
 printCSVRecord(const string& status, const string& remarks);

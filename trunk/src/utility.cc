@@ -722,7 +722,7 @@ string currentUnit;         // [<path>/]<fileroot>
 string currentUnitPath;     //  <path>
 string currentUnitFile;     //  <fileroot>
 string currentUnitKind;     //  procedure | function | task_type 
-string currentGoalNum;      //  <goal number> 
+string currentGoalNumStr;      //  <goal number> 
 string currentGoalOrigins;  //  Info about where in program goal comes from
 
 
@@ -780,7 +780,7 @@ void initCurrentUnitInfo(UnitInfo unitInfo) {
     currentUnitPath = unitInfo.getUnitPathName();
     currentUnitFile = unitInfo.getUnitFileName();
 
-    currentGoalNum = "";
+    currentGoalNumStr = "";
     currentGoalOrigins = ",";  // "," since two fields in report
     currentUnitKind = "";
 
@@ -790,6 +790,14 @@ void initCurrentUnitInfo(UnitInfo unitInfo) {
 }
 
 void updateCurrentGoalInfo(const string& s) {
+    extractGoalInfo(s, currentUnitKind, currentGoalNumStr, currentGoalOrigins);
+    return;
+}
+
+void extractGoalInfo(const string& s,
+                     string& unitKind,
+                     string& goalNum,
+                     string& goalOrigins) {
 
      vector<string> ss = tokeniseString(s);
      string currentGoalName = ss[0];     //  <kind>_<fileroot>_<goal number> 
@@ -798,10 +806,10 @@ void updateCurrentGoalInfo(const string& s) {
 
      // Could grab unit kind instead from VCG/SIV file header. Cleaner
 
-     currentUnitKind = goalNameParts.front();
-     if (currentUnitKind == "task") currentUnitKind = "task_type";
+     unitKind = goalNameParts.front();
+     if (unitKind == "task") unitKind = "task_type";
 
-     currentGoalNum = goalNameParts.back();
+     goalNum = goalNameParts.back();
 
      string from;
      string to;
@@ -828,7 +836,7 @@ void updateCurrentGoalInfo(const string& s) {
          to = "*** Unrecognised goal description ***";
      }
 
-     currentGoalOrigins = from + "," + to;
+     goalOrigins = from + "," + to;
      return;
 }
                      
@@ -961,9 +969,9 @@ void printMessageWithHeader(const string& header, const string& message) {
     s += "unit: " + currentUnit;
 
 
-    if (currentGoalNum.size() > 0) {
+    if (currentGoalNumStr.size() > 0) {
 
-        s += "  goal: " + currentGoalNum;
+        s += "  goal: " + currentGoalNumStr;
     }
     if (currentConcl > 0  && !option("fuse-concls") ) {
         s += "  concl: " + intToString(currentConcl);
@@ -1115,19 +1123,37 @@ string csvConcat(const vector<string>& ss) {
 
 void
 printCSVRecord(const string& status, const string& remarks) {
+    printCSVRecordAux(currentUnitKind,
+                      currentGoalOrigins,
+                      currentGoalNumStr,
+                      currentConcl,
+                      status,
+                      goalSliceTime,
+                      remarks);
+    return;
+}
+
+void
+printCSVRecordAux(const string& unitKind,
+                  const string& goalOrigins,
+                  const string& goalNumString,
+                  int conclNum,
+                  const string& status,
+                  const string& queryTime,
+                  const string& remarks) {
 
     if (! option("gstime")) goalSliceTime = "";
 
     string kindString(option("csv-reports-include-unit-kind")
-                      ? currentUnitKind
+                      ? unitKind
                       : "");
 
     string originsString(option("csv-reports-include-goal-origins")
-                       ? currentGoalOrigins
+                       ? goalOrigins
                        : ",");
 
-    string conclString(currentConcl > 0 && !option("fuse-concls")
-                       ? intToString(currentConcl)
+    string conclString(conclNum > 0 && !option("fuse-concls")
+                       ? intToString(conclNum)
                        : "");
 
     string quotedRemarks(remarks.size() > 0
@@ -1139,10 +1165,10 @@ printCSVRecord(const string& status, const string& remarks) {
               << currentUnitFile << ","  //  2
               << kindString << ","       //  3
               << originsString << ","    //  4, 5
-              << currentGoalNum << ","   //  6
+              << goalNumString << ","    //  6
               << conclString << ","      //  7
               << status << ","           //  8
-              << goalSliceTime  << ","   //  9
+              << queryTime  << ","       //  9
               << quotedRemarks << ","    // 10
               << currentHypsKinds << "," // 11
               << currentConclKinds       // 12
