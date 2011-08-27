@@ -60,6 +60,11 @@ else ifdef ST  # Shell timeout (fixed pt sec): applies to any file-level solver
   timeout_sfx = -st$(ST)
   timeout_option = -shell-timeout=$(ST)
 
+else ifdef WT  # Watchdog timeout (fixed pt sec): 
+              # applies to any file-level solver
+  timeout_sfx = -w$(WT)
+  timeout_option = -watchdog-timeout=$(WT)
+
 endif
 
 T=10# Delay setting default T to here so don't get suffix for default time.

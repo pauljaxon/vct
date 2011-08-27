@@ -334,41 +334,7 @@ void enumsToIntSubranges(FDLContext* ctxt, Node* unit) {
 //========================================================================
 //========================================================================
 
-// Eventually should use these macros elsewhere for clarity and conciseness
-
-#define nDECL(id,T) new Node(DECL,(id),(T))
-#define nSEQ1(x) new Node(SEQ,(x))
-#define nSEQ2(x,y) new Node(SEQ,(x),(y))
-#define nSEQ3(x,y,z) new Node(SEQ,"",(x),(y),(z))
-
-#define nFUNAP1(f,a1) new Node(FUN_AP,(f),(a1))
-#define nFUNAP2(f,a1,a2) new Node(FUN_AP,(f),(a1),(a2))
-#define nFUNAP3(f,a1,a2,a3) new Node(FUN_AP,(f),(a1),(a2))
-
-#define nNATNUM(n) new Node(NATNUM,(n))
-#define nCONST(c) new Node(CONST,(c))
-#define nVAR(v) new Node(VAR,(v))
-
-#define nINT_TY new Node(INT_TY)
-#define nTYPE_ID(id) new Node(TYPE_ID,(id))
-
-#define nFORALL(ds,p) new Node(FORALL, (ds),(p))
-#define nFORALL1(v,T,p) nFORALL(nSEQ1(nDECL((v),(T))), (p))
-#define nFORALL2(v1,T1,v2,T2,p) \
-    nFORALL( nSEQ2( nDECL((v1),(T1)), nDECL((v2),(T2))), (p))
-#define nIMPLIES(p,q) new Node(IMPLIES,(p),(q))
-#define nNOT(p) new Node(NOT,(p))
-#define nAND(p,q) new Node(AND,(p),(q))
-#define nIFF(p,q) new Node(IFF,(p),(q))
-
-#define nI_PLUS(i,j) new Node(I_PLUS,(i),(j))
-#define nI_MINUS(i,j) new Node(I_MINUS,(i),(j))
-#define nI_LE(i,j) new Node(I_LE,(i),(j))
-#define nI_LT(i,j) new Node(I_LT,(i),(j))
-
-#define nEQ(a,b,T) new Node(EQ,"",(a),(b),(T))
-#define nNE(a,b,T) nNOT(nEQ((a),(b),(T)))
-
+// Uses node constructor macros from node.hh.
 
 void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
 

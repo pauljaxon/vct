@@ -26,8 +26,8 @@
 
 # Tools used:
 
-#   g++/gcc    V4.4.4
-#   bison      V2.4.3
+#   g++/gcc    V4.4.5
+#   bison      V2.4.1
 #   flex       V2.5.35
 
 # External libraries used:
@@ -269,7 +269,6 @@ test-bignum: test-bignum.cc bignum.o utility.o node.o \
 
 
 
-
 # Utility functions for manipulating CSV files.
 
 
@@ -288,6 +287,11 @@ csvisect: csvisect.cc utility.o
 .PHONY: csvutils
 csvutils: csvproj csvfilt csvmerge csvisect
 
+# Run command for solver, with watchdog killing solver if no activity on
+# stdout for a specified period.
+
+watchdog: watchdogrun.c
+	gcc -o ../run/watchdogrun $^
 
 
 # END OF FILE

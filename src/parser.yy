@@ -529,7 +529,9 @@ exp:
  | exp DIV exp     {$$ = new Node(z::IDIV, $1, $3); }
  | exp STARSTAR exp{$$ = new Node(z::EXP, $1, $3); }
  | exp DOTDOT exp  {$$ = new Node(z::SUBRANGE, $1, $3); }
- | LPAREN exp RPAREN  {$$ = $2; }
+ | LPAREN aexp RPAREN  {$$ = $2; } // exp should be adequate here, but have
+                                   // seen output of Examiner that parenthesise
+                                   // aexps.
  | NATNUM          {$$ = new Node(z::NATNUM, * $1); delete $1; }
  | expseq          {$$ = $1;}
  | exp_id          {$$ = $1;}

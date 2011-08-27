@@ -162,6 +162,7 @@ public:
     // virtual void initSession();
 
 protected:
+    virtual bool onlineInterface() {return true; };
 
     virtual Node* translateUnit(Node* unit);
 
