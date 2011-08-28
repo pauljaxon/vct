@@ -257,6 +257,7 @@ Top level of units
     case UNIT:
 
     case RULES:
+    case RULE:
     case GOALS:
 
     case GOAL:

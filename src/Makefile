@@ -60,7 +60,7 @@
 # The named directory is expected to contain lib/ and include/ 
 # directories, as set up by the Yices installation.
 
-# YICESDIR=/home/pbj/smt/yices/yices-1.0.24
+YICESDIR=/home/pbj/smt/yices/yices-1.0.29
 
 
 # Linking with CVC3
@@ -77,6 +77,7 @@
 # directory should also contain at least the directory debug/lib/
 
 # CVC3DIR=/home/pbj/smt/cvc3/r2.2
+CVC3DIR=/home/pbj/smt/cvc3/r2011-08-24
 
 
 
@@ -95,11 +96,12 @@ DEBUG=false
 #      Is allowed by compiler when have T* return types.
 # unused vars.
 
-CXXFLAGS= -g -Wall
+# CXXFLAGS= -g -Wall
+CXXFLAGS= -g -Wall -static -m64
 CPPFLAGS=
 
-
-LDFLAGS= -Wall
+LDFLAGS= -Wall 
+# LDFLAGS= -Wall -static -m64
 
 ifdef STATIC_GMP
   LDLIBS= -Xlinker -Bstatic -lgmpxx -lgmp -Xlinker -Bdynamic

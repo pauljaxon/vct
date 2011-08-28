@@ -105,9 +105,17 @@ SMTDriver::driveGoal(Node* decls,
               currentRule <= rules->arity();
               currentRule++) {
 
-            string currentRuleStr ("R" + intToString(currentRule));
-
             Node* rule = rules->child(currentRule - 1);
+            string currentRuleStr;
+            if (rule->kind == z::RULE) {
+                currentRuleStr = rule->id;
+                rule = rule->child(0);
+            }
+            else {
+                currentRuleStr = "R" + intToString(currentRule);
+            }
+
+
 
             Formatter::setFormatter(VanillaFormatter::getFormatter());
             printMessage(FINESTm,
@@ -484,9 +492,16 @@ SMTDriver::driveQuerySet(UnitInfo unitInfo,
               currentRule <= rules->arity();
               currentRule++) {
 
-            string currentRuleStr ("R" + intToString(currentRule));
-
             Node* rule = rules->child(currentRule - 1);
+            string currentRuleStr;
+            if (rule->kind == z::RULE) {
+                currentRuleStr = rule->id;
+                rule = rule->child(0);
+            }
+            else {
+                currentRuleStr = "R" + intToString(currentRule);
+            }
+
 
             Formatter::setFormatter(VanillaFormatter::getFormatter());
             printMessage(FINESTm,

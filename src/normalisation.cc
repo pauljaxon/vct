@@ -216,9 +216,9 @@ flattenRules(Node* RLS_AST) {
              j != rules->arity();
              j++) {
 
-            Node* rule = rules->child(j);
-
-            result->addChild(normaliseRule(rule));
+            Node* rule = rules->child(j); // rule = RULE{<name>} <body>
+            rule->child(0) = normaliseRule(rule->child(0));
+            result->addChild(rule);
         }
     }
     // Destructively modify initial top Node object.
@@ -469,8 +469,9 @@ deleteRulesWithUndeclaredIds(FDLContext* ctxt, Node* unit) {
             newRules->addChild(rule);
         }
         else {
+            string ruleName = rule->id; // rule = RULE{<name>} <rule>
             printMessage(INFOm,
-                         "Deleting rule " + intToString(ruleNum)
+                         "Deleting rule " + ruleName
                          + "because of " + ENDLs
                          + "undeclared identifiers:" + undeclaredIds + ENDLs
                              + "and undeclared functions:" + undeclaredFuns);
@@ -731,9 +732,7 @@ VarTypingFun::operator() (FDLContext* c, Node* n) {
 
 
 Node*
-closeExpr(FDLContext* c, int rulNum, Node* expr) {
-
-    string rulNumStr (intToString(rulNum));
+closeExpr(FDLContext* c, const string& ruleName, Node* expr) {
 
     VarTypingFun varTypingFun;
     mapOverWithContext(varTypingFun, c, expr);
@@ -742,7 +741,7 @@ closeExpr(FDLContext* c, int rulNum, Node* expr) {
         return expr;
     }
     Formatter::setFormatter(VanillaFormatter::getFormatter());
-    printMessage(FINEm, "closeExpr: vars found in rule " + rulNumStr
+    printMessage(FINEm, "closeExpr: vars found in rule " + ruleName
                  + ENDLs + expr->toString());
 
     Node* result;
@@ -776,21 +775,21 @@ closeExpr(FDLContext* c, int rulNum, Node* expr) {
             if (tyKind == INT_OR_REAL_TY) {
                 printMessage(INFOm,
           "closeExpr: Free variable " + id 
-                       + " in rule " + rulNumStr + ENDLs
+                       + " in rule " + ruleName + ENDLs
                        + " is constrained to have integer or real type." + ENDLs
                        + "Speculatively assigning it to have integer type ");
             }
             else if (tyKind == INT_REAL_OR_ENUM_TY) {
                 printMessage(INFOm,
           "closeExpr: Free variable " + id 
-                       + " in rule " + rulNumStr + ENDLs
+                       + " in rule " + ruleName + ENDLs
                        + " is constrained to have integer, real or enumeration type." + ENDLs
                        + "Speculatively assigning it to have integer type ");
             }
             else {
                 printMessage(INFOm,
           "closeExpr: Free variable " + id 
-                       + " in rule " + rulNumStr + ENDLs
+                       + " in rule " + ruleName + ENDLs
                        + " has  no constraints on its typing. " + ENDLs
                        + "Speculatively assigning it to have integer type ");
             }
@@ -817,7 +816,8 @@ void closeRules(FDLContext* ctxt, Node* unit) {
     Node* rules = unit->child(1);
 
     for (int i = 0; i != rules->arity(); i++) {
-        rules->child(i) = closeExpr(ctxt, i+1, rules->child(i));
+        Node* rule = rules->child(i);  // rule = RULE{<name>} <formula>
+        rule->child(0) = closeExpr(ctxt, rule->id, rule->child(0));
     }
     return;
 }

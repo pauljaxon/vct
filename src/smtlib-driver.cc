@@ -798,6 +798,7 @@ Top level structure with no further changes
     case EXTRASORTS:
     case TCONST:
     case RULES:
+    case RULE:
     case GOALS:
     case GOAL:
     case HYPS:
