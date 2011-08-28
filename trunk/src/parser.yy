@@ -313,7 +313,9 @@ rules:
 
 rule:
    id_str LPAREN NATNUM RPAREN COLON rule_body DOT 
-                      { $$ = $6; delete $1; delete $3;}
+                      { $$ = new Node(z::RULE, (*$1) + "(" + (*$3) + ")", $6);
+                        delete $1;
+                        delete $3;}
 
 rule_body:
    exp MAY_BE_REPLACED_BY exp rule_condition 
@@ -421,7 +423,7 @@ id_str:
 ;
 
 id: 
-   id_str { $$ = new Node(z::ID, * $1); }
+   id_str { $$ = new Node(z::ID, * $1); delete $1;}
 
 ids:
    id                { $$ = new Node(z::SEQ,$1); }

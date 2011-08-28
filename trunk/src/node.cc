@@ -69,6 +69,7 @@ z::kindString(z::Kind k) {
 	c(SCRIPT);
         c(DECLS);  // Introduced by processing
         c(RULES);
+        c(RULE);
         c(GOALS);
         c(HYPS);
         c(ASSUMPTION);
@@ -456,6 +457,7 @@ bool isCompoundProp(Node* n) {
     return
         k == z::UNIT
         || k == z::RULES
+        || k == z::RULE
         || k == z::GOALS
         || k == z::GOAL
         || k == z::HYPS

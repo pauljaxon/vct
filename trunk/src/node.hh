@@ -71,6 +71,7 @@ enum Kind {
     SCRIPT,
     DECLS,  // Introduced by processing
     RULES,
+    RULE,
     GOALS,
     HYPS,
     ASSUMPTION, // Isabelle, SMTLib
