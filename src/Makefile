@@ -42,6 +42,13 @@
 # Normal build
 #   make vct
 
+# Build with reduced optimisations.  
+#   make vct O1=true
+#
+#   Makes image more gdb friendly.  Creates executable named vct-O1
+#   rather than vct.
+#
+
 # Build with debugging version of CVC3
 #   make DEBUG=on vct 
 
@@ -96,12 +103,16 @@ DEBUG=false
 #      Is allowed by compiler when have T* return types.
 # unused vars.
 
-# CXXFLAGS= -g -Wall
-CXXFLAGS= -g -Wall -static -m64
+ifdef O1
+  CXXFLAGS= -g -Wall  # Use -O1 default
+  VCTEXEC=vct-O1      # name of Victor executable
+else
+  CXXFLAGS= -g -Wall -O2
+  VCTEXEC=vct
+endif
 CPPFLAGS=
 
 LDFLAGS= -Wall 
-# LDFLAGS= -Wall -static -m64
 
 ifdef STATIC_GMP
   LDLIBS= -Xlinker -Bstatic -lgmpxx -lgmp -Xlinker -Bdynamic
@@ -181,7 +192,7 @@ DFILES= $(SRCS:.cc=.d)
 # $@ = rule target
 
 vct: $(OBJS)
-	$(CXX) -o ../bin/$@ $(LDFLAGS) $^ $(LDLIBS)
+	$(CXX) -o ../bin/$(VCTEXEC) $(LDFLAGS) $^ $(LDLIBS)
 
 
 lex.yy.cc: lexer.ll
