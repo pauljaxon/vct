@@ -42,12 +42,12 @@
 # Normal build
 #   make vct
 
-# Build with reduced optimisations.  
-#   make vct O1=true
-#
-#   Makes image more gdb friendly.  Creates executable named vct-O1
-#   rather than vct.
-#
+# Build with alternate optimisation level
+# 
+#   make vct OPT=<level>
+# 
+# <level> should be one of "none", "1", "2" or "3".
+# Default level is 2.
 
 # Build with debugging version of CVC3
 #   make DEBUG=on vct 
@@ -93,6 +93,8 @@ CVC3DIR=/home/pbj/smt/cvc3/r2011-08-24
 #==========================================================================
 # Nothing here should need modifying by user.
 
+VCTEXEC=vct  # Name of Victor executable
+
 DEBUG=false
 # -Wall rather noisy.  E.g. size() method returns unsigned int and
 #  then get complaint about signed/unsigned comparisons. 
@@ -103,13 +105,18 @@ DEBUG=false
 #      Is allowed by compiler when have T* return types.
 # unused vars.
 
-ifdef O1
-  CXXFLAGS= -g -Wall  # Use -O1 default
-  VCTEXEC=vct-O1      # name of Victor executable
+# Expected values of OPT set on make command line are "none", "1",
+# "2" or "3".
+
+OPT=2
+
+ifeq ($(OPT),none)
+  CXXFLAGS= -g -Wall  
 else
-  CXXFLAGS= -g -Wall -O2
-  VCTEXEC=vct
+  CXXFLAGS= -g -Wall -O$(OPT)
 endif
+
+
 CPPFLAGS=
 
 LDFLAGS= -Wall 
