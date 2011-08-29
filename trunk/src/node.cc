@@ -770,8 +770,6 @@ bool isPolymorphicNode(Node* n) {
     case GT:
     case LE:
     case GE:
-    case TERM_EQ:
-    case TERM_NE:
     case UMINUS:
     case SUCC:
     case PRED:
@@ -791,6 +789,8 @@ bool isPolymorphicNode(Node* n) {
         // RCD_ELEMENT{rcd-id} exp
         // RCD_ELEMENT{rcd-id} exp (TYPE_PARAM{type-id})
         return n->arity() == 1;
+    case TERM_EQ:
+    case TERM_NE:
     case EQ:
     case NE:
     case RCD_UPDATE: 

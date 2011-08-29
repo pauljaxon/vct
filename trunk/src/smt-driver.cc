@@ -194,7 +194,7 @@ SMTDriver::driveGoal(Node* decls,
 
     string remarksAtCheckStart(remarks);
             
-    bool checkError;
+    bool checkError = true;
 
     for (int i = 0; i < checkRepeats; i++) {
         remarks = remarksAtCheckStart;
