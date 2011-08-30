@@ -58,7 +58,7 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 class SMTDriver {
 
 public:
-    enum Status { TRUE, UNPROVEN, ERROR, RESOURCE_LIMIT, UNCHECKED, TRIVIAL };
+    enum Status { TRUE, UNPROVEN, ERROR, RESOURCE_LIMIT, UNCHECKED };
 
     class QueryStatus {
     public:
@@ -69,16 +69,23 @@ public:
 
     class QueryRecord {
     public:
-        string unitKind;
-        string origins;
-        int goalNum;  // (1-based)
-        int conclNum;  // (1-based)   (0 if not applicable)
+        int goalNum;   //  1-based
+        int conclNum;  //  1-based.  0 if concls fused
         Status status;
         string time;
         string remarks;
     };
 
+    class ResultRecord {
+    public:
+        string unitKind;
+        string origins;
+        int goalNum;  // Used for trivial goals. o/w copy of queryNum.goalNum
+        int queryNum; // -1 for trivial goal ("*** true")
+    };
+
     vector<QueryRecord> queryRecords;
+    vector<ResultRecord> resultRecords;
     
     void driveUnit(Node* unit, UnitInfo unitInfo);
 
@@ -118,7 +125,7 @@ protected:
            // Return true if resource limits can be set only for
            // processing of whole query set, not individual queries.
            // E.g. this is the case for FILE level interfaces where
-           // ulimit is used to set limits.
+           // shell-level ulimit command is used to set limits.
 
 
     virtual void initGoal(const string& unitName,

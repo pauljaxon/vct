@@ -429,6 +429,7 @@ SMTDriver::check(string& remarks) {
 //==========================================================================
 // Drive Query Set
 //==========================================================================
+// Drive queries queryRecords[startQuery..endQuery-1] 
 
 vector<SMTDriver::QueryStatus> 
 SMTDriver::driveQuerySet(UnitInfo unitInfo,
@@ -457,7 +458,6 @@ SMTDriver::driveQuerySet(UnitInfo unitInfo,
     Node* rules = unit->child(1);
     Node* goals = unit->child(2);
 
-    int numNonTrivQueries = 0;
     vector<QueryStatus> results;
 
     // ---------------------------------------------------------------------
@@ -521,16 +521,10 @@ SMTDriver::driveQuerySet(UnitInfo unitInfo,
         // Loop over queries of queryset
         // ---------------------------------------------------------------------
         
-        for (int query = startQuery; query <= endQuery; query++) {
+        for (int query = startQuery; query < endQuery; query++) {
 
             remarks = declsRulesRemarks;
             
-            if (queryRecords.at(query).status == TRIVIAL) {
-                
-                continue;
-            }
-            numNonTrivQueries++;
-
             int goalNum = queryRecords.at(query).goalNum;
             Node* goal = goals->child(goalNum-1);
 
@@ -651,7 +645,7 @@ SMTDriver::driveQuerySet(UnitInfo unitInfo,
     // Run query set offline on solver
     // ---------------------------------------------------------------------
 
-    if (!onlineInterface() && numNonTrivQueries > 0) {
+    if (!onlineInterface()) {
 
         // With file level interface, write file.
         outputQuerySet();
@@ -660,7 +654,7 @@ SMTDriver::driveQuerySet(UnitInfo unitInfo,
         if (runError) {
             printMessage(ERRORm, "Error flagged on run of solver\n");
         }
-        results = getRunResults(numNonTrivQueries);
+        results = getRunResults(endQuery - startQuery);
     }
 
     finaliseQuerySet();
@@ -698,9 +692,10 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo unitInfo) {
 
     
     //------------------------------------------------------------------------
-    // Initialise table of query records, one for each solver query
+    // Initialise query and result tables
     //------------------------------------------------------------------------
     queryRecords.clear();
+    resultRecords.clear();
     
     Node* goals = solverUnit->child(2);
 
@@ -711,50 +706,66 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo unitInfo) {
         }
         Node* goal = goals->child(goalNum-1);
 
-        QueryRecord qRcd;
+        // Set up result record for goal / goal slices
+        // Initialise all fields except queryNum.
+        ResultRecord rRcd;
+        rRcd.goalNum = goalNum; 
 
         string goalNumStr;
         extractGoalInfo(goal->id,
-                        qRcd.unitKind,
+                        rRcd.unitKind,
                         goalNumStr,
-                        qRcd.origins);
-        // Assume goals always numbered sequentially so goalNum and goalNumStr
-        // correspond
-        qRcd.goalNum = goalNum; 
-        qRcd.conclNum = 0;
-        qRcd.status = UNCHECKED;
+                        rRcd.origins);
+
+        if (intToString(goalNum) != goalNumStr) {
+            // Set currentGoalNumStr and currentConcl globals used by
+            // printMessage
+            currentGoalNumStr = goalNumStr;
+            currentConcl = 0;
+            printMessage(WARNINGm, "Mismatch between goal position "
+                         + intToString(goalNum)
+                         + " and numbering " + goalNumStr);
+        }
 
         if (goal->arity() < 2) { // "*** true" goals
             if (option("count-trivial-goals")) {
-                qRcd.status = TRIVIAL;
-                qRcd.remarks = "trivial goal";
-                queryRecords.push_back(qRcd);
+                rRcd.queryNum = -1;
+                resultRecords.push_back(rRcd);
             }
             continue; 
         }
+        // goal non-trivial
 
-        if (option("fuse-concls")) {
-            // conclNum == 0 used to signal concls fused
-            queryRecords.push_back(qRcd);
-        }
-        else {  // unfused concls
-            Node* concls = goal->child(1);
-            for (int conclNum = 1; conclNum <= concls->arity(); conclNum++) {
-                qRcd.conclNum = conclNum;
-                queryRecords.push_back(qRcd);
-            }
+        //  Set up query record for goal / goal slices
+        QueryRecord qRcd;
+        qRcd.goalNum = goalNum; 
+        qRcd.status = UNCHECKED;
+
+        // Customise query and result records for goal / goal slices and save
+        Node* concls = goal->child(1);
+        int fromConcl = option("fuse-concls") ? 0 : 1;
+        int toConcl   = option("fuse-concls") ? 0 : concls->arity();
+
+        for (int conclNum = fromConcl; conclNum <= toConcl; conclNum++) {
+            qRcd.conclNum = conclNum;
+            queryRecords.push_back(qRcd); 
+            rRcd.queryNum = (int) queryRecords.size() - 1;
+            resultRecords.push_back(rRcd);
         }
     }
-    
+
     //------------------------------------------------------------------------
     // Drive unit queries to solver
     //------------------------------------------------------------------------
-
     // Allow for results from running a querySet to possibly be
-    // shorter than number of non-trivial queries in querySet.  This
-    // can occur because
+    // shorter than number of queries in querySet.  This can occur
+    // because
+
     // - Processing a query throws an exception
-    // - querySet processing hits a resource limit, e.g. a timeout.
+    // - Processing a querySet hits a resource limit, e.g. a timeout, for
+    //   some particular query or for a prefix of the querySet.
+
+    // Only references query table, not results table.
 
     int startQuery = 0;
     while (startQuery < (int) queryRecords.size()) {
@@ -762,29 +773,29 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo unitInfo) {
         // ---------------------------------------------------------------------
         // Set range of queries to drive
         // ---------------------------------------------------------------------
-        // Range is [startQuery,endQuery]
+        // Range is [startQuery,endQuery-1]
 
         // If don't want incrementality, just do 1 query. 
 
         int endQuery;
     
         if (option("exploit-solver-incrementality")) {
-            endQuery = queryRecords.size() - 1;
+            endQuery = queryRecords.size();
         }
         else {
-            endQuery = startQuery;
+            endQuery = startQuery + 1;
         }
 
         if (option("gtick")) {
             if (option("longtick")) {
-                if (startQuery == endQuery) {
+                if (startQuery + 1 == endQuery) {
                     cout << " " << queryRecords.at(startQuery).goalNum;
                 }
                 else {
                     cout << " "
                          << queryRecords.at(startQuery).goalNum
                          << "-"
-                         << queryRecords.at(endQuery).goalNum;
+                         << queryRecords.at(endQuery - 1).goalNum;
                 }
             } else {
                 cout << ";";
@@ -798,90 +809,99 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo unitInfo) {
 
         vector<QueryStatus> queryResults
             = driveQuerySet(unitInfo, unit, startQuery, endQuery);
-        
-        int currentQuery;
-        int currentResult = 0;
 
-        for (currentQuery = startQuery;
-             currentQuery <= endQuery;
-             currentQuery++) {
+        assert((int) queryResults.size() <= endQuery - startQuery);
 
-            // Skip over any trivial queries
-            if (queryRecords.at(currentQuery).status == TRIVIAL) continue;
+        // Copy current result into query table
+        for (int qr = 0;
+             qr != (int) queryResults.size();
+             qr++) {
 
-            // Quit loop if have run out of results to record.
+            int currentQuery = startQuery + qr;
 
-            if (currentResult >= (int) queryResults.size()) break;
-
-            // Copy current result into query table
             queryRecords.at(currentQuery).status
-                = queryResults.at(currentResult).status;
+                = queryResults.at(qr).status;
             
             appendCommaString(queryRecords.at(currentQuery).remarks,
-                              queryResults.at(currentResult).remarks);
+                              queryResults.at(qr).remarks);
 
-            currentResult++;
+
         }
-            
+        startQuery = startQuery + queryResults.size();
+
+        // Move on one query if get back no results.
+        if (queryResults.size() == 0) {
+            startQuery++;
+        }
         // Redo last query if it didn't get use of whole of resource
-        // allowances.
-        if (resourceLimitsForQuerySet()
+        // allowance.
+        else if (resourceLimitsForQuerySet()
             && queryResults.size() > 1
             && queryResults.back().status == RESOURCE_LIMIT) {
 
-            currentQuery--;
+            startQuery--;
         }
-
-        assert(currentQuery > startQuery);
-
-        startQuery = currentQuery;
     }
         
     //------------------------------------------------------------------------
-    // Write results from query record table to  VCT file.
+    // Write results from query and results tables to VCT file.
     //------------------------------------------------------------------------
 
-    for (int i = 0; i != (int) queryRecords.size(); i++) {
+    for (int i = 0; i != (int) resultRecords.size(); i++) {
 
-        // update globals
-        currentGoalNumStr = intToString(queryRecords.at(i).goalNum);
-        currentConcl = queryRecords.at(i).conclNum;
+        int queryNum = resultRecords.at(i).queryNum;
 
-        string status;
-        switch (queryRecords.at(i).status) {
-        case(TRUE):
-        case(TRIVIAL):
-            status = "true";
+        string resultStatus;
+        string time;
+        string remarks;
+
+        // currentGoalNumStr and currentConcl are globals from utility.cc
+        currentGoalNumStr = intToString(resultRecords.at(i).goalNum);
+
+        if (queryNum == -1) {
+            resultStatus = "true";
+            currentConcl = 0; 
+            time = "0";
+            remarks = "trivial goal";
             trueConcls++;
-            break;
-        case(UNPROVEN):
-            status = "unproven";
-            unprovenConcls++;
-            break;
-        case(RESOURCE_LIMIT):
-            status = "unproven";
-            unprovenConcls++;
-            timeoutConcls++;
-            break;
-        case(ERROR):
-            status = "error";
-            unprovenConcls++;
-            timeoutConcls++;
-            break;
-        case(UNCHECKED):
-            status = "error";
-            unprovenConcls++;
-            printMessage(ERRORm, "Found unchecked query");
-            break;
-
         }
-        printCSVRecordAux(queryRecords.at(i).unitKind,
-                          queryRecords.at(i).origins,
-                          intToString(queryRecords.at(i).goalNum),
-                          queryRecords.at(i).conclNum,
-                          status,
-                          queryRecords.at(i).time,
-                          queryRecords.at(i).remarks);
+        else {
+            switch (queryRecords.at(queryNum).status) {
+            case(TRUE):
+                resultStatus = "true";
+                trueConcls++;
+                break;
+            case(UNPROVEN):
+                resultStatus = "unproven";
+                unprovenConcls++;
+                break;
+            case(RESOURCE_LIMIT):
+                resultStatus = "unproven";
+                unprovenConcls++;
+                timeoutConcls++;
+                break;
+            case(ERROR):
+                resultStatus = "error";
+                unprovenConcls++;
+                timeoutConcls++;
+                break;
+            case(UNCHECKED):
+                resultStatus = "error";
+                unprovenConcls++;
+                printMessage(ERRORm, "Found unchecked query");
+                break;
+            }
+            currentConcl = queryRecords.at(queryNum).conclNum;
+            time = queryRecords.at(queryNum).time;
+            remarks = queryRecords.at(queryNum).remarks;
+        }
+        printCSVRecordAux(resultRecords.at(i).unitKind,
+                          resultRecords.at(i).origins,
+                          intToString(resultRecords.at(i).goalNum),
+                          currentConcl,
+                          resultStatus,
+                          time,
+                          remarks);
     } // END for
     return;
 }

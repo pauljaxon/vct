@@ -67,7 +67,7 @@
 # The named directory is expected to contain lib/ and include/ 
 # directories, as set up by the Yices installation.
 
-YICESDIR=/home/pbj/smt/yices/yices-1.0.29
+# YICESDIR=/home/pbj/smt/yices/yices-1.0.29
 
 
 # Linking with CVC3
@@ -84,7 +84,7 @@ YICESDIR=/home/pbj/smt/yices/yices-1.0.29
 # directory should also contain at least the directory debug/lib/
 
 # CVC3DIR=/home/pbj/smt/cvc3/r2.2
-CVC3DIR=/home/pbj/smt/cvc3/r2011-08-24
+# CVC3DIR=/home/pbj/smt/cvc3/r2011-08-24
 
 
 
