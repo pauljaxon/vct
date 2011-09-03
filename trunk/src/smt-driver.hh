@@ -87,15 +87,20 @@ public:
     vector<QueryRecord> queryRecords;
     vector<ResultRecord> resultRecords;
     
-    void driveUnit(Node* unit, UnitInfo unitInfo);
+    void driveUnit(Node* unit, UnitInfo* unitInfo);
 
     // new alternative driver.
-    void altDriveUnit(Node* unit, UnitInfo unitInfo);
+    void altDriveUnit(Node* unit, UnitInfo* unitInfo);
 
-    vector<QueryStatus> driveQuerySet(UnitInfo unitInfo,
-                                      Node* unit,
-                                      int startQuery,
-                                      int endQuery);
+    // Auxiliary function used by altDriveUnit.
+    // Overridden in RuleFilter child class.
+    
+    virtual vector<QueryStatus> driveQuerySet(UnitInfo* unitInfo,
+                                              Node* unit,
+                                              set<int> excludedRules,
+                                              int startQuery,
+                                              int endQuery);
+
 
 
     // Virtual functions for solver-specific interfaces
@@ -111,7 +116,7 @@ private:
                    Node* rules,
                    Node* hyps,
                    Node* concl,
-                   UnitInfo unitInfo,
+                   UnitInfo* unitInfo,
                    int goalNum,
                    int currentConcl);
 

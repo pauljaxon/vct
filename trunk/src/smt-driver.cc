@@ -54,7 +54,7 @@ SMTDriver::driveGoal(Node* decls,
                      Node* rules,
                      Node* hyps,
                      Node* concl,
-                     UnitInfo unitInfo,
+                     UnitInfo* unitInfo,
                      int goalNum,
                      int currentConcl) {
 
@@ -70,7 +70,7 @@ SMTDriver::driveGoal(Node* decls,
         remarks = "trivial concl";
     }
           
-    initGoal(unitInfo.getUnitName(), goalNum, currentConcl);
+    initGoal(unitInfo->getUnitName(), goalNum, currentConcl);
 
     // ---------------------------------------------------------------
     // Push decls, hyp and concl
@@ -252,7 +252,7 @@ SMTDriver::driveGoal(Node* decls,
 //==========================================================================
 
 void
-SMTDriver::driveUnit(Node* unit, UnitInfo unitInfo) {
+SMTDriver::driveUnit(Node* unit, UnitInfo* unitInfo) {
 
     if (option("use-alt-solver-driver")) {
         return altDriveUnit(unit, unitInfo);
@@ -359,7 +359,7 @@ SMTDriver::driveUnit(Node* unit, UnitInfo unitInfo) {
 
             if (option("ckinds")) currentConclKinds = gatherKinds(concl);
 
-            if (! unitInfo.include(goalNum, currentConcl)) {
+            if (! unitInfo->include(goalNum, currentConcl)) {
                 goalSliceTime = "0";
                 printCSVRecord("unproven", "excluded");
                 unprovenConcls++;
@@ -432,22 +432,41 @@ SMTDriver::check(string& remarks) {
 // Drive queries queryRecords[startQuery..endQuery-1] 
 
 vector<SMTDriver::QueryStatus> 
-SMTDriver::driveQuerySet(UnitInfo unitInfo,
+SMTDriver::driveQuerySet(UnitInfo* unitInfo,
                          Node* unit,
+                         set<int> excludedRules,
                          int startQuery,
                          int endQuery) {
 
     string remarks(queryRecords.at(startQuery).remarks);
 
     {
-        int currentGoalNum = queryRecords.at(startQuery).goalNum;
+        int startGoalNum = queryRecords.at(startQuery).goalNum;
+        int lastGoalNum = queryRecords.at(endQuery-1).goalNum;
 
         // Set globals used in messages
-        currentGoalNumStr = intToString(currentGoalNum);
+        currentGoalNumStr = intToString(startGoalNum);
         currentConcl = queryRecords.at(startQuery).conclNum;
 
         // Set up header of query set
-        initQuerySet(unitInfo.getUnitName(), currentGoalNum, currentConcl);
+        initQuerySet(unitInfo->getUnitName(), startGoalNum, currentConcl);
+
+        if (option("gtick")) {
+            if (option("longtick")) {
+                if (startQuery + 1 == endQuery) {
+                    cout << " " << startGoalNum;
+                }
+                else {
+                    cout << " "
+                         << startGoalNum
+                         << "-"
+                         << lastGoalNum;
+                }
+            } else {
+                cout << ";";
+            }
+            cout.flush();
+        }
     }
 
     // ---------------------------------------------------------------------
@@ -488,20 +507,19 @@ SMTDriver::driveQuerySet(UnitInfo unitInfo,
         // Push rules 
         // -----------------------------------------------------------
 
-        for ( int currentRule = 1;
-              currentRule <= rules->arity();
-              currentRule++) {
+        for ( int r = 0; r < rules->arity(); r++) {
 
-            Node* rule = rules->child(currentRule - 1);
+            if (setMember(r, excludedRules)) continue;
+            
+            Node* rule = rules->child(r);
             string currentRuleStr;
             if (rule->kind == z::RULE) {
                 currentRuleStr = rule->id;
                 rule = rule->child(0);
             }
             else {
-                currentRuleStr = "R" + intToString(currentRule);
+                currentRuleStr = "R" + intToString(r+1);
             }
-
 
             Formatter::setFormatter(VanillaFormatter::getFormatter());
             printMessage(FINESTm,
@@ -564,24 +582,28 @@ SMTDriver::driveQuerySet(UnitInfo unitInfo,
             // Push hyps
             // -----------------------------------------------------------
 
-            for (int currentHyp = 1;
-                 currentHyp <= hyps->arity();
-                 currentHyp++) {
+            if (! option("skip-hyps") ) {
 
-                string currentHypStr ("H" + intToString(currentHyp));
+                for (int currentHyp = 1;
+                     currentHyp <= hyps->arity();
+                     currentHyp++) {
 
-                Node* hyp = hyps->child(currentHyp-1);
+                    string currentHypStr ("H" + intToString(currentHyp));
 
-                Formatter::setFormatter
-                    (VanillaFormatter::getFormatter());
-                printMessage(FINESTm, 
-                             "Writing " + currentHypStr + ENDLs
-                             + hyp->toString()
-                    );
+                    Node* hyp = hyps->child(currentHyp-1);
 
-                addHyp(hyp, currentHypStr, remarks);
+                    Formatter::setFormatter
+                        (VanillaFormatter::getFormatter());
+                    printMessage(FINESTm, 
+                                 "Writing " + currentHypStr + ENDLs
+                                 + hyp->toString()
+                        );
 
-            } // END: for each hyp in hyps
+                    addHyp(hyp, currentHypStr, remarks);
+
+                } // END: for each hyp in hyps
+
+            } // END: if !skip-hyps option
 
             // -----------------------------------------------------------
             // Push concl 
@@ -661,12 +683,13 @@ SMTDriver::driveQuerySet(UnitInfo unitInfo,
     return results;
 }
 
+
 //==========================================================================
-// Altrnative Drive Unit
+// Alternative Drive Unit
 //==========================================================================
 
 void
-SMTDriver::altDriveUnit(Node* unit, UnitInfo unitInfo) {
+SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
 
     // ---------------------------------------------------------------------
     // Translate unit into solver-specific abstract syntax
@@ -786,29 +809,16 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo unitInfo) {
             endQuery = startQuery + 1;
         }
 
-        if (option("gtick")) {
-            if (option("longtick")) {
-                if (startQuery + 1 == endQuery) {
-                    cout << " " << queryRecords.at(startQuery).goalNum;
-                }
-                else {
-                    cout << " "
-                         << queryRecords.at(startQuery).goalNum
-                         << "-"
-                         << queryRecords.at(endQuery - 1).goalNum;
-                }
-            } else {
-                cout << ";";
-            }
-            cout.flush();
-        }
-
         // ---------------------------------------------------------------------
         // Drive queries and collect results
         // ---------------------------------------------------------------------
 
         vector<QueryStatus> queryResults
-            = driveQuerySet(unitInfo, unit, startQuery, endQuery);
+            = driveQuerySet(unitInfo,
+                            unit,
+                            unitInfo->getExcludedRules(),
+                            startQuery,
+                            endQuery);
 
         assert((int) queryResults.size() <= endQuery - startQuery);
 

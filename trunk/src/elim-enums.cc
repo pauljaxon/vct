@@ -141,6 +141,23 @@ void enumsToIntSubranges(FDLContext* ctxt, Node* unit) {
     Node* oldRules = new Node(*rules);  // Use C++-defined copy constructor
     rules->clearChildren();
 
+    // - - - - - - - - - - - - -  - - - - - - - - - - - - -
+    // Bring over all existing rules except those for enumeration types
+    // - - - - - - - - - - - - -  - - - - - - - - - - - - -
+
+    int erules = 0; // number of rules eliminated
+
+    for (int i = 0; i!=oldRules->arity(); i++) {
+            
+        Node* rule = oldRules->child(i);
+
+        if ( isEnumRule(rule) ) {
+            erules++;
+        } else {
+            rules->addChild(rule);
+        }
+    }
+
     // - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Iterate over each enum type declaration
     // - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -290,21 +307,6 @@ void enumsToIntSubranges(FDLContext* ctxt, Node* unit) {
     } // END for loop over FDL decls
 
 
-    // - - - - - - - - - - - - -  - - - - - - - - - - - - -
-    // Bring over all existing rules except those for enumeration types
-    // - - - - - - - - - - - - -  - - - - - - - - - - - - -
-
-    int erules = 0;
-    for (int i = 0; i!=oldRules->arity(); i++) {
-            
-        Node* rule = oldRules->child(i);
-
-        if ( isEnumRule(rule) ) {
-            erules++;
-        } else {
-            rules->addChild(rule);
-        }
-    }
     // With read-all-decl-files-in-dir option, Victor reads in enum type
     // declarations without corresponding rule sets, making the
     // expectedNumRules calculation incorrect, and this check pointless.
@@ -362,6 +364,22 @@ void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
 
     Node* oldRules = new Node(*rules);  // Use C++-defined copy constructor
     rules->clearChildren();
+
+    // - - - - - - - - - - - - -  - - - - - - - - - - - - -
+    // Bring over all existing rules except those for enumeration types
+    // - - - - - - - - - - - - -  - - - - - - - - - - - - -
+
+    int numEliminatedRules = 0;
+    for (int i = 0; i!=oldRules->arity(); i++) {
+            
+        Node* oldRule = oldRules->child(i);
+
+        if ( isEnumRule(oldRule) ) {
+            numEliminatedRules++;
+        } else {
+            rules->addChild(oldRule);
+        }
+    }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Iterate over each enum type declaration
@@ -634,22 +652,6 @@ void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
         } // END if is enum type def
     } // END for loop over FDL decls
 
-
-    // - - - - - - - - - - - - -  - - - - - - - - - - - - -
-    // Bring over all existing rules except those for enumeration types
-    // - - - - - - - - - - - - -  - - - - - - - - - - - - -
-
-    int numEliminatedRules = 0;
-    for (int i = 0; i!=oldRules->arity(); i++) {
-            
-        Node* oldRule = oldRules->child(i);
-
-        if ( isEnumRule(oldRule) ) {
-            numEliminatedRules++;
-        } else {
-            rules->addChild(oldRule);
-        }
-    }
     // With read-all-decl-files-in-dir option, Victor reads in enum type
     // declarations without corresponding rule sets, making the
     // expectedNumRules calculation incorrect, and this check pointless.

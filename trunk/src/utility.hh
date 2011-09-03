@@ -47,6 +47,9 @@ using std::pair;
 
 #include <algorithm>
 
+#include <iostream>
+#include <fstream>
+
 extern "C" {
 
 #ifdef _WIN32
@@ -86,6 +89,9 @@ bool hasPrefix(const string& s, const string& t);  // s has prefix t
 bool hasSubstring(const string& s, const string& t);  // s has substring t
 
 void appendCommaString(string& s, const string& t);  // s=="" ? t : "s, t" 
+
+// joinPaths:   if q == "/..." or p == "" then q else p + "/" + q
+string joinPaths(const string& p, const string& q);
 
 bool hasUpperCaseStart(const string& s);
 
@@ -134,6 +140,11 @@ void setIsect(set<T>& a, set<T>& b, set<T>& c) {
                      inserter(c,c.begin()));
 }
 
+template <class T>
+bool setMember(T& x, set<T>& a) {
+    return a.find(x) != a.end();
+}
+
 //========================================================================
 // Command line option processing
 //========================================================================
@@ -180,9 +191,17 @@ private:
     enum Status {BEFORE_RANGE, IN_RANGE, AFTER_RANGE};
     static Status status;
 
-    string unitName;
-    string unitFileName;
-    string unitPathName;
+    // unitName = D1/.../Dk/U   (as supplied on command line or .lis file)
+    // program unit name U is w/o .fdl .rls .vcg suffix.
+    // unitPathPrefix = 
+
+    string unitPathPrefix;// P1/.../Pn    (as supplied with -prefix option)
+    string unitName;      // D1/.../Dk/U
+    string unitPath;  // D1/.../Dk  ("" if k = 0)
+    string unitDirName;   // if k>0 then Dk else if n>0 then Pn else ""
+    string unitFileName;  // U
+    
+    set<int> excludedRules;
     set<pair<int,int> > selectedSet;
     vector<string> declFiles;
     vector<string> ruleFiles;
@@ -190,15 +209,27 @@ private:
     int startGoal;
 
 public:
+    int dirRLURulesEnd;
+    int unitRLURulesEnd;
 
-    UnitInfo(string s);
-    string getUnitName() {return unitName;}
+    UnitInfo(const string& s);
+
+    string getUnitPathPrefix() {return unitPathPrefix;}
+    string getUnitName() { return unitName;}
+    string getUnitPath() {return unitPath;}
+    string getUnitDirName() {return unitDirName;}
     string getUnitFileName() {return unitFileName;}
-    string getUnitPathName() {return unitPathName;}
+
+    string getFullUnitName() { //  P1/.../Pn/D1/.../Dk/U
+        return joinPaths(unitPathPrefix, unitName);
+    }
+    set<int> getExcludedRules() {return excludedRules;}
+    void addExcludedRule(int rNum) {excludedRules.insert(rNum);}
     vector<string> getDeclFiles() {return declFiles; }
     vector<string> getRuleFiles() {return ruleFiles; }
     bool includeUnit();
     bool include(int goal, int concl);
+
 };
 
 //========================================================================
@@ -210,6 +241,8 @@ void formatGoalOrigins(const string& s, string& goalNumber, string& origins);
 //========================================================================
 // Report file management
 //========================================================================
+
+extern std::ofstream logStream;
 
 void openReportFiles();
 void closeReportFiles();
@@ -262,7 +295,7 @@ extern string goalSliceTime;
 
 // Functions updating state of global variables used by message reporting
 
-void initCurrentUnitInfo(UnitInfo unitInfo);
+void initCurrentUnitInfo(UnitInfo* unitInfo);
 void updateCurrentGoalInfo(const string& s);
 
 // Functional version of updateCurrentGoalInfo

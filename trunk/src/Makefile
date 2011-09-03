@@ -144,6 +144,7 @@ OBJS= \
   translation.o \
   main.o \
   smt-driver.o \
+  rule-filter.o \
   smtlib-driver.o \
   smtlib2-driver.o \
   isab-driver.o

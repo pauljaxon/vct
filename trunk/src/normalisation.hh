@@ -32,8 +32,8 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 
 #include "node.hh"
 #include "context.hh"
-
+#include "utility.hh"
 FDLContext* 
-putUnitInStandardForm(Node* unit);
+putUnitInStandardForm(Node* unit, UnitInfo* unitInfo);
 
 #endif // ! defined NORMALISATION_HH

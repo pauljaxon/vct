@@ -122,6 +122,35 @@ printUnitList(vector<string> v) {
 }
 */
 
+
+/*
+rulefamily ::= RULE_FAMILY (SEQ typeassum+) (SEQ rule+)
+rlsfile ::=    RLS_FILE rulefamily+
+*/
+
+int countRules(Node* ruleFileAST) {
+    int count = 0;
+    for (int i = 0; i != ruleFileAST->arity(); i++) {
+        Node* ruleFamily = ruleFileAST->child(i);
+        count += ruleFamily->child(1)->arity();
+    }
+    return count;
+}
+
+Node* readRuleFile(pdriver& driver, const string& ruleFile) {
+        
+        printMessage(FINEm, "Reading rule file " + ruleFile);
+
+        if (driver.parseRuleFile(ruleFile) ) {
+            printMessage(ERRORm, "Parse of rule file "
+                         + ruleFile + " failed");
+            exit(1);
+        }
+        return driver.result;
+}
+
+
+
 //==========================================================================
 // Parse unit.
 //==========================================================================
@@ -132,16 +161,16 @@ printUnitList(vector<string> v) {
 // parseUnit
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Node* parseUnit(UnitInfo unitInfo) {
-    string fileroot (unitInfo.getUnitName());
+Node* parseUnit(UnitInfo* unitInfo) {
+
+    // fullUnitName == P1/.../Pn/D1/.../Dk/U
+    string fullUnitName (unitInfo->getFullUnitName());
 
     pdriver driver;
     Node* unitAST = new Node(UNIT);
 
     if (option("scantrace")) driver.trace_scanning = true;
     if (option("parsetrace")) driver.trace_parsing = true;
-
-    if (option("prefix")) fileroot.insert(0, optionVal("prefix") + "/");
 
     // -------------------------------------------------------------------
     // Read in and parse declarations files
@@ -154,9 +183,9 @@ Node* parseUnit(UnitInfo unitInfo) {
     if (! option("skip-unit-decls")) {
         if (option("read-all-decl-files-in-dir")) {
 
-            vector<string> filerootParts = splitString(fileroot,"/");
-            filerootParts.pop_back();
-            string unitDir = concatStrings(filerootParts, "/") ;
+            // unitDir == P1/.../Pn/D1/.../Dk
+            string unitDir(joinPaths(unitInfo->getUnitPathPrefix(),
+                                     unitInfo->getUnitDirName()));
 
             vector<string> dirContents = listDir(unitDir);
             for (int i = 0; i != (int) dirContents.size(); i++) {
@@ -168,7 +197,8 @@ Node* parseUnit(UnitInfo unitInfo) {
             }
         }
         else {
-            declFiles.push_back(fileroot + ".fdl");
+            // Add P1/.../Pn/D1/.../Dk/U.fdl
+            declFiles.push_back(fullUnitName + ".fdl");
         }
     }
     if (option("decls")) {
@@ -182,7 +212,7 @@ Node* parseUnit(UnitInfo unitInfo) {
                          extraDeclFiles.end());
     }
     
-    vector<string> unitDeclFiles(unitInfo.getDeclFiles());
+    vector<string> unitDeclFiles(unitInfo->getDeclFiles());
     declFiles.insert(declFiles.end(),
                      unitDeclFiles.begin(),
                      unitDeclFiles.end()
@@ -213,12 +243,47 @@ Node* parseUnit(UnitInfo unitInfo) {
     // Read in and parse rules files
     // -------------------------------------------------------------------
 
+
+    Node* rules = new Node(RULE_FILE);
+
+    if (option("read-directory-rlu-files")
+        && unitInfo->getUnitDirName() != "" ) {
+
+        string dirRLUFile  // == P1/.../Pn/D1/.../Dk/Dk.rlu  if k>0
+                           // == P1/.../Pn/Pn.rlu  if n>0
+                           // == .rlu  o/w
+            = joinPaths(unitInfo->getUnitPathPrefix(),
+                        joinPaths(unitInfo->getUnitPath(),
+                                  unitInfo->getUnitDirName()))
+                + ".rlu";
+        
+        if (readableFileExists(dirRLUFile)) {
+    
+            Node* ruleFile = readRuleFile(driver, dirRLUFile);
+            unitInfo->dirRLURulesEnd = countRules(ruleFile);
+            unitInfo->unitRLURulesEnd = unitInfo->dirRLURulesEnd;
+            
+            rules->appendChildren(ruleFile);
+        }
+    }
+
+    if (option("read-unit-rlu-files")) {
+                    
+
+        string unitRLUFile // == P1/.../Pn/D1/.../Dk/U.rlu
+            = fullUnitName + ".rlu";
+        if (readableFileExists(unitRLUFile)) {
+
+            Node* ruleFile = readRuleFile(driver, unitRLUFile);
+            unitInfo->unitRLURulesEnd
+                = unitInfo->dirRLURulesEnd + countRules(ruleFile);
+
+            rules->appendChildren(ruleFile);
+        }
+    }
+
     vector<string> ruleFiles;
-
-
-    // Assemble list of rules files to read
-
-    ruleFiles.push_back(fileroot + ".rls");
+    ruleFiles.push_back(fullUnitName + ".rls");
     
     if (option("rules")) {
         vector<string> extraRuleFiles = optionVals("rules");
@@ -227,48 +292,21 @@ Node* parseUnit(UnitInfo unitInfo) {
                          extraRuleFiles.end());
     }
 
-    vector<string> unitRuleFiles(unitInfo.getRuleFiles());
+    // Assemble list of rest of rules files to read
+    vector<string> unitRuleFiles(unitInfo->getRuleFiles());
     ruleFiles.insert(ruleFiles.end(),
                      unitRuleFiles.begin(),
                      unitRuleFiles.end()
                      );
 
-    if (option("read-directory-rlu-files")) {
-        vector<string> filerootParts = splitString(fileroot,"/");
-        if (filerootParts.size() >=2) {
-            filerootParts.pop_back();
-            string dirRLUFile = concatStrings(filerootParts, "/") 
-                + "/" + filerootParts.back() + ".rlu";
-            if (readableFileExists(dirRLUFile))
-                ruleFiles.push_back(dirRLUFile);
-        }
-            
-    }
-
-    if (option("read-unit-rlu-files")) {
-        string unitRLUFile = fileroot + ".rlu";
-        if (readableFileExists(unitRLUFile))
-            ruleFiles.push_back(unitRLUFile);
-    }
-
-    Node* rules = new Node(RULE_FILE);
-
+    
     // Do read of files
 
     for (int i = 0; i != (int) ruleFiles.size(); i++) {
         string ruleFile = ruleFiles.at(i);
-        
-        printMessage(FINEm, "Reading rule file " + ruleFile);
-
-        if (driver.parseRuleFile(ruleFile) ) {
-            printMessage(ERRORm, "Parse of rule file "
-                         + ruleFile + " failed");
-            return 0;
-        }
-        Node* newRules = driver.result;
-
-        rules->appendChildren(newRules);
+        rules->appendChildren(readRuleFile(driver, ruleFile));
     }
+
     unitAST->addChild(rules);
 
     // -------------------------------------------------------------------
@@ -279,7 +317,7 @@ Node* parseUnit(UnitInfo unitInfo) {
     if (option("siv")) vcFileExt = ".siv";
 
     printMessage(FINEm, "Reading VCG file");
-    if (driver.parseVCGFile(fileroot + vcFileExt)) {
+    if (driver.parseVCGFile(fullUnitName + vcFileExt)) {
         printMessage(ERRORm, "Parse of VC file failed");
         return 0;
     }
@@ -295,9 +333,9 @@ Node* parseUnit(UnitInfo unitInfo) {
 //==========================================================================
 
 void 
-processUnit(UnitInfo unitInfo, SMTDriver* smtDriver) {
+processUnit(UnitInfo* unitInfo, SMTDriver* smtDriver) {
 
-    if (! unitInfo.includeUnit()) return;
+    if (! unitInfo->includeUnit()) return;
 
     // Set globals used in formatting message headers and in CSV reports
     
@@ -305,7 +343,7 @@ processUnit(UnitInfo unitInfo, SMTDriver* smtDriver) {
 
     if (option("utick")) {
         if (option("longtick")) {
-            cout << endl << unitInfo.getUnitName();
+            cout << endl << unitInfo->getUnitName();
         } else {
             cout << "*";
         }
@@ -325,7 +363,7 @@ processUnit(UnitInfo unitInfo, SMTDriver* smtDriver) {
     Formatter::setFormatter(VanillaFormatter::getFormatter());
 
 
-    string status = elaborateUnit(unitAST);
+    string status = elaborateUnit(unitAST, unitInfo);
 
 
     if (status != "good") {
@@ -360,11 +398,11 @@ main (int argc, char *argv[]) {
     // -------------------------------------------------------------------
     // Read in command line arguments
     // -------------------------------------------------------------------
-    string fileroot;
+    string unitName;
     vector<string> nonOptions = processCommandArgs(argc, argv);
 
     if (nonOptions.size() > 0) {
-        fileroot = nonOptions.front();
+        unitName = nonOptions.front();
     }
 
     // ---------------------------------------------------------------------
@@ -391,8 +429,8 @@ main (int argc, char *argv[]) {
     // ---------------------------------------------------------------------
 
     vector<UnitInfo> unitList;
-    if (fileroot != "") {
-        unitList.push_back(UnitInfo(fileroot));
+    if (unitName != "") {
+        unitList.push_back(UnitInfo(unitName));
     }
     else if (option("units")) {
         unitList = readUnitList(optionVal("units"));
@@ -511,7 +549,7 @@ main (int argc, char *argv[]) {
     for (vector<UnitInfo>::iterator i = unitList.begin();
          i != unitList.end();
          i++) {
-        processUnit(*i, smtDriver);
+        processUnit(&(*i), smtDriver);
     }
 
 

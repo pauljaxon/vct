@@ -789,11 +789,11 @@ translateUnit(FDLContext* ctxt, Node* unit) {
 //========================================================================
 
 string
-elaborateUnit(Node* unit) {
+elaborateUnit(Node* unit, UnitInfo* unitInfo) {
     printMessage(FINESTm, "Unit parse tree:" + ENDLs + unit->toString());
 
-    // Also modifies unit
-    FDLContext* ctxt = putUnitInStandardForm(unit);
+    // Modifies both unit and unitInfo
+    FDLContext* ctxt = putUnitInStandardForm(unit, unitInfo);
 
     if (ctxt == 0) return "FDL normalisation failed";
     
