@@ -40,9 +40,6 @@ using std::cout;
 
 #include "formatter.hh"
 
-// Allocate local storage for static field.
-Timer SMTDriver::goalTimer;
-
 
 
 //==========================================================================
@@ -479,6 +476,8 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
 
     vector<QueryStatus> results;
 
+    Timer queryTimer;
+
     // ---------------------------------------------------------------------
     // Start block for capturing online interface exceptions
     // ---------------------------------------------------------------------
@@ -571,7 +570,6 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
             else {
                 queryConcl = concls->child(conclNum-1);
             }
-
             // -----------------------------------------------------------
             // Push new empty assertion set onto assertion set stack
             // -----------------------------------------------------------
@@ -621,7 +619,17 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
             // Check
             // -----------------------------------------------------------
 
+            if (onlineInterface()
+                && !option("gstime-inc-setup")
+                && query > startQuery) {
+
+                queryTimer.restart();
+            }
+
             Status status = check(remarks);
+
+            string queryTime;
+            if (onlineInterface()) queryTime = queryTimer.toString();
         
             // -----------------------------------------------------------
             // Pop assertion set stack
@@ -634,9 +642,11 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
             // Status ignored if have offline interface.
             // Status recording delayed to here to allow exception handler
             // to catch pop exception and record an alternate status.
+
             if (onlineInterface()) {
-                results.push_back(QueryStatus(status,remarks));
+                results.push_back(QueryStatus(status,remarks,queryTime));
             }
+        
 
         } // END for each query
         // ---------------------------------------------------------------------
@@ -652,12 +662,12 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
                      string("Exception in driving query set\n")
                      + e.what()
             );
-        // goalSliceTime = "0";
+
         appendCommaString(remarks, "exception in driving query set");
 
         finaliseQuerySet();
 
-        results.push_back(QueryStatus(ERROR,remarks));
+        results.push_back(QueryStatus(ERROR,remarks,""));
 
         return results;
      
@@ -672,11 +682,18 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
         // With file level interface, write file.
         outputQuerySet();
 
+        queryTimer.restart();
+        
         bool runError = runQuerySet(remarks);
+
+        string queryTime = queryTimer.toString();
+
         if (runError) {
             printMessage(ERRORm, "Error flagged on run of solver\n");
         }
         results = getRunResults(endQuery - startQuery);
+
+        if (results.size() > 0) results.at(0).time = queryTime;
     }
 
     finaliseQuerySet();
@@ -835,6 +852,8 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
             appendCommaString(queryRecords.at(currentQuery).remarks,
                               queryResults.at(qr).remarks);
 
+            queryRecords.at(currentQuery).time
+                = queryResults.at(qr).time;
 
         }
         startQuery = startQuery + queryResults.size();

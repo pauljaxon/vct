@@ -48,11 +48,6 @@ private:
     map<string, vector<string> > unitRLURuleNames;
     map<string, vector<string> > dirRLURuleNames;
 
-    Status driveQuery(UnitInfo* unitInfo,
-                      Node* unit,
-                      set<int> excludedRules,
-                      int startQuery);
-
 protected:
     virtual vector<QueryStatus> driveQuerySet(UnitInfo* unitInfo,
                                               Node* unit,

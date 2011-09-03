@@ -71,9 +71,19 @@ extern "C" {
 #include <string.h> // For strerror - printing error codes
 
 #ifdef _WIN32
+
 #include <windows.h>
+
+#else
+
+#include <sys/resource.h> // For getrusage() resource name argument
+#include <sys/times.h>    // For getrusage()
+
 #endif
 }
+
+
+
 
 //========================================================================
 // String functions and constants 
@@ -1313,20 +1323,62 @@ printStats() {
 //========================================================================
 // Timing
 //========================================================================
-// A previous implementation used val returned by clock() and 
-// divided by CLOCKS_PER_SEC.  with CLOCKS_PER_SEC = 1000000,
-// this had the disadvantage that time would wrap in under an hour.
-//
-// clock() also excludes time spent in child processes, which is needed
-// in some cases.
+/*
+Previous versions
+-----------------
+1. Using clock (3). 
+This returned a clock_t value (32 bit unsigned on 32-bit system, 64
+bit unsigned on 64-bit system it seems from experiments.
 
-// clock_t val returned by times() calls is an elapsed real time and
-// not of much use.
+For time in sec had to divide by CLOCKS_PER_SEC = 1000000, with
+disadvantage that time would wrap in under an hour on 32 bit
+systems.
 
-// Get the OS times (user, kernel) for the current process.
+clock() also doesn't give breakdown of time into user and system
+time, and doesn't give time spent in child processes.  
 
-static void
-GetOSTimes (struct tms *tOS)
+2. Using times (2). 
+
+Returns a 
+           struct tms {
+               clock_t tms_utime;  // user time
+               clock_t tms_stime;  // system time
+               clock_t tms_cutime; // user time of children
+               clock_t tms_cstime; // system time of children 
+           };
+
+where must divide by sysconf(_SC_CLK_TCK) to get time in seconds.
+With SL5 and SL6, this is 100, giving a resolution of 0.01sec.
+This is rather coarse, given some SMT solver run times are of this
+order.
+
+Current version
+---------------
+Uses getrusage (2).
+
+time (7) remarks this has a clock resolution of HZ which can be
+0.01, 0.001 sec a couple of values inbetween, depending on kernel
+configuration.  The SL6 appears to use 0.001, so better than
+times().
+ 
+A local class Time is defined, similar to struct tms, except that it
+definitely has 64 bit values for the fields. 
+
+struct rusage {
+     struct timeval ru_utime; // user time used
+     struct timeval ru_stime; // system time used
+     ...
+}
+struct timeval
+  {
+    __time_t tv_sec;		// Seconds.
+    __suseconds_t tv_usec;	// Microseconds. 
+  };
+
+*/
+
+void
+Timer::getOSTimes (Timer::Time *tOS)
 {
 #ifdef _WIN32
   FILETIME CreationTime;
@@ -1341,50 +1393,80 @@ GetOSTimes (struct tms *tOS)
 
   conv.u.LowPart = UserTime.dwLowDateTime;
   conv.u.HighPart = UserTime.dwHighDateTime;
-  tOS->tms_utime = (long long) conv.QuadPart;
+  tOS->uTime = (long long) conv.QuadPart;
 
   conv.u.LowPart = KernelTime.dwLowDateTime;
   conv.u.HighPart = KernelTime.dwHighDateTime;
-  tOS->tms_stime = (long long) conv.QuadPart;
+  tOS->sTime = (long long) conv.QuadPart;
   // There is no notion of child process on windows, set this to 0
-  tOS->tms_cutime = 0LL;
-  tOS->tms_cstime = 0LL;
+  tOS->cuTime = 0ULL;
+  tOS->csTime = 0ULL;
 #else
-  times(tOS);
+// To use times() again.
+/*  
+  struct tms tms_time;
+  times(&tms_time);
+  tOS->sTime = tms_time->tms_stime;
+  tOS->uTime = tms_time->tms_utime;
+  tOS->csTime = tms_time->tms_cstime;
+  tOS->cuTime = tms_time->tms_cutime;
+*/
+  struct rusage selfRUsage;
+  struct rusage childRUsage;
+
+  getrusage(RUSAGE_SELF, &selfRUsage);
+  getrusage(RUSAGE_CHILDREN, &childRUsage);
+  
+  timeval sT = selfRUsage.ru_stime;
+  timeval uT = selfRUsage.ru_utime;
+  timeval csT = childRUsage.ru_stime;
+  timeval cuT = childRUsage.ru_utime;
+  
+  tOS->sTime = ((unsigned long long int) sT.tv_sec) * 1000000 + sT.tv_usec;
+  tOS->uTime = ((unsigned long long int) uT.tv_sec) * 1000000 + uT.tv_usec;
+  tOS->csTime = ((unsigned long long int) csT.tv_sec) * 1000000 + csT.tv_usec;
+  tOS->cuTime = ((unsigned long long int) cuT.tv_sec) * 1000000 + cuT.tv_usec;
+  
 #endif
 }
 
-Timer::Timer() { GetOSTimes(&startTimeTuple); }
-
+Timer::Timer() {
+#ifdef _WIN32
+    // On Windows the granularity of a FILETIME is 100-nanosecond.
+    ticksPerSec = 10000000;
+#else
+    // If using times()
+    // ticksPerSec = sysconf(_SC_CLK_TCK);
+    // If using getrusage()
+    ticksPerSec = 1000000;     // This is the resolution of Time values, 
+                               // *not* the timer resolution
+                                   
+#endif
+    getOSTimes(&startTimeTuple); 
+}
 void
-Timer::restart() { GetOSTimes(&startTimeTuple); }
+Timer::restart() { getOSTimes(&startTimeTuple); }
 
 void
 Timer::grabTimes() {
-    struct tms endTimeTuple;
-#ifdef _WIN32
-    // On Windows the granularity of a FILETIME is 100-nanosecond.
-    int ticks_per_sec = 10000000;
-#else
-    int ticks_per_sec = sysconf(_SC_CLK_TCK);
-#endif
-    GetOSTimes(&endTimeTuple);
+    Time endTimeTuple;
+    getOSTimes(&endTimeTuple);
     
     uTime =
-        ((double) (endTimeTuple.tms_utime - startTimeTuple.tms_utime))
-        / ticks_per_sec;
+        ((double) (endTimeTuple.uTime - startTimeTuple.uTime))
+        / ticksPerSec;
 
     sTime =
-        ((double) (endTimeTuple.tms_stime - startTimeTuple.tms_stime))
-        / ticks_per_sec;
+        ((double) (endTimeTuple.sTime - startTimeTuple.sTime))
+        / ticksPerSec;
 
     cuTime =
-        ((double) (endTimeTuple.tms_cutime - startTimeTuple.tms_cutime))
-        / ticks_per_sec;
+        ((double) (endTimeTuple.cuTime - startTimeTuple.cuTime))
+        / ticksPerSec;
 
     csTime =
-        ((double) (endTimeTuple.tms_cstime - startTimeTuple.tms_cstime))
-        / ticks_per_sec;
+        ((double) (endTimeTuple.csTime - startTimeTuple.csTime))
+        / ticksPerSec;
 
 }
 
@@ -1393,6 +1475,7 @@ Timer::toString() {
 
     grabTimes();
     ostringstream oss;
+    oss << setprecision(3) << fixed;
     oss << (uTime + sTime + cuTime + csTime);
     return oss.str();
 }

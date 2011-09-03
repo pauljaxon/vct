@@ -68,24 +68,6 @@ isectSetIntoMapVal(map<K,set<V> >& m,
 // Drive single query
 //==========================================================================
 
-SMTDriver::Status 
-RuleFilter::driveQuery(UnitInfo* unitInfo,
-                       Node* unit,
-                       set<int> excludedRules,
-                       int startQuery) {
-
-    vector<SMTDriver::QueryStatus> result
-        = SMTDriver::driveQuerySet(unitInfo,
-                                   unit,
-                                   excludedRules,
-                                   startQuery,
-                                   startQuery+1);
-    return
-        (result.size() != 0)
-        ? result.front().status
-        : ERROR;
-}
-
 vector<SMTDriver::QueryStatus> 
 RuleFilter::driveQuerySet(UnitInfo* unitInfo,
                          Node* unit,
@@ -111,6 +93,8 @@ RuleFilter::driveQuerySet(UnitInfo* unitInfo,
     }
     printMessage(INFOm,"Starting rule filtering on goal");
 
+    string queryTime(normalResult.at(0).time);
+
     // Record translation from unit and directory rlu rule numbers to names.
     saveRuleNames(unitInfo, unit);
 
@@ -125,9 +109,18 @@ RuleFilter::driveQuerySet(UnitInfo* unitInfo,
 
         set<int> exclRules1Extra(newExclRules);
         exclRules1Extra.insert(i);
-        Status st = driveQuery(unitInfo, unit, exclRules1Extra, startQuery);
 
-        if (st == TRUE) newExclRules.insert(i);
+        vector<QueryStatus> result
+            = SMTDriver::driveQuerySet(unitInfo,
+                                       unit,
+                                       excludedRules,
+                                       startQuery,
+                                       startQuery+1);
+
+        if (result.size() > 0 && result.at(0).status == TRUE) {
+            newExclRules.insert(i);
+            queryTime = result.at(0).time;
+        }
     }
 
     saveExclusionInfo(unitInfo, newExclRules);
@@ -153,7 +146,7 @@ RuleFilter::driveQuerySet(UnitInfo* unitInfo,
         printMessage(INFOm, report);
     }
     vector<QueryStatus> result;
-    result.push_back(QueryStatus(TRUE,""));
+    result.push_back(QueryStatus(TRUE,"",queryTime));
     return result;
     
 }

@@ -50,22 +50,6 @@ using std::pair;
 #include <iostream>
 #include <fstream>
 
-extern "C" {
-
-#ifdef _WIN32
-  struct tms {
-    long long tms_utime;
-    long long tms_stime;
-    long long tms_cutime;
-    long long tms_cstime;
-  };
-#else
-#include <sys/times.h>
-#endif
-#include <unistd.h>
-
-}
-
 
 
 //========================================================================
@@ -385,9 +369,23 @@ void printStats();
 
 class Timer {
 private:
-    struct tms startTimeTuple; // user, sys, child user and child sys times
+    class Time {
+    public:
+        // user, sys, child user and child sys times
+        // Times as multiples of (1/ticksPerSec)
+        unsigned long long int uTime;
+        unsigned long long int sTime;
+        unsigned long long int cuTime;
+        unsigned long long int csTime;
+    };
+    Time startTimeTuple;
+
+    void getOSTimes(Time *tOS);
+        
+    unsigned int ticksPerSec;
 
     void grabTimes();
+    // Times in sec since start time
     double uTime;
     double sTime;
     double cuTime;
