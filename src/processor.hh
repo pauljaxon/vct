@@ -31,7 +31,8 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 #define PROCESSOR_HH
 
 #include "node.hh"
+#include "utility.hh"
 
-std::string elaborateUnit(Node* unit);
+std::string elaborateUnit(Node* unit, UnitInfo* unitInfo);
 
 #endif // ! defined PROCESSOR_HH

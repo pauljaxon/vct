@@ -568,6 +568,8 @@ bool isPolymorphicNode(Node* n);
 #define nNOT(p) new Node(NOT,(p))
 #define nAND(p,q) new Node(AND,(p),(q))
 #define nIFF(p,q) new Node(IFF,(p),(q))
+#define nTRUE new Node(TRUE);
+#define nFALSE new Node(FALSE);
 
 #define nI_PLUS(i,j) new Node(I_PLUS,(i),(j))
 #define nI_MINUS(i,j) new Node(I_MINUS,(i),(j))

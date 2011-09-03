@@ -34,12 +34,13 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 using std::ifstream;
 using std::ofstream;
 
-#include "smt-driver.hh"
+#include "rule-filter.hh"
 
 // Interface for SMTLib format file-level solver interface.
 
 
-class SMTLib2Driver : public SMTDriver {
+class SMTLib2Driver : public RuleFilter { // RuleFilter is a subclass
+                                          // of SMTDriver
 public:
 
     SMTLib2Driver() {};

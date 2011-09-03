@@ -454,30 +454,34 @@ bool checkForUndeclaredIds(FDLContext* ctxt, Node* unit) {
     return idStr.size() + funStr.size() > 0 ;
 }
 
+// Rules with undeclared ids replaced with constant true.
+// Positions of deleted rules recorded in unitInfo->excludedRules.
 void
-deleteRulesWithUndeclaredIds(FDLContext* ctxt, Node* unit) {
+deleteRulesWithUndeclaredIds(FDLContext* ctxt,
+                             Node* unit,
+                             UnitInfo* unitInfo) {
 
     Node* rules = unit->child(1);
-    Node* newRules = new Node(RULES);
     for (int ruleNum = 1; ruleNum <= rules->arity(); ruleNum++) {
 
         Node* rule = rules->child(ruleNum-1);
         string undeclaredIds;
         string undeclaredFuns;
         findUndeclaredIds(ctxt, rule, undeclaredIds, undeclaredFuns);
-        if (undeclaredIds.size() + undeclaredFuns.size() == 0) {
-            newRules->addChild(rule);
-        }
-        else {
-            string ruleName = rule->id; // rule = RULE{<name>} <rule>
+        if (undeclaredIds.size() + undeclaredFuns.size() > 0) {
+
+            // rule = RULE{<name>} <rule>
+            string ruleName = rule->id; 
+            rule->child(0) = nTRUE;
             printMessage(INFOm,
                          "Deleting rule " + ruleName
                          + "because of " + ENDLs
                          + "undeclared identifiers:" + undeclaredIds + ENDLs
                              + "and undeclared functions:" + undeclaredFuns);
+
+            unitInfo->addExcludedRule(ruleNum-1);
         }
     } // End for 
-    unit->child(1) = newRules;
 }
 
 
@@ -1444,7 +1448,7 @@ Node* resolveIDs(FDLContext* c, Node* n) {
 
 
 FDLContext* 
-putUnitInStandardForm(Node* unit) {
+putUnitInStandardForm(Node* unit, UnitInfo* unitInfo) {
 
     //--------------------------------------------------------------------
     // Split off decls and turn rules into formula sequence
@@ -1467,9 +1471,10 @@ putUnitInStandardForm(Node* unit) {
     //--------------------------------------------------------------------
     // Delete rules with undeclared functions and constants
     //--------------------------------------------------------------------
+    // Updates unitInfo with indexes of rules to exclude.
 
     if (option("delete-rules-with-undeclared-ids")) {
-        deleteRulesWithUndeclaredIds(ctxt, unit);
+        deleteRulesWithUndeclaredIds(ctxt, unit, unitInfo);
     }
 
 
@@ -1477,7 +1482,7 @@ putUnitInStandardForm(Node* unit) {
     //--------------------------------------------------------------------
     // Check all function and constant identifiers have bindings
     //--------------------------------------------------------------------
-
+    // FIX: needs to be sensitive to unitInfo->excludedRules
     if (checkForUndeclaredIds(ctxt, unit))
         return 0;
 

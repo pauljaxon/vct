@@ -27,8 +27,8 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 
 #include "utility.hh"
 
-
-#include <iostream>
+// Moved to utility.hh
+// #include <iostream>
 using std::endl;
 using std::cout;
 using std::cerr;
@@ -37,7 +37,8 @@ using std::cerr;
 using std::ostringstream;
 using std::istringstream;
 
-#include <fstream>
+// Moved to utility.hh
+// #include <fstream>
 using std::ofstream;
 
 #include <map>
@@ -186,6 +187,17 @@ appendCommaString(string& s, const string& t) {
     s.append(t);
     return;
 }
+
+
+// if q == "/..." or p == "" then q else p + "/" + q
+string joinPaths(const string& p, const string& q) {
+
+    if ((q.size() > 0 && q[0] == '/') || p.size() == 0)
+        return q;
+    else
+        return p + "/" + q;
+}
+
 
 bool
 hasUpperCaseStart(const string& s) {
@@ -575,16 +587,31 @@ string withTimeoutAndIO(const string &cmd,
 
 UnitInfo::Status UnitInfo::status = UnitInfo::BEFORE_RANGE;
 
-UnitInfo::UnitInfo(string s) {
-    vector<string> toks(tokeniseString(s));
+UnitInfo::UnitInfo(const string& unitInfoStr) 
+    : dirRLURulesEnd(0), unitRLURulesEnd(0) {
+
+    vector<string> toks(tokeniseString(unitInfoStr));
 
     unitName = toks[0];
 
     { 
+        
+        if (option("prefix")) unitPathPrefix = optionVal("prefix");
+        // else unitPathPrefix == "" by default
+
         vector<string> unitNameParts = splitString(unitName,"/");
         unitFileName = unitNameParts.back();
         unitNameParts.pop_back();
-        unitPathName = concatStrings(unitNameParts, "/");
+        unitPath = concatStrings(unitNameParts, "/");
+        if (unitNameParts.size() > 0) {
+            unitDirName = unitNameParts.back();
+        }
+        else if (unitPathPrefix.size() > 0) {
+            vector<string> prefixParts = splitString(unitPathPrefix, "/");
+            unitDirName = prefixParts.back();
+        }
+        // else unitDirName == "" by default
+
     }
 
     for (int i = 1; i != (int) toks.size(); i++ ) {
@@ -774,11 +801,11 @@ POGS doesn't seem to distinguish between assertions and default assertions.
 
 // Called at start of processUnit in main.cc
 
-void initCurrentUnitInfo(UnitInfo unitInfo) {  
+void initCurrentUnitInfo(UnitInfo* unitInfo) {  
 
-    currentUnit = unitInfo.getUnitName();
-    currentUnitPath = unitInfo.getUnitPathName();
-    currentUnitFile = unitInfo.getUnitFileName();
+    currentUnit = unitInfo->getUnitName();
+    currentUnitPath = unitInfo->getUnitPath();
+    currentUnitFile = unitInfo->getUnitFileName();
 
     currentGoalNumStr = "";
     currentGoalOrigins = ",";  // "," since two fields in report
