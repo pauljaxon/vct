@@ -64,7 +64,9 @@ public:
     public:
         Status status;
         string remarks;
-        QueryStatus(Status s, const string& r) : status(s), remarks(r) {};
+        string time;
+        QueryStatus(Status s, const string& r, const string& t) :
+            status(s), remarks(r), time(t) {};
     };
 
     class QueryRecord {
@@ -110,7 +112,7 @@ public:
     virtual void initSession() {};
 
 private:
-    static Timer goalTimer;
+    Timer goalTimer;
 
     void driveGoal(Node* decls,
                    Node* rules,

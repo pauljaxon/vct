@@ -936,7 +936,7 @@ SMTLib2Driver::getRunResults(int numQueries) {
     // Do not check output files if none were generated in first place
 
     if (! (option("prover") || option("prover-command") )) {
-        results.push_back(QueryStatus(UNPROVEN,"prover not run"));
+        results.push_back(QueryStatus(UNPROVEN,"prover not run",""));
         return results;
     }
 
@@ -950,14 +950,14 @@ SMTLib2Driver::getRunResults(int numQueries) {
     if (!solverOut) {
         printMessage(ERRORm, "Cannot open output file "
                              + solverOutputFileName);
-        results.push_back(QueryStatus(ERROR, ".out file not found"));
+        results.push_back(QueryStatus(ERROR, ".out file not found",""));
         return results;
     }
 
     if (!solverErr) {
         printMessage(ERRORm, "Cannot open error output file "
                              + solverErrorFileName);
-        results.push_back(QueryStatus(ERROR, ".err file not found"));
+        results.push_back(QueryStatus(ERROR, ".err file not found",""));
         return results;
     }
 
@@ -1042,13 +1042,13 @@ SMTLib2Driver::getRunResults(int numQueries) {
         }
             
         if (line.size() == 1 && line.at(0) == "unsat") {
-            results.push_back(QueryStatus(TRUE,""));
+            results.push_back(QueryStatus(TRUE,"",""));
         }
         else if (line.size() == 1 && line.at(0) == "sat") {
-            results.push_back(QueryStatus(UNPROVEN,""));
+            results.push_back(QueryStatus(UNPROVEN,"",""));
         }
         else if (line.size() == 1 && line.at(0) == "unknown") {
-            results.push_back(QueryStatus(UNPROVEN,""));
+            results.push_back(QueryStatus(UNPROVEN,"",""));
         } else {
             seenUnexpectedOutput = true;
         }
@@ -1076,12 +1076,12 @@ SMTLib2Driver::getRunResults(int numQueries) {
     */
 
     if (seenTimeout) {
-        results.push_back(QueryStatus(RESOURCE_LIMIT,exitStatusRemarks));
+        results.push_back(QueryStatus(RESOURCE_LIMIT,exitStatusRemarks,""));
     }
 
     // Ensure at least 1 result reported
     if (results.size() == 0) {
-        results.push_back(QueryStatus(ERROR,""));
+        results.push_back(QueryStatus(ERROR,"",""));
     }
 
 
