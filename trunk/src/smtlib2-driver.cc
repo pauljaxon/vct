@@ -449,6 +449,12 @@ SMTLib2Driver::initQuerySet(const string& unitName,
         script->addChild(new Node(SET_OPTION, "print-success",
                                   new Node(FALSE)));
     }
+    if (option("smtlib2-soft-timeout")) {
+        script->addChild(new Node(SET_OPTION, "soft-timeout",
+                                  new Node(NATNUM,
+                                           optionVal("smtlib2-soft-timeout")))
+            );
+    }
     script->addChild(new Node(LOGIC,logic));
 
     return;
