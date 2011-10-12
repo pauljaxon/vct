@@ -1,3 +1,43 @@
+//==========================================================================
+//==========================================================================
+// WATCHDOGRUN.C
+//==========================================================================
+//==========================================================================
+/*
+This file is part of Victor: a SPARK VC Translator and Prover Driver.
+
+Copyright (C) 2009, 2010 University of Edinburgh
+
+Author(s): Paul Jackson, Altran Praxis, AdaCore
+
+Victor is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at
+your option) any later version.
+
+Victor is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.
+
+A copy of the GNU General Public License V3 can be found in file
+LICENSE.txt and online at http://www.gnu.org/licenses/.
+*/
+
+/*   
+
+Usage:
+
+  watchdogrun outfile errfile timeout cmd arg1 ...  argn
+
+Runs in subprocess:  cmd arg1 ... argn  1>  outfile 2> errfile.
+
+If no output from command for timeout period, cmd run is killed with SIGTERM.
+
+watchdogrun monitors stdout of subprocess by piping it through main process.
+
+*/     
+
 #include <errno.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -13,6 +53,10 @@
 #include <err.h> // for err, errx functions.
 
 // Define MACRO discussed in libc docs, but missing from included files.
+// Defined in unistd.h when __USE_GNU is defined.
+// __USE_GNU is defined in features.h when _GNU_SOURCE set by gcc.
+// _GNU_SOURCE is is an `enable all gnu options' flag which doesn't
+// help with creating portable code.
 
 // Use of {} within an expression is not ISO C.
 
@@ -77,19 +121,6 @@ input_timeout (int filedes, double time)
                                      &timeout));
 }
 
-/*   
-
-Usage:
-
-  watchdogrun outfile errfile timeout cmd arg1 ...  argn
-
-Runs in subprocess:  cmd arg1 ... argn  1>  outfile 2> errfile.
-
-If no output from command for timeout period, cmd run is killed with SIGTERM.
-
-watchdogrun monitors stdout of subprocess by piping it through main process.
-
-*/     
 int
 main (int argc, char* argv[]) {
 
