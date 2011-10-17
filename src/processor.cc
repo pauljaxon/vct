@@ -318,11 +318,14 @@ public:
 /*
 Provide rules such as:
 
-IMPLIES e1 (FORALL (SEQ decls) e2) 
--->
-FORALL (SEQ decls) (IMPLIES e1 e2) 
+1. IMPLIES e1 (FORALL (SEQ decls) e2) 
+   -->
+   FORALL (SEQ decls) (IMPLIES e1 e2) 
 
-provided decls don't capture any free variables in e1.
+   provided decls don't capture any free variables in e1.
+
+2. FORALL (SEQ decls1) (FORALL (SEQ decls2) e) 
+   --> FORALL (SEQ decls1 decls2) e
 
 */
 
@@ -369,30 +372,39 @@ set<string> getFreeVars (Node* n) {
 
 Node* liftQuants(FDLContext* c, Node* n) {
 
-    if (! (n->kind == IMPLIES && n->child(1)->kind == FORALL) ) return n;
+    if (n->kind == IMPLIES && n->child(1)->kind == FORALL) {
 
-    Node* e1 = n->child(0);
-    Node* decls = n->child(1)->child(0);
+        Node* e1 = n->child(0);
+        Node* decls = n->child(1)->child(0);
     
-    set<string> e1FreeVars = getFreeVars(e1);
+        set<string> e1FreeVars = getFreeVars(e1);
 
-    for (int i = 0; i != decls->arity(); i++) {
-        if ( e1FreeVars.count(decls->child(i)->id) != 0 ) {
+        for (int i = 0; i != decls->arity(); i++) {
+            if ( e1FreeVars.count(decls->child(i)->id) != 0 ) {
 
-            printMessage(WARNINGm,
-                         "FORALL lift of " + (decls->child(i)->id)
-                         + " inhibited to avoid capture");
-            return n;
+                printMessage(WARNINGm,
+                             "FORALL lift of " + (decls->child(i)->id)
+                             + " inhibited to avoid capture");
+                return n;
+            }
         }
+
+        n->kind = FORALL;
+        n->child(0) = decls;
+
+        n->child(1)->kind = IMPLIES;
+        n->child(1)->child(0) = e1;
+
     }
+    else if (n->kind == FORALL && n->child(1)->kind == FORALL) {
 
-    n->kind = FORALL;
-    n->child(0) = decls;
+        Node* decls1 = n->child(0);
+        Node* decls2 = n->child(1)->child(0);
+        Node* e = n->child(1)->child(1);
 
-    n->child(1)->kind = IMPLIES;
-    n->child(1)->child(0) = e1;
-
-
+        decls1->appendChildren(decls2);
+        n->child(1) = e;
+    }
     return n;
 }
 
