@@ -65,6 +65,10 @@ else ifdef WT  # Watchdog timeout (fixed pt sec):
   timeout_sfx = -w$(WT)
   timeout_option = -watchdog-timeout=$(WT)
 
+else ifdef ZT  # Z3 soft timeout.  Units of ms.
+  timeout_sfx = -zt$(ZT)
+  timeout_option = -smtlib2-soft-timeout=$(ZT)
+
 endif
 
 T=10# Delay setting default T to here so don't get suffix for default time.
@@ -371,7 +375,7 @@ endif
 # Assembly of option lists
 #=============================================================================
 #SMTLIB2: will need to address alternate divmod support and abs abstraction
-
+# By using -expand-exp-const, are assuming solver can handle non-lin arith.
 
 report_root = $(fuse_c_pfx)-$@$(siv_sfx)$(tg_sfx)$(std_rlu_sfx)$(lin_sfx)$(enum_sfx)$(timeout_sfx)$(repeat_sfx)$(smtlib_option_suffix)$(SFX)
 
@@ -396,6 +400,7 @@ std_options = \
             -rules=divmod.rul\
             -rules=prelude.rul\
             -ground-eval-exp\
+            -expand-exp-const\
             -abstract-exp\
             -abstract-divmod\
             -gstime\
