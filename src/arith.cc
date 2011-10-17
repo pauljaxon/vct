@@ -184,7 +184,7 @@ Node* expandExpConst(Node* n) {
         && n->child(1)->kind == NATNUM) {
 
 
-        Kind timesKind = n->kind = I_EXP ? I_TIMES : R_TIMES;
+        Kind timesKind = (n->kind == I_EXP) ? I_TIMES : R_TIMES;
         Node* result;
 
         int k = stringToInt(n->child(1)->id);
@@ -209,11 +209,11 @@ Node* expandExpConst(Node* n) {
             result = n;
             result->kind = timesKind;
             // child(0) already set to e.
-            result->child(1) = e;
+            result->child(1) = e->copy();
 
             for (int i = 3; i <= k; i++) {
                 // add on ith copy of e
-                result = new Node(timesKind, e, result);
+                result = new Node(timesKind, e->copy(), result);
             }
         }
         return result;
