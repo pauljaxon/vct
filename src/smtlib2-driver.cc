@@ -809,7 +809,7 @@ SMTLib2Driver::getResults(string& remarks) {
     // flags for processing of standard error file
 
     bool seenTimeout = false;
-    // bool seenWarning = false;
+    bool seenWarning = false;
     bool seenUnexpectedErrOutput = false;
 
     // flags for processing of standard output file
@@ -854,10 +854,21 @@ SMTLib2Driver::getResults(string& remarks) {
             continue;
         }
 
+        // z3 at least uses this. 
+        if (hasPrefix(s,"WARNING:")) {
+
+            if (option("log-smtsolver-warnings")) {
+            
+                seenWarning = true;
+                printMessage(WARNINGm, "Warning message from SMTLib solver"
+                             + ENDLs + s);
+            }
+            continue;
+        }
         seenUnexpectedErrOutput = true;
 
-
     }
+    if (seenWarning) appendCommaString(remarks, "warning(s)");
      
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -986,7 +997,7 @@ SMTLib2Driver::getRunResults(int numQueries) {
     // flags for processing of standard error file
 
     bool seenTimeout = false;
-    // bool seenWarning = false;
+    bool seenWarning = false;
     bool seenUnexpectedErrOutput = false;
 
     // flags for processing of standard output file
@@ -1028,11 +1039,28 @@ SMTLib2Driver::getRunResults(int numQueries) {
             continue;
         }
 
+        // z3 at least uses this. 
+        if (hasPrefix(s,"WARNING:")) {
+
+            if (option("log-smtsolver-warnings")) {
+            
+                seenWarning = true;
+                printMessage(WARNINGm, "Warning message from SMTLib solver"
+                             + ENDLs + s);
+            }
+            continue;
+        }
+
         seenUnexpectedErrOutput = true;
 
 
     }
-     
+    // If there are multiple goals, we really don't know which one the
+    // warning messages are associated with.  If we were to do
+    // anything here, we would be conservative and record warning
+    // message with all the goals.
+
+    // if (seenWarning) appendCommaString(remarks, "warning(s)");
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
     // Check over stdout output from solver

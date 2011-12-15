@@ -28,6 +28,9 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 // TOP LEVEL CODE
 
 #include <locale.h>
+#include <unistd.h>
+#include <sys/param.h>
+#include <libgen.h>
 
 #include <iostream>
 using std::cout;
@@ -246,29 +249,42 @@ Node* parseUnit(UnitInfo* unitInfo) {
 
     Node* rules = new Node(RULE_FILE);
 
-    if (option("read-directory-rlu-files")
-        && unitInfo->getUnitDirName() != "" ) {
 
-        string dirRLUFile  // == P1/.../Pn/D1/.../Dk/Dk.rlu  if k>0
-                           // == P1/.../Pn/Pn.rlu  if n>0
-                           // == .rlu  o/w
-            = joinPaths(unitInfo->getUnitPathPrefix(),
-                        joinPaths(unitInfo->getUnitPath(),
-                                  unitInfo->getUnitDirName()))
-                + ".rlu";
-        
-        if (readableFileExists(dirRLUFile)) {
-    
-            Node* ruleFile = readRuleFile(driver, dirRLUFile);
-            unitInfo->dirRLURulesEnd = countRules(ruleFile);
-            unitInfo->unitRLURulesEnd = unitInfo->dirRLURulesEnd;
-            
-            rules->appendChildren(ruleFile);
-        }
+    if (option("read-directory-rlu-files")) {
+      string dirRLUFile;
+
+      if (unitInfo->getUnitDirName() != "" ) {
+
+	dirRLUFile  // == P1/.../Pn/D1/.../Dk/Dk.rlu  if k>0
+                    // == P1/.../Pn/Pn.rlu  if n>0
+                    // == .rlu  o/w
+	  = joinPaths(unitInfo->getUnitPathPrefix(),
+		      joinPaths(unitInfo->getUnitPath(),
+				unitInfo->getUnitDirName()))
+	  + ".rlu";
+      } else {
+	// We don't have a directory in our unit name if the unit is
+	// in the current directory. In this case the name of the
+	// global user rule can be worked out from the current
+	// directory.
+	char cwd[MAXPATHLEN];
+	getcwd(cwd, MAXPATHLEN);
+	dirRLUFile = basename(cwd);
+	dirRLUFile += ".rlu";
+      }
+
+      if (readableFileExists(dirRLUFile)) {
+
+	Node* ruleFile = readRuleFile(driver, dirRLUFile);
+	unitInfo->dirRLURulesEnd = countRules(ruleFile);
+	unitInfo->unitRLURulesEnd = unitInfo->dirRLURulesEnd;
+
+	rules->appendChildren(ruleFile);
+      }
     }
 
     if (option("read-unit-rlu-files")) {
-                    
+
 
         string unitRLUFile // == P1/.../Pn/D1/.../Dk/U.rlu
             = fullUnitName + ".rlu";

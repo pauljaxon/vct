@@ -113,7 +113,7 @@ RuleFilter::driveQuerySet(UnitInfo* unitInfo,
         vector<QueryStatus> result
             = SMTDriver::driveQuerySet(unitInfo,
                                        unit,
-                                       excludedRules,
+                                       exclRules1Extra,
                                        startQuery,
                                        startQuery+1);
 
