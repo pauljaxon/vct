@@ -375,6 +375,9 @@ string fixSuffix(const string& s,
 map<string, vector<string> > commandLineOptions;
 
 vector<string> commandLineOptionsList;
+vector<string> plainCommandLineOptionsList; // Same as above, but for
+					    // showing the supplied
+					    // options in -plain mode.
 vector<string> nonOptionArgs;
 
 /*
@@ -435,6 +438,15 @@ processCommandArgs (int argc, char *argv[]) {
                 (
                  make_pair(key, vector<string>(1,val))
                  );
+
+	    // Check if the value is looking like a path; if so don't
+	    // show it in -plain mode.
+	    bool is_path = (val.find("/") != string::npos) || (val.find("\\") != string::npos);
+	    if (is_path) {
+	      plainCommandLineOptionsList.push_back(key + "=[SUPRESSED IN PLAIN MODE]");
+	    } else {
+	      plainCommandLineOptionsList.push_back(arg);
+	    }
 
             if (! insResult.second) {
                 // If already one or more entries for key in map,
@@ -937,7 +949,9 @@ void openReportFiles() {
 #else
     gethostname(hostname, 100);
 #endif
-    logStream << "Host: " << hostname << endl;
+    if (! option("plain")) {
+        logStream << "Host: " << hostname << endl;
+    }
 
     logStream << "Non-option args: " << endl;
     for (int i = 0; i != (int) nonOptionArgs.size(); i++) {
@@ -946,12 +960,20 @@ void openReportFiles() {
 
     logStream << "Option args: " << endl;
 
-    for (int i = 0; i != (int) commandLineOptionsList.size(); i++) {
-
+    if (option("plain")) {
+      for (int i = 0; i != (int) plainCommandLineOptionsList.size(); i++) {
         logStream << "    -"
-                 << commandLineOptionsList.at(i)
-                 << "   \\"
-                 << endl;
+		  << plainCommandLineOptionsList.at(i)
+		  << "   \\"
+		  << endl;
+      }
+    } else {
+      for (int i = 0; i != (int) commandLineOptionsList.size(); i++) {
+        logStream << "    -"
+		  << commandLineOptionsList.at(i)
+		  << "   \\"
+		  << endl;
+      }
     }
     logStream << endl;
 
@@ -1312,7 +1334,9 @@ printStats() {
     sumStream << setw(4) << fTimeoutConcls << "," ;
     sumStream << setw(4) << fErrorConcls << "," ;
 
-    sumStream << totalTime.toString();
+    if (!option("plain")) {
+      sumStream << totalTime.toString();
+    }
     sumStream << endl;
 
 
