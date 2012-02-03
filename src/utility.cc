@@ -62,7 +62,7 @@ using std::isdigit;
 
 #include <stdexcept>  // for runtime_error
 
-extern "C" { 
+extern "C" {
 
 #include <sys/stat.h> // For mkdir
 #include <unistd.h> // For access, unlink, gethostname, getpid
@@ -86,7 +86,7 @@ extern "C" {
 
 
 //========================================================================
-// String functions and constants 
+// String functions and constants
 //========================================================================
 
 // Utility function for debugging. Normal C++ STL always inserts
@@ -161,7 +161,7 @@ boolToString(bool b) {
 const string ENDLs ("\n");
 
 
-bool 
+bool
 hasSuffix(const string& s, const string& t) {
 
     string::size_type i = s.rfind(t, s.size());
@@ -172,7 +172,7 @@ hasSuffix(const string& s, const string& t) {
     // cast to -1.
 }
 
-bool 
+bool
 hasPrefix(const string& s, const string& t) {
 
     string::size_type i = s.find(t, 0);
@@ -181,12 +181,12 @@ hasPrefix(const string& s, const string& t) {
         && i == 0;
 }
 
-bool 
+bool
 hasSubstring(const string& s, const string& t) {
 
     string::size_type i = s.find(t, 0);
     return i != string::npos;
-}    
+}
 
 
 
@@ -221,10 +221,10 @@ member(char c, const string& s) {
     return cpos != string::npos;
 }
 
-// returns substring before first occurrence of c. 
-// If no occurrence, returns whole string.    
+// returns substring before first occurrence of c.
+// If no occurrence, returns whole string.
 
-string 
+string
 substringBefore(char c, const string& s) {
     string result(s);
     string::size_type cpos = s.find(c);
@@ -238,9 +238,9 @@ substringBefore(char c, const string& s) {
 
 
 
-// returns substring after first occurrence of c. 
-// If no occurrence, returns empty string.    
-string 
+// returns substring after first occurrence of c.
+// If no occurrence, returns empty string.
+string
 substringAfter(char c, const string& s) {
     string result(s);
     string::size_type cpos = s.find(c);
@@ -377,16 +377,16 @@ map<string, vector<string> > commandLineOptions;
 vector<string> commandLineOptionsList;
 vector<string> nonOptionArgs;
 
-/* 
+/*
 processCommandArgs initialises the commandLineOptions map:
 
 Option             Effect
 
    -<key>            "" added to end of list of map entries for <key>
 
-   -<key>=        
- | -<key>=none    
- | -<key>=default 
+   -<key>=
+ | -<key>=none
+ | -<key>=default
  | -<key>=empty      Option map entry for <key> is erased
 
    -<key>=<val>      <val> added to end of list of map entries for <key>
@@ -396,7 +396,7 @@ least one entry.
 
 */
 
-vector<string> 
+vector<string>
 processCommandArgs (int argc, char *argv[]) {
 
 
@@ -445,7 +445,7 @@ processCommandArgs (int argc, char *argv[]) {
                 oldMapEntry->second.push_back(val);
             }
 
-            
+
         } else {
             nonOptionArgs.push_back(arg);
         }
@@ -456,14 +456,14 @@ processCommandArgs (int argc, char *argv[]) {
 // Return true just when option set and value is not
 // "false", "none" or "default".
 
-bool 
+bool
 option(const string& s) {
     map<string, vector<string> >::iterator i = commandLineOptions.find(s);
 
     return i != commandLineOptions.end();
 }
 
-string 
+string
 optionVal(const string& s) {
     map<string, vector<string> >::iterator i = commandLineOptions.find(s);
     if (i != commandLineOptions.end()) {
@@ -581,7 +581,7 @@ string withTimeoutAndIO(const string &cmd,
 // <gstr>             <g>,0              Select goal <g> all concls.
 
 // <unit-info> ::= <unit-name> <unit-option>*
-// <unit-option> ::= 
+// <unit-option> ::=
 //  <tag>?<val>
 // | <val>
 //
@@ -597,15 +597,15 @@ string withTimeoutAndIO(const string &cmd,
 
 UnitInfo::Status UnitInfo::status = UnitInfo::BEFORE_RANGE;
 
-UnitInfo::UnitInfo(const string& unitInfoStr) 
+UnitInfo::UnitInfo(const string& unitInfoStr)
     : dirRLURulesEnd(0), unitRLURulesEnd(0) {
 
     vector<string> toks(tokeniseString(unitInfoStr));
 
     unitName = toks[0];
 
-    { 
-        
+    {
+
         if (option("prefix")) unitPathPrefix = optionVal("prefix");
         // else unitPathPrefix == "" by default
 
@@ -637,7 +637,7 @@ UnitInfo::UnitInfo(const string& unitInfoStr)
             // Otherwise skip option
 
             string tag (splitToken.at(0));
-            
+
             vector<string> activeTags;
             if (option("active-unit-tags")) {
                 activeTags = splitString(optionVal("active-unit-tags"), ":");
@@ -683,7 +683,7 @@ UnitInfo::UnitInfo(const string& unitInfoStr)
     bool atToLimit = toUnitGiven ? optionVal("to-unit") == unitName
                                  : false;
 
-    
+
     // Logic here is to have unitIncluded true in range between from-unit
     // and to-unit inclusive, with range extended to end when respective
     // limit is missing.
@@ -721,11 +721,11 @@ UnitInfo::UnitInfo(const string& unitInfoStr)
 bool
 UnitInfo::include(int goal, int concl) {
 
-    bool goalSliceSelected = 
+    bool goalSliceSelected =
         selectedSet.find(make_pair(goal, concl)) != selectedSet.end()
         || selectedSet.find(make_pair(goal, 0)) != selectedSet.end();
 
-    
+
     if (option("include-selected-goals")) {
         return
             unitIncluded
@@ -758,8 +758,8 @@ UnitInfo::includeUnit() {
 string currentUnit;         // [<path>/]<fileroot>
 string currentUnitPath;     //  <path>
 string currentUnitFile;     //  <fileroot>
-string currentUnitKind;     //  procedure | function | task_type 
-string currentGoalNumStr;      //  <goal number> 
+string currentUnitKind;     //  procedure | function | task_type
+string currentGoalNumStr;      //  <goal number>
 string currentGoalOrigins;  //  Info about where in program goal comes from
 
 
@@ -768,41 +768,41 @@ updateGoalInfo expects string of form:
 
 [function_|procedure_|task_type_]<name>_<num> <desc>
 
-where 
+where
 
 <desc> ::= path(s) from <a> to <b>
          | checks of refinement integrity
-<a> ::= 
+<a> ::=
 
-   start                                          
- | from assertion of line 49                      
- | from default assertion of line 49              
+   start
+ | from assertion of line 49
+ | from default assertion of line 49
 
-<b> ::= 
+<b> ::=
    finish
- | run-time check associated with [\n][ ]+ statement of line 201   
- | assertion of line 49 
- | default assertion of line 49 
- | precondition check associated with [\n][ ]+ statement of line xx:  
+ | run-time check associated with [\n][ ]+ statement of line 201
+ | assertion of line 49
+ | default assertion of line 49
+ | precondition check associated with [\n][ ]+ statement of line xx:
 ;
 Current version just captures minimum.  Could also do abbreviations and
 line numbers.
 
-POGS .sum files use 
+POGS .sum files use
 
-From::= 
+From::=
   start
- | <nn>   
+ | <nn>
  | <>           (empty) (in case of refinement)
 ;
 
-To::= 
+To::=
 
    rtc check @ <nn>
  | assert @ finish
  | assert @ <nn>
  | refinement
- | pre check @ 1514 
+ | pre check @ 1514
 ;
 POGS doesn't seem to distinguish between assertions and default assertions.
 
@@ -811,7 +811,7 @@ POGS doesn't seem to distinguish between assertions and default assertions.
 
 // Called at start of processUnit in main.cc
 
-void initCurrentUnitInfo(UnitInfo* unitInfo) {  
+void initCurrentUnitInfo(UnitInfo* unitInfo) {
 
     currentUnit = unitInfo->getUnitName();
     currentUnitPath = unitInfo->getUnitPath();
@@ -837,7 +837,7 @@ void extractGoalInfo(const string& s,
                      string& goalOrigins) {
 
      vector<string> ss = tokeniseString(s);
-     string currentGoalName = ss[0];     //  <kind>_<fileroot>_<goal number> 
+     string currentGoalName = ss[0];     //  <kind>_<fileroot>_<goal number>
 
      vector<string> goalNameParts = splitString(currentGoalName, "_");
 
@@ -850,7 +850,7 @@ void extractGoalInfo(const string& s,
 
      string from;
      string to;
- 
+
      if (ss[1] == "path(s)") {
          vector<string>::iterator i = std::find(ss.begin(), ss.end(), "to");
 
@@ -876,7 +876,7 @@ void extractGoalInfo(const string& s,
      goalOrigins = from + "," + to;
      return;
 }
-                     
+
 //========================================================================
 // Report file management
 //========================================================================
@@ -924,7 +924,7 @@ void openReportFiles() {
 	std::strftime(the_time, sizeof (the_time),
 		      "%d-%b-%Y, %H:%M:%S",
 		      timeinfo);
-	
+
 	logStream << "Date: " << the_time << endl;
     } else {
         logStream << endl;
@@ -979,7 +979,7 @@ const int FINEm = 3;
 const int FINERm = 2;
 const int FINESTm = 1;
 
-int messageThreshold; 
+int messageThreshold;
 
 
 int currentConcl;
@@ -1041,7 +1041,7 @@ int printMessageAux1(int messageLevel, const string& message) {
     else if (messageLevel == FINERm)   header = "FINER";
     else if (messageLevel == FINEm)    header = "FINE";
     else if (messageLevel == INFOm)    header = "INFO";
-    else if (messageLevel == WARNINGm) header = "WARNING"; 
+    else if (messageLevel == WARNINGm) header = "WARNING";
     else                               header = "ERROR";
 
     printMessageAux2(messageLevel);
@@ -1072,9 +1072,9 @@ int printMessageOnOptionAux(const string& opt, const string& message) {
 
 
 //========================================================================
-// CSV formatting 
+// CSV formatting
 //========================================================================
-// For CSV format, see http://en.wikipedia.org/wiki/Comma-separated_values 
+// For CSV format, see http://en.wikipedia.org/wiki/Comma-separated_values
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // csvDigest
@@ -1082,7 +1082,7 @@ int printMessageOnOptionAux(const string& opt, const string& message) {
 // Break up CSV string into its components
 
 // Basic. Should also:
-// - handle quoted " chars 
+// - handle quoted " chars
 // - strip head and tail whitespace from each value.
 
 vector<string> csvDigest(const string& s) {
@@ -1279,12 +1279,12 @@ printStats() {
     }
 
     logStream << outStream.str();
- 
+
     if (option("echo-final-stats")) {
 
         cout << outStream.str() << endl;
 
-        // Add on root of report files. 
+        // Add on root of report files.
 
         string reportName("report");
         if (option("report")) reportName = optionVal("report");
@@ -1294,7 +1294,7 @@ printStats() {
         }
         cout << "Report files: " << reportName << ".*" << endl;
     }
-   
+
     sumStream << reportName << ",";
     sumStream << numErrorMessages << "," << numWarningMessages << ",";
     sumStream << setprecision(1);
@@ -1326,7 +1326,7 @@ printStats() {
 /*
 Previous versions
 -----------------
-1. Using clock (3). 
+1. Using clock (3).
 This returned a clock_t value (32 bit unsigned on 32-bit system, 64
 bit unsigned on 64-bit system it seems from experiments.
 
@@ -1335,16 +1335,16 @@ disadvantage that time would wrap in under an hour on 32 bit
 systems.
 
 clock() also doesn't give breakdown of time into user and system
-time, and doesn't give time spent in child processes.  
+time, and doesn't give time spent in child processes.
 
-2. Using times (2). 
+2. Using times (2).
 
-Returns a 
+Returns a
            struct tms {
                clock_t tms_utime;  // user time
                clock_t tms_stime;  // system time
                clock_t tms_cutime; // user time of children
-               clock_t tms_cstime; // system time of children 
+               clock_t tms_cstime; // system time of children
            };
 
 where must divide by sysconf(_SC_CLK_TCK) to get time in seconds.
@@ -1360,9 +1360,9 @@ time (7) remarks this has a clock resolution of HZ which can be
 0.01, 0.001 sec a couple of values inbetween, depending on kernel
 configuration.  The SL6 appears to use 0.001, so better than
 times().
- 
+
 A local class Time is defined, similar to struct tms, except that it
-definitely has 64 bit values for the fields. 
+definitely has 64 bit values for the fields.
 
 struct rusage {
      struct timeval ru_utime; // user time used
@@ -1372,7 +1372,7 @@ struct rusage {
 struct timeval
   {
     __time_t tv_sec;		// Seconds.
-    __suseconds_t tv_usec;	// Microseconds. 
+    __suseconds_t tv_usec;	// Microseconds.
   };
 
 */
@@ -1403,7 +1403,7 @@ Timer::getOSTimes (Timer::Time *tOS)
   tOS->csTime = 0ULL;
 #else
 // To use times() again.
-/*  
+/*
   struct tms tms_time;
   times(&tms_time);
   tOS->sTime = tms_time->tms_stime;
@@ -1416,17 +1416,17 @@ Timer::getOSTimes (Timer::Time *tOS)
 
   getrusage(RUSAGE_SELF, &selfRUsage);
   getrusage(RUSAGE_CHILDREN, &childRUsage);
-  
+
   timeval sT = selfRUsage.ru_stime;
   timeval uT = selfRUsage.ru_utime;
   timeval csT = childRUsage.ru_stime;
   timeval cuT = childRUsage.ru_utime;
-  
+
   tOS->sTime = ((unsigned long long int) sT.tv_sec) * 1000000 + sT.tv_usec;
   tOS->uTime = ((unsigned long long int) uT.tv_sec) * 1000000 + uT.tv_usec;
   tOS->csTime = ((unsigned long long int) csT.tv_sec) * 1000000 + csT.tv_usec;
   tOS->cuTime = ((unsigned long long int) cuT.tv_sec) * 1000000 + cuT.tv_usec;
-  
+
 #endif
 }
 
@@ -1438,11 +1438,11 @@ Timer::Timer() {
     // If using times()
     // ticksPerSec = sysconf(_SC_CLK_TCK);
     // If using getrusage()
-    ticksPerSec = 1000000;     // This is the resolution of Time values, 
+    ticksPerSec = 1000000;     // This is the resolution of Time values,
                                // *not* the timer resolution
-                                   
+
 #endif
-    getOSTimes(&startTimeTuple); 
+    getOSTimes(&startTimeTuple);
 }
 void
 Timer::restart() { getOSTimes(&startTimeTuple); }
@@ -1451,7 +1451,7 @@ void
 Timer::grabTimes() {
     Time endTimeTuple;
     getOSTimes(&endTimeTuple);
-    
+
     uTime =
         ((double) (endTimeTuple.uTime - startTimeTuple.uTime))
         / ticksPerSec;
@@ -1470,7 +1470,7 @@ Timer::grabTimes() {
 
 }
 
-string 
+string
 Timer::toString() {
 
     grabTimes();
@@ -1480,9 +1480,9 @@ Timer::toString() {
     return oss.str();
 }
 
-string 
+string
 Timer::toLongString() {
-    
+
     grabTimes();
 
     double totalTime = uTime + sTime + cuTime + csTime;
@@ -1491,7 +1491,7 @@ Timer::toLongString() {
 
     double percentChild = childTime * 100 / totalTime;
     double percentSys = sysTime * 100 / totalTime;
-    
+
     ostringstream oss;
     oss << setprecision(2)
         << fixed
@@ -1505,7 +1505,7 @@ Timer::toLongString() {
         << percentChild << "% ch, "
         << percentSys   << "% sys)"
         << endl;
-    
+
     return oss.str();
 }
 
@@ -1607,9 +1607,9 @@ string flattenPathName(const string& s) {
 }
 
 string
-getFullGoalFileRoot(const string& defaultFileRoot, 
+getFullGoalFileRoot(const string& defaultFileRoot,
                     const string& unitName, // = dir1/.../dirn/unitFileRoot
-                    int goalNum, 
+                    int goalNum,
                     int conclNum) {
 
 
@@ -1638,8 +1638,8 @@ getFullGoalFileRoot(const string& defaultFileRoot,
 #else
         gethostname(hostname, 100);
 #endif
-        goalName = defaultFileRoot + "-" 
-                   + hostname + "-" 
+        goalName = defaultFileRoot + "-"
+                   + hostname + "-"
                    + intToString(getpid());
     }
     else {
@@ -1648,7 +1648,7 @@ getFullGoalFileRoot(const string& defaultFileRoot,
 
     // Join working-dir to goalName
 
-    string fullGoalName = goalRootDir + "/" + goalName;  
+    string fullGoalName = goalRootDir + "/" + goalName;
 
     // Ensure existence of directories mentioned in fullGoalName
 
