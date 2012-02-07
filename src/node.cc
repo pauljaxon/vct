@@ -221,6 +221,9 @@ z::kindString(z::Kind k) {
         c(TO_INT);
         c(IS_INT);
 
+	c(SET_INFO);
+	c(INFO_STR);
+
         #undef c
     }
     return s;
