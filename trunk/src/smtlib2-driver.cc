@@ -149,6 +149,9 @@ Box& SMTLib2Formatter::addSyntax(z::Kind k, const std::string& id,
     case(TO_INT):      return makeStringAp("to_int", bs);
     case(IS_INT):      return makeStringAp("is_int", bs);
 
+    case(SET_INFO):    return makeStringAp("set-info :" + id, bs);
+    case(INFO_STR):    return box('"' + id + '"');
+
     default:
 	printMessage(ERRORm, "SMTLibFormatter::addSyntax: " + ENDLs
                      + "Encountered unsupported kind "
@@ -445,6 +448,8 @@ SMTLib2Driver::initQuerySet(const string& unitName,
     string logic(option("logic") ? optionVal("logic") : "AUFNIRA");
 
     script = new Node(SCRIPT);
+    script->addChild(new Node(SET_INFO, "spark-source",
+			      new Node(INFO_STR, unitName)));
     if (!option("smtlib2-omit-set-option-command")) {
         script->addChild(new Node(SET_OPTION, "print-success",
                                   new Node(FALSE)));

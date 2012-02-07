@@ -223,7 +223,10 @@ enum Kind {
     // SMTLIB2 specific
     SET_OPTION,
     TO_INT,
-    IS_INT
+    IS_INT,
+
+    SET_INFO,
+    INFO_STR
 };
 
 
