@@ -37,9 +37,9 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 
 #include <cassert>
 
-/* Definitions of node kinds for use in AST */ 
+/* Definitions of node kinds for use in AST */
 
-/* These are put in a separate namespace to avoid clashes with 
+/* These are put in a separate namespace to avoid clashes with
    tokens of the same name
 */
 
@@ -192,7 +192,7 @@ enum Kind {
     TERM_I_LE,
 
     TO_PROP,  // Bit to prop
-    TO_BIT,   // prop to bit 
+    TO_BIT,   // prop to bit
 
     APPLY,   // Yices, HOLs
     LAMBDA,
@@ -227,7 +227,7 @@ enum Kind {
 };
 
 
-std::string kindString(z::Kind k); 
+std::string kindString(z::Kind k);
 
 } // End namespace z
 
@@ -236,13 +236,13 @@ class Node;
 
 typedef std::vector< Node* > Nodes;
 
-// By default pointers to Node objects are stored in a pool, and all 
+// By default pointers to Node objects are stored in a pool, and all
 // current objects in the pool can be deleted at once by calling the
 // deletePool() method.
 
-// When node objects are statically or heap allocated, or 
+// When node objects are statically or heap allocated, or
 // are intended to outlast pool deletions, they should be allocated outside
-// the pool by setting the optional storage argument to constructors to 
+// the pool by setting the optional storage argument to constructors to
 // UNMANAGED
 
 // (Was using bool type, but got nasty type bugs because Node* args were
@@ -267,7 +267,7 @@ class Node {
  public:
 
     static void deletePool();
-    static int getPoolAllocCount() {return poolAllocCount;} 
+    static int getPoolAllocCount() {return poolAllocCount;}
 
     // Instance fields
 
@@ -357,7 +357,7 @@ class Node {
     void clearChildren() { children.clear(); }
 
     // Add all children of n onto right of this's children.
-    void appendChildren(Node* n) { 
+    void appendChildren(Node* n) {
         children.insert(children.end(),
                         n->children.begin(),
                         n->children.end());
@@ -384,14 +384,14 @@ class Node {
     bool operator==(const Node& n) const;
 
     bool equals(Node* n) { return * this == * n;}
-    
+
     std::string toString();
 
     std::string toShortString();
 
     std::set<std::string> getIds(z::Kind k);
 
-    // Deep copy of node tree. 
+    // Deep copy of node tree.
 
     Node* copy();
 
@@ -434,10 +434,10 @@ class Node {
 };
 
 
-// g++ doesn't support the "export" keyword which allows 
+// g++ doesn't support the "export" keyword which allows
 // this definition to be pushed down into node.cc.
 
-template<class UnaryFun> 
+template<class UnaryFun>
 void
 Node::mapOver(UnaryFun& f) {
 
@@ -450,7 +450,7 @@ Node::mapOver(UnaryFun& f) {
 // Variation on mapOver, if want to destructively modify
 // node tree structure.
 
-template<class UnaryFun> 
+template<class UnaryFun>
 Node*
 Node::mapOver1(UnaryFun& f) {
 
@@ -478,14 +478,14 @@ private:
     bool result;
     //    UnaryBoolFun& fun;
     UnaryBoolFun fun;
-    
+
 public:
     //    IteratedOr(UnaryBoolFun& f) {
     IteratedOr(UnaryBoolFun f) {
         result = false;
         fun = f;
     }
-    
+
     void operator() (T t) {
         if ( fun(t) ) result = true;
         return;
@@ -495,7 +495,7 @@ public:
 
 };
 
-template<typename UnaryBoolFun> 
+template<typename UnaryBoolFun>
 bool
 Node::orOver(UnaryBoolFun f) {
 
@@ -515,7 +515,7 @@ Node::orOver(UnaryBoolFun f) {
 
 bool isDivOrMod(Node* n);
 
-bool isAtomicProp(Node* n); 
+bool isAtomicProp(Node* n);
 bool isCompoundProp(Node* n);
 
 bool isProp(Node* n);  // Is a propositional node.  Counts top level
