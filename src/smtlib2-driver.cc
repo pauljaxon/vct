@@ -111,7 +111,7 @@ Box& SMTLib2Formatter::addSyntax(z::Kind k, const std::string& id,
     case(EQ):          return makeStringAp("=", bs);
     case(DISTINCT):    return makeStringAp("distinct", bs);
     case(ITE):         return makeStringAp("ite", bs);
-   
+
         // SEQ is not quite prettiest: will indent vertical sequence
         // extra amount.
 
@@ -174,7 +174,7 @@ SMTLib2Formatter::getFormatter() {
 
 // Storage declarations for static class member.
 
-Formatter* 
+Formatter*
 SMTLib2Formatter::instance = 0;
 
 
@@ -184,7 +184,7 @@ SMTLib2Formatter::instance = 0;
 /*
 1. Type renaming.
 
-   If type-id clashes with SMTLIB2 reserved word or type defined in 
+   If type-id clashes with SMTLIB2 reserved word or type defined in
    one of SMTLIB2 standard theories, add "~" suffix.
 
 2. Function renaming
@@ -193,14 +193,14 @@ SMTLib2Formatter::instance = 0;
    function defined in one of SMTLIB2 standard theories, add "~"
    suffix.
 
-3. Constant renaming 
+3. Constant renaming
 
    (Including bound variables in notion of constant here.)
 
-   If constant id clashes with 
+   If constant id clashes with
 
-   1. reserved word, or 
-     (possibly nullary) function defined in one of SMTLIB2 standard 
+   1. reserved word, or
+     (possibly nullary) function defined in one of SMTLIB2 standard
       theories, or
    2. Any of function ids declared in unit,
 
@@ -210,7 +210,7 @@ SMTLib2Formatter::instance = 0;
 */
 
 // funIdsInUnit: functions declared in unit
-// constIdsInUnit: constants declared in unit at top level and 
+// constIdsInUnit: constants declared in unit at top level and
 //   in quantifier bindings
 
 
@@ -223,7 +223,7 @@ public:
 
     set<string> typeIdsToRename;
     set<string> funIdsToRename;
-    set<string> constIdsToRename1;  
+    set<string> constIdsToRename1;
     set<string> constIdsToRename2;
 
     void operator() (Node* n);
@@ -237,11 +237,11 @@ using std::cerr;
 */
 
 StandardiseIdsFun::StandardiseIdsFun(Node* unit) {
-    
+
     set<string> typeIdsInUnit;
     set<string> funIdsInUnit;
     set<string> constIdsInUnit;
-    
+
     Node* decls = unit->child(0);
     for (int i = 0; i != decls->arity(); i++) {
         Node* decl = decls->child(i);
@@ -256,7 +256,7 @@ StandardiseIdsFun::StandardiseIdsFun(Node* unit) {
     constIdsInUnit.insert(boundVars.begin(), boundVars.end());
 
     // Initialise reservedWords and stdFunIds
-    
+
     set<string> reservedWords;
     set<string>& rw = reservedWords;
     rw.insert("par");
@@ -302,36 +302,36 @@ StandardiseIdsFun::StandardiseIdsFun(Node* unit) {
     s0.insert("Real");
 
     setIsect(typeIdsInUnit, s0, typeIdsToRename);
-    
+
     // s1 = reservedWords U stdFunIds
     set<string> s1;
     setUnion(reservedWords, stdFunIds, s1);
-    
+
     // funIdsToRename = funIdsInUnit intersect (reservedWords U stdFunIds)
     //                = funIdsInUnit intersect s1
 
     setIsect(funIdsInUnit, s1, funIdsToRename);
 
-    // s2 = symdiff funIdsInUnit (reservedWords U stdFunIds) 
-    //    = symdiff funIdsInUnit s1 
+    // s2 = symdiff funIdsInUnit (reservedWords U stdFunIds)
+    //    = symdiff funIdsInUnit s1
 
     set<string> s2;
     setSymDiff(funIdsInUnit, s1, s2);
-    
-    // constIdsToRename1 
-    //    = constIdsInUnit 
+
+    // constIdsToRename1
+    //    = constIdsInUnit
     //      intersect (symdiff  (reservedWords U StdFunIds)
     //                          funIdsInUnit)
     //    = constIdsInUnit intersect s2
 
     setIsect(constIdsInUnit, s2, constIdsToRename1);
 
-    // constIdsToRename2 = 
+    // constIdsToRename2 =
     //    constIdsInUnit intersect funIdsToRename
 
     setIsect(constIdsInUnit, funIdsToRename, constIdsToRename2);
 
-    /*    
+    /*
     cout << endl;
     cout << "typeIdsToRename = " << typeIdsToRename.size() << endl;
     cout << "funIdsToRename = " << funIdsToRename.size() << endl;
@@ -344,7 +344,7 @@ StandardiseIdsFun::StandardiseIdsFun(Node* unit) {
 
 void
 StandardiseIdsFun::operator() (Node* n) {
-    
+
     switch(n->kind) {
 
     case(TYPE_ID):
@@ -354,17 +354,17 @@ StandardiseIdsFun::operator() (Node* n) {
             n->id.append("~");
         return;
     }
-    case(FUN_AP): 
+    case(FUN_AP):
     case(DECL_FUN): {
         if (funIdsToRename.find(n->id) != funIdsToRename.end())
             n->id.append("~");
         return;
     }
     case(CONST):
-    case(VAR):  
+    case(VAR):
     case(DECL): // In quantifiers
     case(DECL_CONST):
-    case(DEF_CONST): { 
+    case(DEF_CONST): {
         if (constIdsToRename1.find(n->id) != constIdsToRename1.end())
             n->id.append("~");
         else if (constIdsToRename2.find(n->id) != constIdsToRename2.end())
@@ -382,18 +382,18 @@ StandardiseIdsFun::operator() (Node* n) {
 //========================================================================
 
 
-Node* 
+Node*
 SMTLib2Driver::translateUnit(Node* unit) {
 
     // standardise identifiers
-    
+
     StandardiseIdsFun f(unit);
     unit->mapOver(f);
 
     // Update declarations
 
     // DEF_TYPE{<type-id>}    --> DECL_TYPE{<type-id>}
-    // DEF_CONST{<id>} <type> --> DECL_CONST{<id>} <type> 
+    // DEF_CONST{<id>} <type> --> DECL_CONST{<id>} <type>
     // DEF_TYPE{<type-id>} <type>             Untouched
     // DECL_FUN{<id>} (SEQ <types>) <type>    Untouched
 
@@ -425,7 +425,7 @@ SMTLib2Driver::translateUnit(Node* unit) {
 
 // If watchdog timer used for timeouts, then time limit is for each query.
 
-bool 
+bool
 SMTLib2Driver::resourceLimitsForQuerySet() {
         return !option("watchdog-timeout");
 }
@@ -442,7 +442,7 @@ SMTLib2Driver::initQuerySet(const string& unitName,
     solverOutputFileName = fullGoalFileRoot  + ".out";
     solverErrorFileName = fullGoalFileRoot  + ".err";
 
-    string logic(option("logic") ? optionVal("logic") : "AUFNIRA"); 
+    string logic(option("logic") ? optionVal("logic") : "AUFNIRA");
 
     script = new Node(SCRIPT);
     if (!option("smtlib2-omit-set-option-command")) {
@@ -467,7 +467,7 @@ SMTLib2Driver::initGoal(const string& unitName,
     initQuerySet(unitName, goalNum, conclNum);
 }
 
-void 
+void
 SMTLib2Driver::addDecl(Node* decl) {
     script->addChild(decl);
 }
@@ -548,9 +548,9 @@ SMTLib2Driver::runQuerySet(string& remarks) {
     if (! (option("prover") || option("prover-command") )) {
         return false;
     }
-        
+
     if (option("prover-command")) {
-            
+
         cmd = optionVal("prover-command") + " ";
     }
 
@@ -563,7 +563,7 @@ SMTLib2Driver::runQuerySet(string& remarks) {
         if (option("z3-fourier-motzkin"))
             cmdOptions += "FOURIER_MOTZKIN_ELIM=true ";
         if (option("timeout"))
-            // Was not supported in Z3 v1.3 Linux. 
+            // Was not supported in Z3 v1.3 Linux.
             cmdOptions += "SOFT_TIMEOUT=" + optionVal("timeout") + " ";
     }
     else if (optionVal("prover") == "cvc3") {
@@ -581,7 +581,7 @@ SMTLib2Driver::runQuerySet(string& remarks) {
         return false;
     }
 
-    // Modify cmd for I/O files and detecting timeouts. 
+    // Modify cmd for I/O files and detecting timeouts.
     if (option("shell-timeout")) {
         // Use shell-level timeout utility
         // This will accept integer or fixed point time in sec.
@@ -597,7 +597,7 @@ SMTLib2Driver::runQuerySet(string& remarks) {
 
         //  cmd = "ulimit -t " + optionVal("ulimit-timeout") + " ; " + cmd;
 
-        // Run in a subshell (y using enclosing ()) so we can catch output 
+        // Run in a subshell (y using enclosing ()) so we can catch output
         // to stderr on termination and avoid this output polluting
         // output from running vct.
 
@@ -615,7 +615,7 @@ SMTLib2Driver::runQuerySet(string& remarks) {
 
         cmd = "./watchdogrun "
             + solverOutputFileName + " "
-            + solverErrorFileName + " " 
+            + solverErrorFileName + " "
             + optionVal("watchdog-timeout") + " "
             + cmd + " "
             + cmdOptions + " "
@@ -623,7 +623,7 @@ SMTLib2Driver::runQuerySet(string& remarks) {
 
     } else {
 
-        cmd += " " + solverInputFileName 
+        cmd += " " + solverInputFileName
             + " 1> "  + solverOutputFileName
             + " 2> "  + solverErrorFileName;
     }
@@ -638,7 +638,7 @@ SMTLib2Driver::runQuerySet(string& remarks) {
     exitStatus = std::system(cmd.c_str());
 
     // For SMT mode, exit status is not reliable guide for something going
-    // wrong.  E.g. z3 -smt returns exit status 103. 
+    // wrong.  E.g. z3 -smt returns exit status 103.
 
     printMessage(INFOm, "Exit status is " + intToString(exitStatus));
 
@@ -653,7 +653,7 @@ SMTLib2Driver::runQuerySet(string& remarks) {
 bool
 SMTLib2Driver::analyseExitStatus(int exitStatus, string& remarks) {
     bool resourceLimitReached = false;
-    
+
     //  Detecting termination signals, not on windows platform:
 #ifndef _WIN32
 
@@ -661,8 +661,8 @@ SMTLib2Driver::analyseExitStatus(int exitStatus, string& remarks) {
 
        Man page for getrlimit makes clear that a process is terminated using
        a KILL signal when the time limit is reached.
-    
-       system(3) man page says that return status of system call is in format 
+
+       system(3) man page says that return status of system call is in format
        specified on wait(2) man page.  There is says:
 
        WIFEXITED(status)
@@ -683,7 +683,7 @@ SMTLib2Driver::analyseExitStatus(int exitStatus, string& remarks) {
               returns the number of the signal that caused the  child  process
               to terminate.  This macro should only be employed if WIFSIGNALED
               returned true.
- 
+
      For z3 3.0 on Scientific Linux 6, are seeing:
 
      on unsat:
@@ -718,10 +718,10 @@ SMTLib2Driver::analyseExitStatus(int exitStatus, string& remarks) {
     /*
     printMessageWithHeader
         ("DEBUG",
-         "exitStatus = " + intToString(exitStatus) + ENDLs + 
-         "WIFSIGNALED = " + intToString(WIFSIGNALED(exitStatus)) + ENDLs + 
+         "exitStatus = " + intToString(exitStatus) + ENDLs +
+         "WIFSIGNALED = " + intToString(WIFSIGNALED(exitStatus)) + ENDLs +
          "WTERMSIG = " + intToString(WTERMSIG(exitStatus)) + ENDLs +
-         "WIFEXITED = " + intToString(WIFEXITED(exitStatus)) + ENDLs + 
+         "WIFEXITED = " + intToString(WIFEXITED(exitStatus)) + ENDLs +
          "WEXITSTATUS = " + intToString(WEXITSTATUS(exitStatus))
          );
     */
@@ -769,9 +769,9 @@ SMTLib2Driver::getResults(string& remarks) {
         return UNPROVEN;
     }
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Read in output and error files from solver
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     ifstream solverOut (solverOutputFileName.c_str() );
     ifstream solverErr (solverErrorFileName.c_str() );
@@ -802,9 +802,9 @@ SMTLib2Driver::getResults(string& remarks) {
         solverErr.close();
     }
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Initialise flags for tracking run status
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     // flags for processing of standard error file
 
@@ -819,9 +819,9 @@ SMTLib2Driver::getResults(string& remarks) {
     bool seenUnknownOutput = false;
     bool seenUnexpectedOutput = false;
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Check over stderr output from solver
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     // First inspect error output.  Check for
     // - warning messages than can be logged
@@ -839,9 +839,9 @@ SMTLib2Driver::getResults(string& remarks) {
 
 
         // Detect message produced by ulimit -t killing process
-            
+
         // See below for alternate method of detecting this timeout.
-        // Approach here works on Scientific Linux 5.3 but not 
+        // Approach here works on Scientific Linux 5.3 but not
         // Ubuntu 10.4.2.
 
         if (hasPrefix(s, "sh: line 1:") && hasSubstring(s, "Killed")) {
@@ -854,11 +854,11 @@ SMTLib2Driver::getResults(string& remarks) {
             continue;
         }
 
-        // z3 at least uses this. 
+        // z3 at least uses this.
         if (hasPrefix(s,"WARNING:")) {
 
             if (option("log-smtsolver-warnings")) {
-            
+
                 seenWarning = true;
                 printMessage(WARNINGm, "Warning message from SMTLib solver"
                              + ENDLs + s);
@@ -869,12 +869,12 @@ SMTLib2Driver::getResults(string& remarks) {
 
     }
     if (seenWarning) appendCommaString(remarks, "warning(s)");
-     
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Check over stdout output from solver
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-       
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     for (int i = 0; i != (int) solverOutput.size(); i++) {
 
         string s = solverOutput.at(i);
@@ -883,7 +883,7 @@ SMTLib2Driver::getResults(string& remarks) {
         if (line.size() == 0) {
             continue;
         }
-            
+
         if (line.size() == 1 && line.at(0) == "unsat") {
             seenUnsatOutput = true;
         }
@@ -902,16 +902,16 @@ SMTLib2Driver::getResults(string& remarks) {
         seenTimeout = true;
     }
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Report on output and decide return status
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     if (seenUnexpectedErrOutput || seenUnexpectedOutput) {
 
         string outMessage = concatStrings(solverOutput, ENDLs);
         string errMessage = concatStrings(solverErrOutput, ENDLs);
 
-        printMessage(ERRORm, 
+        printMessage(ERRORm,
                      "Error(s) on prover output." + ENDLs
                      + "On STDOUT:" + ENDLs
                      + outMessage + ENDLs
@@ -945,11 +945,11 @@ SMTLib2Driver::getResults(string& remarks) {
 // getRunResults
 //---------------------------------------------------------------------------
 
-vector<SMTDriver::QueryStatus> 
+vector<SMTDriver::QueryStatus>
 SMTLib2Driver::getRunResults(int numQueries) {
 
     vector<SMTLib2Driver::QueryStatus> results;
-    
+
     // Do not check output files if none were generated in first place
 
     if (! (option("prover") || option("prover-command") )) {
@@ -957,9 +957,9 @@ SMTLib2Driver::getRunResults(int numQueries) {
         return results;
     }
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Read in output and error files from solver
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     ifstream solverOut (solverOutputFileName.c_str() );
     ifstream solverErr (solverErrorFileName.c_str() );
@@ -990,9 +990,9 @@ SMTLib2Driver::getRunResults(int numQueries) {
         solverErr.close();
     }
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Initialise flags for tracking run status
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     // flags for processing of standard error file
 
@@ -1004,9 +1004,9 @@ SMTLib2Driver::getRunResults(int numQueries) {
 
     bool seenUnexpectedOutput = false;
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Check over stderr output from solver
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     // First inspect error output.  Check for
     // - warning messages than can be logged
@@ -1024,9 +1024,9 @@ SMTLib2Driver::getRunResults(int numQueries) {
 
 
         // Detect message produced by ulimit -t killing process
-            
+
         // See below for alternate method of detecting this timeout.
-        // Approach here works on Scientific Linux 5.3 but not 
+        // Approach here works on Scientific Linux 5.3 but not
         // Ubuntu 10.4.2.
 
         if (hasPrefix(s, "sh: line 1:") && hasSubstring(s, "Killed")) {
@@ -1039,11 +1039,11 @@ SMTLib2Driver::getRunResults(int numQueries) {
             continue;
         }
 
-        // z3 at least uses this. 
+        // z3 at least uses this.
         if (hasPrefix(s,"WARNING:")) {
 
             if (option("log-smtsolver-warnings")) {
-            
+
                 seenWarning = true;
                 printMessage(WARNINGm, "Warning message from SMTLib solver"
                              + ENDLs + s);
@@ -1062,10 +1062,10 @@ SMTLib2Driver::getRunResults(int numQueries) {
 
     // if (seenWarning) appendCommaString(remarks, "warning(s)");
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Check over stdout output from solver
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-       
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     for (int i = 0; i != (int) solverOutput.size(); i++) {
 
         string s = solverOutput.at(i);
@@ -1074,7 +1074,7 @@ SMTLib2Driver::getRunResults(int numQueries) {
         if (line.size() == 0) {
             continue;
         }
-            
+
         if (line.size() == 1 && line.at(0) == "unsat") {
             results.push_back(QueryStatus(TRUE,"",""));
         }
@@ -1119,16 +1119,16 @@ SMTLib2Driver::getRunResults(int numQueries) {
     }
 
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Report on output and decide return status
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     if (seenUnexpectedErrOutput || seenUnexpectedOutput) {
 
         string outMessage = concatStrings(solverOutput, ENDLs);
         string errMessage = concatStrings(solverErrOutput, ENDLs);
 
-        printMessage(ERRORm, 
+        printMessage(ERRORm,
                      "Error(s) on prover output." + ENDLs
                      + "On STDOUT:" + ENDLs
                      + outMessage + ENDLs

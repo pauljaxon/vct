@@ -35,14 +35,14 @@ using std::set;
 #include "pprinter.hh"
 
 // For printMessage.
-#include "utility.hh"  
+#include "utility.hh"
 
 
 // Tedious having to name Kinds twice.  What's best way of avoiding this?
 std::string
 z::kindString(z::Kind k) {
     std::string s;
-    
+
     switch (k) {
         #define c(id) case id: s = #id ; break
         c(FDL_FILE);
@@ -190,7 +190,7 @@ z::kindString(z::Kind k) {
 	c(TERM_I_LE);
 
         c(TO_PROP);
-        c(TO_BIT);   // prop to bit 
+        c(TO_BIT);   // prop to bit
 
 	c(APPLY);
 	c(LAMBDA);
@@ -216,7 +216,7 @@ z::kindString(z::Kind k) {
         c(ITE);
         c(CONST);
         c(VAR);
-    // SMTLIB2 
+    // SMTLIB2
         c(SET_OPTION);
         c(TO_INT);
         c(IS_INT);
@@ -373,7 +373,7 @@ Node::Node(Kind k, const char* s, Nodes& ns, Storage st) {
 }
 
 
-bool 
+bool
 Node::operator==(const Node& n) const {
     if (kind == n.kind
         && id == n.id
@@ -392,12 +392,12 @@ Node::operator==(const Node& n) const {
 
 
 
-std::set<string> 
+std::set<string>
 Node::getIds(z::Kind k) {
     std::set<string> result;
-    if (kind == k && id.size() > 0) 
+    if (kind == k && id.size() > 0)
         result.insert(id);
-    
+
     for (int i = 0; i != arity(); i++) {
 
         std::set<string> childIds = child(i)->getIds(k);
@@ -426,32 +426,32 @@ Node::copy() {
 
 
 
-Node*    
+Node*
 Node::int_ty = new Node (z::INT_TY, UNMANAGED);
-Node*    
+Node*
 Node::bool_ty = new Node (z::BOOL_TY, UNMANAGED);
-Node*    
+Node*
 Node::bit_ty = new Node (z::BIT_TY, UNMANAGED);
-Node*    
+Node*
 Node::real_ty = new Node (z::REAL_TY, UNMANAGED);
-Node*    
+Node*
 Node::type_univ = new Node (z::TYPE_UNIV, UNMANAGED);
-Node*    
+Node*
 Node::unknown = new Node (z::UNKNOWN, UNMANAGED);
-Node*    
-Node::int_or_real_ty = new Node(z::INT_OR_REAL_TY, UNMANAGED);    
-Node*    
-Node::int_real_or_enum_ty = new Node(z::INT_REAL_OR_ENUM_TY, UNMANAGED);    
-Node*    
-Node::no_ty = new Node(z::NO_TY, UNMANAGED);    
+Node*
+Node::int_or_real_ty = new Node(z::INT_OR_REAL_TY, UNMANAGED);
+Node*
+Node::int_real_or_enum_ty = new Node(z::INT_REAL_OR_ENUM_TY, UNMANAGED);
+Node*
+Node::no_ty = new Node(z::NO_TY, UNMANAGED);
 
 bool isDivOrMod(Node* n) {
     return
-        n->kind == z::IDIV 
+        n->kind == z::IDIV
         || n->kind == z::MOD;
 }
 
-// 
+//
 bool isCompoundProp(Node* n) {
     int k = n->kind;
     return
@@ -474,7 +474,7 @@ bool isCompoundProp(Node* n) {
 // NB: isAtomicProp() is not complete.  It will flag nodes that
 // are definitely atomic propositions, but will miss those which might
 // or might not be: e.g. boolean-valued array or record elements,
-// boolean-valued user-defined function applications, and the 
+// boolean-valued user-defined function applications, and the
 // boolean-valued order relations on enumeration types.
 
 bool isAtomicProp(Node* n) {
@@ -541,7 +541,7 @@ Node::getSubNodes() {
         result.push_back(&child(1));
         break;
     }
-        
+
     case ARR_ELEMENT: {
         // ARR_ELEMENT arr (SEQ i1 ... in),  n >= 1
         result.push_back(&(child(0)));
@@ -572,7 +572,7 @@ Node::getSubNodes() {
         // MK_ARRAY{arrname} default a1 ... an, n >= 0
         // MK_ARRAY{arrname} a1 ... an,         n >= 1
         //   where ai = ASSIGN (SEQ i1 ... im) val,  m >= 1
-        //         ij = e  |  SUBRANGE e1 e2 
+        //         ij = e  |  SUBRANGE e1 e2
 
         for (int i = 0; i != arity(); i++) {
             Node* c = child(i);
@@ -699,8 +699,8 @@ gatherBoundVars(Node* n) {
 
 
 
-    
-Node* 
+
+Node*
 nameToType(const std::string& s) {
     if (s == "integer") return new Node(INT_TY);
     if (s == "real") return new Node(REAL_TY);
@@ -711,7 +711,7 @@ nameToType(const std::string& s) {
 }
 
 
-std::string 
+std::string
 typeToName(Node* n) {
     if (n->kind == INT_TY) return std::string("integer");
     if (n->kind == REAL_TY) return std::string("real");
@@ -736,14 +736,14 @@ Node* mkGeneralImplies(Node* hyps, Node* concl) {
     if (hyps->kind == NOT) {
 
         Node* conj = hyps->child(0);
-        
+
         if (conj->arity() == 0) {
             return new Node(TRUE);
         } else if (conj->arity() == 1) {
             return new Node(IMPLIES, new Node(NOT, conj->child(0)), concl);
         } else {
             return new Node(IMPLIES, hyps, concl);
-        }        
+        }
 
     } else {
 
@@ -753,10 +753,10 @@ Node* mkGeneralImplies(Node* hyps, Node* concl) {
             return new Node(IMPLIES, hyps->child(0), concl);
         } else {
             return new Node(IMPLIES, hyps, concl);
-        }        
+        }
 
     }
-    
+
 }
 
 // Polymorphic nodes used in FDL.  Expectation is that all polymorphism is
@@ -782,10 +782,10 @@ bool isPolymorphicNode(Node* n) {
         return true;
 
     case ARR_ELEMENT:
-    case ARR_UPDATE: 
+    case ARR_UPDATE:
         return n->id.size() == 0;
 
-    case RCD_ELEMENT: 
+    case RCD_ELEMENT:
         // RCD_ELEMENT{rcd-id} exp
         // RCD_ELEMENT{rcd-id} exp (TYPE_PARAM{type-id})
         return n->arity() == 1;
@@ -793,7 +793,7 @@ bool isPolymorphicNode(Node* n) {
     case TERM_NE:
     case EQ:
     case NE:
-    case RCD_UPDATE: 
+    case RCD_UPDATE:
         // RCD_UPDATE{rcd-id} exp val
         // RCD_UPDATE{rcd-id} exp val (TYPE_PARAM{type-id})
         return n->arity() == 2;
