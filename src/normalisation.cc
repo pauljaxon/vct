@@ -456,6 +456,12 @@ bool checkForUndeclaredIds(FDLContext* ctxt, Node* unit) {
 
 // Rules with undeclared ids replaced with constant true.
 // Positions of deleted rules recorded in unitInfo->excludedRules.
+
+// Undeclared ids in Examiner generated rules are always flagged with
+// warnings. 
+// Undeclared ids in user supplied rules are flagged with warnings
+// unless option -expect-user-rules-with-undeclared-ids is provided.
+
 void
 deleteRulesWithUndeclaredIds(FDLContext* ctxt,
                              Node* unit,
@@ -471,10 +477,20 @@ deleteRulesWithUndeclaredIds(FDLContext* ctxt,
         if (undeclaredIds.size() + undeclaredFuns.size() > 0) {
 
             // rule = RULE{<name>} <rule>
-            string ruleName = rule->id; 
+            string ruleName = rule->id;
+            string ruleKind = unitInfo->isUserRule(ruleNum - 1)
+                              ? "user"
+                              : "Examiner";
+            int messageLevel = 
+              option("expect-user-rules-with-undeclared-ids")
+                && unitInfo->isUserRule(ruleNum - 1)
+                ? INFOm
+                : WARNINGm;
+            
             rule->child(0) = nTRUE;
-            printMessage(INFOm,
-                         "Deleting rule " + ruleName
+
+            printMessage(messageLevel,
+                         "Deleting " + ruleKind + " rule " + ruleName
                          + "because of " + ENDLs
                          + "undeclared identifiers:" + undeclaredIds + ENDLs
                              + "and undeclared functions:" + undeclaredFuns);
@@ -1473,10 +1489,7 @@ putUnitInStandardForm(Node* unit, UnitInfo* unitInfo) {
     //--------------------------------------------------------------------
     // Updates unitInfo with indexes of rules to exclude.
 
-    if (option("delete-rules-with-undeclared-ids")) {
-        deleteRulesWithUndeclaredIds(ctxt, unit, unitInfo);
-    }
-
+    deleteRulesWithUndeclaredIds(ctxt, unit, unitInfo);
 
     
     //--------------------------------------------------------------------
