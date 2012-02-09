@@ -193,6 +193,11 @@ private:
     int startGoal;
 
 public:
+    // (With 0-based rule numbering)
+    // dir RLU Rules are  [0 .. dirRLURulesEnd-1]  
+    // unit RLU Rules are  [dirRLURulesEnd .. unitRLURulesEnd -1]  
+    // Examiner-generated rules are [unitRLURulesEnd .. #Rules - 1]
+
     int dirRLURulesEnd;
     int unitRLURulesEnd;
 
@@ -209,6 +214,8 @@ public:
     }
     set<int> getExcludedRules() {return excludedRules;}
     void addExcludedRule(int rNum) {excludedRules.insert(rNum);}
+    bool isUserRule(int rNum) {return rNum < unitRLURulesEnd; }
+
     vector<string> getDeclFiles() {return declFiles; }
     vector<string> getRuleFiles() {return ruleFiles; }
     bool includeUnit();
