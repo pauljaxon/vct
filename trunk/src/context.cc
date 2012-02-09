@@ -921,10 +921,11 @@ FDLContext::getSubNodeTypes (Node* n) {
                 arrayTy = getType(n->child(0));
             }
 
-            if (arrayTy->kind == UNKNOWN) break;
+            Node* normalisedArrayTy = normaliseType(arrayTy);
+
+            if (normalisedArrayTy->kind != ARRAY_TY) break;
 
             // normalisedArrayTy = ARRAY_TY (SEQ T1 ...Tn) T
-            Node* normalisedArrayTy = normaliseType(arrayTy);
 
             result->addChild(arrayTy);
             result->appendChildren(normalisedArrayTy->child(0));
@@ -941,10 +942,11 @@ FDLContext::getSubNodeTypes (Node* n) {
             else {
                 arrayTy = getType(n->child(0));
             }
-            if (arrayTy->kind == UNKNOWN) break;
+            Node* normalisedArrayTy = normaliseType(arrayTy);
+
+            if (normalisedArrayTy->kind != ARRAY_TY) break;
 
             // normalisedArrayTy = ARRAY_TY (SEQ T1 ...Tn) T
-            Node* normalisedArrayTy = normaliseType(arrayTy);
 
             result->addChild(arrayTy);
             result->appendChildren(normalisedArrayTy->child(0));
@@ -964,11 +966,11 @@ FDLContext::getSubNodeTypes (Node* n) {
             else {
                 arrayTy = getType(n->child(0));
             }
+            Node* normalisedArrayTy = normaliseType(arrayTy);
 
-            if (arrayTy->kind == UNKNOWN) break;
+            if (normalisedArrayTy->kind != ARRAY_TY) break;
 
             // normalisedArrayTy = ARRAY_TY (SEQ T1 ...Tn) T
-            Node* normalisedArrayTy = normaliseType(arrayTy);
 
             Node* indexTys = normalisedArrayTy->child(0);
             Node* valTy = normalisedArrayTy->child(1);
@@ -1028,6 +1030,8 @@ FDLContext::getSubNodeTypes (Node* n) {
             else
                 recordTy = getType(n->child(0));
 
+            if (normaliseType(recordTy)->kind != RECORD_TY) break;
+
             result->addChild(recordTy);
             if (n->arity() == 2)
                 result->addChild(Node::type_univ);
@@ -1043,37 +1047,34 @@ FDLContext::getSubNodeTypes (Node* n) {
             else
                 recordTy = getType(n->child(0));
 
-            result->addChild(recordTy);
-
             Node* normRecordTy = normaliseType(recordTy);
-
-            Node* fieldType = 0;
-            string fieldName = n->id;
 
             if (normRecordTy->kind != RECORD_TY) {
                 printMessage(INFOm,
                              "getSubNodeTypes: record has unexpected type " +
                              kindString(normRecordTy->kind));
+                break;
+            }
+
+            string fieldName = n->id;
+            Node* fieldType = 0;
+
+            for (int i = 0; i != normRecordTy->arity(); i++ ) {
+                Node* decl = normRecordTy->child(i);
+                if ( decl->id == fieldName) {
+                    fieldType = decl->child(0);
+                    break;
+                }
+            }
+            if (fieldType == 0) {
+                printMessage(INFOm,
+                             "getSubNodeTypes: attempt to access field "
+                             + fieldName
+                             + " of record " + (normRecordTy->id));
                 fieldType = Node::unknown;
             }
-            else {
-                for (int i = 0; i != normRecordTy->arity(); i++ ) {
-                    Node* decl = normRecordTy->child(i);
-                    if ( decl->id == fieldName) {
-                        fieldType = decl->child(0);
-                    }
-                }
-                if (fieldType == 0) {
-                    printMessage(INFOm,
-                                 "getSubnodeTypes: attempt to access field "
-                                 + fieldName
-                                 + " of record " + (normRecordTy->id));
-                    fieldType = Node::unknown;
-                }
-            }
 
-
-
+            result->addChild(recordTy);
             result->addChild(fieldType);
 
             if (n->arity() == 3)
