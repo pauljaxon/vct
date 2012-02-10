@@ -274,7 +274,10 @@ bool typeCheckFmla(const string& fmlaName, FDLContext* c, Node* node) {
     }
 }
 
-bool typeCheckUnit(const string& tcKind, FDLContext* ctxt, Node* unit) {
+bool typeCheckUnit(const string& tcKind,
+                   UnitInfo* unitInfo,
+                   FDLContext* ctxt,
+                   Node* unit) {
 
     Node* rules = unit->child(1);
     Node* goals = unit->child(2);
@@ -285,11 +288,31 @@ bool typeCheckUnit(const string& tcKind, FDLContext* ctxt, Node* unit) {
           ruleNum <= rules->arity();
           ruleNum++) {
 
+        if (unitInfo->isExcludedRule(ruleNum - 1)) continue;
+        
         string ruleStr (tcKind + ", Rule " + intToString(ruleNum));
         Node* rule = rules->child(ruleNum - 1);
 
-        typeCheckGood = typeCheckGood &
-            typeCheckFmla(ruleStr, ctxt, rule);
+        if (!typeCheckFmla(ruleStr, ctxt, rule)) {
+
+            if (option("delete-rules-failing-typecheck")) {
+                unitInfo->addExcludedRule(ruleNum - 1);
+                rule->child(0) = nTRUE;
+
+                string ruleName = rule->id;
+                string ruleKind =
+                    unitInfo->isUserRule(ruleNum - 1)
+                    ? "user"
+                    : "Examiner";
+
+                printMessage(WARNINGm,
+                         "Deleting " + ruleKind + " rule " + ruleName
+                             + "because it fails type check");
+            }
+            else {
+                typeCheckGood = false;
+            }
+        }
     }
     
     for (int goalNum = 1; goalNum <= goals->arity(); goalNum++) {

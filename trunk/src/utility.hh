@@ -213,6 +213,7 @@ public:
         return joinPaths(unitPathPrefix, unitName);
     }
     set<int> getExcludedRules() {return excludedRules;}
+    bool isExcludedRule(int rNum) {return setMember(rNum, excludedRules);}
     void addExcludedRule(int rNum) {excludedRules.insert(rNum);}
     bool isUserRule(int rNum) {return rNum < unitRLURulesEnd; }
 

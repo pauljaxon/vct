@@ -1213,10 +1213,15 @@ Node* addTypeToRecordOp (FDLContext* c, Node* n) {
         if (normRcdTy->kind == RECORD_TY) {
             n->addChild(new Node(TYPE_PARAM, normRcdTy->id));
             c->typeResolutionMadeProgress = true;
+            return n;
         }
-        else {
-            c->typeResolutionIncomplete = true;
+        if (c->typeResolutionPhase == 3) {
+            printMessage(WARNINGm,
+                         "For node " + n->toShortString() + " at " + c->getPathString() + ENDLs
+                         + "Cannot resolve full type: there is not a single possibility" + ENDLs
+                         + "Please add more type information");
         }
+        c->typeResolutionIncomplete = true;
     }
     return n;
 }
