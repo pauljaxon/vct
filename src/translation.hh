@@ -37,7 +37,7 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 
 #include "node.hh"
 #include "context.hh"
-
+#include "utility.hh"
 
 void refineTypes(FDLContext* ctxt, Node* unit);
 
@@ -46,7 +46,7 @@ void introBitType(FDLContext* ctxt, Node* unit);
 void abstractBit(FDLContext* ctxt, Node* unit);
 
 
-bool typeCheckUnit(const string& tcKind, FDLContext* c, Node* n);
+bool typeCheckUnit(const string& tcKind, UnitInfo* ui, FDLContext* c, Node* n);
 
 void abstractEnums(FDLContext* ctxt, Node* unit);
 void enumsToIntSubranges(FDLContext* ctxt, Node* unit);

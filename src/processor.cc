@@ -618,7 +618,7 @@ void identifyEqsAtCompoundTypes(FDLContext* ctxt, Node* unit) {
 //========================================================================
 
 string 
-translateUnit(FDLContext* ctxt, Node* unit) {
+translateUnit(UnitInfo* unitInfo, FDLContext* ctxt, Node* unit) {
 
     printMessage(FINESTm,
                  "Standard Form context:" + ENDLs
@@ -635,7 +635,7 @@ translateUnit(FDLContext* ctxt, Node* unit) {
     printMessage(FINEm,
                  "Standard Form type check starting");
 
-    if (!typeCheckUnit("Pre-translation", ctxt, unit))
+    if (!typeCheckUnit("Pre-translation", unitInfo, ctxt, unit))
         return "Pre-translation typecheck failed";
 
     printMessage(FINEm,
@@ -768,7 +768,7 @@ translateUnit(FDLContext* ctxt, Node* unit) {
     printMessage(FINEm,
                  "Primary Translation End - type check starting");
 
-    if (!typeCheckUnit("Post-translation", ctxt, unit))
+    if (!typeCheckUnit("Post-translation", unitInfo, ctxt, unit))
         return "Post-translation typecheck failed";
 
     printMessage(FINEm,
@@ -808,8 +808,9 @@ elaborateUnit(Node* unit, UnitInfo* unitInfo) {
     FDLContext* ctxt = putUnitInStandardForm(unit, unitInfo);
 
     if (ctxt == 0) return "FDL normalisation failed";
-    
-    return translateUnit(ctxt, unit);
+
+    // Modifies possibly all 3 args
+    return translateUnit(unitInfo, ctxt, unit);
 }
 
 

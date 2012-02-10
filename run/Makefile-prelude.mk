@@ -188,7 +188,7 @@ else ifdef RLUA
 else ifdef RLUD
   std_rlu_sfx=-rlud
   std_rlu_option= -read-directory-rlu-files -read-unit-rlu-files \
-                  -delete-rules-with-undeclared-ids
+                  -expect-user-rules-with-undeclared-ids
 endif
 
 #-----------------------------------------------------------------------------
@@ -407,7 +407,9 @@ std_options = \
             -utick\
             -gtick\
             -longtick\
+            -delete-rules-failing-typecheck\
             -echo-final-stats\
+          
             -level=warning
 
 
