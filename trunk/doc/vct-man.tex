@@ -16,7 +16,7 @@
 \author{Paul Jackson \\
         \texttt{pbj@inf.ed.ac.uk}}
 
-\date{20th July 2011}
+\date{3rd Feb 2012}
 
 %\usepackage{vpage}
 %\usepackage{vmargin}
@@ -992,12 +992,33 @@ process.
   should be a natural number.
   The default is not to time out prover invocations.
 
+\optionv{watchdog-timeout}{time}
+  %
+  If using the \smtlib{}2 file-level interface mode, use the provided
+  \emph{watchdogrun} C program to time out prover invocations after
+  \emph{time} seconds of inactivity on the prover's output.  The
+  \texttt{time} value can be a natural number or a fixed-point
+  number (e.g. 0.1).  The default is not to time out prover invocations.
+
+  The timeout measurement from the last output activity (or prover
+  start time) is useful when a single call of the prover is used to
+  answer multiple queries.  When timeouts are measured this way, they
+  bound the run-time of the prover on the current query it is
+  attempting, rather than also including in the allowed run period the
+  times spent by the prover answering previous queries in a query set.
+
+\optionv{smtlib2-soft-timeout}{time}
+ %  
+ If using the \smtlib{}2 file-level interface mode and \zthree v3.1 or newer,
+ timeout \emph{check-sat} prover invocations after \emph{time} milliseconds.
+ The \texttt{time} value should be a natural number.
+
 \optionv{shell-timeout}{time}
   If using either of the file-level interface modes, 
    use the provided shell script 
    \texttt{timeout.sh} to time out prover invocations after \emph{time} 
   seconds.  The \texttt{time} value can
-  be an integer or a fixed-point number (e.g. 0.1).
+  be a natural number or a fixed-point number (e.g. 0.1).
   The default is not to time out prover invocations.
 
   Currently this option is not that robust and use of \texttt{-ulimit-timeout}
