@@ -491,7 +491,7 @@ deleteRulesWithUndeclaredIds(FDLContext* ctxt,
 
             printMessage(messageLevel,
                          "Deleting " + ruleKind + " rule " + ruleName
-                         + "because of " + ENDLs
+                         + " because of " + ENDLs
                          + "undeclared identifiers:" + undeclaredIds + ENDLs
                              + "and undeclared functions:" + undeclaredFuns);
 

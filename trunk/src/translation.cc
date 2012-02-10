@@ -254,7 +254,7 @@ string typeCheck(FDLContext* c, Node* node, Node* expectedType) {
 // Return true if type check succeeds
 
 
-bool typeCheckFmla(const string& fmlaName, FDLContext* c, Node* node) {
+bool typeCheckFmla(int reportingLevel, const string& fmlaName, FDLContext* c, Node* node) {
 
     c->strictTyping = true;
 
@@ -265,7 +265,7 @@ bool typeCheckFmla(const string& fmlaName, FDLContext* c, Node* node) {
     }
     else {
         printMessage
-            (ERRORm,
+            (reportingLevel,
              "Type check failed for " + fmlaName + ":" + ENDLs
              + node->toString() + ENDLs + ENDLs
              + messages + ENDLs
@@ -293,9 +293,10 @@ bool typeCheckUnit(const string& tcKind,
         string ruleStr (tcKind + ", Rule " + intToString(ruleNum));
         Node* rule = rules->child(ruleNum - 1);
 
-        if (!typeCheckFmla(ruleStr, ctxt, rule)) {
+        if (option("delete-rules-failing-typecheck")) {
 
-            if (option("delete-rules-failing-typecheck")) {
+            if (!typeCheckFmla(WARNINGm, ruleStr, ctxt, rule)) {
+
                 unitInfo->addExcludedRule(ruleNum - 1);
                 rule->child(0) = nTRUE;
 
@@ -307,11 +308,12 @@ bool typeCheckUnit(const string& tcKind,
 
                 printMessage(WARNINGm,
                          "Deleting " + ruleKind + " rule " + ruleName
-                             + "because it fails type check");
+                             + " because it fails type check");
             }
-            else {
-                typeCheckGood = false;
-            }
+        }
+        else {
+            typeCheckGood =
+                typeCheckGood && typeCheckFmla(ERRORm, ruleStr, ctxt, rule);
         }
     }
     
@@ -337,7 +339,7 @@ bool typeCheckUnit(const string& tcKind,
             string hypStr (goalStr + ", Hyp " + intToString(hypNum));
 
             typeCheckGood = typeCheckGood &
-                typeCheckFmla(hypStr, ctxt, hyp);
+                typeCheckFmla(ERRORm, hypStr, ctxt, hyp);
             
         }
 
@@ -350,7 +352,7 @@ bool typeCheckUnit(const string& tcKind,
             string conclStr (goalStr + ", Concl " + intToString(conclNum));
 
             typeCheckGood = typeCheckGood &
-                typeCheckFmla(conclStr, ctxt, concl);
+                typeCheckFmla(ERRORm, conclStr, ctxt, concl);
             
         }
     } // END for goalNum = ...
