@@ -1566,6 +1566,7 @@ int removeFile (const string& file, int& errNumber, string& errorMessage) {
     if (failure != 0) {
         errorMessage = string( strerror(errno));
     }
+    errNumber = errno;
     return failure;
 }
 
