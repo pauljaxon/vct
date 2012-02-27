@@ -390,10 +390,8 @@ std_options = \
             $(enum_option)\
             $(repeat_option)\
             $(std_rlu_option)\
-            -units=$($*_units)\
             -report=$(report_root)\
             -report-dir=$(OUTDIR)\
-            -prefix=$($*_prefix)\
             -decls=prelude.fdl\
             -unique-working-files\
             -delete-working-files\
@@ -409,9 +407,8 @@ std_options = \
             -longtick\
             -delete-rules-failing-typecheck\
             -echo-final-stats\
-          
-            -level=warning
-
+            -level=warning\
+            $($*_options)
 
 #----------------------------------------------------------------------------
 # API CVC3 options
