@@ -42,31 +42,48 @@ ALT_ERGO=alt-ergo
 # Locations of SPARK VC files
 # ---------------------------
 
-# Targets are set up below that can easily be used for different sets
-# of VC units.  For a set of VC units named <vc-set>, the targets
-# assume the definition here of:
+# Victor is run using Make targets of form
 #
-# 1. A Make variable "<vc-set>_prefix" for the root of the directory tree 
-#    for the set.
+#   <vcset>-<translation-and-prover-options>
+#
+# Here <vcset> is a name given to a set of VCs.  The set can be
+# anything from one or two VCs from a single unit to all the VCs from
+# 1000s of units of a large project.
 
-# 2. A Make variable "<vc-set>_units" that names the .lis file listing 
-#    the unit names and, for each unit, specifies options.  See the
-#    user manual "Unit listing input file" section for details on how to
-#    format this file.
-#
-# 3. A phony target "vcset-<vc-set>" against which to check matches for
-#    the pattern rules below for running Victor.
+# The association between a particular <vcset> name and the
+# corresponding VCs is made by setting the value of a Make variable
+# "<vcset>_options" which supplies Victor options for selecting the
+# VCs.
+
+# * For multiple units, common options are -prefix and -units. See
+#   autop and hilton VC set examples below.  See the user manual "Unit
+#   listing input file" section for details on how to format the .lis
+#   file provided as the -units value.
+
+# * For a single unit, the unitname can be provided as a non-option
+#   argument, along with a -prefix option, as needed.
+
+# * The options list can also include flags that provide
+#   prover-independent customisation of the VC translation.  For
+#   prover-specific customisation, it is probably better to create
+#   variations on the provided targets.
+
+# For each VC set, a phony target "vcset-<vcset>" is also needed in
+# order to ensure that the pattern targets for running Victor always
+# correctly match a valid VC set anme.
 
 # Make variables for VC sets distributed with Victor.
 
 VCT_VCSETS=../vc
 
-autop_prefix =  $(VCT_VCSETS)/autop/code
-autop_units =   $(VCT_VCSETS)/autop/autop-units.lis
+autop_options = \
+    -prefix=$(VCT_VCSETS)/autop/code \
+    -units=$(VCT_VCSETS)/autop/autop-units.lis
 .PHONY: vcset-autop
 
-hilton_prefix = $(VCT_VCSETS)/hilton/code
-hilton_units =  $(VCT_VCSETS)/hilton/hilton-units.lis
+hilton_opions = \
+    -prefix=$(VCT_VCSETS)/hilton/code \
+    -units=$(VCT_VCSETS)/hilton/hilton-units.lis
 .PHONY: vcset-hilton
 
 
@@ -85,7 +102,7 @@ hilton_units =  $(VCT_VCSETS)/hilton/hilton-units.lis
 # pattern rules. (rules with % in target)
 
 # Use of phony rather than real targets ensures that rules always
-# fires when make called.
+# fire when make called.
 
 
 #=============================================================================
@@ -271,10 +288,10 @@ include Makefile-prelude.mk
 # Naming conventions
 
 # Make targets:
-#   <unit-set>-<interface-m><prover>
+#   <vc-set>-<interface-m><prover>
 #
 # Output files:
-# <prefix><unit-set>-<interface-m><prover><suffix>.[vlg|vct|vsm]
+# <prefix><vc-set>-<interface-m><prover><suffix>.[vlg|vct|vsm]
 
 # <prefix> = 
 # f-: conclusions fused
@@ -311,7 +328,7 @@ include Makefile-prelude.mk
 #
 # in OUTDIR directory (by default ./out).
 
-# Also below we use <prefix><unit-set>-xx when analysing Simplifier 
+# Also below we use <prefix><vc-set>-xx when analysing Simplifier 
 # behaviour.
 
 #----------------------------------------------------------------------------
@@ -403,7 +420,7 @@ include Makefile-prelude.mk
 	$(VCT) \
             $(std_options)\
             $(smtlib2_options) \
-            -prover-command=$(Z3) \
+            -prover-command='$(Z3)' \
 
 
 #----------------------------------------------------------------------------
