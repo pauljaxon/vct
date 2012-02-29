@@ -410,6 +410,7 @@ std_options = \
             -read-unit-rlu-files \
             -expect-dir-user-rules-with-undeclared-ids\
             -warn-about-speculative-overload-resolution\
+            -use-alt-solver-driver \
             -echo-final-stats\
             -level=warning\
             $($*_options)
