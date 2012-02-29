@@ -215,7 +215,11 @@ public:
     set<int> getExcludedRules() {return excludedRules;}
     bool isExcludedRule(int rNum) {return setMember(rNum, excludedRules);}
     void addExcludedRule(int rNum) {excludedRules.insert(rNum);}
-    bool isUserRule(int rNum) {return rNum < unitRLURulesEnd; }
+    bool isUserRule(int rNum)    {return rNum < unitRLURulesEnd; }
+    bool isDirUserRule(int rNum) {return rNum < dirRLURulesEnd; }
+    bool isUnitUserRule(int rNum) {
+        return dirRLURulesEnd <= rNum && rNum < unitRLURulesEnd;
+    }
 
     vector<string> getDeclFiles() {return declFiles; }
     vector<string> getRuleFiles() {return ruleFiles; }

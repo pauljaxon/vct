@@ -385,13 +385,14 @@ void augmentConstDecls(FDLContext* ctxt, Node* unit) {
 
 
 //========================================================================
-// Find undeclared constants and functions
+// Find undeclared constants, functions and types
 //========================================================================
 
 class declCheck {
 public:
     set<string> constIds;
     set<string> funIds;
+    set<string> typeIds;
  
     Node* operator() (FDLContext* c, Node* n);
 };
@@ -411,6 +412,11 @@ declCheck::operator() (FDLContext* c, Node* n) {
 
         funIds.insert(n->id);
     }
+    else if (n->kind == TYPE_ID
+             && c->lookupType(n->id) == 0) {
+
+        typeIds.insert(n->id);
+    }
     return n;
 }
 
@@ -419,8 +425,9 @@ declCheck::operator() (FDLContext* c, Node* n) {
 void
 findUndeclaredIds(FDLContext* ctxt,
                   Node* unit,
-                  string& undeclaredIds,
-                  string& undeclaredFuns) {
+                  string& undeclaredConsts,
+                  string& undeclaredFuns,
+                  string& undeclaredTypes) {
 
     declCheck c;
     mapOverWithContext(c, ctxt, unit);
@@ -428,39 +435,51 @@ findUndeclaredIds(FDLContext* ctxt,
     for (set<string>::iterator i = c.constIds.begin()
              ; i != c.constIds.end()
              ; i++ ) {
-        undeclaredIds += ENDLs + (*i);
+        undeclaredConsts += ENDLs + (*i);
     }
     for (set<string>::iterator i = c.funIds.begin()
              ; i != c.funIds.end()
              ; i++ ) {
         undeclaredFuns += ENDLs + (*i);
     }
+    for (set<string>::iterator i = c.typeIds.begin()
+             ; i != c.typeIds.end()
+             ; i++ ) {
+        undeclaredTypes += ENDLs + (*i);
+    }
     return;
 }
 
 
 bool checkForUndeclaredIds(FDLContext* ctxt, Node* unit) {
-    string idStr;
+    string constStr;
     string funStr;
-    findUndeclaredIds(ctxt, unit, idStr, funStr);
-    if (idStr.size() > 0) {
-        printMessage(ERRORm, "Found undeclared identifiers:"
-                               + idStr);
+    string typeStr;
+    findUndeclaredIds(ctxt, unit, constStr, funStr, typeStr);
+    if (constStr.size() > 0) {
+        printMessage(ERRORm, "Found undeclared constants:"
+                               + constStr);
     }
     if (funStr.size() > 0) {
         printMessage(ERRORm, "Found undeclared functions:"
                                + funStr);
     }
-    return idStr.size() + funStr.size() > 0 ;
+    if (typeStr.size() > 0) {
+        printMessage(ERRORm, "Found undeclared types:"
+                               + typeStr);
+    }
+    return constStr.size() + funStr.size() + typeStr.size() > 0 ;
 }
 
 // Rules with undeclared ids replaced with constant true.
 // Positions of deleted rules recorded in unitInfo->excludedRules.
 
 // Undeclared ids in Examiner generated rules are always flagged with
-// warnings. 
-// Undeclared ids in user supplied rules are flagged with warnings
-// unless option -expect-user-rules-with-undeclared-ids is provided.
+// warnings.  
+
+// Undeclared ids in directory-level user-supplied rules are flagged
+// with warnings unless option
+// -expect-dir-user-rules-with-undeclared-ids is provided.
 
 void
 deleteRulesWithUndeclaredIds(FDLContext* ctxt,
@@ -471,19 +490,30 @@ deleteRulesWithUndeclaredIds(FDLContext* ctxt,
     for (int ruleNum = 1; ruleNum <= rules->arity(); ruleNum++) {
 
         Node* rule = rules->child(ruleNum-1);
-        string undeclaredIds;
+        string undeclaredConsts;
         string undeclaredFuns;
-        findUndeclaredIds(ctxt, rule, undeclaredIds, undeclaredFuns);
-        if (undeclaredIds.size() + undeclaredFuns.size() > 0) {
+        string undeclaredTypes;
+        findUndeclaredIds(ctxt,
+                          rule,
+                          undeclaredConsts,
+                          undeclaredFuns,
+                          undeclaredTypes);
+        if (undeclaredConsts.size()
+            + undeclaredFuns.size()
+            + undeclaredTypes.size() > 0) {
 
             // rule = RULE{<name>} <rule>
             string ruleName = rule->id;
-            string ruleKind = unitInfo->isUserRule(ruleNum - 1)
-                              ? "user"
-                              : "Examiner";
+            string ruleKind =
+                unitInfo->isDirUserRule(ruleNum - 1)
+                ? "directory user"
+                : unitInfo->isUnitUserRule(ruleNum - 1)
+                ? "unit user"
+                : "Examiner";
+
             int messageLevel = 
-              option("expect-user-rules-with-undeclared-ids")
-                && unitInfo->isUserRule(ruleNum - 1)
+              option("expect-dir-user-rules-with-undeclared-ids")
+                && unitInfo->isDirUserRule(ruleNum - 1)
                 ? INFOm
                 : WARNINGm;
             
@@ -492,8 +522,9 @@ deleteRulesWithUndeclaredIds(FDLContext* ctxt,
             printMessage(messageLevel,
                          "Deleting " + ruleKind + " rule " + ruleName
                          + " because of " + ENDLs
-                         + "undeclared identifiers:" + undeclaredIds + ENDLs
-                             + "and undeclared functions:" + undeclaredFuns);
+                         + "undeclared constants:" + undeclaredConsts + ENDLs
+                         + "undeclared functions:" + undeclaredFuns + ENDLs
+                         + "undeclared types:" + undeclaredTypes);
 
             unitInfo->addExcludedRule(ruleNum-1);
         }
@@ -793,22 +824,25 @@ closeExpr(FDLContext* c, const string& ruleName, Node* expr) {
             c->typeResolutionMadeProgress = true;
 
             if (tyKind == INT_OR_REAL_TY) {
-                printMessage(INFOm,
-          "closeExpr: Free variable " + id 
+                printMessage(WARNINGm,
+                      "FDL issue" + ENDLs
+                       + "Free variable " + id 
                        + " in rule " + ruleName + ENDLs
                        + " is constrained to have integer or real type." + ENDLs
                        + "Speculatively assigning it to have integer type ");
             }
             else if (tyKind == INT_REAL_OR_ENUM_TY) {
-                printMessage(INFOm,
-          "closeExpr: Free variable " + id 
+                printMessage(WARNINGm,
+                      "FDL issue" + ENDLs
+                       + "Free variable " + id 
                        + " in rule " + ruleName + ENDLs
                        + " is constrained to have integer, real or enumeration type." + ENDLs
                        + "Speculatively assigning it to have integer type ");
             }
             else {
-                printMessage(INFOm,
-          "closeExpr: Free variable " + id 
+                printMessage(WARNINGm,
+                      "FDL issue" + ENDLs
+                      + "Free variable " + id 
                        + " in rule " + ruleName + ENDLs
                        + " has  no constraints on its typing. " + ENDLs
                        + "Speculatively assigning it to have integer type ");
@@ -884,22 +918,25 @@ resolveIneqs (FDLContext* ctxt, Node* n) {
         n->kind = intRelKind;
         ctxt->typeResolutionMadeProgress = true;
     }
+    else if (child0BaseTy->kind == REAL_TY || child1BaseTy->kind == REAL_TY) {
+
+        n->kind = realRelKind;
+        ctxt->typeResolutionMadeProgress = true;
+    }
     else if (ctxt->typeResolutionPhase >= 2
         && (child0BaseTy->kind == INT_TY || child1BaseTy->kind == INT_TY)
         ) {
         n->kind = intRelKind;
         ctxt->typeResolutionMadeProgress = true;
 
-        printMessage(INFOm,
-                         "resolveIneqs: Speculatively inserting "
+        printMessage( (option("warn-about-speculative-overload-resolution")
+                       ? WARNINGm
+                       : INFOm),
+                         "FDL issue" + ENDLs
+                         + "resolveIneqs: Speculatively inserting "
                           + kindString(intRelKind) +
                          " node at position " + ctxt->getPathString());
         
-    }
-    else if (child0BaseTy->kind == REAL_TY || child1BaseTy->kind == REAL_TY) {
-
-        n->kind = realRelKind;
-        ctxt->typeResolutionMadeProgress = true;
     }
     else if (child0BaseTy->kind == ENUM_TY) {
 
@@ -1040,10 +1077,13 @@ resolveEq(FDLContext* ctxt, Node* n) {
             // U,S  (U,T)
             n->addChild(child1Ty->copy());
 
-            printMessage(INFOm,
-                         "resolveEq: Speculatively adding type " 
-                          + child1Ty->toString() + " to "
-                          + kindString(n->kind) +
+            printMessage( (option("warn-about-speculative-overload-resolution")
+                           ? WARNINGm
+                           : INFOm),
+                         "FDL issue" + ENDLs
+                         + "resolveEq: Speculatively adding type " 
+                         + child1Ty->toString() + " to "
+                         + kindString(n->kind) +
                          " node at position " + ctxt->getPathString());
 
             ctxt->typeResolutionMadeProgress = true;
@@ -1053,10 +1093,13 @@ resolveEq(FDLContext* ctxt, Node* n) {
             // S,U  (T,U)
             n->addChild(child0Ty->copy());
 
-            printMessage(INFOm,
-                         "resolveEq: Speculatively adding type " 
-                          + child0Ty->toString() + " to "
-                          + kindString(n->kind) +
+    printMessage( (option("warn-about-speculative-overload-resolution")
+                           ? WARNINGm
+                           : INFOm),
+                         "FDL issue" + ENDLs
+                         + "resolveEq: Speculatively adding type " 
+                         + child0Ty->toString() + " to "
+                         + kindString(n->kind) +
                          " node at position " + ctxt->getPathString());
 
             ctxt->typeResolutionMadeProgress = true;
@@ -1114,8 +1157,11 @@ Node* resolveBinaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
         ) {
         // I,U  U,I  Phases 2 & 3.
         c->typeResolutionMadeProgress = true;
-        printMessage(INFOm,
-                     "resolveBinaryArithNode: Speculatively inserting "
+        printMessage( (option("warn-about-speculative-overload-resolution")
+                       ? WARNINGm
+                       : INFOm),
+                     "FDL issue" + ENDLs
+                     + "resolveBinaryArithNode: Speculatively inserting "
                      + kindString(iKind) +
                      " at position " + c->getPathString());
         return n->updateKind(iKind);
@@ -1214,12 +1260,6 @@ Node* addTypeToRecordOp (FDLContext* c, Node* n) {
             n->addChild(new Node(TYPE_PARAM, normRcdTy->id));
             c->typeResolutionMadeProgress = true;
             return n;
-        }
-        if (c->typeResolutionPhase == 3) {
-            printMessage(WARNINGm,
-                         "For node " + n->toShortString() + " at " + c->getPathString() + ENDLs
-                         + "Cannot resolve full type: there is not a single possibility" + ENDLs
-                         + "Please add more type information");
         }
         c->typeResolutionIncomplete = true;
     }
@@ -1450,7 +1490,7 @@ Node* resolveIDs(FDLContext* c, Node* n) {
             return n->updateKind(CONST);
         }
         else {
-            printMessage(INFOm,
+            printMessage(ERRORm,
                          "resolveIDs: encountered unexpected id: "
                          + n->id);
             return n;
@@ -1490,7 +1530,7 @@ putUnitInStandardForm(Node* unit, UnitInfo* unitInfo) {
     augmentConstDecls(ctxt, unit);
 
     //--------------------------------------------------------------------
-    // Delete rules with undeclared functions and constants
+    // Delete rules with undeclared constants, functions and types
     //--------------------------------------------------------------------
     // Updates unitInfo with indexes of rules to exclude.
 
@@ -1498,9 +1538,8 @@ putUnitInStandardForm(Node* unit, UnitInfo* unitInfo) {
 
     
     //--------------------------------------------------------------------
-    // Check all function and constant identifiers have bindings
+    // Check all type, function and constant identifiers have bindings
     //--------------------------------------------------------------------
-    // FIX: needs to be sensitive to unitInfo->excludedRules
     if (checkForUndeclaredIds(ctxt, unit))
         return 0;
 
