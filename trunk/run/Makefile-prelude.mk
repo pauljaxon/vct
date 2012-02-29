@@ -176,19 +176,19 @@ endif
 #-----------------------------------------------------------------------------
 # Reading standard user-defined rules files
 #------------------------------------------
+# Default in std_options is
+#  -read-directory-rlu-files\
+#  -read-unit-rlu-files \
+#  -expect-dir-user-rules-with-undeclared-ids
 
-ifdef RLU
-  std_rlu_sfx=-rlu
-  std_rlu_option= -read-directory-rlu-files -read-unit-rlu-files
+ifdef NRLU
+  std_rlu_sfx=-nrlu
+  std_rlu_option= -read-directory-rlu-files=false -read-unit-rlu-files=false
 
 else ifdef RLUA
   std_rlu_sfx=-rlua
-  std_rlu_option= -read-directory-rlu-files -read-unit-rlu-files \
-                  -read-all-decl-files-in-dir
-else ifdef RLUD
-  std_rlu_sfx=-rlud
-  std_rlu_option= -read-directory-rlu-files -read-unit-rlu-files \
-                  -expect-user-rules-with-undeclared-ids
+  std_rlu_option= -read-all-decl-files-in-dir
+
 endif
 
 #-----------------------------------------------------------------------------
@@ -406,6 +406,10 @@ std_options = \
             -gtick\
             -longtick\
             -delete-rules-failing-typecheck\
+            -read-directory-rlu-files\
+            -read-unit-rlu-files \
+            -expect-dir-user-rules-with-undeclared-ids\
+            -warn-about-speculative-overload-resolution\
             -echo-final-stats\
             -level=warning\
             $($*_options)

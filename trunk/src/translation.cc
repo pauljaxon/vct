@@ -70,20 +70,32 @@ using std::pair;
 // Typechecking
 //============================================================================
 //============================================================================
+// `Type-checking' here does both syntactic checks and type checks.
+// If there are problems with the syntax, then, to avoid clutter, the
+// type error messages are suppressed.
 
 class nodeTypeChecker {
 public:
-    string messages;
+    string syntaxMessages;
+    string tCMessages;
 
-    void addMessage(const string& m);
+    void addSyntaxMessage(const string& m);
+    void addTCMessage(const string& m);
     Node* operator() (FDLContext* c, Node* n);
 };
 
 
 void
-nodeTypeChecker::addMessage(const string& m) {
-    if (messages.size() > 0) messages += ENDLs;
-    messages += m;
+nodeTypeChecker::addSyntaxMessage(const string& m) {
+    if (syntaxMessages.size() > 0) syntaxMessages += ENDLs;
+    syntaxMessages += m;
+    return;
+}
+
+void
+nodeTypeChecker::addTCMessage(const string& m) {
+    if (tCMessages.size() > 0) tCMessages += ENDLs;
+    tCMessages += m;
     return;
 }
 
@@ -101,22 +113,22 @@ nodeTypeChecker::operator() (FDLContext* c, Node* n) {
     // Flag polymorphic nodes
 
     if (isPolymorphicNode(n)) {
-        addMessage(  "Found unexpected polymorphic node "
-                     + n->toShortString() + ENDLs +
-                     "  at " + c->getPathString() + ENDLs 
-                     );
+        addSyntaxMessage(  "Found unexpected polymorphic node "
+                           + n->toShortString() + ENDLs +
+                           "  at " + c->getPathString() + ENDLs 
+                        );
         return n;  
     }
     // Flag unbound identifiers
     if (n->kind == ID) {
-        addMessage(  "Found unexpected "
-                     + n->toShortString() + ENDLs +
-                     "  at " + c->getPathString() + ENDLs 
-                     );
+        addSyntaxMessage(  "Found unexpected "
+                           + n->toShortString() + ENDLs +
+                           "  at " + c->getPathString() + ENDLs 
+                        );
         return n;
     }
     else if (n->kind == VAR && c->lookupBinding(n->id) == 0) {
-        addMessage(  "Found unbound "
+        addSyntaxMessage(  "Found unbound "
                      + n->toShortString() + ENDLs +
                      "  at " + c->getPathString() + ENDLs 
                      );
@@ -126,10 +138,10 @@ nodeTypeChecker::operator() (FDLContext* c, Node* n) {
              && c->lookupVar(n->id) == 0
              && c->lookupConst(n->id) == 0
              && c->lookupEnumConst(n->id) == 0) {
-        addMessage(  "Found undeclared "
-                     + n->toShortString() + ENDLs +
-                     "  at " + c->getPathString() + ENDLs 
-                     );
+        addSyntaxMessage(  "Found undeclared "
+                           + n->toShortString() + ENDLs +
+                           "  at " + c->getPathString() + ENDLs 
+                        );
         return n;
     }
 
@@ -139,7 +151,7 @@ nodeTypeChecker::operator() (FDLContext* c, Node* n) {
 
     if (subNodeTypes->arity() != (int) subNodes.size()) {
 
-        addMessage(  "For node " + n->toShortString() + ENDLs +
+        addTCMessage("For node " + n->toShortString() + ENDLs +
                      "  at " + c->getPathString() + ENDLs + 
                      "Have " + intToString((int) subNodes.size())
                      + " subnodes and "
@@ -206,7 +218,7 @@ nodeTypeChecker::operator() (FDLContext* c, Node* n) {
                      + "Actual type:" + ENDLs
                      + actualType->toString()
                      );
-        addMessage(  "For node " + (*subNode)->toShortString() + ENDLs
+        addTCMessage("For node " + (*subNode)->toShortString() + ENDLs
                      + "  at " + c->getPathString()
                      + kindString(n->kind) + "."
                      + intToString(i) + "." + ENDLs +
@@ -239,16 +251,18 @@ string typeCheck(FDLContext* c, Node* node, Node* expectedType) {
 
     Node* actualType = c->getType(node);
     if (! actualType->equals(expectedType)) {
-        nTC.addMessage(
-                     "At top node "
-                     + node->toShortString() + ENDLs
-                     + "Expected type:" 
-                     + expectedType->toShortString() + ENDLs
-                     + "Actual type:" 
-                     + actualType->toShortString() + ENDLs
-                     );
+        nTC.addTCMessage("At top node "
+                         + node->toShortString() + ENDLs
+                         + "Expected type:" 
+                         + expectedType->toShortString() + ENDLs
+                         + "Actual type:" 
+                         + actualType->toShortString() + ENDLs
+                        );
     }
-    return nTC.messages;
+    if (nTC.syntaxMessages.size() > 0)
+        return "Possible FDL issue" + ENDLs + nTC.syntaxMessages;
+    else
+        return nTC.tCMessages;
 }
 
 // Return true if type check succeeds
