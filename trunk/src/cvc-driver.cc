@@ -845,7 +845,7 @@ CVCDriver::checkGoal(string& remarks) {
         appendCommaString(remarks, "definitely false");
 	printMessage(FINEm, "concl false");
         state->outputCounterExample();
-        status = UNPROVEN;
+        status = FALSE;
         return false;
 
     case CVC3::UNKNOWN: {
@@ -895,7 +895,7 @@ CVCDriver::checkGoal(string& remarks) {
                      + ENDLs + reasonsString);
 
         state->outputCounterExample();
-        status =  resourceLimitReached ? RESOURCE_LIMIT : UNPROVEN;
+        status =  resourceLimitReached ? RESOURCE_LIMIT : UNKNOWN;
         return false;
     }
         
@@ -917,7 +917,7 @@ CVCDriver::checkGoal(string& remarks) {
                      "CVCDriver::checkGoal: got ABORT query result"
                      + ENDLs + reasonsString);
 
-        status = UNPROVEN;
+        status = UNKNOWN;
 
         return returnVal;
 

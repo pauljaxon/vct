@@ -209,11 +209,14 @@ public:
     int parseTreeSize;
     int translatedUnitSize;
     int nodeAllocCount;
+
     int trivialGoals;
     int trueQueries;
-    int unprovenQueries;
+    int unknownQueries;
+    int falseQueries;
     int timeoutQueries;
     int errorQueries;
+    int excludedConcls;
 
     double unitTime;
     double unprovenQueriesTime; 
@@ -388,15 +391,22 @@ void printUnitSummary(UnitInfo* ui);
 //========================================================================
 // Reporting statistics
 //========================================================================
-// Main routine responsible for initialising globals.
+// Globals initialised at definition point.
 // Solver interface code responsible for updating globals.
 
-extern int trivialConcls;
-extern int trueConcls;
-extern int unprovenConcls;
-extern int errorConcls;
+// A `concls' here is each goal / goal slice that gets reported on a line
+// of the VCT file
 
-extern int timeoutConcls;
+extern int trivialConcls;   // Trivially true by Examiner
+extern int trueConcls;      // Prover says concl true (unsat)
+extern int falseConcls;     // Prover says concl false (sat)
+extern int unknownConcls;   // Prover returns "unknown" results
+extern int errorConcls;     // Some error occurred
+extern int timeoutConcls;   // Prover timed out or reached
+                            // some other resource limit
+extern int excludedConcls;  // Concl excluded from consideration by
+                            // command line options and units.lis file
+                            // directives.
 
 void printStats();
 
