@@ -66,6 +66,9 @@ unsigned long stringToULong(const string& s);
 
 string boolToString(bool b);
 
+string doubleToFixPtString(double d, int prec);
+
+
 extern const string ENDLs;
 
 bool hasSuffix(const string& s, const string& t);  // s has suffix t
@@ -201,6 +204,23 @@ public:
     int dirRLURulesEnd;
     int unitRLURulesEnd;
 
+    // Statistics on unit.  
+
+    int parseTreeSize;
+    int translatedUnitSize;
+    int nodeAllocCount;
+    int trivialGoals;
+    int trueQueries;
+    int unprovenQueries;
+    int timeoutQueries;
+    int errorQueries;
+
+    double unitTime;
+    double unprovenQueriesTime; 
+    double provenQueriesTime; 
+    double maxProvenQueryTime; 
+    string remarks;
+
     UnitInfo(const string& s);
 
     string getUnitPathPrefix() {return unitPathPrefix;}
@@ -226,6 +246,10 @@ public:
     bool includeUnit();
     bool include(int goal, int concl);
 
+    void addRemark(const string& s) {
+        appendCommaString(remarks, s);
+        return;
+    }
 };
 
 //========================================================================
@@ -359,6 +383,7 @@ printCSVRecordAux(const string& unitKind,
 void
 printCSVRecord(const string& status, const string& remarks);
 
+void printUnitSummary(UnitInfo* ui);
 
 //========================================================================
 // Reporting statistics
@@ -366,6 +391,7 @@ printCSVRecord(const string& status, const string& remarks);
 // Main routine responsible for initialising globals.
 // Solver interface code responsible for updating globals.
 
+extern int trivialConcls;
 extern int trueConcls;
 extern int unprovenConcls;
 extern int errorConcls;
@@ -406,7 +432,8 @@ private:
 public:
     Timer();
     void restart();
-
+    
+    double getTime();
     string toString();      
     string toLongString();  
 };

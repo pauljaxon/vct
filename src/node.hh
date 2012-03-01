@@ -259,18 +259,20 @@ class Node {
   private:
 
     static std::vector<Node*> pool;
-    static int poolAllocCount;
 
     void addToPool() {
         pool.push_back(this);
-        poolAllocCount++;
         return;
     }
 
  public:
 
     static void deletePool();
-    static int getPoolAllocCount() {return poolAllocCount;}
+    static int getPoolAllocCount() {return pool.size();}
+
+
+
+
 
     // Instance fields
 
@@ -367,6 +369,8 @@ class Node {
     }
 
     int arity() const {return children.size(); }
+
+    int treeSize() const;
 
     Node* updateKind(z::Kind k) {
         kind = k;

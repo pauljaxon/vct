@@ -313,8 +313,8 @@ SMTDriver::driveUnit(Node* unit, UnitInfo* unitInfo) {
         if (goal->arity() < 2) { // "*** true" goals
             printMessage(FINEm, "Input goal is trivial");
             if (option("count-trivial-goals")) {
-                printCSVRecord("true", "trivial goal");
-                trueConcls++;
+                printCSVRecord("trivial","");
+                trivialConcls++;
             }
             continue; 
         }
@@ -628,8 +628,8 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
 
             Status status = check(remarks);
 
-            string queryTime;
-            if (onlineInterface()) queryTime = queryTimer.toString();
+            double queryTime = 0.0;
+            if (onlineInterface()) queryTime = queryTimer.getTime();
         
             // -----------------------------------------------------------
             // Pop assertion set stack
@@ -667,7 +667,7 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
 
         finaliseQuerySet();
 
-        results.push_back(QueryStatus(ERROR,remarks,""));
+        results.push_back(QueryStatus(ERROR,remarks,0));
 
         return results;
      
@@ -676,6 +676,13 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
     // ---------------------------------------------------------------------
     // Run query set offline on solver
     // ---------------------------------------------------------------------
+    // The handling of recording the time here will need revisiting
+    // if the run results returned by getRunResults actually include
+    // run times for each query in a query set.
+
+    // The solution here records the time for running the whole query
+    // set in the results for the 1st query in the set, leaving the
+    // time at 0 for the results for the remaining queries in the set.
 
     if (!onlineInterface()) {
 
@@ -686,7 +693,7 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
         
         bool runError = runQuerySet(remarks);
 
-        string queryTime = queryTimer.toString();
+        double queryTime = queryTimer.getTime();
 
         if (runError) {
             printMessage(ERRORm, "Error flagged on run of solver\n");
@@ -778,7 +785,8 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
 
         //  Set up query record for goal / goal slices
         QueryRecord qRcd;
-        qRcd.goalNum = goalNum; 
+        qRcd.goalNum = goalNum;
+        qRcd.time = 0.0;
         qRcd.status = UNCHECKED;
 
         // Customise query and result records for goal / goal slices and save
@@ -881,56 +889,69 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
         int queryNum = resultRecords.at(i).queryNum;
 
         string resultStatus;
-        string time;
+        double time = 0.0;
         string remarks;
 
         // currentGoalNumStr and currentConcl are globals from utility.cc
         currentGoalNumStr = intToString(resultRecords.at(i).goalNum);
 
         if (queryNum == -1) {
-            resultStatus = "true";
             currentConcl = 0; 
-            time = "0";
             remarks = "trivial goal";
-            trueConcls++;
+            resultStatus = "true";
+            unitInfo->trivialGoals++;
         }
         else {
-            switch (queryRecords.at(queryNum).status) {
-            case(TRUE):
-                resultStatus = "true";
-                trueConcls++;
-                break;
-            case(UNPROVEN):
-                resultStatus = "unproven";
-                unprovenConcls++;
-                break;
-            case(RESOURCE_LIMIT):
-                resultStatus = "unproven";
-                unprovenConcls++;
-                timeoutConcls++;
-                break;
-            case(ERROR):
-                resultStatus = "error";
-                unprovenConcls++;
-                timeoutConcls++;
-                break;
-            case(UNCHECKED):
-                resultStatus = "error";
-                unprovenConcls++;
-                printMessage(ERRORm, "Found unchecked query");
-                break;
-            }
             currentConcl = queryRecords.at(queryNum).conclNum;
             time = queryRecords.at(queryNum).time;
             remarks = queryRecords.at(queryNum).remarks;
+
+            switch (queryRecords.at(queryNum).status) {
+            case(TRUE):
+                resultStatus = "true";
+                unitInfo->trueQueries++;
+                unitInfo->provenQueriesTime += time;
+                if (time > unitInfo->maxProvenQueryTime) {
+                    unitInfo->maxProvenQueryTime = time;
+                }
+                break;
+            case(UNPROVEN):
+                resultStatus = "unproven";
+                unitInfo->unprovenQueries++;
+                unitInfo->unprovenQueriesTime += time;
+                break;
+            case(RESOURCE_LIMIT):
+                resultStatus = "unproven";
+                unitInfo->timeoutQueries++;
+                unitInfo->unprovenQueries++;
+                unitInfo->unprovenQueriesTime += time;
+                break;
+            case(ERROR):
+                resultStatus = "error";
+                unitInfo->errorQueries++;
+                break;
+            case(UNCHECKED):
+                resultStatus = "error";
+                unitInfo->errorQueries++;
+                printMessage(ERRORm, "Found unchecked query");
+                break;
+            }
         }
+        
         printCSVRecordAux(resultRecords.at(i).unitKind,
                           resultRecords.at(i).origins,
                           intToString(resultRecords.at(i).goalNum),
                           currentConcl,
                           resultStatus,
-                          time,
+                          doubleToFixPtString(time,3),
                           remarks);
     } // END for
+
+    trivialConcls  += unitInfo->trivialGoals;
+    trueConcls     += unitInfo->trueQueries;
+    unprovenConcls += unitInfo->unprovenQueries;
+    timeoutConcls  += unitInfo->timeoutQueries;
+    errorConcls    += unitInfo->errorQueries;
+
     return;
 }

@@ -156,6 +156,14 @@ boolToString(bool b) {
         return string("false");
 }
 
+string 
+doubleToFixPtString(double d, int prec) {
+    ostringstream oss;
+    oss << setprecision(prec) << fixed << d;
+    return oss.str();
+}
+
+
 // Is there platform sensitive way of doing this?  Is endl platform sensitive?
 
 const string ENDLs ("\n");
@@ -610,7 +618,23 @@ string withTimeoutAndIO(const string &cmd,
 UnitInfo::Status UnitInfo::status = UnitInfo::BEFORE_RANGE;
 
 UnitInfo::UnitInfo(const string& unitInfoStr)
-    : dirRLURulesEnd(0), unitRLURulesEnd(0) {
+    : dirRLURulesEnd(0),
+      unitRLURulesEnd(0),
+
+      parseTreeSize(0),
+      translatedUnitSize(0),
+      nodeAllocCount(0),
+      trivialGoals(0),
+      trueQueries(0),
+      unprovenQueries(0),
+      timeoutQueries(0),
+      errorQueries(0),
+
+      unitTime(0.0),
+      unprovenQueriesTime(0.0),
+      provenQueriesTime(0.0),
+      maxProvenQueryTime(0.0)
+{
 
     vector<string> toks(tokeniseString(unitInfoStr));
 
@@ -896,6 +920,8 @@ void extractGoalInfo(const string& s,
 ofstream csvStream;
 ofstream logStream;
 ofstream sumStream;
+ofstream unitSumStream;
+
 
 void openReportFiles() {
     string reportName("report");
@@ -908,6 +934,7 @@ void openReportFiles() {
     string csvFile(reportName + ".vct");
     string logFile(reportName + ".vlg");
     string sumFile(reportName + ".vsm");
+    string unitSumFile(reportName + ".vus");
 
     csvStream.open(csvFile.c_str());
     if (csvStream.fail()) {
@@ -922,6 +949,11 @@ void openReportFiles() {
     sumStream.open(sumFile.c_str());
     if (sumStream.fail()) {
         cerr << endl << "Error on trying to open file " << sumFile << endl;
+        exit(1);
+    }
+    unitSumStream.open(unitSumFile.c_str());
+    if (unitSumStream.fail()) {
+        cerr << endl << "Error on trying to open file " << unitSumFile << endl;
         exit(1);
     }
 
@@ -984,6 +1016,7 @@ void closeReportFiles() {
     csvStream.close();
     logStream.close();
     sumStream.close();
+    unitSumStream.close();
     return;
 }
 
@@ -1235,6 +1268,57 @@ printCSVRecordAux(const string& unitKind,
     return;
 }
 
+//========================================================================
+// Unit Summary reporting
+//========================================================================
+
+int lastNumWarningMessages = 0;
+int lastNumErrorMessages = 0;
+
+void printUnitSummary(UnitInfo* ui) {
+
+    int numUnitWarningMessages = numWarningMessages - lastNumWarningMessages;
+    int numUnitErrorMessages = numErrorMessages - lastNumErrorMessages;
+
+    lastNumWarningMessages = numWarningMessages;
+    lastNumErrorMessages = numErrorMessages;
+
+    int totalConcls =
+        ui->trivialGoals
+        + ui->trueQueries
+        + ui->unprovenQueries
+        + ui->errorQueries;
+
+    unitSumStream                      
+        << currentUnit << ","          
+
+        << numUnitWarningMessages << ","
+        << numUnitErrorMessages << ","
+
+        << totalConcls << ","
+
+        << ui->trivialGoals << ","    
+        << ui->trueQueries << ","       
+        << ui->unprovenQueries << ","   
+        << ui->timeoutQueries << ","    
+        << ui->errorQueries << ","      
+
+        << ui->parseTreeSize << ","
+        << ui->translatedUnitSize << ","
+        << ui->nodeAllocCount << ","
+
+        << setprecision(3) << fixed
+        << ui->unitTime << ","
+        << ui->provenQueriesTime << ","
+        << (ui->provenQueriesTime / ui->trueQueries) << ","
+        << ui->maxProvenQueryTime << ","
+        << ui->unprovenQueriesTime << ","
+        << (ui->unprovenQueriesTime / ui->unprovenQueries) << ","
+        << "\"" << ui->remarks << "\""
+        << endl;                      
+
+}
+
 
 
 //========================================================================
@@ -1242,11 +1326,12 @@ printCSVRecordAux(const string& unitKind,
 //========================================================================
 // Solver interface code responsible for updating globals.
 
-int trueConcls;
-int unprovenConcls;
-int errorConcls;
+int trivialConcls = 0;
+int trueConcls = 0;
+int unprovenConcls = 0;
+int errorConcls = 0;
 
-int timeoutConcls; // Count also included in unproven Concls
+int timeoutConcls = 0; // Count also included in unproven Concls
 
 Timer totalTime;
 
@@ -1265,9 +1350,10 @@ printStats() {
               << "Total WARNING messages: " << numWarningMessages << endl
               << endl;
 
-    int total = trueConcls + unprovenConcls + errorConcls;
+    int total = trivialConcls + trueConcls + unprovenConcls + errorConcls;
     float ftotal = total;
 
+    float fTrivialConcls     = trivialConcls * 100 / ftotal;
     float fTrueConcls     = trueConcls * 100 / ftotal;
     float fUnprovenConcls = unprovenConcls * 100 / ftotal;
     float fTimeoutConcls  = timeoutConcls * 100 / ftotal;
@@ -1277,6 +1363,9 @@ printStats() {
     outStream << fixed;
 
     outStream << "Summary Stats: " << endl;
+
+    outStream << " trivial: " << setw(4) << trivialConcls
+         << "  (" << setw(4) << fTrivialConcls << "%)" << endl;
 
     outStream << "    true: " << setw(4) << trueConcls
          << "  (" << setw(4) << fTrueConcls << "%)" << endl;
@@ -1492,6 +1581,12 @@ Timer::grabTimes() {
         ((double) (endTimeTuple.csTime - startTimeTuple.csTime))
         / ticksPerSec;
 
+}
+
+double
+Timer::getTime() {
+    grabTimes();
+    return uTime + sTime + cuTime + csTime;
 }
 
 string

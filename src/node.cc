@@ -233,7 +233,6 @@ z::kindString(z::Kind k) {
 // Memory management definitions.
 
 Nodes Node::pool;
-int Node::poolAllocCount = 0;
 
 void
 Node::deletePool() {
@@ -373,6 +372,16 @@ Node::Node(Kind k, const char* s, Nodes& ns, Storage st) {
     id = string(s);
     children = ns;
     if (st == MANAGED) addToPool();
+}
+
+
+int
+Node::treeSize() const {
+    int size = 1;
+    for (int i = 0; i != arity(); i++) {
+        size += child(i)->treeSize();
+    }
+    return size;
 }
 
 
