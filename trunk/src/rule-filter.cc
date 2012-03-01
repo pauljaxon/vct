@@ -93,7 +93,7 @@ RuleFilter::driveQuerySet(UnitInfo* unitInfo,
     }
     printMessage(INFOm,"Starting rule filtering on goal");
 
-    string queryTime(normalResult.at(0).time);
+    double queryTime = normalResult.at(0).time;
 
     // Record translation from unit and directory rlu rule numbers to names.
     saveRuleNames(unitInfo, unit);

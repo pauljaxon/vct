@@ -64,8 +64,8 @@ public:
     public:
         Status status;
         string remarks;
-        string time;
-        QueryStatus(Status s, const string& r, const string& t) :
+        double time;
+        QueryStatus(Status s, const string& r, double t) :
             status(s), remarks(r), time(t) {};
     };
 
@@ -74,7 +74,7 @@ public:
         int goalNum;   //  1-based
         int conclNum;  //  1-based.  0 if concls fused
         Status status;
-        string time;
+        double time;
         string remarks;
     };
 

@@ -357,6 +357,8 @@ processUnit(UnitInfo* unitInfo, SMTDriver* smtDriver) {
     
     initCurrentUnitInfo(unitInfo);
 
+    Timer unitTimer;
+    
     if (option("utick")) {
         if (option("longtick")) {
             cout << endl << unitInfo->getUnitName();
@@ -373,21 +375,33 @@ processUnit(UnitInfo* unitInfo, SMTDriver* smtDriver) {
 
     if (unitAST == 0) {
         printCSVRecord("error", "parsing failed");
+
+        unitInfo->addRemark("parsing failed");
+        printUnitSummary(unitInfo);
         return;
     }
+    unitInfo->parseTreeSize = unitAST->treeSize();
 
     Formatter::setFormatter(VanillaFormatter::getFormatter());
 
 
     string status = elaborateUnit(unitAST, unitInfo);
 
+    unitInfo->translatedUnitSize = unitAST->treeSize();
 
     if (status != "good") {
         printCSVRecord("error", status);
+
+        unitInfo->addRemark(status);
+        printUnitSummary(unitInfo);
         return;
     }
 
     smtDriver->driveUnit(unitAST, unitInfo);
+
+    unitInfo->unitTime = unitTimer.getTime();
+    unitInfo->nodeAllocCount = Node::getPoolAllocCount();
+    printUnitSummary(unitInfo);
 
     if (!option("no-mm")) {
             Node::deletePool();
@@ -466,14 +480,6 @@ main (int argc, char *argv[]) {
     // ---------------------------------------------------------------------
 
     openReportFiles();
-
-    // ---------------------------------------------------------------------
-    // Initialise summary of results
-    // ---------------------------------------------------------------------
-
-    trueConcls = 0;
-    unprovenConcls = 0;
-    errorConcls = 0;
 
     // ---------------------------------------------------------------------
     // Get solver driver 
