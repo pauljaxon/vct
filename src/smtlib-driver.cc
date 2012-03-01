@@ -1070,7 +1070,7 @@ SMTLibDriver::getResults(string& remarks) {
     // Do not check output files if none were generated in first place
 
     if (! (option("prover") || option("prover-command") )) {
-        return UNPROVEN;
+        return UNKNOWN;
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -1419,8 +1419,11 @@ SMTLibDriver::getResults(string& remarks) {
     if (seenTimeout)
         return RESOURCE_LIMIT;
 
-    if (seenSatOutput || seenUnknownOutput)
-        return UNPROVEN;
+    if (seenSatOutput)
+        return FALSE;
+
+    if (seenUnknownOutput)
+        return UNKNOWN;
 
     if (seenUnsatOutput)
         return TRUE;

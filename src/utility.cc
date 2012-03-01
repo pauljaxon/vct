@@ -626,9 +626,11 @@ UnitInfo::UnitInfo(const string& unitInfoStr)
       nodeAllocCount(0),
       trivialGoals(0),
       trueQueries(0),
-      unprovenQueries(0),
+      unknownQueries(0),
+      falseQueries(0),
       timeoutQueries(0),
       errorQueries(0),
+      excludedConcls(0),
 
       unitTime(0.0),
       unprovenQueriesTime(0.0),
@@ -1283,10 +1285,14 @@ void printUnitSummary(UnitInfo* ui) {
     lastNumWarningMessages = numWarningMessages;
     lastNumErrorMessages = numErrorMessages;
 
+    int unprovenQueries =
+        ui->unknownQueries + ui->falseQueries
+        + ui->timeoutQueries + ui->excludedConcls;
+
     int totalConcls =
         ui->trivialGoals
         + ui->trueQueries
-        + ui->unprovenQueries
+        + unprovenQueries
         + ui->errorQueries;
 
     unitSumStream                      
@@ -1299,8 +1305,9 @@ void printUnitSummary(UnitInfo* ui) {
 
         << ui->trivialGoals << ","    
         << ui->trueQueries << ","       
-        << ui->unprovenQueries << ","   
+        << unprovenQueries << ","   
         << ui->timeoutQueries << ","    
+        << ui->falseQueries << ","   
         << ui->errorQueries << ","      
 
         << ui->parseTreeSize << ","
@@ -1309,11 +1316,24 @@ void printUnitSummary(UnitInfo* ui) {
 
         << setprecision(3) << fixed
         << ui->unitTime << ","
-        << ui->provenQueriesTime << ","
-        << (ui->provenQueriesTime / ui->trueQueries) << ","
+        << ui->provenQueriesTime << ",";
+
+    if (ui->trueQueries != 0) {
+        unitSumStream << ui->provenQueriesTime / ui->trueQueries;
+    } else {
+        unitSumStream << "-";
+    }
+    unitSumStream
+        << ","
         << ui->maxProvenQueryTime << ","
-        << ui->unprovenQueriesTime << ","
-        << (ui->unprovenQueriesTime / ui->unprovenQueries) << ","
+        << ui->unprovenQueriesTime << ",";
+    if (unprovenQueries != 0) {
+        unitSumStream << ui->unprovenQueriesTime / unprovenQueries;
+    } else {
+        unitSumStream << "-";
+    }
+    unitSumStream 
+        << ","
         << "\"" << ui->remarks << "\""
         << endl;                      
 
@@ -1328,10 +1348,11 @@ void printUnitSummary(UnitInfo* ui) {
 
 int trivialConcls = 0;
 int trueConcls = 0;
-int unprovenConcls = 0;
+int unknownConcls = 0;
+int falseConcls = 0;
 int errorConcls = 0;
-
-int timeoutConcls = 0; // Count also included in unproven Concls
+int timeoutConcls = 0; 
+int excludedConcls = 0; 
 
 Timer totalTime;
 
@@ -1350,13 +1371,16 @@ printStats() {
               << "Total WARNING messages: " << numWarningMessages << endl
               << endl;
 
+    int unprovenConcls =
+        unknownConcls + timeoutConcls + falseConcls + excludedConcls;
     int total = trivialConcls + trueConcls + unprovenConcls + errorConcls;
     float ftotal = total;
 
-    float fTrivialConcls     = trivialConcls * 100 / ftotal;
+    float fTrivialConcls  = trivialConcls * 100 / ftotal;
     float fTrueConcls     = trueConcls * 100 / ftotal;
     float fUnprovenConcls = unprovenConcls * 100 / ftotal;
     float fTimeoutConcls  = timeoutConcls * 100 / ftotal;
+    float fFalseConcls    = falseConcls * 100 / ftotal;
     float fErrorConcls    = errorConcls * 100 / ftotal;
 
     outStream << setprecision(1); // 1 decimal place for floats.
@@ -1364,26 +1388,28 @@ printStats() {
 
     outStream << "Summary Stats: " << endl;
 
-    outStream << " trivial: " << setw(4) << trivialConcls
+    outStream << " trivial:" << setw(6) << trivialConcls
          << "  (" << setw(4) << fTrivialConcls << "%)" << endl;
 
-    outStream << "    true: " << setw(4) << trueConcls
+    outStream << "    true:" << setw(6) << trueConcls
          << "  (" << setw(4) << fTrueConcls << "%)" << endl;
 
-    outStream << "unproven: " << setw(4) << unprovenConcls
-         << "  (" << setw(4) << fUnprovenConcls << "%)    ";   //  << endl;
+    outStream << "unproven:" << setw(6) << unprovenConcls
+         << "  (" << setw(4) << fUnprovenConcls << "%)  ";   //  << endl;
 
     if (! plain_mode) {
-        outStream << "[timeout: " << setw(4) << timeoutConcls
-             << "  (" << setw(4) << fTimeoutConcls  << "%) ]" << endl;
+        outStream << "[timeout:" << setw(6) << timeoutConcls
+             << "  (" << setw(4) << fTimeoutConcls  << "%)  false:"
+             << setw(6) << falseConcls
+             << "  (" << setw(4) << fFalseConcls  << "%) ]" << endl;
     } else {
       outStream << endl;
     }
 
-    outStream << "   error: " << setw(4) << errorConcls
+    outStream << "   error:" << setw(6) << errorConcls
          << "  (" << setw(4) << fErrorConcls << "%)" << endl;
 
-    outStream << "   total: " << setw(4) << total << endl << endl;
+    outStream << "   total:" << setw(6) << total << endl << endl;
 
     if (! plain_mode ) {
         outStream << "Time: " << totalTime.toLongString() << endl;

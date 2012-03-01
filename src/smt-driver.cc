@@ -225,15 +225,20 @@ SMTDriver::driveGoal(Node* decls,
         printCSVRecord("true", remarks);
         trueConcls++;
 
-    } else if (s == UNPROVEN) {
+    } else if (s == UNKNOWN) {
 
         printCSVRecord("unproven", remarks);
-        unprovenConcls++;
+        unknownConcls++;
+
+    } else if (s == FALSE) {
+
+        appendCommaString(remarks,"false");
+        printCSVRecord("unproven", remarks);
+        falseConcls++;
 
     } else if (s == RESOURCE_LIMIT) {
 
         printCSVRecord("unproven", remarks);
-        unprovenConcls++;
         timeoutConcls++;
 
     } else {// s == ERROR
@@ -359,7 +364,7 @@ SMTDriver::driveUnit(Node* unit, UnitInfo* unitInfo) {
             if (! unitInfo->include(goalNum, currentConcl)) {
                 goalSliceTime = "0";
                 printCSVRecord("unproven", "excluded");
-                unprovenConcls++;
+                unknownConcls++;
                 continue;
             }
             
@@ -398,7 +403,7 @@ bool
 SMTDriver::checkGoal(string& remarks) { return false; }
 
 SMTDriver::Status
-SMTDriver::getResults(string& remarks) { return UNPROVEN; }
+SMTDriver::getResults(string& remarks) { return UNKNOWN; }
 
 // Default implementation for online (API) solver interface 
 SMTDriver::Status
@@ -754,7 +759,7 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
         Node* goal = goals->child(goalNum-1);
 
         // Set up result record for goal / goal slices
-        // Initialise all fields except queryNum.
+        // Initialise all fields except queryNum and conclNum.
         ResultRecord rRcd;
         rRcd.goalNum = goalNum; 
 
@@ -783,11 +788,6 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
         }
         // goal non-trivial
 
-        //  Set up query record for goal / goal slices
-        QueryRecord qRcd;
-        qRcd.goalNum = goalNum;
-        qRcd.time = 0.0;
-        qRcd.status = UNCHECKED;
 
         // Customise query and result records for goal / goal slices and save
         Node* concls = goal->child(1);
@@ -795,10 +795,27 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
         int toConcl   = option("fuse-concls") ? 0 : concls->arity();
 
         for (int conclNum = fromConcl; conclNum <= toConcl; conclNum++) {
-            qRcd.conclNum = conclNum;
-            queryRecords.push_back(qRcd); 
-            rRcd.queryNum = (int) queryRecords.size() - 1;
-            resultRecords.push_back(rRcd);
+
+            rRcd.conclNum = conclNum;
+            
+            if (unitInfo->include(goalNum, conclNum)) {
+
+                //  Set up query record for goal / goal slices
+                QueryRecord qRcd;
+                qRcd.goalNum = goalNum;
+                qRcd.time = 0.0;
+                qRcd.status = UNCHECKED;
+                qRcd.conclNum = conclNum;
+                queryRecords.push_back(qRcd);
+
+                rRcd.queryNum = (int) queryRecords.size() - 1;
+                resultRecords.push_back(rRcd);
+            }
+            else {
+                rRcd.queryNum = -2;
+                resultRecords.push_back(rRcd);
+            }
+
         }
     }
 
@@ -896,10 +913,14 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
         currentGoalNumStr = intToString(resultRecords.at(i).goalNum);
 
         if (queryNum == -1) {
-            currentConcl = 0; 
             remarks = "trivial goal";
             resultStatus = "true";
             unitInfo->trivialGoals++;
+        }
+        else if (queryNum == -2) {
+            remarks = "excluded goal/goal slice";
+            resultStatus = "unproven";
+            unitInfo->excludedConcls++;
         }
         else {
             currentConcl = queryRecords.at(queryNum).conclNum;
@@ -915,15 +936,19 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
                     unitInfo->maxProvenQueryTime = time;
                 }
                 break;
-            case(UNPROVEN):
+            case(UNKNOWN):
                 resultStatus = "unproven";
-                unitInfo->unprovenQueries++;
+                unitInfo->unknownQueries++;
+                unitInfo->unprovenQueriesTime += time;
+                break;
+            case(FALSE):
+                resultStatus = "unproven";
+                unitInfo->falseQueries++;
                 unitInfo->unprovenQueriesTime += time;
                 break;
             case(RESOURCE_LIMIT):
                 resultStatus = "unproven";
                 unitInfo->timeoutQueries++;
-                unitInfo->unprovenQueries++;
                 unitInfo->unprovenQueriesTime += time;
                 break;
             case(ERROR):
@@ -941,7 +966,7 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
         printCSVRecordAux(resultRecords.at(i).unitKind,
                           resultRecords.at(i).origins,
                           intToString(resultRecords.at(i).goalNum),
-                          currentConcl,
+                          resultRecords.at(i).conclNum,
                           resultStatus,
                           doubleToFixPtString(time,3),
                           remarks);
@@ -949,9 +974,11 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
 
     trivialConcls  += unitInfo->trivialGoals;
     trueConcls     += unitInfo->trueQueries;
-    unprovenConcls += unitInfo->unprovenQueries;
+    unknownConcls  += unitInfo->unknownQueries;
+    falseConcls    += unitInfo->falseQueries;
     timeoutConcls  += unitInfo->timeoutQueries;
     errorConcls    += unitInfo->errorQueries;
+    excludedConcls += unitInfo->excludedConcls;
 
     return;
 }

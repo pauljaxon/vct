@@ -832,7 +832,7 @@ IsabDriver::finishSetup() {
     // Handle case when skip-concls option asserted
 
     if (theory->child(2)->arity() == 0) {
-        theory->child(2)->addChild(new Node (CONCL, "C1", new Node(FALSE)));
+        theory->child(2)->addChild(new Node (CONCL, "C1", new Node(z::FALSE)));
     }
 
     ofstream proverInput;
@@ -888,7 +888,7 @@ IsabDriver::getResults(string& remarks) {
     // Do not check output files if none were generated in first place
 
     if (! (option("prover") || option("prover-command") )) {
-        return UNPROVEN;
+        return UNKNOWN;
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -964,7 +964,7 @@ IsabDriver::getResults(string& remarks) {
 
     // All output expected.
 
-    return UNPROVEN;
+    return UNKNOWN;
 
 }
 

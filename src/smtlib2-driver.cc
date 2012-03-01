@@ -452,7 +452,7 @@ SMTLib2Driver::initQuerySet(const string& unitName,
 			      new Node(INFO_STR, unitName)));
     if (!option("smtlib2-omit-set-option-command")) {
         script->addChild(new Node(SET_OPTION, "print-success",
-                                  new Node(FALSE)));
+                                  new Node(z::FALSE)));
     }
     if (option("smtlib2-soft-timeout")) {
         script->addChild(new Node(SET_OPTION, "soft-timeout",
@@ -771,7 +771,7 @@ SMTLib2Driver::getResults(string& remarks) {
     // Do not check output files if none were generated in first place
 
     if (! (option("prover") || option("prover-command") )) {
-        return UNPROVEN;
+        return UNKNOWN;
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -931,8 +931,11 @@ SMTLib2Driver::getResults(string& remarks) {
     if (seenTimeout)
         return RESOURCE_LIMIT;
 
-    if (seenSatOutput || seenUnknownOutput)
-        return UNPROVEN;
+    if (seenSatOutput)
+        return FALSE;
+
+    if (seenUnknownOutput)
+        return UNKNOWN;
 
     if (seenUnsatOutput)
         return TRUE;
@@ -958,7 +961,7 @@ SMTLib2Driver::getRunResults(int numQueries) {
     // Do not check output files if none were generated in first place
 
     if (! (option("prover") || option("prover-command") )) {
-        results.push_back(QueryStatus(UNPROVEN,"prover not run",0.0));
+        results.push_back(QueryStatus(UNKNOWN,"prover not run",0.0));
         return results;
     }
 
@@ -1084,10 +1087,10 @@ SMTLib2Driver::getRunResults(int numQueries) {
             results.push_back(QueryStatus(TRUE,"",0.0));
         }
         else if (line.size() == 1 && line.at(0) == "sat") {
-            results.push_back(QueryStatus(UNPROVEN,"",0.0));
+            results.push_back(QueryStatus(FALSE,"",0.0));
         }
         else if (line.size() == 1 && line.at(0) == "unknown") {
-            results.push_back(QueryStatus(UNPROVEN,"",0.0));
+            results.push_back(QueryStatus(UNKNOWN,"",0.0));
         } else {
             seenUnexpectedOutput = true;
         }

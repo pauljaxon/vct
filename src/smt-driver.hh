@@ -58,7 +58,12 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 class SMTDriver {
 
 public:
-    enum Status { TRUE, UNPROVEN, ERROR, RESOURCE_LIMIT, UNCHECKED };
+    enum Status { TRUE,            // SMT solver said unsat. 
+                  UNKNOWN,         // SMT solver said unknown
+                  FALSE,           // SMT solver said sat.
+                  ERROR,   
+                  RESOURCE_LIMIT,  // Resource limit reached by solver
+                  UNCHECKED };     // Solver hasn't been run 
 
     class QueryStatus {
     public:
@@ -83,7 +88,11 @@ public:
         string unitKind;
         string origins;
         int goalNum;  // Used for trivial goals. o/w copy of queryNum.goalNum
+        int conclNum; // Used for trivial and excluded goals. o/w copy of
+                      // queryNum.conclNum
         int queryNum; // -1 for trivial goal ("*** true")
+                      // -2 for excluded goal ("*** true")
+                      // o/w index into array of query records.
     };
 
     vector<QueryRecord> queryRecords;

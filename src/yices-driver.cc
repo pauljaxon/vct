@@ -743,7 +743,7 @@ YicesDriver::checkGoal(string& remarks) {
                          + yicesOutput);
 
             appendCommaString(remarks, "non-linearity in check");
-            status = UNPROVEN;
+            status = UNKNOWN;
             return false;
         } else {
             printMessage(ERRORm,
@@ -757,7 +757,7 @@ YicesDriver::checkGoal(string& remarks) {
     if (yicesl_inconsistent(ctx)) 
         status = TRUE;
     else
-        status = UNPROVEN;
+        status = UNKNOWN;
     return false;
 }
 
