@@ -62,6 +62,8 @@ protected:
 
     virtual Node* translateUnit(Node* n);
 
+    virtual bool onlineInterface() {return false; }
+
     virtual bool resourceLimitsForQuerySet();
     
     virtual void initQuerySet(const string& unitName,

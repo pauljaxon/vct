@@ -400,10 +400,25 @@ Node*
 SMTDriver::translateUnit(Node* unit) { return unit; }
 
 bool
-SMTDriver::checkGoal(string& remarks) { return false; }
+SMTDriver::checkGoal(string& remarks) {
+    appendCommaString(remarks, "no prover");
+    return false;
+}
+
+bool 
+SMTDriver::runQuerySet(string& remarks) {
+    appendCommaString(remarks, "no prover");
+    return false;
+}
 
 SMTDriver::Status
 SMTDriver::getResults(string& remarks) { return UNKNOWN; }
+
+vector<SMTDriver::QueryStatus>
+SMTDriver::getRunResults(int numQueries) {
+    return vector<SMTDriver::QueryStatus>();
+}
+
 
 // Default implementation for online (API) solver interface 
 SMTDriver::Status
@@ -432,6 +447,13 @@ SMTDriver::check(string& remarks) {
 // Drive Query Set
 //==========================================================================
 // Drive queries queryRecords[startQuery..endQuery-1] 
+
+// It is important that this method is idempotent, that calling it
+// multiple times on the same queries produces a result and has
+// side-effects similar to a call of it a single time on the queries.
+// It gets called multiple times on the same queries both in rule
+// filtering and when timeouts are encountered in drives of multiple
+// queries
 
 vector<SMTDriver::QueryStatus> 
 SMTDriver::driveQuerySet(UnitInfo* unitInfo,
@@ -480,6 +502,8 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
     Node* goals = unit->child(2);
 
     vector<QueryStatus> results;
+
+    string declsRulesRemarks;
 
     Timer queryTimer;
 
@@ -537,7 +561,7 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
         // Push hyps and concls incrementally
         // ---------------------------------------------------------------------
 
-        string declsRulesRemarks(remarks);
+        declsRulesRemarks = remarks;
         
         // ---------------------------------------------------------------------
         // Loop over queries of queryset
@@ -648,8 +672,11 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
             // Status recording delayed to here to allow exception handler
             // to catch pop exception and record an alternate status.
 
+            // Use "" for remarks here, as any remarks from checking
+            // have already been saved.
+
             if (onlineInterface()) {
-                results.push_back(QueryStatus(status,remarks,queryTime));
+                results.push_back(QueryStatus(status,"",queryTime));
             }
         
 
@@ -706,6 +733,19 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
         results = getRunResults(endQuery - startQuery);
 
         if (results.size() > 0) results.at(0).time = queryTime;
+
+        // Merge in declsRulesRemarks with any remarks coming from
+        // solver.  This isn't ideal: we lose possible remarks coming
+        // from offline push of hyps and concl and check.  However,
+        // such remarks are hopefully unlikely.  Are none at time of
+        // writing this comment.
+
+        for (int i = 0; i != (int) results.size(); i++) {
+            string r(declsRulesRemarks);
+            appendCommaString(r, results.at(i).remarks);
+            results.at(i).remarks = r;
+        }
+        
     }
 
     finaliseQuerySet();
@@ -874,8 +914,8 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
             queryRecords.at(currentQuery).status
                 = queryResults.at(qr).status;
             
-            appendCommaString(queryRecords.at(currentQuery).remarks,
-                              queryResults.at(qr).remarks);
+            queryRecords.at(currentQuery).remarks
+                = queryResults.at(qr).remarks;
 
             queryRecords.at(currentQuery).time
                 = queryResults.at(qr).time;
@@ -913,8 +953,7 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
         currentGoalNumStr = intToString(resultRecords.at(i).goalNum);
 
         if (queryNum == -1) {
-            remarks = "trivial goal";
-            resultStatus = "true";
+            resultStatus = "trivial";
             unitInfo->trivialGoals++;
         }
         else if (queryNum == -2) {
@@ -972,6 +1011,8 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
                           remarks);
     } // END for
 
+    // Update stats for whole session
+
     trivialConcls  += unitInfo->trivialGoals;
     trueConcls     += unitInfo->trueQueries;
     unknownConcls  += unitInfo->unknownQueries;
@@ -980,5 +1021,12 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
     errorConcls    += unitInfo->errorQueries;
     excludedConcls += unitInfo->excludedConcls;
 
+    provenTime += unitInfo->provenQueriesTime;
+    unprovenTime += unitInfo->unprovenQueriesTime;
+    if (unitInfo->maxProvenQueryTime
+        > maxProvenQueryTime) {
+        
+        maxProvenQueryTime = unitInfo->maxProvenQueryTime;
+    }
     return;
 }

@@ -145,9 +145,10 @@ endif
 # Processing trivial goals
 #-------------------------
 
-ifdef TG
+ifdef NTG
+  tg_sfx = -ntg
+else
   tg_flag=-count-trivial-goals
-  tg_sfx = -tg
 endif
 
 #-----------------------------------------------------------------------------

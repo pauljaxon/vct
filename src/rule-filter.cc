@@ -94,6 +94,7 @@ RuleFilter::driveQuerySet(UnitInfo* unitInfo,
     printMessage(INFOm,"Starting rule filtering on goal");
 
     double queryTime = normalResult.at(0).time;
+    string remarks(normalResult.at(0).remarks);
 
     // Record translation from unit and directory rlu rule numbers to names.
     saveRuleNames(unitInfo, unit);
@@ -120,17 +121,37 @@ RuleFilter::driveQuerySet(UnitInfo* unitInfo,
         if (result.size() > 0 && result.at(0).status == TRUE) {
             newExclRules.insert(i);
             queryTime = result.at(0).time;
+            remarks = result.at(0).remarks;
         }
     }
 
     saveExclusionInfo(unitInfo, newExclRules);
 
-
+    // Add summary of needed user rules to vct file remarks
+    int numDirUserRules = 0;
+    int numUnitUserRules = 0;
+    
+    for (int i = 0; i != unitInfo->unitRLURulesEnd; i++) {
+        if (!setMember(i,newExclRules)) {
+            if (unitInfo->isDirUserRule(i))
+                numDirUserRules++;
+            else
+                numUnitUserRules++;
+        }
+    }
+    if (numDirUserRules + numUnitUserRules > 0) {
+        appendCommaString(remarks,
+                          "core user rules: "
+                          + intToString(numDirUserRules) + "d "
+                          + intToString(numUnitUserRules) + "u");
+    }
+                          
     if (option("report-excluded-rlu-rules-per-goal")) {
         Node* rules = unit->child(1);
         string report("RuleFilter: excluded RLU rules for goal");
         report.append(ENDLs);
-        report.append("(** = undecl ids, s, -- = absence doesn't falsify goal)");
+        report.append(
+            "(** = undecl ids, s, -- = absence doesn't falsify goal)");
         report.append(ENDLs);
         for (int i = 0; i != unitInfo->unitRLURulesEnd; i++) {
             string ruleName(rules->child(i)->id);
@@ -146,7 +167,7 @@ RuleFilter::driveQuerySet(UnitInfo* unitInfo,
         printMessage(INFOm, report);
     }
     vector<QueryStatus> result;
-    result.push_back(QueryStatus(TRUE,"",queryTime));
+    result.push_back(QueryStatus(TRUE,remarks,queryTime));
     return result;
     
 }

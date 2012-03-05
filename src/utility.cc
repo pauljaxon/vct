@@ -201,6 +201,7 @@ hasSubstring(const string& s, const string& t) {
 
 void
 appendCommaString(string& s, const string& t) {
+    if (t.size() == 0) return;
     if (s.size() > 0) s.append(", ");
     s.append(t);
     return;
@@ -620,6 +621,9 @@ UnitInfo::Status UnitInfo::status = UnitInfo::BEFORE_RANGE;
 UnitInfo::UnitInfo(const string& unitInfoStr)
     : dirRLURulesEnd(0),
       unitRLURulesEnd(0),
+      numExcludedDirRLURules(0),
+      numExcludedUnitRLURules(0),
+      numExcludedSystemRules(0),
 
       parseTreeSize(0),
       translatedUnitSize(0),
@@ -782,6 +786,20 @@ UnitInfo::include(int goal, int concl) {
             && goal >= startGoal;
     }
 }
+
+void 
+UnitInfo::addExcludedRule(int rNum) {
+    excludedRules.insert(rNum);
+
+    if (isUnitUserRule(rNum))
+        numExcludedUnitRLURules++;
+    else if (isDirUserRule(rNum))
+        numExcludedDirRLURules++;
+    else
+        numExcludedSystemRules++;
+    return;
+}
+
 
 bool
 UnitInfo::includeUnit() {
@@ -1010,6 +1028,18 @@ void openReportFiles() {
       }
     }
     logStream << endl;
+
+    // Write header for unit summary file
+
+    unitSumStream
+        << "unit,ERRORs,WARNINGs,"
+           "total,trivial,true,unproven,timeout,false,error,"
+           "exc. dir urules,exc. unit urules,exc. sys rules,"
+           "parse tree,tx tree,alloced nodes,"
+           "total time,proven time,av. proven time,max proven time,"
+           "unproven time,av. unproven time,remarks"
+        << endl;
+
 
     return;
 }
@@ -1298,8 +1328,8 @@ void printUnitSummary(UnitInfo* ui) {
     unitSumStream                      
         << currentUnit << ","          
 
-        << numUnitWarningMessages << ","
         << numUnitErrorMessages << ","
+        << numUnitWarningMessages << ","
 
         << totalConcls << ","
 
@@ -1309,6 +1339,10 @@ void printUnitSummary(UnitInfo* ui) {
         << ui->timeoutQueries << ","    
         << ui->falseQueries << ","   
         << ui->errorQueries << ","      
+
+        << ui->numExcludedDirRLURules << ","
+        << ui->numExcludedUnitRLURules << ","
+        << ui->numExcludedSystemRules << ","
 
         << ui->parseTreeSize << ","
         << ui->translatedUnitSize << ","
@@ -1320,8 +1354,6 @@ void printUnitSummary(UnitInfo* ui) {
 
     if (ui->trueQueries != 0) {
         unitSumStream << ui->provenQueriesTime / ui->trueQueries;
-    } else {
-        unitSumStream << "-";
     }
     unitSumStream
         << ","
@@ -1329,14 +1361,9 @@ void printUnitSummary(UnitInfo* ui) {
         << ui->unprovenQueriesTime << ",";
     if (unprovenQueries != 0) {
         unitSumStream << ui->unprovenQueriesTime / unprovenQueries;
-    } else {
-        unitSumStream << "-";
     }
-    unitSumStream 
-        << ","
-        << "\"" << ui->remarks << "\""
-        << endl;                      
-
+    unitSumStream  << "," << "\"" << ui->remarks << "\"" << endl;
+    return;
 }
 
 
@@ -1353,6 +1380,10 @@ int falseConcls = 0;
 int errorConcls = 0;
 int timeoutConcls = 0; 
 int excludedConcls = 0; 
+
+double provenTime = 0.0;         
+double unprovenTime = 0.0;       
+double maxProvenQueryTime = 0.0; 
 
 Timer totalTime;
 
@@ -1411,8 +1442,26 @@ printStats() {
 
     outStream << "   total:" << setw(6) << total << endl << endl;
 
+
+
+    
+    string totalTrueTimeStr(doubleToFixPtString(provenTime,2));
+    string averageTrueTimeStr;
+    if (trueConcls > 0) {
+        averageTrueTimeStr = doubleToFixPtString(provenTime/trueConcls,3);
+    }
+    string maxTrueTimeStr(doubleToFixPtString(maxProvenQueryTime,3));
+    string totalUnprovenTimeStr(doubleToFixPtString(unprovenTime,2));
+
+    
     if (! plain_mode ) {
-        outStream << "Time: " << totalTime.toLongString() << endl;
+        outStream << "Times: " << endl
+                  << "           total: " << totalTime.toLongString() 
+                  << "      total true: " << totalTrueTimeStr << "s" << endl
+                  << "    average true: " << averageTrueTimeStr << "s" << endl
+                  << "        max true: " << maxTrueTimeStr << "s" << endl
+                  << "  total unproven: " << totalUnprovenTimeStr << "s"
+                  << endl;
     }
 
     logStream << outStream.str();
@@ -1439,18 +1488,27 @@ printStats() {
 
     sumStream << total << "," ;
 
+    sumStream << trivialConcls << "," ;
     sumStream << trueConcls << "," ;
     sumStream << unprovenConcls << "," ;
     sumStream << timeoutConcls << "," ;
+    sumStream << falseConcls << "," ;
     sumStream << errorConcls << "," ;
 
     sumStream << setw(4) << fTrueConcls << "," ;
     sumStream << setw(4) << fUnprovenConcls << "," ;
     sumStream << setw(4) << fTimeoutConcls << "," ;
+    sumStream << setw(4) << fFalseConcls << "," ;
     sumStream << setw(4) << fErrorConcls << "," ;
 
     if (!option("plain")) {
-      sumStream << totalTime.toString();
+        sumStream << totalTime.toString() << ","
+                  << totalTrueTimeStr << ","
+                  << averageTrueTimeStr << ","
+                  << maxTrueTimeStr << ","
+                  << totalUnprovenTimeStr;
+    } else {
+        sumStream << ",,,,";
     }
     sumStream << endl;
 
