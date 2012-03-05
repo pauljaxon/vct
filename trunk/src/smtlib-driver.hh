@@ -59,6 +59,8 @@ protected:
 
     virtual Node* translateUnit(Node* n);
 
+    virtual bool onlineInterface() {return false; }
+
     virtual void initGoal(const string& unitName,
                           int goalNum,
                           int ConclNum);

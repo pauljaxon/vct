@@ -199,10 +199,16 @@ public:
     // (With 0-based rule numbering)
     // dir RLU Rules are  [0 .. dirRLURulesEnd-1]  
     // unit RLU Rules are  [dirRLURulesEnd .. unitRLURulesEnd -1]  
-    // Examiner-generated rules are [unitRLURulesEnd .. #Rules - 1]
+    // System rules (from Examiner-generated RLS files, extra Victor
+    // RLS files or added during Victor's translation) are 
+    // [unitRLURulesEnd .. #Rules - 1]
 
     int dirRLURulesEnd;
     int unitRLURulesEnd;
+
+    int numExcludedDirRLURules;
+    int numExcludedUnitRLURules;
+    int numExcludedSystemRules;
 
     // Statistics on unit.  
 
@@ -237,7 +243,7 @@ public:
     }
     set<int> getExcludedRules() {return excludedRules;}
     bool isExcludedRule(int rNum) {return setMember(rNum, excludedRules);}
-    void addExcludedRule(int rNum) {excludedRules.insert(rNum);}
+    void addExcludedRule(int rNum);
     bool isUserRule(int rNum)    {return rNum < unitRLURulesEnd; }
     bool isDirUserRule(int rNum) {return rNum < dirRLURulesEnd; }
     bool isUnitUserRule(int rNum) {
@@ -394,7 +400,7 @@ void printUnitSummary(UnitInfo* ui);
 // Globals initialised at definition point.
 // Solver interface code responsible for updating globals.
 
-// A `concls' here is each goal / goal slice that gets reported on a line
+// A `concl' here is each goal / goal slice that gets reported on a line
 // of the VCT file
 
 extern int trivialConcls;   // Trivially true by Examiner
@@ -407,6 +413,11 @@ extern int timeoutConcls;   // Prover timed out or reached
 extern int excludedConcls;  // Concl excluded from consideration by
                             // command line options and units.lis file
                             // directives.
+
+extern double provenTime;         // Total time in prover when concls proven
+extern double unprovenTime;       // Total time in prover when concls unproven
+extern double maxProvenQueryTime; // Maximum run time for proven concl
+
 
 void printStats();
 

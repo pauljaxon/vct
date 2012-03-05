@@ -134,7 +134,7 @@ private:
 protected:
     virtual Node* translateUnit(Node* n);
 
-    virtual bool onlineInterface() {return false; }; // FILE: return false
+    virtual bool onlineInterface() {return true; }; // FILE: return false
                                                      // API:  return true
 
     virtual bool resourceLimitsForQuerySet() {return false; }; 
@@ -200,16 +200,14 @@ protected:
                   // OLD
 
 
-    virtual bool runQuerySet(string& remarks) {return true;};
+    virtual bool runQuerySet(string& remarks);
                            // FILE: Run solver on query set
                            // API: Unused
 
     virtual Status getResults(string& remarks);
                   // OLD.  
 
-    virtual vector<QueryStatus> getRunResults(int numQueries) {
-        return vector<QueryStatus>();
-    }
+    virtual vector<QueryStatus> getRunResults(int numQueries); 
                                 // FILE: Read solver output files 
                                 // API: Unused
 
