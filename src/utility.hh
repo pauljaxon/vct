@@ -128,7 +128,7 @@ void setIsect(set<T>& a, set<T>& b, set<T>& c) {
 }
 
 template <class T>
-bool setMember(T& x, set<T>& a) {
+bool setMember(const T& x, const set<T>& a) {
     return a.find(x) != a.end();
 }
 
@@ -182,6 +182,7 @@ private:
     // program unit name U is w/o .fdl .rls .vcg suffix.
     // unitPathPrefix = 
 
+    int unitNum;
     string unitPathPrefix;// P1/.../Pn    (as supplied with -prefix option)
     string unitName;      // D1/.../Dk/U
     string unitPath;  // D1/.../Dk  ("" if k = 0)
@@ -230,8 +231,9 @@ public:
     double maxProvenQueryTime; 
     string remarks;
 
-    UnitInfo(const string& s);
+    UnitInfo(int n, const string& s);
 
+    int getUnitNum() {return unitNum;}
     string getUnitPathPrefix() {return unitPathPrefix;}
     string getUnitName() { return unitName;}
     string getUnitPath() {return unitPath;}

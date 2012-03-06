@@ -21,11 +21,13 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 
 // USAGE
 
-// csvproj n1 ... nk [filename]
+// csvproj [-v] n1 ... nk [filename]
 
+// Project selected fields of each record
 // n1 ... nk are field numbers (1-based)
 // filename is input filename to use.
 // If filename not provided, cin is used instead.
+// -v.  Project unselected fields instead
 
 #include <cstdlib>
 
@@ -50,13 +52,14 @@ main (int argc, char *argv[]) {
         cerr 
 << "Usage" << endl
 << endl
-<< "  csvproj n1 ... nk [filename]  " << endl
+<< "  csvproj [-v] n1 ... nk [filename]  " << endl
 << endl
-<< "Project out selected fields of input records."<< endl
+<< "Project out selected fields of input records in given order."<< endl
 << "n1 ... nk are the (1-based) numbers of the fields to select." << endl
 << "filename is input filename to use." << endl
 << "If filename is not provided, stdin is used instead." << endl
-<< "The result is written to stdout." << endl;
+<< "The result is written to stdout." << endl << endl
+<< "-v:  Project out unselected fields instead " << endl;
         return 0;
     }
 
@@ -76,20 +79,34 @@ main (int argc, char *argv[]) {
         }
         isp = &ifs;
     }
+    set<int> projSet;
+    for (int i = 0; i != nonOptions.size(); i++) {
+        projSet.insert(stringToInt(nonOptions[i]));
+    }
 
     string line;
     while (getline(*isp, line)) {
         vector<string> vs = csvDigest(line);
         vector<string> ws;
-        
-        for (int i = 0; i != nonOptions.size(); i++) {
-            int pos = stringToInt(nonOptions[i]);
-            if (pos > vs.size()) {
-                cerr << "Position " << pos << " out of range for line" << endl;
-                cerr << line << endl;
-                continue;
+
+        if (option("v")) {
+            for (int i = 0; i != (int) vs.size(); i++) {
+
+                if (!setMember(i+1,projSet)) {
+                    ws.push_back(vs[i]);
+                }
             }
-            ws.push_back(vs[pos-1]);
+        } else {
+            for (int i = 0; i != nonOptions.size(); i++) {
+                int pos = stringToInt(nonOptions[i]);
+                if (pos > vs.size()) {
+                    cerr << "Position " << pos
+                         << " out of range for line" << endl;
+                    cerr << line << endl;
+                    continue;
+                }
+                ws.push_back(vs[pos-1]);
+            }
         }
         cout << csvConcat(ws) << endl;
     }

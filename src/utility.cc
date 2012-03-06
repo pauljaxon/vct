@@ -618,8 +618,11 @@ string withTimeoutAndIO(const string &cmd,
 
 UnitInfo::Status UnitInfo::status = UnitInfo::BEFORE_RANGE;
 
-UnitInfo::UnitInfo(const string& unitInfoStr)
-    : dirRLURulesEnd(0),
+UnitInfo::UnitInfo(int uNum, const string& unitInfoStr)
+
+    : unitNum(uNum),
+
+      dirRLURulesEnd(0),
       unitRLURulesEnd(0),
       numExcludedDirRLURules(0),
       numExcludedUnitRLURules(0),
@@ -811,11 +814,12 @@ UnitInfo::includeUnit() {
 // Goal origins formatting
 //========================================================================
 
+int currentUnitNum;         // Unit number, starting at 1.
 string currentUnit;         // [<path>/]<fileroot>
 string currentUnitPath;     //  <path>
 string currentUnitFile;     //  <fileroot>
 string currentUnitKind;     //  procedure | function | task_type
-string currentGoalNumStr;      //  <goal number>
+string currentGoalNumStr;   //  <goal number>
 string currentGoalOrigins;  //  Info about where in program goal comes from
 
 
@@ -868,7 +872,7 @@ POGS doesn't seem to distinguish between assertions and default assertions.
 // Called at start of processUnit in main.cc
 
 void initCurrentUnitInfo(UnitInfo* unitInfo) {
-
+    currentUnitNum = unitInfo->getUnitNum();
     currentUnit = unitInfo->getUnitName();
     currentUnitPath = unitInfo->getUnitPath();
     currentUnitFile = unitInfo->getUnitFileName();
@@ -1032,7 +1036,7 @@ void openReportFiles() {
     // Write header for unit summary file
 
     unitSumStream
-        << "unit,ERRORs,WARNINGs,"
+        << "unit num,unit,ERRORs,WARNINGs,"
            "total,trivial,true,unproven,timeout,false,error,"
            "exc. dir urules,exc. unit urules,exc. sys rules,"
            "parse tree,tx tree,alloced nodes,"
@@ -1090,7 +1094,7 @@ void printMessageWithHeader(const string& header, const string& message) {
 
     s += ": " + messageTimer.toString() + "s ";
 
-    s += "unit: " + currentUnit;
+    s += "unit: " + intToString(currentUnitNum) + " - " + currentUnit;
 
 
     if (currentGoalNumStr.size() > 0) {
@@ -1285,17 +1289,18 @@ printCSVRecordAux(const string& unitKind,
                          : remarks);
 
                                          // Fields
-    csvStream << currentUnitPath << ","  //  1
-              << currentUnitFile << ","  //  2
-              << kindString << ","       //  3
-              << originsString << ","    //  4, 5
-              << goalNumString << ","    //  6
-              << conclString << ","      //  7
-              << status << ","           //  8
-              << queryTime  << ","       //  9
-              << quotedRemarks << ","    // 10
-              << currentHypsKinds << "," // 11
-              << currentConclKinds       // 12
+    csvStream << currentUnitNum << ","   //  1
+              << currentUnitPath << ","  //  2
+              << currentUnitFile << ","  //  3
+              << kindString << ","       //  4
+              << originsString << ","    //  5, 6
+              << goalNumString << ","    //  7
+              << conclString << ","      //  8
+              << status << ","           //  9
+              << queryTime  << ","       // 10
+              << quotedRemarks << ","    // 11
+              << currentHypsKinds << "," // 12
+              << currentConclKinds       // 13
               << endl;
     return;
 }
@@ -1326,7 +1331,8 @@ void printUnitSummary(UnitInfo* ui) {
         + ui->errorQueries;
 
     unitSumStream                      
-        << currentUnit << ","          
+        << ui->getUnitNum() << ","          
+        << ui->getUnitName() << ","          
 
         << numUnitErrorMessages << ","
         << numUnitWarningMessages << ","

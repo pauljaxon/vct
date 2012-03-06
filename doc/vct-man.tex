@@ -16,7 +16,7 @@
 \author{Paul Jackson \\
         \texttt{pbj@inf.ed.ac.uk}}
 
-\date{29 Feb 2012}
+\date{6 Mar 2012}
 
 %\usepackage{vpage}
 %\usepackage{vmargin}
@@ -1912,7 +1912,7 @@ Usage:
 Filter \csv{} records, returning on standard output just those with
 \textit{str} a substring of field \textit{n} (1-based).
 %
-If \texttt{-v} provided, then return those records without
+If \texttt{-v} is provided, then returns those records without
 \textit{str} a substring of field \textit{n}.
 Records are drawn from file \textit{file} if it is supplied. If not, they
 are taken from standard input.
@@ -1933,19 +1933,21 @@ fields \textit{m1 \ldots{} mj} in the records in \textit{file1} and
 fields \textit{n1 \ldots{} nk} in the records in \textit{file2}.
 If \textit{j} = 0, all fields of  \textit{file1} records are used.
 If \textit{k} = 0, all fields of  \textit{file2} records are used.
-
+Fields are numbered starting from 1.
 
 %----------------------------------------------------------------------------
 \subsection{Project out fields of CSV records}
 %----------------------------------------------------------------------------
 Usage:
 \begin{quote}
-  \texttt{csvproj} \textit{n1 \ldots{} nk} [\textit{file}]
+  \texttt{csvproj} [\texttt{-v}] \textit{n1 \ldots{} nk} [\textit{file}]
 \end{quote}
 Build new records from fields \textit{n1 \ldots{} nk} of the input
 records and output to standard output.  Input records are drawn from
 file \textit{file} if it is supplied. If not, they are taken from
-standard input.
+standard input.  If option \texttt{-v} is supplied, then all fields
+but \textit{n1 \ldots{} nk} are used to build the output records.
+Fields are numbered starting from 1.
 
 %----------------------------------------------------------------------------
 %\subsection{Intersecting CSV files}
