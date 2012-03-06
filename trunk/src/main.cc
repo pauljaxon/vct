@@ -99,14 +99,17 @@ readUnitList(const string& filename) {
     }
 
     string unitPath;
+    int unitNum = 1;
     while (getline(ifs, unitPath)) {
 
         if (unitPath[0] == '#')  // Allow comment lines in listing.
             continue; 
         else if (tokeniseString(unitPath).size() == 0) // Allow blank lines
             continue; 
-        else
-            result.push_back(UnitInfo(unitPath));
+        else {
+            result.push_back(UnitInfo(unitNum,unitPath));
+            unitNum++;
+        }
     }
     ifs.close();
 
@@ -361,7 +364,8 @@ processUnit(UnitInfo* unitInfo, SMTDriver* smtDriver) {
     
     if (option("utick")) {
         if (option("longtick")) {
-            cout << endl << unitInfo->getUnitName();
+            cout << endl << unitInfo->getUnitNum()
+                 << ":" << unitInfo->getUnitName();
         } else {
             cout << "*";
         }
@@ -460,7 +464,7 @@ main (int argc, char *argv[]) {
 
     vector<UnitInfo> unitList;
     if (unitName != "") {
-        unitList.push_back(UnitInfo(unitName));
+        unitList.push_back(UnitInfo(1,unitName));
     }
     else if (option("units")) {
         unitList = readUnitList(optionVal("units"));

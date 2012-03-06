@@ -286,7 +286,7 @@ save-build:
 
 test-bignum: test-bignum.cc bignum.o utility.o node.o \
              pprinter.o box.o formatter.o
-	g++ -g -o test-bignum -lgmpxx -lgmp $^
+	$(CXX) -g -o test-bignum -lgmpxx -lgmp $^
 
 
 
@@ -294,16 +294,16 @@ test-bignum: test-bignum.cc bignum.o utility.o node.o \
 
 
 csvproj: csvproj.cc utility.o
-	g++ -o ../bin/csvproj $^
+	$(CXX) -o ../bin/csvproj $^
 
 csvfilt: csvfilt.cc utility.o
-	g++ -o ../bin/csvfilt $^
+	$(CXX) -o ../bin/csvfilt $^
 
 csvmerge: csvmerge.cc utility.o
-	g++ -o ../bin/csvmerge $^
+	$(CXX) -o ../bin/csvmerge $^
 
 csvisect: csvisect.cc utility.o
-	g++ -o ../bin/csvisect $^
+	$(CXX) -o ../bin/csvisect $^
 
 .PHONY: csvutils
 csvutils: csvproj csvfilt csvmerge csvisect
