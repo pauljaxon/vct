@@ -150,7 +150,7 @@ Node* readRuleFile(pdriver& driver, const string& ruleFile) {
         if (driver.parseRuleFile(ruleFile) ) {
             printMessage(ERRORm, "Parse of rule file "
                          + ruleFile + " failed");
-            exit(1);
+            return 0;
         }
         return driver.result;
 }
@@ -178,6 +178,54 @@ Node* parseUnit(UnitInfo* unitInfo) {
     if (option("scantrace")) driver.trace_scanning = true;
     if (option("parsetrace")) driver.trace_parsing = true;
 
+    // -------------------------------------------------------------------
+    // Check for existence of Unit and Dir RLU files
+    // -------------------------------------------------------------------
+    // Do this first to give option of skipping unit if no user files.
+
+    string dirRLUFile;
+    if (option("read-directory-rlu-files")) {
+
+        if (unitInfo->getUnitDirName() != "" ) {
+
+            dirRLUFile  // == P1/.../Pn/D1/.../Dk/Dk.rlu  if k>0
+                // == P1/.../Pn/Pn.rlu  if n>0
+                // == .rlu  o/w
+                = joinPaths(unitInfo->getUnitPathPrefix(),
+                            joinPaths(unitInfo->getUnitPath(),
+                                      unitInfo->getUnitDirName()))
+                + ".rlu";
+        } else {
+            // We don't have a directory in our unit name if the unit is
+            // in the current directory. In this case the name of the
+            // global user rule can be worked out from the current
+            // directory.
+            char cwd[MAXPATHLEN];
+            getcwd(cwd, MAXPATHLEN);
+            dirRLUFile = basename(cwd);
+            dirRLUFile += ".rlu";
+        }
+        if (!readableFileExists(dirRLUFile)) dirRLUFile.clear();
+    }
+    // if dirRLUFile != "", then it names a real file that should be read.
+
+
+    string unitRLUFile;
+    
+    if (option("read-unit-rlu-files")) {
+
+        unitRLUFile // == P1/.../Pn/D1/.../Dk/U.rlu
+            = fullUnitName + ".rlu";
+        if (!readableFileExists(unitRLUFile)) unitRLUFile.clear();
+    }
+    // if unitRLUFile != "", then it names a real file that should be read.
+
+    if (option("skip-units-with-no-rlu-files")
+        && dirRLUFile.empty()
+        && unitRLUFile.empty()
+        )
+        return 0;
+    
     // -------------------------------------------------------------------
     // Read in and parse declarations files
     // -------------------------------------------------------------------
@@ -253,52 +301,25 @@ Node* parseUnit(UnitInfo* unitInfo) {
     Node* rules = new Node(RULE_FILE);
 
 
-    if (option("read-directory-rlu-files")) {
-      string dirRLUFile;
-
-      if (unitInfo->getUnitDirName() != "" ) {
-
-	dirRLUFile  // == P1/.../Pn/D1/.../Dk/Dk.rlu  if k>0
-                    // == P1/.../Pn/Pn.rlu  if n>0
-                    // == .rlu  o/w
-	  = joinPaths(unitInfo->getUnitPathPrefix(),
-		      joinPaths(unitInfo->getUnitPath(),
-				unitInfo->getUnitDirName()))
-	  + ".rlu";
-      } else {
-	// We don't have a directory in our unit name if the unit is
-	// in the current directory. In this case the name of the
-	// global user rule can be worked out from the current
-	// directory.
-	char cwd[MAXPATHLEN];
-	getcwd(cwd, MAXPATHLEN);
-	dirRLUFile = basename(cwd);
-	dirRLUFile += ".rlu";
-      }
-
-      if (readableFileExists(dirRLUFile)) {
+    if (!dirRLUFile.empty()) {
 
 	Node* ruleFile = readRuleFile(driver, dirRLUFile);
+        if (ruleFile == 0) return 0;
+        
 	unitInfo->dirRLURulesEnd = countRules(ruleFile);
 	unitInfo->unitRLURulesEnd = unitInfo->dirRLURulesEnd;
 
 	rules->appendChildren(ruleFile);
-      }
     }
 
-    if (option("read-unit-rlu-files")) {
+    if (!unitRLUFile.empty()) {
 
+        Node* ruleFile = readRuleFile(driver, unitRLUFile);
+        if (ruleFile == 0) return 0;
+        unitInfo->unitRLURulesEnd
+            = unitInfo->dirRLURulesEnd + countRules(ruleFile);
 
-        string unitRLUFile // == P1/.../Pn/D1/.../Dk/U.rlu
-            = fullUnitName + ".rlu";
-        if (readableFileExists(unitRLUFile)) {
-
-            Node* ruleFile = readRuleFile(driver, unitRLUFile);
-            unitInfo->unitRLURulesEnd
-                = unitInfo->dirRLURulesEnd + countRules(ruleFile);
-
-            rules->appendChildren(ruleFile);
-        }
+        rules->appendChildren(ruleFile);
     }
 
     vector<string> ruleFiles;
@@ -378,10 +399,8 @@ processUnit(UnitInfo* unitInfo, SMTDriver* smtDriver) {
     Node* unitAST = parseUnit(unitInfo);
 
     if (unitAST == 0) {
-        printCSVRecord("error", "parsing failed");
-
-        unitInfo->addRemark("parsing failed");
-        printUnitSummary(unitInfo);
+        // Either error occurred or unit skipped because of there being no
+        // rlu files.
         return;
     }
     unitInfo->parseTreeSize = unitAST->treeSize();
@@ -580,14 +599,12 @@ main (int argc, char *argv[]) {
 
 
     // ---------------------------------------------------------------------
-    // Report summary of results
-    // ---------------------------------------------------------------------
-    printStats();
-
-    // ---------------------------------------------------------------------
     // Tidy up
     // ---------------------------------------------------------------------
     smtDriver->finaliseSession();
+
+    printStats();
+
     closeReportFiles();
 
     if (option("utick") || option("gtick") || option("ctick")) cout << endl;
