@@ -946,7 +946,8 @@ ofstream logStream;
 ofstream sumStream;
 ofstream unitSumStream;
 
-
+extern string unitSumHeader; // Defined below in code that writes records
+                             // unitSumStream.
 void openReportFiles() {
     string reportName("report");
     if (option("report")) reportName = optionVal("report");
@@ -1035,15 +1036,7 @@ void openReportFiles() {
 
     // Write header for unit summary file
 
-    unitSumStream
-        << "unit num,unit,ERRORs,WARNINGs,"
-           "total,trivial,true,unproven,timeout,false,error,"
-           "exc. dir urules,exc. unit urules,exc. sys rules,"
-           "parse tree,tx tree,alloced nodes,"
-           "total time,proven time,av. proven time,max proven time,"
-           "unproven time,av. unproven time,remarks"
-        << endl;
-
+    unitSumStream << unitSumHeader << endl;
 
     return;
 }
@@ -1312,6 +1305,34 @@ printCSVRecordAux(const string& unitKind,
 int lastNumWarningMessages = 0;
 int lastNumErrorMessages = 0;
 
+string unitSumHeader(
+    "unit num,"
+    "unit,"
+    "ERRORs,"
+    "WARNINGs,"
+    "total,"
+    "trivial,"
+    "true,"
+    "unproven,"
+    "timeout,"
+    "false,"
+    "error,"
+    "urules,"
+    "exc. dir urules,"
+    "exc. unit urules,"
+    "exc. sys rules,"
+    "parse tree,"
+    "tx tree,"
+    "alloced nodes,"
+    "total time,"
+    "proven time,"
+    "av. proven time,"
+    "max proven time,"
+    "unproven time,"
+    "av. unproven time,"
+    "remarks"
+    );
+
 void printUnitSummary(UnitInfo* ui) {
 
     int numUnitWarningMessages = numWarningMessages - lastNumWarningMessages;
@@ -1345,6 +1366,8 @@ void printUnitSummary(UnitInfo* ui) {
         << ui->timeoutQueries << ","    
         << ui->falseQueries << ","   
         << ui->errorQueries << ","      
+
+        << ui->unitRLURulesEnd << "," // Number of user rules (dir + unit)
 
         << ui->numExcludedDirRLURules << ","
         << ui->numExcludedUnitRLURules << ","

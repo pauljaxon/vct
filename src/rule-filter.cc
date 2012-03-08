@@ -75,7 +75,7 @@ RuleFilter::driveQuerySet(UnitInfo* unitInfo,
                          int startQuery,
                          int endQuery) {
 
-    vector<QueryStatus> normalResult
+    vector<QueryStatus> result
         = SMTDriver::driveQuerySet(unitInfo,
                                    unit,
                                    excludedRules,
@@ -86,44 +86,93 @@ RuleFilter::driveQuerySet(UnitInfo* unitInfo,
     if (! (option("find-redundant-rules")
            && startQuery + 1 == endQuery
            && unitInfo->unitRLURulesEnd > 0
-           && normalResult.size() > 0
-           && normalResult.at(0).status == TRUE)
+           && result.size() > 0
+           && result.at(0).status == TRUE)
         ) {
-        return normalResult;
+        return result;
     }
     printMessage(INFOm,"Starting rule filtering on goal");
 
-    double queryTime = normalResult.at(0).time;
-    string remarks(normalResult.at(0).remarks);
+    double queryTime = result.at(0).time;
+    string remarks(result.at(0).remarks);
 
     // Record translation from unit and directory rlu rule numbers to names.
     saveRuleNames(unitInfo, unit);
 
-    // Try excluding single rules in range [0 .. unitRLUFileEnd - 1]
-    // that are not already excluded because of unbound ids.
+    // First try excluding all rules in range [0 .. unitRLUFileEnd - 1].
+
+    // If this succeeds, we know that no user rules are needed.
+    // to prove goal.
+    
+    // If this fails, we greedily find a minimal set of required user
+    // rules by trying to exclude in turn each rule in range
+    // [0 .. unitRLUFileEnd - 1] that is not already excluded because
+    // of unbound ids.
+
+    // This initial check is not needed for functionality, but could 
+    // improve performance.
+    // For each true goal with user rules when none are required, the
+    // saving in total runtime is
+    // 
+    //    (n-1) * time to prove goal
+    //
+    // However, for each true goal with some required user rules
+    //
+    //    time for unproven goal (timeout time) 
+    //
+    // is added onto the total runtime.
+    //
+    // With Tokeneer, the latter time dominates and this initial check
+    // actually increases the total run time.
 
     set<int> newExclRules(excludedRules);
-    
-    for (int i = 0; i != unitInfo->unitRLURulesEnd; i++) {
 
-        if (setMember(i, excludedRules)) continue;
+    bool tryIncrementalRuleKnockout = true;
 
-        set<int> exclRules1Extra(newExclRules);
-        exclRules1Extra.insert(i);
+    if (option("try-full-user-rule-knockout-first")) {
 
-        vector<QueryStatus> result
-            = SMTDriver::driveQuerySet(unitInfo,
-                                       unit,
-                                       exclRules1Extra,
-                                       startQuery,
-                                       startQuery+1);
+        for (int i = 0; i != unitInfo->unitRLURulesEnd; i++) {
+            newExclRules.insert(i);
+        }
+        result = SMTDriver::driveQuerySet(unitInfo,
+                                          unit,
+                                          newExclRules,
+                                          startQuery,
+                                          startQuery+1);
 
         if (result.size() > 0 && result.at(0).status == TRUE) {
-            newExclRules.insert(i);
             queryTime = result.at(0).time;
             remarks = result.at(0).remarks;
+            tryIncrementalRuleKnockout = false;
         }
     }
+
+    if (tryIncrementalRuleKnockout) {
+    
+        newExclRules = excludedRules;
+    
+        for (int i = 0; i != unitInfo->unitRLURulesEnd; i++) {
+
+            if (setMember(i, excludedRules)) continue;
+
+            set<int> exclRules1Extra(newExclRules);
+            exclRules1Extra.insert(i);
+
+            result = SMTDriver::driveQuerySet(unitInfo,
+                                              unit,
+                                              exclRules1Extra,
+                                              startQuery,
+                                              startQuery+1);
+
+            if (result.size() > 0 && result.at(0).status == TRUE) {
+                newExclRules.insert(i);
+                queryTime = result.at(0).time;
+                remarks = result.at(0).remarks;
+            }
+        }
+    }
+
+
 
     saveExclusionInfo(unitInfo, newExclRules);
 
@@ -166,7 +215,8 @@ RuleFilter::driveQuerySet(UnitInfo* unitInfo,
         }
         printMessage(INFOm, report);
     }
-    vector<QueryStatus> result;
+
+    result.clear();
     result.push_back(QueryStatus(TRUE,remarks,queryTime));
     return result;
     
