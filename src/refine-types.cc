@@ -512,7 +512,7 @@ RefineTypes::initialiseTypeRepMap() {
                                       new Node(VAR, "x"),
                                       new Node(NATNUM, "1")));
 
-        t->addNewRule(t->mkMemPredAxiom(rhs));
+        t->addNewRule(nRULE("typeref mem def (bit)",t->mkMemPredAxiom(rhs)));
         
         
     } else if (option("refine-bit-type-as-int-quotient")) {
@@ -534,7 +534,7 @@ RefineTypes::initialiseTypeRepMap() {
                              new Node(TO_PROP, new Node(VAR, "y"))
                              );
 
-        t->addNewRule(t->mkEquivPredAxiom(rhs));
+        t->addNewRule(nRULE("typeref eqv def (bit)",t->mkEquivPredAxiom(rhs)));
         
     } else {
         insertTrivialTypeRep("bit___type");
@@ -604,7 +604,9 @@ RefineTypes::initialiseTypeRepMap() {
 
                 Node* rhs = oldTypeIdRep->mkMemPred(new Node(VAR, "x"));
 
-                newTypeIdRep->addNewRule(newTypeIdRep->mkMemPredAxiom(rhs));
+                newTypeIdRep->addNewRule(
+                    nRULE("typeref mem def (" + newTypeId + ")",
+                          newTypeIdRep->mkMemPredAxiom(rhs)));
 
             }
             if (!oldTypeIdRep->hasEquivTrivial()) {
@@ -621,7 +623,9 @@ RefineTypes::initialiseTypeRepMap() {
                 Node* rhs = oldTypeIdRep->mkEquivPred(new Node(VAR, "x"),
                                                       new Node(VAR, "y"));
                 
-                newTypeIdRep->addNewRule(newTypeIdRep->mkEquivPredAxiom(rhs));
+                newTypeIdRep->addNewRule(
+                    nRULE("typeref eqv def (" + newTypeId + ")",
+                          newTypeIdRep->mkEquivPredAxiom(rhs)));
 
             }
 
@@ -651,7 +655,9 @@ RefineTypes::initialiseTypeRepMap() {
                                               new Node(VAR, "x"),
                                               upper));
 
-                t->addNewRule(t->mkMemPredAxiom(rhs));
+                t->addNewRule(
+                    nRULE("typeref mem def (" + typeDecl->id + ")",
+                          t->mkMemPredAxiom(rhs)));
                 
             } else {
                 insertTrivialTypeRep(typeDecl->id);
@@ -762,7 +768,9 @@ RefineTypes::initialiseTypeRepMap() {
                                          forallDecls,
                                          mkGeneralImplies(hyps, concl));
 
-                    arrayTypeRep->addNewRule(arrayTypeRep->mkMemPredAxiom(rhs));
+                    arrayTypeRep->addNewRule(
+                        nRULE("typeref arr mem def (" + typeDecl->id + ")",
+                              arrayTypeRep->mkMemPredAxiom(rhs)));
                                          
                 } // END IF !arrayMemTrival
 
@@ -821,7 +829,9 @@ RefineTypes::initialiseTypeRepMap() {
                                          forallDecls,
                                          mkGeneralImplies(hyps, concl));
 
-                    arrayTypeRep->addNewRule(arrayTypeRep->mkEquivPredAxiom(rhs));
+                    arrayTypeRep->addNewRule(
+                        nRULE("typeref arr eqv def (" + typeDecl->id + ")",
+                              arrayTypeRep->mkEquivPredAxiom(rhs)));
 
                 } // END IF !arrayEquivTrivial
 
@@ -929,7 +939,9 @@ RefineTypes::initialiseTypeRepMap() {
                                                             
                     Node* rhs = new Node(FORALL, forallDecls, concl);
 
-                    arrayTypeRep->addNewRule(arrayTypeRep->mkMemPredAxiom(rhs));
+                    arrayTypeRep->addNewRule(
+                        nRULE("typeref arr alt mem def " + typeDecl->id + ")",
+                              arrayTypeRep->mkMemPredAxiom(rhs)));
                                          
                 } // END IF !arrayMemTrival
 
@@ -980,7 +992,9 @@ RefineTypes::initialiseTypeRepMap() {
                                                             
                     Node* rhs = new Node(FORALL, forallDecls, concl);
 
-                    arrayTypeRep->addNewRule(arrayTypeRep->mkEquivPredAxiom(rhs));
+                    arrayTypeRep->addNewRule(
+                        nRULE("typeref arr alt eqv def (" + typeDecl->id + ")",
+                              arrayTypeRep->mkEquivPredAxiom(rhs)));
 
                 } // END IF !arrayEquivTrivial
 
@@ -1038,7 +1052,9 @@ RefineTypes::initialiseTypeRepMap() {
                 }
                 if (rhs->arity() == 1) rhs = rhs->child(0);
                 
-                recordTypeRep->addNewRule(recordTypeRep->mkMemPredAxiom(rhs));
+                recordTypeRep->addNewRule(
+                    nRULE("typeref rcd mem def (" + typeDecl->id + ")",
+                          recordTypeRep->mkMemPredAxiom(rhs)));
 
             } // END IF !recordMemTrivial
 
@@ -1084,7 +1100,9 @@ RefineTypes::initialiseTypeRepMap() {
                 }
                 if (rhs->arity() == 1) rhs = rhs->child(0);
                 
-                recordTypeRep->addNewRule(recordTypeRep->mkEquivPredAxiom(rhs));
+                recordTypeRep->addNewRule(
+                    nRULE("typeref rcd eqv def (" + typeDecl->id + ")",
+                          recordTypeRep->mkEquivPredAxiom(rhs)));
             }
                           
         } else {
@@ -1231,7 +1249,9 @@ RefineTypes::addSubtypingAndFunctionalityRules() {
         TypeRep* t = lookupTypeRep(typeToName(decl->child(0)));
             
         if (!t->hasMemTrivial()) {
-            rules->addChild(t->mkMemPred(new Node(CONST, decl->id)));
+            rules->addChild(
+                nRULE("typeref mem const (" + decl->id + ")",
+                      t->mkMemPred(new Node(CONST, decl->id))));
         }
             
     }
@@ -1245,7 +1265,9 @@ RefineTypes::addSubtypingAndFunctionalityRules() {
         TypeRep* t = lookupTypeRep(typeToName(decl->child(0)));
             
         if (!t->hasMemTrivial()) {
-            rules->addChild(t->mkMemPred(new Node(CONST, decl->id)));
+            rules->addChild(
+                nRULE("typeref mem const (" + decl->id + ")",
+                      t->mkMemPred(new Node(CONST, decl->id))));
         }
     }
 
@@ -1305,7 +1327,9 @@ RefineTypes::addSubtypingAndFunctionalityRules() {
             Node* body = mkGeneralImplies(hyps, memPredFunAp);
 
             Node* subtypingAxiom = new Node(FORALL, forallDecls, body);
-            rules->addChild(subtypingAxiom);
+            rules->addChild(
+                nRULE("typeref mem fun (" + declId + ")",
+                      subtypingAxiom));
         }
 
         
@@ -1376,7 +1400,9 @@ RefineTypes::addSubtypingAndFunctionalityRules() {
                          mkGeneralImplies(hyps, equivPredFunAps)
                          );
 
-            rules->addChild(functionalityAxiom);
+            rules->addChild(
+                nRULE("typeref eqv fun (" + decl->id + ")",
+                      functionalityAxiom));
 
         } // END add functionality axiom
 
@@ -1423,7 +1449,9 @@ RefineTypes::addSpecialDeclsAndRules() {
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // Add defining axiom for bit-valued equiv rel
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            rules->addChild(t->mkBitEquivFunAxiom());
+            rules->addChild(
+                nRULE("typeref bit eqv (" + t->getTypeName() + ")",
+                      t->mkBitEquivFunAxiom()));
             
         }
 

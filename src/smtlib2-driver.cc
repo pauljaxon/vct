@@ -77,8 +77,17 @@ Box& SMTLib2Formatter::addSyntax(z::Kind k, const std::string& id,
     case(SET_OPTION):  return makeStringAp("set-option :" + id, bs);
     case(ASSERT):      return makeStringAp("assert", bs);
     case(CHECK):       return makeStringAp("check-sat", bs);
+    case(GET_UNSAT_CORE):
+                       return makeStringAp("get-unsat-core", bs);
     case(PUSH):        return box("(push 1)");
     case(POP):         return box("(pop 1)");
+
+    case(LABEL):       { bs.push_back(&box(":named "
+                                           + mkLispSymbolString(id)));
+                         return makeStringAp("!",bs);
+                       }
+        
+    case(COMMENT):     return box("; " + id);
 
     // Declarations
 
@@ -460,6 +469,10 @@ SMTLib2Driver::initQuerySet(const string& unitName,
                                            optionVal("smtlib2-soft-timeout")))
             );
     }
+    if (option("smtlib2-unsat-cores")) {
+        script->addChild(new Node(SET_OPTION, "produce-unsat-cores",
+                                  new Node(z::TRUE)));
+    }
     script->addChild(new Node(LOGIC,logic));
 
     return;
@@ -478,18 +491,25 @@ SMTLib2Driver::addDecl(Node* decl) {
 }
 
 void
-SMTLib2Driver::addRule(Node* rule, const string& hId, string& remarks) {
-    script->addChild(new Node(ASSERT,rule));
+SMTLib2Driver::addRule(Node* rule, const string& ruleId, string& remarks) {
+    addHyp(rule, ruleId, remarks);
 }
 
 void
 SMTLib2Driver::addHyp(Node* hyp, const string& hId, string& remarks) {
-    script->addChild(new Node(ASSERT,hyp));
+    if (option("add-formula-descriptions")) {
+        script->addChild(new Node(COMMENT, hId));
+    }
+    if (option("smtlib2-unsat-cores")) {
+        script->addChild(new Node(ASSERT,new Node(LABEL,hId,hyp)));
+    } else {
+        script->addChild(new Node(ASSERT,hyp));
+    }
 }
 
 void
 SMTLib2Driver::addConcl(Node* concl, string& remarks) {
-    script->addChild(new Node(ASSERT, new Node(NOT, concl)));
+    addHyp(new Node(NOT, concl), "C", remarks);
 }
 
 void
@@ -497,9 +517,13 @@ SMTLib2Driver::push() {
     script->addChild(new Node(PUSH));
 }
 
-SMTLib2Driver::Status
+SMTDriver::Status
 SMTLib2Driver::check(string& remarks) {
     script->addChild(new Node(CHECK));
+    if (option("smtlib2-unsat-cores")) {
+        script->addChild(new Node(GET_UNSAT_CORE));
+    }
+
     return UNCHECKED;
 }
 
@@ -1074,26 +1098,56 @@ SMTLib2Driver::getRunResults(int numQueries) {
     // Check over stdout output from solver
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    // With unsat cores, expect one of
+    //
+    // unsat
+    // (<name1> ... <namek>)
+    //
+    // sat
+    // (error "<errstring>")
+    //
+    // unknown
+    // (error "<errstring>")
+    //
     for (int i = 0; i != (int) solverOutput.size(); i++) {
 
         string s = solverOutput.at(i);
         vector<string> line = tokeniseString(s);
-
+        
+        
         if (line.size() == 0) {
             continue;
         }
+        Status st = ERROR;
+        if (line.size() == 1) {
+            if (line.at(0) == "unsat") st = TRUE;
+            if (line.at(0) == "sat") st = FALSE;
+            if (line.at(0) == "unknown") st = UNKNOWN;
+        }
 
-        if (line.size() == 1 && line.at(0) == "unsat") {
-            results.push_back(QueryStatus(TRUE,"",0.0));
-        }
-        else if (line.size() == 1 && line.at(0) == "sat") {
-            results.push_back(QueryStatus(FALSE,"",0.0));
-        }
-        else if (line.size() == 1 && line.at(0) == "unknown") {
-            results.push_back(QueryStatus(UNKNOWN,"",0.0));
-        } else {
+        if (st == ERROR) {
             seenUnexpectedOutput = true;
+        } else {
+            string remarks;
+
+            if (option("smtlib2-unsat-cores")) {
+                // Grab extra line.
+                // if it is an unsat core, record it in remarks, and
+                // otherwise check for "(error" prefix
+
+                if (i == (int) solverOutput.size() - 1) {
+                    seenUnexpectedOutput = true;
+                } else {
+                    i++;
+                    if (st == TRUE)
+                        remarks = solverOutput.at(i);
+                    else if (!hasPrefix(solverOutput.at(i),"(error"))
+                        seenUnexpectedOutput = true;
+                }
+            }
+            results.push_back(QueryStatus(st,remarks,0.0));
         }
+
     }
 
 

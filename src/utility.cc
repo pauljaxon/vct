@@ -374,7 +374,34 @@ string fixSuffix(const string& s,
     return s;
 }
 
+// For when || quoted symbols are not acceptable. (e.g. z3 3.2).
+// Symbols can use A-Za-z0-9 and characters
+// ~ ! @ $ % ^ & * _ - + = < > . ? /
 
+// Convert all brackets to <>s, "," to "." and any other symbols to "-".
+
+string mkLispSymbolString(const string& s) {
+    string result;
+    for (int i = 0; i != (int) s.size(); i++) {
+        char c = s.at(i);
+        char newC = '-';
+        
+        if ( ('a' <= c && c <= 'z') 
+             || ('A' <= c && c <= 'Z') 
+             || ('0' <= c && c <= '9')
+             || member(c,"~!@$%^&*_-+=<>.?/") ) {
+
+            newC = c;
+        }
+        else if (c == '[' || c == '(')  newC = '<';
+        else if (c == ']' || c == ')')  newC = '>';
+        else if (c == ',') newC = '.';
+
+        result.push_back(newC);
+    }
+    return result;
+
+}
 
 
 //========================================================================

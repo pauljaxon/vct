@@ -189,9 +189,8 @@ void elimMkArrays(FDLContext* ctxt, Node* unit) {
             qDecls->addChild(new Node (DECL,
                                        "v",
                                        ValTy->copy()));
-                
-            rules->addChild
-                (new Node (FORALL,
+            Node* constArrAxiom = 
+                 new Node (FORALL,
                            qDecls,
                            new Node (EQ,"",
                                      new Node(ARR_ELEMENT,
@@ -202,7 +201,11 @@ void elimMkArrays(FDLContext* ctxt, Node* unit) {
                                               arrIndex),
                                      new Node(VAR, "v"),
                                      ValTy->copy()
-                                     )));
+                                     ));
+
+            rules->addChild(nRULE("arr " + intToString(arrayDim)
+                                  + " mk_const def (" + arrayName + ")",
+                                  constArrAxiom));
                 
         } // END if is array type decl
     } // END for loop over type decl seq.
@@ -401,7 +404,8 @@ addArrayElementUpdateAxioms(FDLContext* ctxt, Node* unit) {
                               elementType->copy()
                               ));
 
-        rules->addChild(rWEqAxiom);
+        rules->addChild(nRULE("arr " + intToString(indexTypes->arity())
+                              + " RW eq (" + arrName + ")", rWEqAxiom));
         
         // RWNE axiom:
         //
@@ -444,7 +448,8 @@ addArrayElementUpdateAxioms(FDLContext* ctxt, Node* unit) {
                                        )
                               ));
 
-        rules->addChild(rWNEAxiom);
+        rules->addChild(nRULE("arr " + intToString(indexTypes->arity())
+                              + " RW neq (" + arrName + ")", rWNEAxiom));
 
     } // END for loop over types in context
 
@@ -589,7 +594,8 @@ addArrayElementBoxUpdateAxioms(FDLContext* ctxt, Node* unit) {
                               )
                      );
 
-        rules->addChild(rInWAxiom);
+        rules->addChild(nRULE("arr " + intToString(indexTypes->arity())
+                              + " R in W box (" + arrName + ")", rInWAxiom));
         
         // ROutW axiom (Read outside of write box)
         //
@@ -635,7 +641,9 @@ addArrayElementBoxUpdateAxioms(FDLContext* ctxt, Node* unit) {
                                        )
                               ));
 
-        rules->addChild(rOutWAxiom);
+        rules->addChild(nRULE("arr " + intToString(indexTypes->arity())
+                              + " R out of W box (" + arrName + ")",
+                              rOutWAxiom));
 
     } // END for loop over types in context
 
@@ -736,8 +744,9 @@ addArrayExtensionalityAxioms(FDLContext* ctxt, Node* unit) {
                                nameToType(arrName))
                       )
              );
-                         
-        rules->addChild(extAxiom);
+        rules->addChild(nRULE("arr " + intToString(indexTypes->arity())
+                              + " ext (" + arrName + ")",
+                              extAxiom));
 
     } // END for loop over types in context
 
@@ -1292,7 +1301,10 @@ void abstractRcdUpdates(FDLContext* ctxt, Node* unit) {
                                    )
                          );
 
-            rules->addChild(updateElimAxiom);
+            rules->addChild(nRULE("upd elim rcd ax (" 
+                                  + fieldName_i + ","
+                                  + typeName + ")",
+                                  updateElimAxiom));
 
         } // END For i over record components
 
@@ -1406,7 +1418,11 @@ void addRcdElementUpdateAxioms(FDLContext* ctxt, Node* unit) {
                              );
 
 
-                rules->addChild(elementUpdateAxiom);
+                rules->addChild(nRULE("rcd elt upd ("
+                                      + fieldName_i + ","
+                                      + fieldName_k + ","
+                                      + typeName + ")",
+                                      elementUpdateAxiom));
 
             } // END For k over fields
 
@@ -1604,7 +1620,8 @@ void addRcdEqElementsExtAxioms(FDLContext* ctxt, Node* unit) {
                                       )
                      );
 
-        rules->addChild(extAxiom);
+        rules->addChild(nRULE("rcd eq elts ext (" + typeName + ")",
+                              extAxiom));
 
         
     } // END For j over type definitions
@@ -1692,7 +1709,10 @@ void addRcdElementMkRcdAxioms(FDLContext* ctxt, Node* unit) {
                                    )
                          );
 
-            rules->addChild(elementConstructorAxiom);
+            rules->addChild(nRULE("rcd elt mk ("
+                                  + fieldName_i + ","
+                                  + typeName + ")",
+                                  elementConstructorAxiom));
 
         } // END For i over record components
 
@@ -1867,7 +1887,9 @@ void addMkRcdElementExtAxioms(FDLContext* ctxt, Node* unit) {
                                            nameToType(typeName)
                                            )
                                   );
-        rules->addChild(extAxiom);
+
+        rules->addChild(nRULE("rcd mk elts ext (" + typeName + ")",
+                              extAxiom));
 
     } // END For j over type defs
 
@@ -1995,7 +2017,10 @@ addDeclsAxiomsForArrRecEqAliases(FDLContext* ctxt, Node* unit) {
                               )
                      );
 
-        rules->addChild(axiom);
+        string tKind(type->kind == ARRAY_TY ? "arr" : "rcd");
+
+        rules->addChild(nRULE(tKind + "eq alias (" + typeName + ")",
+                              axiom));
 
     } // END for loop
 

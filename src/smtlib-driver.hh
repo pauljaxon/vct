@@ -56,6 +56,8 @@ private:
     Node* formula;
 
 protected:
+    // OLD = Needed by old prover driver 
+    // NEW = Needed by alternative prover driver
 
     virtual Node* translateUnit(Node* n);
 
@@ -70,11 +72,19 @@ protected:
     virtual void addHyp(Node* h, const string& hId, string& remarks);
     virtual void addConcl(Node* n, string& remarks); 
 
-    virtual void finishSetup();
+    virtual Status check(string& remarks);  // NEW
+    virtual void outputQuerySet();          // NEW
 
-    virtual bool checkGoal(string& remarks);
+    virtual void finishSetup();     // OLD
+
+
+
+    virtual bool checkGoal(string& remarks);    // OLD
+    virtual bool runQuerySet(string& remarks);  // NEW
     
-    virtual Status getResults(string& remarks);
+    virtual Status getResults(string& remarks);         // OLD
+    vector<QueryStatus> getRunResults(int numQueries);  // NEW
+
 
     virtual void finaliseGoal();
 

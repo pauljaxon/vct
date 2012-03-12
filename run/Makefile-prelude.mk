@@ -207,6 +207,46 @@ else
 endif
 
 #-----------------------------------------------------------------------------
+# Getting proof summaries
+#------------------------
+# i.e. Unsat cores
+
+ifdef PS
+  pf_sum_sfx = -ps
+  pf_sum_option = -smtlib2-unsat-cores
+endif
+
+#-----------------------------------------------------------------------------
+# Working directory
+#-----------------
+WKDIR=/tmp
+
+#-----------------------------------------------------------------------------
+# Generate and preserve prover files
+#-----------------------------------
+
+ifdef FWF
+  WKDIR=work
+  wkfiles_option = \
+    -unique-working-files=false\
+    -delete-working-files=false\
+    -flat-working-files
+else ifdef HWF
+  WKDIR=work
+  wkfiles_option = \
+    -unique-working-files=false\
+    -delete-working-files=false\
+    -hier-working-files
+endif
+
+#-----------------------------------------------------------------------------
+# Adding comments to working files
+#---------------------------------
+ifdef CMT
+  cmt_option = -add-formula-descriptions
+endif 
+
+#-----------------------------------------------------------------------------
 # Focussing on single unit and goal
 #----------------------------------
 
@@ -378,7 +418,7 @@ endif
 #SMTLIB2: will need to address alternate divmod support and abs abstraction
 # By using -expand-exp-const, are assuming solver can handle non-lin arith.
 
-report_root = $(fuse_c_pfx)-$@$(siv_sfx)$(tg_sfx)$(std_rlu_sfx)$(lin_sfx)$(enum_sfx)$(timeout_sfx)$(repeat_sfx)$(smtlib_option_suffix)$(SFX)
+report_root = $(fuse_c_pfx)-$@$(siv_sfx)$(tg_sfx)$(std_rlu_sfx)$(lin_sfx)$(enum_sfx)$(pf_sum_sfx)$(timeout_sfx)$(repeat_sfx)$(smtlib_option_suffix)$(SFX)
 
 std_options = \
             $(unit_option) \
@@ -389,10 +429,12 @@ std_options = \
             $(tg_flag)\
             $(lin_opt)\
             $(enum_option)\
+            $(pf_sum_option)\
             $(repeat_option)\
             $(std_rlu_option)\
             -report=$(report_root)\
             -report-dir=$(OUTDIR)\
+            -working-dir=$(WKDIR)\
             -decls=prelude.fdl\
             -unique-working-files\
             -delete-working-files\
@@ -414,6 +456,8 @@ std_options = \
             -use-alt-solver-driver \
             -echo-final-stats\
             -level=warning\
+            $(wkfiles_option)\
+            $(cmt_option)\
             $($*_options)
 
 #----------------------------------------------------------------------------

@@ -102,6 +102,8 @@ string fixSuffix(const string& s,
                  const string& newPrefix,
                  const string& newSuffix);
 
+string mkLispSymbolString(const string& s);
+
 //========================================================================
 // Set operations
 // ========================================================================

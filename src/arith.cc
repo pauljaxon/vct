@@ -312,7 +312,9 @@ BigConsts::getRules() {
          i++) {
         Node* current = new Node(CONST, prefix + (*i).toString());
         
-        rules->addChild(new Node(I_LT, prev, current));
+        rules->addChild(nRULE("bigconst lt (" + prev->id + ","
+                              + current->id + ")",
+                              new Node(I_LT, prev, current)));
         prev = current;
 
     }
@@ -451,27 +453,28 @@ void addEuclideanIdivModAxioms(Node* unit) {
     // possible, they have stronger preconditions.
 
 
-    rules->addChild(
-
 // y > 0 => 
 //   MOD x y = MOD_E x y
 
-        nFORALL2("X", nINT_TY, "Y", nINT_TY,
-                 nIMPLIES(nI_GT(nVAR("Y"),nNATNUM("0")),
-                          nI_EQ(nMOD(nVAR("X"), nVAR("Y")),
-                                nMOD_E(nVAR("X"), nVAR("Y")))))
-        );
+    rules->addChild(
+        nRULE("mod mod_e 1",
+              nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                       nIMPLIES(nI_GT(nVAR("Y"),nNATNUM("0")),
+                                nI_EQ(nMOD(nVAR("X"), nVAR("Y")),
+                                      nMOD_E(nVAR("X"), nVAR("Y")))))
+            ));
 
 // y < 0 & y | x =>
 //   MOD x y = MOD_E x y
 
     rules->addChild(
-        nFORALL2("X", nINT_TY, "Y", nINT_TY,
-                 nIMPLIES(nAND(nI_LT(nVAR("Y"),nNATNUM("0")),
-                               nDIVIDES(nVAR("Y"),nVAR("X"))),
-                          nI_EQ(nMOD(nVAR("X"), nVAR("Y")),
-                                nMOD_E(nVAR("X"), nVAR("Y")))))
-        );
+        nRULE("mod mod_e 2",
+              nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                       nIMPLIES(nAND(nI_LT(nVAR("Y"),nNATNUM("0")),
+                                     nDIVIDES(nVAR("Y"),nVAR("X"))),
+                                nI_EQ(nMOD(nVAR("X"), nVAR("Y")),
+                                      nMOD_E(nVAR("X"), nVAR("Y")))))
+            ));
 
 
 
@@ -479,13 +482,14 @@ void addEuclideanIdivModAxioms(Node* unit) {
 //   MOD x y = (MOD_E x y) + y 
 
     rules->addChild(
-        nFORALL2("X", nINT_TY, "Y", nINT_TY,
-                 nIMPLIES(nAND(nI_LT(nVAR("Y"),nNATNUM("0")),
-                               nNOT(nDIVIDES(nVAR("Y"),nVAR("X")))),
-                          nI_EQ(nMOD(nVAR("X"), nVAR("Y")),
-                                nI_PLUS(nMOD_E(nVAR("X"), nVAR("Y")),
-                                        nVAR("Y")))))
-        );
+        nRULE("mod mod_e 3",
+              nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                       nIMPLIES(nAND(nI_LT(nVAR("Y"),nNATNUM("0")),
+                                     nNOT(nDIVIDES(nVAR("Y"),nVAR("X")))),
+                                nI_EQ(nMOD(nVAR("X"), nVAR("Y")),
+                                      nI_PLUS(nMOD_E(nVAR("X"), nVAR("Y")),
+                                              nVAR("Y")))))
+            ));
 
 
 
@@ -493,25 +497,27 @@ void addEuclideanIdivModAxioms(Node* unit) {
 //  IDIV x y = IDIV_E x y        Both rounding down
 
     rules->addChild(
-        nFORALL2("X", nINT_TY, "Y", nINT_TY,
-                 nIMPLIES(nAND(nI_GE(nVAR("X"),nNATNUM("0")),
-                               nI_GT(nVAR("Y"),nNATNUM("0"))),
-                          nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
-                                nIDIV_E(nVAR("X"), nVAR("Y")))))
-        );
+        nRULE("idiv idiv_e 1",
+              nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                       nIMPLIES(nAND(nI_GE(nVAR("X"),nNATNUM("0")),
+                                     nI_GT(nVAR("Y"),nNATNUM("0"))),
+                                nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
+                                      nIDIV_E(nVAR("X"), nVAR("Y")))))
+            ));
 
 
 // x < 0 & y > 0 & y | x =>
 //  IDIV x y = IDIV_E x y
 
     rules->addChild(
-        nFORALL2("X", nINT_TY, "Y", nINT_TY,
-                 nIMPLIES(nAND(nI_LT(nVAR("X"),nNATNUM("0")),
-                               nAND(nI_GT(nVAR("Y"),nNATNUM("0")),
-                                    nDIVIDES(nVAR("Y"), nVAR("X")))),
-                          nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
-                                nIDIV_E(nVAR("X"), nVAR("Y")))))
-        );
+        nRULE("idiv idiv_e 2",
+              nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                       nIMPLIES(nAND(nI_LT(nVAR("X"),nNATNUM("0")),
+                                     nAND(nI_GT(nVAR("Y"),nNATNUM("0")),
+                                          nDIVIDES(nVAR("Y"), nVAR("X")))),
+                                nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
+                                      nIDIV_E(nVAR("X"), nVAR("Y")))))
+            ));
 
 // x < 0 & y > 0 & ~(y | x) =>
 //  IDIV x y = IDIV_E x y + 1     
@@ -519,14 +525,16 @@ void addEuclideanIdivModAxioms(Node* unit) {
 // IDIV -ve so rounding up, IDIV_E rounding down
 
     rules->addChild(
-        nFORALL2("X", nINT_TY, "Y", nINT_TY,
-                 nIMPLIES(nAND(nI_LT(nVAR("X"),nNATNUM("0")),
-                               nAND(nI_GT(nVAR("Y"),nNATNUM("0")),
-                                    nNOT(nDIVIDES(nVAR("Y"), nVAR("X"))))),
-                          nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
-                                nI_PLUS(nIDIV_E(nVAR("X"), nVAR("Y")),
-                                        nNATNUM("1")))))
-        );
+        nRULE("idiv idiv_e 3",
+              nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                       nIMPLIES(nAND(nI_LT(nVAR("X"),nNATNUM("0")),
+                                     nAND(nI_GT(nVAR("Y"),nNATNUM("0")),
+                                          nNOT(nDIVIDES(nVAR("Y"),
+                                                        nVAR("X"))))),
+                                nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
+                                      nI_PLUS(nIDIV_E(nVAR("X"), nVAR("Y")),
+                                              nNATNUM("1")))))
+            ));
 
 
 
@@ -534,25 +542,27 @@ void addEuclideanIdivModAxioms(Node* unit) {
 //  IDIV x y = IDIV_E x y        Both rounding up
 
     rules->addChild(
-        nFORALL2("X", nINT_TY, "Y", nINT_TY,
-                 nIMPLIES(nAND(nI_GE(nVAR("X"),nNATNUM("0")),
-                               nI_LT(nVAR("Y"),nNATNUM("0"))),
-                          nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
-                                nIDIV_E(nVAR("X"), nVAR("Y")))))
-        );
+        nRULE("idiv idiv_e 4",
+              nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                       nIMPLIES(nAND(nI_GE(nVAR("X"),nNATNUM("0")),
+                                     nI_LT(nVAR("Y"),nNATNUM("0"))),
+                                nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
+                                      nIDIV_E(nVAR("X"), nVAR("Y")))))
+            ));
 
 
 // x < 0 & y < 0 & y | x =>
 //  IDIV x y = IDIV_E x y
 
     rules->addChild(
-        nFORALL2("X", nINT_TY, "Y", nINT_TY,
-                 nIMPLIES(nAND(nI_LT(nVAR("X"),nNATNUM("0")),
-                               nAND(nI_LT(nVAR("Y"),nNATNUM("0")),
-                                    nDIVIDES(nVAR("Y"), nVAR("X")))),
-                          nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
-                                nIDIV_E(nVAR("X"), nVAR("Y")))))
-        );
+        nRULE("idiv idiv_e 5",
+              nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                       nIMPLIES(nAND(nI_LT(nVAR("X"),nNATNUM("0")),
+                                     nAND(nI_LT(nVAR("Y"),nNATNUM("0")),
+                                          nDIVIDES(nVAR("Y"), nVAR("X")))),
+                                nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
+                                      nIDIV_E(nVAR("X"), nVAR("Y")))))
+            ));
 
 
 // x < 0 & y < 0 & ~(y | x) =>
@@ -561,14 +571,16 @@ void addEuclideanIdivModAxioms(Node* unit) {
 // IDIV rounding down, IDIV_E rounding up
 
     rules->addChild(
-        nFORALL2("X", nINT_TY, "Y", nINT_TY,
-                 nIMPLIES(nAND(nI_LT(nVAR("X"),nNATNUM("0")),
-                               nAND(nI_LT(nVAR("Y"),nNATNUM("0")),
-                                    nNOT(nDIVIDES(nVAR("Y"), nVAR("X"))))),
-                          nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
-                                nI_MINUS(nIDIV_E(nVAR("X"), nVAR("Y")),
-                                        nNATNUM("1")))))
-        );
+        nRULE("idiv idiv_e 6",
+              nFORALL2("X", nINT_TY, "Y", nINT_TY,
+                       nIMPLIES(nAND(nI_LT(nVAR("X"),nNATNUM("0")),
+                                     nAND(nI_LT(nVAR("Y"),nNATNUM("0")),
+                                          nNOT(nDIVIDES(nVAR("Y"),
+                                                        nVAR("X"))))),
+                                nI_EQ(nIDIV(nVAR("X"), nVAR("Y")),
+                                      nI_MINUS(nIDIV_E(nVAR("X"), nVAR("Y")),
+                                               nNATNUM("1")))))
+            ));
 
     return;
 }

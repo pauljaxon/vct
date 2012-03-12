@@ -414,11 +414,11 @@ SMTDriver::runQuerySet(string& remarks) {
 SMTDriver::Status
 SMTDriver::getResults(string& remarks) { return UNKNOWN; }
 
+
 vector<SMTDriver::QueryStatus>
 SMTDriver::getRunResults(int numQueries) {
-    return vector<SMTDriver::QueryStatus>();
+    return vector<QueryStatus>();
 }
-
 
 // Default implementation for online (API) solver interface 
 SMTDriver::Status

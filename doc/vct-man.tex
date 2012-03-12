@@ -16,7 +16,7 @@
 \author{Paul Jackson \\
         \texttt{pbj@inf.ed.ac.uk}}
 
-\date{6 Mar 2012}
+\date{12 Mar 2012}
 
 %\usepackage{vpage}
 %\usepackage{vmargin}
@@ -994,6 +994,25 @@ process.
   Delete the files used for prover input and output after
   each prover invocation.
 
+\optionb{add-formula-descriptions} 
+  Add comments in the prover input file describing the rule, hypothesis
+  or conclusion that each asserted formula comes from.
+
+\optionb{smtlib2-unsat-cores}
+  Ask the prover to report an unsatisfiability core for each proven goal.
+  An \emph{unsatisfiability core} or \emph{unsat core} names which of
+  the rules, hypotheses and the conclusion of a goal were used in the
+  proof of the goal.  An unsat core can be viewed as a proof summary.
+  Unsat cores are reported in the remarks field of records written to the
+  \csv{} file.
+
+  Unsat cores are currently only supported if the \smtlib{}2 file-level
+  prover interface is used.
+
+  Generation of unsat cores can slow down provers.  For example,
+  \zthree's run-time on provable goals has been observed more than
+  double when unsat core generation has been requested.
+
 \optionv{ulimit-timeout}{time}
   If using either of the file-level interface modes, 
    use the Linux 
@@ -1019,7 +1038,7 @@ process.
 
 \optionv{smtlib2-soft-timeout}{time}
  %  
- If using the \smtlib{}2 file-level interface mode and \zthree v3.1 or newer,
+ If using the \smtlib{}2 file-level interface mode and \zthree{} v3.1 or newer,
  timeout \emph{check-sat} prover invocations after \emph{time} milliseconds.
  The \texttt{time} value should be a natural number.
 

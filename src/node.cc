@@ -64,8 +64,11 @@ z::kindString(z::Kind k) {
 	c(GOAL);
 	c(ASSERT);  // Yices extra
 	c(CHECK);
+	c(GET_UNSAT_CORE);
 	c(PUSH);
 	c(POP);
+	c(LABEL);
+	c(COMMENT);
 	c(SCRIPT);
         c(DECLS);  // Introduced by processing
         c(RULES);
