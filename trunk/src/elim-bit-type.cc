@@ -246,10 +246,10 @@ abstractBitOps(FDLContext* ctxt, Node* unit) {
                    );
   
 
-    rules->addChild(andAxiom);
-    rules->addChild(orAxiom);
-    rules->addChild(iffAxiom);
-    rules->addChild(notAxiom);
+    rules->addChild(nRULE("bit and",andAxiom));
+    rules->addChild(nRULE("bit or",orAxiom));
+    rules->addChild(nRULE("bit iff",iffAxiom));
+    rules->addChild(nRULE("bit not",notAxiom));
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Abstract away operation occurrences
@@ -358,9 +358,9 @@ abstractBitValuedEqs(FDLContext* ctxt, Node* unit) {
     // Add axioms for primitive types
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    rules->addChild(mkBitValuedEqAxiom("integer"));
-    rules->addChild(mkBitValuedEqAxiom("real"));
-    rules->addChild(mkBitValuedEqAxiom("bit___type"));
+    rules->addChild(nRULE("bit eq (int)",mkBitValuedEqAxiom("integer")));
+    rules->addChild(nRULE("bit eq (real)",mkBitValuedEqAxiom("real")));
+    rules->addChild(nRULE("bit eq (bit)",mkBitValuedEqAxiom("bit___type")));
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Loop over declared types
@@ -387,7 +387,8 @@ abstractBitValuedEqs(FDLContext* ctxt, Node* unit) {
         // Add axiom for declared type
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        rules->addChild(mkBitValuedEqAxiom(typeId));
+        rules->addChild(nRULE("bit eq (" + typeId + ")",
+                              mkBitValuedEqAxiom(typeId)));
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -466,7 +467,7 @@ abstractBitValuedIntLEs(FDLContext* ctxt, Node* unit) {
                           )
                  );
   
-    rules->addChild(axiom);
+    rules->addChild(nRULE("bit le (int)",axiom));
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Abstract away occurrences
@@ -609,8 +610,8 @@ elimBitTypeAndConsts(FDLContext* ctxt, Node* unit) {
                                new Node(BIT_TY));
     
 
-    rules->addChild(falseAxiom);
-    rules->addChild(trueAxiom);
+    rules->addChild(nRULE("bit false",falseAxiom));
+    rules->addChild(nRULE("bit true",trueAxiom));
     
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Abstract away occurrences of type and constants

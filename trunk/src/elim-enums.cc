@@ -176,37 +176,23 @@ void enumsToIntSubranges(FDLContext* ctxt, Node* unit) {
                 = intToString(typeDecl->child(0)->arity());
             string enumName = typeDecl->id;
 
-                    
-            rules->addChild
-                ( new Node
-                  ( FORALL,
-                    new Node(SEQ, new Node(DECL, "i", nameToType(enumName))),
-                    new Node(EQ,
-                             "",
-                             new Node(FUN_AP,
-                                      enumName + "__pos",
-                                      new Node(VAR, "i")
-                                      ),
-                             new Node(VAR, "i"),
-                             Node::int_ty
-                             )
-                    ) // END FORALL
-                  );
-            rules->addChild
-                ( new Node
-                  ( FORALL,
-                    new Node(SEQ, new Node(DECL, "i", nameToType(enumName))),
-                    new Node(EQ,
-                             "",
-                             new Node(FUN_AP,
-                                      enumName + "__val",
-                                      new Node(VAR, "i")
-                                      ),
-                             new Node(VAR, "i"),
-                             Node::int_ty
-                             )
-                    ) // END FORALL
-                  );
+            Node* ePosIdentityAxiom =
+                nFORALL1("i",nameToType(enumName),
+                         nEQ(nFUNAP1(enumName + "__pos",nVAR("i")),
+                             nVAR("i"),
+                             nINT_TY));
+
+            rules->addChild(nRULE("enum int pos id (" + enumName + ")",
+                                  ePosIdentityAxiom));
+
+            Node* eValIdentityAxiom = 
+                nFORALL1("i",nameToType(enumName),
+                         nEQ(nFUNAP1(enumName + "__val",nVAR("i")),
+                             nVAR("i"),
+                             nINT_TY));
+
+            rules->addChild(nRULE("enum int val id (" + enumName + ")",
+                                  eValIdentityAxiom));
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - -
             // Add rules defining E__succ and E__pred
@@ -215,53 +201,28 @@ void enumsToIntSubranges(FDLContext* ctxt, Node* unit) {
                 = intToString(typeDecl->child(0)->arity() - 1);
 
                     
-            rules->addChild
-                ( new Node
-                  ( FORALL,
-                    new Node(SEQ,
-                             new Node(DECL, "i", nameToType(enumName))),
-                    new Node(IMPLIES,
-                             new Node(I_LT,
-                                      new Node (VAR, "i"),
-                                      new Node (NATNUM, enumSizeMinusOneStr)
-                                      ),
-                             new Node(EQ,"",
-                                      new Node(FUN_AP,
-                                               enumName + "__succ",
-                                               new Node(VAR, "i")
-                                               ),
-                                      new Node(I_SUCC,
-                                               new Node(VAR, "i")
-                                               ),
-                                      Node::int_ty
-                                      )
-                             ) // END IMPLIES
-                    ) // END FORALL
-                  );
-            rules->addChild
-                ( new Node
-                  ( FORALL,
-                    new Node(SEQ,
-                             new Node(DECL, "i", nameToType(enumName))),
-                    new Node(IMPLIES,
-                             new Node(I_LT,
-                                      new Node (NATNUM, "0"),
-                                      new Node (VAR, "i")
-                                      ),
-                             new Node(EQ,"",
-                                      new Node(FUN_AP,
-                                               enumName + "__pred",
-                                               new Node(VAR, "i")
-                                               ),
-                                      new Node(I_PRED,
-                                               new Node(VAR, "i")
-                                               ),
-                                      Node::int_ty
-                                      )
-                             ) // END IMPLIES
-                    ) // END FORALL
-                  );
-        
+            Node* eSuccAxiom = 
+                nFORALL1("i",nameToType(enumName),
+                         nIMPLIES
+                         ( nI_LT(nVAR("i"), nNATNUM(enumSizeMinusOneStr)),
+                           nEQ(nFUNAP1(enumName + "__succ",nVAR("i")),
+                               nI_SUCC(nVAR("i")),
+                               nINT_TY)));
+
+            rules->addChild(nRULE("enum int succ (" + enumName + ")",
+                                  eSuccAxiom));
+
+            Node* ePredAxiom = 
+                nFORALL1("i",nameToType(enumName),
+                         nIMPLIES
+                         ( nI_LT(nNATNUM("0"), nVAR("i")),
+                           nEQ(nFUNAP1(enumName + "__pred",nVAR("i")),
+                               nI_PRED(nVAR("i")),
+                               nINT_TY)));
+
+            rules->addChild(nRULE("enum int pred (" + enumName + ")",
+                                  ePredAxiom));
+
             // - - - - - - - - - - - - - - - - - - - - - - - - - -
             // For each enum const, add a rule defining int value 
             // - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -273,14 +234,11 @@ void enumsToIntSubranges(FDLContext* ctxt, Node* unit) {
 
                 string enumConstId = enumConstNames->child(j)->id;  
 
-                rules->addChild(
-                                new Node (EQ,"", // MAY_BE_REPLACED_BY,
-                                          new Node (CONST, enumConstId),
-                                          new Node (NATNUM,
-                                                    intToString(j)),
-                                          Node::int_ty
-                                          )
-                                );
+                Node* enumConstDefAxiom =
+                    nEQ(nCONST(enumConstId), nNATNUM(intToString(j)), nINT_TY);
+
+                rules->addChild(nRULE("enum int const (" + enumConstId + ")",
+                                      enumConstDefAxiom));
             }
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -407,18 +365,23 @@ void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
             // E__pos(econst{i}) == i     i = 0 .. k-1
 
             for (int i = 0; i != enumSize; i++) {
+                string eConstName(enumType->child(i)->id);
                 rules->addChild(
-                    nEQ( nFUNAP1( enumName + "__val",
-                                  nNATNUM( intToString(i))),
-                         nCONST( enumType->child(i)->id),
-                         nTYPE_ID(enumName))
-                    );
+                    nRULE("enum iso val int ("
+                          + intToString(i) + "," + enumName + ")",
+                          nEQ( nFUNAP1( enumName + "__val",
+                                        nNATNUM( intToString(i))),
+                               nCONST(eConstName),
+                               nTYPE_ID(enumName))
+                        ));
                 rules->addChild(
-                    nEQ( nFUNAP1( enumName + "__pos",
-                                  nCONST( enumType->child(i)->id)),
-                         nNATNUM( intToString(i)),
-                         nINT_TY)
-                    );
+                    nRULE("enum iso pos const ("
+                          + eConstName + "," + enumName + ")",
+                          nEQ( nFUNAP1( enumName + "__pos",
+                                        nCONST(eConstName)),
+                               nNATNUM( intToString(i)),
+                               nINT_TY)
+                        ));
             }
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -427,19 +390,21 @@ void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
             // E__pos(E__first) == 0
             // E__pos(E__last) == k-1
 
-            rules->addChild
-                ( nEQ( nFUNAP1( enumName + "__pos",
-                                nCONST( enumName + "__first")),
-                       nNATNUM( "0"),
-                       nINT_TY)
-                    );
+            rules->addChild(
+                nRULE("enum iso pos first (" + enumName + ")",
+                      nEQ( nFUNAP1( enumName + "__pos",
+                                    nCONST( enumName + "__first")),
+                           nNATNUM( "0"),
+                           nINT_TY)
+                    ));
             
-            rules->addChild
-                ( nEQ( nFUNAP1( enumName + "__pos",
-                                nCONST( enumName + "__last")),
-                       nNATNUM( enumSizeMinusOneStr),
-                       nINT_TY)
-                    );
+            rules->addChild(
+                nRULE("enum iso pos last (" + enumName + ")",
+                      nEQ( nFUNAP1( enumName + "__pos",
+                                    nCONST( enumName + "__last")),
+                           nNATNUM( enumSizeMinusOneStr),
+                           nINT_TY)
+                    ));
             
             // - - - - - - - - - - - - - - - - - - - - - - - - - -
             // Rules for E__pos of E__succ and E__pred
@@ -448,38 +413,40 @@ void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
             //    ==> E__pos(E__succ(X)) == E__pos(X) + 1
 
             rules->addChild(
-                nFORALL1(
-                    "X", nTYPE_ID(enumName),
-                    nIMPLIES(
-                        nNE( nVAR("X"),
-                             nCONST( enumName + "__last"),
-                             nTYPE_ID(enumName)),
-                        nEQ( nFUNAP1( enumName + "__pos",
-                                      nFUNAP1( enumName + "__succ",
-                                               nVAR("X"))),
-                             nI_PLUS( nFUNAP1( enumName + "__pos",
-                                               nVAR("X")),
-                                      nNATNUM("1")),
-                             nINT_TY)))
-                );
+                nRULE("enum iso pos succ (" + enumName + ")",
+                      nFORALL1(
+                          "X", nTYPE_ID(enumName),
+                          nIMPLIES(
+                              nNE( nVAR("X"),
+                                   nCONST( enumName + "__last"),
+                                   nTYPE_ID(enumName)),
+                              nEQ( nFUNAP1( enumName + "__pos",
+                                            nFUNAP1( enumName + "__succ",
+                                                     nVAR("X"))),
+                                   nI_PLUS( nFUNAP1( enumName + "__pos",
+                                                     nVAR("X")),
+                                            nNATNUM("1")),
+                                   nINT_TY)))
+                    ));
 
             // All X:E. X != const(0)   ==> E__pos(E__pred(X)) == E__pos(X) - 1
 
             rules->addChild(
-                nFORALL1(
-                    "X", nTYPE_ID(enumName),
-                    nIMPLIES(
-                        nNE( nVAR("X"),
-                             nCONST( enumName + "__first"),
-                             nTYPE_ID(enumName)),
-                        nEQ( nFUNAP1( enumName + "__pos",
-                                      nFUNAP1( enumName + "__pred",
-                                               nVAR("X"))),
-                             nI_MINUS( nFUNAP1( enumName + "__pos",
-                                                nVAR("X")),
-                                       nNATNUM("1")),
-                             nINT_TY)))
-                );
+                nRULE("enum iso pos pred (" + enumName + ")",
+                      nFORALL1(
+                          "X", nTYPE_ID(enumName),
+                          nIMPLIES(
+                              nNE( nVAR("X"),
+                                   nCONST( enumName + "__first"),
+                                   nTYPE_ID(enumName)),
+                              nEQ( nFUNAP1( enumName + "__pos",
+                                            nFUNAP1( enumName + "__pred",
+                                                     nVAR("X"))),
+                                   nI_MINUS( nFUNAP1( enumName + "__pos",
+                                                      nVAR("X")),
+                                             nNATNUM("1")),
+                                   nINT_TY)))
+                    ));
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - -
             // Rules for E__pos bounds
@@ -488,16 +455,18 @@ void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
             // All X:E. E__pos(X) <= k-1
 
             rules->addChild(
-                nFORALL1("X", nTYPE_ID(enumName),
-                         nI_LE( nNATNUM("0"),
-                                nFUNAP1( enumName + "__pos", nVAR("X"))))
-                );
+                nRULE("enum iso pos lb (" + enumName + ")",
+                      nFORALL1("X", nTYPE_ID(enumName),
+                               nI_LE( nNATNUM("0"),
+                                      nFUNAP1( enumName + "__pos", nVAR("X"))))
+                    ));
 
             rules->addChild(
-                nFORALL1("X", nTYPE_ID(enumName),
-                         nI_LE( nFUNAP1( enumName + "__pos", nVAR("X")),
-                                nNATNUM(enumSizeMinusOneStr)))
-                );
+                nRULE("enum iso pos ub (" + enumName + ")",
+                      nFORALL1("X", nTYPE_ID(enumName),
+                               nI_LE( nFUNAP1( enumName + "__pos", nVAR("X")),
+                                      nNATNUM(enumSizeMinusOneStr)))
+                    ));
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - -
             // Rules for E__succ and E__pred of E__val
@@ -506,37 +475,40 @@ void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
             //   ==> E__succ(E__val(I)) == E__val(I+1)
 
             rules->addChild(
-                nFORALL1(
-                    "I", nINT_TY,
-                    nIMPLIES(
-                        nAND( nI_LE( nNATNUM("0"), nVAR("I")),
-                              nI_LT( nVAR("I"),
-                                     nNATNUM( enumSizeMinusOneStr))),
-                        nEQ( nFUNAP1( enumName + "__succ",
-                                      nFUNAP1( enumName + "__val", nVAR("I"))),
-                             nFUNAP1( enumName + "__val",
-                                      nI_PLUS( nVAR("I"), nNATNUM("1"))),
-                             nTYPE_ID(enumName))))
-                );
+                nRULE("enum iso succ val (" + enumName + ")",
+                      nFORALL1(
+                          "I", nINT_TY,
+                          nIMPLIES(
+                              nAND( nI_LE( nNATNUM("0"), nVAR("I")),
+                                    nI_LT( nVAR("I"),
+                                           nNATNUM( enumSizeMinusOneStr))),
+                              nEQ( nFUNAP1( enumName + "__succ",
+                                            nFUNAP1( enumName + "__val",
+                                                     nVAR("I"))),
+                                   nFUNAP1( enumName + "__val",
+                                            nI_PLUS( nVAR("I"), nNATNUM("1"))),
+                                   nTYPE_ID(enumName))))
+                    ));
 
 
             // All I:Int. 0 < I & I <= k-1
             //   ==> E__pred(E__val(I)) == E__val(I-1)
 
             rules->addChild(
-                nFORALL1(
-                    "I", nINT_TY,
-                    nIMPLIES(
-                        nAND( nI_LT( nNATNUM("0"), nVAR("I")),
-                              nI_LE( nVAR("I"),
-                                     nNATNUM( enumSizeMinusOneStr))),
-                        nEQ( nFUNAP1( enumName + "__pred",
-                                      nFUNAP1( enumName + "__val",
-                                               nVAR("I"))),
-                             nFUNAP1( enumName + "__val",
-                                      nI_MINUS( nVAR("I"), nNATNUM("1"))),
-                             nTYPE_ID(enumName))))
-                );
+                nRULE("enum iso pred val (" + enumName + ")",
+                      nFORALL1(
+                          "I", nINT_TY,
+                          nIMPLIES(
+                              nAND( nI_LT( nNATNUM("0"), nVAR("I")),
+                                    nI_LE( nVAR("I"),
+                                           nNATNUM( enumSizeMinusOneStr))),
+                              nEQ( nFUNAP1( enumName + "__pred",
+                                            nFUNAP1( enumName + "__val",
+                                                     nVAR("I"))),
+                                   nFUNAP1( enumName + "__val",
+                                            nI_MINUS( nVAR("I"), nNATNUM("1"))),
+                                   nTYPE_ID(enumName))))
+                    ));
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - -
             // Rules for isomorphism
@@ -544,31 +516,34 @@ void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
             // All I:Int. 0 <= I & I <= k-1 ==> E__pos(E__val(I)) == I
 
             rules->addChild(
-                nFORALL1(
-                    "I", nINT_TY,
-                    nIMPLIES(
-                        nAND( nI_LE( nNATNUM("0"), nVAR("I")),
-                              nI_LE(
-                                  nVAR("I"),
-                                  nNATNUM( enumSizeMinusOneStr))),
-                        nEQ( nFUNAP1( enumName + "__pos",
-                                      nFUNAP1( enumName + "__val",
-                                               nVAR("I"))),
-                             nVAR("I"),
-                             nINT_TY)))
-                );
+                nRULE("enum iso pos val (" + enumName + ")",
+                      nFORALL1(
+                          "I", nINT_TY,
+                          nIMPLIES(
+                              nAND( nI_LE( nNATNUM("0"), nVAR("I")),
+                                    nI_LE(
+                                        nVAR("I"),
+                                        nNATNUM( enumSizeMinusOneStr))),
+                              nEQ( nFUNAP1( enumName + "__pos",
+                                            nFUNAP1( enumName + "__val",
+                                                     nVAR("I"))),
+                                   nVAR("I"),
+                                   nINT_TY)))
+                    ));
 
             // All X:E. E__val(E__pos(X)) == X
 
             rules->addChild(
-                nFORALL1(
-                    "X", nTYPE_ID(enumName),
-                    nEQ( nFUNAP1( enumName + "__val",
-                                  nFUNAP1( enumName + "__pos", nVAR("X"))),
-                         nVAR("X"),
-                         nTYPE_ID(enumName))
-                    ) // END FORALL
-                );
+                nRULE("enum iso val pos (" + enumName + ")",
+                      nFORALL1(
+                          "X", nTYPE_ID(enumName),
+                          nEQ( nFUNAP1( enumName + "__val",
+                                        nFUNAP1( enumName + "__pos",
+                                                 nVAR("X"))),
+                               nVAR("X"),
+                               nTYPE_ID(enumName))
+                          ) // END FORALL
+                    ));
             
             // - - - - - - - - - - - - - - - - - - - - - - - - - -
             // Rules for inequalities
@@ -576,28 +551,34 @@ void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
             // All X,Y:E.  (X <= Y)   <==>  (E__pos(X) <= E__pos(Y))
 
             rules->addChild(
-                nFORALL2(
-                    "X", nTYPE_ID(enumName),"Y", nTYPE_ID(enumName),
-                    nIFF( nFUNAP2(enumName + "__LE", nVAR("X"), nVAR("Y")),
-                          nI_LE( nFUNAP1( enumName + "__pos", nVAR("X")),
-                                 nFUNAP1( enumName + "__pos", nVAR("Y")))))
-                );
+                nRULE("enum iso le pos (" + enumName + ")",
+                      nFORALL2(
+                          "X", nTYPE_ID(enumName),"Y", nTYPE_ID(enumName),
+                          nIFF( nFUNAP2(enumName + "__LE",
+                                        nVAR("X"),
+                                        nVAR("Y")),
+                                nI_LE( nFUNAP1( enumName + "__pos", nVAR("X")),
+                                       nFUNAP1( enumName + "__pos",
+                                                nVAR("Y")))))
+                    ));
 
             // All X,Y:E.  (X < Y)    <==>  (E__pos(X) <  E__pos(Y))
             rules->addChild(
-                nFORALL2(
-                    "X", nTYPE_ID(enumName), "Y", nTYPE_ID(enumName),
-                    nIFF(
-                        nFUNAP2( enumName + "__LT", nVAR("X"), nVAR("Y")),
-                        nI_LT(
-                            nFUNAP1( enumName + "__pos", nVAR("X")),
-                            nFUNAP1( enumName + "__pos", nVAR("Y")))))
-                );
+                nRULE("enum iso lt pos (" + enumName + ")",
+                      nFORALL2(
+                          "X", nTYPE_ID(enumName), "Y", nTYPE_ID(enumName),
+                          nIFF(
+                              nFUNAP2( enumName + "__LT", nVAR("X"), nVAR("Y")),
+                              nI_LT(
+                                  nFUNAP1( enumName + "__pos", nVAR("X")),
+                                  nFUNAP1( enumName + "__pos", nVAR("Y")))))
+                    ));
 
             // All I,J:Int. 0 <= I & I <= k-1 & 0 <= J & J <= k-1 
             //   ==>   I <= J   <==>    E__val(I) <= E__val(J)
 
             rules->addChild(
+                nRULE("enum iso le val (" + enumName + ")",
                 nFORALL2(
                     "I", nINT_TY,"J", nINT_TY,
                     nIMPLIES(
@@ -612,13 +593,14 @@ void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
                                   enumName + "__LE",
                                   nFUNAP1( enumName + "__val", nVAR("I")),
                                   nFUNAP1( enumName + "__val", nVAR("J"))))))
-                );
+                    ));
 
 
             // All I,J:Int. 0 <= I & I <= k-1 & 0 <= J & J <= k-1 
             //   ==>   I < J   <==>    E__val(I) < E__val(J)
 
             rules->addChild(
+                nRULE("enum iso lt val (" + enumName + ")",
                 nFORALL2(
                     "I", nINT_TY,"J", nINT_TY,
                     nIMPLIES(
@@ -634,7 +616,7 @@ void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
                                 enumName + "__LT",
                                 nFUNAP1( enumName + "__val", nVAR("I")),
                                 nFUNAP1( enumName + "__val", nVAR("J"))))))
-                );
+                    ));
 
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - -

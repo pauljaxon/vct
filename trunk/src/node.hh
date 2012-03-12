@@ -66,8 +66,11 @@ enum Kind {
     GOAL,
     ASSERT,  // Yices & SMTLib2
     CHECK,
+    GET_UNSAT_CORE,
     PUSH,
     POP,
+    LABEL,
+    COMMENT,
     SCRIPT,
     DECLS,  // Introduced by processing
     RULES,
@@ -551,6 +554,8 @@ bool isPolymorphicNode(Node* n);
 // Node constructor Macros
 //========================================================================
 
+#define nRULE(id,f) new Node(RULE,(id),(f))
+
 #define nDECL(id,T) new Node(DECL,(id),(T))
 #define nSEQ1(x) new Node(SEQ,(x))
 #define nSEQ2(x,y) new Node(SEQ,(x),(y))
@@ -578,6 +583,8 @@ bool isPolymorphicNode(Node* n);
 #define nTRUE new Node(TRUE);
 #define nFALSE new Node(FALSE);
 
+#define nI_SUCC(i) new Node(I_SUCC,(i))
+#define nI_PRED(i) new Node(I_PRED,(i))
 #define nI_PLUS(i,j) new Node(I_PLUS,(i),(j))
 #define nI_MINUS(i,j) new Node(I_MINUS,(i),(j))
 #define nIDIV(i,j) new Node(IDIV,(i),(j))

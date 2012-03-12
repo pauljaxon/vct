@@ -94,6 +94,8 @@ Box& SMTLibFormatter::addSyntax(z::Kind k, const std::string& id,
     case(FORMULA):     return box(":formula") / *(bs.at(0));
     case(STATUS):      return box(":status " + id);
 
+    case(COMMENT):     return box("; " + id);
+
     // Declarations
 
     case(DECL_FUN):    return makeStringAp(standardiseId(id), bs);
@@ -885,6 +887,9 @@ string mkSMTLibId(const string& s) {
 }
 
 
+//---------------------------------------------------------------------------
+// initGoal
+//---------------------------------------------------------------------------
 
 void
 SMTLibDriver::initGoal(const string& unitName,
@@ -916,23 +921,45 @@ SMTLibDriver::initGoal(const string& unitName,
     return;
 }
 
+//---------------------------------------------------------------------------
+// addDecl
+//---------------------------------------------------------------------------
 void 
 SMTLibDriver::addDecl(Node* decl) {
     benchmark->addChild(decl);
 }
 
+//---------------------------------------------------------------------------
+// addRule
+//---------------------------------------------------------------------------
+
 void
 SMTLibDriver::addRule(Node* hyp, const string& hId, string& remarks) {
+    if (option("add-formula-descriptions")) {
+        benchmark->addChild(new Node(COMMENT, hId));
+    }
     benchmark->addChild(new Node(ASSUMPTION,hyp));
 }
 
+//---------------------------------------------------------------------------
+// addHyp
+//---------------------------------------------------------------------------
+
 void
 SMTLibDriver::addHyp(Node* hyp, const string& hId, string& remarks) {
-    if (option("smtlib-hyps-as-assums"))
+    if (option("smtlib-hyps-as-assums")) {
+        if (option("add-formula-descriptions")) {
+            benchmark->addChild(new Node(COMMENT, hId));
+        }
         benchmark->addChild(new Node(ASSUMPTION,hyp));
+    }
     else
         formula->addChild(hyp);
 }
+
+//---------------------------------------------------------------------------
+// addConcl
+//---------------------------------------------------------------------------
 
 void
 SMTLibDriver::addConcl(Node* concl, string& remarks) {
@@ -943,6 +970,20 @@ SMTLibDriver::addConcl(Node* concl, string& remarks) {
         formula->addChild(new Node(NOT, concl));
     }
 }
+
+//---------------------------------------------------------------------------
+// check
+//---------------------------------------------------------------------------
+// Dummy method to make new alternative driver happy
+
+SMTDriver::Status
+SMTLibDriver::check(string& remarks) {
+    return UNCHECKED;
+}
+
+//---------------------------------------------------------------------------
+// finishSetup
+//---------------------------------------------------------------------------
 
 void
 SMTLibDriver::finishSetup() {
@@ -956,6 +997,13 @@ SMTLibDriver::finishSetup() {
     else {
         goal = formula;
         goal->kind = AND;
+    }
+    if (option("add-formula-descriptions")) {
+        if (option("smtlib-hyps-as-assums")) {
+            benchmark->addChild(new Node(COMMENT, "C"));
+        } else {
+            benchmark->addChild(new Node(COMMENT, "Hs and C"));
+        }
     }
     benchmark->addChild(new Node(FORMULA,goal));
     benchmark->addChild(new Node(STATUS,"unknown"));
@@ -977,6 +1025,17 @@ SMTLibDriver::finishSetup() {
     solverInput << *benchmark << endl;
     solverInput.close();
 }
+//---------------------------------------------------------------------------
+// outputQuerySet
+//---------------------------------------------------------------------------
+// For new alternative SMT driver
+void
+SMTLibDriver::outputQuerySet() {
+    finishSetup();
+    return;
+}
+
+
 //---------------------------------------------------------------------------
 // checkGoal
 //---------------------------------------------------------------------------
@@ -1058,6 +1117,15 @@ SMTLibDriver::checkGoal(string& remarks) {
     printMessage(INFOm, "Exit status is " + intToString(exitStatus));
 
     return false;
+}
+
+//---------------------------------------------------------------------------
+// runQuerySet
+//---------------------------------------------------------------------------
+
+bool 
+SMTLibDriver::runQuerySet(string& remarks) {
+    return checkGoal(remarks);
 }
 
 //---------------------------------------------------------------------------
@@ -1435,6 +1503,26 @@ SMTLibDriver::getResults(string& remarks) {
     return ERROR;
 
 
+}
+
+//---------------------------------------------------------------------------
+// getRunResults()
+//---------------------------------------------------------------------------
+
+vector<SMTDriver::QueryStatus>
+SMTLibDriver::getRunResults(int numQueries) {
+
+    if (numQueries > 1) {
+       printMessage(ERRORm, "Multiple results sought from prover without"
+         " support for incrementality\n");
+    }
+
+    string remarks;
+    Status status = getResults(remarks);
+
+    vector<SMTDriver::QueryStatus> result;
+    result.push_back(QueryStatus(status,remarks,0.0));
+    return result;
 }
 
 //---------------------------------------------------------------------------
