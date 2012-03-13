@@ -531,9 +531,10 @@ exp:
  | exp DIV exp     {$$ = new Node(z::IDIV, $1, $3); }
  | exp STARSTAR exp{$$ = new Node(z::EXP, $1, $3); }
  | exp DOTDOT exp  {$$ = new Node(z::SUBRANGE, $1, $3); }
- | LPAREN aexp RPAREN  {$$ = $2; } // exp should be adequate here, but have
-                                   // seen output of Examiner that parenthesise
-                                   // aexps.
+ | LPAREN indexset RPAREN  {$$ = $2; } // exp should be adequate here,
+                                       // but have seen output of
+                                       // Examiner that parenthesise
+                                       // indexsets
  | NATNUM          {$$ = new Node(z::NATNUM, * $1); delete $1; }
  | expseq          {$$ = $1;}
  | exp_id          {$$ = $1;}
@@ -617,23 +618,25 @@ aexpseq:
 aexp:
    exp             {$$ = $1; }
  | indexset ASSIGN exp  
-       {  if ($1->arity() == 1) {
-              if ($1->child(0)->kind == z::ID)
-                   $$ = new Node(z::ASSIGN, $1->child(0)->id, $3);
-              else
-                   $$ = new Node(z::ASSIGN, $1->child(0), $3);
-          }
-          else
-              $$ = new Node(z::ASSIGN, $1, $3);
+       // Expect indexset outermost operator to be ID, SEQ or INDEX_AND
+       // Only get ID when have record field assignment
+       {  if ($1->kind == z::ID)
+               $$ = new Node(z::ASSIGN, $1->id, $3);
+           else
+               $$ = new Node(z::ASSIGN, $1, $3);
        }
 ;
 
 indexset:
-   exp   {$$ = new Node(z::INDEX_AND,$1); }
+   exp   {$$ = $1; }
  | indexset AMPERSAND exp          // Used only on lhs of array assignments
          {
-            $$ = $1;
-            $$->addChild($3);
+             if ($1->kind == z::INDEX_AND) {
+                 $$ = $1;
+                 $$->addChild($3);
+             } else {
+                 $$ = new Node(z::INDEX_AND,$1,$3); 
+             }
          }
 ;
 exp_id:
