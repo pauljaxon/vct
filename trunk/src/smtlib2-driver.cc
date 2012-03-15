@@ -162,7 +162,7 @@ Box& SMTLib2Formatter::addSyntax(z::Kind k, const std::string& id,
     case(INFO_STR):    return box('"' + id + '"');
 
     default:
-	printMessage(ERRORm, "SMTLibFormatter::addSyntax: " + ENDLs
+	printMessage(ERRORm, "SMTLib2Formatter::addSyntax: " + ENDLs
                      + "Encountered unsupported kind "
                      + kindString(k));
         return PP::makeHVSeq("***" + kindString(k) + "{" + id + "}***",

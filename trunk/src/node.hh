@@ -77,6 +77,7 @@ enum Kind {
     RULE,
     GOALS,
     HYPS,
+    HYP,
     ASSUMPTION, // Isabelle, SMTLib
     CONCLS,
     CONCL,  // Isabelle

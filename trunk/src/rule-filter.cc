@@ -195,7 +195,7 @@ RuleFilter::driveQuerySet(UnitInfo* unitInfo,
                           + intToString(numUnitUserRules) + "u");
     }
                           
-    if (option("report-excluded-rlu-rules-per-goal")) {
+    if (option("report-user-rule-status")) {
         Node* rules = unit->child(1);
         string report("RuleFilter: excluded RLU rules for goal");
         report.append(ENDLs);

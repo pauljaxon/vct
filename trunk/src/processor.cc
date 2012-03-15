@@ -614,6 +614,192 @@ void identifyEqsAtCompoundTypes(FDLContext* ctxt, Node* unit) {
 }
 
 //========================================================================
+// User Rule Auditing
+//========================================================================
+
+/* Delete the provided set of goals from the .vcg file and generate an
+   alternative set of goals for checking properties of user rules.
+
+   5 kinds of goals generated in audit.
+
+  A (1) No user rules.   Always expect not true, but good just to double check.
+
+  B (1) All user rules in hyps.  If provable when A is not, this
+        suggests the user rules taken together are inconsistent.
+
+  C (n) 1 user rule at time in hyps.  If single rule is inconsistent  
+
+  D (n) concl = 1 user rule at time, no other user rules in hyps.
+    Says which user rules are only there for proof reasons.
+  E (n) concl = 1 user rule at time, rest of user rules in hyps.
+    Identifies interdependencies between user rules
+
+Construction of new goals;
+
+URs = user rules
+uri = user rule i, i ranging over all non-excluded user rules
+
+      URs-uri in Hs.  uri in Hs.   uri as C
+
+   A 
+   B        Yes          Yes
+   C                     Yes
+   D                                 Yes
+   E        Yes                      Yes
+
+
+For each, we add Goal id naming kind of rule, and for C,D,E, the uri.
+Reporting code uses this goal id rather than extractGoalInfo to fill
+in origins info in .vct report.
+
+Generate origins info as follows 
+
+Name       Kind             index
+  A       no urules
+  B       all urules
+  C       urule as H         <name of user rule added>
+  D       urule as C         <name of user rule added>
+  E       urule from rest    <name of user rule added>
+
+Simpler to allow hyps to have
+labels, just as rules can. 
+*/
+
+// Fake an enumeration type, as C++ doesn't support enumeration types
+// that can actually be easily enumerated over in a loop.
+
+typedef int RLUAuditKind;  // Kinds of rule audit goals
+
+#define NO_URULES  0
+#define ALL_URULES 1
+#define URULE_AS_H 2
+#define URULE_AS_C 3
+#define URULE_FROM_REST 4
+
+
+// if k == NO_URULES or ALL_URULES, the ruleIndex argument is 
+// irrelevant and is ignored.
+
+Node* buildRLUAuditGoal(UnitInfo* unitInfo,
+                        Node* unit,
+                        int ruleIndex,
+                        RLUAuditKind k ) {
+
+    Node* rules = unit->child(1);
+
+    string goalKind(
+        k == NO_URULES
+        ? "no urules"
+        : k == ALL_URULES
+        ? "all urules"
+        : k == URULE_AS_H
+        ? "urule as H" 
+        : k == URULE_AS_C
+        ? "urule as C"
+        : k == URULE_FROM_REST
+        ? "urule from rest"
+        : "BAD audit goal");
+
+    string indexedRuleName(
+      (k == URULE_AS_H || k == URULE_AS_C || k == URULE_FROM_REST)
+      ? rules->child(ruleIndex)->id
+      : "");
+    
+    Node* goal = new Node(GOAL,
+                          goalKind + "," + indexedRuleName,
+                          new Node(HYPS),
+                          new Node(CONCLS));
+
+    Node* concls = goal->child(1);
+    if (k == NO_URULES) {
+        concls->addChild(new Node(FALSE));
+        return goal;
+    }
+
+    Node* indexedRule = rules->child(ruleIndex);
+
+    if (k == URULE_AS_C || k == URULE_FROM_REST) {
+        concls->addChild(indexedRule->child(0)->copy());
+    } else {
+        concls->addChild(new Node(FALSE));
+    }
+
+    if (k == URULE_AS_C) return goal;
+
+    Node* hyps = goal->child(0);
+    if (k == URULE_AS_H) {
+        hyps->addChild(indexedRule->copy()->updateKind(HYP));
+        return goal;
+    }
+
+    // k == ALL_URULES or URULE_FROM_REST
+    for (int i = 0; i != unitInfo->unitRLURulesEnd; i++) {
+        if (unitInfo->isExcludedRule(i)
+            || (k == URULE_FROM_REST && i == ruleIndex)) continue;
+        
+        Node* hypI = rules->child(i)->copy()->updateKind(HYP);
+        hyps->addChild(hypI);
+    }
+
+    return goal;
+}
+
+void initRLUAuditGoals(UnitInfo* unitInfo, Node* unit) {
+
+    Node* goals = unit->child(2);
+    goals->clearChildren();
+
+    // Add new goals for each of the audit parts in turn.
+
+    // Part A
+    if (option("rule-audit-a")) {
+        goals->addChild(buildRLUAuditGoal(unitInfo, unit, 0, NO_URULES));
+    }
+
+    // Stop here if no user rules.  Rest of Parts assume there is
+    // at least one user rule
+    if (unitInfo->unitRLURulesEnd == 0) return;
+
+    // Part B
+    if (option("rule-audit-b")) {
+        goals->addChild(buildRLUAuditGoal(unitInfo, unit, 0, ALL_URULES));
+    }
+
+    // Parts C,D,E
+    for (RLUAuditKind k = URULE_AS_H; k <= URULE_FROM_REST; k++)  {
+
+        if ( ! (    (option("rule-audit-c") && k == URULE_AS_H)
+                 || (option("rule-audit-d") && k == URULE_AS_C)
+                 || (option("rule-audit-e") && k == URULE_FROM_REST)
+                 ) ) continue;
+        
+        for (int i = 0; i != unitInfo->unitRLURulesEnd; i++) {
+            if (unitInfo->isExcludedRule(i)) continue;
+
+            Node* ruleI = unit->child(1)->child(i);
+            if (option("rule-audit-rule")
+                && optionVal("rule-audit-rule") != ruleI->id ) continue;
+
+            Node* newGoal = buildRLUAuditGoal(unitInfo, unit, i, k);
+            goals->addChild(newGoal);
+        }
+    }
+    
+    // Ensure all of user rules are excluded from assertion with rest
+    // of rules of unit.
+
+    // And keep track of number of user rules considered by rule
+    // audit.
+    
+    for (int i = 0; i != unitInfo->unitRLURulesEnd; i++) {
+        if (unitInfo->isExcludedRule(i)) continue;
+        unitInfo->addExcludedRule(i);
+        unitInfo->auditedUserRules++;
+    }
+    return;
+}
+
+//========================================================================
 // Theory translation
 //========================================================================
 
@@ -739,9 +925,15 @@ translateUnit(UnitInfo* unitInfo, FDLContext* ctxt, Node* unit) {
     elimIntSuccPreds(unit);
     
     //--------------------------------------------------------------------
-    // Check unit well typed
+    // Replace goals with user rule auditing goals, if requested
     //--------------------------------------------------------------------
 
+    if (option("do-rule-audit")) initRLUAuditGoals(unitInfo, unit);
+
+    //--------------------------------------------------------------------
+    // Check unit well typed
+    //--------------------------------------------------------------------
+    
     printMessage(FINESTm,
                  "Primary Translation End - context:" + ENDLs
                  + ctxt->extractDecls()->toString()

@@ -460,6 +460,7 @@ Node* FDLContext::getType (Node* n) {
     case GOALS:
     case GOAL:
     case HYPS:
+    case HYP:
     case CONCLS:
 
     case FORALL:
@@ -763,6 +764,7 @@ FDLContext::getSubNodeTypes (Node* n) {
     case GOALS:
     case GOAL:
     case HYPS:
+    case HYP:
     case CONCLS:
         
     case AND:

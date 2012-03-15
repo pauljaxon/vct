@@ -131,6 +131,20 @@ else
   smtlib_logic=AUFNIRA
 endif
 
+# Use Euclidean div and mod operators rather than the
+# axiomatisation given in divmod.rul.
+
+# See comment in arith.cc for a discussion of div & mod handling.
+
+# Supported only by SMTLIB2.
+
+ifdef EDM
+   edm_sfx=-edm
+   edm_options=\
+     -rules=none\
+     -rules=prelude.rul\
+     -use-euclidean-divmod
+endif
 
 #-----------------------------------------------------------------------------
 # Selecting VCG or SIV file for VCs
@@ -190,6 +204,41 @@ else ifdef RLUA
   std_rlu_sfx=-rlua
   std_rlu_option= -read-all-decl-files-in-dir
 
+endif
+
+#-----------------------------------------------------------------------------
+# Auditing user rules
+#--------------------
+
+ifdef FURA  # Full User Rule Audit
+
+  urule_audit_sfx=-fura
+  urule_audit_options=\
+     -do-rule-audit\
+     -rule-audit-a\
+     -rule-audit-b\
+     -rule-audit-c\
+     -rule-audit-d\
+     -rule-audit-e\
+     -csv-reports-include-goal-origins
+
+else ifdef QURA # Quick User Rule Audit
+
+  urule_audit_sfx=-qura
+  urule_audit_options=\
+     -do-rule-audit\
+     -rule-audit-b\
+     -csv-reports-include-goal-origins
+
+else ifdef SURA # Single User Rule Audit
+  urule_audit_sfx=-sura
+  urule_audit_options=\
+     -do-rule-audit\
+     -rule-audit-c\
+     -rule-audit-d\
+     -rule-audit-e\
+     -rule-audit-rule=$(SURA)\
+     -csv-reports-include-goal-origins
 endif
 
 #-----------------------------------------------------------------------------
@@ -418,7 +467,7 @@ endif
 #SMTLIB2: will need to address alternate divmod support and abs abstraction
 # By using -expand-exp-const, are assuming solver can handle non-lin arith.
 
-report_root = $(fuse_c_pfx)-$@$(siv_sfx)$(tg_sfx)$(std_rlu_sfx)$(lin_sfx)$(enum_sfx)$(pf_sum_sfx)$(timeout_sfx)$(repeat_sfx)$(smtlib_option_suffix)$(SFX)
+report_root = $(fuse_c_pfx)-$@$(siv_sfx)$(tg_sfx)$(std_rlu_sfx)$(lin_sfx)$(edm_sfx)$(enum_sfx)$(pf_sum_sfx)$(urule_audit_sfx)$(timeout_sfx)$(repeat_sfx)$(smtlib_option_suffix)$(SFX)
 
 std_options = \
             $(unit_option) \
@@ -432,6 +481,7 @@ std_options = \
             $(pf_sum_option)\
             $(repeat_option)\
             $(std_rlu_option)\
+            $(urule_audit_options)\
             -report=$(report_root)\
             -report-dir=$(OUTDIR)\
             -working-dir=$(WKDIR)\
@@ -456,6 +506,7 @@ std_options = \
             -use-alt-solver-driver \
             -echo-final-stats\
             -level=warning\
+            $(edm_options)\
             $(wkfiles_option)\
             $(cmt_option)\
             $($*_options)

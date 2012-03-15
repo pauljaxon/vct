@@ -213,6 +213,8 @@ public:
     int numExcludedUnitRLURules;
     int numExcludedSystemRules;
 
+    int auditedUserRules;       
+                                 
     // Statistics on unit.  
 
     int parseTreeSize;
@@ -226,6 +228,14 @@ public:
     int timeoutQueries;
     int errorQueries;
     int excludedConcls;
+
+    int inconsistentSysRuleSets;  
+    int inconsistentUserRuleSets;
+    int inconsistentUserRules;
+    int derivableUserRules;      // Num user rules derivable without help of
+                                 // other user rules
+    int interdependentUserRules; // Num user rules derivable with help of other
+                                 // user rules
 
     double unitTime;
     double unprovenQueriesTime; 
@@ -399,33 +409,6 @@ printCSVRecord(const string& status, const string& remarks);
 void printUnitSummary(UnitInfo* ui);
 
 //========================================================================
-// Reporting statistics
-//========================================================================
-// Globals initialised at definition point.
-// Solver interface code responsible for updating globals.
-
-// A `concl' here is each goal / goal slice that gets reported on a line
-// of the VCT file
-
-extern int trivialConcls;   // Trivially true by Examiner
-extern int trueConcls;      // Prover says concl true (unsat)
-extern int falseConcls;     // Prover says concl false (sat)
-extern int unknownConcls;   // Prover returns "unknown" results
-extern int errorConcls;     // Some error occurred
-extern int timeoutConcls;   // Prover timed out or reached
-                            // some other resource limit
-extern int excludedConcls;  // Concl excluded from consideration by
-                            // command line options and units.lis file
-                            // directives.
-
-extern double provenTime;         // Total time in prover when concls proven
-extern double unprovenTime;       // Total time in prover when concls unproven
-extern double maxProvenQueryTime; // Maximum run time for proven concl
-
-
-void printStats();
-
-//========================================================================
 // Timing
 //========================================================================
 // Timer set running when created.
@@ -447,7 +430,6 @@ private:
         
     unsigned int ticksPerSec;
 
-    void grabTimes();
     // Times in sec since start time
     double uTime;
     double sTime;
@@ -458,12 +440,61 @@ public:
     Timer();
     void restart();
     
+    void sample();
     double getTime();
     string toString();      
     string toLongString();  
 };
 
-extern Timer totalTime;
+//========================================================================
+// Reporting statistics
+//========================================================================
+// Globals initialised at definition point.
+// Solver interface code responsible for updating globals.
+
+// A `concl' here is each goal / goal slice that gets reported on a line
+// of the VCT file
+
+class SessionInfo {
+public:
+    int trivialConcls;   // Trivially true by Examiner
+    int trueConcls;      // Prover says concl true (unsat)
+    int falseConcls;     // Prover says concl false (sat)
+    int unknownConcls;   // Prover returns "unknown" results
+    int errorConcls;     // Some error occurred
+    int timeoutConcls;   // Prover timed out or reached
+                         // some other resource limit
+    int excludedConcls;  // Concl excluded from consideration by
+                         // command line options and units.lis file
+                         // directives.
+
+    int inconsistentSysRuleSets;  
+    int inconsistentUserRuleSets;
+    int inconsistentUserRules;
+    int derivableUserRules;      // Num user rules derivable without help of
+                                 // other user rules
+    int interdependentUserRules; // Num user rules derivable with help of other
+                                 // user rules
+
+    int auditedUserRules;        // Num user rules considered by audit
+                               
+    
+
+    double provenTime;         // Total time in prover when concls proven
+    double unprovenTime;       // Total time in prover when concls unproven
+    double maxProvenQueryTime; // Maximum run time for proven concl
+
+    
+    Timer timer;         // Timer for session
+
+    SessionInfo();
+
+    void update(UnitInfo* u);
+    void printStats();
+};
+
+extern SessionInfo sessionInfo;
+
 
 //==========================================================================
 // Exception handling
