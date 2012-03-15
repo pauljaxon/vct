@@ -545,6 +545,7 @@ include Makefile-prelude.mk
             $(std_options)\
             -interface-mode=dummy \
             -prover=none\
+            $(EXTRAS)
 
 
 %-sn: vcset-%
@@ -620,6 +621,6 @@ all-all:
 #============================================================================
 
 
-# include Makefile-dev.mk
+#include Makefile-dev.mk
 
 # End of file.

@@ -75,6 +75,7 @@ z::kindString(z::Kind k) {
         c(RULE);
         c(GOALS);
         c(HYPS);
+        c(HYP);
         c(ASSUMPTION);
         c(CONCLS);
         c(CONCL);  // Isabelle

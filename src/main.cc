@@ -422,6 +422,7 @@ processUnit(UnitInfo* unitInfo, SMTDriver* smtDriver) {
 
     smtDriver->driveUnit(unitAST, unitInfo);
 
+    unitTimer.sample();
     unitInfo->unitTime = unitTimer.getTime();
     unitInfo->nodeAllocCount = Node::getPoolAllocCount();
     printUnitSummary(unitInfo);
@@ -603,7 +604,7 @@ main (int argc, char *argv[]) {
     // ---------------------------------------------------------------------
     smtDriver->finaliseSession();
 
-    printStats();
+    sessionInfo.printStats();
 
     closeReportFiles();
 

@@ -655,6 +655,8 @@ UnitInfo::UnitInfo(int uNum, const string& unitInfoStr)
       numExcludedUnitRLURules(0),
       numExcludedSystemRules(0),
 
+      auditedUserRules(0),
+
       parseTreeSize(0),
       translatedUnitSize(0),
       nodeAllocCount(0),
@@ -665,6 +667,12 @@ UnitInfo::UnitInfo(int uNum, const string& unitInfoStr)
       timeoutQueries(0),
       errorQueries(0),
       excludedConcls(0),
+
+      inconsistentSysRuleSets(0),
+      inconsistentUserRuleSets(0),
+      inconsistentUserRules(0),
+      derivableUserRules(0),
+      interdependentUserRules(0),
 
       unitTime(0.0),
       unprovenQueriesTime(0.0),
@@ -1112,6 +1120,7 @@ void printMessageWithHeader(const string& header, const string& message) {
 
     // Message origins line
 
+    messageTimer.sample();
     s += ": " + messageTimer.toString() + "s ";
 
     s += "unit: " + intToString(currentUnitNum) + " - " + currentUnit;
@@ -1357,6 +1366,11 @@ string unitSumHeader(
     "max proven time,"
     "unproven time,"
     "av. unproven time,"
+    "incon wo urules,"
+    "incon w urules,"
+    "incon urules,"
+    "deriv urules,"
+    "interdep urules,"
     "remarks"
     );
 
@@ -1402,8 +1416,9 @@ void printUnitSummary(UnitInfo* ui) {
 
         << ui->parseTreeSize << ","
         << ui->translatedUnitSize << ","
-        << ui->nodeAllocCount << ","
+        << ui->nodeAllocCount << ",";
 
+    unitSumStream
         << setprecision(3) << fixed
         << ui->unitTime << ","
         << ui->provenQueriesTime << ",";
@@ -1418,7 +1433,17 @@ void printUnitSummary(UnitInfo* ui) {
     if (unprovenQueries != 0) {
         unitSumStream << ui->unprovenQueriesTime / unprovenQueries;
     }
-    unitSumStream  << "," << "\"" << ui->remarks << "\"" << endl;
+    unitSumStream << ",";
+    if (option("do-rule-audit")) {
+        unitSumStream << ui->inconsistentSysRuleSets << ","
+                      << ui->inconsistentUserRuleSets << ","
+                      << ui->inconsistentUserRules << ","
+                      << ui->derivableUserRules << ","
+                      << ui->interdependentUserRules << ",";
+    } else {
+        unitSumStream << ",,,,,";
+    }
+    unitSumStream  << "\"" << ui->remarks << "\"" << endl;
     return;
 }
 
@@ -1429,22 +1454,66 @@ void printUnitSummary(UnitInfo* ui) {
 //========================================================================
 // Solver interface code responsible for updating globals.
 
-int trivialConcls = 0;
-int trueConcls = 0;
-int unknownConcls = 0;
-int falseConcls = 0;
-int errorConcls = 0;
-int timeoutConcls = 0; 
-int excludedConcls = 0; 
+// Global variable holding accumulated statistics
 
-double provenTime = 0.0;         
-double unprovenTime = 0.0;       
-double maxProvenQueryTime = 0.0; 
+SessionInfo sessionInfo;
 
-Timer totalTime;
+SessionInfo::SessionInfo() : 
+    trivialConcls(0),
+    trueConcls(0),
+    falseConcls(0),
+    unknownConcls(0),
+    errorConcls(0),
+    timeoutConcls(0), 
+    excludedConcls(0), 
+
+    inconsistentSysRuleSets(0),
+    inconsistentUserRuleSets(0),
+    inconsistentUserRules(0),
+    derivableUserRules(0),
+    interdependentUserRules(0),
+
+    auditedUserRules(0),
+
+    provenTime(0.0),         
+    unprovenTime(0.0),       
+    maxProvenQueryTime(0.0)
+{}
 
 void
-printStats() {
+SessionInfo::update(UnitInfo* unitInfo) {
+    trivialConcls  += unitInfo->trivialGoals;
+    trueConcls     += unitInfo->trueQueries;
+    unknownConcls  += unitInfo->unknownQueries;
+    falseConcls    += unitInfo->falseQueries;
+    timeoutConcls  += unitInfo->timeoutQueries;
+    errorConcls    += unitInfo->errorQueries;
+    excludedConcls += unitInfo->excludedConcls;
+
+    inconsistentSysRuleSets  += unitInfo->inconsistentSysRuleSets;
+    inconsistentUserRuleSets += unitInfo->inconsistentUserRuleSets;
+    inconsistentUserRules    += unitInfo->inconsistentUserRules;  
+    derivableUserRules       += unitInfo->derivableUserRules;  
+    interdependentUserRules  += unitInfo->interdependentUserRules;
+
+    auditedUserRules += unitInfo->auditedUserRules;
+    
+    provenTime += unitInfo->provenQueriesTime;
+    unprovenTime += unitInfo->unprovenQueriesTime;
+    if (unitInfo->maxProvenQueryTime
+        > maxProvenQueryTime) {
+        
+        maxProvenQueryTime = unitInfo->maxProvenQueryTime;
+    }
+    return;
+}
+
+
+void
+SessionInfo::printStats() {
+
+    timer.sample();
+
     bool plain_mode = option("plain");
 
     string reportName("report");
@@ -1455,9 +1524,27 @@ printStats() {
 
     outStream << endl << endl
               << "Total ERROR   messages: " << numErrorMessages << endl
-              << "Total WARNING messages: " << numWarningMessages << endl
-              << endl;
+              << "Total WARNING messages: " << numWarningMessages
+              << endl << endl;
 
+
+    if (option("do-rule-audit")) {
+
+        outStream
+            << "User Rule Audit: (" << auditedUserRules
+            << " user rules considered)" << endl << endl
+            << "  inconsistent units, user rules excluded:"
+            << setw(6) << inconsistentSysRuleSets << endl
+            << "  inconsistent units, user rules included:"
+            << setw(6) << inconsistentUserRuleSets << endl
+            << "                  inconsistent user rules:"
+            << setw(6) << inconsistentUserRules << endl
+            << "                     derivable user rules:"
+            << setw(6) << derivableUserRules << endl    
+            << "                interdependent user rules:"
+            << setw(6) << interdependentUserRules
+            << endl << endl;
+    }
     int unprovenConcls =
         unknownConcls + timeoutConcls + falseConcls + excludedConcls;
     int total = trivialConcls + trueConcls + unprovenConcls + errorConcls;
@@ -1473,15 +1560,15 @@ printStats() {
     outStream << setprecision(1); // 1 decimal place for floats.
     outStream << fixed;
 
-    outStream << "Summary Stats: " << endl;
+    outStream << "Summary Stats: " << endl << endl;
 
-    outStream << " trivial:" << setw(6) << trivialConcls
+    outStream << "   trivial:" << setw(6) << trivialConcls
          << "  (" << setw(4) << fTrivialConcls << "%)" << endl;
 
-    outStream << "    true:" << setw(6) << trueConcls
+    outStream << "      true:" << setw(6) << trueConcls
          << "  (" << setw(4) << fTrueConcls << "%)" << endl;
 
-    outStream << "unproven:" << setw(6) << unprovenConcls
+    outStream << "  unproven:" << setw(6) << unprovenConcls
          << "  (" << setw(4) << fUnprovenConcls << "%)  ";   //  << endl;
 
     if (! plain_mode) {
@@ -1493,12 +1580,10 @@ printStats() {
       outStream << endl;
     }
 
-    outStream << "   error:" << setw(6) << errorConcls
+    outStream << "     error:" << setw(6) << errorConcls
          << "  (" << setw(4) << fErrorConcls << "%)" << endl;
 
-    outStream << "   total:" << setw(6) << total << endl << endl;
-
-
+    outStream << "     total:" << setw(6) << total << endl << endl;
 
     
     string totalTrueTimeStr(doubleToFixPtString(provenTime,2));
@@ -1509,15 +1594,29 @@ printStats() {
     string maxTrueTimeStr(doubleToFixPtString(maxProvenQueryTime,3));
     string totalUnprovenTimeStr(doubleToFixPtString(unprovenTime,2));
 
+    double vctOverheadTime = timer.getTime() - provenTime - unprovenTime; 
+    string vctOverheadTimeStr(doubleToFixPtString(vctOverheadTime, 2));
+
+    string vctOverheadPercentStr;
+    if (provenTime > 0) {
+        vctOverheadPercentStr = 
+        "(" + doubleToFixPtString(vctOverheadTime * 100 / provenTime,0)
+            + "% of total true)";
+    }
     
     if (! plain_mode ) {
         outStream << "Times: " << endl
-                  << "           total: " << totalTime.toLongString() 
-                  << "      total true: " << totalTrueTimeStr << "s" << endl
-                  << "    average true: " << averageTrueTimeStr << "s" << endl
-                  << "        max true: " << maxTrueTimeStr << "s" << endl
-                  << "  total unproven: " << totalUnprovenTimeStr << "s"
-                  << endl;
+
+                  << "      total true:" << setw(7) << totalTrueTimeStr
+                  << "s  (average true: " << averageTrueTimeStr
+                  << "s  max true: " << maxTrueTimeStr << "s)" << endl
+
+                  << "  total unproven:" << setw(7) << totalUnprovenTimeStr << "s" << endl
+
+                  << "    vct overhead:" << setw(7) << vctOverheadTimeStr << "s  "
+                  << vctOverheadPercentStr << endl
+
+                  << "           total:" << timer.toLongString() << endl;
     }
 
     logStream << outStream.str();
@@ -1558,14 +1657,25 @@ printStats() {
     sumStream << setw(4) << fErrorConcls << "," ;
 
     if (!option("plain")) {
-        sumStream << totalTime.toString() << ","
+        sumStream << timer.toString() << ","
                   << totalTrueTimeStr << ","
                   << averageTrueTimeStr << ","
                   << maxTrueTimeStr << ","
-                  << totalUnprovenTimeStr;
+                  << totalUnprovenTimeStr << ",";
+    } else {
+        sumStream << ",,,,,";
+    }
+    if (option("do-rule-audit")) {
+        sumStream << inconsistentSysRuleSets << ","
+                  << inconsistentUserRuleSets << ","
+                  << inconsistentUserRules << ","
+                  << derivableUserRules << ","
+                  << interdependentUserRules ;
     } else {
         sumStream << ",,,,";
     }
+        
+
     sumStream << endl;
 
 
@@ -1701,7 +1811,7 @@ void
 Timer::restart() { getOSTimes(&startTimeTuple); }
 
 void
-Timer::grabTimes() {
+Timer::sample() {
     Time endTimeTuple;
     getOSTimes(&endTimeTuple);
 
@@ -1725,14 +1835,11 @@ Timer::grabTimes() {
 
 double
 Timer::getTime() {
-    grabTimes();
     return uTime + sTime + cuTime + csTime;
 }
 
 string
 Timer::toString() {
-
-    grabTimes();
     ostringstream oss;
     oss << setprecision(3) << fixed;
     oss << (uTime + sTime + cuTime + csTime);
@@ -1741,8 +1848,6 @@ Timer::toString() {
 
 string
 Timer::toLongString() {
-
-    grabTimes();
 
     double totalTime = uTime + sTime + cuTime + csTime;
     double childTime = cuTime + csTime;
@@ -1754,7 +1859,7 @@ Timer::toLongString() {
     ostringstream oss;
     oss << setprecision(2)
         << fixed
-        << totalTime
+        << setw(7) << totalTime
         << "s  (u: "  << uTime
         <<   "s, s: "  << sTime
         <<   "s, cu: " << cuTime

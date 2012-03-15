@@ -133,9 +133,17 @@ SMTDriver::driveGoal(Node* decls,
                  currentHyp <= hyps->arity();
                  currentHyp++) {
 
-                string currentHypStr ("H" + intToString(currentHyp));
-
                 Node* hyp = hyps->child(currentHyp-1);
+
+                string currentHypStr;
+                if (hyp->kind == z::HYP) {
+                    currentHypStr = hyp->id;
+                    hyp = hyp->child(0);
+                }
+                else {
+                    currentHypStr = "H" + intToString(currentHyp);
+                }
+
 
                 Formatter::setFormatter
                     (VanillaFormatter::getFormatter());
@@ -170,13 +178,15 @@ SMTDriver::driveGoal(Node* decls,
         goalSliceTime = "0";
         appendCommaString(remarks, "exception in setup");
         printCSVRecord("error", remarks);
-        errorConcls++;
+        sessionInfo.errorConcls++;
         finishSetup();
         finaliseGoal();
         return;
     }
 
     finishSetup();
+
+    goalTimer.sample();
     printMessage(INFOm, "setup time: " + goalTimer.toString() + " s");
 
     // ---------------------------------------------------------------
@@ -223,28 +233,28 @@ SMTDriver::driveGoal(Node* decls,
     if (s == TRUE) {
 
         printCSVRecord("true", remarks);
-        trueConcls++;
+        sessionInfo.trueConcls++;
 
     } else if (s == UNKNOWN) {
 
         printCSVRecord("unproven", remarks);
-        unknownConcls++;
+        sessionInfo.unknownConcls++;
 
     } else if (s == FALSE) {
 
         appendCommaString(remarks,"false");
         printCSVRecord("unproven", remarks);
-        falseConcls++;
+        sessionInfo.falseConcls++;
 
     } else if (s == RESOURCE_LIMIT) {
 
         printCSVRecord("unproven", remarks);
-        timeoutConcls++;
+        sessionInfo.timeoutConcls++;
 
     } else {// s == ERROR
 
         printCSVRecord("error", remarks);
-        errorConcls++;
+        sessionInfo.errorConcls++;
     }
     finaliseGoal();
 }
@@ -319,7 +329,7 @@ SMTDriver::driveUnit(Node* unit, UnitInfo* unitInfo) {
             printMessage(FINEm, "Input goal is trivial");
             if (option("count-trivial-goals")) {
                 printCSVRecord("trivial","");
-                trivialConcls++;
+                sessionInfo.trivialConcls++;
             }
             continue; 
         }
@@ -364,7 +374,7 @@ SMTDriver::driveUnit(Node* unit, UnitInfo* unitInfo) {
             if (! unitInfo->include(goalNum, currentConcl)) {
                 goalSliceTime = "0";
                 printCSVRecord("unproven", "excluded");
-                unknownConcls++;
+                sessionInfo.unknownConcls++;
                 continue;
             }
             
@@ -615,9 +625,16 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
                      currentHyp <= hyps->arity();
                      currentHyp++) {
 
-                    string currentHypStr ("H" + intToString(currentHyp));
-
                     Node* hyp = hyps->child(currentHyp-1);
+
+                    string currentHypStr;
+                    if (hyp->kind == z::HYP) {
+                        currentHypStr = hyp->id;
+                        hyp = hyp->child(0);
+                    }
+                    else {
+                        currentHypStr = "H" + intToString(currentHyp);
+                    }
 
                     Formatter::setFormatter
                         (VanillaFormatter::getFormatter());
@@ -658,7 +675,10 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
             Status status = check(remarks);
 
             double queryTime = 0.0;
-            if (onlineInterface()) queryTime = queryTimer.getTime();
+            if (onlineInterface()) {
+                queryTimer.sample();
+                queryTime = queryTimer.getTime();
+            }
         
             // -----------------------------------------------------------
             // Pop assertion set stack
@@ -725,6 +745,7 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
         
         bool runError = runQuerySet(remarks);
 
+        queryTimer.sample();
         double queryTime = queryTimer.getTime();
 
         if (runError) {
@@ -803,22 +824,25 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
         ResultRecord rRcd;
         rRcd.goalNum = goalNum; 
 
-        string goalNumStr;
-        extractGoalInfo(goal->id,
-                        rRcd.unitKind,
-                        goalNumStr,
-                        rRcd.origins);
+        if (option("do-rule-audit")) {
+            rRcd.origins = goal->id;
+        } else {
+            string goalNumStr;
+            extractGoalInfo(goal->id,
+                            rRcd.unitKind,
+                            goalNumStr,
+                            rRcd.origins);
 
-        if (intToString(goalNum) != goalNumStr) {
-            // Set currentGoalNumStr and currentConcl globals used by
-            // printMessage
-            currentGoalNumStr = goalNumStr;
-            currentConcl = 0;
-            printMessage(WARNINGm, "Mismatch between goal position "
-                         + intToString(goalNum)
-                         + " and numbering " + goalNumStr);
+            if (intToString(goalNum) != goalNumStr) {
+                // Set currentGoalNumStr and currentConcl globals used by
+                // printMessage
+                currentGoalNumStr = goalNumStr;
+                currentConcl = 0;
+                printMessage(WARNINGm, "Mismatch between goal position "
+                             + intToString(goalNum)
+                             + " and numbering " + goalNumStr);
+            }
         }
-
         if (goal->arity() < 2) { // "*** true" goals
             if (option("count-trivial-goals")) {
                 rRcd.queryNum = -1;
@@ -974,6 +998,19 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
                 if (time > unitInfo->maxProvenQueryTime) {
                     unitInfo->maxProvenQueryTime = time;
                 }
+                if (option("do-rule-audit")) {
+                    string origins = resultRecords.at(i).origins;
+                    if (hasPrefix(origins,"no urules"))
+                        unitInfo->inconsistentSysRuleSets++;
+                    if (hasPrefix(origins,"all urules"))
+                        unitInfo->inconsistentUserRuleSets++;
+                    if (hasPrefix(origins,"urule as H"))
+                        unitInfo->inconsistentUserRules++;
+                    if (hasPrefix(origins,"urule as C"))
+                        unitInfo->derivableUserRules++;
+                    if (hasPrefix(origins,"urule from rest"))
+                        unitInfo->interdependentUserRules++;
+                }
                 break;
             case(UNKNOWN):
                 resultStatus = "unproven";
@@ -1013,20 +1050,6 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
 
     // Update stats for whole session
 
-    trivialConcls  += unitInfo->trivialGoals;
-    trueConcls     += unitInfo->trueQueries;
-    unknownConcls  += unitInfo->unknownQueries;
-    falseConcls    += unitInfo->falseQueries;
-    timeoutConcls  += unitInfo->timeoutQueries;
-    errorConcls    += unitInfo->errorQueries;
-    excludedConcls += unitInfo->excludedConcls;
-
-    provenTime += unitInfo->provenQueriesTime;
-    unprovenTime += unitInfo->unprovenQueriesTime;
-    if (unitInfo->maxProvenQueryTime
-        > maxProvenQueryTime) {
-        
-        maxProvenQueryTime = unitInfo->maxProvenQueryTime;
-    }
+    sessionInfo.update(unitInfo);
     return;
 }
