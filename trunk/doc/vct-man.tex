@@ -16,7 +16,7 @@
 \author{Paul Jackson \\
         \texttt{pbj@inf.ed.ac.uk}}
 
-\date{12 Mar 2012}
+\date{16 Mar 2012}
 
 %\usepackage{vpage}
 %\usepackage{vmargin}
@@ -146,8 +146,9 @@
 \section{Supported provers and prover languages}
 %============================================================================
 
-Victor has API interfaces to the \cvcthree{} and \yices{} provers, and can
-drive any prover that accepts Simplify or \smtlib{} format input files.
+Victor has API interfaces to the \cvcthree{} and \yices{} provers, and
+can drive any prover that accepts Simplify, \smtlib{} v1.2 or
+\smtlib{} v2 format input files.
 
 %----------------------------------------------------------------------------
 \subsection{Simplify language}
@@ -159,15 +160,27 @@ The Simplify language is supported by the Simplify and \zthree{} provers.
 \subsection{SMT-LIB language}
 %----------------------------------------------------------------------------
 
-The \smtlib{} initiative (\url{http://www.smtlib.org}) defines a
-standard language for formatting input to \smt{} solvers and collects
-benchmarks in this format.  
+The \smtlib{} initiative (\url{http://www.smtlib.org}) defines
+standard languages for formatting input to \smt{} solvers and collects
+benchmarks in this format. Victor supports the current version 2.0
+and the older version 1.2.
 
-Provers taking \smtlib{} input must support at least one of 
-the \smtlib{} sub-logics
+The initiative defines particular \emph{logics}, defined by
+combinations of logical theories and allowed shapes of terms and
+formulas.  These logics are used to categorise benchmarks, and
+different \smt{} solvers support different logics.  Some solvers 
+support a superset of what is defined by any of these logics.
+
+At a minimum, Victor requires solvers to handle uninterpreted
+functions and constants, linear integer arithmetic and logical
+quantifiers.
+
+The following logics in both v1.2 and v2.0 provide at least this support:
 \begin{itemize}
-\item \textsc{auflia}: quantifier formulas involving arrays, uninterpreted functions, linear integer arithmetic.
-\item \textsc{auflira}: quantifier formulas involving arrays, uninterpreted functions, linear integer and linear real arithmetic.
+\item \textsc{auflia}: quantifier formulas involving arrays,
+  uninterpreted functions, linear integer arithmetic.
+\item \textsc{auflira}: quantifier formulas involving arrays,
+  uninterpreted functions, linear integer and linear real arithmetic.
 \item \textsc{aufnira}: quantifier formulas involving arrays,
   uninterpreted functions, non-linear integer and non-linear real
   arithmetic.
@@ -175,9 +188,19 @@ the \smtlib{} sub-logics
 \textsc{ufnia}: Non-linear integer arithmetic with uninterpreted
   sort, function, and predicate symbols.
 \end{itemize}
+Victor can also take advantage of support for real arithmetic and for
+sort symbols.  Such provers include Alt-Ergo, \cvcthree, \yices{} and
+\zthree.
+% Victor currently makes no use of the support for arrays
+% provided by the above logics or by prover-specific
+% extensions.
 
-Such provers include Alt-Ergo, \cvcthree, \yices{} and \zthree.
-Victor currently makes no use of the support for arrays or the reals.
+One major benefit of v2.0 is better support for queries involving
+mixed real and integer arithmetic.  Victor does translate real
+arithmetic to v1.2 of the \smtlib{} format. However, v1.2 does not
+support well goals in which integers and reals are mixed. (For
+example, it does not define a function injecting the integers into the
+reals.)
   
 
 %----------------------------------------------------------------------------
@@ -188,13 +211,27 @@ Alt-Ergo is an open-source \smt{} solver from LRI (Laboratoire de
 Recherche en Informatique) at Universit\'e Paris-Sud.  It is available
 from \url{http://alt-ergo.lri.fr/}.
 
-Victor has been tested most recently with the V0.92.2 release using
-Alt-Ergo's \smtlib{} file-level interface.
+Victor has been tested most recently with the V0.94 release using
+Alt-Ergo's \smtlib{} 1.2 and 2.0 file-level interfaces.  Alt-Ergo's
+1.2 interface works fine, but issues have been noted with the 2.0
+interface:
+\begin{enumerate}
+\item \texttt{define-type} not supported.
+\item \texttt{to\_real} function not recognised.
+\item Instances of quantified Bool-typed variables are 
+  not recognised.  Alt-Ergo 0.94 does not provide complete support
+  for the merging of the syntactic category of formulas with the Bool
+  type of terms.
+  Sometimes multiple \texttt{unsat} responses are returned to a
+  single \texttt{(check-sat)}.
+\end{enumerate}
+Victor has work-arounds for 1,2 and 4, but not 3.
 
-If the standalone Alt-Ergo executable is downloaded rather than built
-from the Alt-Ergo source distribution, it is also necessary to copy
-the file \texttt{smt\_prelude.mlw} from the source distribution to the
-\texttt{run/} directory.
+
+% If the standalone Alt-Ergo executable is downloaded rather than built
+% from the Alt-Ergo source distribution, it is also necessary to copy
+% the file \texttt{smt\_prelude.mlw} from the source distribution to the
+% \texttt{run/} directory.
 
 
 %----------------------------------------------------------------------------
@@ -245,7 +282,8 @@ Executables for Linux and other platforms can be pulled out of the
 ESC/Java2 distribution: visit
 \url{http://secure.ucd.ie/products/opensource/ESCJava2/}.
 In October 2007, the executables for V1.5.4 were found in a file 
-\texttt{Simplify-1.5.5-13-06-07-binary.zip}.
+\texttt{Simplify-1.5.5-13-06-07-binary.zip}.  These are 32-bit executables.
+No success has been found in locating any 64-bit executables. 
 
 Simplify has good performance, but is unsound and sometimes crashes
 because it uses fixed-precision integer arithmetic.
@@ -304,7 +342,7 @@ Victor can also drive Yices using \smtlib{} format files.
 \url{http://research.microsoft.com/en-us/um/redmond/projects/z3/}.
 
 Victor has been tested most recently with the Linux version of release
-2.13.  No problems have been observed with this version.
+3.2.  No problems have been observed with this version.
 
 % This website only provides a Windows version of a Z3 executable.
 % Microsoft research staff have verbally advertised the existence of a
@@ -317,8 +355,9 @@ solvers tried.  In particular, it has the best support for non-linear
 arithmetic.
 
 Victor interfaces to \zthree{} using temporary files and by invoking
-the \zthree{} executable in a sub-process.
-The temporary files can be in either \smtlib{} or Simplify format.
+the \zthree{} executable in a sub-process.  The temporary files can be
+in \smtlib{} 1.2, \smtlib{} 2.0 or Simplify format.
+
 % Despite the similarity of the format, \zthree's performance can be radically
 % different, depending on the format: it seems that \zthree{} has a soft
 % timeout of under 0.1s when taking Simplify format input, but no such timeout
@@ -333,11 +372,11 @@ current distribution includes some preliminary code to allow it to
 compile and run on Windows.  However, this code has not yet been fully
 tested.
 
-At Edinburgh, Victor is curently compiled and run on a Red Hat Fedora
-13 machine.  It makes use the following tools:
+At Edinburgh, Victor is currently compiled and run on a Scientific Linux 6
+64-bit platform.  It makes use of the following tools:
 \begin{itemize}
 \item \texttt{make} V3.81
-\item \texttt{gcc/g++} V4.4.4
+\item \texttt{gcc/g++} V4.4.5
 \item \texttt{bison}  V2.4.1
 \item \texttt{flex} V2.5.35
 \end{itemize}
@@ -452,6 +491,10 @@ To install:
   \texttt{csvfilt},
   \texttt{csvmerge} and
   \texttt{csvisect} to be added to the \texttt{bin} directory.
+
+\item Build an auxiliary program for timing-out runs of provers.
+  Enter \texttt{make watchdog}.  This creates the executable
+  \texttt{run/watchdogrun}.
 
 \item Try running Victor on the example VCs provided with the distribution.
   Check the output files match the provided output files.  See Section
@@ -882,8 +925,9 @@ since they make best sense in a discussion of the overall translation
 process.
 
 %----------------------------------------------------------------------------
-\subsection{Analysing user rules}
+\subsection{User rule analysis}
 %----------------------------------------------------------------------------
+\label{sec:user-rule-analysis}
 
 These options analyse the rules that users add to the directory-level
 and unit-level .rlu user rule files.  Users add rules to overcome
@@ -1042,9 +1086,15 @@ The options are as follows.
     Acceptable with \texttt{cvc3} or \texttt{yices}
     value for \texttt{prover}.
 
-  \item \texttt{smtlib}: Use \smtlib{}-format files and
+  \item \texttt{smtlib}: Use \smtlib{} 1.2 format files and
      stand-alone prover executable.
     Acceptable with \texttt{cvc3}, \texttt{yices} or \texttt{z3}
+    value for \texttt{prover},
+    and with \texttt{prover-command} option.
+
+  \item \texttt{smtlib2}: Use \smtlib{} 2.0 format files and
+     stand-alone prover executable.
+    Acceptable with \texttt{cvc3} or \texttt{z3}
     value for \texttt{prover},
     and with \texttt{prover-command} option.
 
@@ -1194,17 +1244,60 @@ The options are as follows.
   If using the \smtlib{} interface mode, insert each hypothesis into
   the \smtlib{}-format file as the value of a distinct 
   \texttt{:assumption} attribute.
+  
+\optionb{use-alt-solver-driver}
+  This option enables an alternative driver.  The new
+  major features supported by this driver are \emph{incrementality} (see
+  next option) and \emph{user rule analysis} (see
+  Section~\ref{sec:user-rule-analysis}).
+  
+\optionb{exploit-solver-incrementality}
+  This option gives significant reductions in prover run-time.
 
-% smt-driver.cc
-\optionv{drive-goal-repeats}{count}
-   Repeat each prover invocation \textit{count} times.
-   This is used to increase precision of prover runtime measurements when
-   using an API interface.
+  Prior to summer 2011, the main solver driver always handed goals
+  to the solver one at a time.  Each solver invocation had a complete
+  separate copy of all the declarations and rules, even though these
+  are constant across the goals of a unit. 
 
-\optionv{check-goal-repeats}{count}
-   Repeat each prover invocation \textit{count} times.
-   This is used to increase precision of prover runtime measurements when
-   using a file-level interface.  
+  With this option, when driving a unit, declarations and rules are
+  passed to the solver just once, rather than repeatedly for each
+  goal.  Use is made of solver support for pushing and popping
+  contexts.
+
+  This option has been tested with the \smtlib{} 2 file-level
+  interface.  It ought to work with both the \yices{} and \cvcthree{}
+  API interfaces, though this has not yet been fully enabled.
+
+  When using the file-level \smtlib{} 2 interface, the driver
+  initially creates a single \smtlib{} 2 format file containing
+  queries for all the goals in a unit.  If the solver is killed
+  because it timed out on some goal, a new solver input file is
+  created just for the remaining goals. On each further timeout, a
+  further new solver input file is created.
+
+  This option is best used in conjunction with
+  \texttt{-watchdog-timeout} or \texttt{smtlib2-soft-timeout} to
+  ensure timeouts are applied to each individual query.  The
+  \texttt{smtlib2-soft-timeout} option gives better performance, as
+  the solver is then not killed on timeouts, and after a timeout can
+  continue on further goals from the same input file: there is no need
+  for rerunning the solver on a new file containing the remaining
+  goals. However, for some reason, when run with the same time limits,
+  the coverage with the soft timeout is lower.  This is currently being
+  investigated.
+  
+
+
+% % smt-driver.cc
+% \optionv{drive-goal-repeats}{count}
+%    Repeat each prover invocation \textit{count} times.
+%    This is used to increase precision of prover runtime measurements when
+%    using an API interface.
+
+% \optionv{check-goal-repeats}{count}
+%    Repeat each prover invocation \textit{count} times.
+%    This is used to increase precision of prover runtime measurements when
+%    using a file-level interface.  
 
 \end{description}
 
@@ -2134,21 +2227,6 @@ record fields.
 The current Victor has several features that are not properly documented
 yet in this manual.  These include:
 \begin{itemize}
-\item Support for V2 of the \smtlib{} standard. 
-
-  One major benefit of this is better support for VCs involving mixed
-  real and integer arithmetic.  Victor does translate real arithmetic
-  to V1.2 of the \smtlib{} format. However, V1.2 does not support well
-  goals in which integers and reals are mixed. (For example, it does
-  not define a function injecting the integers into the reals.)
-
-\item An alternate prover driver that can exploit prover
-  incrementality and send multiple queries to the prover at a time.
-  This can give some performance improvement.
-
-\item A capability to identify user-defined rules that are not needed
-  by a prover.
-  
 \item Support for outputing VCs for proof using the Isabelle/HOL
   theorem prover.
 
