@@ -926,11 +926,23 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
                             startQuery,
                             endQuery);
 
-        assert((int) queryResults.size() <= endQuery - startQuery);
+        int numQueryResultsToProcess = queryResults.size();
+        if (numQueryResultsToProcess > endQuery - startQuery) {
+            // Issue seen with Alt Ergo v0.94
+            if (!option("ignore-extra-query-results")) {
+                printMessage(ERRORm,
+                             "Solver returned "
+                             + intToString(numQueryResultsToProcess)
+                             + " query results, but only expecting "
+                             + intToString(endQuery - startQuery));
+            }
+
+            numQueryResultsToProcess = endQuery - startQuery;
+        }
 
         // Copy current result into query table
         for (int qr = 0;
-             qr != (int) queryResults.size();
+             qr != numQueryResultsToProcess;
              qr++) {
 
             int currentQuery = startQuery + qr;
@@ -945,16 +957,16 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
                 = queryResults.at(qr).time;
 
         }
-        startQuery = startQuery + queryResults.size();
+        startQuery = startQuery + numQueryResultsToProcess;
 
         // Move on one query if get back no results.
-        if (queryResults.size() == 0) {
+        if (numQueryResultsToProcess == 0) {
             startQuery++;
         }
         // Redo last query if it didn't get use of whole of resource
         // allowance.
         else if (resourceLimitsForQuerySet()
-            && queryResults.size() > 1
+            && numQueryResultsToProcess > 1
             && queryResults.back().status == RESOURCE_LIMIT) {
 
             startQuery--;

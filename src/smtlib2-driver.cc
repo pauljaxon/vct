@@ -1202,7 +1202,9 @@ SMTLib2Driver::getRunResults(int numQueries) {
         results.front().status = ERROR;
     }
 
-    if ((int) results.size() > numQueries) {
+    if ((int) results.size() > numQueries
+        && !option("ignore-extra-query-results")) {
+
         printMessage(ERRORm,
                      "getRunResults is reporting more results than queries");
     }
