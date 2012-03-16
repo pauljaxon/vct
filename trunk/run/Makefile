@@ -118,14 +118,13 @@ hilton_options = \
 #  make <target>  <vname1>=<val1> .. <vnamek>=<valk>
 #
 # When make variables are set in this way, any definition in the makefile
-# is overridden.  Variable descriptions are given below in rough order
-# of likely interest to users.
+# is overridden. 
 #
 #
 # Format of documentation 
 # <Title>
 #
-# <Varname> [=<value> : <type>]   [<default>]  <suffix>
+# <Varname> [=<value> : <type>]   [(<default>)]  <suffix>
 #
 # <Description>
 # 
@@ -137,52 +136,55 @@ hilton_options = \
 #
 # <suffix> : Suffix added to report name. Usually includes <value> if
 #            significant.
+#
+#
+#----------------------------------------------------------------------------
+# INPUT OPTIONS
+#----------------------------------------------------------------------------
 
 #----------------------------------------------------------------------------
-# Timeout for file-level interface
+# siv file
+#---------
 #
-# T=<time> : int (10)  -t<time>
-#
-# Set timeout in seconds for solver with file-level interface.
-# Uses process ulimit facility to set timeout.
-
-#----------------------------------------------------------------------------
-# CVC3 timeout
-#
-# CT=<time> : int (100)  -ct<time>
-#
-# Set timeout in units of 0.1 seconds for CVC3.  Works for both API and SMTLIB
-# file-level interfaces.  Uses CVC3's internal timeout capabilities.
-# If CT is set, T is ignored.
-
-#----------------------------------------------------------------------------
-# Use unfused conclusions 
-#
-# U=<val> : bool (false)  u- | f-
+# SIV=<val> : bool (false)  -siv
 # 
-# If <val> is true, run solvers on each goal slice at a time. If false,
-# fuse conclusions together so there is one solver run per goal.
-# If conclusions are unfused, add a u- prefix to report name.
-# If conclusions are fused, add an f- prefix to report name.
-# 
-# Prefix rather than suffix added to report file name so that summary
-# files for each kind of run are separated out when files listed in
-# order.
+# If <val> is true, read goals from .siv files output by Simplifier
+# rather than .vcg files output by Examiner. 
+#
+#----------------------------------------------------------------------------
+# Focus on single unit and possibly single goal
+# ---------------------------------------------
+#
+# UNIT=<unitname> : string   ("")
+# GOAL=<goalnumber> : int    (0)
+#
+# Setting UNIT overrides any units file listing of units to run on.
+# A default GOAL number of 0 indicates to try all goals.
+#
+#----------------------------------------------------------------------------
+# User rule file selection
+#-------------------------
+#
+# NRLU=<val> : bool (false)
+# RLUA=<val> : bool (false)
+#
+# The default is to read in .rlu user rule files and to expect
+# directory-level user rule files to perhaps have rules which have
+# constant, function and type ids that are undeclared in some of the
+# unit .fdl files in the directory.  In a run on a particular unit,
+# any such rules are ignored.
+#
+# * NRLU Do not read in any .rlu user files.
+#
+# * RLUA When processing each unit in a directory, read in all the
+#        .fdl files in the directory and merge their declarations, and
+#        read in the .rlu user rule files.  With this option, the
+#        expectation is that all the user rules will have all their
+#        ids properly declared.
 
 #----------------------------------------------------------------------------
-# Directory for reports
-#
-# OUTDIR=<dirname> : string  (out)
-#
-# Directory for .vct, .vus, .vsm and .vlg report files
-
+# TRANSLATION OPTIONS
 #----------------------------------------------------------------------------
-# Working directory
-#
-# WKDIR=<dirname> : string  (/tmp or work)
-#
-# Directory for prover input and output files. 
-# Default is work if FWF or HWF options selected below.  Otherwise, is /tmp.
 
 #----------------------------------------------------------------------------
 # Arithmetic abstraction and simplification
@@ -204,6 +206,32 @@ hilton_options = \
 #      and LAE.
 
 #-----------------------------------------------------------------------------
+# Handling of div and mod operators
+#----------------------------------
+
+# EDM=<val> : bool (false) -edm
+#
+# Add axioms to relate the FDL div and mod operators to the Euclidean
+# div and mod operators defined in the SMTLIB2 standard.
+# 
+# The Euclidean div and mod satisfy the formulas
+# 
+#   x = y * (x div y) + x mod y
+#   0 <= x mod y < |y|
+# 
+# Without this option, Victor uses an axiomatic characterisation of the FDL
+# div and mod provided in the file run/divmod.rul.
+
+#----------------------------------------------------------------------------
+# Set threshold for symbolic numeric constants
+#---------------------------------------------
+#
+# SYM_CONSTS=<threshold> : int (100000)
+#
+# Use with Simplify solver to attempt to avoid overflows.
+
+
+#-----------------------------------------------------------------------------
 # Enumeration type handling
 #--------------------------
 
@@ -222,91 +250,8 @@ hilton_options = \
 # relations on integers.
 
 #----------------------------------------------------------------------------
-# Proof summaries
-#----------------
-#
-# PS=<val> : bool (false) -ps
-#
-# A proof summary is a list of the parts of a VC (rules, hypotheses
-# and conclusion) needed to prove the VC.  Proof summaries are obtained
-# from unsat cores output by SMT solvers.
-
-#-----------------------------------------------------------------------------
-# Generate and preserve prover files
-#------------------------------------
-#
-# FWF=<val> : bool (false) 
-# HWF=<val> : bool (false) 
-#
-# * FWF Flat working files: put all files into working directory and
-#       merge pathnames of units into filenames.  
-# * HWF Hiearchical working files: put all files into hieararchy under
-#       working directory, mirroring hieararchy of unit files.
-#
-# The default working directory is changed from /tmp to the work/ subdirectory
-# of the current directory, unless a directory is explicitly specified using
-# the WKDIR option.
-#
-#
-#----------------------------------------------------------------------------
-# siv file
-#---------
-#
-# SIV=<val> : bool (false)  -siv
-# 
-# If <val> is true, read goals from .siv files output by Simplifier
-# rather than .vcg files output by Examiner, and add -siv suffix to report
-# names.
-
-#----------------------------------------------------------------------------
-# Track trivial goals
-#
-# NTG=<val> : bool (false) -ntg
-#
-# `Trivial goals' are goals in .vcg or .siv files with no hypotheses or
-# conclusions and listed as simply "*** true".
-#
-# By default, Victor includes a line in the .vct report file for each
-# of these goals.  If <val> is true, reports on trivial goals are omitted
-# from the report.
-
-#----------------------------------------------------------------------------
-# Report file suffix
-#
-# SFX=<suffix> : string  ""
-#
-# Add an extra suffix to report file name.  Use this option when some
-# parameter affecting behaviour is changed in a way that doesn't
-# otherwise add a suffix.
-
-
-#----------------------------------------------------------------------------
-# Iterate calls of solver to increase precision of runtime measurements.
-#
-# RD=<count> : int (1)   -rd<count>
-# RC=<count> : int (1)   -rc<count>
-#
-# RD ("Repeat Drive") for use with API interface mode, RC ("Repeat
-# Check") for use with smtlib/simplify interface mode.
-
-#----------------------------------------------------------------------------
-# Focus on single unit and possibly single goal
-#
-# UNIT=<unitname> : string   ("")
-# GOAL=<goalnumber> : int    (0)
-#
-# Setting UNIT overrides any units file listing of units to run on.
-# A default GOAL number of 0 indicates to try all goals.
-
-#----------------------------------------------------------------------------
-# Set threshold for symbolic numeric constants
-#
-# SYM_CONSTS=<threshold> : int (100000)
-#
-# Use with Simplify solver to attempt to avoid overflows.
-
-#----------------------------------------------------------------------------
 # Options for SMTLIB and Simplify translations
+#---------------------------------------------
 # 
 # A=<Aoption> : int (0)
 # B=<Boption> : int (0)
@@ -322,6 +267,208 @@ hilton_options = \
 # extensionality. 
 #
 # See Makefile-prelude.mk for details on these options.
+
+#----------------------------------------------------------------------------
+# USER RULE ANALYSIS
+#----------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------
+# Finding redundant rules
+#-------------------------
+#
+# FRR=<val> : bool (false) -frr
+#
+# Employ the user rule knockout capability to find minimal sets of
+# user rules needed to prove each goal, and to identify which rules
+# are not required.
+#
+# See the User Manual for details.
+
+#-----------------------------------------------------------------------------
+# Auditing user rules
+#--------------------
+
+# FURA=<val> : bool (false) -fura
+# QURA=<val> : bool (false) -qura
+# SURA=<name> : string ("") -sura
+#
+# Generate prover goals for auditing user rules rather than using information
+# from .vcg and .siv files.
+#
+# Choose just one option.
+#
+# * FURA  Full user rule audit.  Generate audit goals of kinds A,B,C,D,E.
+# * QURA  Quick user rule audit.  Only generate audit goals of kind B.
+# * SURA  Single user rule audit. Generate audit goals of kinds C,D,E
+#         just for the user rule with name <name>.
+#
+#
+# See Makefile-prelude.mk and the User Manual for further information.
+
+
+#----------------------------------------------------------------------------
+# PROVER DRIVING OPTIONS
+#----------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------
+# Proof summaries
+#----------------
+#
+# PS=<val> : bool (false) -ps
+#
+# If <val>=true, ask the prover to generate a proof summary for each goal.
+#
+# A proof summary is a list of the parts of a VC (rules, hypotheses
+# and conclusion) needed to prove the VC.  Proof summaries are obtained
+# from unsat cores output by SMT solvers.  Only works with the SMTLIB2 
+# interface.
+#
+# Proof summaries get reported in the remarks field of .vct file records.
+
+#----------------------------------------------------------------------------
+# Timeouts
+#---------
+#
+# T=<time>  : int (1)   -t<time>
+# CT=<time> : int       -ct<time>
+# WT=<time> : fixed     -wt<time>
+# ZT=<time> : int       -zt<time>
+
+# Unless otherwise specified, these timeouts only apply to prover runs
+# via the file-level interface.  At most one of these options should
+# be selected.
+# 
+# * T   Ulimit timeout.  Set timeout in seconds using process ulimit facility 
+#
+# * CT  CVC3-specific timeout. Set timeout in units of 0.1 second.  Works for
+#       both API and file-level interfaces. 
+#
+# * WT  Watchdog timeout.   Uses auxiliary program run/watchdogrun that
+#       is created by running "make watchdog" in the src/ directory.
+#       The watchdog program times out a prover if there is no activity
+#       on the prover's stdout within the specified time period.
+#       This kind of timeout is particularly useful when the prover is
+#       handling multiple queries in a single run, as then each query
+#       gets the full timeout time budget.
+#       This option also allows finer time resolution than T.
+#
+# * ZT  Z3-specific timeout.  Set timeout in units of ms.  Only works with
+#       SMTLIB2 file interface.  This timeout applies separately to each
+#       query in the SMTLIB2 script.
+
+#----------------------------------------------------------------------------
+# Exploit solver incrementality
+#------------------------------
+
+# INC=<val> : bool (false) -inc
+#
+# For a given unit, try passing declarations and rules to the solver
+# just once, and then incrementally assert and check each set of
+# hypotheses and conclusion of each goal.  This can give a significant
+# performance improvement. 
+
+# Feature only tested so far with z3 and smtlib2 interface.
+
+
+# ----------------------------------------------------------------------------
+# Use unfused conclusions
+#------------------------
+#
+# U=<val> : bool (false)  u- | f-
+# 
+# If <val> is true, run solvers on each goal slice at a time. If false,
+# fuse conclusions together so there is one solver run per goal.
+# If conclusions are unfused, add a u- prefix to report name.
+# If conclusions are fused, add an f- prefix to report name.
+# 
+# Prefix rather than suffix added to report file name so that summary
+# files for each kind of run are separated out when files listed in
+# order.
+
+#----------------------------------------------------------------------------
+# Working directory
+#------------------
+# WKDIR=<dirname> : string  (/tmp or work)
+#
+# Directory for prover input and output files. 
+# Default is work if FWF or HWF options selected below.  Otherwise, is /tmp.
+#
+#-----------------------------------------------------------------------------
+# Generate and preserve prover files
+#------------------------------------
+#
+# FWF=<val> : bool (false)  
+# HWF=<val> : bool (false)  
+#
+# * FWF Flat working files: put all files into working directory and
+#       merge pathnames of units into filenames.  
+# * HWF Hiearchical working files: put all files into hieararchy under
+#       working directory, mirroring hieararchy of unit files.
+#
+# The default working directory is changed from /tmp to the work/ subdirectory
+# of the current directory, unless a directory is explicitly specified using
+# the WKDIR option.
+#
+#-----------------------------------------------------------------------------
+# Add comments to working files
+#------------------------------
+#
+# CMT=<val> : bool (false) 
+#
+# Add comment giving name of each formula (each rule, hypothesis or
+# conclusion) included in the prover input file.  Names used in Victor
+# input files are preserved, and new unique names are created for each
+# rule added internally by Victor.
+
+#----------------------------------------------------------------------------
+# REPORT FILE OPTIONS
+#----------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------
+# Directory for reports
+#----------------------
+# OUTDIR=<dirname> : string  (out)
+#
+# Directory for .vct, .vus, .vsm and .vlg report files
+
+#----------------------------------------------------------------------------
+# Trivial goal tracking
+#----------------------
+#
+# NTG=<val> : bool (false) -ntg
+#
+# `Trivial goals' are goals in .vcg or .siv files with no hypotheses or
+# conclusions and listed as simply "*** true".
+#
+# By default, Victor includes a line in the .vct report file for each
+# of these goals.  If <val> is true, reports on trivial goals are omitted
+# from the .vct report, and the .vus, .vsm and .vlg reports all omit counts
+# of the trivial goals.
+
+#----------------------------------------------------------------------------
+# Report file suffix
+#-------------------
+#
+# SFX=<suffix> : string  ""
+#
+# Add an extra suffix to report file name.  Use this option when some
+# parameter affecting behaviour is changed in a way that doesn't
+# otherwise add a suffix.
+
+#----------------------------------------------------------------------------
+# MISCELLANEOUS OPTIONS
+#----------------------------------------------------------------------------
+#
+#----------------------------------------------------------------------------
+# Extra Victor options
+#---------------------
+#
+# EXTRAS=<options> : string ""
+#
+# Feed extra options to Victor, perhaps overriding previous options.
+# This provides a quick way to customise a run.  It can be useful to
+# also use the SFX option to differentiate the report files for such a
+# run.
 
 #=============================================================================
 # Include prelude
@@ -438,10 +585,11 @@ include Makefile-prelude.mk
 # Observed incompletenesses of SMTLIB2 support noted below.  
 # (Partial) workaround options provided for some of these.
 
-# Alt-Ergo. 0.93
+# Alt-Ergo. 0.94
 # - define-type not supported.
 # - to_real function not recognised.
 # - Instances of quantified Bool-typed variables not recognised.
+# - Sometimes returns multiple unsat responses to single (check-sat).
 
 %-ta: vcset-%
 	$(VCT) \
@@ -449,6 +597,7 @@ include Makefile-prelude.mk
             $(smtlib2_options) \
             -elim-type-aliases\
             -smtlib2-add-to_real-decl\
+            -ignore-extra-query-results\
             -prover-command=$(ALT_ERGO) \
 
 # CVC3 2.4 (SMT-COMP 2011 version)
@@ -466,7 +615,7 @@ include Makefile-prelude.mk
             -smtlib2-add-to_real-decl\
             -prover-command='$(CVC3) -lang smt2 $(cvc3_timeout_flag)'\
 
-# Z3 2.20/3.0 preview (As submitted to SMT-COMP 2011). 
+# Z3 3.2.
 # No significant incompletenesses observed yet.
 
 %-tz: vcset-%
@@ -474,15 +623,6 @@ include Makefile-prelude.mk
             $(std_options)\
             $(smtlib2_options) \
             -prover-command='$(Z3)' \
-
-# Gather information on redundant RLU rules and report to .vsm file
-%-tz-frr: vcset-%
-	$(VCT) \
-            $(std_options)\
-            $(smtlib2_options) \
-            -prover-command='$(Z3)' \
-            -find-redundant-rules 
-
 
 #----------------------------------------------------------------------------
 # Simplify file interface mode
@@ -621,6 +761,6 @@ all-all:
 #============================================================================
 
 
-#include Makefile-dev.mk
+# include Makefile-dev.mk
 
 # End of file.
