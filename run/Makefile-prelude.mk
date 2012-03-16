@@ -37,67 +37,55 @@ VCT=vct
 # it is defined.
 # 
 #
+#----------------------------------------------------------------------------
+# INPUT OPTIONS
+#----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+# Selecting VCG or SIV file for VCs
+#----------------------------------
+
+ifdef SIV
+  siv_flag=-siv
+  siv_sfx = -siv
+endif
 
 #-----------------------------------------------------------------------------
-# Enabling timeouts
-#------------------
+# Focussing on single unit and goal
+#----------------------------------
 
-# 14/12/09: timeout using shell timout.sh is currently flakey.
-# Use with caution!
-#
+ifdef UNIT
+  unit_option = $(UNIT)
+endif
 
-timeout_option = -ulimit-timeout=$(T)
+ifdef GOAL
+  goal_option = -goal=$(GOAL) -ctick
+endif
 
-ifdef CT  # CVC3 timeout for API & file-level interfaces. Units of 0.1sec.
-  timeout_sfx = -ct$(CT)
-  timeout_option = -timeout=$(CT) 
-  cvc3_timeout_flag = -timeout $(CT)   # Option for cvc3 command
+#-----------------------------------------------------------------------------
+# Reading standard user-defined rules files
+#------------------------------------------
+# Default in std_options is
+#  -read-directory-rlu-files\
+#  -read-unit-rlu-files \
+#  -expect-dir-user-rules-with-undeclared-ids
 
-else ifdef T # Ulimit timeout (integer sec): applies to any file-level solver
-  timeout_sfx = -t$(T)
+ifdef NRLU
+  std_rlu_sfx=-nrlu
+  std_rlu_option= -read-directory-rlu-files=false -read-unit-rlu-files=false
 
-else ifdef ST  # Shell timeout (fixed pt sec): applies to any file-level solver
-  timeout_sfx = -st$(ST)
-  timeout_option = -shell-timeout=$(ST)
-
-else ifdef WT  # Watchdog timeout (fixed pt sec): 
-              # applies to any file-level solver
-  timeout_sfx = -w$(WT)
-  timeout_option = -watchdog-timeout=$(WT)
-
-else ifdef ZT  # Z3 soft timeout.  Units of ms.
-  timeout_sfx = -zt$(ZT)
-  timeout_option = -smtlib2-soft-timeout=$(ZT)
+else ifdef RLUA
+  std_rlu_sfx=-rlua
+  std_rlu_option= -read-all-decl-files-in-dir
 
 endif
 
-T=10# Delay setting default T to here so don't get suffix for default time.
-    # (Important here that no trailing spaces in value, so can use CT=$(T)0 )
-
-
-#-----------------------------------------------------------------------------
-# Fusing conclusions
-#-------------------
-
-
-ifdef U
-  fuse_c_pfx = u
-  fuse_concl_options =  # empty
-else
-  fuse_c_pfx = f
-  fuse_concl_options = -fuse-concls
-endif
-
-
+#----------------------------------------------------------------------------
+# TRANSLATION OPTIONS
+#----------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------
-# Output directory
-#-----------------
-OUTDIR=out
-
-#-----------------------------------------------------------------------------
-# Arithmetic options
-#-------------------
+# Arithmetic abstraction and simplification
+#------------------------------------------
 
 ifdef L
   lin_sfx=-lin
@@ -131,6 +119,10 @@ else
   smtlib_logic=AUFNIRA
 endif
 
+#-----------------------------------------------------------------------------
+# Handling of div and mod operators
+#----------------------------------
+
 # Use Euclidean div and mod operators rather than the
 # axiomatisation given in divmod.rul.
 
@@ -147,99 +139,11 @@ ifdef EDM
 endif
 
 #-----------------------------------------------------------------------------
-# Selecting VCG or SIV file for VCs
-#----------------------------------
+# Set threshold for symbolic numeric constants
+#---------------------------------------------
 
-ifdef SIV
-  siv_flag=-siv
-  siv_sfx = -siv
-endif
+SYM_CONSTS=100000
 
-#-----------------------------------------------------------------------------
-# Processing trivial goals
-#-------------------------
-
-ifdef NTG
-  tg_sfx = -ntg
-else
-  tg_flag=-count-trivial-goals
-endif
-
-#-----------------------------------------------------------------------------
-# Solver call iteration
-#----------------------
-
-# RD only for use with api interface mode
-# RC only for use with smtlib/simplify interface mode
-# 
-# api interface modes must also assert  -gstime-inc-setup in order
-# for cumulative times to be reported correctly
-
-# (Victor eventually should take care of these dependencies internally)
-
-ifdef RD # Repeat Drive goal / goal slice
-  repeat_sfx=-rd$(RD)
-  repeat_option = -drive-goal-repeats=$(RD)
-else ifdef RC # Repeat Check goal / goal slice
-  repeat_sfx=-rc$(RC)
-  repeat_option = -check-goal-repeats=$(RC)
-else
-  repeat_sfx=# Empty
-  repeat_option=# Empty
-endif
-
-#-----------------------------------------------------------------------------
-# Reading standard user-defined rules files
-#------------------------------------------
-# Default in std_options is
-#  -read-directory-rlu-files\
-#  -read-unit-rlu-files \
-#  -expect-dir-user-rules-with-undeclared-ids
-
-ifdef NRLU
-  std_rlu_sfx=-nrlu
-  std_rlu_option= -read-directory-rlu-files=false -read-unit-rlu-files=false
-
-else ifdef RLUA
-  std_rlu_sfx=-rlua
-  std_rlu_option= -read-all-decl-files-in-dir
-
-endif
-
-#-----------------------------------------------------------------------------
-# Auditing user rules
-#--------------------
-
-ifdef FURA  # Full User Rule Audit
-
-  urule_audit_sfx=-fura
-  urule_audit_options=\
-     -do-rule-audit\
-     -rule-audit-a\
-     -rule-audit-b\
-     -rule-audit-c\
-     -rule-audit-d\
-     -rule-audit-e\
-     -csv-reports-include-goal-origins
-
-else ifdef QURA # Quick User Rule Audit
-
-  urule_audit_sfx=-qura
-  urule_audit_options=\
-     -do-rule-audit\
-     -rule-audit-b\
-     -csv-reports-include-goal-origins
-
-else ifdef SURA # Single User Rule Audit
-  urule_audit_sfx=-sura
-  urule_audit_options=\
-     -do-rule-audit\
-     -rule-audit-c\
-     -rule-audit-d\
-     -rule-audit-e\
-     -rule-audit-rule=$(SURA)\
-     -csv-reports-include-goal-origins
-endif
 
 #-----------------------------------------------------------------------------
 # Enum type options
@@ -254,67 +158,6 @@ else ifdef ABE
 else
   enum_option = -elim-enums
 endif
-
-#-----------------------------------------------------------------------------
-# Getting proof summaries
-#------------------------
-# i.e. Unsat cores
-
-ifdef PS
-  pf_sum_sfx = -ps
-  pf_sum_option = -smtlib2-unsat-cores
-endif
-
-#-----------------------------------------------------------------------------
-# Working directory
-#-----------------
-WKDIR=/tmp
-
-#-----------------------------------------------------------------------------
-# Generate and preserve prover files
-#-----------------------------------
-
-ifdef FWF
-  WKDIR=work
-  wkfiles_option = \
-    -unique-working-files=false\
-    -delete-working-files=false\
-    -flat-working-files
-else ifdef HWF
-  WKDIR=work
-  wkfiles_option = \
-    -unique-working-files=false\
-    -delete-working-files=false\
-    -hier-working-files
-endif
-
-#-----------------------------------------------------------------------------
-# Adding comments to working files
-#---------------------------------
-ifdef CMT
-  cmt_option = -add-formula-descriptions
-endif 
-
-#-----------------------------------------------------------------------------
-# Focussing on single unit and goal
-#----------------------------------
-
-ifdef UNIT
-  unit_option = $(UNIT)
-endif
-
-ifdef GOAL
-  goal_option = -goal=$(GOAL) -ctick
-endif
-
-
-#-----------------------------------------------------------------------------
-# Set threshold for symbolic numeric constants
-#---------------------------------------------
-
-SYM_CONSTS=100000
-
-
 
 #-----------------------------------------------------------------------------
 # Translation options for SMTLIB, SMTLIB2 and Simplify
@@ -458,22 +301,221 @@ else
   smtlib_option_suffix =# (empty string)
 endif
 
+#----------------------------------------------------------------------------
+# USER RULE ANALYSIS
+#----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+# Finding redundant rules
+#-------------------------
+#
+ifdef FRR 
+  frr_sfx=-frr
+  frr_option=-find-redundant-rules
+endif
+
+#-----------------------------------------------------------------------------
+# Auditing user rules
+#--------------------
+
+ifdef FURA  # Full User Rule Audit
+
+  urule_audit_sfx=-fura
+  urule_audit_options=\
+     -do-rule-audit\
+     -rule-audit-a\
+     -rule-audit-b\
+     -rule-audit-c\
+     -rule-audit-d\
+     -rule-audit-e\
+     -csv-reports-include-goal-origins
+
+else ifdef QURA # Quick User Rule Audit
+
+  urule_audit_sfx=-qura
+  urule_audit_options=\
+     -do-rule-audit\
+     -rule-audit-b\
+     -csv-reports-include-goal-origins
+
+else ifdef SURA # Single User Rule Audit
+  urule_audit_sfx=-sura
+  urule_audit_options=\
+     -do-rule-audit\
+     -rule-audit-c\
+     -rule-audit-d\
+     -rule-audit-e\
+     -rule-audit-rule=$(SURA)\
+     -csv-reports-include-goal-origins
+endif
+
+#----------------------------------------------------------------------------
+# PROVER DRIVING OPTIONS
+#----------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------
+# Getting proof summaries
+#------------------------
+# i.e. Unsat cores
+
+ifdef PS
+  pf_sum_sfx = -ps
+  pf_sum_option = -smtlib2-unsat-cores
+endif
+
+#-----------------------------------------------------------------------------
+# Enabling timeouts
+#------------------
+
+timeout_option = -ulimit-timeout=$(T)
+
+ifdef T # Ulimit timeout (integer sec): applies to any file-level solver
+  timeout_sfx = -t$(T)
+
+else ifdef CT  # CVC3 timeout for API & file-level interfaces. Units of 0.1sec.
+  timeout_sfx = -ct$(CT)
+  timeout_option = -timeout=$(CT) 
+  cvc3_timeout_flag = -timeout $(CT)   # Option for cvc3 command
+
+# 14/12/09: timeout using shell timout.sh is currently flakey.
+# Use with caution!
+#
+# else ifdef ST # Shell timeout (fixed pt sec): applies to any file-level solver
+#  timeout_sfx = -st$(ST)
+#  timeout_option = -shell-timeout=$(ST)
+
+else ifdef WT  # Watchdog timeout (fixed pt sec): 
+              # applies to any file-level solver
+  timeout_sfx = -w$(WT)
+  timeout_option = -watchdog-timeout=$(WT)
+
+else ifdef ZT  # Z3 soft timeout.  Units of ms.
+  timeout_sfx = -zt$(ZT)
+  timeout_option = -smtlib2-soft-timeout=$(ZT)
+
+endif
+
+T=1# Delay setting default T to here so don't get suffix for default time.
+
+#-----------------------------------------------------------------------------
+# Exploit solver incrementality
+#------------------------------
+
+ifdef INC
+  inc_sfx=-inc
+  inc_option=-exploit-solver-incrementality
+endif
+
+#-----------------------------------------------------------------------------
+# Fusing conclusions
+#-------------------
+
+
+ifdef U
+  fuse_c_pfx = u
+  fuse_concl_options =  # empty
+else
+  fuse_c_pfx = f
+  fuse_concl_options = -fuse-concls
+endif
+
+
+
+#-----------------------------------------------------------------------------
+# Working directory
+#-----------------
+WKDIR=/tmp
+
+#-----------------------------------------------------------------------------
+# Generate and preserve prover files
+#-----------------------------------
+
+ifdef FWF
+  WKDIR=work
+  wkfiles_option = \
+    -unique-working-files=false\
+    -delete-working-files=false\
+    -flat-working-files
+else ifdef HWF
+  WKDIR=work
+  wkfiles_option = \
+    -unique-working-files=false\
+    -delete-working-files=false\
+    -hier-working-files
+endif
+
+#-----------------------------------------------------------------------------
+# Adding comments to working files
+#---------------------------------
+ifdef CMT
+  cmt_option = -add-formula-descriptions
+endif 
+
+#----------------------------------------------------------------------------
+# REPORT FILE OPTIONS
+#----------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------
+# Output directory
+#-----------------
+OUTDIR=out
+
+
+#-----------------------------------------------------------------------------
+# Track trivial goals
+#---------------------
+
+ifdef NTG
+  tg_sfx = -ntg
+else
+  tg_flag=-count-trivial-goals
+endif
+
+#----------------------------------------------------------------------------
+# DEPRECATED OPTIONS
+#----------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------
+# Solver call iteration
+#----------------------
+
+# RD only for use with api interface mode
+# RC only for use with smtlib/simplify interface mode
+# 
+# api interface modes must also assert  -gstime-inc-setup in order
+# for cumulative times to be reported correctly
+
+# (Victor eventually should take care of these dependencies internally)
+
+ifdef RD # Repeat Drive goal / goal slice
+  repeat_sfx=-rd$(RD)
+  repeat_option = -drive-goal-repeats=$(RD)
+else ifdef RC # Repeat Check goal / goal slice
+  repeat_sfx=-rc$(RC)
+  repeat_option = -check-goal-repeats=$(RC)
+else
+  repeat_sfx=# Empty
+  repeat_option=# Empty
+endif
+
+
+
 
 
 
 #=============================================================================
 # Assembly of option lists
 #=============================================================================
-#SMTLIB2: will need to address alternate divmod support and abs abstraction
+# SMTLIB2: Need to address abs abstraction
 # By using -expand-exp-const, are assuming solver can handle non-lin arith.
 
-report_root = $(fuse_c_pfx)-$@$(siv_sfx)$(tg_sfx)$(std_rlu_sfx)$(lin_sfx)$(edm_sfx)$(enum_sfx)$(pf_sum_sfx)$(urule_audit_sfx)$(timeout_sfx)$(repeat_sfx)$(smtlib_option_suffix)$(SFX)
+report_root = $(fuse_c_pfx)-$@$(siv_sfx)$(tg_sfx)$(std_rlu_sfx)$(lin_sfx)$(edm_sfx)$(enum_sfx)$(pf_sum_sfx)$(frr_sfx)$(urule_audit_sfx)$(inc_sfx)$(timeout_sfx)$(repeat_sfx)$(smtlib_option_suffix)$(SFX)
 
 std_options = \
             $(unit_option) \
             $(goal_option) \
             $(fuse_concl_options)\
             $(timeout_option)\
+            $(inc_option)\
             $(siv_flag)\
             $(tg_flag)\
             $(lin_opt)\
@@ -481,6 +523,7 @@ std_options = \
             $(pf_sum_option)\
             $(repeat_option)\
             $(std_rlu_option)\
+            $(frr_option)\
             $(urule_audit_options)\
             -report=$(report_root)\
             -report-dir=$(OUTDIR)\
