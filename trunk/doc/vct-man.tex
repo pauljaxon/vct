@@ -16,7 +16,7 @@
 \author{Paul Jackson \\
         \texttt{pbj@inf.ed.ac.uk}}
 
-\date{16 Mar 2012}
+\date{19 Mar 2012}
 
 %\usepackage{vpage}
 %\usepackage{vmargin}
@@ -72,9 +72,11 @@
 
 %NB the extensions here changed in V0.9, for SPARK tool compatibility
 \newcommand{\logfile}{\textsc{vlg}}
-\newcommand{\csv}{\textsc{vct}}
-\newcommand{\sumfile}{\textsc{vsm}}
+\newcommand{\goalreportfile}{\textsc{vct}}
+\newcommand{\unitsumfile}{\textsc{vus}}
+\newcommand{\sessionsumfile}{\textsc{vsm}}
 
+\newcommand{\csv}{\textsc{csv}}
 
 %\renewcommand{\And}{\ensuremath{\wedge}}
 \newcommand{\And}{\ensuremath{\wedge}}
@@ -165,11 +167,12 @@ standard languages for formatting input to \smt{} solvers and collects
 benchmarks in this format. Victor supports the current version 2.0
 and the older version 1.2.
 
-The initiative defines particular \emph{logics}, defined by
-combinations of logical theories and allowed shapes of terms and
-formulas.  These logics are used to categorise benchmarks, and
-different \smt{} solvers support different logics.  Some solvers 
-support a superset of what is defined by any of these logics.
+The initiative defines particular \emph{logics}, each characterised by
+some combination of logical theories and possible restrictions on
+shapes of terms and formulas.  These logics are used to classify
+benchmarks, and different \smt{} solvers support different logics.
+Some solvers support a superset of what is defined by any of these
+logics.
 
 At a minimum, Victor requires solvers to handle uninterpreted
 functions and constants, linear integer arithmetic and logical
@@ -483,14 +486,12 @@ To install:
 %   directory.
 
 
-\item Build utility tools for analysing the \csv{} and \logfile{}
-  comma-separated-value
-  output files created by Victor.  Enter \texttt{make csvutils}.  
-  This causes the executables 
-  \texttt{csvproj}, 
-  \texttt{csvfilt},
-  \texttt{csvmerge} and
-  \texttt{csvisect} to be added to the \texttt{bin} directory.
+\item Build utility tools for analysing the \goalreportfile{},
+  \unitsumfile{} and \sessionsumfile{} comma-separated-value output
+  files created by Victor.  Enter \texttt{make csvutils}.  This causes
+  the executables \texttt{csvproj}, \texttt{csvfilt},
+  \texttt{csvmerge} and \texttt{csvisect} to be added to the
+  \texttt{bin} directory.
 
 \item Build an auxiliary program for timing-out runs of provers.
   Enter \texttt{make watchdog}.  This creates the executable
@@ -511,6 +512,10 @@ To install:
 We refer to \spark{} VCs as \emph{goals} and use the term \emph{goal
   slice} to refer to a proof obligation build from a VC by considering
 just one of the goal's conclusions and ignoring the others.  
+%
+For brevity, we sometimes collectively refer to \spark{} VC goals and
+slices of \spark{} VC goals as \emph{Victor goals} or even just
+\emph{goals}.
 
 A \emph{unit name} is the hierarchical name of a program unit.  The unit
 name with a \texttt{.fdl}, 
@@ -528,15 +533,19 @@ program.
 The basic operation of Victor is to 
 \begin{enumerate}
 \item Read in a list of names of \spark{} program units.
-\item Read in the VCs described in the \texttt{.fdl}, \texttt{.rls},
+
+\item For each program unit
+  \begin{enumerate}
+  \item Read in the VCs described in the \texttt{.fdl}, \texttt{.rls},
   \texttt{.vcg} file triples output by the \spark{} Examiner for the
-  named program units.\footnote{
+  unit.\footnote{
   Optionally it can read in the simplified
   \texttt{.siv} files output by the \spark{} Simplifier instead of the 
   \texttt{.vcg} files.}
-\item Invoke a prover on each goal or goal slice. 
-\item 
-Output \texttt{.vct}, \texttt{.vsm} and \texttt{.vlg} report files.
+  \item Invoke a prover on each goal or goal slice. 
+  \item Output \texttt{.vct}, \texttt{.vus}, \texttt{.vsm} and
+    \texttt{.vlg} report files.
+  \end{enumerate}
 \end{enumerate}
 
 %----------------------------------------------------------------------------
@@ -611,52 +620,173 @@ in the root directory of a set of VC files.
 
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\subsubsection{VCT output file}
+\subsubsection{Goal report (VCT) output file}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-The \csv{} file includes one line for each goal or goal slice. The fields
-of each line are:
+The goal report or \goalreportfile{} file has suffix \texttt{.vct}.  
+
+The file is in comma-separated-value (\csv) format: linebreaks divide the file
+into records, and each record is divided by commas into fields.  Field values in
+general might contain commas and linebreaks, in which case the field value is
+enclosed in \texttt{""}s.
+
+Each record gives information on one Victor goal.
+The record fields are:
 \begin{enumerate}
-\item Path to unit. This describes the containing packages
+\item Unit number.  The number of the unit the goal is from.  Victor numbers
+   the units it reads sequentially, starting from 1.
+\item Path to unit. This describes the containing packages.
 \item Unit name, without a prefix for the containing packages.
 \item Unit kind.  One of \texttt{procedure}, 
   \texttt{function} or \texttt{task\_type}.
-\item Source of path in subprogram for VC 
-\item Destination of path for VC, or VC kind if not path related
-\item VC goal number
-\item Conclusion (goal slice) number 
-\item Status (one of true, unproven, error)
-\item Proof time (in sec)
+\item Goal origins information -- source of path in subprogram for VC .
+\item Goal origins information -- destination of path for VC, or VC
+  kind if not path related.
+\item VC goal number.
+\item Conclusion (goal slice) number.  Empty if the Victor goal is generated
+   form the whole \spark{} goal.
+ \item Status (one of \texttt{trivial}, \texttt{true}, \texttt{unproven} or
+   \texttt{error}).
+\item Proof time (in sec).
 \item Brief remarks about goal and solver interactions
 \item Operator kinds occurring in hypotheses
 \item Operator kinds occurring in conclusion
 \end{enumerate}
+A file \texttt{vct-file-header.txt} provides a 1 line comma-separated
+list of field headings for these goal report files.  By default, the
+\goalreportfile{} files are generated without this heading.
+
+
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\subsubsection{VSM output file}
+\subsubsection{Unit summary (VUS)  output file}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-The run summary file has extension \texttt{.vsm}.  It is a 1 line
-comma-separated-value file with the fields
+The unit summary or \unitsumfile{} file has suffix \texttt{.vus} and is
+in \csv{} format.
+Each record gives a summary of the Victor run on one unit.
+The record fields are:
 \begin{enumerate}
-\item Report file name.
+
+% Identity of unit
+\item Unit number.
+\item Unit name, including prefix showing containing packages
+
+% Health of run
+\item Number of \texttt{ERROR} messages written to \logfile{} log file.
+\item Number of \texttt{WARNING} messages written to \logfile{} log file.
+
+% Outcome of runs on goals
+\item Total number of goals.
+\item Number of trivial goals.
+\item Number of goals found true by the prover.
+\item Number of goals unproven by the prover.
+\item Number of unproven goals where the prover timed out.
+\item Number of unproven goals where the prover asserted the goal was
+  definitely false.
+\item Number of goals where some error occurred in handling the goal
+
+% User rule stats
+\item Number of user rules read in from the directory-level and unit-level
+  user rule (\texttt{.rlu}) files.
+\item Number of directory-level user rules excluded because of unbound
+  function, constant or type ids, or because they do no not type check.
+\item Number of unit-level user rules excluded.
+\item Number of system rules excluded, (\texttt{ystem rules} being rules
+  generated by the Examiner or provided by Victor).
+
+% AST stats
+\item Size of combined parse tree for unit input files.
+\item Size of abstract syntax tree after all prover-independent
+  translation steps in Victor.
+\item Number of abstract syntax tree nodes allocated for unit
+
+% Times
+\item Total time to handle unit
+\item Total time in prover when proof succeeded.
+\item Average time in single prover run when proof succeeded.
+\item Maximum  time in single prover run when proof succeeded.
+\item Total time in prover when proof failed.
+
+% Rule auditing stats
+\item Whether unit is inconsistent, when all user rules and all
+  hypotheses and conclusions of specific goals are ignored.  Value is
+  1 if inconsistent, otherwise 0.
+\item Whether unit is inconsistent, when all user rules considered,
+  but all hypotheses and conclusions of specific goals are ignored.
+  Value is 1 if inconsistent, otherwise 0.
+\item Number of user rules found to be inconsistent with system-supplied rules
+  and built-in theories of the prover. 
+\item Number of user rules found to be derivable from system-supplied rules
+  and built-in theories of the prover. 
+\item Number of user rules found to be derivable from other user
+  rules, along with system-supplied rules and built-in theories of
+  the prover.
+
+% Remarks
+\item Remarks on unit generated by Victor
+\end{enumerate}
+A file \texttt{vus-file-header.txt} provides a 1 line comma-separated
+list of field headings for these unit summary files.  By default, the
+\unitsumfile{} files are generated with this heading to simplify
+reading the files in a spreadsheet program.
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsubsection{Session summary (VSM) output file}
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+The session summary or \sessionsumfile{} file has suffix \texttt{.vsm} and is
+in \csv{} format.  It contains one record summarising a Victor run over one
+or more units.
+The record fields are:
+\begin{enumerate}
+\item Report file name with any of the suffices.
+
+% Health of session
 \item Number of \texttt{ERROR} messages in log file
 \item Number of \texttt{WARNING} messages in log file
+
+% Outcomes
 \item Total number of goal/goal slices processed.
-\item Number of goal/goal slices with \emph{true} status
-\item Number of goal/goal slices with \emph{unproven} status
-\item Number of unproven goal/goal slices that involved a timeout.
-\item Number of goal/goal slices with \emph{error} status
-\item Percent of goal/goal slices with \emph{true} status
-\item Percent of goal/goal slices with \emph{unproven} status
-\item Percent of unproven goal/goal slices that involved a timeout.
-\item Percent of goal/goal slices with \emph{error} status
-\item Total execution time
+\item Number of goals with \emph{true} status
+\item Number of goals with \emph{unproven} status
+\item Number of unproven goals that involved a timeout.
+\item Number of unproven goals that were shown to be definitely false.
+\item Number of goals with \emph{error} status
+
+% Outcome percent stats
+\item Percent of goals with \emph{true} status
+\item Percent of goals with \emph{unproven} status
+\item Percent of goals that were unproven and involved a timeout.
+\item Percent of goals that were shown false.
+\item Percent of goals with \emph{error} status
+
+% Times
+\item Total time to handle all units of session
+\item Total time in prover when proof succeeded.
+\item Average time in single prover run when proof succeeded.
+\item Maximum  time in single prover run when proof succeeded.
+\item Total time in prover when proof failed.
+
+% Rule auditing stats
+\item Number of inconsistent units, when all user rules and all
+  hypotheses and conclusions of specific goals are ignored.  Value is
+  1 if inconsistent, otherwise 0.
+\item Number of inconsistent units, when all user rules considered,
+  but all hypotheses and conclusions of specific goals are ignored.
+  Value is 1 if inconsistent, otherwise 0.
+\item Number of user rules found to be inconsistent with system-supplied rules
+  and built-in theories of the prover. 
+\item Number of user rules found to be derivable from system-supplied rules
+  and built-in theories of the prover. 
+\item Number of user rules found to be derivable from other user
+  rules, along with system-supplied rules and built-in theories of
+  the prover.
+
 \end{enumerate}
 A file \texttt{vsm-file-header.txt} provides a 1 line comma-separated list
 of headings for these summary files.
 
-Summary files can be concatenated together with a header file and then 
+Summary files can be concatenated together with the header file and then 
 viewed in any spreadsheet program.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -666,6 +796,7 @@ The \logfile{} log file includes
 \begin{enumerate}
 \item a record of the command line options passed to Victor,
 \item various information, warning and error messages,
+\item user rule analysis reports,
 \item statistics on the run, including numbers of VCs proven and unproven,
   and time taken.
 \end{enumerate}
@@ -778,7 +909,7 @@ Option values can be boolean (\texttt{true} or \texttt{false}),
 natural numbers (e.g. \texttt{42}) or strings.
 %
 An option \texttt{-\emph{name}} is interpreted the same as 
-An option \texttt{-\emph{name}=true}.  An unset boolean option is interpreted
+an option \texttt{-\emph{name}=true}.  An unset boolean option is interpreted
 as \texttt{-\emph{name}=false}.
 
 If the same option is given multiple times with different values, the
@@ -790,7 +921,7 @@ A later option
 \texttt{-name=false},
 \texttt{-name=none} or 
 \texttt{-name=default}
-Clears all earlier values given for the option and makes it unset.
+clears all earlier values given for the option and makes it unset.
 
 %----------------------------------------------------------------------------
 \subsection{Input options}
@@ -869,7 +1000,7 @@ prover.
 
 % See smt-driver.cc
 \optionv{goal}{g} Only consider goal number $g$.
-  %  Skipped over goals are not reported in \csv{} output file.  
+  %  Skipped over goals are not reported in \goalreportfile{} output file.  
   %
   This option is intended for use when Victor is run on a single unit,
   when a \textit{unit-name} argument and no \texttt{units} option is
@@ -1114,8 +1245,8 @@ The options are as follows.
   \item \texttt{dummy}: 
     Use some default code that mostly does nothing.  In this case,
     Victor still parses the VC files, does a prover independent
-    translation of the goals, and generates \csv{} and log output
-    files.  This is the default option. 
+    translation of the goals, and generates \goalreportfile{}, \unitsumfile{},
+    \sessionsumfile{} and \logfile{} output files.  This is the default option. 
   \end{itemize}
 
 \end{description}
@@ -1186,7 +1317,7 @@ The options are as follows.
   the rules, hypotheses and the conclusion of a goal were used in the
   proof of the goal.  An unsat core can be viewed as a proof summary.
   Unsat cores are reported in the remarks field of records written to the
-  \csv{} file.
+  \goalreportfile{} file.
 
   Unsat cores are currently only supported if the \smtlib{}2 file-level
   prover interface is used.
@@ -1337,8 +1468,10 @@ The options are as follows.
 
 \begin{description}
 \optionv{report}{report-file}
-   Use \textit{report-file} as body of filenames for \csv{}, \sumfile{} and
-   \logfile{} report files.  Default is to use \texttt{report}.
+
+  Use \textit{report-file} as body of filenames for \goalreportfile{},
+  \unitsumfile{}, \sessionsumfile{} and \logfile{} report files.  Default
+  is to use \texttt{report}.
 
 \optionv{report-dir}{dir}
    Put report files in directory \textit{dir}.  If directory does not exist,
@@ -1353,23 +1486,23 @@ The options are as follows.
 \begin{description}
 
 \optionb{count-trivial-goals}
-   Write an entry to the \csv{} file for each input goal of form 
-   \texttt{*** true}.
+
+   Write an entry to the \goalreportfile{} file for each \spark{} input goal 
+   of form \texttt{*** true}.
    In VCG files, these are the goals proven by the Examiner.
    In SIV files, these are the goals proven by the Examiner or the 
    Simplifier.
-   These entries have status \texttt{true} in field 8 and
-   the comment \texttt{trivial goal} in field 10.
+   These entries have the status \texttt{trivial} recorded in the status field.
 
    Use this option along with option \texttt{-fuse-concls} to have the
    goal counts match those from the POGS (Proof Obligation Summariser)
    tool.
 
-\optionb{hkinds} Report list of hypothesis kinds in field 11 of \csv{} file
-\optionb{ckinds} Report list of concl kinds in field 12 of \csv{} file
+\optionb{hkinds} Report list of hypothesis kinds \goalreportfile{} file records.
+\optionb{ckinds} Report list of concl kinds in \goalreportfile{} file records.
 \optionb{gstime} 
-  Report time taken by prover to process a goal slice or goal
-       in field 9 of \csv{} file.
+  Report time taken by prover to process a goal 
+       in time field of \goalreportfile{} file records.
 \optionb{gstime-inc-setup}
   Include setup time in gstime.  This setup time is time to 
   send declarations, rules, hypotheses and conclusions to the prover before
@@ -1383,11 +1516,13 @@ The options are as follows.
   it.
 
 \optionb{csv-reports-include-goal-origins}
-  Include information on goal origins in fields 4 and 5 of \csv{} file.
+  Include information on goal origins in goal origins fields of 
+  \goalreportfile{} file records.
   Default is not to include this information.
 
 \optionb{csv-reports-include-unit-kind}
-  Include information on unit kind in fields 3 of \csv{} file.
+  Include information on unit kind in unit kind field of \goalreportfile{} file
+  records.  For example, whether the unit is a function or a procedure.
   Default is not to include this information.
 \end{description}
 
