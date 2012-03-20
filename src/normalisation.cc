@@ -383,6 +383,171 @@ void augmentConstDecls(FDLContext* ctxt, Node* unit) {
     return;
 }
 
+//========================================================================
+// Find badly-formed logical nodes
+//========================================================================
+// A "logical node" is a cluster of nodes used to represent particular
+// operators in FDL. 
+
+// Occasionally badly formed logical nodes come up in user rules
+// files, so need to flush them out.  If they are left in place, later
+// code (e.g. using getSubNodes()) will crash.
+
+// We only check for issues that are not caught by parsing.
+
+class LogicalNodeCheck {
+public:
+    string messages;
+    void addMessage(const string& m);
+    Node* operator() (FDLContext* c, Node* n);
+};
+
+void
+LogicalNodeCheck::addMessage(const string& m) {
+    if (messages.size() > 0) messages += ENDLs;
+    messages += m;
+    return;
+}
+
+Node*
+LogicalNodeCheck::operator() (FDLContext* c, Node* n) {
+
+    // For clarity here, we go through all the case considered by the
+    // Node::getSubNodes() method.
+
+    switch(n->kind) {
+
+    case FORALL:
+    case EXISTS:
+        // FORALL (SEQ d1 ... nk) body [pat]
+        // EXISTS (SEQ d1 ... nk) body [pat]
+        //   where di = DECL{id} type
+        break;
+
+    case ARR_ELEMENT: {
+        // ARR_ELEMENT arr (SEQ i1 ... in),  n >= 1
+        if (n->arity() == 2
+            && n->child(1)->kind == SEQ
+            && n->child(1)->arity() > 0) break;
+        
+        addMessage("Badly formed ARR_ELEMENT at "
+                   + c->getPathString() + ".");
+        break;
+    }
+    case ARR_UPDATE: {
+        // ARR_UPDATE arr (SEQ i1 ... in) val,  n >= 1
+        if (n->arity() == 3
+            && n->child(1)->kind == SEQ
+            && n->child(1)->arity() > 0) break;
+        
+        addMessage("  Badly formed ARR_UPDATE at "
+                   + c->getPathString() + ".");
+        break;
+    }
+    case MK_ARRAY: {
+        // MK_ARRAY{arrname} default a1 ... an, n >= 0
+        // MK_ARRAY{arrname} a1 ... an,         n >= 1
+        //   where 
+        //     ai = ASSIGN indextuples val,  m >= 1
+        //     indextuples = 
+        //           indextuple 
+        //           | INDEX_AND indextuple1 ... indextuplek,  k > 1
+        //     indextuple = (SEQ i1 ... im)
+        //     ij = e  |  SUBRANGE e1 e2
+
+        bool isBad = false;
+        
+        for (int i = 0; i != n->arity(); i++) {
+            Node* c = n->child(i);
+            if (i == 0 && c->kind != ASSIGN) {
+                continue;
+            }
+            // Check indeed that have an assignment at each child
+            if (c->kind == ASSIGN && c->arity() == 2) {
+
+                // Check each tuple in indexTuples is a SEQ of indexes
+
+                Node* indexTuples = c->child(0);
+                if (indexTuples->kind == INDEX_AND) {
+                    // Have multiple index tuples.  Check each one.
+                    for (int j = 0; j != indexTuples->arity(); j++) {
+                        if (indexTuples->child(j)->kind != SEQ) isBad = true;
+                    }
+                } else {
+                    // Have a single tuple of indexes
+                    if (indexTuples->kind != SEQ) isBad = true;
+                }
+            } else {
+                // ai is not ASSIGN node with arity 2.
+                isBad = true;
+            }
+        }
+
+        if (isBad) addMessage("Badly formed MK_ARRAY at "
+                              + c->getPathString() + ".");
+        break;
+    }
+    case MK_RECORD: {
+        // MK_RECORD{rcdname} a1 ... an, n >= 1
+        //   where ai = ASSIGN{fldname} val
+
+        bool isBad = false;
+        for (int i = 0; i < n->arity(); i++) {
+            Node* assign = n->child(i);
+            if (! (assign->kind == ASSIGN && assign->arity() == 1))
+                isBad = true;
+        }
+        if (isBad) addMessage("Badly formed MK_RECORD at "
+                              + c->getPathString() + ".");
+        break;
+    }
+    case RECORD_TY: {
+        // RECORD_TY{rcdname} d1 ... dn, n >= 1
+        //   where di = DECL{fldname} Ti
+        break;
+    }
+    default: {
+        break;
+    }
+    }
+    return n;
+}
+
+void
+deleteRulesWithBadLogicalNodes(FDLContext* ctxt,
+                               Node* unit,
+                               UnitInfo* unitInfo) {
+
+    Node* rules = unit->child(1);
+    for (int ruleNum = 1; ruleNum <= rules->arity(); ruleNum++) {
+
+        Node* rule = rules->child(ruleNum-1);
+
+        LogicalNodeCheck lnc;
+        mapOverWithContext(lnc, ctxt, rule);
+
+        if (lnc.messages.size() > 0) {
+
+            // rule = RULE{<name>} <rule>
+            string ruleName = rule->id;
+            string ruleKind =
+                unitInfo->isDirUserRule(ruleNum - 1)
+                ? "directory user"
+                : unitInfo->isUnitUserRule(ruleNum - 1)
+                ? "unit user"
+                : "Examiner";
+            
+            printMessage(WARNINGm,
+                         "FDL issue" + ENDLs
+                         + "Deleting " + ruleKind + " rule " + ruleName + ENDLs
+                         + lnc.messages);
+
+            rule->child(0) = nTRUE;
+            unitInfo->addExcludedRule(ruleNum-1);
+        }
+    }
+    return;
+}
 
 //========================================================================
 // Find undeclared constants, functions and types
@@ -1530,6 +1695,13 @@ putUnitInStandardForm(Node* unit, UnitInfo* unitInfo) {
     augmentConstDecls(ctxt, unit);
 
     //--------------------------------------------------------------------
+    // Delete rules with badly-formed logical nodes
+    //--------------------------------------------------------------------
+    // Updates unitInfo with indexes of rules to exclude.
+
+    deleteRulesWithBadLogicalNodes(ctxt, unit, unitInfo);
+
+    //--------------------------------------------------------------------
     // Delete rules with undeclared constants, functions and types
     //--------------------------------------------------------------------
     // Updates unitInfo with indexes of rules to exclude.
@@ -1540,6 +1712,8 @@ putUnitInStandardForm(Node* unit, UnitInfo* unitInfo) {
     //--------------------------------------------------------------------
     // Check all type, function and constant identifiers have bindings
     //--------------------------------------------------------------------
+    // Check throughout whole unit.
+
     if (checkForUndeclaredIds(ctxt, unit))
         return 0;
 
