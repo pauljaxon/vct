@@ -36,7 +36,7 @@ using std::ofstream;
 
 #include "rule-filter.hh"
 
-// Interface for SMTLib format file-level solver interface.
+// Interface for SMTLib 2.0 format file-level solver interface.
 
 
 class SMTLib2Driver : public RuleFilter { // RuleFilter is a subclass
