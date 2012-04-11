@@ -804,6 +804,7 @@ Top level structure with no further changes
     case GOALS:
     case GOAL:
     case HYPS:
+    case HYP:
     case CONCLS:
         return oldN;
 
