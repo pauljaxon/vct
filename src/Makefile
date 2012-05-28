@@ -265,7 +265,7 @@ include $(DFILES)
 #  CXX = g++
 
 
-.PHONY: clean save-build test-bignum
+.PHONY: clean save-build test-bignum test-stringmatch
 
 basicclean:
 	-rm -f $(OBJS) *.d
@@ -287,6 +287,9 @@ save-build:
 test-bignum: test-bignum.cc bignum.o utility.o node.o \
              pprinter.o box.o formatter.o
 	$(CXX) -g -o test-bignum -lgmpxx -lgmp $^
+
+test-stringmatch: test-stringmatch.cc utility.o 
+	$(CXX) -g -o test-stringmatch $^
 
 
 

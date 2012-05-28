@@ -383,6 +383,49 @@ void augmentConstDecls(FDLContext* ctxt, Node* unit) {
     return;
 }
 
+
+//========================================================================
+// Delete rules excluded by user
+//========================================================================
+// using -skip-rule=<rule-name> option.
+
+// Handles multiple rules excluded with multiple uses of option.
+
+void
+deleteRulesExcludedByUser(FDLContext* ctxt,
+                          Node* unit,
+                          UnitInfo* unitInfo) {
+
+    Node* rules = unit->child(1);
+
+    vector<string> userExcludedRules = optionVals("skip-rule");
+    if (userExcludedRules.size() == 0) return;
+    
+    for (int ruleNum = 1; ruleNum <= rules->arity(); ruleNum++) {
+
+        Node* rule = rules->child(ruleNum-1);
+
+        string ruleName = rule->id;
+
+        // Exclude rule if name matches any of the provided patterns
+        bool excludeRule = false;
+        for (int ri = 0; ri != (int) userExcludedRules.size(); ri++) {
+            const string& rulePat = userExcludedRules.at(ri);
+            if (stringMatch(rulePat, ruleName)) {
+                excludeRule = true;
+                break;
+            }
+        }
+        if (excludeRule) {
+            rule->child(0) = nTRUE;
+            unitInfo->addExcludedRule(ruleNum-1);
+        }
+    }
+    return;
+}
+
+
+
 //========================================================================
 // Find badly-formed logical nodes
 //========================================================================
@@ -1693,6 +1736,13 @@ putUnitInStandardForm(Node* unit, UnitInfo* unitInfo) {
     // Add decls for enum type functions
 
     augmentConstDecls(ctxt, unit);
+
+    //--------------------------------------------------------------------
+    // Delete rules named in -skip-rule options
+    //--------------------------------------------------------------------
+    // Updates unitInfo with indexes of rules to exclude.
+
+    deleteRulesExcludedByUser(ctxt, unit, unitInfo);
 
     //--------------------------------------------------------------------
     // Delete rules with badly-formed logical nodes

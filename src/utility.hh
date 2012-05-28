@@ -104,6 +104,8 @@ string fixSuffix(const string& s,
 
 string mkLispSymbolString(const string& s);
 
+bool stringMatch(const string& pat, const string& inst);
+
 //========================================================================
 // Set operations
 // ========================================================================
@@ -132,6 +134,15 @@ void setIsect(set<T>& a, set<T>& b, set<T>& c) {
 template <class T>
 bool setMember(const T& x, const set<T>& a) {
     return a.find(x) != a.end();
+}
+
+//========================================================================
+// Vector operations
+//========================================================================
+
+template <class T>
+bool vectorMember(const T& x, const vector<T>& a) {
+    return find(a.begin(), a.end(), x) != a.end();
 }
 
 //========================================================================

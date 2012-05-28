@@ -475,12 +475,14 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
     string remarks(queryRecords.at(startQuery).remarks);
 
     {
-        int startGoalNum = queryRecords.at(startQuery).goalNum;
-        int lastGoalNum = queryRecords.at(endQuery-1).goalNum;
+        int startGoalNum  = queryRecords.at(startQuery).goalNum;
+        int endGoalNum    = queryRecords.at(endQuery-1).goalNum;
+        int startConclNum = queryRecords.at(startQuery).conclNum;
+        int endConclNum   = queryRecords.at(endQuery-1).conclNum;
 
         // Set globals used in messages
         currentGoalNumStr = intToString(startGoalNum);
-        currentConcl = queryRecords.at(startQuery).conclNum;
+        currentConcl = startConclNum;
 
         // Set up header of query set
         initQuerySet(unitInfo->getUnitName(), startGoalNum, currentConcl);
@@ -489,15 +491,25 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
             if (option("longtick")) {
                 if (startQuery + 1 == endQuery) {
                     cout << " " << startGoalNum;
+                    if (option("ctick"))
+                        cout << "." << startConclNum;
                 }
                 else {
-                    cout << " "
-                         << startGoalNum
-                         << "-"
-                         << lastGoalNum;
+                    cout << " " << startGoalNum;
+                    if (option("ctick")) cout << "." << startConclNum;
+                    cout << "-" << endGoalNum;
+                    if (option("ctick")) cout << "." << endConclNum;
                 }
             } else {
-                cout << ";";
+                if (option("ctick")) {
+                    if (startConclNum == 1)
+                        cout << ";.";
+                    else 
+                        cout << ".";
+                }
+                else {
+                    cout << ";";
+                }
             }
             cout.flush();
         }
@@ -855,8 +867,18 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
 
         // Customise query and result records for goal / goal slices and save
         Node* concls = goal->child(1);
-        int fromConcl = option("fuse-concls") ? 0 : 1;
-        int toConcl   = option("fuse-concls") ? 0 : concls->arity();
+
+        int fromConcl = 1; 
+        int toConcl   = concls->arity();
+
+        if (option("fuse-concls")) {
+            fromConcl = 0;
+            toConcl   = 0;
+        }
+        else if (option("concl")) {
+            fromConcl = intOptionVal("concl");
+            toConcl   = intOptionVal("concl");
+        }
 
         for (int conclNum = fromConcl; conclNum <= toConcl; conclNum++) {
 
