@@ -403,6 +403,61 @@ string mkLispSymbolString(const string& s) {
 
 }
 
+// Simple matching routine.  
+// Allows pattern to have
+
+// "?"  matches any single character in 
+// "*x" All strings matching [All-"x"]* x
+// "*$" [All]*
+
+// $ indicates end of string.  
+// All = set of all characters.
+
+bool stringMatch(const string& pat, const string& inst) {
+
+    int ip = 0; // Index into instance string
+
+    for (int ii = 0; ii != (int) inst.size(); ii++) {
+
+        char ichar = inst.at(ii);
+
+        if (ip >= (int) pat.size()) // Pattern has extra unmatched characters
+            return false;
+
+        // INVAR: ip and ii point to valid characters in pat and inst
+        
+        char pchar = pat.at(ip);
+
+        if (pchar == '?') { // ? in pat matches any single char in inst.
+            ip++;
+        }
+        else if (pchar == '*') {
+            if (ip == (int) pat.size() - 1)  // ip->*$  ii->x
+                return true;
+            else {
+                char next_pchar = pat.at(ip+1);
+                if (ichar == next_pchar) // ip->*x  ii->x
+                    ip += 2;
+                else
+                    ;    // ip->*x  ii->y  x != y.   Leave ip alone.
+            }
+        }
+        else {
+            if (pchar != ichar) return false;
+            // pchar == ichar  && pchar != '*' or '?'
+            ip++;
+        }
+            
+    }
+    // ii at end+1 of inst.
+    // Have match just when
+    // 1. ip at end+1 of pat, or
+    // 2. ip points to * at end of pat.
+ 
+    return (ip == (int) pat.size()
+            || (ip + 1 == (int) pat.size()  && pat.at(ip) == '*')
+        );
+}
 
 //========================================================================
 // Command line option processing
