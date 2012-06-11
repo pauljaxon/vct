@@ -412,7 +412,7 @@ endif
 
 ifdef U
   fuse_c_pfx = u
-  fuse_concl_options =  # empty
+  fuse_concl_options =  -ctick
 else
   fuse_c_pfx = f
   fuse_concl_options = -fuse-concls
@@ -559,7 +559,23 @@ std_options = \
 #----------------------------------------------------------------------------
 # CVC3 r2.2 segfaults on a few tokeneer goals, so we need to exclude them.
 # The relevant goals are tagged with "cvc3?" prefix in tokeneer-units.lis
-# and 
+#
+# CVC3 r2.4.1 (Sep 11) and 2012-05-22 don't respect -stimeout flag and
+# show divergent behaviour with Tokeneer (3rd release) VCs.
+# e.g. enclave/enrolop 1
+#
+# Bad behaviour goes away with -quant-new flag (+quant-new by default).
+# From cvc help: 
+#
+#    If this option is false, only naive instantiation is called
+#
+# -quant-new asserted by vct -cvc-old-quant-inst flag.
+# A related cvc option is -quant-naive-num, set using vct option
+# -cvc-quant-naive-num.  From cvc help, this is:
+#
+#   maximum number to call naive instantiation, 
+#
+# Default is 1000.
 
 api_cvc3_options =  \
   -exclude-selected-goals\
@@ -577,6 +593,7 @@ api_cvc3_options =  \
   -interface-mode=api \
   -strip-quantifier-patterns\
   -prover=cvc3\
+  -cvc-old-quant-inst\
    $(EXTRAS)
 
 

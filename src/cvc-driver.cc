@@ -144,6 +144,9 @@ public:
     bool incomplete();
     bool incomplete(vector<string>& reasons);
 
+    void push();
+    void pop();
+
 };
 
 //==========================================================================
@@ -176,10 +179,13 @@ protected:
     virtual void addConcl(Node* n, string& format); 
 
     //    virtual void finishSetup();
+    virtual void push();
 
     virtual bool checkGoal(string& format);
     
     virtual Status getResults(string& remarks);
+
+    virtual void pop();
 
     virtual void finaliseGoal();
 
@@ -237,12 +243,16 @@ CVCState::CVCState(string fileRoot) : flags(ValidityChecker::createFlags()) {
 
     if (option("cvc-old-quant-inst")) flags.setFlag("quant-new", false);
 
+    if (option("cvc-quant-naive-num"))
+        flags.setFlag("quant-naive-num", intOptionVal("cvc-quant-naive-num"));
+
     vc = ValidityChecker::create(flags);
 
     if (option("resourcelimit"))
         vc->setResourceLimit(intOptionVal("resourcelimit"));
 
     if (option("timeout"))
+        // Set time resource limit in tenths of seconds for a query
         vc->setTimeLimit(intOptionVal("timeout"));
         
     bVarUId = 0;
@@ -734,6 +744,17 @@ CVCState::incomplete(vector<string>& reasons) {
     return vc->incomplete(reasons);
 }
 
+void
+CVCState::push() {
+    vc->push();
+    return;
+}
+
+void
+CVCState::pop() {
+    vc->pop();
+    return;
+}
 
 //==========================================================================
 // CVCDriver Virtual Functions
@@ -815,7 +836,20 @@ CVCDriver::addConcl(Node* n, string& format) {
     }
 } 
 
-    //    virtual void finishSetup();
+//    virtual void finishSetup();
+
+
+void
+CVCDriver::push() {
+    state->push();
+    return;
+}
+
+void
+CVCDriver::pop() {
+    state->pop();
+    return;
+}
 
 bool 
 CVCDriver::checkGoal(string& remarks) {
@@ -842,7 +876,6 @@ CVCDriver::checkGoal(string& remarks) {
         return false;
 
     case CVC3::INVALID:
-        appendCommaString(remarks, "definitely false");
 	printMessage(FINEm, "concl false");
         state->outputCounterExample();
         status = FALSE;

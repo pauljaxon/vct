@@ -1082,7 +1082,7 @@ SMTLibDriver::checkGoal(string& remarks) {
 
         cmd = "cvc3 -lang smt ";
         if (option("timeout"))
-            cmd += "-timeout " + optionVal("timeout") + " ";
+            cmd += "-stimeout " + optionVal("timeout") + " ";
         if (option("resourcelimit"))
             cmd += "-resource " + optionVal("resourcelimit") + " ";
     }
@@ -1299,7 +1299,6 @@ SMTLibDriver::getResults(string& remarks) {
             }
             else if (s == "sat") {
                 seenSatOutput = true;
-                appendCommaString(remarks, "sat");
             }
             // "unknown (sat)" is output occasionally by Alt-Ergo
             else if (s == "unknown" || s == "unknown (sat)") {
