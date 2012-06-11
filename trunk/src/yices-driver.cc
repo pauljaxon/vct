@@ -500,10 +500,10 @@ Constructors without translation
 // Returns true and sets yicesOutput string if are problems in read.
 
 bool
-YicesDriver::push(yicesl_context ctx,
-                  Node* n,
-                  string& yicesInput,
-                  string& yicesOutput) {
+YicesDriver::readCommand(yicesl_context ctx,
+                         Node* n,
+                         string& yicesInput,
+                         string& yicesOutput) {
 
     Formatter::setFormatter(YicesFormatter::getFormatter());
 
@@ -673,7 +673,7 @@ YicesDriver::addDecl(Node* decl) {
 
     string yicesInput;
     string yicesOutput;
-    if (push(ctx, decl, yicesInput, yicesOutput)) {
+    if (readCommand(ctx, decl, yicesInput, yicesOutput)) {
 
         throw std::runtime_error(formatErrorString(yicesInput,
                                                    yicesOutput));
@@ -690,7 +690,7 @@ YicesDriver::addHyp(Node* hyp, const string& hypId, string& remarks) {
 
     string yicesInput;
     string yicesOutput;
-    if (push(ctx, new Node(z::ASSERT, hyp), yicesInput, yicesOutput)) {
+    if (readCommand(ctx, new Node(z::ASSERT, hyp), yicesInput, yicesOutput)) {
 
         string errorMessage(formatErrorString(yicesInput,
                                                    yicesOutput));
@@ -722,6 +722,36 @@ YicesDriver::addConcl(Node* concl, string& remarks) {
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// push()
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void
+YicesDriver::push() {
+    string yicesInput;
+    string yicesOutput;
+    if (readCommand(ctx, new Node(z::PUSH), yicesInput, yicesOutput)) {
+
+        throw std::runtime_error(formatErrorString(yicesInput,
+                                                   yicesOutput));
+    }
+    return;
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// pop()
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void
+YicesDriver::pop() {
+    string yicesInput;
+    string yicesOutput;
+    if (readCommand(ctx, new Node(z::POP), yicesInput, yicesOutput)) {
+
+        throw std::runtime_error(formatErrorString(yicesInput,
+                                                   yicesOutput));
+    }
+    return;
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // checkGoal()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -730,7 +760,7 @@ YicesDriver::checkGoal(string& remarks) {
 
     string yicesInput;
     string yicesOutput;
-    if (push(ctx, new Node(z::CHECK), yicesInput, yicesOutput)) {
+    if (readCommand(ctx, new Node(z::CHECK), yicesInput, yicesOutput)) {
 
         // Detect whether problem due to non-linearity.
         // (non-linearity arises during checking 
