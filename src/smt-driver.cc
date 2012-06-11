@@ -489,7 +489,7 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
 
         if (option("gtick")) {
             if (option("longtick")) {
-                if (startQuery + 1 == endQuery) {
+                if (startQuery + 1 == endQuery || onlineInterface()) {
                     cout << " " << startGoalNum;
                     if (option("ctick"))
                         cout << "." << startConclNum;
@@ -630,6 +630,28 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
                 && query > startQuery) {
 
                 queryTimer.restart();
+            }
+
+            if (option("gtick")
+                && onlineInterface()
+                && query > startQuery) {
+                
+                if (option("longtick")) {
+                    cout << " " << goalNum;
+                    if (option("ctick"))
+                        cout << "." << conclNum;
+
+                }
+                else if (option("ctick")) {
+                    if (conclNum == 1)
+                        cout << ";.";
+                    else 
+                        cout << ".";
+                }
+                else {
+                    cout << ";";
+                }
+                cout.flush();
             }
 
             // -----------------------------------------------------------

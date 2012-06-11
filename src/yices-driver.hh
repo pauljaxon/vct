@@ -47,10 +47,10 @@ private:
     yicesl_context ctx;
     Status status;
 
-    bool push(yicesl_context ctx,
-              Node* n,
-              string& input,
-              string& output);
+    bool readCommand(yicesl_context ctx,
+                     Node* n,
+                     string& input,
+                     string& output);
 
     string formatErrorString(const string& input, const string& output);
     bool ignoreErrorMessage(const string& s);
@@ -76,7 +76,9 @@ protected:
 
     //    virtual void finishSetup();
 
+    virtual void push();
     virtual bool checkGoal(string& format);
+    virtual void pop();
     
     virtual Status getResults(string& remarks);
 
