@@ -600,7 +600,7 @@ SMTLib2Driver::runQuerySet(string& remarks) {
         cmd = "cvc3";
         cmdOptions = "-lang smt2 ";
         if (option("timeout"))
-            cmdOptions += "-timeout " + optionVal("timeout") + " ";
+            cmdOptions += "-stimeout " + optionVal("timeout") + " ";
         if (option("resourcelimit"))
             cmdOptions += "-resource " + optionVal("resourcelimit") + " ";
     }

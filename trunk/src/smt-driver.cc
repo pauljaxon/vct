@@ -621,6 +621,17 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
             else {
                 queryConcl = concls->child(conclNum-1);
             }
+
+            // When in incremental mode, ensure we only record setup time
+            // for new hyps and concls for queries after the start.
+
+            if (onlineInterface()
+                && option("gstime-inc-setup")
+                && query > startQuery) {
+
+                queryTimer.restart();
+            }
+
             // -----------------------------------------------------------
             // Push new empty assertion set onto assertion set stack
             // -----------------------------------------------------------
@@ -678,14 +689,14 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
             // -----------------------------------------------------------
 
             if (onlineInterface()
-                && !option("gstime-inc-setup")
-                && query > startQuery) {
+                && !option("gstime-inc-setup")) {
 
                 queryTimer.restart();
             }
 
-            Status status = check(remarks);
-
+            Status status =
+                option("skip-check") ? UNCHECKED : check(remarks);
+  
             double queryTime = 0.0;
             if (onlineInterface()) {
                 queryTimer.sample();
@@ -704,11 +715,8 @@ SMTDriver::driveQuerySet(UnitInfo* unitInfo,
             // Status recording delayed to here to allow exception handler
             // to catch pop exception and record an alternate status.
 
-            // Use "" for remarks here, as any remarks from checking
-            // have already been saved.
-
             if (onlineInterface()) {
-                results.push_back(QueryStatus(status,"",queryTime));
+                results.push_back(QueryStatus(status,remarks,queryTime));
             }
         
 
@@ -943,7 +951,7 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
 
         vector<QueryStatus> queryResults
             = driveQuerySet(unitInfo,
-                            unit,
+                            solverUnit,
                             unitInfo->getExcludedRules(),
                             startQuery,
                             endQuery);
@@ -1053,6 +1061,7 @@ SMTDriver::altDriveUnit(Node* unit, UnitInfo* unitInfo) {
                 break;
             case(FALSE):
                 resultStatus = "unproven";
+                appendCommaString(remarks, "false");
                 unitInfo->falseQueries++;
                 unitInfo->unprovenQueriesTime += time;
                 break;
