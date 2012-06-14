@@ -76,6 +76,10 @@ bool isPosOrValEnumOp (Node* n) {
         && 
         s != "character__val"
         &&
+        s != "boolean__pos"
+        && 
+        s != "boolean__val"
+        &&
         (hasSuffix(s, "__pos") || hasSuffix(s, "__val"));
 }
 

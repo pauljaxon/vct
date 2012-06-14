@@ -374,16 +374,18 @@ FDLContext::lookupBinding(const string& s) {
 }
 
 void 
-FDLContext::pushPathStep(z::Kind k, int i) {
+FDLContext::pushPathStep(z::Kind k, const string& s, int i) {
     pathKinds.push_back(k);
+    pathIds.push_back(s);
     pathAddr.push_back(i);
     return;
 }
 
 void 
 FDLContext::popPathStep() {
-    pathAddr.pop_back();
     pathKinds.pop_back();
+    pathIds.pop_back();
+    pathAddr.pop_back();
     return;
 }
 
@@ -392,8 +394,11 @@ FDLContext::getPathString() {
 
     string s;
     for (int i = 0; i != (int) pathAddr.size(); i++) {
-        s += kindString(pathKinds.at(i)) + "."
-            + intToString(pathAddr.at(i)) + ".";
+        s += kindString(pathKinds.at(i));
+        if ( (int) pathIds.at(i).size() > 0) {
+            s += "{" + pathIds.at(i) + "}";
+        }
+        s += "." + intToString(pathAddr.at(i)) + ".";
     }
     return s;
 }
