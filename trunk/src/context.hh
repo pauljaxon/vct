@@ -142,6 +142,7 @@ class FDLContext {
     map<string, Node*> recordFieldMap; // Map from fieldnames to record types.
 
     vector<z::Kind> pathKinds;
+    vector<string> pathIds;
     vector<int> pathAddr;
     
     Node bindings;
@@ -191,7 +192,9 @@ class FDLContext {
     void pushBinding(Node* decl); // Binding from FORALL or EXISTS expression.
     void popBinding();            // Pop most recently pushed.
 
-    void pushPathStep(z::Kind k, int i); // Step from node kind k to child i
+    void pushPathStep(z::Kind k,         // Step from node kind k and id s
+                      const string& s,   // to child i
+                      int i); 
     void popPathStep();
     string getPathString();
 
@@ -248,7 +251,7 @@ mapOverWithContextAux(BinFun& f, FDLContext* c, Node* n) {
     if (n->kind == FORALL || n->kind == EXISTS) {
 
         c->isFormula = false;
-        c->pushPathStep(n->kind, 0);
+        c->pushPathStep(n->kind, "", 0);
         n->child(0) = mapOverWithContextAux(f, c, n->child(0));
         c->popPathStep();
         c->isFormula = isFormulaCtxt;
@@ -261,7 +264,7 @@ mapOverWithContextAux(BinFun& f, FDLContext* c, Node* n) {
             c->pushBinding(decl);
         }
 
-        c->pushPathStep(n->kind, 1);
+        c->pushPathStep(n->kind, "", 1);
         n->child(1) = mapOverWithContextAux(f, c, n->child(1));
         c->popPathStep();
 
@@ -278,7 +281,7 @@ mapOverWithContextAux(BinFun& f, FDLContext* c, Node* n) {
 
         for (int i = 0; i != n->arity(); i++) {
 
-            c->pushPathStep(n->kind, i);
+            c->pushPathStep(n->kind, n->id, i);
             n->child(i) = mapOverWithContextAux(f, c, n->child(i));
             c->popPathStep();
         }
