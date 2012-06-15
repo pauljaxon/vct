@@ -1178,6 +1178,7 @@ SMTLib2Driver::getRunResults(int numQueries) {
     // Ensure at least 1 result reported
     if (results.size() == 0) {
         results.push_back(QueryStatus(ERROR,"",0.0));
+        seenUnexpectedOutput = true;
     }
 
 
