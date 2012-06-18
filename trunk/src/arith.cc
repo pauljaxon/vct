@@ -76,10 +76,32 @@ Some older documentation on these arithmetic translations
 */
 
 //========================================================================
+// Auxiliary functions
+//========================================================================
+// NB: this is very similar to but not same as isIntNode() from bignum.cc.
+
+bool isIntConst(Node* n) {
+    if (n->kind == I_UMINUS)
+        return isIntConst(n->child(0));
+    else
+        return n->kind == NATNUM;
+}
+
+bool isRealConst(Node* n) {
+    if (n->kind == R_UMINUS)
+        return isRealConst(n->child(0));
+    else if (n->kind == RDIV && ! option("abstract-real-div"))
+        return isRealConst(n->child(0)) && isRealConst(n->child(1));
+    else if (n->kind == TO_REAL)
+        return isIntNode(n->child(0));
+    else
+        return false;
+    
+}
+
+//========================================================================
 // Elimination of arithmetic constant definitions
 //========================================================================
-
-
 
 bool isConstDef(Node* n) {
     if (n->kind == RULE) n = n->child(0);
@@ -87,11 +109,7 @@ bool isConstDef(Node* n) {
     return
         n->kind == EQ
         && n->child(0)->kind == CONST
-        && (n->child(1)->kind == NATNUM
-            || ( n->child(1)->kind == UMINUS
-                 && n->child(1)->child(0)->kind == NATNUM
-                 )
-            );
+        && (isIntConst(n->child(1)) || isRealConst(n->child(1)));
 }
 
 class ApplyConstSubst {
@@ -233,17 +251,6 @@ Node* expandExpConst(Node* n) {
 // abstractNonLinMult
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-bool isRealConst(Node* n) {
-    if (n->kind == R_UMINUS)
-        return isRealConst(n->child(0));
-    else if (n->kind == RDIV && ! option("abstract-real-div"))
-        return isRealConst(n->child(0)) && isRealConst(n->child(1));
-    else if (n->kind == TO_REAL)
-        return isIntNode(n->child(0));
-    else
-        return false;
-    
-}
 void abstractNonLinMult(Node* n) {
     if (n->kind == I_TIMES) {
         if (! (isIntNode(n->child(0)) || isIntNode(n->child(1)))) {
