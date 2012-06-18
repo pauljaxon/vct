@@ -82,6 +82,8 @@ Some older documentation on these arithmetic translations
 
 
 bool isConstDef(Node* n) {
+    if (n->kind == RULE) n = n->child(0);
+    
     return
         n->kind == EQ
         && n->child(0)->kind == CONST
@@ -124,7 +126,13 @@ void elimConsts(FDLContext* ctxt, Node* unit) {
     for (int i = 0; i != rules->arity(); i++) {
         Node* rule = rules->child(i);
         if (isConstDef(rule)) {
-            constMap.insert(make_pair(rule->child(0)->id, rule->child(1)));
+
+            Node* eqNode =
+                rule->kind == RULE
+                ? rule->child(0)
+                : rule;
+            
+            constMap.insert(make_pair(eqNode->child(0)->id, eqNode->child(1)));
         }
     }
 
