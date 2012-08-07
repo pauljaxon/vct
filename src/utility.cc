@@ -156,7 +156,7 @@ boolToString(bool b) {
         return string("false");
 }
 
-string 
+string
 doubleToFixPtString(double d, int prec) {
     ostringstream oss;
     oss << setprecision(prec) << fixed << d;
@@ -385,9 +385,9 @@ string mkLispSymbolString(const string& s) {
     for (int i = 0; i != (int) s.size(); i++) {
         char c = s.at(i);
         char newC = '-';
-        
-        if ( ('a' <= c && c <= 'z') 
-             || ('A' <= c && c <= 'Z') 
+
+        if ( ('a' <= c && c <= 'z')
+             || ('A' <= c && c <= 'Z')
              || ('0' <= c && c <= '9')
              || member(c,"~!@$%^&*_-+=<>.?/") ) {
 
@@ -403,14 +403,14 @@ string mkLispSymbolString(const string& s) {
 
 }
 
-// Simple matching routine.  
+// Simple matching routine.
 // Allows pattern to have
 
-// "?"  matches any single character in 
+// "?"  matches any single character in
 // "*x" All strings matching [All-"x"]* x
 // "*$" [All]*
 
-// $ indicates end of string.  
+// $ indicates end of string.
 // All = set of all characters.
 
 bool stringMatch(const string& pat, const string& inst) {
@@ -425,7 +425,7 @@ bool stringMatch(const string& pat, const string& inst) {
             return false;
 
         // INVAR: ip and ii point to valid characters in pat and inst
-        
+
         char pchar = pat.at(ip);
 
         if (pchar == '?') { // ? in pat matches any single char in inst.
@@ -447,13 +447,13 @@ bool stringMatch(const string& pat, const string& inst) {
             // pchar == ichar  && pchar != '*' or '?'
             ip++;
         }
-            
+
     }
     // ii at end+1 of inst.
     // Have match just when
     // 1. ip at end+1 of pat, or
     // 2. ip points to * at end of pat.
- 
+
     return (ip == (int) pat.size()
             || (ip + 1 == (int) pat.size()  && pat.at(ip) == '*')
         );
@@ -880,7 +880,7 @@ UnitInfo::include(int goal, int concl) {
     }
 }
 
-void 
+void
 UnitInfo::addExcludedRule(int rNum) {
     excludedRules.insert(rNum);
 
@@ -908,7 +908,7 @@ int currentUnitNum;         // Unit number, starting at 1.
 string currentUnit;         // [<path>/]<fileroot>
 string currentUnitPath;     //  <path>
 string currentUnitFile;     //  <fileroot>
-string currentUnitKind;     //  procedure | function | task_type
+string currentUnitKind;     //  procedure | function | task_type | package_spec | package_body
 string currentGoalNumStr;   //  <goal number>
 string currentGoalOrigins;  //  Info about where in program goal comes from
 
@@ -916,7 +916,7 @@ string currentGoalOrigins;  //  Info about where in program goal comes from
 /*
 updateGoalInfo expects string of form:
 
-[function_|procedure_|task_type_]<name>_<num> <desc>
+[function_|procedure_|task_type_|package_spec_|package_body_]<name>_<num> <desc>
 
 where
 
@@ -1019,6 +1019,8 @@ void extractGoalInfo(const string& s,
          }
      } else if (ss[1] == "checks" && ss[3] == "refinement") {
          to = "refinement";
+     } else if (ss[1] == "instantiation") {
+         to = "instantiation";
      } else {
          to = "*** Unrecognised goal description ***";
      }
@@ -1447,21 +1449,21 @@ void printUnitSummary(UnitInfo* ui) {
         + unprovenQueries
         + ui->errorQueries;
 
-    unitSumStream                      
-        << ui->getUnitNum() << ","          
-        << ui->getUnitName() << ","          
+    unitSumStream
+        << ui->getUnitNum() << ","
+        << ui->getUnitName() << ","
 
         << numUnitErrorMessages << ","
         << numUnitWarningMessages << ","
 
         << totalConcls << ","
 
-        << ui->trivialGoals << ","    
-        << ui->trueQueries << ","       
-        << unprovenQueries << ","   
-        << ui->timeoutQueries << ","    
-        << ui->falseQueries << ","   
-        << ui->errorQueries << ","      
+        << ui->trivialGoals << ","
+        << ui->trueQueries << ","
+        << unprovenQueries << ","
+        << ui->timeoutQueries << ","
+        << ui->falseQueries << ","
+        << ui->errorQueries << ","
 
         << ui->unitRLURulesEnd << "," // Number of user rules (dir + unit)
 
@@ -1513,14 +1515,14 @@ void printUnitSummary(UnitInfo* ui) {
 
 SessionInfo sessionInfo;
 
-SessionInfo::SessionInfo() : 
+SessionInfo::SessionInfo() :
     trivialConcls(0),
     trueConcls(0),
     falseConcls(0),
     unknownConcls(0),
     errorConcls(0),
-    timeoutConcls(0), 
-    excludedConcls(0), 
+    timeoutConcls(0),
+    excludedConcls(0),
 
     inconsistentSysRuleSets(0),
     inconsistentUserRuleSets(0),
@@ -1530,8 +1532,8 @@ SessionInfo::SessionInfo() :
 
     auditedUserRules(0),
 
-    provenTime(0.0),         
-    unprovenTime(0.0),       
+    provenTime(0.0),
+    unprovenTime(0.0),
     maxProvenQueryTime(0.0)
 {}
 
@@ -1547,17 +1549,17 @@ SessionInfo::update(UnitInfo* unitInfo) {
 
     inconsistentSysRuleSets  += unitInfo->inconsistentSysRuleSets;
     inconsistentUserRuleSets += unitInfo->inconsistentUserRuleSets;
-    inconsistentUserRules    += unitInfo->inconsistentUserRules;  
-    derivableUserRules       += unitInfo->derivableUserRules;  
+    inconsistentUserRules    += unitInfo->inconsistentUserRules;
+    derivableUserRules       += unitInfo->derivableUserRules;
     interdependentUserRules  += unitInfo->interdependentUserRules;
 
     auditedUserRules += unitInfo->auditedUserRules;
-    
+
     provenTime += unitInfo->provenQueriesTime;
     unprovenTime += unitInfo->unprovenQueriesTime;
     if (unitInfo->maxProvenQueryTime
         > maxProvenQueryTime) {
-        
+
         maxProvenQueryTime = unitInfo->maxProvenQueryTime;
     }
     return;
@@ -1595,7 +1597,7 @@ SessionInfo::printStats() {
             << "                  inconsistent user rules:"
             << setw(6) << inconsistentUserRules << endl
             << "                     derivable user rules:"
-            << setw(6) << derivableUserRules << endl    
+            << setw(6) << derivableUserRules << endl
             << "                interdependent user rules:"
             << setw(6) << interdependentUserRules
             << endl << endl;
@@ -1640,7 +1642,7 @@ SessionInfo::printStats() {
 
     outStream << "     total:" << setw(6) << total << endl << endl;
 
-    
+
     string totalTrueTimeStr(doubleToFixPtString(provenTime,2));
     string averageTrueTimeStr;
     if (trueConcls > 0) {
@@ -1649,16 +1651,16 @@ SessionInfo::printStats() {
     string maxTrueTimeStr(doubleToFixPtString(maxProvenQueryTime,3));
     string totalUnprovenTimeStr(doubleToFixPtString(unprovenTime,2));
 
-    double vctOverheadTime = timer.getTime() - provenTime - unprovenTime; 
+    double vctOverheadTime = timer.getTime() - provenTime - unprovenTime;
     string vctOverheadTimeStr(doubleToFixPtString(vctOverheadTime, 2));
 
     string vctOverheadPercentStr;
     if (provenTime > 0) {
-        vctOverheadPercentStr = 
+        vctOverheadPercentStr =
         "(" + doubleToFixPtString(vctOverheadTime * 100 / provenTime,0)
             + "% of total true)";
     }
-    
+
     if (! plain_mode ) {
         outStream << "Times: " << endl
 
@@ -1729,7 +1731,7 @@ SessionInfo::printStats() {
     } else {
         sumStream << ",,,,";
     }
-        
+
 
     sumStream << endl;
 
