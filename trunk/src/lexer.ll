@@ -67,11 +67,11 @@ VCGHEADER  (.*\n){13}
   if (driver.at_start)  {
 
       driver.at_start = false;
-      if (driver.currentFileType == pdriver::FDL) 
+      if (driver.currentFileType == pdriver::FDL)
           return tok::START_FDL_FILE;
-      if (driver.currentFileType == pdriver::RULE) 
+      if (driver.currentFileType == pdriver::RULE)
           return tok::START_RULE_FILE;
-      else // driver.currentFileType == pdriver::VCG 
+      else // driver.currentFileType == pdriver::VCG
           return tok::START_VCG_FILE;
   }
 %}
@@ -81,11 +81,11 @@ VCGHEADER  (.*\n){13}
 
 <VCGInitial>.         /* ignore non-trigger characters in VCG file header */
 
-<VCGInitial,PrologBody>^"For" { BEGIN(GoalOrigins); return tok::FOR; }  
+<VCGInitial,PrologBody>^"For" { BEGIN(GoalOrigins); return tok::FOR; }
 
-<GoalOrigins>[^:]+ { BEGIN(PrologBody); 
+<GoalOrigins>[^:]+ { BEGIN(PrologBody);
                      yylval->sval = new std::string(yytext);
-                     return tok::GOAL_ORIGINS; 
+                     return tok::GOAL_ORIGINS;
                    }
 
 <PrologBody>^rule_family/" "   { return tok::RULE_FAMILY; }
@@ -114,6 +114,15 @@ task_type          { // task_type can also be a valid identifier, so we need to
                      // have a useful sval.
                      yylval->sval = new std::string(yytext);
 		     return tok::TASK_TYPE; }
+package            { // ditto
+                     yylval->sval = new std::string(yytext);
+		     return tok::PACKAGE; }
+package_spec       { // ditto
+                     yylval->sval = new std::string(yytext);
+		     return tok::PACKAGE_SPEC; }
+package_body       { // ditto
+                     yylval->sval = new std::string(yytext);
+		     return tok::PACKAGE_BODY; }
 title              { // Like task_type, both a keyword and an identifier
                      yylval->sval = new std::string(yytext);
 		     return tok::TITLE; }
@@ -149,23 +158,25 @@ for_all            { return tok::FOR_ALL; }
 "!!!"              { return tok::TRIPLEBANG; }
 
 
+"package_spec_"{ID}  |
+"package_body_"{ID}  |
 "task_type_"{ID} |
 "function_"{ID}  |
 "procedure_"{ID}    { yylval->sval = new std::string(yytext);
-                      return tok::SUBPROG_ID; 
+                      return tok::SUBPROG_ID;
                     }
 
 "C"{DIGIT}+         { yylval->sval = new std::string(yytext);
-                      return tok::CONCL_ID; 
+                      return tok::CONCL_ID;
                     }
 
 "H"{DIGIT}+         { yylval->sval = new std::string(yytext);
-                      return tok::HYP_ID; 
+                      return tok::HYP_ID;
                     }
 
 {ID}                { yylval->sval = new std::string(yytext); return tok::ID; }
-{DIGIT}+            { yylval->sval = new std::string(yytext); 
-                      return tok::NATNUM; 
+{DIGIT}+            { yylval->sval = new std::string(yytext);
+                      return tok::NATNUM;
                     }
 
 
@@ -178,7 +189,7 @@ for_all            { return tok::FOR_ALL; }
 
 <FDLBody>{FDLCOMMENT}         {}  /* Skip comment */
 
-     
+
 %%
 
 void
@@ -188,12 +199,12 @@ pdriver::scan_begin ()
   if (!(yyin = fopen (file.c_str (), "r")))
     error (std::string ("cannot open ") + file);
 
-  // flex doesn't reset start condition on 2nd and subsequent scans, 
+  // flex doesn't reset start condition on 2nd and subsequent scans,
   // so here we reset it explicitly.
 
   // Set start condition appropriate for file.
-  // Doing this also addresses issue that flex doesn't reset start 
-  // condition on 2nd and subsequent scans, 
+  // Doing this also addresses issue that flex doesn't reset start
+  // condition on 2nd and subsequent scans,
 
   if (currentFileType == FDL) { BEGIN(FDLBody); }
   else if (currentFileType == RULE) { BEGIN(PrologBody);  }

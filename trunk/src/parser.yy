@@ -34,7 +34,7 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 // lines with comments "**bison 2.3**".
 
 
-%skeleton "lalr1.cc"                          
+%skeleton "lalr1.cc"
 %defines             /* Enable writing of "parser.hh" file with token defs */
 
 %require "2.4.1"  // **bison 2.4**
@@ -56,7 +56,7 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 
 #include "pdriver.hh"
 
-using namespace std;  
+using namespace std;
 
 }      // **bison 2.4**
 // %}  // **bison 2.3**
@@ -68,7 +68,7 @@ using namespace std;
 %debug           /* Enable compilation of trace facilities */
 %error-verbose
 
-%union 
+%union
 {
     int ival;
     string* sval;     /* C++ strings */
@@ -87,31 +87,31 @@ using namespace std;
 // %}  // **bison 2.3**
 
 %token <sval> TITLE
-%token FOR RULE_FAMILY 
+%token FOR RULE_FAMILY
 %token <sval> GOAL_ORIGINS
 %token COLON LSB RSB LPAREN RPAREN COMMA AMPERSAND SEMIC DOT DOTDOT
-%token REQUIRES 
-%token MAY_BE_REPLACED_BY MAY_BE_DEDUCED MAY_BE_DEDUCED_FROM 
+%token REQUIRES
+%token MAY_BE_REPLACED_BY MAY_BE_DEDUCED MAY_BE_DEDUCED_FROM
 %token ARE_INTERCHANGEABLE
-%token IF END FUNCTION PROCEDURE TYPE VAR CONST 
+%token IF END FUNCTION PROCEDURE TYPE VAR CONST
 %token FOR_SOME FOR_ALL
-%token ARRAY RECORD ASSIGN OF 
-%token <sval> SUBPROG_ID CONCL_ID HYP_ID TASK_TYPE ID NATNUM 
+%token ARRAY RECORD ASSIGN OF
+%token <sval> SUBPROG_ID CONCL_ID HYP_ID TASK_TYPE PACKAGE PACKAGE_SPEC PACKAGE_BODY ID NATNUM
 %token TRIPLESTAR
 %token TRIPLEBANG
 %token START_FDL_FILE START_RULE_FILE START_VCG_FILE;
 %token FILE_END 0
 
-%nonassoc ASSIGN 
+%nonassoc ASSIGN
 %nonassoc AMPERSAND
-%nonassoc DOTDOT 
+%nonassoc DOTDOT
 
- /* 
+ /*
 
 Operator precedences follow those listed in GenVCs manual.
   "Operator precedence" section (4.4.1.4 in Issue 8.12).
 
-On precedence of **: 
+On precedence of **:
 
   Gen VCs manual, (section 4.4.1 "Operators") says:
 
@@ -124,7 +124,7 @@ On precedence of **:
 Ada 95 Standard gives ** strongest precedence, so we do that here.
 
 
-On precedence of unary minus.  
+On precedence of unary minus.
 
   GenVCs manual places it stronger than * / div mod, but doesn't say
   where it fits in relative to **.  Following the above suggestion on
@@ -138,16 +138,16 @@ On precedence of unary minus.
   Section 4.4 "Expressions" places unary minus `on same level'
   with binary +/-.  I assume this is a mistake.
 
- */    
+ */
 %nonassoc IFF IMPLIES
 %left OR
-%left AND 
+%left AND
 %nonassoc NOT
-%nonassoc EQ NE GT GE LT LE 
-%left PLUS MINUS 
+%nonassoc EQ NE GT GE LT LE
+%left PLUS MINUS
 %left STAR SLASH DIV MOD
 %nonassoc UMINUS
-%left STARSTAR 
+%left STARSTAR
 
 %type <nval>   top file
 
@@ -175,19 +175,19 @@ On precedence of unary minus.
 %start top
 
 %%
-/* 
+/*
 ==========================================================================
 RULES
 ==========================================================================
 */
-/* 
+/*
 ==========================================================================
 Top level
 ==========================================================================
 */
 
-// top: file FILE_END {driver.result = $1;} 
-top: file {driver.result = $1;} 
+// top: file FILE_END {driver.result = $1;}
+top: file {driver.result = $1;}
 ;
 
 file:
@@ -196,9 +196,9 @@ file:
  | START_VCG_FILE vcg_file { $$ = $2; }
 ;
 
-/* 
+/*
 ==========================================================================
-FDL files 
+FDL files
 ==========================================================================
 */
 
@@ -212,8 +212,9 @@ fdl_file: TITLE program_kind id SEMIC fdl_decls END SEMIC
 
 program_kind:
  TASK_TYPE
- | FUNCTION    
+ | FUNCTION
  | PROCEDURE
+ | PACKAGE
  ;
 
 fdl_decls:
@@ -222,14 +223,14 @@ fdl_decls:
 ;
 
 fdl_decl:
-   TYPE id_str EQ type SEMIC              
+   TYPE id_str EQ type SEMIC
         { if ($4->kind == z::PENDING)
               $$ = new Node(z::DEF_TYPE, * $2);
           else
               $$ = new Node(z::DEF_TYPE, * $2, $4);
           delete $2;
         }
- | CONST id_str COLON type EQ exp SEMIC   
+ | CONST id_str COLON type EQ exp SEMIC
         { if ($6->kind == z::PENDING)
               $$ = new Node(z::DEF_CONST, * $2, $4);
           else
@@ -243,26 +244,26 @@ fdl_decl:
 
  | FUNCTION id_str LPAREN types RPAREN COLON type SEMIC
         { $$ = new Node(z::DECL_FUN,
-                        * $2, 
+                        * $2,
                         $4,
-                        $7); 
+                        $7);
           delete $2;
         }
  | FUNCTION id_str COLON type SEMIC
         { $$ = new Node(z::DEF_CONST, * $2, $4);
           delete $2;
         }
-; 
+;
 
 types:
    type             { $$ = new Node(z::SEQ,$1); }
- | types COMMA type { $$ = $1;           
-                      $$->addChild($3); 
+ | types COMMA type { $$ = $1;
+                      $$->addChild($3);
                     }
 ;
 
 
-/* 
+/*
 ==========================================================================
 Rule files (RLS, RUL, RLU suffix)
 ==========================================================================
@@ -270,12 +271,12 @@ Grammar allows for initial sequence of rules without an explicit
 RULE_FAMILY header.  This is observed in RUL and RLU files.
 */
 
-rule_file: 
-    rules rule_families  
+rule_file:
+    rules rule_families
           { $$ = $2;
             $$->addLeftChild(new Node(z::RULE_FAMILY,
                                       "implicit",
-                                      new Node(z::SEQ), 
+                                      new Node(z::SEQ),
                                       $1));
             $$->kind = z::RULE_FILE;
           }
@@ -312,21 +313,21 @@ rules:
 ;
 
 rule:
-   id_str LPAREN NATNUM RPAREN COLON rule_body DOT 
+   id_str LPAREN NATNUM RPAREN COLON rule_body DOT
                       { $$ = new Node(z::RULE, (*$1) + "(" + (*$3) + ")", $6);
                         delete $1;
                         delete $3;}
 
 rule_body:
-   exp MAY_BE_REPLACED_BY exp rule_condition 
+   exp MAY_BE_REPLACED_BY exp rule_condition
                       { $$ = new Node(z::MAY_BE_REPLACED_BY, $1, $3);
                         if ($4->kind != z::TRUE) $$->addChild($4);
                       }
- | exp MAY_BE_DEDUCED 
+ | exp MAY_BE_DEDUCED
                       { $$ = new Node(z::MAY_BE_DEDUCED, $1); }
- | exp MAY_BE_DEDUCED_FROM expseq 
+ | exp MAY_BE_DEDUCED_FROM expseq
                       { $$ = new Node(z::MAY_BE_DEDUCED, $1, $3); }
- | exp AMPERSAND exp ARE_INTERCHANGEABLE rule_condition 
+ | exp AMPERSAND exp ARE_INTERCHANGEABLE rule_condition
                       { $$ = new Node(z::ARE_INTERCHANGEABLE, $1, $3);
                         if ($5->kind != z::TRUE) $$->addChild($5);
                       }
@@ -338,7 +339,7 @@ rule_condition:
 ;
 
 
-/* 
+/*
 ==========================================================================
 VCG files
 ==========================================================================
@@ -351,7 +352,7 @@ vcg_file: goalsets    { $$ = $1; $$->kind = z::VCG_FILE; }
 
 goalsets:
    goalset            { $$ = $1; }
-                        
+
  | goalsets goalset   { $$ = $1;
                         $$->appendChildren($2);
                       }
@@ -383,7 +384,7 @@ goal:
             }
  | SUBPROG_ID DOT TRIPLESTAR id_str DOT
             {
-             $$ = new Node (z::GOAL, * $1); 
+             $$ = new Node (z::GOAL, * $1);
              delete $1;
             }
 ;
@@ -405,24 +406,28 @@ concl: CONCL_ID COLON exp DOT  {$$ = $3; delete $1;}
 ;
 
 
-/* 
+/*
 ==========================================================================
-Multi-use non-terminals 
+Multi-use non-terminals
 ==========================================================================
 IDs, type declarations and sequence expressions.
 */
 
-// Note that the tokens "task_type" and "title" can also be a valid identifiers.
+// Note that the tokens "task_type", "title", "package_spec" and
+// "package_body" can also be a valid identifiers.
 id_str:
-   ID          { $$ = $1;}
- | HYP_ID      { $$ = $1;}
- | CONCL_ID    { $$ = $1;}
- | SUBPROG_ID  { $$ = $1;}
- | TASK_TYPE   { $$ = $1;}
- | TITLE       { $$ = $1;}
+   ID           { $$ = $1;}
+ | HYP_ID       { $$ = $1;}
+ | CONCL_ID     { $$ = $1;}
+ | SUBPROG_ID   { $$ = $1;}
+ | TASK_TYPE    { $$ = $1;}
+ | PACKAGE      { $$ = $1;}
+ | PACKAGE_SPEC { $$ = $1;}
+ | PACKAGE_BODY { $$ = $1;}
+ | TITLE        { $$ = $1;}
 ;
 
-id: 
+id:
    id_str { $$ = new Node(z::ID, * $1); delete $1;}
 
 ids:
@@ -436,7 +441,7 @@ typedecl                     { $$ = new Node(z::SEQ,$1); }
 ;
 
 typedecl:
-   id_str COLON type        { $$ = new Node(z::DECL, * $1, $3); 
+   id_str COLON type        { $$ = new Node(z::DECL, * $1, $3);
                           delete $1;
                         }
 ;
@@ -460,14 +465,14 @@ expseq1:
 ;
 
 
-/* 
+/*
 ==========================================================================
 Types
 ==========================================================================
 */
 
 type:
-   type_id                     { $$ = $1; } 
+   type_id                     { $$ = $1; }
  | LPAREN ids RPAREN           { $$ = $2; $$->kind = z::ENUM_TY; }
  | ARRAY LSB types RSB OF type { $$ = new Node(z::ARRAY_TY,
                                                $3,
@@ -478,9 +483,9 @@ type:
 
 recordtypedecls:
    multidecl                         { $$ = $1; }
- | recordtypedecls SEMIC multidecl    
-          { $$ = $1;     
-            $$->appendChildren($3); 
+ | recordtypedecls SEMIC multidecl
+          { $$ = $1;
+            $$->appendChildren($3);
           }
 ;
 
@@ -497,9 +502,9 @@ type_id:
          }
 ;
 
-/* 
+/*
 ==========================================================================
-Value expressions 
+Value expressions
 ==========================================================================
 */
 
@@ -522,7 +527,7 @@ exp:
  | PLUS exp  %prec UMINUS
                    {$$ = $2; }
  | MINUS exp %prec UMINUS
-                   {$$ = new Node(z::UMINUS, $2); }  
+                   {$$ = new Node(z::UMINUS, $2); }
  | exp PLUS exp    {$$ = new Node(z::PLUS, $1, $3); }
  | exp MINUS exp   {$$ = new Node(z::MINUS, $1, $3); }
  | exp STAR exp    {$$ = new Node(z::TIMES, $1, $3); }
@@ -566,15 +571,15 @@ exp:
             }
         }
         else if (idstr.size() >= 4
-                 && string(idstr, 0, 4) == "fld_" 
-                 && nargs == 1) 
+                 && string(idstr, 0, 4) == "fld_"
+                 && nargs == 1)
         {
             $$ = $3;
             $$->kind = z::RCD_ELEMENT;
             $$->id = idstr.erase(0,4);
         }
-        else if (idstr.size() >= 4 
-                 && string(idstr, 0, 4) == "upf_" 
+        else if (idstr.size() >= 4
+                 && string(idstr, 0, 4) == "upf_"
                  && nargs == 2) {
             $$ = $3;
             $$->kind = z::RCD_UPDATE;
@@ -617,7 +622,7 @@ aexpseq:
 
 aexp:
    exp             {$$ = $1; }
- | indexset ASSIGN exp  
+ | indexset ASSIGN exp
        // Expect indexset outermost operator to be ID, SEQ or INDEX_AND
        // Only get ID when have record field assignment
        {  if ($1->kind == z::ID)
@@ -635,7 +640,7 @@ indexset:
                  $$ = $1;
                  $$->addChild($3);
              } else {
-                 $$ = new Node(z::INDEX_AND,$1,$3); 
+                 $$ = new Node(z::INDEX_AND,$1,$3);
              }
          }
 ;
@@ -650,7 +655,7 @@ exp_id:
 
 
 %%
-/* 
+/*
 ==========================================================================
 Additional Code
 ==========================================================================
