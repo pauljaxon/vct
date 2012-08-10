@@ -1607,12 +1607,20 @@ SessionInfo::printStats() {
     int total = trivialConcls + trueConcls + unprovenConcls + errorConcls;
     float ftotal = total;
 
-    float fTrivialConcls  = trivialConcls * 100 / ftotal;
-    float fTrueConcls     = trueConcls * 100 / ftotal;
-    float fUnprovenConcls = unprovenConcls * 100 / ftotal;
-    float fTimeoutConcls  = timeoutConcls * 100 / ftotal;
-    float fFalseConcls    = falseConcls * 100 / ftotal;
-    float fErrorConcls    = errorConcls * 100 / ftotal;
+    float fTrivialConcls  = 0.0f;
+    float fTrueConcls     = 0.0f;
+    float fUnprovenConcls = 0.0f;
+    float fTimeoutConcls  = 0.0f;
+    float fFalseConcls    = 0.0f;
+    float fErrorConcls    = 0.0f;
+    if (total > 0) {
+      fTrivialConcls  = trivialConcls * 100 / ftotal;
+      fTrueConcls     = trueConcls * 100 / ftotal;
+      fUnprovenConcls = unprovenConcls * 100 / ftotal;
+      fTimeoutConcls  = timeoutConcls * 100 / ftotal;
+      fFalseConcls    = falseConcls * 100 / ftotal;
+      fErrorConcls    = errorConcls * 100 / ftotal;
+    }
 
     outStream << setprecision(1); // 1 decimal place for floats.
     outStream << fixed;
