@@ -1479,21 +1479,27 @@ void printUnitSummary(UnitInfo* ui) {
         << ui->nodeAllocCount << ",";
 
     unitSumStream
-        << setprecision(3) << fixed
-        << ui->unitTime << ","
-        << ui->provenQueriesTime << ",";
+        << setprecision(3) << fixed;
 
-    if (ui->trueQueries != 0) {
-        unitSumStream << ui->provenQueriesTime / ui->trueQueries;
+    if (option("plain")) {
+        unitSumStream << ",,,,,,";
+    } else {
+        unitSumStream
+          << ui->unitTime << ","
+          << ui->provenQueriesTime << ",";
+
+        if (ui->trueQueries != 0) {
+            unitSumStream << ui->provenQueriesTime / ui->trueQueries;
+        }
+        unitSumStream
+          << ","
+          << ui->maxProvenQueryTime << ","
+          << ui->unprovenQueriesTime << ",";
+        if (unprovenQueries != 0) {
+            unitSumStream << ui->unprovenQueriesTime / unprovenQueries;
+        }
+        unitSumStream << ",";
     }
-    unitSumStream
-        << ","
-        << ui->maxProvenQueryTime << ","
-        << ui->unprovenQueriesTime << ",";
-    if (unprovenQueries != 0) {
-        unitSumStream << ui->unprovenQueriesTime / unprovenQueries;
-    }
-    unitSumStream << ",";
     if (option("do-rule-audit")) {
         unitSumStream << ui->inconsistentSysRuleSets << ","
                       << ui->inconsistentUserRuleSets << ","
