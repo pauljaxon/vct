@@ -1174,11 +1174,14 @@ Timer messageTimer;
 void printMessageWithHeader(const string& header, const string& message) {
 
     string s(header);
+    s += ": ";
 
     // Message origins line
 
-    messageTimer.sample();
-    s += ": " + messageTimer.toString() + "s ";
+    if (!option("plain")) {
+        messageTimer.sample();
+        s += messageTimer.toString() + "s ";
+    }
 
     s += "unit: " + intToString(currentUnitNum) + " - " + currentUnit;
 
