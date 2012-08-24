@@ -1377,19 +1377,19 @@ printCSVRecordAux(const string& unitKind,
                          ? "\"" + remarks + "\""
                          : remarks);
 
-                                         // Fields
-    csvStream << currentUnitNum << ","   //  1
-              << currentUnitPath << ","  //  2
-              << currentUnitFile << ","  //  3
-              << kindString << ","       //  4
-              << originsString << ","    //  5, 6
-              << goalNumString << ","    //  7
-              << conclString << ","      //  8
-              << status << ","           //  9
-              << queryTime  << ","       // 10
-              << quotedRemarks << ","    // 11
-              << currentHypsKinds << "," // 12
-              << currentConclKinds       // 13
+                                                              // Fields
+    csvStream << currentUnitNum << ","                        //  1
+              << currentUnitPath << ","                       //  2
+              << currentUnitFile << ","                       //  3
+              << kindString << ","                            //  4
+              << originsString << ","                         //  5, 6
+              << goalNumString << ","                         //  7
+              << conclString << ","                           //  8
+              << status << ","                                //  9
+              << (option("plain") ? "" : queryTime) << ","    // 10
+              << quotedRemarks << ","                         // 11
+              << currentHypsKinds << ","                      // 12
+              << currentConclKinds                            // 13
               << endl;
     return;
 }
