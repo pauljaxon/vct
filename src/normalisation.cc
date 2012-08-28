@@ -667,16 +667,19 @@ bool checkForUndeclaredIds(FDLContext* ctxt, Node* unit) {
     string typeStr;
     findUndeclaredIds(ctxt, unit, constStr, funStr, typeStr);
     if (constStr.size() > 0) {
-        printMessage(ERRORm, "Found undeclared constants:"
-                               + constStr);
+        printMessage(ERRORm,
+                     "FDL issue" + ENDLs
+                     + "Found undeclared constants:" + constStr);
     }
     if (funStr.size() > 0) {
-        printMessage(ERRORm, "Found undeclared functions:"
-                               + funStr);
+        printMessage(ERRORm,
+                     "FDL issue" + ENDLs
+                     + "Found undeclared functions:" + funStr);
     }
     if (typeStr.size() > 0) {
-        printMessage(ERRORm, "Found undeclared types:"
-                               + typeStr);
+        printMessage(ERRORm, 
+                     "FDL issue" + ENDLs
+                     + "Found undeclared types:" + typeStr);
     }
     return constStr.size() + funStr.size() + typeStr.size() > 0 ;
 }
@@ -684,8 +687,8 @@ bool checkForUndeclaredIds(FDLContext* ctxt, Node* unit) {
 // Rules with undeclared ids replaced with constant true.
 // Positions of deleted rules recorded in unitInfo->excludedRules.
 
-// Undeclared ids in Examiner generated rules are always flagged with
-// warnings.  
+// Undeclared ids in Examiner generated rules are always flagged as
+// errors
 
 // Undeclared ids in directory-level user-supplied rules are flagged
 // with warnings unless option
@@ -721,16 +724,20 @@ deleteRulesWithUndeclaredIds(FDLContext* ctxt,
                 ? "unit user"
                 : "Examiner";
 
-            int messageLevel = 
-              option("expect-dir-user-rules-with-undeclared-ids")
-                && unitInfo->isDirUserRule(ruleNum - 1)
-                ? INFOm
-                : ERRORm;
-            
+            int messageLevel = ERRORm;
+            string FDLissue("FDL issue" + ENDLs);
+            if (option("expect-dir-user-rules-with-undeclared-ids")
+                && unitInfo->isDirUserRule(ruleNum - 1)) {
+                
+                messageLevel = INFOm;
+                FDLissue = "";
+            }
+
             rule->child(0) = nTRUE;
 
             printMessage(messageLevel,
-                         "Found " + ruleKind + " rule " + ruleName
+                         FDLissue
+                         + "Found " + ruleKind + " rule " + ruleName
                          + " with " + ENDLs
                          + "  undeclared constants:" + undeclaredConsts + ENDLs
                          + "  undeclared functions:" + undeclaredFuns + ENDLs
@@ -1035,7 +1042,7 @@ closeExpr(FDLContext* c, const string& ruleName, Node* expr) {
             c->typeResolutionMadeProgress = true;
 
             if (tyKind == INT_OR_REAL_TY) {
-                printMessage(WARNINGm,
+                printMessage(ERRORm,
                       "FDL issue" + ENDLs
                        + "Cannot find unique type for free variable " + id 
                        + " in rule " + ruleName + ENDLs
@@ -1044,7 +1051,7 @@ closeExpr(FDLContext* c, const string& ruleName, Node* expr) {
                        + "This is potentially unsound.");
             }
             else if (tyKind == INT_REAL_OR_ENUM_TY) {
-                printMessage(WARNINGm,
+                printMessage(ERRORm,
                       "FDL issue" + ENDLs
                        + "Cannot find unique type for free variable " + id 
                        + " in rule " + ruleName + ENDLs
@@ -1053,7 +1060,7 @@ closeExpr(FDLContext* c, const string& ruleName, Node* expr) {
                        + "This is potentially unsound.");
             }
             else {
-                printMessage(WARNINGm,
+                printMessage(ERRORm,
                       "FDL issue" + ENDLs
                        + "Cannot find unique type for free variable " + id 
                        + " in rule " + ruleName + ENDLs
@@ -1137,14 +1144,15 @@ resolveIneqs (FDLContext* ctxt, Node* n) {
         n->kind = realRelKind;
         ctxt->typeResolutionMadeProgress = true;
     }
-    else if (ctxt->typeResolutionPhase >= 2
-        && (child0BaseTy->kind == INT_TY || child1BaseTy->kind == INT_TY)
+    else if ( (ctxt->typeResolutionPhase >= 2 || option("no-reals"))
+              && (child0BaseTy->kind == INT_TY || child1BaseTy->kind == INT_TY)
         ) {
         n->kind = intRelKind;
         ctxt->typeResolutionMadeProgress = true;
 
-        printMessage( (option("warn-about-speculative-overload-resolution")
-                       ? WARNINGm
+        if (!option("no-reals")) {
+            printMessage( (option("warn-about-speculative-overload-resolution")
+                       ? ERRORm
                        : INFOm),
                       "FDL issue" + ENDLs
                       + "resolveIneqs: cannot determine if inequality is over integers or reals " + ENDLs
@@ -1152,6 +1160,7 @@ resolveIneqs (FDLContext* ctxt, Node* n) {
                       + kindString(intRelKind) 
                       + " node at position " + ctxt->getPathString() + ENDLs
                       + "This is potentially unsound.");
+        }
         
     }
     else if (child0BaseTy->kind == ENUM_TY) {
@@ -1226,7 +1235,7 @@ bool existsCoercion(Node* ty1, Node* ty2) {
 
 bool hasSupertype(Node* ty) {
 
-    return ty->kind == INT_TY;
+    return ty->kind == INT_TY && ! option("no-reals");
 }
 
 Node*
@@ -1294,7 +1303,7 @@ resolveEq(FDLContext* ctxt, Node* n) {
             n->addChild(child1Ty->copy());
 
             printMessage( (option("warn-about-speculative-overload-resolution")
-                           ? WARNINGm
+                           ? ERRORm
                            : INFOm),
                          "FDL issue" + ENDLs
                          + "resolveEq: cannot find type of equality." + ENDLs
@@ -1313,7 +1322,7 @@ resolveEq(FDLContext* ctxt, Node* n) {
             n->addChild(child0Ty->copy());
 
             printMessage( (option("warn-about-speculative-overload-resolution")
-                           ? WARNINGm
+                           ? ERRORm
                            : INFOm),
                          "FDL issue" + ENDLs
                          + "resolveEq: cannot find type of equality." + ENDLs
@@ -1343,6 +1352,11 @@ resolveEq(FDLContext* ctxt, Node* n) {
 
 Node* resolveUnaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
 
+    if (option("no-reals")) {
+        c->typeResolutionMadeProgress = true;
+        return n->updateKind(iKind);
+    }
+    
     Node* ty0 = c->normaliseType(c->getType(n->child(0)))->expandSubranges();
 
     if (ty0->kind == INT_TY) {
@@ -1360,6 +1374,11 @@ Node* resolveUnaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
 }
     
 Node* resolveBinaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
+
+    if (option("no-reals")) {
+        c->typeResolutionMadeProgress = true;
+        return n->updateKind(iKind);
+    }
 
     Node* ty0 = c->normaliseType(c->getType(n->child(0)))->expandSubranges();
     Node* ty1 = c->normaliseType(c->getType(n->child(1)))->expandSubranges();
@@ -1380,7 +1399,7 @@ Node* resolveBinaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
         // I,U  U,I  Phases 2 & 3.
         c->typeResolutionMadeProgress = true;
         printMessage( (option("warn-about-speculative-overload-resolution")
-                       ? WARNINGm
+                       ? ERRORm
                        : INFOm),
                      "FDL issue" + ENDLs
                      + "resolveBinaryArithNode: Speculatively inserting "
@@ -1719,8 +1738,12 @@ Node* resolveIDs(FDLContext* c, Node* n) {
         }
         else {
             printMessage(ERRORm,
-                         "resolveIDs: encountered unexpected id: "
-                         + n->id);
+                         "FDL issue" + ENDLs
+                         + "resolveIDs: encountered unexpected id: "
+                         + n->id + ENDLs
+                         + " at " + c->getPathString() + ENDLs
+                         + "If in user rule, fix by adding checktype "
+                           "precondition for id.");
             return n;
         }
     }
