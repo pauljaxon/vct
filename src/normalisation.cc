@@ -580,10 +580,12 @@ deleteRulesWithBadLogicalNodes(FDLContext* ctxt,
                 ? "unit user"
                 : "Examiner";
             
-            printMessage(WARNINGm,
+            printMessage(ERRORm,
                          "FDL issue" + ENDLs
-                         + "Deleting " + ruleKind + " rule " + ruleName + ENDLs
-                         + lnc.messages);
+                         + "Found oddly-formed " + ruleKind 
+                                                 + " rule " + ruleName + ENDLs
+                         + lnc.messages + ENDLs
+                         + "Deleting rule.");
 
             rule->child(0) = nTRUE;
             unitInfo->addExcludedRule(ruleNum-1);
@@ -723,16 +725,17 @@ deleteRulesWithUndeclaredIds(FDLContext* ctxt,
               option("expect-dir-user-rules-with-undeclared-ids")
                 && unitInfo->isDirUserRule(ruleNum - 1)
                 ? INFOm
-                : WARNINGm;
+                : ERRORm;
             
             rule->child(0) = nTRUE;
 
             printMessage(messageLevel,
-                         "Deleting " + ruleKind + " rule " + ruleName
-                         + " because of " + ENDLs
-                         + "undeclared constants:" + undeclaredConsts + ENDLs
-                         + "undeclared functions:" + undeclaredFuns + ENDLs
-                         + "undeclared types:" + undeclaredTypes);
+                         "Found " + ruleKind + " rule " + ruleName
+                         + " with " + ENDLs
+                         + "  undeclared constants:" + undeclaredConsts + ENDLs
+                         + "  undeclared functions:" + undeclaredFuns + ENDLs
+                         + "  undeclared types:" + undeclaredTypes + ENDLs
+                         + "Rule deleted.");
 
             unitInfo->addExcludedRule(ruleNum-1);
         }
@@ -1034,26 +1037,29 @@ closeExpr(FDLContext* c, const string& ruleName, Node* expr) {
             if (tyKind == INT_OR_REAL_TY) {
                 printMessage(WARNINGm,
                       "FDL issue" + ENDLs
-                       + "Free variable " + id 
+                       + "Cannot find unique type for free variable " + id 
                        + " in rule " + ruleName + ENDLs
-                       + " is constrained to have integer or real type." + ENDLs
-                       + "Speculatively assigning it to have integer type ");
+                       + "Type is either integer or real." + ENDLs
+                       + "Speculatively assigning it to have integer type. " + ENDLs
+                       + "This is potentially unsound.");
             }
             else if (tyKind == INT_REAL_OR_ENUM_TY) {
                 printMessage(WARNINGm,
                       "FDL issue" + ENDLs
-                       + "Free variable " + id 
+                       + "Cannot find unique type for free variable " + id 
                        + " in rule " + ruleName + ENDLs
-                       + " is constrained to have integer, real or enumeration type." + ENDLs
-                       + "Speculatively assigning it to have integer type ");
+                       + "Type is either integer, real or some enumeration type." + ENDLs
+                       + "Speculatively assigning it to have integer type " + ENDLs
+                       + "This is potentially unsound.");
             }
             else {
                 printMessage(WARNINGm,
                       "FDL issue" + ENDLs
-                      + "Free variable " + id 
+                       + "Cannot find unique type for free variable " + id 
                        + " in rule " + ruleName + ENDLs
-                       + " has  no constraints on its typing. " + ENDLs
-                       + "Speculatively assigning it to have integer type ");
+                       + "No information inferred about its typing." + ENDLs
+                       + "Speculatively assigning it to have integer type " + ENDLs
+                       + "This is potentially unsound.");
             }
         }
         else if (tyKind == UNKNOWN
@@ -1140,10 +1146,12 @@ resolveIneqs (FDLContext* ctxt, Node* n) {
         printMessage( (option("warn-about-speculative-overload-resolution")
                        ? WARNINGm
                        : INFOm),
-                         "FDL issue" + ENDLs
-                         + "resolveIneqs: Speculatively inserting "
-                          + kindString(intRelKind) +
-                         " node at position " + ctxt->getPathString());
+                      "FDL issue" + ENDLs
+                      + "resolveIneqs: cannot determine if inequality is over integers or reals " + ENDLs
+                      + "Speculatively inserting "
+                      + kindString(intRelKind) 
+                      + " node at position " + ctxt->getPathString() + ENDLs
+                      + "This is potentially unsound.");
         
     }
     else if (child0BaseTy->kind == ENUM_TY) {
@@ -1289,10 +1297,13 @@ resolveEq(FDLContext* ctxt, Node* n) {
                            ? WARNINGm
                            : INFOm),
                          "FDL issue" + ENDLs
-                         + "resolveEq: Speculatively adding type " 
+                         + "resolveEq: cannot find type of equality." + ENDLs
+                         + "Speculatively adding type " 
                          + child1Ty->toString() + " to "
                          + kindString(n->kind) +
-                         " node at position " + ctxt->getPathString());
+                         " node at position " + ctxt->getPathString() + ENDLs
+                          + "This is potentially unsound.");
+
 
             ctxt->typeResolutionMadeProgress = true;
             return n;
@@ -1301,14 +1312,17 @@ resolveEq(FDLContext* ctxt, Node* n) {
             // S,U  (T,U)
             n->addChild(child0Ty->copy());
 
-    printMessage( (option("warn-about-speculative-overload-resolution")
+            printMessage( (option("warn-about-speculative-overload-resolution")
                            ? WARNINGm
                            : INFOm),
                          "FDL issue" + ENDLs
-                         + "resolveEq: Speculatively adding type " 
+                         + "resolveEq: cannot find type of equality." + ENDLs
+                         + "Speculatively adding type " 
                          + child0Ty->toString() + " to "
                          + kindString(n->kind) +
-                         " node at position " + ctxt->getPathString());
+                         " node at position " + ctxt->getPathString() + ENDLs
+                          + "This is potentially unsound.");
+
 
             ctxt->typeResolutionMadeProgress = true;
             return n;
@@ -1370,8 +1384,10 @@ Node* resolveBinaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
                        : INFOm),
                      "FDL issue" + ENDLs
                      + "resolveBinaryArithNode: Speculatively inserting "
-                     + kindString(iKind) +
-                     " at position " + c->getPathString());
+                     + kindString(iKind) 
+                     + " at position " + c->getPathString() + ENDLs
+                     + "This is potentially unsound.");
+
         return n->updateKind(iKind);
     }
     else {
@@ -1598,9 +1614,14 @@ void resolveTyping(FDLContext* ctxt, Node* unit) {
     // rules for which this is not sufficient.
 
     // The typing resolutions in Phase 1 are always safe.  Those in
-    // Phases 2 and 3 are increasingly speculative.
+    // Phases 2 and 3 are increasingly speculative and potentially unsound.
 
-    for (int phase = 1; phase <= 3; phase++) {
+    int maxPhase =
+        option("user-rule-closure-effort")
+        ? intOptionVal("user-rule-closure-effort")
+        : 1;
+      
+    for (int phase = 1; phase <= maxPhase; phase++) {
 
         ctxt->typeResolutionPhase = phase;
 
@@ -1624,8 +1645,7 @@ void resolveTyping(FDLContext* ctxt, Node* unit) {
                 printMessage(WARNINGm,
                              "resolveTyping: in phase " + intToString(phase)
                              + ", reached loop iteration " + intToString(i)
-                             + ENDLs + "Could be due to Victor bug");
-
+                             + ENDLs + "Halting type resolution in this phase");
             }
         } // End for i
 

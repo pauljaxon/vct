@@ -1200,7 +1200,11 @@ void printMessageWithHeader(const string& header, const string& message) {
 
     // Message contents line + extra blank line separator after.
 
-    s += message + ENDLs + ENDLs;
+    s += message + ENDLs;
+  
+    if (option("add-message-end-delimiter")) s += "END_" + header + ENDLs;
+
+    s += ENDLs;
 
     logStream << s;
 
