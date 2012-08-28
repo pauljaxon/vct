@@ -260,7 +260,7 @@ string typeCheck(FDLContext* c, Node* node, Node* expectedType) {
                         );
     }
     if (nTC.syntaxMessages.size() > 0)
-        return "Possible FDL issue" + ENDLs + nTC.syntaxMessages;
+        return nTC.syntaxMessages;
     else
         return nTC.tCMessages;
 }
@@ -309,7 +309,7 @@ bool typeCheckUnit(const string& tcKind,
 
         if (option("delete-rules-failing-typecheck")) {
 
-            if (!typeCheckFmla(WARNINGm, ruleStr, ctxt, rule)) {
+            if (!typeCheckFmla(ERRORm, ruleStr, ctxt, rule)) {
 
                 unitInfo->addExcludedRule(ruleNum - 1);
                 rule->child(0) = nTRUE;
