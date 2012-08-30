@@ -42,7 +42,7 @@ using std::ifstream;
 
 #include <algorithm>
 
-#include "utility.hh"  
+#include "utility.hh"
 
 #include "node.hh"
 
@@ -103,9 +103,9 @@ readUnitList(const string& filename) {
     while (getline(ifs, unitPath)) {
 
         if (unitPath[0] == '#')  // Allow comment lines in listing.
-            continue; 
+            continue;
         else if (tokeniseString(unitPath).size() == 0) // Allow blank lines
-            continue; 
+            continue;
         else {
             result.push_back(UnitInfo(unitNum,unitPath));
             unitNum++;
@@ -120,7 +120,7 @@ readUnitList(const string& filename) {
 /*
 void
 printUnitList(vector<string> v) {
-    cout << "Units to be examined:" << endl; 
+    cout << "Units to be examined:" << endl;
     for (vector<string>::iterator i = v.begin(); i != v.end(); i++) {
         cout << "#" << *i << "#" << endl;
     }
@@ -144,7 +144,7 @@ int countRules(Node* ruleFileAST) {
 }
 
 Node* readRuleFile(pdriver& driver, const string& ruleFile) {
-        
+
         printMessage(FINEm, "Reading rule file " + ruleFile);
 
         if (driver.parseRuleFile(ruleFile) ) {
@@ -211,7 +211,7 @@ Node* parseUnit(UnitInfo* unitInfo) {
 
 
     string unitRLUFile;
-    
+
     if (option("read-unit-rlu-files")) {
 
         unitRLUFile // == P1/.../Pn/D1/.../Dk/U.rlu
@@ -225,7 +225,7 @@ Node* parseUnit(UnitInfo* unitInfo) {
         && unitRLUFile.empty()
         )
         return 0;
-    
+
     // -------------------------------------------------------------------
     // Read in and parse declarations files
     // -------------------------------------------------------------------
@@ -265,7 +265,7 @@ Node* parseUnit(UnitInfo* unitInfo) {
                          extraDeclFiles.begin(),
                          extraDeclFiles.end());
     }
-    
+
     vector<string> unitDeclFiles(unitInfo->getDeclFiles());
     declFiles.insert(declFiles.end(),
                      unitDeclFiles.begin(),
@@ -279,7 +279,7 @@ Node* parseUnit(UnitInfo* unitInfo) {
 
     for (int i = 0; i != (int) declFiles.size(); i++) {
         string declFile = declFiles.at(i);
-        
+
         printMessage(FINEm, "Reading declarations file " + declFile);
 
         if (driver.parseFDLFile(declFile) ) {
@@ -305,7 +305,7 @@ Node* parseUnit(UnitInfo* unitInfo) {
 
 	Node* ruleFile = readRuleFile(driver, dirRLUFile);
         if (ruleFile == 0) return 0;
-        
+
 	unitInfo->dirRLURulesEnd = countRules(ruleFile);
 	unitInfo->unitRLURulesEnd = unitInfo->dirRLURulesEnd;
 
@@ -322,9 +322,10 @@ Node* parseUnit(UnitInfo* unitInfo) {
         rules->appendChildren(ruleFile);
     }
 
+
     vector<string> ruleFiles;
     ruleFiles.push_back(fullUnitName + ".rls");
-    
+
     if (option("rules")) {
         vector<string> extraRuleFiles = optionVals("rules");
         ruleFiles.insert(ruleFiles.end(),
@@ -339,12 +340,16 @@ Node* parseUnit(UnitInfo* unitInfo) {
                      unitRuleFiles.end()
                      );
 
-    
+
     // Do read of files
 
     for (int i = 0; i != (int) ruleFiles.size(); i++) {
         string ruleFile = ruleFiles.at(i);
-        rules->appendChildren(readRuleFile(driver, ruleFile));
+        Node * ruleFileNode = readRuleFile(driver, ruleFile);
+        if (ruleFileNode == 0) {
+          return 0;
+        }
+        rules->appendChildren(ruleFileNode);
     }
 
     unitAST->addChild(rules);
@@ -352,7 +357,7 @@ Node* parseUnit(UnitInfo* unitInfo) {
     // -------------------------------------------------------------------
     // Read in and parse vcg or siv file
     // -------------------------------------------------------------------
-        
+
     string vcFileExt(".vcg");
     if (option("siv")) vcFileExt = ".siv";
 
@@ -372,17 +377,17 @@ Node* parseUnit(UnitInfo* unitInfo) {
 // Process unit.
 //==========================================================================
 
-void 
+void
 processUnit(UnitInfo* unitInfo, SMTDriver* smtDriver) {
 
     if (! unitInfo->includeUnit()) return;
 
     // Set globals used in formatting message headers and in CSV reports
-    
+
     initCurrentUnitInfo(unitInfo);
 
     Timer unitTimer;
-    
+
     if (option("utick")) {
         if (option("longtick")) {
             cout << endl << unitInfo->getUnitNum()
@@ -448,7 +453,7 @@ main (int argc, char *argv[]) {
     // In order to guarantee consistent timestamps no matter the
     // system used, we explicitly set the time locale to POSIX.
     setlocale(LC_TIME, "POSIX");
-    
+
     // -------------------------------------------------------------------
     // Read in command line arguments
     // -------------------------------------------------------------------
@@ -477,7 +482,7 @@ main (int argc, char *argv[]) {
         else if (s == "1" || s == "finest")  messageThreshold = 1;
         else messageThreshold = WARNINGm;
     }
- 
+
     // ---------------------------------------------------------------------
     // Resolve Units to be processed.
     // ---------------------------------------------------------------------
@@ -506,7 +511,7 @@ main (int argc, char *argv[]) {
     openReportFiles();
 
     // ---------------------------------------------------------------------
-    // Get solver driver 
+    // Get solver driver
     // ---------------------------------------------------------------------
 
     SMTDriver* smtDriver = 0;
@@ -549,7 +554,7 @@ main (int argc, char *argv[]) {
             && option("prover")
             && optionVal("prover") == "z3"
             ) {
-        
+
             smtDriver = new Z3Driver();
         }
  */
@@ -559,7 +564,7 @@ main (int argc, char *argv[]) {
             smtDriver = new SMTLibDriver();
         }
         else if (optionVal("interface-mode") == "smtlib2") {
-            
+
             smtDriver = new SMTLib2Driver();
         }
         else if (optionVal("interface-mode") == "isabelle") {
@@ -572,12 +577,12 @@ main (int argc, char *argv[]) {
         }
         else {
 
-            if (option("prover")) 
+            if (option("prover"))
                 cerr << "Unrecognised interface & prover options: "
                      << optionVal("interface-mode")
                      << " & "
                      << optionVal("prover") << endl;
-            else 
+            else
                 cerr << "Unrecognised interface option: "
                      << optionVal("interface-mode") << endl;
             exit(1);
@@ -597,6 +602,7 @@ main (int argc, char *argv[]) {
          i++) {
         processUnit(&(*i), smtDriver);
     }
+
 
 
     // ---------------------------------------------------------------------

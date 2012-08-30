@@ -367,9 +367,10 @@ class Node {
 
     // Add all children of n onto right of this's children.
     void appendChildren(Node* n) {
-        children.insert(children.end(),
-                        n->children.begin(),
-                        n->children.end());
+      assert (n != 0);
+      children.insert(children.end(),
+                      n->children.begin(),
+                      n->children.end());
     }
 
     int arity() const {return children.size(); }
