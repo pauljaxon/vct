@@ -16,7 +16,7 @@
 \author{Paul Jackson \\
         \texttt{pbj@inf.ed.ac.uk}}
 
-\date{11 June 2012}
+\date{28 Jan 2013}
 
 %\usepackage{vpage}
 %\usepackage{vmargin}
@@ -49,6 +49,7 @@
 \newcommand{\sparkada}{SPARK-Ada}
 
 \newcommand{\cvcthree}{\textsc{Cvc}3}
+\newcommand{\cvcfour}{\textsc{Cvc}4}
 \newcommand{\zthree}{\textsc{Z}3}
 \newcommand{\yices}{Yices}
 \newcommand{\altergo}{Alt-Ergo}
@@ -67,6 +68,7 @@
 
 \newcommand{\fdl}{\textsc{Fdl}}
 \newcommand{\rls}{\textsc{rls}}
+\newcommand{\rlu}{\textsc{rlu}}
 \newcommand{\vcg}{\textsc{vcg}}
 \newcommand{\siv}{\textsc{siv}}
 
@@ -161,7 +163,7 @@ can drive any prover that accepts Simplify, \smtlib{} v1.2 or
 The Simplify language is supported by the Simplify and \zthree{} provers.
 
 %----------------------------------------------------------------------------
-\subsection{SMT-LIB language}
+\subsection{SMT-LIB languages}
 %----------------------------------------------------------------------------
 
 The \smtlib{} initiative (\url{http://www.smtlib.org}) defines
@@ -194,8 +196,8 @@ The following logics in both v1.2 and v2.0 provide at least this support:
   sort, function, and predicate symbols.
 \end{itemize}
 Victor can also take advantage of support for real arithmetic and for
-sort symbols.  Such provers include Alt-Ergo, \cvcthree, \yices{} and
-\zthree.
+sort symbols.  Such provers include Alt-Ergo, \cvcthree, \cvcfour,
+\yices{} and \zthree.
 % Victor currently makes no use of the support for arrays
 % provided by the above logics or by prover-specific
 % extensions.
@@ -216,22 +218,46 @@ Alt-Ergo is an open-source \smt{} solver from LRI (Laboratoire de
 Recherche en Informatique) at Universit\'e Paris-Sud.  It is available
 from \url{http://alt-ergo.lri.fr/}.
 
-Victor has been tested most recently with the V0.94 release using
-Alt-Ergo's \smtlib{} 1.2 and 2.0 file-level interfaces.  Alt-Ergo's
-1.2 interface works fine, but issues have been noted with the 2.0
-interface:
+Victor has been tested most recently with the v0.95 release (11th Jan
+2013) using Alt-Ergo's \smtlib{} 1.2 and 2.0 file-level interfaces.
+Alt-Ergo's 1.2 interface works fine, but issues have been noted with
+the 2.0 interface in both the v0.94 and v0.95 releases.
 \begin{enumerate}
-\item \texttt{define-type} not supported.
-\item \texttt{to\_real} function not recognised.
+\item \texttt{define-type} is not supported.
+\item \texttt{to\_real} function is not recognised.
 \item Instances of quantified Bool-typed variables are 
-  not recognised.  Alt-Ergo 0.94 does not provide complete support
-  for the merging of the syntactic category of formulas with the Bool
-  type of terms.
-  Sometimes multiple \texttt{unsat} responses are returned to a
-  single \texttt{(check-sat)}.
-\end{enumerate}
-Victor has work-arounds for 1,2 and 4, but not 3.
+  not recognised when they occur in formula positions. 
+  For example, it rejects
+\begin{verbatim}
+  (assert (forall ((x Bool)) x))
+\end{verbatim}
+  though it accepts
+\begin{verbatim}
+  (assert (forall ((x Bool)) (= x x)))
+\end{verbatim}
 
+\item Boolean operators (`and', `or', etc.) are not recognised when
+  they occur in term positions. For example, it rejects
+\begin{verbatim}
+  (declare-fun F (Bool) Bool)
+  (assert (F (and true true)))
+\end{verbatim}
+\end{enumerate}
+Victor has full work-arounds for 1, 3 and 4 and a partial work-around
+for 2.  For 2, it replaces instances of \texttt{to\_real} with an
+uninterpreted function.  Axiomatisation of the properties of
+\texttt{to\_real} has not yet been explored.
+
+Alt-Ergo's output is also not fully compliant with both the 1.2 and
+2.0 standards: it will output the non-standard \verb+unknown (sat)+
+rather than simply \verb+sat+, and output multiple \texttt{unsat}
+responses to a single satisfiability check request.  Victor has
+work-arounds so it tolerates these non-standard issues.
+
+The v0.95 release is preferred over the v0.93 and v0.94 releases as
+both v0.93 and v0.94 sometimes has been observed to have fatal errors,
+whereas no such errors have been observed yet with v0.95.
+%\verb+Fatal error: exception Exception.Unsolvable+
 
 % If the standalone Alt-Ergo executable is downloaded rather than built
 % from the Alt-Ergo source distribution, it is also necessary to copy
@@ -251,8 +277,8 @@ Victor can link to a \cvcthree{} library and can then drive
 \cvcthree{} via its API.  Alternatively Victor can invoke a
 \cvcthree{} stand-alone executable on \smtlib{} format files.
 
-Victor has been tested with the latest release, V2.2, dating from
-November 2009.  
+Victor has been tested with the last release, V2.4.1, dating from
+September 2011.
 %
 % The \cvcthree{} developers also make available daily
 % development releases.  Victor has not yet been tested with these.
@@ -262,16 +288,34 @@ November 2009.
 %
 It has some basic support for non-linear arithmetic.
 
-When driven via its API, this version of \cvcthree{} throws exceptions
-and has some segmentation faults on a few of the \spark{} VCs from the
-tokeneer set,
-%
-The exceptions are caught and reported by Victor, but 
-%
-the segmentation faults cause Victor to halt.  To enable Victor runs
-in the presence of these faulting problems, it is possible to tell
-Victor to ignore trying to run \cvcthree{} on certain VCs.  
+The API interface of this version is essentially unusable by Victor,
+as, on some goals, the \cvcthree{} code ignores the request for it to
+return after a set timeout period.  When this happens, Victor itself
+is just stuck and cannot progress on to other goals.
 
+% When driven via its API, this version of \cvcthree{} throws exceptions
+% and has some segmentation faults on a few of the \spark{} VCs from the
+% tokeneer set,
+% %
+% The exceptions are caught and reported by Victor, but 
+% %
+% the segmentation faults cause Victor to halt.  To enable Victor runs
+% in the presence of these faulting problems, it is possible to tell
+% Victor to ignore trying to run \cvcthree{} on certain VCs.  
+
+%----------------------------------------------------------------------------
+\subsection{CVC4}
+%----------------------------------------------------------------------------
+\cvcfour{} is a successor to \cvcthree, developed by the same team.
+It is available from \url{http://cvc4.cs.nyu.edu}.
+
+Victor has been tested with the first release, V1.0, made on 3rd December 2012, 
+using the the \smtlib{} 1.2 and 2.0 file-level interfaces.  Currently there
+is no API interface to \cvcfour.
+
+While \cvcfour{} does not support the \verb+to_real+ operator in mixed
+integer real \smtlib{} 2 logics, it does seem to allow implicit
+integer to real conversion which achieves much the same end.
 
 %----------------------------------------------------------------------------
 \subsection{Simplify}
@@ -308,9 +352,9 @@ notifications of Simplify crashes in its output files.
 
 Victor links with a \yices{} library provided with the \yices{}
 distribution.  Victor has been tested with the latest public release,
-V1.0.24.  This version, bug fixes apart, dates from summer 2007 and
-essentially is the version that lead the field in the 2007 \smt{}
-competition. 
+V1.0.37 (Jaunary 2013).  This version, bug fixes apart, dates from
+summer 2007 and essentially is the version that led the field in the
+2007 \smt{} competition.
 
 % \yices{} 1 is no longer under development: \sri{} is
 % currently working on a re-implementation, \yices{} 2, which had a
@@ -337,7 +381,13 @@ distribution), \yices{} just keeps going on and on.  No mechanism for
 timing out on such cases has yet been implemented, the only way to
 deal with them is to request that Victor ignore them.
 
-Victor can also drive Yices using \smtlib{} format files. 
+Victor can also drive Yices using \smtlib{} 1.2 format files. In this
+case all arithmetic must be linear -- non-linear arithmetic operators
+have to be abstracted to uninterpreted functions.
+
+A successor solver Yices 2 is available.  The latest version is 2.1.0,
+released August 2013.  This version is unsuitable for use as it does
+not support quantifiers.
 
 %----------------------------------------------------------------------------
 \subsection{Z3}
@@ -347,7 +397,8 @@ Victor can also drive Yices using \smtlib{} format files.
 \url{http://research.microsoft.com/en-us/um/redmond/projects/z3/}.
 
 Victor has been tested most recently with the Linux version of release
-3.2.  No problems have been observed with this version.
+4.3.1, made on 12th Nov 2012.  No problems have been observed with
+this version.
 
 % This website only provides a Windows version of a Z3 executable.
 % Microsoft research staff have verbally advertised the existence of a
@@ -377,8 +428,9 @@ current distribution includes some preliminary code to allow it to
 compile and run on Windows.  However, this code has not yet been fully
 tested.
 
-At Edinburgh, Victor is currently compiled and run on a Scientific Linux 6
-64-bit platform.  It makes use of the following tools:
+At Edinburgh, Victor is currently compiled and run on a Scientific
+Linux 6 64-bit platform. Scientific Linux 6 is based on Red Hat
+Enterprise Linux 6.  It makes use of the following tools:
 \begin{itemize}
 \item \texttt{make} V3.81
 \item \texttt{gcc/g++} V4.4.5
@@ -2077,8 +2129,9 @@ are distinct from the \spark{} \fdl{} bit operators.
   Replace primitive bit-valued equality operators with uninterpreted functions 
   and add characterising axioms
 
-\optionb{abstract-bit-valued-int-le}
-  Replace primitive bit-valued integer inequality operators with
+  \optionb{abstract-bit-valued-int-real-le} 
+  Replace primitive
+  bit-valued inequality operators on integers and reals with
   uninterpreted functions and add characterising axioms
 
 \optionb{elim-bit-type-and-consts}
@@ -2098,12 +2151,16 @@ are distinct from the \spark{} \fdl{} bit operators.
 \begin{description}
 \optionb{elim-consts}
   %
-  Eliminate integer constants. Rewrite all formulae using hypotheses of
-  form $x = k$ or $x = -k$ where $x$ is an \fdl{} constant or variable,
-  and $k$ is a natural number literal.  This eliminates the apparent
-  syntactic non-linearity of some hypotheses and conclusions.  It is
-  particularly useful for Yices which rejects formulae that appear
-  non-linear.
+Eliminate integer and real constants. Rewrite all formulae using
+hypotheses of form $x = k$ where $x$ is an \fdl{} constant or
+variable, and $k$ is either a ground integer literal build from a
+natural number and possibly unary minus or a ground real literal
+involving one or more integer literal(s) and possibly unary minus and
+real division.  This eliminates the apparent syntactic non-linearity
+of some hypotheses and conclusions.
+
+  It is particularly useful for Yices which rejects formulae that
+  appear non-linear.
 
 
 \optionb{ground-eval-exp}
@@ -2186,6 +2243,13 @@ when operations cannot be handled.
 
   The \smtlib{} sub-logics \textsc{auflia} and \textsc{auflira} both 
   require all multiplications to be linear.
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+\optionb{abstract-non-const-real-div}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+  Abstract each real division unless the both argument are real constants.
+  Needed by SMTLIB logics that support linear reals.
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 \optionb{abstract-exp}

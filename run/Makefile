@@ -36,6 +36,7 @@
 Z3=z3
 YICES=yices
 CVC3=cvc3
+CVC4=cvc4
 SIMPLIFY=simplify
 ALT_ERGO=alt-ergo
 
@@ -508,6 +509,7 @@ include Makefile-prelude.mk
 # <prover>=
 # a: Alt-Ergo
 # c: cvc3
+# c4: cvc4
 # y: yices
 # p: simplify
 # z: z3
@@ -563,6 +565,14 @@ include Makefile-prelude.mk
             $(smtlib_options) \
             -prover-command='$(CVC3) -lang smt $(cvc3_timeout_flag)'\
 
+
+%-sc4: vcset-%
+	$(VCT) \
+            $(std_options)\
+            $(smtlib_options) \
+            -prover-command='$(CVC4) --lang smtlib1 $(cvc4_timeout_flag)'\
+
+
 %-sy: vcset-%
 	$(VCT) \
             $(std_options)\
@@ -582,15 +592,21 @@ include Makefile-prelude.mk
 #----------------------------------------------------------------------------
 # SMTLIB2 file interface mode
 #----------------------------
-# Observed incompletenesses of SMTLIB2 support noted below.  
-# (Partial) workaround options provided for some of these.
 
-# Alt-Ergo. 0.94
-# - define-type not supported.
-# - to_real function not recognised.
-# - Instances of quantified Bool-typed variables not recognised.
-# - Sometimes returns multiple unsat responses to single (check-sat).
+# Alt-Ergo. 0.94 and 0.95
 
+# Have observed several incompletenesses with SMTLIB2 support:
+#
+# 1. define-type not supported.
+# 2. to_real function not recognised. 
+# 3. Instances of quantified Bool-typed variables in formula positions
+#    not recognised. 
+# 4. Boolean operators (and, or etc) not recognised in term positions
+# 5. Sometimes returns multiple unsat responses to single (check-sat).
+# 6. Sometimes returns "unknown (sat)" response to (check-sat).
+#
+# Target with workarounds for 1,2,5 and 6, but not 3 and 4.
+# 
 %-ta: vcset-%
 	$(VCT) \
             $(std_options)\
@@ -600,11 +616,28 @@ include Makefile-prelude.mk
             -ignore-extra-query-results\
             -prover-command=$(ALT_ERGO) \
 
-# CVC3 2.4 (SMT-COMP 2011 version)
-#  - define-type not supported.
-#  - to_real function not recognised.
-#  - (set-option :print-success false)  flagged as syntax error.
-#  - Bool cannot be used as function argument type.
+# Target with workarounds for 1-6.
+
+%-ua: vcset-%
+	$(VCT) \
+            $(std_options)\
+            $(smtlib2_strict_fol_options) \
+            -elim-type-aliases\
+            -smtlib2-add-to_real-decl\
+            -ignore-extra-query-results\
+            -prover-command=$(ALT_ERGO) \
+
+# In both cases above, the to_real function is declared, but no axioms
+# are provided to characterise it.
+
+# CVC3 2.4.1
+#  1. define-type not supported.
+#  2. to_real function not recognised.
+#  3. (set-option :print-success false)  flagged as syntax error.
+#  4. Bool cannot be used as function argument type.
+#  5. Bool cannot be type of quantified var.
+#
+# Workarounds provided for 1-3, but not 4 and 5.
 
 %-tc: vcset-%
 	$(VCT) \
@@ -615,13 +648,34 @@ include Makefile-prelude.mk
             -smtlib2-add-to_real-decl\
             -prover-command='$(CVC3) -lang smt2 $(cvc3_timeout_flag)'\
 
-# Z3 3.2.
+# CVC4 1.0 
+
+# Documentation says 
+# o nonlinear-arithmetic is not yet adequately supported,
+# o to_real from Reals_Ints theory not yet supported.
+#   However, does seem to handle implicit Int to Real conversions as required
+#   by SMTLIB 2, so instances of to_real suppressed.
+
+%-tc4: vcset-%
+	$(VCT) \
+            $(std_options)\
+            $(smtlib2_options) \
+            -smtlib2-implicit-to_real\
+            -prover-command='$(CVC4) --lang smtlib2 --smtlib-strict $(cvc4_timeout_flag)'\
+
+# Z3 3.2 - 4.3.1
 # No significant incompletenesses observed yet.
 
 %-tz: vcset-%
 	$(VCT) \
             $(std_options)\
             $(smtlib2_options) \
+            -prover-command='$(Z3)' \
+
+%-uz: vcset-%
+	$(VCT) \
+            $(std_options)\
+            $(smtlib2_strict_fol_options) \
             -prover-command='$(Z3)' \
 
 #----------------------------------------------------------------------------

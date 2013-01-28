@@ -192,6 +192,8 @@ z::kindString(z::Kind k) {
 	c(TERM_NE);
 	c(TERM_I_LT);
 	c(TERM_I_LE);
+	c(TERM_R_LT);
+	c(TERM_R_LE);
 
         c(TO_PROP);
         c(TO_BIT);   // prop to bit
