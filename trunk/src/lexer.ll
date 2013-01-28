@@ -175,6 +175,15 @@ for_all            { return tok::FOR_ALL; }
                     }
 
 {ID}                { yylval->sval = new std::string(yytext); return tok::ID; }
+
+\'{DIGIT}+"."{DIGIT}*\'  {
+                      string* s = new std::string(yytext);
+                      s->erase(0,1);                 // Delete leading "'"
+                      s->erase(s->length()-1,1); // Delete trailing "'"
+                      yylval->sval = s;
+                    
+                      return tok::REALNUM;
+                    }
 {DIGIT}+            { yylval->sval = new std::string(yytext);
                       return tok::NATNUM;
                     }
@@ -189,7 +198,10 @@ for_all            { return tok::FOR_ALL; }
 
 <FDLBody>{FDLCOMMENT}         {}  /* Skip comment */
 
-
+                              /* Default rule pattern */
+<*>.|\\n          { yylval->sval = new std::string(yytext);
+                    return tok::ERROR;
+                  }  
 %%
 
 void

@@ -89,20 +89,23 @@ endif
 
 ifdef L
   lin_sfx=-lin
-  lin_opt=-abstract-nonlin-times 
-  smtlib_logic=AUFLIA
+  lin_opt=-abstract-nonlin-times \
+          -abstract-non-const-real-div
+  smtlib_logic=AUFLIRA
 else ifdef LEC
   lin_sfx=-lin-ec
   lin_opt=-abstract-nonlin-times \
+          -abstract-non-const-real-div\
+          -abstract-nonlin-times \
           -elim-consts 
-  smtlib_logic=AUFLIA
+  smtlib_logic=AUFLIRA
 else ifdef LAE
   lin_sfx=-lin-ae
-  lin_opt=-abstract-nonlin-times \
+  lin_opt=-abstract-nonlin-times -abstract-non-const-real-div\
           -elim-consts \
           -ground-eval \
           -arith-eval 
-  smtlib_logic=AUFLIA
+  smtlib_logic=AUFLIRA
 else ifdef EC
   lin_sfx=-ec
   lin_opt=-elim-consts
@@ -371,10 +374,13 @@ timeout_option = -ulimit-timeout=$(T)
 ifdef T # Ulimit timeout (integer sec): applies to any file-level solver
   timeout_sfx = -t$(T)
 
-else ifdef CT  # CVC3 timeout for API & file-level interfaces. Units of 0.1sec.
+else ifdef CT  # CVC timeout for API & file-level interfaces. 
+               # CVC3: Units of 0.1sec.
+               # CVC4: Units of 1 msec.
   timeout_sfx = -ct$(CT)
   timeout_option = -timeout=$(CT) 
   cvc3_timeout_flag = -timeout $(CT)   # Option for cvc3 command
+  cvc4_timeout_flag = -tlimit=$(CT)    # Option for cvc4 command
 
 # 14/12/09: timeout using shell timout.sh is currently flakey.
 # Use with caution!
@@ -394,7 +400,7 @@ else ifdef ZT  # Z3 soft timeout.  Units of ms.
 
 endif
 
-T=1# Delay setting default T to here so don't get suffix for default time.
+T=1# Delay setting default T to here so do not get suffix for default time.
 
 #-----------------------------------------------------------------------------
 # Exploit solver incrementality
@@ -560,7 +566,7 @@ std_options = \
 # CVC3 r2.2 segfaults on a few tokeneer goals, so we need to exclude them.
 # The relevant goals are tagged with "cvc3?" prefix in tokeneer-units.lis
 #
-# CVC3 r2.4.1 (Sep 11) and 2012-05-22 don't respect -stimeout flag and
+# CVC3 r2.4.1 (Sep 11) and 2012-05-22 do not respect -stimeout flag and
 # show divergent behaviour with Tokeneer (3rd release) VCs.
 # e.g. enclave/enrolop 1
 #
@@ -584,7 +590,7 @@ api_cvc3_options =  \
   -abstract-exp=false\
   -bit-type \
   -bit-type-bool-eq-to-iff\
-  -abstract-bit-valued-int-le\
+  -abstract-bit-valued-int-real-le\
   -abstract-arrays-records-late\
   -elim-array-constructors \
   -add-array-select-box-update-axioms\
@@ -636,7 +642,7 @@ smtlib_base_options = \
   \
   -abstract-bit-ops\
   -abstract-bit-valued-eqs\
-  -abstract-bit-valued-int-le\
+  -abstract-bit-valued-int-real-le\
   -elim-bit-type-and-consts\
   \
   -abstract-reals\
@@ -684,15 +690,31 @@ smtlib2_base_options = \
   -interface-mode=smtlib2
 
 
-smtlib2_options = \
+smtlib2_aux_options = \
   $(smtlib2_base_options)\
   $(D_opt)\
   $(E_opt)\
   $(F_opt)\
   $(G_opt)\
-  -logic=$(smtlib_logic)\
+  -logic=$(smtlib_logic)
+
+smtlib2_options = \
+  $(smtlib2_aux_options)\
   $(EXTRAS)
 
+# Assume solver internally cannot handle complete merge of bool terms and
+# formulas.  Assume only that it implements a Bool type.
+# Needed for Alt-Ergo <= 0.95 and cvc3 <= 2.4.1.
+
+smtlib2_strict_fol_options = \
+  $(smtlib2_aux_options)\
+  -bit-type-prefer-bit-vals\
+  -bit-type\
+  $(B_opt)\
+  -abstract-bit-ops\
+  -abstract-bit-valued-eqs\
+  -abstract-bit-valued-int-real-le\
+  $(EXTRAS)
 
 #----------------------------------------------------------------------------
 # Simplify interface options

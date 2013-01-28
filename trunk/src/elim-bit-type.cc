@@ -477,6 +477,84 @@ abstractBitValuedIntLEs(FDLContext* ctxt, Node* unit) {
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Abstract Bit-valued real LE
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+//---------------------------------------------------------------------------
+// abstractBitValuedRealLE
+//---------------------------------------------------------------------------
+
+Node*
+abstractBitValuedRealLE(Node* n) {
+
+    if (n->kind == TERM_R_LE) {
+        return n->updateKindAndId(FUN_AP, "real___bit_le");
+    } else {
+        return n;
+    }
+}
+
+//---------------------------------------------------------------------------
+// abstractBitValuedRealLEs
+//---------------------------------------------------------------------------
+
+void
+abstractBitValuedRealLEs(FDLContext* ctxt, Node* unit) {
+    Node* rules = unit->child(1);
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Add declaration
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    Node* decl =
+        new Node(DECL_FUN,
+                 "real___bit_le",
+                 new Node(SEQ, Node::real_ty, Node::real_ty),
+                 Node::bit_ty
+                 );
+
+    ctxt->insert(decl);
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Add axiom
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    Node* axiom = 
+        new Node(FORALL,"",
+                 new Node(SEQ,
+                          new Node(DECL,"x",Node::real_ty),
+                          new Node(DECL,"y",Node::real_ty)),
+                 new Node(IFF,
+                          new Node(TO_PROP,
+                                   new Node(TERM_R_LE,
+                                            new Node(VAR,"x"),
+                                            new Node(VAR,"y")
+                                            )
+                                   ),
+                          new Node(R_LE,
+                                   new Node(VAR,"x"),
+                                   new Node(VAR,"y")
+                                   )
+                      ),
+                 new Node(PAT,
+                          new Node(TERM_R_LE,
+                                   new Node(VAR,"x"),
+                                   new Node(VAR,"y")
+                                   )
+                          )
+                 );
+  
+    rules->addChild(nRULE("bit le (real)",axiom));
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Abstract away occurrences
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    unit->mapOver1(abstractBitValuedRealLE);
+
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Expand coercions between prop(bool formulas) and bit.
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -652,8 +730,10 @@ abstractBit(FDLContext* ctxt, Node* unit) {
     if (option("abstract-bit-valued-eqs"))
         abstractBitValuedEqs(ctxt,unit);
     
-    if (option("abstract-bit-valued-int-le"))
+    if (option("abstract-bit-valued-int-real-le")) {
         abstractBitValuedIntLEs(ctxt,unit);
+        abstractBitValuedRealLEs(ctxt,unit);
+    }
 
     if (! option("no-elim-bit-prop-coercions"))
         elimBitPropCoercions(unit);

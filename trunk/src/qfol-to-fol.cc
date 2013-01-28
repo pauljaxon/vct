@@ -167,6 +167,18 @@ introBitOpsAndRel(FDLContext* ctxt, Node* n) {
             n->kind = TERM_I_LE;
             break;
         }
+        case R_LT: {  // x < y  <=>  not (y <= x)
+            Node* x = n->child(0);
+            Node* y = n->child(1);
+            n->kind = TERM_NOT;
+            n->popChild();
+            n->child(0) = new Node(TERM_R_LE, y, x);
+            break;
+        }
+        case R_LE: {
+            n->kind = TERM_R_LE;
+            break;
+        }
         default: {
             if (isProp(n)) {
                 printMessage(ERRORm,

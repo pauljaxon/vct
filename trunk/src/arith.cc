@@ -267,7 +267,88 @@ void abstractNonLinMult(Node* n) {
     return;
 }
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// abstractNonConstRealDiv
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Needed for SMTLIB 1.2 and 2.0 logics that include linear reals.
 
+void abstractNonConstRealDiv(Node* n) {
+    if (n->kind == RDIV
+        && ! (isRealConst(n->child(0)) && isRealConst(n->child(1)))) {
+        n->kind = FUN_AP;
+        n->id = "real___div";
+    }
+    return;
+}
+
+//========================================================================
+// Pushing down to_real instances
+//========================================================================
+// use mapOverTopDown to apply.
+
+Node* pushDownToReal(Node* n) {
+    if (n->kind != TO_REAL) return n;
+
+    Node* arg = n->child(0);
+
+    Kind k = arg->kind;
+    if (k == I_TIMES || k == I_PLUS || k == I_MINUS) {
+
+        // TO_REAL[ I_op[lchild, rchild]] 
+        // --> R_op[TO_REAL[lchild], TO_REAL[rchild]]
+
+        // Bind each part of LHS, using meaningful names for all
+        Node* topToReal = n;
+        Node* iOp = arg;
+        Kind iOpKind = k;
+        Node* lChild = iOp->child(0);
+        Node* rChild = iOp->child(1);
+
+        // Build RHS bottom up
+        Node* lToReal = topToReal;                  // Reuse old TO_REAL node
+        lToReal->child(0) = lChild;
+        Node* rToReal = new Node(TO_REAL, rChild);
+
+        Kind rOpKind =
+            iOpKind == I_TIMES ? R_TIMES
+            : iOpKind == I_PLUS ? R_PLUS
+            : R_MINUS;
+        
+        Node* rOp = iOp->updateKind(rOpKind);  // Reuse I_op node
+        rOp->child(0) = lToReal;
+        rOp->child(1) = rToReal;
+        return rOp;
+        
+
+    }
+    else if (arg->kind ==I_UMINUS) {
+
+        // TO_REAL[ I_UMINUS[child]--> R_UMINUS[TO_REAL[child]]
+
+        // Bind each part of LHS, using meaningful names for all
+        Node* topToReal = n;
+        Node* iUMinus = arg;
+        Node* child = iUMinus->child(0);
+
+        // Build RHS bottom up
+        Node* botToReal = topToReal;                  // Reuse old TO_REAL node
+        botToReal->child(0) = child;
+
+        Node* rUMinus = iUMinus->updateKind(R_UMINUS);  // Reuse I_UMINUS node
+        rUMinus->child(0) = botToReal;
+        return rUMinus;
+    }
+
+    else if (arg->kind == NATNUM) {
+
+    // TO_REAL[ NATNUM{<num>}] --> REALNUM{<num>.0}
+
+        return arg->updateKindAndId(REALNUM,arg->id + ".0");
+    }
+    else {
+        return n;
+    }
+}
 //========================================================================
 // Creation of symbolic constants
 //========================================================================
@@ -638,6 +719,13 @@ Node* abstractRealOpRelType(Node* n) {
     }
 }
 
+Node* abstractToRealOp(Node* n) {
+    switch(n->kind) {
+    case TO_REAL:  return n->updateKindAndId(FUN_AP,"int___to_real");
+    default:       return n;
+    }
+}
+
 Node* abstractRealType(Node* n) {
     switch(n->kind) {
     case REAL_TY: return new Node(TYPE_ID, "real___type");
@@ -715,6 +803,12 @@ void arithSimp(FDLContext* ctxt, Node* unit) {
 
     if (option("arith-eval")) constArithEval(unit);
 
+    //--------------------------------------------------------------------
+    // Push down TO_REAL through integer operators and constants
+    //--------------------------------------------------------------------
+
+    if (option("push-down-to_real")) 
+        unit = unit->mapOverTopDown1(pushDownToReal);
 
     return;
 }
@@ -737,6 +831,13 @@ arithAbstract(FDLContext* ctxt, Node* unit) {
     //--------------------------------------------------------------------
 
     if (option("abstract-nonlin-times")) unit->mapOver(abstractNonLinMult);
+
+    //--------------------------------------------------------------------
+    // Abstract non-constant real division (RDIV) to UIF
+    //--------------------------------------------------------------------
+
+    if (option("abstract-non-const-real-div"))
+        unit->mapOver(abstractNonConstRealDiv);
 
     //--------------------------------------------------------------------
     // Replace exponent functions (I_EXP and R_EXP) by UIFs
@@ -767,6 +868,12 @@ arithAbstract(FDLContext* ctxt, Node* unit) {
     //--------------------------------------------------------------------
 
     if (option("abstract-reals")) abstractRealOpsRelsType(ctxt, unit);
+
+    //--------------------------------------------------------------------
+    // Abstract real operators, relations and type
+    //--------------------------------------------------------------------
+
+    if (option("abstract-to_real")) unit->mapOver1(abstractToRealOp);
     
     return;
 }

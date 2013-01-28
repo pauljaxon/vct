@@ -194,6 +194,8 @@ enum Kind {
     TERM_NE,
     TERM_I_LT,
     TERM_I_LE,
+    TERM_R_LT,
+    TERM_R_LE,
 
     TO_PROP,  // Bit to prop
     TO_BIT,   // prop to bit
@@ -410,8 +412,13 @@ class Node {
     // Map f over Node tree in single bottom up pass.
     // f can be pointer to function or unary function object.
 
+    // mapOver is bottom up. 
+    // mapOverTopDown is top down.
+
     template<class UnaryFun> void mapOver(UnaryFun& f);
+    template<class UnaryFun> void mapOverTopDown(UnaryFun& f);
     template<class UnaryFun> Node* mapOver1(UnaryFun& f);
+    template<class UnaryFun> Node* mapOverTopDown1(UnaryFun& f);
 
     // Compute Or of result of f applied to each node of Node tree.
 
@@ -459,6 +466,16 @@ Node::mapOver(UnaryFun& f) {
     f(this);
 }
 
+template<class UnaryFun>
+void
+Node::mapOverTopDown(UnaryFun& f) {
+
+    f(this);
+    for (int i = 0; i != arity(); i++) {
+        child(i)->mapOverTopDown(f);
+    }
+}
+
 // Variation on mapOver, if want to destructively modify
 // node tree structure.
 
@@ -471,6 +488,19 @@ Node::mapOver1(UnaryFun& f) {
     }
     return f(this);
 }
+
+template<class UnaryFun>
+Node*
+Node::mapOverTopDown1(UnaryFun& f) {
+
+    Node* newTop = f(this);
+    for (int i = 0; i != newTop->arity(); i++) {
+        newTop->child(i) = newTop->child(i)->mapOverTopDown1(f);
+    }
+    return newTop;
+}
+
+
 
 
 // A function/function object adaptor.

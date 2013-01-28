@@ -501,6 +501,8 @@ Node* FDLContext::getType (Node* n) {
     case TERM_NE:
     case TERM_I_LT:
     case TERM_I_LE:
+    case TERM_R_LT:
+    case TERM_R_LE:
         return Node::bit_ty;
 
     case UMINUS:
@@ -535,8 +537,9 @@ Node* FDLContext::getType (Node* n) {
     case R_SQR:
     case R_ABS:
     case RDIV:
+    case REALNUM:
         return Node::real_ty;
-
+        
     case ID: {
         string idName = n->id;
         Node* decl = lookupId(idName);
@@ -811,6 +814,7 @@ FDLContext::getSubNodeTypes (Node* n) {
     case TRUE:
     case FALSE:
     case NATNUM:
+    case REALNUM:
     case ID:
         return result;
     case LE:
@@ -868,6 +872,8 @@ FDLContext::getSubNodeTypes (Node* n) {
             result->addChild(Node::int_ty);
             return result;
         }
+    case TERM_R_LT:
+    case TERM_R_LE:
     case R_LT:
     case R_LE:
     case R_PLUS:

@@ -96,11 +96,12 @@ using namespace std;
 %token IF END FUNCTION PROCEDURE TYPE VAR CONST
 %token FOR_SOME FOR_ALL
 %token ARRAY RECORD ASSIGN OF
-%token <sval> SUBPROG_ID CONCL_ID HYP_ID TASK_TYPE PACKAGE PACKAGE_SPEC PACKAGE_BODY ID NATNUM
+%token <sval> SUBPROG_ID CONCL_ID HYP_ID TASK_TYPE PACKAGE PACKAGE_SPEC PACKAGE_BODY ID NATNUM REALNUM
 %token TRIPLESTAR
 %token TRIPLEBANG
 %token START_FDL_FILE START_RULE_FILE START_VCG_FILE;
 %token FILE_END 0
+%token <sval> ERROR
 
 %nonassoc ASSIGN
 %nonassoc AMPERSAND
@@ -541,6 +542,7 @@ exp:
                                        // Examiner that parenthesise
                                        // indexsets
  | NATNUM          {$$ = new Node(z::NATNUM, * $1); delete $1; }
+ | REALNUM         {$$ = new Node(z::REALNUM, * $1); delete $1; }
  | expseq          {$$ = $1;}
  | exp_id          {$$ = $1;}
  | id_str LPAREN aexpseq RPAREN

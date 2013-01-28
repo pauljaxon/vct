@@ -156,7 +156,7 @@ Box& SMTLibFormatter::addSyntax(z::Kind k, const std::string& id,
     case(CONST):       return box(standardiseId(id));
     case(VAR):         return box("?" + id);
     case(NATNUM):      return box(id);
-    case(REALNUM):      return box(id + ".0");
+    case(REALNUM):      return box(id);
 
     default:
 	printMessage(ERRORm, "SMTLibFormatter::addSyntax: " + ENDLs
@@ -706,16 +706,29 @@ Formulas
 Terms
 ----------------------------------------------------------------------------
 */  
-    case I_PLUS:   return oldN->updateKindAndId(FUN_AP, "+");
-    case I_MINUS:  return oldN->updateKindAndId(FUN_AP, "-");
-    case I_TIMES:  return oldN->updateKindAndId(FUN_AP, "*");
-    case I_UMINUS: {
+    case I_PLUS:
+    case R_PLUS:   return oldN->updateKindAndId(FUN_AP, "+");
+    case I_MINUS:
+    case R_MINUS:  return oldN->updateKindAndId(FUN_AP, "-");
+    case I_TIMES:
+    case R_TIMES:  return oldN->updateKindAndId(FUN_AP, "*");
+    case RDIV:     return oldN->updateKindAndId(FUN_AP, "/");
+    case I_UMINUS:
+    case R_UMINUS:    {
         if (optionVal("interface-mode") == "simplify")
             return new Node(FUN_AP, "-",
                             new Node(NATNUM, "0"),
                             oldN->child(0));
-        else
+        else if (! option("logic")  // Default is AUFLIA
+                 || optionVal("logic") == "AUFLIA"
+                 || optionVal("logic") == "UFNIA")
+            // AUFLIA builds on SMTLIB 1.2 Theory Int_ArraysEx which uses ~.
+            // and UFNIA builds on SMTLIB 1.2 Theory Ints which uses ~.
             return oldN->updateKindAndId(FUN_AP, "~");
+        else
+            // AUFLIRA and AUFNIRA build on SMTLIB 1.2 Theory 
+            // Int_Int_Real_Array_ArraysExInt_ArraysEx which uses -.
+            return oldN->updateKindAndId(FUN_AP, "-");
     }
 
         // IDIV and MOD are treated specially by pretty-printing 
@@ -723,34 +736,10 @@ Terms
     case IDIV:   return oldN;
     case MOD:   return oldN;
 
-        /*
-        {
-
-        // TO_REAL NATNUM{n}  -->  REALNUM{n}
-        // TO_REAL (I_UMINUS NATNUM{n})  -->  R_UMINUS REALNUM{n}
-        // TO_REAL e --> FUN_AP{i.to_real} e                      otherwise
-
-        Node* intNode = oldN->child(0);
-        bool isNegated = false;
-        if (intNode->kind == NATNUM) {
-            intNode->kind = REALNUM;
-            return intNode;
-        }
-        else if (intNode->kind == I_UMINUS
-                 && intNode->child(0)->kind == NATNUM) {
-            intNode->kind = R_UMINUS;
-            intNode->child(0)->kind = REALNUM;
-            return intNode;
-        }
-        else {
-            return oldN->updateKindAndId(FUN_AP, "i.to_real");
-        }
-    }
-        */
-
     case CONST:
     case VAR:
     case NATNUM:
+    case REALNUM:
         return oldN;
 
     case DECL: return oldN;  // Assume only use of DECL is in quantifiers
@@ -1300,8 +1289,11 @@ SMTLibDriver::getResults(string& remarks) {
             else if (s == "sat") {
                 seenSatOutput = true;
             }
-            // "unknown (sat)" is output occasionally by Alt-Ergo
-            else if (s == "unknown" || s == "unknown (sat)") {
+            // "unknown (sat)" is output by Alt-Ergo
+            // "unknown (INCOMPLETE)" is output by cvc4 1.0. 
+            else if (s == "unknown"
+                     || s == "unknown (sat)"
+                     || s == "unknown (INCOMPLETE)") {
                 appendCommaString(remarks, "unknown");
                 seenUnknownOutput = true;
             }

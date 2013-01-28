@@ -65,6 +65,10 @@ private:
 
 };
 
+// Translation here handles several constructs of FOL standard form,
+// not normally expected in QFOL standard form.  These are needed for
+// Alt-Ergo.  Constructs flagged with "FOL" comment.
+
 Box& SMTLib2Formatter::addSyntax(z::Kind k, const std::string& id,
                               vector<Box*>& bs) {
 
@@ -102,6 +106,7 @@ Box& SMTLib2Formatter::addSyntax(z::Kind k, const std::string& id,
     case(INT_TY):      return box("Int");
     case(REAL_TY):      return box("Real");
     case(BOOL_TY):      return box("Bool");
+    case(BIT_TY):      return box("Bool");       // FOL
 
     // Core logic terms and consts
 
@@ -121,8 +126,8 @@ Box& SMTLib2Formatter::addSyntax(z::Kind k, const std::string& id,
     case(DISTINCT):    return makeStringAp("distinct", bs);
     case(ITE):         return makeStringAp("ite", bs);
 
-        // SEQ is not quite prettiest: will indent vertical sequence
-        // extra amount.
+    // SEQ is not quite prettiest: will indent vertical sequence
+    // extra amount.
 
     case(SEQ):         return PP::makeHVSeq("",
                                             "(",
@@ -132,8 +137,14 @@ Box& SMTLib2Formatter::addSyntax(z::Kind k, const std::string& id,
     case(DECL):        return makeStringAp(id, bs);
 
     case(FUN_AP):      return makeStringAp(id, bs);
+    case(PRED_AP):     return makeStringAp(id, bs);  // FOL
     case(CONST):       return box(id);
     case(VAR):         return box(id);
+
+    // Bit constants
+
+    case(TERM_TRUE):   return box("true");    // FOL
+    case(TERM_FALSE):  return box("false");   // FOL
 
     // Arithmetic operators and constants
 
@@ -154,7 +165,13 @@ Box& SMTLib2Formatter::addSyntax(z::Kind k, const std::string& id,
     case(RDIV):        return makeStringAp("/", bs);
     case(R_LE):        return makeStringAp("<=", bs);
     case(R_LT):        return makeStringAp("<", bs);
-    case(TO_REAL):     return makeStringAp("to_real", bs);
+    case(TO_REAL):     {
+        if (option("smtlib2-implicit-to_real")) 
+            return *(bs.at(0));
+        else
+            return makeStringAp("to_real", bs);
+    }
+    case(REALNUM):     return box(id);
     case(TO_INT):      return makeStringAp("to_int", bs);
     case(IS_INT):      return makeStringAp("is_int", bs);
 
@@ -457,8 +474,11 @@ SMTLib2Driver::initQuerySet(const string& unitName,
     string logic(option("logic") ? optionVal("logic") : "AUFNIRA");
 
     script = new Node(SCRIPT);
-    script->addChild(new Node(SET_INFO, "spark-source",
-			      new Node(INFO_STR, unitName)));
+    string conclString(conclNum == 0 ? "" : intToString(conclNum));
+    script->addChild(new Node(COMMENT,
+                              unitName
+                              + " " + intToString(goalNum)
+                              + " " + conclString));
     if (!option("smtlib2-omit-set-option-command")) {
         script->addChild(new Node(SET_OPTION, "print-success",
                                   new Node(z::FALSE)));
@@ -919,7 +939,10 @@ SMTLib2Driver::getResults(string& remarks) {
         else if (line.size() == 1 && line.at(0) == "sat") {
             seenSatOutput = true;
         }
-        else if (line.size() == 1 && line.at(0) == "unknown") {
+        // "unknown (sat)" is returned by Alt-Ergo v0.94 and v0.95.
+        else if (line.at(0) == "unknown"
+                 && (line.size() == 1
+                     || (line.size() == 2 && line.at(1) == "(sat)"))) {
             seenUnknownOutput = true;
         } else {
             seenUnexpectedOutput = true;
@@ -1121,9 +1144,13 @@ SMTLib2Driver::getRunResults(int numQueries) {
         Status st = ERROR;
         if (line.size() == 1) {
             if (line.at(0) == "unsat") st = TRUE;
-            if (line.at(0) == "sat") st = FALSE;
-            if (line.at(0) == "unknown") st = UNKNOWN;
+            else if (line.at(0) == "sat") st = FALSE;
+            else if (line.at(0) == "unknown") st = UNKNOWN;
         }
+        // "unknown (sat)" output by Alt-Ergo v0.94 and 0.95
+        else if (line.size() == 2
+                 && line.at(0) == "unknown"
+                 && line.at(1) == "(sat)") st = UNKNOWN;
 
         if (st == ERROR) {
             seenUnexpectedOutput = true;
