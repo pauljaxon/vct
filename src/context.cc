@@ -730,12 +730,26 @@ Node* FDLContext::getType (Node* n) {
 // inference of child type fails placeholder UNKNOWN Nodes is returned
 // as child's type.
 
+// if getOptions = true, when relevant, return special symbols for
+// known sets of alternatives e.g. "int or real" & "int or real or
+// unknown".  This is useful at the stage of inferring types for free
+// variables in user rules.
 
+// if getOptions = false, always return the exact expected type, if possible.
+// This case is used for e.g. full type checking.
+
+// Option -assume-var-in-real-pos-is-real forces getOptions = false behaviour.
+// This was the behaviour prior to the getOptions feature being introduced.
 
 Node*
-FDLContext::getSubNodeTypes (Node* n) {
+FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
 
     Node* result = new Node(SEQ);
+
+    Node* realArgSubNodeType =
+        (getOptions && ! option("assume-var-in-real-pos-is-real"))
+        ? Node::int_or_real_ty
+        : Node::real_ty;
     
     switch(n->kind) {
     case FORALL:
@@ -881,13 +895,13 @@ FDLContext::getSubNodeTypes (Node* n) {
     case R_TIMES:
     case RDIV:
         {
-            result->addChild(Node::real_ty);
-            result->addChild(Node::real_ty);
+            result->addChild(realArgSubNodeType);
+            result->addChild(realArgSubNodeType);
             return result;
         }
     case R_EXP:
         {
-            result->addChild(Node::real_ty);
+            result->addChild(realArgSubNodeType);
             result->addChild(Node::int_ty);
             return result;
         }
@@ -895,7 +909,7 @@ FDLContext::getSubNodeTypes (Node* n) {
     case R_SQR:
     case R_UMINUS:
         {
-            result->addChild(Node::real_ty);
+            result->addChild(realArgSubNodeType);
             return result;
         }
     case EXP:

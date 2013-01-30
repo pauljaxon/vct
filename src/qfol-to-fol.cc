@@ -401,7 +401,7 @@ Node* fixAtomicFmlas(FDLContext* c, Node* n) {
 Node* addBitToProp(FDLContext* c, Node* n) {
 
     vector<Node**> subNodes = n->getSubNodes();
-    Node* subNodeTypes = c->getSubNodeTypes(n);
+    Node* subNodeTypes = c->getExactSubNodeTypes(n);
 
     for (int i = 0; i != (int) subNodes.size(); i++) {
         Node** subNode = subNodes.at(i);
@@ -428,7 +428,7 @@ Node* addBitToProp(FDLContext* c, Node* n) {
 Node* addPropToBit(FDLContext* c, Node* n) {
 
     vector<Node**> subNodes = n->getSubNodes();
-    Node* subNodeTypes = c->getSubNodeTypes(n);
+    Node* subNodeTypes = c->getExactSubNodeTypes(n);
 
     for (int i = 0; i != (int) subNodes.size(); i++) {
         Node** subNode = subNodes.at(i);

@@ -147,7 +147,7 @@ nodeTypeChecker::operator() (FDLContext* c, Node* n) {
 
     
     vector<Node**> subNodes = n->getSubNodes();
-    Node* subNodeTypes = c->getSubNodeTypes(n);
+    Node* subNodeTypes = c->getExactSubNodeTypes(n);
 
     if (subNodeTypes->arity() != (int) subNodes.size()) {
 
