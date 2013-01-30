@@ -966,7 +966,7 @@ VarTypingFun::operator() (FDLContext* c, Node* n) {
 
     Formatter::setFormatter(VanillaFormatter::getFormatter());
 
-    Node* subNodeTypes = c->getSubNodeTypes(n);
+    Node* subNodeTypes = c->getSubNodeTypeOptions(n);
 
     vector<Node**> subNodes = n->getSubNodes();
 
@@ -1530,7 +1530,7 @@ Node* insertRealCoercion(FDLContext* c, Node* n) {
         return n;
 
     vector<Node**> subNodes = n->getSubNodes();
-    Node* subNodeTypes = c->getSubNodeTypes(n); // Expected types of subnodes
+    Node* subNodeTypes = c->getExactSubNodeTypes(n); // Expected types of subnodes
 
     for (int i = 0; i != (int) subNodes.size(); i++) {
         Node** subNode = subNodes.at(i);

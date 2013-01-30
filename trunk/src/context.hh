@@ -205,7 +205,9 @@ class FDLContext {
 
     Node* getType(Node* n);
 
-    Node* getSubNodeTypes (Node* n);
+    Node* getSubNodeTypes (Node* n, bool getOptions);
+    Node* getExactSubNodeTypes (Node* n) { return getSubNodeTypes(n, false);}
+    Node* getSubNodeTypeOptions (Node* n){ return getSubNodeTypes(n, true);}
 
     Node* extractDecls();
 
