@@ -120,6 +120,9 @@ z::kindString(z::Kind k) {
 	c(R_LT);
 	c(R_LE);
 	c(GE);
+        c(IR_EQ);  // Integer or real EQ
+        c(IR_LT);  // Integer or real LT
+        c(IR_LE);  // Integer or real LE
 	c(TO_REAL);
 	c(UMINUS);
 	c(SUCC);
@@ -784,10 +787,13 @@ bool isPolymorphicNode(Node* n) {
 
     switch(n->kind) {
 
-    case LT :
+    case LT: 
     case GT:
     case LE:
     case GE:
+    case IR_LT:
+    case IR_LE:
+    case IR_EQ:
     case UMINUS:
     case SUCC:
     case PRED:
@@ -820,4 +826,17 @@ bool isPolymorphicNode(Node* n) {
     default:
         return false;
     }
+}
+
+// Unresolved types are used at intermediate stages of type checking.
+// They should never appear in properly type-checked formulas and terms.
+
+bool isUnresolvedType(Node* ty) {
+    Kind k = ty->kind;
+
+    return
+        k == UNKNOWN
+        || k == NO_TY
+        || k == INT_OR_REAL_TY
+        || k == INT_REAL_OR_ENUM_TY;
 }

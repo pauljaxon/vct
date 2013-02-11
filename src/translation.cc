@@ -119,9 +119,18 @@ nodeTypeChecker::operator() (FDLContext* c, Node* n) {
                         );
         return n;  
     }
+    // Flag types that are not fully resolved
+
+    if (isUnresolvedType(n)) {
+        addSyntaxMessage(  "Found unexpected type "
+                           + n->toShortString() + ENDLs +
+                           "  at " + c->getPathString() + ENDLs 
+                        );
+        return n;  
+    }
     // Flag unbound identifiers
     if (n->kind == ID) {
-        addSyntaxMessage(  "Found unexpected "
+        addSyntaxMessage(  "Found unexpected identifier "
                            + n->toShortString() + ENDLs +
                            "  at " + c->getPathString() + ENDLs 
                         );
@@ -304,8 +313,20 @@ bool typeCheckUnit(const string& tcKind,
 
         if (unitInfo->isExcludedRule(ruleNum - 1)) continue;
         
-        string ruleStr (tcKind + ", Rule " + intToString(ruleNum));
         Node* rule = rules->child(ruleNum - 1);
+
+        string ruleName = rule->id;
+        string ruleKind =
+            unitInfo->isUserRule(ruleNum - 1) ? "user" : "system";
+        int ruleIndex =
+            unitInfo->isUserRule(ruleNum - 1)
+            ? ruleNum
+            : ruleNum - unitInfo->unitRLURulesEnd;
+
+        string ruleFullName(ruleKind + " rule " + intToString(ruleIndex)
+                            + " - " + ruleName);
+
+        string ruleStr (tcKind + " " + ruleFullName);
 
         if (option("delete-rules-failing-typecheck")) {
 
@@ -314,14 +335,9 @@ bool typeCheckUnit(const string& tcKind,
                 unitInfo->addExcludedRule(ruleNum - 1);
                 rule->child(0) = nTRUE;
 
-                string ruleName = rule->id;
-                string ruleKind =
-                    unitInfo->isUserRule(ruleNum - 1)
-                    ? "user"
-                    : "Examiner";
 
                 printMessage(WARNINGm,
-                         "Deleting " + ruleKind + " rule " + ruleName
+                             "Deleting rule " + ruleName
                              + " because it fails type check");
             }
         }
@@ -339,7 +355,7 @@ bool typeCheckUnit(const string& tcKind,
             continue;
         }
 
-        string goalStr (tcKind + ", Goal " + intToString(goalNum));
+        string goalStr (tcKind + " Goal " + intToString(goalNum));
 
         Node* hyps = goal->child(0);
         Node* concls = goal->child(1);
@@ -363,7 +379,7 @@ bool typeCheckUnit(const string& tcKind,
 
             Node* concl = concls->child(conclNum-1);
 
-            string conclStr (goalStr + ", Concl " + intToString(conclNum));
+            string conclStr (goalStr + " Concl " + intToString(conclNum));
 
             typeCheckGood = typeCheckGood &
                 typeCheckFmla(ERRORm, conclStr, ctxt, concl);

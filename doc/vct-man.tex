@@ -16,7 +16,7 @@
 \author{Paul Jackson \\
         \texttt{pbj@inf.ed.ac.uk}}
 
-\date{28 Jan 2013}
+\date{11 Feb 2013}
 
 %\usepackage{vpage}
 %\usepackage{vmargin}
@@ -1041,14 +1041,6 @@ prover.
   output for directory-level user rules involving undeclared ids.  An
   alternative option is \texttt{read-all-decl-files-in-dir}.
 
-  \optionb{warn-about-speculative-overload-resolution}
-  Several \fdl{} operators are overloaded, and this overloading has to be
-  resolved in Victor.  Some overload resolution tactics are more 
-  speculative than others. Victor always logs warnings about applications
-  of the more speculative tactics. With this option, it will also 
-  log warnings rather than info messages about applications of the 
-  less speculative tactics.
-
   \optionb{siv} Read in \texttt{.siv} simplified VC files output by the
      Simplifier rather than \texttt{.vcg} Examiner VC files.
 
@@ -1126,6 +1118,114 @@ prover.
   unit listing file, do not run Victor on those goals or goal slices.
 
 \end{description}
+
+
+%----------------------------------------------------------------------------
+\subsection{Normalisation options}
+%----------------------------------------------------------------------------
+\emph{Normalisation} is the process of putting an \fdl{} unit into a
+standard form where all ambiguities have been resolved.
+Specifically, normalisation
+\begin{itemize}
+\item resolves the types of overloaded operators:
+  \begin{itemize}
+  \item \verb_+_, \verb_-_ (binary), \verb_-_ (unary), \verb_*_ on
+    integer and real types,
+  \item \verb_=_ and \verb_<>_ on any type,
+  \item \verb_<_ , \verb_<=_, \verb_>_ and \verb_>=_ in integer, real and enumeration types,
+  \item \verb_succ_ and \verb_pred_ on integer and enumeration types,
+  \item array element update and element select functions, 
+  \item record field update and field select functions,
+  \end{itemize}
+
+\item adds universal quantifiers to rules to bind and type any free
+  variables in the rules.
+\end{itemize}
+
+After normalisation but before any translation steps are applied,
+Victor does a full type check of the unit to ensure the integrity of
+the unit.  If normalisation has not been completely successful, type
+check error messages identify the issues.
+
+Overload resolution is driven by the inferred types of each overloaded
+operator's arguments.  So long as the argument types can indeed be
+inferred, overload resolution is straightforward.  However, when an
+argument is a free variable in a rule, sometimes Victor has difficulty
+inferring which operator is intended, in which case overload
+resolution fails.
+
+Victor infers the type of a free variable by examining the typing of
+the operator applied to each instance of the variable.  This works
+fine if the operator is not overloaded. 
+
+In the first phase of ambiguity resolution, Victor repeatedly
+interleaves 
+\begin{itemize}
+\item attempts at operator overload resolution, and
+\item inference of constraints on types of free variables 
+\end{itemize}
+until no further progress can
+be made.  This phase is always sound.  In this phase Victor will never
+speculatively resolve overloading or speculatively choose some type
+for a free variable.
+
+As mentioned above, if the ambiguity resolution has not been completed,
+the subsequent type check will identify the issues.  To date, all the
+observed issues have had at their root the failure to infer types of
+free variables in user rules provided in \rlu{} files.  Invariably
+the problem is with free variables which only appear as arguments to
+overloaded operators.  To fix the issues, add extra explicit typing
+assumptions of form \texttt{goal(checktype(\emph{var}, \emph{type}))}
+to the rules identified in the error messages.  Usually the Simplifier
+tool handles these typing assumptions properly.  However the
+recommended practice is that it always be re-run after these
+assumptions have been added in order to double check them.
+
+This addition of explicit typing assumptions can require a fair amount
+of work, especially if there are 100s of user rules and the \fdl{}
+involves reasoning with operators over the reals.  For example, Victor
+will observe that every free variable that could be typed
+\texttt{real} could also be typed \texttt{integer}, and will therefore
+refuse to assign the variable a type in this first phase.
+
+By default ambiguity resolution stops at the first phase.  However,
+Victor has three options which allow the user to tell Victor to go
+onto a second phase of ambiguity resolution where extra assumptions
+are made.  The options are:
+\begin{description}
+  \optionb{assume-var-in-real-pos-is-real} If a free variable occurs
+  as an argument to an operator in a position where a real is
+  expected, assume the variable has real type.
+%
+  \optionb{assume-int-or-real-var-is-real} If a free variable is
+  constrained to have either integer or real type, assume the variable
+  has real type.  This option subsumes the previous option.
+%
+  \optionb{assume-int-or-real-var-is-int} If a free variable is
+  constrained to have either integer or real type, assume the variable
+  has integer type.
+\end{description}
+%
+At most one of these 3 options should be selected.  The first two
+options are potentially unsound.  To avoid unsoundness when either of
+these options is used, any free variable that ought to be integer must
+be explicitly typed by a \texttt{checktype} precondition.  The third
+option is always sound, but could result in rules that are overly
+restrictive and not usable as expected by the Simplifier.  One
+situation where the 3rd option might be appropriate is when \spark{}
+programs being analysed involve no floating-point computations, and
+hence when the generated VCs involve no terms of real type.
+
+When any of these options is selected, Victor by default will insert a
+warning message into the \logfile{} log file for each assumption it
+makes, so each application of the assumption can be checked.  If these
+warning messages are not needed, use the following option.
+\begin{description}
+  \optionb{suppress-warnings-of-var-type-assumptions} Suppress
+  warnings of each application of an assumption about how a free
+  variable should be typed.
+\end{description}
+
 %----------------------------------------------------------------------------
 \subsection{Translation options}
 %----------------------------------------------------------------------------
@@ -1404,6 +1504,16 @@ The options are as follows.
   Generation of unsat cores can slow down provers.  For example,
   \zthree's run-time on provable goals has been observed more than
   double when unsat core generation has been requested.
+
+\optionb{smtlib2-add-to\_real-decl}
+  Add a declaration for the \smtlib{} 2 \verb+to_real+ operator.  This is needed
+  for \altergo{}.
+
+\optionb{smtlib2-implicit-to\_real}
+  Remove all occurrences of the \smtlib{} 2 \verb+to_real+ operator in
+  \smtlib{} 2 format files created by Victor.  The \smtlib{} 2 standard
+  allows these operators to be implicit.  This option is needed for
+  supporting \cvcfour{} 1.0.
 
 \optionv{ulimit-timeout}{time}
   If using either of the file-level interface modes, 
@@ -2190,6 +2300,14 @@ of some hypotheses and conclusions.
   The main aim of these rules is to eliminate instances of the $\div$
   operator.
 
+\optionb{push-down-to\_real}
+  Rewrite applications of the integer-to-real conversion (\verb+to_real+
+  in \smtlib 2) to integer arithmetic operators $\times, +, - (unary), -
+  (binary)$, replacing the operators with their real counterparts and
+  pushing the conversion down the term tree.  Also rewrite applications
+  of the conversion to integer literals to corresponding real literals.
+
+  
 \optionb{sym-consts}
   Replace each distinct natural number literal greater than 
   threshold \textit{t} with a new constant and assert axioms concerning
@@ -2229,7 +2347,7 @@ when operations cannot be handled.
   An \emph{integer constant} is a natural number $n$ or the expression $-n$.
   
   A \emph{real constant} is built from an integer constant using the
-  \texttt{to-real} coercion, unary minus on the reals, and, optionally
+  \texttt{to\_real} coercion, unary minus on the reals, and, optionally
   real division.  Real division is allowed just when the option 
   \texttt{-abstract-real-div} is not chosen.
 
@@ -2250,6 +2368,7 @@ when operations cannot be handled.
 
   Abstract each real division unless the both argument are real constants.
   Needed by SMTLIB logics that support linear reals.
+
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 \optionb{abstract-exp}
@@ -2309,6 +2428,19 @@ when operations cannot be handled.
 
   This option is not necessary when \cvcthree{} and \yices{} are
   invoked via their APIs, as both APIs support real arithmetic.
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+\optionb{abstract-to\_real}
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  %
+  Abstract occurrences of the integer-to-real conversion operator to a
+  new uninterpreted function.  No characterising axioms are currently
+  provided.  
+
+  This option is needed to support \altergo{} v0.95 and before, since
+  these provers do not recognise this operator.
+  
+
 
 \end{description}
 

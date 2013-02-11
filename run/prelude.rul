@@ -62,8 +62,10 @@ bitwise(82):     bit__xor(X,Y) <= bit__or(X,Y) may_be_deduced_from
 
 arith(10): int___abs(X) may_be_replaced_by X      if [X >= 0].
 arith(11): int___abs(X) may_be_replaced_by - X    if [X < 0].
-arith(12): real___abs(U) may_be_replaced_by U     if [U >= 0].
-arith(13): real___abs(U) may_be_replaced_by - U   if [U < 0].
+arith(12): real___abs(U) may_be_replaced_by U     if [U >= 0,
+                                                      goal(checktype(U,real))].
+arith(13): real___abs(U) may_be_replaced_by - U   if [U < 0,
+                                                      goal(checktype(U,real))].
 
 arith(20): int___odd(X) may_be_replaced_by int___abs(X) mod 2 = 1.
 

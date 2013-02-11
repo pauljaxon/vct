@@ -122,6 +122,9 @@ enum Kind {
     R_LT,
     R_LE,
     GE,
+    IR_EQ,  // Integer or real EQ
+    IR_LT,  // Integer or real LT
+    IR_LE,  // Integer or real LE
     TO_REAL,
     UMINUS,
     SUCC,
@@ -581,6 +584,7 @@ Node* nameToType(const std::string& s);
 std::string typeToName(Node* n);
 
 bool isPolymorphicNode(Node* n);
+bool isUnresolvedType(Node* ty);
 
 //========================================================================
 // Node constructor Macros
