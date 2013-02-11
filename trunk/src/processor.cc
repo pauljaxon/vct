@@ -821,7 +821,7 @@ translateUnit(UnitInfo* unitInfo, FDLContext* ctxt, Node* unit) {
     printMessage(FINEm,
                  "Standard Form type check starting");
 
-    if (!typeCheckUnit("Pre-translation", unitInfo, ctxt, unit))
+    if (!typeCheckUnit("pre-translation", unitInfo, ctxt, unit))
         return "Pre-translation typecheck failed";
 
     printMessage(FINEm,
@@ -960,7 +960,7 @@ translateUnit(UnitInfo* unitInfo, FDLContext* ctxt, Node* unit) {
     printMessage(FINEm,
                  "Primary Translation End - type check starting");
 
-    if (!typeCheckUnit("Post-translation", unitInfo, ctxt, unit))
+    if (!typeCheckUnit("post-translation", unitInfo, ctxt, unit))
         return "Post-translation typecheck failed";
 
     printMessage(FINEm,

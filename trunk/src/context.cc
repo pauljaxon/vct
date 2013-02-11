@@ -486,6 +486,9 @@ Node* FDLContext::getType (Node* n) {
     case I_LE:
     case R_LT:
     case R_LE:
+    case IR_EQ:
+    case IR_LT:
+    case IR_LE:
     case GE:
     case PRED_AP:
     case TO_PROP:
@@ -510,7 +513,7 @@ Node* FDLContext::getType (Node* n) {
     case MINUS:
     case TIMES:
     case EXP: 
-        return Node::unknown;
+        return Node::int_or_real_ty;
 
     case I_UMINUS:
     case I_SUCC:
@@ -738,19 +741,16 @@ Node* FDLContext::getType (Node* n) {
 // if getOptions = false, always return the exact expected type, if possible.
 // This case is used for e.g. full type checking.
 
-// Option -assume-var-in-real-pos-is-real forces getOptions = false behaviour.
-// This was the behaviour prior to the getOptions feature being introduced.
-
 Node*
 FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
 
     Node* result = new Node(SEQ);
 
-    Node* realArgSubNodeType =
-        (getOptions && ! option("assume-var-in-real-pos-is-real"))
-        ? Node::int_or_real_ty
-        : Node::real_ty;
-    
+    // Cases when getOptions makes no difference can return result.
+    // If case has found types, case should modify result and break.
+    // Otherwise case should leave result alone and break.  In this situation,
+    // the children types are filled in as UNKNOWN_TYPEs.
+
     switch(n->kind) {
     case FORALL:
     case EXISTS:
@@ -852,6 +852,9 @@ FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
     case PLUS:
     case MINUS:
     case TIMES:
+    case IR_EQ:
+    case IR_LT:
+    case IR_LE:
         {
             result->addChild(Node::int_or_real_ty);
             result->addChild(Node::int_or_real_ty);
@@ -895,22 +898,22 @@ FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
     case R_TIMES:
     case RDIV:
         {
-            result->addChild(realArgSubNodeType);
-            result->addChild(realArgSubNodeType);
-            return result;
+            result->addChild(Node::real_ty);
+            result->addChild(Node::real_ty);
+            break;
         }
     case R_EXP:
         {
-            result->addChild(realArgSubNodeType);
+            result->addChild(Node::real_ty);
             result->addChild(Node::int_ty);
-            return result;
+            break;
         }
     case R_ABS:
     case R_SQR:
     case R_UMINUS:
         {
-            result->addChild(realArgSubNodeType);
-            return result;
+            result->addChild(Node::real_ty);
+            break;
         }
     case EXP:
         {
@@ -927,7 +930,8 @@ FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
             string funName = n->id;
             Node* funDecl = lookupFun(funName);
             if (funDecl != 0) {  // DECL_FUN {id} (SEQ type+) type 
-                return funDecl->child(0);
+                result->appendChildren(funDecl->child(0));
+                break;
             }
             printMessage(INFOm,
                          "getSubNodeTypes: Encountered unexpected function: "
@@ -956,7 +960,7 @@ FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
 
             result->addChild(arrayTy);
             result->appendChildren(normalisedArrayTy->child(0));
-            return result;
+            break;
         }
     case ARR_UPDATE:  // ARR_UPDATE{<type>?} array (SEQ i1 ...ik) value
         {
@@ -978,7 +982,7 @@ FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
             result->addChild(arrayTy);
             result->appendChildren(normalisedArrayTy->child(0));
             result->addChild(normalisedArrayTy->child(1));
-            return result;
+            break;
         }
 
     case ARR_BOX_UPDATE:  // ARR_BOX_UPDATE{<type>?} array (SEQ r1 ...rk) value
@@ -1008,7 +1012,7 @@ FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
                 result->addChild(indexTys->child(j));
             }
             result->addChild(valTy);
-            return result;
+            break;
         }
 
     case MK_ARRAY:
@@ -1045,7 +1049,7 @@ FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
                 result->addChild(valTy);
             }
 
-            return result;
+            break;
         }
     case RCD_ELEMENT: // RCD_ELEMENT{field} record type?
         {
@@ -1062,7 +1066,7 @@ FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
             result->addChild(recordTy);
             if (n->arity() == 2)
                 result->addChild(Node::type_univ);
-            return result;
+            break;
         }
     case RCD_UPDATE:  // RCD_UPDATE{field} record value type?
         {
@@ -1106,7 +1110,7 @@ FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
 
             if (n->arity() == 3)
                 result->addChild(Node::type_univ);
-            return result;
+            break;
         }
     case MK_RECORD:
         {
@@ -1136,24 +1140,35 @@ FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
                 }
                 result->addChild(fldTy);
             }
-            return result;
+            break;
         }
     case ITE: {
         result->addChild(Node::bool_ty);
         result->addChild(n->child(3));
         result->addChild(n->child(3));
         result->addChild(Node::type_univ);
-        return result;
+        break;
     }
     default:
         break;
     }
-    // Case for errors and unknowns
 
-    int numSubNodes = n->getSubNodes().size();
+    if (result->arity() == 0) {
+        // Case for errors and unknowns
+
+        int numSubNodes = n->getSubNodes().size();
     
-    for (int i = 0; i != numSubNodes; i++) {
-        result->addChild(Node::unknown);
+        for (int i = 0; i != numSubNodes; i++) {
+            result->addChild(Node::unknown);
+        }
+    }
+    else if (getOptions) {
+        // Modify all real types to real_or_int
+
+        for (int i = 0; i != result->arity(); i++) {
+            if (result->child(i)->kind == REAL_TY)
+                result->child(i) = Node::int_or_real_ty;
+        }
     }
     return result;
 }

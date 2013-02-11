@@ -182,7 +182,39 @@ hilton_options = \
 #        read in the .rlu user rule files.  With this option, the
 #        expectation is that all the user rules will have all their
 #        ids properly declared.
-
+#
+#----------------------------------------------------------------------------
+# Free variable type inference assumptions
+#-----------------------------------------
+#
+# TI=<level> : int   -ti<level>
+# TS=<level> : int   -ts<level>
+#
+# These specify assumptions to be made about typing of free variables
+# in user rules. 
+#
+# * TI=0  Make no assumptions.
+#
+# * TI=1  If a free variable occurs as an argument to an operator in a 
+#         position where a real is expected, assume the variable has real type
+#
+# * TI=2  If a free variable is constrained to have either integer or real 
+#         type, assume the variable has real type.  This option subsumes
+#         option 1.
+#
+# * TI=3  If a free variable is constrained to have either integer or real 
+#         type, assume the variable has integer type.
+#
+# When any of options 1-3 is selected, Victor by default will insert
+# a warning message into the .vlg file for each assumption it makes,
+# so each application of the assumption can be checked.  If these
+# warning messages are not needed, use TS=<level> rather than TI=<level>.
+#
+# The default behaviour if neither TI or TS is set is the same as when TS=1,
+# except no -ts1 suffix is added.
+#
+# See the User Manual for further details on these options.
+#
 #----------------------------------------------------------------------------
 # TRANSLATION OPTIONS
 #----------------------------------------------------------------------------
@@ -500,8 +532,9 @@ include Makefile-prelude.mk
 
 # <interface-m> =
 # a: API
-# s: SMT-Lib and file-level 
+# s: SMT-Lib 1.2 and file-level 
 # t: SMT-Lib2 and file-level 
+# u: SMT-Lib2 and file-level, with 
 # p: Simplify and file-level
 # i: Isabelle/HOL and file-level
 # d: dummy

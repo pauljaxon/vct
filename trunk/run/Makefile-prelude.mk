@@ -79,6 +79,42 @@ else ifdef RLUA
 
 endif
 
+#-----------------------------------------------------------------------------
+# Type inference
+#----------------
+# Control of type inference for free vars in rules
+
+ifeq ($(TI),0)
+  ti_option=# (empty string)
+  ti_sfx =-ti0
+else ifeq ($(TI),1)
+  ti_option=-assume-var-in-real-pos-is-real 
+  ti_sfx =-ti1
+else ifeq ($(TI),2)
+  ti_option=-assume-int-or-real-var-is-real
+  ti_sfx =-ti2
+else ifeq ($(TI),3)
+  ti_option=-assume-int-or-real-var-is-int
+  ti_sfx =-ti3
+else ifeq ($(TS),1)
+  ti_option=-assume-var-in-real-pos-is-real\
+         -suppress-warnings-of-var-type-assumptions
+  ti_sfx =# (empty string)
+else ifeq ($(TS),2)
+  ti_option=-assume-int-or-real-var-is-real\
+            -suppress-warnings-of-var-type-assumptions
+  ti_sfx =-ts2
+else ifeq ($(TS),3)
+  ti_option=-assume-int-or-real-var-is-int\
+         -suppress-warnings-of-var-type-assumptions
+  ti_sfx =-ts3
+else
+  ti_option=-assume-var-in-real-pos-is-real\
+            -suppress-warnings-of-var-type-assumptions
+  ti_sfx =# (empty string)
+endif
+
+
 #----------------------------------------------------------------------------
 # TRANSLATION OPTIONS
 #----------------------------------------------------------------------------
@@ -514,7 +550,7 @@ endif
 # SMTLIB2: Need to address abs abstraction
 # By using -expand-exp-const, are assuming solver can handle non-lin arith.
 
-report_root = $(fuse_c_pfx)-$@$(siv_sfx)$(tg_sfx)$(std_rlu_sfx)$(lin_sfx)$(edm_sfx)$(enum_sfx)$(pf_sum_sfx)$(frr_sfx)$(urule_audit_sfx)$(inc_sfx)$(timeout_sfx)$(repeat_sfx)$(smtlib_option_suffix)$(SFX)
+report_root = $(fuse_c_pfx)-$@$(siv_sfx)$(tg_sfx)$(std_rlu_sfx)$(ti_sfx)$(lin_sfx)$(edm_sfx)$(enum_sfx)$(pf_sum_sfx)$(frr_sfx)$(urule_audit_sfx)$(inc_sfx)$(timeout_sfx)$(repeat_sfx)$(smtlib_option_suffix)$(SFX)
 
 std_options = \
             $(unit_option) \
@@ -529,6 +565,7 @@ std_options = \
             $(pf_sum_option)\
             $(repeat_option)\
             $(std_rlu_option)\
+            $(ti_option)\
             $(frr_option)\
             $(urule_audit_options)\
             -report=$(report_root)\
@@ -551,7 +588,6 @@ std_options = \
             -read-directory-rlu-files\
             -read-unit-rlu-files \
             -expect-dir-user-rules-with-undeclared-ids\
-            -warn-about-speculative-overload-resolution\
             -use-alt-solver-driver \
             -echo-final-stats\
             -level=warning\

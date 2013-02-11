@@ -946,7 +946,7 @@ VarTypingFun::mergeVarTypings(Node* ty1, Node* ty2, FDLContext* c) {
         return ty2;   
     }
     if (k2 == INT_OR_REAL_TY) {
-        // Expect ty2 is INT_TY or REAL_TY 
+        // Expect ty1 is INT_TY or REAL_TY 
         return ty1;   
     }
     if (k1 == INT_TY && k2 == REAL_TY) {
@@ -961,12 +961,21 @@ VarTypingFun::mergeVarTypings(Node* ty1, Node* ty2, FDLContext* c) {
     return Node::no_ty; // Types are incompatible.  Hopefully never see this!
 }
 
+// Collect list of variables whose typing is not fully resolved, and provide
+// a best inferred type for each.
+
+// Variable list includes both free variables and variables bound with type
+// INT_OR_REAL_TY.
+
 Node* 
 VarTypingFun::operator() (FDLContext* c, Node* n) {
 
     Formatter::setFormatter(VanillaFormatter::getFormatter());
 
-    Node* subNodeTypes = c->getSubNodeTypeOptions(n);
+    Node* subNodeTypes =
+        c->typeResolutionPhase == 2 && option("assume-var-in-real-pos-is-real")
+        ? c->getExactSubNodeTypes(n)
+        : c->getSubNodeTypeOptions(n);
 
     vector<Node**> subNodes = n->getSubNodes();
 
@@ -977,22 +986,34 @@ VarTypingFun::operator() (FDLContext* c, Node* n) {
 
         if ( subNode->kind == ID
              && hasUpperCaseStart(subNodeId)
-             && c->lookupId(subNodeId) == 0 ) {
+            ) {
 
-            Node* subNodeTy;
-            if (subNodeTypes != 0) {
-                subNodeTy = subNodeTypes->child(i);
-            } else {
-                subNodeTy = Node::unknown;
-            }
+            Node* decl = c->lookupId(subNodeId);
 
-            pair< map<string,Node*>::iterator,bool > p = 
-                vMap.insert(make_pair(subNodeId, subNodeTy));
+            // Check if subNodeId is free or only partially typed
+            // if decl != 0, expect it alway to be of form DECL{id}[type]
 
-            bool insertSuccess = p.second;
-            if (!insertSuccess) {
-                Node** typeInMap = & ((p.first)->second);
-                *typeInMap = mergeVarTypings(*typeInMap, subNodeTy, c);
+            if (decl == 0 || decl->child(0)->kind == INT_OR_REAL_TY) {
+
+                Node* subNodeTy;
+                if (subNodeTypes != 0) {
+                    subNodeTy = subNodeTypes->child(i);
+                } else {
+                    subNodeTy = Node::unknown;
+                }
+                
+                if (decl != 0) {
+                    subNodeTy = mergeVarTypings(decl->child(0), subNodeTy, c);
+                }
+
+                pair< map<string,Node*>::iterator,bool > p = 
+                    vMap.insert(make_pair(subNodeId, subNodeTy));
+
+                bool insertSuccess = p.second;
+                if (!insertSuccess) {
+                    Node** typeInMap = & ((p.first)->second);
+                    *typeInMap = mergeVarTypings(*typeInMap, subNodeTy, c);
+                }
             }
         }
     }
@@ -1013,76 +1034,139 @@ closeExpr(FDLContext* c, const string& ruleName, Node* expr) {
     printMessage(FINEm, "closeExpr: vars found in rule " + ruleName
                  + ENDLs + expr->toString());
 
-    Node* result;
     Node* decls;
     if (expr->kind == FORALL) {
         decls = expr->child(0);
-        result = expr;
     } else {
         decls = new Node(SEQ);
-        result = new Node(FORALL, decls, expr);
     }
 
+    // The oldType for a var is that (if any) given in the current
+    // outermost FORALL bindings of expr.
+
+    // The inferredType for a var is that found by varTypingFun.
+
+    // The newType for a var is the new type to use for the var.  It
+    // might differ from the inferred type, as it also takes account
+    // of assumptions given in command line options.
+    
     for (map<string,Node*>::iterator i = varTypingFun.vMap.begin();
          i != varTypingFun.vMap.end();
          i++) {
-
         string id = i->first;
-        Node* type = i->second;
 
-        Kind tyKind = type->kind;
+        // Collect inferredType.
+        Node* inferredType = i->second;
 
-        if ( c->typeResolutionPhase == 3
-             && (tyKind == INT_OR_REAL_TY
-                 || tyKind == INT_REAL_OR_ENUM_TY
-                 || tyKind == UNKNOWN)
+        // Find oldType and ptr (if any) to its declaration.
+        Node* oldType = Node::unknown;
+        Node* oldDecl = 0;
+        for (int i = decls->arity(); i != 0; ) {
+            i--;
+            Node* decl = decls->child(i);
+            if (id == decl->id) {
+                oldDecl = decl;
+                oldType = oldDecl->child(0);
+            }
+        }
+        
+        // Set newType, taking account of command line options.
+
+        Node* newType = inferredType;
+
+        if ( c->typeResolutionPhase == 2
+             && inferredType->kind == INT_OR_REAL_TY
+             && option("assume-int-or-real-var-is-int")
+
             ) {
+            newType = Node::int_ty;
 
-            decls->addChild(new Node(DECL, id, new Node(INT_TY)));
-            c->typeResolutionMadeProgress = true;
-
-            if (tyKind == INT_OR_REAL_TY) {
-                printMessage(ERRORm,
+            if (!option("suppress-warnings-of-var-type-assumptions")) {
+                printMessage(WARNINGm,
                       "FDL issue" + ENDLs
                        + "Cannot find unique type for free variable " + id 
                        + " in rule " + ruleName + ENDLs
                        + "Type is either integer or real." + ENDLs
-                       + "Speculatively assigning it to have integer type. " + ENDLs
-                       + "This is potentially unsound.");
+                       + "Assuming it to have integer type. ");
+
             }
-            else if (tyKind == INT_REAL_OR_ENUM_TY) {
-                printMessage(ERRORm,
+
+        }
+        else if ( c->typeResolutionPhase == 2
+             && inferredType->kind == INT_OR_REAL_TY
+             && option("assume-int-or-real-var-is-real")
+
+            ) {
+
+            newType = Node::real_ty;
+
+            if (!option("suppress-warnings-of-var-type-assumptions")) {
+                printMessage(WARNINGm,
                       "FDL issue" + ENDLs
                        + "Cannot find unique type for free variable " + id 
                        + " in rule " + ruleName + ENDLs
-                       + "Type is either integer, real or some enumeration type." + ENDLs
-                       + "Speculatively assigning it to have integer type " + ENDLs
+                       + "Type is either integer or real." + ENDLs
+                       + "Assuming it to have real type." + ENDLs
                        + "This is potentially unsound.");
+            }
+        }
+
+        // If progress, then record newType.
+
+        if (newType->kind != oldType->kind
+            && newType->kind != UNKNOWN
+            && newType->kind != INT_REAL_OR_ENUM_TY
+            && newType->kind != NO_TY
+            ) {
+
+            // Add/update decls of outermost FORALL
+            if (oldDecl != 0) {
+                oldDecl->child(0) = newType->copy();
             }
             else {
-                printMessage(ERRORm,
+                decls->addChild(new Node(DECL, id, newType->copy()));
+            }
+
+            c->typeResolutionMadeProgress = true;
+            if (newType->kind == INT_OR_REAL_TY) {
+                c->typeResolutionIncomplete = true;
+            }
+
+            // Report if getSubNodeTypes is forcing var to be real
+
+            // Are assuming here that the only way a free var can get typed
+            // real is if option assume-var-in-real-pos-is-real is selected.
+            
+            if (inferredType->kind == REAL_TY
+                && !option("suppress-warnings-of-var-type-assumptions")) {
+                printMessage(WARNINGm,
                       "FDL issue" + ENDLs
                        + "Cannot find unique type for free variable " + id 
                        + " in rule " + ruleName + ENDLs
-                       + "No information inferred about its typing." + ENDLs
-                       + "Speculatively assigning it to have integer type " + ENDLs
+                       + "Type is either integer or real." + ENDLs
+                       + "Assuming it to have real type,  " + ENDLs
+                       + "  since it is an argument to an operator expecting a real. " + ENDLs
                        + "This is potentially unsound.");
             }
         }
-        else if (tyKind == UNKNOWN
-                 || tyKind == INT_OR_REAL_TY
-                 || tyKind == INT_REAL_OR_ENUM_TY
-                 || tyKind == NO_TY) {
-
+        else {
             c->typeResolutionIncomplete = true;
         }
-        else {
+        
+    } // End of for i in varTypingFun.vMap
 
-            decls->addChild(new Node(DECL, id, type->copy()));
-            c->typeResolutionMadeProgress = true;
 
-        }
+    Node* result;
+    if (expr->kind == FORALL) {
+        result = expr;
     }
+    else if (decls->arity() > 0) {
+        result = new Node(FORALL, decls, expr);
+    }
+    else {
+        result = expr;
+    }
+    
     return result;
 }
 
@@ -1108,22 +1192,34 @@ void closeRules(FDLContext* ctxt, Node* unit) {
 
 // Resolve overloading of LT and LE by looking at types of children.
 
+// Child types are I=int, R=real,E=enum type, U=unknown.
+// 
+// 
+// I and I  -> I
+// R or  R  -> I
+// IR or IR -> IR  (if not already IR)
+// E or  E  -> E
+// o/w no progress.
+
 Node*
 resolveIneqs (FDLContext* ctxt, Node* n) {
 
     string enumSuffix;
     Kind intRelKind;
     Kind realRelKind;
+    Kind intRealRelKind;
 
-    if (n->kind == LE) {
+    if (n->kind == LE || n->kind == IR_LE) {
         enumSuffix = "__LE";
         intRelKind = I_LE;
         realRelKind = R_LE;
+        intRealRelKind = IR_LE;
 
-    } else if (n->kind == LT) {
+    } else if (n->kind == LT || n->kind == IR_LT) {
         enumSuffix = "__LT";
         intRelKind = I_LT;
         realRelKind = R_LT;
+        intRealRelKind = IR_LT;
 
     } else {
         return n;
@@ -1144,24 +1240,16 @@ resolveIneqs (FDLContext* ctxt, Node* n) {
         n->kind = realRelKind;
         ctxt->typeResolutionMadeProgress = true;
     }
-    else if ( (ctxt->typeResolutionPhase >= 2 || option("no-reals"))
-              && (child0BaseTy->kind == INT_TY || child1BaseTy->kind == INT_TY)
-        ) {
-        n->kind = intRelKind;
-        ctxt->typeResolutionMadeProgress = true;
+    else if (child0BaseTy->kind == INT_OR_REAL_TY
+             || child1BaseTy->kind == INT_OR_REAL_TY) {
 
-        if (!option("no-reals")) {
-            printMessage( (option("warn-about-speculative-overload-resolution")
-                       ? ERRORm
-                       : INFOm),
-                      "FDL issue" + ENDLs
-                      + "resolveIneqs: cannot determine if inequality is over integers or reals " + ENDLs
-                      + "Speculatively inserting "
-                      + kindString(intRelKind) 
-                      + " node at position " + ctxt->getPathString() + ENDLs
-                      + "This is potentially unsound.");
+        if (n->kind != intRealRelKind) {
+            n->kind = intRealRelKind;
+            ctxt->typeResolutionMadeProgress = true;
         }
-        
+        else {
+            ctxt->typeResolutionIncomplete = true;
+        }
     }
     else if (child0BaseTy->kind == ENUM_TY) {
 
@@ -1186,6 +1274,8 @@ resolveIneqs (FDLContext* ctxt, Node* n) {
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // resolveSuccPred
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Assumes pred and succ never used on reals.  This seems consistent
+// with FDL documentation.
 
 
 Node*
@@ -1195,7 +1285,8 @@ resolveSuccPred(FDLContext* ctxt, Node* n) {
     Node* childTy = ctxt->getType(n->child(0));
     Node* baseChildTy = ctxt->normaliseType(childTy)->expandSubranges();
  
-    if (baseChildTy->kind == INT_TY) {
+    if (baseChildTy->kind == INT_TY
+        || baseChildTy->kind == INT_OR_REAL_TY) {
         if (n->kind == SUCC) {
             n->kind = I_SUCC;
         } else {
@@ -1235,21 +1326,21 @@ bool existsCoercion(Node* ty1, Node* ty2) {
 
 bool hasSupertype(Node* ty) {
 
-    return ty->kind == INT_TY && ! option("no-reals");
+    return ty->kind == INT_TY;
 }
 
 Node*
 resolveEq(FDLContext* ctxt, Node* n) {
-    if (! ((n->kind == EQ || n->kind == NE)
-           && n->arity() == 2)
+    if (! ((n->kind == EQ && n->arity() == 2) || n->kind == IR_EQ) 
         ) return n;
 
     Node* child0Ty = ctxt->getType(n->child(0))->expandSubranges();
     Node* child1Ty = ctxt->getType(n->child(1))->expandSubranges();
 
     // Pick up an easy common case first
-    if (child0Ty->equals(child1Ty) && child0Ty->kind != UNKNOWN) {
+    if (child0Ty->equals(child1Ty) && !isUnresolvedType(child0Ty) ) {
         n->addChild(child0Ty->copy());
+        n->kind = EQ;
         ctxt->typeResolutionMadeProgress = true;
         return n;
     }
@@ -1258,85 +1349,54 @@ resolveEq(FDLContext* ctxt, Node* n) {
 
     /* Cases
 
-       U = unknown type
-       T = known type with no supertype
-       S = known type with supertype
+       * = any type
+       T = resolved type with no supertype.  Includes real.
+       I = int type
+       IR = int_or_real type
 
-       U,T & T,U    Use T
-       T,T          Use T
-       S,T & T,S    Use T
+       *,T or T,*   Use T
 
-       S,S          Use S (NB: no cases in FDL when have 2 distinct Ss)
+       I and I      Use I
 
-       U,S & S,U    Fail in Phase 1.  Use S in Phases 2 & 3.
-       U,U          Fail
+       IR or IR     Use IR providing not already IR.
 
+       otherwise.   Fail.
 
      */
   
 
-    if (child0Ty->kind != UNKNOWN && ! hasSupertype(child0Ty)) {
-        //  T,U  T,S  T,T
+    if (!isUnresolvedType(child0Ty) && ! hasSupertype(child0Ty)) {
+        // T,*
         n->addChild(child0BaseTy->copy());
+        n->kind = EQ;
         ctxt->typeResolutionMadeProgress = true;
         return n;
     }
 
-    if (child1Ty->kind != UNKNOWN && ! hasSupertype(child1Ty)) {
-        //  U,T  S,T  (T,T)
+    if (!isUnresolvedType(child1Ty) && ! hasSupertype(child1Ty)) {
+        // *,T
         n->addChild(child1BaseTy->copy());
+        n->kind = EQ;
         ctxt->typeResolutionMadeProgress = true;
         return n;
     }
 
-    if (child0BaseTy->equals(child1BaseTy) && child0Ty->kind != UNKNOWN) {
-        // S,S  (T,T)
+    if (child0BaseTy->equals(child1BaseTy) && ! isUnresolvedType(child0Ty) ) {
+        // I,I
         n->addChild(child0BaseTy->copy());
         ctxt->typeResolutionMadeProgress = true;
         return n;
     }
 
-    if (ctxt->typeResolutionPhase >= 2) {
-
-        if (child0Ty->kind == UNKNOWN && child1Ty->kind != UNKNOWN) {
-            // U,S  (U,T)
-            n->addChild(child1Ty->copy());
-
-            printMessage( (option("warn-about-speculative-overload-resolution")
-                           ? ERRORm
-                           : INFOm),
-                         "FDL issue" + ENDLs
-                         + "resolveEq: cannot find type of equality." + ENDLs
-                         + "Speculatively adding type " 
-                         + child1Ty->toString() + " to "
-                         + kindString(n->kind) +
-                         " node at position " + ctxt->getPathString() + ENDLs
-                          + "This is potentially unsound.");
-
-
-            ctxt->typeResolutionMadeProgress = true;
-            return n;
-        }
-        if (child0Ty->kind != UNKNOWN && child1Ty->kind == UNKNOWN) {
-            // S,U  (T,U)
-            n->addChild(child0Ty->copy());
-
-            printMessage( (option("warn-about-speculative-overload-resolution")
-                           ? ERRORm
-                           : INFOm),
-                         "FDL issue" + ENDLs
-                         + "resolveEq: cannot find type of equality." + ENDLs
-                         + "Speculatively adding type " 
-                         + child0Ty->toString() + " to "
-                         + kindString(n->kind) +
-                         " node at position " + ctxt->getPathString() + ENDLs
-                          + "This is potentially unsound.");
-
-
-            ctxt->typeResolutionMadeProgress = true;
-            return n;
-        }
+    if ( (child0BaseTy->kind == INT_OR_REAL_TY
+          || child1BaseTy->kind == INT_OR_REAL_TY) && n->kind == EQ
+        ) {
+        // IR or IR
+        n->kind = IR_EQ;
+        ctxt->typeResolutionMadeProgress = true;
+        return n;
     }
+
     ctxt->typeResolutionIncomplete = true;
     return n;
 }
@@ -1352,11 +1412,6 @@ resolveEq(FDLContext* ctxt, Node* n) {
 
 Node* resolveUnaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
 
-    if (option("no-reals")) {
-        c->typeResolutionMadeProgress = true;
-        return n->updateKind(iKind);
-    }
-    
     Node* ty0 = c->normaliseType(c->getType(n->child(0)))->expandSubranges();
 
     if (ty0->kind == INT_TY) {
@@ -1375,11 +1430,6 @@ Node* resolveUnaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
     
 Node* resolveBinaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
 
-    if (option("no-reals")) {
-        c->typeResolutionMadeProgress = true;
-        return n->updateKind(iKind);
-    }
-
     Node* ty0 = c->normaliseType(c->getType(n->child(0)))->expandSubranges();
     Node* ty1 = c->normaliseType(c->getType(n->child(1)))->expandSubranges();
 
@@ -1391,22 +1441,6 @@ Node* resolveBinaryArithNode(FDLContext* c, Node* n, Kind iKind, Kind rKind) {
     else if (ty0->kind == INT_TY && ty1->kind == INT_TY) {
         // I,I
         c->typeResolutionMadeProgress = true;
-        return n->updateKind(iKind);
-    }
-    else if (c->typeResolutionPhase >= 2
-             && (ty0->kind == INT_TY || ty1->kind == INT_TY)
-        ) {
-        // I,U  U,I  Phases 2 & 3.
-        c->typeResolutionMadeProgress = true;
-        printMessage( (option("warn-about-speculative-overload-resolution")
-                       ? ERRORm
-                       : INFOm),
-                     "FDL issue" + ENDLs
-                     + "resolveBinaryArithNode: Speculatively inserting "
-                     + kindString(iKind) 
-                     + " at position " + c->getPathString() + ENDLs
-                     + "This is potentially unsound.");
-
         return n->updateKind(iKind);
     }
     else {
@@ -1633,11 +1667,13 @@ void resolveTyping(FDLContext* ctxt, Node* unit) {
     // rules for which this is not sufficient.
 
     // The typing resolutions in Phase 1 are always safe.  Those in
-    // Phases 2 and 3 are increasingly speculative and potentially unsound.
+    // Phase 2 are potentially unsound.
 
     int maxPhase =
-        option("user-rule-closure-effort")
-        ? intOptionVal("user-rule-closure-effort")
+        option("assume-var-in-real-pos-is-real")
+        || option("assume-int-or-real-var-is-real")
+        || option("assume-int-or-real-var-is-int")
+        ? 2
         : 1;
       
     for (int phase = 1; phase <= maxPhase; phase++) {
@@ -1650,7 +1686,6 @@ void resolveTyping(FDLContext* ctxt, Node* unit) {
 
             ctxt->typeResolutionMadeProgress = false;
             ctxt->typeResolutionIncomplete = false;
-
 
             closeRules(ctxt, unit);
 
@@ -1737,6 +1772,8 @@ Node* resolveIDs(FDLContext* c, Node* n) {
             return n->updateKind(CONST);
         }
         else {
+            // Leave ID as is.  Type checking will catch it later.
+            /*
             printMessage(ERRORm,
                          "FDL issue" + ENDLs
                          + "resolveIDs: encountered unexpected id: "
@@ -1744,6 +1781,7 @@ Node* resolveIDs(FDLContext* c, Node* n) {
                          + " at " + c->getPathString() + ENDLs
                          + "If in user rule, fix by adding checktype "
                            "precondition for id.");
+            */
             return n;
         }
     }
