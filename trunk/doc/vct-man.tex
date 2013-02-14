@@ -2285,6 +2285,32 @@ of some hypotheses and conclusions.
   Expand natural-number powers of integer and real expressions into products,
   with special-case treatment for exponents 0 and 1.
 
+\optionb{add-ground-exp-eval-axioms}
+  Add rule \[n \verb+**+ m = v\] where $n$,$m$ and $v$ are natural numbers and
+  $v = n^m$ 
+ if
+ \begin{enumerate}
+ \item $n \verb+**+ m$ with $n$,$m$ natural numbers is found in unit, or
+  \item natural number $p$ is found in unit, where $p = 2^m$ or $p = 2^m -1$
+    for some m in range $1 \ldots 64$.
+  \end{enumerate}
+  These rules help \smt{} solvers to instantiate rules from 
+  Victor's rule prelude that provide upper bounds on values of the functions
+  \texttt{bit\_\_or} and 
+  \texttt{bit\_\_xor}, and involve use of the exponent function.
+
+  If this option is used, do not use option \texttt{-ground-eval-exp} or 
+  \texttt{-ground-eval}.
+
+  This option modifies the behaviour of \texttt{-expand-exp-const} so 
+  it does not expand terms of form $n \verb+**+ m$ when both $m$ and $n$ are
+  natural numbers.
+
+\optionv{exp-2-bound}{b}  When using option 
+  \texttt{-add-ground-exp-eval-axioms}, set upper bound for $m$ to
+  something else other than default of 64.
+
+
 \optionb{arith-eval}
   Apply the rewrite rules
   \begin{eqnarray*}

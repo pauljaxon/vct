@@ -37,15 +37,14 @@ bitwise(63):  bit__or(X,Y)  <= X + Y   may_be_deduced_from [ 0 <= X, 0 <= Y ].
 bitwise(64):  bit__xor(X,Y) <= X + Y   may_be_deduced_from [ 0 <= X, 0 <= Y ].
 
 /*
-bitwise rules 66 & 67 are likely not to be instantiated with the default
-Victor options.  To make use of them, add the option 
+To encourage SMT solvers to use bitwise rules 66 & 67, use
+option -add-ground-exp-eval-axioms and don't use option -ground-eval-exp.
 
-  -ground-eval-exp=false
-
-after the std_options and make sure there are instances of the arith(3?) rules
-below for the values of N of interest.  These arith rules help with triggering
-instantiation of these bitwise rules.
+Doing this will ensure goals will include ground instances of the **
+operator which in turn will help the instantiation heuristics in the solvers
+find suitable bindings for N.  
 */
+
 bitwise(66):  bit__or(X,Y)  <= 2**N - 1  may_be_deduced_from 
                                          [ 0 <= X, 0 <= Y, 0 <= N,
                                            X <= 2**N - 1, Y <= 2**N - 1].
@@ -68,13 +67,5 @@ arith(13): real___abs(U) may_be_replaced_by - U   if [U < 0,
                                                       goal(checktype(U,real))].
 
 arith(20): int___odd(X) may_be_replaced_by int___abs(X) mod 2 = 1.
-
-/* Cases of abstract exponentiation, useful for instantiating bitwise
-rules 66 & 67.  See above. */
-
-arith(30): 2**8 may_be_replaced_by 256.
-arith(31): 2**16 may_be_replaced_by 65536.
-arith(32): 2**32 may_be_replaced_by 4294967296.
-arith(33): 2**64 may_be_replaced_by 18446744073709551616.
 
 

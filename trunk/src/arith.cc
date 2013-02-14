@@ -205,9 +205,16 @@ void evalExp(Node* n) {
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Expand e ** k where k >= 0 is a constant integer.
 
+// Don't do when -add-ground-exp-eval-axioms option is selected,
+// e and is a NATNUM.
+
 Node* expandExpConst(Node* n) {
     if ((n->kind == I_EXP || n->kind == R_EXP)
-        && n->child(1)->kind == NATNUM) {
+        && n->child(1)->kind == NATNUM
+        && ! (n->child(0)->kind == NATNUM
+              && option("add-ground-exp-eval-axioms"))
+        )
+    {
 
 
         Kind timesKind = (n->kind == I_EXP) ? I_TIMES : R_TIMES;
@@ -280,6 +287,116 @@ void abstractNonConstRealDiv(Node* n) {
     }
     return;
 }
+
+
+//========================================================================
+// Addition of rules for values of constant powers
+//========================================================================
+// Add rule 
+//    n**m = eval(n**m) 
+// if
+// 1. n**m with n,m natural numbers is found in unit, or
+// 2. natural number eval(2**m) or eval(2**m)-1 
+//      for some m in range 1..option("exp-2-bound").  (64 default upper bound)
+//    is found in unit
+//
+// Explored explicitly adding case n = 2, m = 0, or extending range for m
+// to start at 0.   However, it seems unlikely this case would be useful,
+// and on occasion (e.g. door/lockdoor 5 in hilton data-set) it causes
+// very poor performance (30x slow-down) with z3 4.3.1.
+
+
+class ConstIExps {
+private:
+    set< pair< string, string> > constArgs;
+    set<string> natNums;
+    
+public:
+    ConstIExps() {};
+
+    void operator() (Node* n);  // To map over expression
+
+    Node* getRules();
+
+};
+
+void
+ConstIExps::operator() (Node* n) {
+
+    if (n->kind == I_EXP
+        && n->child(0)->kind == NATNUM
+        && n->child(1)->kind == NATNUM) {
+        
+        constArgs.insert(make_pair(n->child(0)->id, n->child(1)->id));
+    }
+    else if (n->kind == NATNUM) {
+        natNums.insert(n->id);
+    }
+    return;
+}
+
+Node*
+ConstIExps::getRules() {
+    Node* rules = new Node(SEQ);
+
+    // See comment above for why this case excluded.
+    // constArgs.insert(make_pair(string("2"), string("0")));
+    
+    // Go through collected numbers, and check for any of form
+    // 2**k or 2**k-1
+
+    MyInt one("1");
+    MyInt two("2");
+
+    MyInt exp2k("2");
+    int exp2Bound = option("exp-2-bound") ? intOptionVal("exp-2-bound") : 64;
+
+    for (int k = 1; k <= exp2Bound; k++) {
+
+        MyInt exp2kMinusOne = MyInt::minus(exp2k,one);
+
+        if (natNums.find(exp2k.toString()) != natNums.end()
+            || natNums.find(exp2kMinusOne.toString()) != natNums.end()
+            ) {
+
+            constArgs.insert(make_pair(string("2"), intToString(k)));
+        }
+        exp2k = MyInt::times(exp2k,two);
+    }
+
+    // Create rule for each detected case.
+
+    for (set<pair<string, string> >::iterator i = constArgs.begin();
+         i != constArgs.end();
+         i++)
+    {
+        MyInt a1(i->first);
+        MyInt a2(i->second);
+        MyInt val = MyInt::exp(a1,a2);
+        
+        Node* rule = nEQ(nI_EXP(nNATNUM(i->first),nNATNUM(i->second)),
+                         nNATNUM(val.toString()),
+                         nINT_TY);
+
+        rules->addChild(nRULE("iexp eval " + i->first + " " + i->second,
+                              rule));
+    }
+    return rules;
+}
+
+
+void introConstIExpEvalAxioms(Node* unit) {
+
+    ConstIExps cie;
+    unit->mapOver(cie);
+
+    // Add new rules to existing rules
+    Node* newRules = cie.getRules();
+    Node* currentRules = unit->child(1);
+    currentRules->appendChildren(newRules);
+}
+
+
 
 //========================================================================
 // Pushing down to_real instances
@@ -783,7 +900,14 @@ void arithSimp(FDLContext* ctxt, Node* unit) {
     }
 
 
+    //--------------------------------------------------------------------
+    // Add axioms for ground eval of i_exp function
+    //--------------------------------------------------------------------
 
+    if (option("add-ground-exp-eval-axioms")) {
+        introConstIExpEvalAxioms(unit);
+    }
+    
     //--------------------------------------------------------------------
     // Expand constant powers.
     //--------------------------------------------------------------------

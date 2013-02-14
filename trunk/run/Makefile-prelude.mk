@@ -576,7 +576,7 @@ std_options = \
             -delete-working-files\
             -rules=divmod.rul\
             -rules=prelude.rul\
-            -ground-eval-exp\
+            -add-ground-exp-eval-axioms\
             -expand-exp-const\
             -abstract-exp\
             -abstract-divmod\
