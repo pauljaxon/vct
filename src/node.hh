@@ -623,6 +623,7 @@ bool isUnresolvedType(Node* ty);
 #define nI_PRED(i) new Node(I_PRED,(i))
 #define nI_PLUS(i,j) new Node(I_PLUS,(i),(j))
 #define nI_MINUS(i,j) new Node(I_MINUS,(i),(j))
+#define nI_EXP(i,j) new Node(I_EXP,(i),(j))
 #define nIDIV(i,j) new Node(IDIV,(i),(j))
 #define nIDIV_E(i,j) new Node(IDIV_E,(i),(j))
 #define nMOD(i,j) new Node(MOD,(i),(j))
