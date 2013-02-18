@@ -1192,12 +1192,13 @@ void closeRules(FDLContext* ctxt, Node* unit) {
 
 // Resolve overloading of LT and LE by looking at types of children.
 
-// Child types are I=int, R=real,E=enum type, U=unknown.
+// Child types are I=int, R=real,E=enum type, B=boolean, U=unknown.
 // 
 // 
 // I and I  -> I
 // R or  R  -> I
 // IR or IR -> IR  (if not already IR)
+// B or  B  -> B
 // E or  E  -> E
 // o/w no progress.
 
@@ -1208,18 +1209,21 @@ resolveIneqs (FDLContext* ctxt, Node* n) {
     Kind intRelKind;
     Kind realRelKind;
     Kind intRealRelKind;
+    Kind boolRelKind;
 
     if (n->kind == LE || n->kind == IR_LE) {
         enumSuffix = "__LE";
         intRelKind = I_LE;
         realRelKind = R_LE;
         intRealRelKind = IR_LE;
+        boolRelKind = B_LE;
 
     } else if (n->kind == LT || n->kind == IR_LT) {
         enumSuffix = "__LT";
         intRelKind = I_LT;
         realRelKind = R_LT;
         intRealRelKind = IR_LT;
+        boolRelKind = B_LT;
 
     } else {
         return n;
@@ -1263,6 +1267,11 @@ resolveIneqs (FDLContext* ctxt, Node* n) {
         n->id = (child1BaseTy->id) + enumSuffix;
         ctxt->typeResolutionMadeProgress = true;
     }
+    else if (child0BaseTy->kind == BOOL_TY || child1BaseTy->kind == BOOL_TY) {
+
+        n->kind = boolRelKind;
+        ctxt->typeResolutionMadeProgress = true;
+    }
     else {
         ctxt->typeResolutionIncomplete = true;
     }
@@ -1291,6 +1300,15 @@ resolveSuccPred(FDLContext* ctxt, Node* n) {
             n->kind = I_SUCC;
         } else {
             n->kind = I_PRED;
+        }
+        ctxt->typeResolutionMadeProgress = true;
+        return n;
+    }
+    if (baseChildTy->kind == BOOL_TY) {
+        if (n->kind == SUCC) {
+            n->kind = B_SUCC;
+        } else {
+            n->kind = B_PRED;
         }
         ctxt->typeResolutionMadeProgress = true;
         return n;

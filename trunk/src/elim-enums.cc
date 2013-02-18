@@ -642,8 +642,9 @@ void axiomatiseEnums(FDLContext* ctxt, Node* unit) {
     // declarations without corresponding rule sets, making the
     // expectedNumRules calculation incorrect, and this check pointless.
     
-    if (!option("read-all-decl-files-in-dir")
-        && numEliminatedRules != expectedNumRules) {
+    if (option("warn-about-unexpected-number-of-enum-rules")
+               && !option("read-all-decl-files-in-dir")
+               && numEliminatedRules != expectedNumRules) {
         printMessage(WARNINGm, "elim-enums: found "
                      + intToString(numEliminatedRules) + " rules, expected "
                      + intToString(expectedNumRules) + " rules"

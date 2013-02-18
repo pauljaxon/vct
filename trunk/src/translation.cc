@@ -462,3 +462,45 @@ void elimTypeAliases(FDLContext* ctxt, Node* unit) {
     }
     return;
 }
+
+//------------------------------------------------------------------------
+// boolEqToIff
+//------------------------------------------------------------------------
+
+Node* boolEqToIff(FDLContext* ctxt, Node* n) {
+
+    if (n->kind == EQ) {
+        assert(n->arity() == 3); // Types should be added by this stage
+
+        Node* baseType = ctxt->normaliseType(n->child(2));
+        if (baseType->kind == BOOL_TY) {
+            n->kind = IFF;
+            n->popChild();
+        }
+    }
+    return n;
+}
+
+//------------------------------------------------------------------------
+// Eliminate operators and relations treating boolean as ordered
+//------------------------------------------------------------------------
+
+void elimBoolOrderOpsRels(Node* n) {
+
+    if (n->kind == B_LT) {
+        // B_LT(x,y) --> AND( NOT(x), y)
+        n->kind = AND;
+        n->child(0) = nNOT(n->child(0));
+    }
+    else if (n->kind == B_LE) {
+        // B_LE(x,y) --> IMPLIES( x, y)
+        n->kind = IMPLIES;
+    }
+    else if (n->kind == B_SUCC || n->kind == B_PRED) {
+        // B_SUCC(x) --> NOT(x)
+        // B_PRED(x) --> NOT(x)
+        n->kind = NOT;
+    }
+    return;
+
+}

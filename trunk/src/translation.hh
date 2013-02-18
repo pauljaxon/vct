@@ -58,4 +58,7 @@ void stripQuantPats(Node* unit);
 
 void elimTypeAliases(FDLContext* ctxt, Node* unit);
 
+Node* boolEqToIff(FDLContext* ctxt, Node* n);
+void elimBoolOrderOpsRels(Node* n);
+
 #endif // ! defined TRANSLATION_HH

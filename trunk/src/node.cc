@@ -158,6 +158,10 @@ z::kindString(z::Kind k) {
 	c(I_EXP_N);// Isabelle/HOL
 	c(R_EXP_N);// Isabelle/HOL
 	c(I_TO_NAT);// Isabelle/HOL
+        c(B_SUCC);  // Operator for boolean type as ordered type
+        c(B_PRED);   // Operator for boolean type as ordered type
+        c(B_LT);     // Order relation for boolean type 
+        c(B_LE);     // Order relation for boolean type 
         c(ODD);
 	c(ABS);
 	c(I_ABS);
