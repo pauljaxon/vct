@@ -839,6 +839,20 @@ translateUnit(UnitInfo* unitInfo, FDLContext* ctxt, Node* unit) {
     }
 
     //--------------------------------------------------------------------
+    // Eliminating equalities over boolean type
+    //--------------------------------------------------------------------
+    if (option("bool-eq-to-iff")) {
+        mapOverWithContext(boolEqToIff, ctxt, unit);
+    }
+
+
+    //--------------------------------------------------------------------
+    // Eliminating boolean order operations and relations
+    //--------------------------------------------------------------------
+
+    unit->mapOver(elimBoolOrderOpsRels);
+
+    //--------------------------------------------------------------------
     // Eliminating enumeration type primitives
     //--------------------------------------------------------------------
 

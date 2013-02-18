@@ -40,23 +40,6 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 
 
 
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// boolEqToIff
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Node* boolEqToIff(FDLContext* c, Node* n) {
-
-    if (n->kind == EQ) {
-        assert(n->arity() == 3); // Types should be added by this stage
-
-        Node* baseType = c->normaliseType(n->child(2));
-        if (baseType->kind == BOOL_TY) {
-            n->kind = IFF;
-            n->popChild();
-        }
-    }
-    return n;
-}
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // boolToBit
@@ -183,7 +166,7 @@ introBitOpsAndRel(FDLContext* ctxt, Node* n) {
             if (isProp(n)) {
                 printMessage(ERRORm,
                              "Found " + kindString(n->kind) +
-                             "at individual position");
+                             " at individual position");
                 ctxt->addFeature("Error");
             }
             return n;
@@ -468,10 +451,6 @@ Node* addPropToBit(FDLContext* c, Node* n) {
 
 void
 introBitType (FDLContext* ctxt, Node* unit) {
-
-    if (option("bit-type-bool-eq-to-iff")) {
-        mapOverWithContext(boolEqToIff, ctxt, unit);
-    }
 
     if (!option("bit-type-with-ite")) {
         mapOverWithContext(introBitOpsAndRel, ctxt, unit);

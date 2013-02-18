@@ -16,7 +16,7 @@
 \author{Paul Jackson \\
         \texttt{pbj@inf.ed.ac.uk}}
 
-\date{11 Feb 2013}
+\date{18 Feb 2013}
 
 %\usepackage{vpage}
 %\usepackage{vmargin}
@@ -2048,12 +2048,20 @@ Victor calls the term-level Booleans \emph{bits}.
 
 \begin{description}
 \optionb{bit-type} Enable separation.  
-\optionb{bit-type-bool-eq-to-iff}
+\optionb{bool-eq-to-iff}
   Initially convert any equalities at Boolean type to `if and only if's.
+  If an equality is at a formula position, then this results in the
+  arguments to the equality changing from being at a term position to
+  being at a formula position.  This is useful when the
+  \texttt{-bit-type-with-ite} option is not asserted, and arguments
+  involve operators (e.g. logical quantifiers) that can then only occur
+  at formula positions.
 
 \optionb{bit-type-with-ite} Whenever possible, introduce instances
   of the `if-then-else' operator rather than term-level versions of
-  propositional logic operators and atomic relations.
+  propositional logic operators and atomic relations.  This is
+  particularly useful when logical operators (e.g. quantifiers) occur
+  in term positions.
   
 \optionb{bit-type-prefer-bit-vals}
   A heuristic for controlling whether atomic relations are translated
@@ -2098,7 +2106,7 @@ If the Victor option \texttt{-abstract-bit-ops} is used, Victor introduces
 operators
 \texttt{bit\_\_\_or},
 \texttt{bit\_\_\_and} and 
-\texttt{bit\_\_\_xor}.
+\texttt{bit\_\_\_xor}. (Note the 3 `\texttt{\_}' characters rather than 2.)
 %
 These operators work on the term-level Booleans introduced by Victor and
 are distinct from the \spark{} \fdl{} bit operators.

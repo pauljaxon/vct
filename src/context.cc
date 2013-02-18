@@ -492,6 +492,10 @@ Node* FDLContext::getType (Node* n) {
     case GE:
     case PRED_AP:
     case TO_PROP:
+    case B_SUCC:      
+    case B_PRED:
+    case B_LT:
+    case B_LE:
         return Node::bool_ty;
 
     case TO_BIT:
@@ -767,6 +771,8 @@ FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
             return result;
         }
     case NOT:
+    case B_SUCC:
+    case B_PRED:
     case TO_BIT:
         {
             result->addChild(Node::bool_ty);
@@ -774,6 +780,8 @@ FDLContext::getSubNodeTypes (Node* n, bool getOptions) {
         }
     case IFF: 
     case IMPLIES:
+    case B_LT:
+    case B_LE:
         {
             result->addChild(Node::bool_ty);
             result->addChild(Node::bool_ty);

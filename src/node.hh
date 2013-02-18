@@ -166,6 +166,10 @@ enum Kind {
     I_EXP_N, // Isabelle/HOL
     R_EXP_N, // Isabelle/HOL
     I_TO_NAT, // Isabelle/HOL
+    B_SUCC,   // Operator for boolean type as ordered type
+    B_PRED,   // Operator for boolean type as ordered type
+    B_LT,     // Order relation for boolean type 
+    B_LE,     // Order relation for boolean type 
     ODD,
     TUPLE,
     ARR_ELEMENT,
