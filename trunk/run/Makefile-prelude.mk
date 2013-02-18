@@ -625,7 +625,7 @@ api_cvc3_options =  \
   -ground-eval-exp=false\
   -abstract-exp=false\
   -bit-type \
-  -bit-type-bool-eq-to-iff\
+  -bool-eq-to-iff\
   -abstract-bit-valued-int-real-le\
   -abstract-arrays-records-late\
   -elim-array-constructors \
@@ -662,7 +662,7 @@ api_yices_options = \
 
 smtlib_base_options = \
   -bit-type \
-  -bit-type-bool-eq-to-iff\
+  -bool-eq-to-iff\
   \
   -refine-types\
   -refine-int-subrange-type \
@@ -746,6 +746,7 @@ smtlib2_strict_fol_options = \
   $(smtlib2_aux_options)\
   -bit-type-prefer-bit-vals\
   -bit-type\
+  -bool-eq-to-iff\
   $(B_opt)\
   -abstract-bit-ops\
   -abstract-bit-valued-eqs\
