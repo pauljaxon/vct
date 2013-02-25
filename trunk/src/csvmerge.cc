@@ -1,7 +1,7 @@
 /*
 This file is part of Victor: a SPARK VC Translator and Prover Driver.
 
-Copyright (C) 2009, 2010 University of Edinburgh
+Copyright (C) 2009-2013 University of Edinburgh
 
 Author(s): Paul Jackson
 
@@ -21,14 +21,20 @@ LICENSE.txt and online at http://www.gnu.org/licenses/.
 
 // USAGE
 
-// csvmerge filename1 m1 ... mj filename2 n1 ... nk
+// csvmerge [-h] filename_1 n_1_1 ... n_1_k1 filename_2 n_2_1 ... n_2_k2 ...
+//               filename_m n_m_1 ... n_m_km
 // 
-// Create new csv record on stdout using
-// fields m1 .. mj from filename1 and fields n1 .. nk from filename2.
-// If j = 0 use all fields from filename1.
-// If k = 0 use all fields from filename2.
-
-// filename1 and filename2 must be same length.
+// Repeatedly read a CSV record from each file filename_1 ... filename_m
+// and create new CSV record on stdout that combines, for each i from 1 to m, 
+// the fields n_i_1 ... n_i_ki from the record from filename_i.
+// If ki = 0 use all fields from the record from filename_i.
+// The n_i_j are 1-based field positions.
+//
+// Options
+//
+// -h Add a header record to the output giving the filename origin of each
+//    field.  To keep headings concise, filename suffixes after the
+//    first '.' character are stripped.
 
 #include <cstdlib>
 
@@ -49,126 +55,160 @@ main (int argc, char *argv[]) {
 
     vector<string> args = processCommandArgs(argc, argv);
 
-    if (args.size() < 2) {
+    if (args.size() < 1) {
         cerr 
-<< "Usage" << endl
-<< "" << endl
-<< "  csvmerge filename1 m1 ... mj filename2 n1 ... nk" << endl
-<< "" << endl
-<< "Create new csv records on stdout using" << endl
-<< "fields m1 .. mj of records from filename1 and" << endl
-<< "fields n1 .. nk of recordsfrom filename2." << endl
-<< "If j = 0 use all fields from filename1." << endl
-<< "If k = 0 use all fields from filename2." << endl
-<< "" << endl
-<< "filename1 and filename2 must be same length." << endl;
+<< "USAGE" << endl
+<< endl
+<< "csvmerge [-h] filename_1 n_1_1 ... n_1_k1 filename_2 n_2_1 ... n_2_k2 ... " << endl
+<< "              filename_m n_m_1 ... n_m_km" << endl
+<< endl
+<< "Repeatedly read a CSV record from each file filename_1 ... filename_m" << endl
+<< "and create new CSV record on stdout that combines, for each i from 1 to m, " << endl
+<< "the fields n_i_1 ... n_i_ki from the record from filename_i." << endl
+<< "If ki = 0 use all fields from the record from filename_i." << endl
+<< "The n_i_j are 1-based field positions." << endl
+<< endl
+<< "Options" << endl
+<< endl
+<< "-h Add a header record to the output giving the filename origin of each" << endl
+<< "   field.  To keep headings concise, filename suffixes after the" << endl
+<< "   first '.' character are stripped." << endl
+;
         return 0;
     }
+
+
+    // Use of ifstream* rather than ifstream type:
+    // While ifstream objects are described as pointers, the copy
+    // constructor is private, so it is not straightforward to add
+    // ifstream objects to a vector.  Hence we use pointers, and
+    // allocate the ifstream objects themselves on the heap.
+
     
-    ifstream ifs1;
-    ifstream ifs2;
+    vector<ifstream*> ifstreams;
+    vector<string> fileNames;
+    vector< vector<int> > activeFields;
 
-    bool readingSecondFileInfo = false;
+    int fileNum = -1;
 
-    string fileName1(args[0]);
-    string fileName2;
-    
-    vector<int> cols1;
-    vector<int> cols2;
+    // Scan arguments. Gather names of input files and fields to select from each
+    for (int i = 0; i != args.size(); i++) {
 
-    for (int i = 1; i != args.size(); i++) {
-        if (isIntString(args[i])) {
-            int p = stringToInt(args[i]);
-            if (readingSecondFileInfo)
-                cols2.push_back(p);
-            else
-                cols1.push_back(p);
+        if (!isIntString(args[i])) {
+            fileNum++;
 
-        } else {
-            readingSecondFileInfo = true;
-            fileName2 = args[i];
+            // args[i] is name of input file
+
+            string& fileName = args[i];
+            fileNames.push_back(fileName);
+
+            ifstream* inStreamP = new ifstream();
+            ifstreams.push_back(inStreamP);
+
+            inStreamP->open( fileName.c_str() );
+            if (inStreamP->fail()) {
+                cerr << "Unable to open file " << fileName << endl;
+                exit(1);
+            }
+            activeFields.push_back( vector<int>() );
+        }
+        else {
+            // args[i] is integer for field of current input file
+            int fieldNum = stringToInt(args[i]);
+            if (fileNum == -1) {
+                cerr << "Unexpected integer before first file name " << fieldNum<< endl;
+                exit(1);
+            }
+            activeFields.at(fileNum).push_back(fieldNum);
         }
     }
+    int numFiles = fileNum + 1;
 
-    ifs1.open( fileName1.c_str() );
-    if (!ifs1) {
-        cerr << "Unable to open file 1: " << fileName1 << endl;
+    // 
+    if (numFiles < 1) {
+        cerr << "At least 1 file to merge must be specified" << endl; 
         exit(1);
     }
-    ifs2.open( fileName2.c_str() );
-    if (!ifs2) {
-        cerr << "Unable to open file 2: " << fileName2 << endl;
-        exit(1);
-    }
-
-    string line1;
-    string line2;
-    int numCols1(-1);
-    int numCols2(-1);
     
+    vector<string> lines(numFiles);
+    vector<int> numFields(numFiles, -1);
+    vector< vector<string> > fields(numFiles);
+    
+    int currentRecord = 0;  
     while (true) {
-        bool notEOF1 = getline(ifs1, line1);
-        bool notEOF2 = getline(ifs2, line2);
-        if (notEOF1 != notEOF2) {
-            cerr << "Files of differing lengths" << endl;
-            exit(1);
-        }
-        if (!notEOF1) break;
+        currentRecord++;   // 1-based count for error messages
 
-        // cerr << "Read line pair " << endl;
-
-        vector<string> vs1 = csvDigest(line1);
-        vector<string> vs2 = csvDigest(line2);
-
-        //      cerr << "vs1 size " << vs1.size() << endl;
-        //      cerr << "vs2 size " << vs2.size() << endl;
-
-        if (numCols1  < 0) numCols1 = vs1.size();
-        else if (numCols1 != vs1.size()) {
-            cerr << "File 1 number of cols changed from " << numCols1
-                 << " to " << vs1.size() << " at line " << endl;
-            cerr << line1 << endl;
-            exit(1);
-        }
-        if (numCols2  < 0) numCols2 = vs2.size();
-        else if (numCols2 != vs2.size()) {
-            cerr << "File 2 number of cols changed from " << numCols2
-                 << " to " << vs2.size() << " at line " << endl;
-            cerr << line2 << endl;
-            exit(1);
-        }
-
-        vector<string> ws;
-
-        if (cols1.size() == 0) {
-            ws = vs1;
-        }
-        for (int i = 0; i != cols1.size(); i++) {
-            if (cols1[i] < 1 || cols1[i] > vs1.size()) {
-                cerr << "Position " << cols1[i]
-                     << " out of range for line from file 1" << endl;
-                cerr << line1 << endl;
-                continue;
+        bool notEOF0 = false;
+        for (int i = 0; i != numFiles; i++) {
+            // 
+            bool notEOFi = getline(*(ifstreams.at(i)), lines.at(i));
+            if (i == 0)
+                notEOF0 = notEOFi;
+            else {
+                if (notEOFi != notEOF0 ) {
+                    cerr << "Files of differing lengths" << endl;
+                    exit(1);
+                }
             }
-            ws.push_back(vs1[cols1[i] - 1]);
         }
+        // Invariant: All input streams at EOF, or all not at EOF and line from each read.
 
-        if (cols2.size() == 0) {
-            ws.insert(ws.end(), vs2.begin(), vs2.end());
-        }
+        if (!notEOF0) break; // Stop when all input streams at EOF.
+        
+        vector<string> headerFields;
+        vector<string> outputFields;
 
-        for (int i = 0; i != cols2.size(); i++) {
-            if (cols2[i] < 1 || cols2[i] > vs2.size()) {
-                cerr << "Position " << cols2[i]
-                     << " out of range for line from file 2" << endl;
-                cerr << line2 << endl;
-                continue;
+        for (int i = 0; i != numFiles; i++) {
+            
+            vector<string> fields = csvDigest(lines.at(i));
+
+            // Check number of columns in input file is constant for all records
+            if (numFields.at(i) == -1)
+                numFields.at(i) = fields.size();
+            else if (numFields.at(i) != fields.size()) {
+                cerr << "In File " << fileNames.at(i) << " at line " << currentRecord 
+                     << ", number of fields changed from " << numFields.at(i)
+                     << " to " << fields.size() << endl;
+                exit(1);
             }
-            ws.push_back(vs2[cols2[i] - 1]);
-        }
+            // If no active fields specified, use all fields
+            if (activeFields.at(i).size() == 0) {
+                if (option("h") && currentRecord == 1) {
+                    for (int k = 0; k != fields.size(); k++ ) {
+                        headerFields.push_back(substringBefore('.',fileNames.at(i)));
+                    }
+                }
+                outputFields.insert(outputFields.end(), fields.begin(), fields.end());
 
-        cout << csvConcat(ws) << endl;
-    } // while (true)
+            }
+            // Otherwise, copy over the active fields
+            else {
+                for (int j = 0; j != activeFields.at(i).size(); j++) {
+                    if (activeFields.at(i).at(j) < 1 ||
+                        activeFields.at(i).at(j) > fields.size()) {
+
+                        cerr << "Position " << activeFields.at(i).at(j)
+                             << " out of range for records from file "
+                             << fileNames.at(i) << endl;
+                        exit(1);
+                    }
+
+                    if (option("h") && currentRecord == 1) {
+                        headerFields.push_back(substringBefore('.',fileNames.at(i)));
+                    }
+                    outputFields.push_back(fields.at(activeFields.at(i).at(j) - 1) );
+                }
+                    
+            }
+        } // End for i = 0 .. numFiles-1.
+
+        if (option("h") && currentRecord == 1) {
+            cout << csvConcat(headerFields) << endl;
+        }
+        cout << csvConcat(outputFields) << endl;
+        
+    } // End while true        
+
     return 0;
 }
 
