@@ -90,7 +90,7 @@ Box& SMTLib2Formatter::addSyntax(z::Kind k, const std::string& id,
                                            + mkLispSymbolString(id)));
                          return makeStringAp("!",bs);
                        }
-        
+
     case(COMMENT):     return box("; " + id);
 
     // Declarations
@@ -166,7 +166,7 @@ Box& SMTLib2Formatter::addSyntax(z::Kind k, const std::string& id,
     case(R_LE):        return makeStringAp("<=", bs);
     case(R_LT):        return makeStringAp("<", bs);
     case(TO_REAL):     {
-        if (option("smtlib2-implicit-to_real")) 
+        if (option("smtlib2-implicit-to_real"))
             return *(bs.at(0));
         else
             return makeStringAp("to_real", bs);
@@ -321,6 +321,7 @@ StandardiseIdsFun::StandardiseIdsFun(Node* unit) {
     sfi.insert("is_int");
     sfi.insert("select");
     sfi.insert("store");
+    sfi.insert("concat");
 
     // typeIdsToRename = typeIdsInUnit intersect (reservedWords U stdTypeIds)
 
@@ -1136,8 +1137,8 @@ SMTLib2Driver::getRunResults(int numQueries) {
 
         string s = solverOutput.at(i);
         vector<string> line = tokeniseString(s);
-        
-        
+
+
         if (line.size() == 0) {
             continue;
         }
