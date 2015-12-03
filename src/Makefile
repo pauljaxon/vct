@@ -164,12 +164,18 @@ endif
 
 ifdef CVC3DIR
 
+  # With the use of -Xlinker -rpath here, it is not necessary to set the
+  # LD_LIBRARY_PATH shell environment variable to enable the CVC3
+  # shared object library to be found at load time.  Various web pages
+  # discourage use of LD_LIBRARY_PATH because of possible security
+  # issues.
+
   ifeq ($(DEBUG),false)
       CPPFLAGS+= -I $(CVC3DIR)/include/cvc3 -D LINK_CVC3
-      LDFLAGS+= -L $(CVC3DIR)/lib
+      LDFLAGS+= -L $(CVC3DIR)/lib -Xlinker -rpath=$(CVC3DIR)/lib
   else
       CPPFLAGS+= -I $(CVC3DIR)/debug/include/cvc3 -D LINK_CVC3 -D_CVC3_DEBUG_MODE 
-      LDFLAGS+= -L $(CVC3DIR)/debug/lib
+      LDFLAGS+= -L $(CVC3DIR)/debug/lib -Xlinker -rpath=$(CVC3DIR)/debug/lib
   endif
 
   # CVC3 needs to be linked with gmp library.  This library is already linked
@@ -307,8 +313,11 @@ csvmerge: csvmerge.cc utility.o
 csvisect: csvisect.cc utility.o
 	$(CXX) -o ../bin/csvisect $^
 
+csvdiff: csvdiff.cc utility.o
+	$(CXX) -o ../bin/csvdiff $^
+
 .PHONY: csvutils
-csvutils: csvproj csvfilt csvmerge csvisect
+csvutils: csvproj csvfilt csvmerge csvisect csvdiff
 
 # Run command for solver, with watchdog killing solver if no activity on
 # stdout for a specified period.
